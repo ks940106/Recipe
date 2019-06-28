@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper>
+  <cache-ref namespace="talk"/>
+  <select id="mainBoard" parameterType="talk" resultType="talk">
+  	select board_no as boardNo,
+  	board_type as boardType,
+  	nickname as nickname,
+  	board_img as boardImg,
+  	board_contents as boardContents
+  	from board
+  </select>
+  
+</mapper>

@@ -14,8 +14,12 @@
 	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<!-- 
 		<property name="url" value="jdbc:oracle:thin:@49.164.127.217:32777:xe"/>
 		<property name="username" value="handsomeYS"/>
+		 -->
+		 <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+		<property name="username" value="singsing"/>
 		<property name="password" value="1234"/>
 	</bean>
 	
