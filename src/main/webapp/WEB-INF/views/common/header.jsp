@@ -32,8 +32,8 @@
                 <input type="checkbox" id="mnav" class="mui" />
                 <ul>
                     <li><a href="/cart.do" class="active">홈</a></li>
-                    <li><a href="/recipePage.do">레시피</a></li>
-                    <li><a href="#">이달의레시피</a></li>
+                    <li><a href="#">레시피</a></li>
+     				<li><a href="/tmr.do">이달의레시피</a></li>
                     <li><a href="/competitionList.do">요리대회</a></li>
                     <li><a href="#">토크</a></li>
                     <li><a href="#">쿠킹클래스</a></li>
