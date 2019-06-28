@@ -2,6 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="mubatis">
 	<select id="competitionList" parameterType="competition" resultType="competition">
+<mapper namespace="competition">
+	<select id="competitionList" resultType="competition">
 		select competition_no as competitionNo,
 		competition_title as competitionTitle,
 		competition_contents as competitionContents,

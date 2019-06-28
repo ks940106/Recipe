@@ -5,5 +5,7 @@
 		<typeAlias type="org.ks.tmr.vo.TMR" alias="tmr"/>
 		<typeAlias type="org.ks.competition.vo.Competition" alias="competition"/>
 		<typeAlias type="org.ks.talkBoard.vo.TalkBoard" alias="talk"/>
+		<typeAlias type="org.ks.cart.vo.Cart" alias="cart"/>
+
 	</typeAliases>
 </configuration>
