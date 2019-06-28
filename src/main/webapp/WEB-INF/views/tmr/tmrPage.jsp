@@ -15,7 +15,7 @@
 	<section>
 	<div class="section_content">
 		<p id="tmr">이달의 레시피</p>
-		<br>
+		<br><br>
 		<hr>
 		<c:forEach items="${list }" var ="vo" varStatus="i">
 			<c:choose>
