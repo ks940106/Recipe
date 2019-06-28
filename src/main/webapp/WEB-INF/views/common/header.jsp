@@ -23,7 +23,7 @@
                 <input type="checkbox" id="mnav" class="mui" />
                 <ul>
                     <li><a href="#" class="active">홈</a></li>
-                    <li><a href="#">레시피</a></li>
+                    <li><a href="/recipePage.do">레시피</a></li>
                     <li><a href="#">이달의레시피</a></li>
                     <li><a href="#">요리대회</a></li>
                     <li><a href="#">토크</a></li>
