@@ -27,7 +27,7 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="org.ks.recipe" />
-	
+	<context:component-scan base-package="org.ks.cart"/>
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	<task:annotation-driven/>
 	
