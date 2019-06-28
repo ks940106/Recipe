@@ -16,7 +16,10 @@
 <!-- header Fin -->
 <section>
     <div class="section_content">
-
+    <div class="register_title">레시피 등록</div>
+        <div class="content_box padding_left_60">
+            
+        </div>
     </div>
 </section>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
