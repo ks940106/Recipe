@@ -5,8 +5,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link href="../resources/css/import.css" rel="stylesheet" />
 </head>
 <body>
-	이 달의 레시피
+	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<section>
+	<div class="section_content">
+		<h1>이달의 레시피</h1>
+	</div>
+	</section>
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>

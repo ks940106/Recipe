@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class TMRContoller {
-	@Autowired
-	@Qualifier("TMRService")
-	private TMRService tmrservice = new TMRServiceImpl();
+//	@Autowired
+//	@Qualifier("TMRService")
+//	private TMRService tmrservice = new TMRServiceImpl();
 	
-	@RequestMapping("/tmr.do")
+	@RequestMapping(value="/tmr.do")
 	public String tmrPage() {
 		System.out.println("tmr가는지");
 		return "tmr/tmrPage";
