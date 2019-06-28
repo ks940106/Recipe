@@ -25,10 +25,11 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	
+	<context:component-scan base-package="org.ks.member" />
 	<context:component-scan base-package="org.ks.recipe" />
 	<context:component-scan base-package="org.ks.cart"/>
+	<context:component-scan base-package="org.ks.tmr"/>
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	<task:annotation-driven/>
-	
+	<context:component-scan base-package="org.ks.competition"/>
 </beans:beans>
