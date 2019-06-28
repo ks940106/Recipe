@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cart">
+	<select id="allCartList" resultType="cart">
+		select cart_no as cartNo,
+			id,
+			recipe_no as recipeNo,
+			recipe_price as recipePrice,
+			recipe_count as recipeCount
+			from cart
+	</select>
+</mapper>
