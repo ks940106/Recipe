@@ -12,11 +12,11 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class CompetitionController {
 	@Autowired
-	@Qualifier(value="competitionService")
-	private CompetitionService competitionService;
+	@Qualifier(value="competitionServiceimpl")
+	private CompetitionService competitionServiceimpl;
 	@RequestMapping(value="/competitionList.do")
 	public ModelAndView competitionList() {
-		ArrayList<Competition> list = competitionService.competitionList();
+		ArrayList<Competition> list = competitionServiceimpl.competitionList();
 		ModelAndView mav = new ModelAndView();
 		if(!list.isEmpty()) {
 			mav.addObject("list",list);
