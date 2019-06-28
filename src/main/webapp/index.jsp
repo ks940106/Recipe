@@ -11,8 +11,10 @@
 
 </head>
 <body>
-   <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-  <!-- header Fin -->
+  	<div class="main_bg">
+  		 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+  		<!-- header Fin -->
+  	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>
