@@ -1,12 +1,7 @@
 package org.ks.member;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
+import org.ks.member.vo.Member;
 
-@Service("memberService")
-public class MemberService {
-	@Autowired
-	@Qualifier(value="memberDAO")
-	private MemberDAO memberDAO;
+public interface MemberService {
+	public Member login(Member m);
 }
