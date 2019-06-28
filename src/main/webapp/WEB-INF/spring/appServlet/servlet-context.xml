@@ -30,5 +30,5 @@
 	
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	<task:annotation-driven/>
-	
+	<context:component-scan base-package="org.ks.competition"/>
 </beans:beans>
