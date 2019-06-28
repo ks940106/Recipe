@@ -2,6 +2,7 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 <configuration>
 	<typeAliases>
-		<typeAlias type="org.ks.tmr.TMR" alias="tmr"/>
+		<typeAlias type="org.ks.tmr.vo.TMR" alias="tmr"/>
+		<typeAlias type="org.ks.competition.vo.Competition" alias="competition"/>
 	</typeAliases>
 </configuration>
