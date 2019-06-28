@@ -1,5 +1,7 @@
 package org.ks.tmr;
 
-public interface TMRService {
+import java.util.ArrayList;
 
+public interface TMRService {
+	public ArrayList<TMR> selectTMR(String month);
 }
