@@ -7,14 +7,33 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>싱싱레시피 이달의 레시피</title>
 <link href="../resources/css/import.css" rel="stylesheet" />
+<link href="../resources/css/tmr.css" rel="stylesheet" />
+<script type="text/javascript" src="../resources/js/tmr.js" ></script> 
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<section>
 	<div class="section_content">
-		<h1>이달의 레시피</h1>
-		<c:forEach items="#{list }" var="tmr">
-		#{tmr.recipeTitle }<br>
+		<p id="tmr">이달의 레시피</p>
+		<br>
+		<hr>
+		<c:forEach items="${list }" var ="vo" varStatus="i">
+			<c:choose>
+			<c:when test="${i.count eq 1}">
+				<span class="rank" id="rank${i.count }">${i.count }</span>
+			</c:when>
+			<c:when test="${i.count eq 2}">
+				<span class="rank" id="rank${i.count }">${i.count }</span>
+			</c:when>
+			<c:when test="${i.count eq 3}">
+				<span class="rank" id="rank${i.count }">${i.count }</span>
+			</c:when>
+			<c:otherwise>
+				<span class="rank">${i.count }</span>
+			</c:otherwise>
+			</c:choose>
+			${vo.recipeTitle }
+			<hr>
 		</c:forEach>
 		
 	</div>

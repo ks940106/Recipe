@@ -1,0 +1,15 @@
+@charset "UTF-8";
+#tmr{
+	color : #1f6054; 
+	font-weight: bolder;
+	font-size : 30pt;
+}
+hr{
+	border:2px solid #1f6054;
+}
+#rank1{color:yellow;}
+#rank2{color:green;}
+#rank3{color:blue;}
+.rank{ font-size : 30pt;
+		font-weight: bold;
+		margin-left: 20%;}

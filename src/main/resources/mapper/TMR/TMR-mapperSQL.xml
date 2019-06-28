@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="mybatis">
 	<select id="selectTMR" parameterType="string" resultType="tmr">
-		select 
-		 recipe_no as recipeNo,
-    recipe_title as recipeTitle ,
+	select 
+	recipe_no as recipeNo,
+    recipe_title as recipeTitle,
     recipe_writer as recipeWriter,
     recipe_contents as recipeContents,
     recipe_mainimg as recipeMainimg,
@@ -20,6 +20,6 @@
     recipe_hit as recipeHit,
     recipe_price as recipePrice,
     recipe_date as recipeDate
-    from recipe where (select to_char(recipe_date,'mm') from recipe) = #{month}
+    from recipe where to_char(recipe_date,'MM')= #{month} order by recipe_like desc
 	</select>
 </mapper>
