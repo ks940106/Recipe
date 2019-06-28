@@ -25,7 +25,7 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	
+	<context:component-scan base-package="org.ks.member" />
 	<context:component-scan base-package="org.ks.recipe" />
 	<context:component-scan base-package="org.ks.cart"/>
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
