@@ -62,7 +62,12 @@
 
     header {
         padding: 15px 0 70px;
-        background: url(../img/main.jpg) no-repeat left top;
+/*         background: url(../img/main.jpg) no-repeat left top; */
+/*         background-size: cover; */
+/*         height: 1000px; */
+    }
+    .main_bg{
+    background: url(../img/main.jpg) no-repeat left top;
         background-size: cover;
         height: 1000px;
     }
@@ -343,9 +348,14 @@
 
     header {
         padding: 15px 0 70px;
-        background: url(../img/main.jpg) no-repeat left top;
-        background-size: cover;
-        height: 1000px;
+/*         background: url(../img/main.jpg) no-repeat left top; */
+/*         background-size: cover; */
+/*         height: 1000px; */
+    }
+    .main_bg{
+    	background: url(../img/main.jpg) no-repeat left top; 
+        background-size: cover; 
+        height: 1000px; 
     }
 
         header div {
@@ -639,9 +649,14 @@
 
     header {
         padding: 15px 0 70px;
-        background: url(../img/main.jpg) no-repeat left top;
+/*         background: url(../img/main.jpg) no-repeat left top; */
+/*         background-size: cover; */
+/*         height: 1000px; */
+    }
+    .main_bg{
+    	background: url(../img/main.jpg) no-repeat left top; 
         background-size: cover;
-        height: 1000px;
+         height: 1000px; 
     }
 
         header div {
