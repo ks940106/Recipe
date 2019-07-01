@@ -3,6 +3,7 @@ package org.ks.tmr;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.ks.tmr.vo.TMR;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

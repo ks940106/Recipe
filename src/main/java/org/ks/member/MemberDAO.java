@@ -1,9 +1,7 @@
 package org.ks.member;
 
-import org.springframework.stereotype.Repository;
+import org.ks.member.vo.Member;
 
-@Repository("memberDAO")
-public class MemberDAO {
-	/*@Autowired
-	SqlSessionTemplate sqlSession;*/
+public interface MemberDAO {
+	public Member login(Member m);
 }

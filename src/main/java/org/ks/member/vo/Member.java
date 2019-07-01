@@ -1,4 +1,4 @@
-package org.ks.member.VO;
+package org.ks.member.vo;
 
 public class Member {
 	private String id;
