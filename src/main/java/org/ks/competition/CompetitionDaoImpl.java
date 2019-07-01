@@ -2,6 +2,7 @@ package org.ks.competition;
 
 import java.util.List;
 
+import org.ks.competition.vo.Competition;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,5 +16,10 @@ public class CompetitionDaoImpl implements CompetitionDao {
 	@Override
 	public List competitionList() {
 		return sqlsession.selectList("competition.competitionList");
+	}
+
+	@Override
+	public int insertCompetition(Competition c) {
+		return sqlsession.insert("competition.insertCompetition",c);
 	}
 }

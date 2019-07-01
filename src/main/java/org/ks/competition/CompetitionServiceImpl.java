@@ -17,4 +17,9 @@ public class CompetitionServiceImpl implements CompetitionService {
 	public ArrayList<Competition> competitionList() {
 		return (ArrayList<Competition>)(competitionDaoimpl.competitionList());
 	}
+
+	@Override
+	public int insertCompetition(Competition c) {
+		return competitionDaoimpl.insertCompetition(c);
+	}
 }
