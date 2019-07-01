@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 public class MemberServiceImpl implements MemberService{
 	
 	@Autowired
-	@Qualifier("MemberDaoImpl")
-	private MemberDAO MemberDao;
+	@Qualifier("memberDaoImpl")
+	private MemberDAO memberDao;
 	
 	@Override
 	public Member login(Member m) {
-		m=MemberDao.login(m);
+		m=memberDao.login(m);
 		return m;
 	}
 
