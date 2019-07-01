@@ -5,7 +5,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-@Repository("MemberDaoImpl")
+@Repository("memberDaoImpl")
 public class MemberDaoImpl implements MemberDAO{
 	@Autowired
 	SqlSessionTemplate sqlSession;

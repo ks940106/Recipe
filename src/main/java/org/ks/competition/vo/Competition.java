@@ -10,12 +10,13 @@ public class Competition {
 	private String competitionVideo;
 	private String competitionResult;
 	private Date competitionDate;
+	private int competitionCheck;
 	public Competition() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public Competition(int competitionNo, String competitionTitle, String competitionContents, String competitionImg,
-			String competitionVideo, String competitionResult, Date competitionDate) {
+			String competitionVideo, String competitionResult, Date competitionDate, int competitionCheck) {
 		super();
 		this.competitionNo = competitionNo;
 		this.competitionTitle = competitionTitle;
@@ -24,6 +25,7 @@ public class Competition {
 		this.competitionVideo = competitionVideo;
 		this.competitionResult = competitionResult;
 		this.competitionDate = competitionDate;
+		this.competitionCheck = competitionCheck;
 	}
 	public int getCompetitionNo() {
 		return competitionNo;
@@ -67,4 +69,11 @@ public class Competition {
 	public void setCompetitionDate(Date competitionDate) {
 		this.competitionDate = competitionDate;
 	}
+	public int getCompetitionCheck() {
+		return competitionCheck;
+	}
+	public void setCompetitionCheck(int competitionCheck) {
+		this.competitionCheck = competitionCheck;
+	}
+			
 }

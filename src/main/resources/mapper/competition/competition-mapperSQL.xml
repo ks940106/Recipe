@@ -8,7 +8,11 @@
 		competition_img as competitionImg,
 		competition_video as competitionVideo,
 		competition_result as competitionResult,
-		competition_date as competitionDate
+		competition_date as competitionDate,
+		competition_check as competitionCheck
 		from competition
 	</select>
+	<insert id="insertCompetition" parameterType="competition">
+		insert into competition values(seq_competition_no.nextval,#{competitionTitle},#{competitionContents},#{competitionImg},null,null,sysdate,null)
+	</insert>
 </mapper>
