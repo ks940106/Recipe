@@ -105,3 +105,54 @@
     padding: 0 0 0 20px;
     vertical-align: top;
 }
+
+.img_up_list {
+    margin: 0 -8px;
+    font-size: 0;
+}
+
+.img_up_list .img_box {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 8px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    position: relative;
+    height: 120px;
+    width: 120px;
+}
+
+.img_up_list .img_box:first-child {
+    border-color: #3A5889;
+}
+
+.img_up_list .img_box img {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 8;
+}
+
+.img_up_list .img_box .del_btn {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    padding: 3px 5px;
+    opacity: 0.8;
+    z-index: 10;
+    background-color: #3A5889;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+    line-height: 16px;
+    color: #fff;
+}
+
+.img_up_list .img_box .upload_btn {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 5;
+}

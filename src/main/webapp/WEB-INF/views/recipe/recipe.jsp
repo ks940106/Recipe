@@ -10,17 +10,22 @@
     <link href="/resources/css/import.css" rel="stylesheet" />
     <link href="/resources/css/page.css" rel="stylesheet"/>
     <link href="/resources/css/recipe.css" rel="stylesheet"/>
-    <script type="text/javascript" src="/resources/js/recipe.js"/>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+
 <!-- header Fin -->
 <section>
     <div class="section_content">
         <div class="register_title">레시피 등록</div>
         <div class="cont_box pad_l_60">
-            <input type='file' id="imgInput" />
-            <img id="image_section" src="#" alt="your image" />
+            <div class="img_up_list">
+                <div class="img_box">
+                    <input type="file" class="hide" accept="image/*" name="noticeBoardFilename" id="noticeBoardFilename" onchange="boardReg.imgSel(this, event)">
+                    <a href="#none" class="upload_btn">
+                    </a>
+                </div>
+            </div>
             <div class="cont_line"><p class="cont_tit4">레시피 제목</p><input type="text" name="cok_title" id="cok_title" value="" class="form-control" placeholder="예) 소고기 미역국 끓이기" style="width:610px; "></div>
             <div class="cont_line pad_b_25"><p class="cont_tit4">요리소개</p><textarea name="cok_intro" id="cok_intro" class="form-control step_cont" placeholder="이 레시피의 탄생배경을 적어주세요. 예) 남편의 생일을 맞아 소고기 미역국을 끓여봤어요. 어머니로부터 배운 미역국 레시피를 남편의 입맛에 맞게 고안했습니다." style="height:100px; width:610px; resize:none;"></textarea></div>
 
@@ -135,4 +140,5 @@
 </section>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
+<script type="text/javascript" src="/resources/js/recipe.js"></script>
 </html>
