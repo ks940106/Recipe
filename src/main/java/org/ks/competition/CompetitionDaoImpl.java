@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Repository;
 
-@Repository("competitionDao")
+@Repository("competitionDaoimpl")
 public class CompetitionDaoImpl implements CompetitionDao {
 	@Autowired
 	SqlSessionTemplate sqlsession;
