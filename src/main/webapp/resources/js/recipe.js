@@ -47,11 +47,22 @@ var boardReg	=	{
 //imgUpload
 
 $('.img_box .upload_btn').on('click', function () {
-
+    console.log("asdf");
 
 
     $(this).siblings().trigger('click');
 
+});
+
+$('#cok_video_url').blur(function () {
+    var iframe_src       = $('#cok_video_url').val();
+    // https://youtu.be/VpDSxXlWEf0
+    var youtube_video_id = iframe_src.match(/youtu\.be.*(.{11})/).pop();
+    console.log(youtube_video_id);
+    if (youtube_video_id.length == 11) {
+        var video_thumbnail = "//img.youtube.com/vi/"+youtube_video_id+"/0.jpg";
+        $('#videoPhotoHolder').attr('src',video_thumbnail);
+    }
 });
 
 
