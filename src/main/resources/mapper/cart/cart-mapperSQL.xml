@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cart">
-	<select id="allCartList" resultType="cart">
+	<select id="allCartList" parameterType="string" resultType="cart">
 		select cart_no as cartNo,
 			id,
-			recipe_no as recipeNo,
-			recipe_price as recipePrice,
-			recipe_count as recipeCount
-			from cart
+			a.recipe_no as recipeNo,
+			a.recipe_price as recipePrice,
+			a.recipe_count as recipeCount,
+			b.recipe_title as recipeTitle
+			from cart a inner join recipe b on a.recipe_no = b.recipe_no where id=#{id}
 	</select>
+	<insert id="insertCart" parameterType="cart">
+		insert into cart values(cart_sql.nextval,#{id},#{recipeNo},#{recipePrice},#{recipeCount})
+	</insert>
 </mapper>

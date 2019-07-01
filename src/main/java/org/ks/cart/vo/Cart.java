@@ -6,17 +6,19 @@ public class Cart {
 	private int recipeNo;
 	private int recipePrice;
 	private int recipeCount;
+	private String recipeTitle;
 	public Cart() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Cart(int cartNo, String id, int recipeNo, int recipePrice, int recipeCount) {
+	public Cart(int cartNo, String id, int recipeNo, int recipePrice, int recipeCount, String recipeTitle) {
 		super();
 		this.cartNo = cartNo;
 		this.id = id;
 		this.recipeNo = recipeNo;
 		this.recipePrice = recipePrice;
 		this.recipeCount = recipeCount;
+		this.recipeTitle = recipeTitle;
 	}
 	public int getCartNo() {
 		return cartNo;
@@ -48,5 +50,12 @@ public class Cart {
 	public void setRecipeCount(int recipeCount) {
 		this.recipeCount = recipeCount;
 	}
+	public String getRecipeTitle() {
+		return recipeTitle;
+	}
+	public void setRecipeTitle(String recipeTitle) {
+		this.recipeTitle = recipeTitle;
+	}
+	
 	
 }
