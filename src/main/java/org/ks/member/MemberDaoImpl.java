@@ -14,7 +14,6 @@ public class MemberDaoImpl implements MemberDAO{
 	public Member login(Member m) {
 		System.out.println(m.getId());
 		Member m1= sqlSession.selectOne("member.login",m);
-		System.out.println(m1.getId());
 		return m1;
 	}
 }

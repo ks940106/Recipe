@@ -26,10 +26,10 @@
         <input type="password" name="pw" class="form-control" id="tx_passwd" placeholder="비밀번호">
         <span id="pwMsg" style="display:none;color:#FF0000;">비밀번호를 입력해주세요.</span>
       </div>
-      <button type="submit" class="btn-primary btn-lg btn-block">로그인</button>
+      <button type="submit" class="btn-primary btn-lg btn-block login">로그인</button>
       <div class="checkbox">
         <label>
-          <input type="checkbox" name="login_perma" value="1"><span class="guide_txt">로그인 상태 유지</span>
+          <input type="checkbox" name="id_save" value="1"><span class="id_save">아이디 저장</span>
         </label>
       </div>
     </form>
