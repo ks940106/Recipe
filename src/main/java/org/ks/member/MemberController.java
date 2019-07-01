@@ -1,6 +1,9 @@
 package org.ks.member;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.ks.member.vo.Member;
@@ -26,17 +29,31 @@ public class MemberController {
 		m.setId(id);
 		m.setPw(pw);
 		Member member = memberService.login(m);
-		HttpSession session =request.getSession();
 		String view="";
 		if(member!= null) {
+			HttpSession session =request.getSession();
 			session.setAttribute("member", member);
 			request.setAttribute("msg","로그인성공" );
 			request.setAttribute("loc", "/");
-			view="common/msg";
 		}else {
 			request.setAttribute("msg", "로그인 실패");
-			view="common/msg";
+			//request.setAttribute("loc", "WEB-INF/views/member/loginPage.jsp");
 		}
+		view="common/msg";
 		return view;
 	}
+	@RequestMapping(value="/logout.do")
+	public void logout(HttpServletRequest request,HttpServletResponse response) {
+		HttpSession session = request.getSession(false);
+		if(session!=null) {
+			session.invalidate();
+		}
+		try {
+			response.sendRedirect("/");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 }
