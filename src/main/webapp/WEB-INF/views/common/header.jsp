@@ -35,7 +35,7 @@
                     <li><a href="/cart.do" class="active">홈</a></li>
                     <li><a href="#">레시피</a></li>
      				<li><a href="/tmr.do">이달의레시피</a></li>
-                    <li><a href="/competitionList.do">요리대회</a></li>
+                    <li><a href="/competitionList.do?competitionCheck='Y'">요리대회</a></li>
                     <li><a href="#">토크</a></li>
                     <li><a href="#">쿠킹클래스</a></li>
                     <c:choose>
@@ -43,7 +43,7 @@
                     	<li><a href="/loginPage.do" style="color: #1f6054;">로그인</a></li>
                     </c:when>
                     <c:when test="${sessionScope.member.name=='관리자' }">
-                  		<li><a href="/#" style="color: #1f6054;">관리자 페이지</a></li>
+                  		<li><a href="/adminPage.do" style="color: #1f6054;">관리자 페이지</a></li>
                   		<li><a href="/logout.do" style="color: #1f6054;">로그아웃</a></li>
                     </c:when>
                     <c:when test="${sessionScope.member !=null }">

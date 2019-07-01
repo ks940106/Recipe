@@ -14,6 +14,7 @@ import org.ks.competition.vo.Competition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -71,7 +72,7 @@ public class CompetitionController {
 		String view ="";
 		if(result>0) {
 			request.setAttribute("msg", "게시글이 등록 되었습니다.");
-			request.setAttribute("loc", "/competitionList.do");
+			request.setAttribute("loc", "/adminPage.do");
 			view = "common/msg";
 		}else {
 			request.setAttribute("msg", "게시글등록이 실패했습니다.");
@@ -79,6 +80,15 @@ public class CompetitionController {
 		}
 		return view;
 	}
-	
+	@RequestMapping(value="/competitionList.do")
+	public String competitionView(@RequestParam String competitionCheck, Model model) {
+		Competition c = competitionServiceimpl.competitionView(competitionCheck);
+		model.addAttribute("competition",c);
+		return "competition/competitionList";
+	}
+	@RequestMapping(value="/adminPage.do")
+	public String adminPage() {
+		return "admin/adminPage";
+	}
 	
 }
