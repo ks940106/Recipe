@@ -2,6 +2,6 @@ package org.ks.member;
 
 import org.ks.member.vo.Member;
 
-public interface MemberDao {
+public interface MemberDAO {
 	public Member login(Member m);
 }
