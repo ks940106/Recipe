@@ -2,14 +2,35 @@
 #tmr{
 	color : #1f6054; 
 	font-weight: bolder;
-	font-size : 30pt;
+	font-size : 35pt;
+}
+#tmrDiv div{
+	line-height: 100px;
+	float:left;
 }
 hr{
 	border:2px solid #1f6054;
 }
-#rank1{color:green;}
-#rank2{color:green;}
+#rank1{color:yellow;}
+#rank2{color:red;}
 #rank3{color:blue;}
-.rank{ font-size : 30pt;
+.rank{ font-size : 40pt;
 		font-weight: bold;
 		}
+#recipeImg{
+	width:80px;
+	height:80px;
+	border-radius: 50px;
+}
+#recipeTitle{
+	font-size: 15pt;
+	font-weight: bold;
+}
+#recipeInfo{
+	font-size : 15pt;
+	font-weight: bold;
+}
+#recipeInfoImg{
+	width:30px;
+	height:30px;
+}
