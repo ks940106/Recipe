@@ -1,0 +1,141 @@
+package kh.java.controll;
+
+import java.util.Scanner;
+
+import kh.java.func.Student;
+
+public class StuMgr {
+	Scanner sc = new Scanner(System.in);
+	Student[] s = new Student[10];
+	int index = 0;
+
+	public void main() {
+
+		while (true) {
+			System.out.println("\n << 학생관리 프로그램 >> \n");
+			System.out.println("1. 학생 등록");
+			System.out.println("2. 전체 학생 정보 조회");
+			System.out.println("3. 학생 정보 조회 (1명)");
+			System.out.println("4. 정보수정");
+			System.out.println("5. 정보삭제");
+			System.out.println("0. 프로그램 종료");
+			System.out.println("선택 > ");
+			int sel = sc.nextInt();
+			switch (sel) {
+			case 1:
+				joinStu();
+				break;
+			case 2:
+				searchStu();
+				break;
+			case 3:
+				searchJoin();
+				break;
+			case 4:
+				modifyStu();
+				break;
+			case 5:
+				deleteStu();
+				break;
+			case 0:
+				System.out.println("시스템을 종료합니다.");
+				return;
+			default:
+				System.out.println("잘못입력하셨습니다.");
+				break;
+			}
+		}
+	}
+
+	public void joinStu() {
+		if(index < 10) {
+			System.out.println("\n << 학생 정보 입력 >> \n");
+			System.out.println("학생 이름 입력 : ");
+			String name = sc.next();
+			System.out.println("학생 나이 입력 : ");
+			int age = sc.nextInt();
+			System.out.println("학생 주소 입력 : ");
+			sc.nextLine();
+			String addr = sc.nextLine();
+			s[index] = new Student();
+			s[index].setName(name);
+			s[index].setAge(age);
+			s[index].setAddr(addr);
+			index++;
+		}else {
+			System.out.println("더이상 등록할 수 없습니다.");
+		}		
+	}
+
+	public void searchStu() {
+		System.out.println("\n << 전체 학생 정보 조회 >> \n");
+		System.out.println("이름 \t 나이 \t 주소\t");
+		System.out.println("------------------------------");
+
+		for (int i = 0; i < index; i++) {
+			System.out.printf("%s\t%d\t%s\n", s[i].getName(), s[i].getAge(), s[i].getAddr());
+
+		}
+
+	}
+
+	public void searchJoin() {
+		System.out.println("\n << 학생 정보 조회 >> \n");
+		System.out.println("조회할 학생 이름을 입력해 주세요 : ");
+		String name = sc.next();
+		int result = search(name);
+		if (result == -1) {
+			System.out.println("일치하는 정보가 없습니다");
+		} else {
+			
+			System.out.println("학생 이름 : " + s[result].getName());
+			System.out.println("학생 나이 : " + s[result].getAge());
+			System.out.println("학생 주소 : " + s[result].getAddr());
+		}
+	}
+
+	public void modifyStu() {
+		System.out.println("\n << 학생 정보 수정 >> \n");
+		System.out.println("수정할 학생의 이름을 입력해주세요 : ");
+		String name = sc.next();
+		int result = search(name);
+		if(result == -1) {
+			System.out.println("요청하신 정보가 없습니다.");
+		}else {
+			System.out.println(s[result].getName() + "학생 수정 나이 입력 : ");
+			int age = sc.nextInt();
+			s[result].setAge(age);
+			System.out.println(s[result].getName() + "학생 수정 주소 입력 : ");
+			sc.nextLine();
+			String addr = sc.nextLine();
+			s[result].setAddr(addr);
+			System.out.println("정보수정이 완료되었습니다.");
+		}
+	}
+
+	public void deleteStu() {
+		System.out.println("\n << 학생 정보 삭제 >> \n");
+		System.out.println("삭제할 학생 이름을 입력해주세요 : ");
+		String name = sc.next();
+		int result = search(name);
+		if(result == -1) {
+			System.out.println("요청하신 학생정보가 없습니다.");
+		}else {
+			s[result] = null;
+			for(int i = result;i<index-1;i++) {
+				s[i] = s[i+1];
+			}
+			s[--index] = null;
+			System.out.println("삭제 완료");
+		}
+	}
+
+	public int search(String name) {
+		for (int i = 0; i < index; i++) {
+			if (s[i].getName().contentEquals(name)) {
+				return i;
+			}
+		}
+		return -1;
+	}
+}

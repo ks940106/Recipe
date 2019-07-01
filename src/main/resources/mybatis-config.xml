@@ -6,6 +6,6 @@
 		<typeAlias type="org.ks.competition.vo.Competition" alias="competition"/>
 		<typeAlias type="org.ks.talkBoard.vo.TalkBoard" alias="talk"/>
 		<typeAlias type="org.ks.cart.vo.Cart" alias="cart"/>
-
+		<typeAlias type="org.ks.member.vo.Member" alias="member"></typeAlias>
 	</typeAliases>
 </configuration>
