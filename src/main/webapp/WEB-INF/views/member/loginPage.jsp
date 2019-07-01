@@ -36,7 +36,7 @@
     <p class="help-block">개인정보 보호를 위해 개인 PC에서만 사용하세요.</p>
     <div class="etc_line"></div>
     <div class="join_btn">
-        <a href="/join.do">회원가입</a>
+        <a href="/joinPage.do">회원가입</a>
         <a href="/find_passwd.do">비밀번호 찾기</a>
     </div>
     
