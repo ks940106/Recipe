@@ -7,4 +7,6 @@ import org.ks.talkBoard.vo.TalkBoard;
 public interface TalkBoardService {
 
 	public ArrayList<TalkBoard> mainBoard();
+
+	public int insertTalkBoard(TalkBoard tb);
 }

@@ -11,11 +11,15 @@ import org.springframework.stereotype.Service;
 public class TalkBoardServiceImpl implements TalkBoardService {
 	@Autowired
 	@Qualifier(value="talkBoardDao")
-	private TalkBoardDaoImpl talkBoardDao = new TalkBoardDaoImpl();
+	private TalkBoardDaoImpl talkBoardDao;
 
 	@Override
 	public ArrayList<TalkBoard> mainBoard() {
 		return (ArrayList<TalkBoard>)talkBoardDao.mainBoard();
 	}
-
+	
+	public int insertTalkBoard(TalkBoard tb) {
+		return talkBoardDao.insertTalkBoard(tb);
+	}
+	
 }

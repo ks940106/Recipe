@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper>
-  <cache-ref namespace="talk"/>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mybatis">
+  
   <select id="mainBoard" parameterType="talk" resultType="talk">
   	select board_no as boardNo,
   	board_type as boardType,
@@ -11,4 +11,7 @@
   	from board
   </select>
   
+  <insert id="insertTalkBoard" parameterType="talk">
+  	insert into board values(req_board_no.nextval,#{boardType},'',null,#{boardContents})
+  </insert>
 </mapper>
