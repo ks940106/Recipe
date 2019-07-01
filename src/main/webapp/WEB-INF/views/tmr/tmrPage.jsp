@@ -15,7 +15,8 @@
 	<section>
 	<div class="section_content">
 		<p id="tmr">이달의 레시피</p>
-		<br><br>
+		<button onclick="location.href='/lmt.do'">지난 달 레시피</button>
+		<br>
 		<hr>
 		<c:forEach items="${list }" var ="vo" varStatus="i">
 			<c:choose>
