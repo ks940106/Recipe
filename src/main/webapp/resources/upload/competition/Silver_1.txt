@@ -1,0 +1,29 @@
+package kh.java.point.model.vo.Silver;
+
+public class Silver {
+	public Silver(){}
+	private String name;
+	private String grade;
+	private int score;
+	public void setName(String name) {
+		this.name = name;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+	public void setScore(int score) {
+		this.score = score;
+	}
+	public String getName() {
+		return name;
+	}
+	public String getGrade() {
+		return grade;
+	}
+	public int getScore() {
+		return score;
+	}
+	public double getIza() { //변수처리없이 이자만!
+		return score*0.02;
+	}
+}

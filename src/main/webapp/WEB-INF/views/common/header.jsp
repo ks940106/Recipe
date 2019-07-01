@@ -37,7 +37,22 @@
                     <li><a href="/competitionList.do">요리대회</a></li>
                     <li><a href="#">토크</a></li>
                     <li><a href="#">쿠킹클래스</a></li>
-                    <li><a href="/loginPage.do" style="color: #1f6054;">로그인</a></li>
+                    <c:choose>
+                    <c:when test="${sessionScope.member==null }">
+                    	<li><a href="/loginPage.do" style="color: #1f6054;">로그인</a></li>
+                    </c:when>
+                    <c:when test="${sessionScope.member.name=='관리자' }">
+                  		<li><a href="/#" style="color: #1f6054;">관리자 페이지</a></li>
+                  		<li><a href="/logout.do" style="color: #1f6054;">로그아웃</a></li>
+                    </c:when>
+                    <c:when test="${sessionScope.member !=null }">
+                    	<li><a href="/#" style="color: #1f6054;">마이페이지</a></li>
+                    	<li><a href="/logout.do" style="color: #1f6054;">로그아웃</a></li>
+                    </c:when>
+                    </c:choose>
+                    
+                  
+                	
                 </ul>
                 
             </nav>

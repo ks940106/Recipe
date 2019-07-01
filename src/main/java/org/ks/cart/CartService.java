@@ -5,5 +5,6 @@ import java.util.ArrayList;
 import org.ks.cart.vo.Cart;
 
 public interface CartService {
-	public ArrayList<Cart> allListCart();
+	public ArrayList<Cart> allListCart(String id);
+	public int insertCart(Cart c);
 }
