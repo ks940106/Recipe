@@ -7,7 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-@Repository("CartDAOImpl")
+@Repository("cartDAOImpl")
 public class CartDAOImpl implements CartDAO {
 	@Autowired
 	SqlSessionTemplate sqlSession;
@@ -19,8 +19,8 @@ public class CartDAOImpl implements CartDAO {
 
 	@Override
 	public int insertCart(Cart c) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return sqlSession.update("cart.insertCart",c);
 	}
 
 }

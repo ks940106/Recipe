@@ -1,6 +1,20 @@
 @charset "UTF-8";
-
+/*로그인 페이지*/
 section.login .nav_etc{
+    background: url(../img/bg_wave.png) left bottom repeat-x;
+    width: 100%;
+    text-align: center;
+    height: 85px;
+    padding-top: 15px;
+}
+section.join .nav_etc{
+    background: url(../img/bg_wave.png) left bottom repeat-x;
+    width: 100%;
+    text-align: center;
+    height: 85px;
+    padding-top: 15px;
+}
+section.memberinsert .nav_etc{
     background: url(../img/bg_wave.png) left bottom repeat-x;
     width: 100%;
     text-align: center;
@@ -149,3 +163,147 @@ section.login a{
 	text-decoration: none;
 	text-align: center;
 }
+/* 로그인 페이지끝 */
+
+/* 회원가입 체크 페이지*/
+section.join .container_etc {
+    margin: 0 auto 30px;
+    padding-top: 20px;
+}
+
+section.join .container_etc .panel-default {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+section.join .panel-default {
+    border-color: #ddd;
+}
+section.join .panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid transparent;
+}
+section.join p {
+    margin: 0 0 10px;
+}
+section.join .container_etc .panel-body {
+    padding: 0;
+}
+section.join .panel-body {
+    padding: 30px 50px 40px;
+    font-size: 16px;
+    line-height: 25px;
+}
+
+section.join .btn-group-vertical>.btn-group:after, .btn-group-vertical>.btn-group:before, .btn-toolbar:after, .btn-toolbar:before, .clearfix:after, .clearfix:before, .container-fluid:after, .container-fluid:before, .container:after, .container:before, .dl-horizontal dd:after, .dl-horizontal dd:before, .form-horizontal .form-group:after, .form-horizontal .form-group:before, .modal-footer:after, .modal-footer:before, .nav:after, .nav:before, .navbar-collapse:after, .navbar-collapse:before, .navbar-header:after, .navbar-header:before, .navbar:after, .navbar:before, .pager:after, .pager:before, .panel-body:after, .panel-body:before, .row:after, .row:before {
+    display: table;
+    content: " ";
+}
+section.join :after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+section.join form {
+    display: block;
+    margin-top: 0em;
+}
+section.join .container_etc input {
+    height: 60px;
+}
+section.join input[type="hidden" i] {
+    display: none;
+    -webkit-appearance: initial;
+    background-color: initial;
+    cursor: default;
+    padding: initial;
+    border: initial;
+}
+section.join .container_etc .guide_txt2 {
+    padding: 0 20px 5px;
+    font-size: 16px;
+    color: #555;
+    font-weight: bold;
+}
+section.join .container_etc .guide_txt2 input {
+    height: auto;
+    float: right;
+}
+section.join .container_etc .etc_line {
+    border-bottom: 1px solid #dadcdd;
+    margin-bottom: 15px;
+}
+section.join .container_etc .guide_txt2 {
+    padding: 0 20px 5px;
+    font-size: 16px;
+    color: #555;
+    font-weight: bold;
+}
+section.join .container_etc .panel-body textarea {
+    width: 430px;
+    height: 200px;
+    margin: 0 18px;
+    background: #f7f7f7;
+    border: 1px solid #f0f0f0;
+    padding: 10px;
+}
+
+section.join .btn-group-lg>.btn, .btn-lg {
+    padding: 10px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.3333333;
+    border-radius: 3px;
+    margin: 0 4px;
+}
+
+section.join .container_etc .btn-lg {
+    margin-top: 25px;
+    height: 60px;
+}
+
+section.join .container_etc .btn {
+    margin: 0 4px 20px 0;
+    position: relative;
+}
+
+section.join .btn-group-lg>.btn, .btn-lg {
+    padding: 10px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.3333333;
+    border-radius: 3px;
+    margin: 0 4px;
+}
+
+section.join .btn-primary {
+    color: #fff;
+    background-color: #74b243;
+    border: 1px solid #497725;
+}
+
+section.join .btn-default {
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+secion.join .panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid transparent;
+}
+section.join .panel-default {
+    border-color: #ddd;
+}
+section.join textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    overflow: auto;
+}
+body.joinback {
+    margin: 0;
+    background: #f1f1f2;
+}
+

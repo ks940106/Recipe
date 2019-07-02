@@ -22,4 +22,14 @@ public class CompetitionDaoImpl implements CompetitionDao {
 	public int insertCompetition(Competition c) {
 		return sqlsession.insert("competition.insertCompetition",c);
 	}
+
+	@Override
+	public List competitionView(String competitionCheck) {
+		return sqlsession.selectList("competition.competitionView",competitionCheck);
+	}
+
+	@Override
+	public int deleteCompetition(int competitionNo) {
+		return sqlsession.delete("competition.deleteCompetition",competitionNo);
+	}
 }

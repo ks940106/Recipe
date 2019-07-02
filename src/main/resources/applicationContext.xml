@@ -34,4 +34,6 @@
 		<constructor-arg index="0" ref="sqlSession"></constructor-arg>
 	</bean>
 	<context:component-scan base-package="org.ks.competition"/>
+	<context:component-scan base-package="org.ks.tmr"/>
+	<context:component-scan base-package="org.ks.cart"/>
 </beans>
