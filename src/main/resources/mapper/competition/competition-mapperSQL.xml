@@ -26,4 +26,7 @@
 		competition_check as competitionCheck
 		from (select rownum as rnum,c.* from( select * from competition where competition_check='Y' order by competition_no desc) c) where rnum= 1
 	</select>
+	<delete id="deleteCompetition" parameterType="_int">
+		delete from competition where competition_no=#{competitionNo}
+	</delete>
 </mapper>

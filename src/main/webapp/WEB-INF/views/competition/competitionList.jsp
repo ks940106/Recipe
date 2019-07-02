@@ -27,13 +27,18 @@
 			<h1>요리 대회</h1>
 			<p>싱싱레시피의 요리 대회 소식을 확인하실 수 있습니다.</p>
 			<div id="cp_div_bg"></div>
+            <div>
+                <h2>${competition.competitionTitle}</h2>
+                <div>
+                	<img src="../resources/upload/competition/${competition.competitionImg}">
+                </div>
+            </div>
+<!--
 			<form action="/competitionUpdate.do?competitionNo=${competition.competitionNo}" method="post">
-	 <table border="1">
+	       <table border="1">
             <tr>
-               <th colspan="2" >게시판</th>            
-            </tr>
-            <tr>
-               <th>제목</th>
+               <th></th>
+                
                <td><input type="text" name="competitionTitle" value="${competition.competitionTitle}"></td>
                
             </tr>          
@@ -53,7 +58,9 @@
             </tr>
          </table>
          </form>
-			
+-->
+			 <button onclick="location.href='/competitionUpdate.do?competitionNo=${competition.competitionNo}'">수정하기</button>   
+          <button  onclick="location.href='/competitionDelete.do?competitionNo=${competition.competitionNo}'" >삭제하기</button>
 		</div>
 	</div>
 	</section>

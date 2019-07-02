@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.ks.competition.vo.Competition;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,5 +91,23 @@ public class CompetitionController {
 	public String adminPage() {
 		return "admin/adminPage";
 	}
-	
+//	@RequestMapping(value="/competitionUpdate.do")
+//	public String competitionUpdatePage() {
+//		return "competition/competitionUpdatePage";
+//	}
+	@RequestMapping(value="/competitionDelete.do")
+	public String competitionDelete(@RequestParam int competitionNo,HttpServletRequest request) {
+		int result = competitionServiceimpl.deleteCompetition(competitionNo);
+		String view="";
+		if(result>0) {
+			request.setAttribute("msg","삭제하시겠습니까?");
+			request.setAttribute("loc","/");
+			view = "common/msg";
+		}else {
+			request.setAttribute("msg","삭제 실패!");
+			request.setAttribute("loc","/");
+			view = "common/msg";
+		}
+		return view;
+	}	
 }

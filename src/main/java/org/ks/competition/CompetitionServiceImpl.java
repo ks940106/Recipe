@@ -33,4 +33,9 @@ public class CompetitionServiceImpl implements CompetitionService {
 		}
 		return c;
 	}
+
+	@Override
+	public int deleteCompetition(int competitionNo) {
+		return competitionDaoimpl.deleteCompetition(competitionNo);
+	}
 }
