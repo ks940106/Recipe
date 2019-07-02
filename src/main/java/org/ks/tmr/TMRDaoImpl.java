@@ -19,12 +19,12 @@ public class TMRDaoImpl implements TMRDao{
 		map.put("month", month);
 		map.put("start", Integer.toString(start));
 		map.put("end", Integer.toString(end));
-		List list = sqlsession.selectList("mybatis.selectTMR",map); 
+		List list = sqlsession.selectList("tmrBatis.selectTMR",map); 
 		return list;
 	}
-	public int totalCount(String month) {
+	public List totalCount(String month) {
 		System.out.println(month);
-		List list = sqlsession.selectList("mybatis.totalCount",month); 
-		return list.size();
+		List list = sqlsession.selectList("tmrBatis.totalCount",month); 
+		return list;
 	}
 }

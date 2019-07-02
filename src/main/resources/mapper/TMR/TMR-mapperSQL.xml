@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="mybatis">
+<mapper namespace="tmrBatis">
 	<select id="selectTMR" parameterType="map" resultType="tmr">
 	select 
 	recipe_no as recipeNo,
@@ -22,7 +22,7 @@
     recipe_date as recipeDate
     from(select rownum as rnum, tmr.* from (select * from recipe where to_char(recipe_date,'MM')=#{month} order by recipe_like desc) tmr) where rnum between #{start} and #{end}
 	</select>
-	<select id="totalCount" parameterType="_int" resultType="tmr">
+	<select id="totalCount" parameterType="string" resultType="tmr">
 	select
 	recipe_no as recipeNo,
     recipe_title as recipeTitle,

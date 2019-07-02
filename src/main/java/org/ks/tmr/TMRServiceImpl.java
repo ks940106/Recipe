@@ -20,7 +20,8 @@ public class TMRServiceImpl implements TMRService{
 		//페이지 당 게시물 수
 		int numPerPage = 10;
 		//총 게시물 수 구하기
-		int totalCount = new TMRDaoImpl().totalCount(month);
+		List countList = new TMRDaoImpl().totalCount(month);
+		int totalCount = countList.size();
 		//총 페이지 수 구하기
 		int totalPage = (totalCount%numPerPage==0)?(totalCount/numPerPage):(totalCount/numPerPage)+1;
 		//요청 페이지의 시작 게시물 번호와 끝 게시물 번호 구하기
