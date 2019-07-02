@@ -35,7 +35,7 @@ public class CartController {
 	public String insertcart(HttpServletRequest request) {
 		String id ="admin@naver.com";
 		int recipeNo = 101;
-		int recipePrice = 0;
+		int recipePrice = 1000;
 		int recipeCount = 1;
 		Cart c = new Cart(0, id, recipeNo, recipePrice, recipeCount,null);
 		int result = cartServiceImpl.insertCart(c);
