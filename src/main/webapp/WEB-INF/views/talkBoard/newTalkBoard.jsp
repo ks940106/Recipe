@@ -9,14 +9,16 @@
 <body>
 	<h1>글쓰기</h1>
 	
-	<form action="insertTalkBoard.do" method="post">
+	<form action="insertTalkBoard.do" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="boardType" value="요리톡">
 		<input type="hidden" name="nickname" value="투명인간">
 		<textarea rows="30" cols="150" name="boardContents"></textarea>
 		<br>
-		<input type="file" name="fileTest"><br>
+		<input type="file" name="fileTest" multiple><br>
    		<br><br>
 		<input type="submit" value="등록">
 	</form>
+	
+	
 </body>
 </html>

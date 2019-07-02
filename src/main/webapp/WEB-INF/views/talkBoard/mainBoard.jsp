@@ -30,7 +30,7 @@
 			<td>${t.boardNo }</td>
 			<td>${t.boardType }</td>
 			<td>${t.nickname }</td>
-			<td>${t.boardImg }</td>
+			<td><img src="/resources/talkBoard/${t.boardImg }" width="400"></td>
 			<td>${t.boardContents }</td>
 		</tr>
 		</c:forEach>

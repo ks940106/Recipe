@@ -12,6 +12,6 @@
   </select>
   
   <insert id="insertTalkBoard" parameterType="talk">
-  	insert into board values(req_board_no.nextval,#{boardType},'',null,#{boardContents})
+  	insert into board values(req_board_no.nextval,#{boardType},'',#{boardImg},#{boardContents})
   </insert>
 </mapper>
