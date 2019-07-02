@@ -20,6 +20,7 @@ public class TMR {
 	 private int recipeHit;
 	 private int recipePrice;
 	 private Date recipeDate;
+	 private int recipeStock;
 	public TMR() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -27,7 +28,7 @@ public class TMR {
 	public TMR(int recipeNo, String recipeTitle, String recipeWriter, String recipeContents, String recipeMainimg,
 			String recipeCat1, String recipeCat2, String recipeCount, String recipeTime, String recipeLevel,
 			String recipeItem, String recipeStep, String recipeStepimg, int recipeLike, int recipeHit, int recipePrice,
-			Date recipeDate) {
+			Date recipeDate, int recipeStock) {
 		super();
 		this.recipeNo = recipeNo;
 		this.recipeTitle = recipeTitle;
@@ -46,6 +47,7 @@ public class TMR {
 		this.recipeHit = recipeHit;
 		this.recipePrice = recipePrice;
 		this.recipeDate = recipeDate;
+		this.recipeStock = recipeStock;
 	}
 	public int getRecipeNo() {
 		return recipeNo;
@@ -148,5 +150,11 @@ public class TMR {
 	}
 	public void setRecipeDate(Date recipeDate) {
 		this.recipeDate = recipeDate;
+	}
+	public int getRecipeStock() {
+		return recipeStock;
+	}
+	public void setRecipeStock(int recipeStock) {
+		this.recipeStock = recipeStock;
 	}
 }

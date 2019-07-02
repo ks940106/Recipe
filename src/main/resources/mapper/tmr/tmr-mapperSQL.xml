@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="mybatis">
+<mapper namespace="tmr">
+	<select id="totalCount" parameterType="string" resultType="tmr">
+	select
+	recipe_no as recipeNo,
+    recipe_title as recipeTitle,
+    recipe_writer as recipeWriter,
+    recipe_contents as recipeContents,
+    recipe_mainimg as recipeMainimg,
+    recipe_cat1 as recipeCat1,
+    recipe_cat2 as recipeCat2,
+    recipe_count as recipeCount,
+    recipe_time as recipeTime,
+    recipe_level as recipeLevel,
+    recipe_item as recipeItem,
+    recipe_step as recipeStep,
+    recipe_stepimg as recipeStepimg,
+    recipe_like as recipeLike,
+    recipe_hit as recipeHit,
+    recipe_price as recipePrice,
+    recipe_date as recipeDate,
+    recipe_stock as recipeStock
+    from recipe where to_char(recipe_date,'MM')= #{month} order by recipe_like desc
+	</select>
 	<select id="selectTMR" parameterType="map" resultType="tmr">
 	select 
 	recipe_no as recipeNo,
@@ -19,28 +41,9 @@
     recipe_like as recipeLike,
     recipe_hit as recipeHit,
     recipe_price as recipePrice,
-    recipe_date as recipeDate
+    recipe_date as recipeDate,
+    recipe_stock as recipeStock
     from(select rownum as rnum, tmr.* from (select * from recipe where to_char(recipe_date,'MM')=#{month} order by recipe_like desc) tmr) where rnum between #{start} and #{end}
 	</select>
-	<select id="totalCount" parameterType="_int" resultType="tmr">
-	select
-	recipe_no as recipeNo,
-    recipe_title as recipeTitle,
-    recipe_writer as recipeWriter,
-    recipe_contents as recipeContents,
-    recipe_mainimg as recipeMainimg,
-    recipe_cat1 as recipeCat1,
-    recipe_cat2 as recipeCat2,
-    recipe_count as recipeCount,
-    recipe_time as recipeTime,
-    recipe_level as recipeLevel,
-    recipe_item as recipeItem,
-    recipe_step as recipeStep,
-    recipe_stepimg as recipeStepimg,
-    recipe_like as recipeLike,
-    recipe_hit as recipeHit,
-    recipe_price as recipePrice,
-    recipe_date as recipeDate
-    from recipe where to_char(recipe_date,'MM')= #{month} order by recipe_like desc
-	</select>
+	
 </mapper>

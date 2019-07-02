@@ -18,51 +18,35 @@
 	<section>
 	<div class="cp_bg"></div>
 	<div class="section_content">
-		<div class="cp_nav">
-			<div class="cp_nav_l"><a href="/competitionView.do">요리 대회</a></div>
+        <div class="cp_nav">
+			<div class="cp_nav_l"><a href="/competitionList.do?competitionCheck='Y'">요리 대회</a></div>
 			<div class="cp_nav_r"><a href="/competitionResultList.do"> 지난 대회 결과</a></div>
 		</div>
 		<div class="cp_content">
 			<!--                <img src="../../../resources/img/logo.png" width="200px;">-->
-			<h1>요리 대회</h1>
-			<p>싱싱레시피의 요리 대회 소식을 확인하실 수 있습니다.</p>
-			<div id="cp_div_bg"></div>
-			<form action="/competitionUpdate.do?competitionNo=${competition.competitionNo}" method="post">
-	 <table border="1">
-            <tr>
-               <th colspan="2" >게시판</th>            
-            </tr>
-            <tr>
-               <th>제목</th>
-               <td><input type="text" name="competitionTitle" value="${competition.competitionTitle}"></td>
-               
-            </tr>          
-            <tr>
-               <th>내용</th>
-               <td>
-               <input name="competitionContent" value="${competition.competitionContent}">
-              </td>
-               
-            </tr>
-            <tr>
-               <th>첨부파일</th>
-               <td>
-                <img src="/resources/upload/competition/${competition.competitionImg}" width="150px" height="150px;">
-               </td>
-               
-            </tr>
-            <tr>
-               <th colspan="2">
-               
-                	<input type="submit" value="수정하기">
-                  <button  onclick="competitionDelete('${competition.competitionNo}')">삭제하기</button>
-               </th>
-            </tr>
-         </table>
-         </form>
-			<div>
-				<a href="/competitionWrite.do"> 글쓰기 </a>
-			</div>
+			<!--<h1>요리 대회</h1>
+			<p>싱싱레시피의 요리 대회 소식을 확인하실 수 있습니다.</p>-->
+<!--			<div id="cp_div_bg"></div>-->
+            <div class="cp_notice">
+                <div id="cp_title">${competition.competitionTitle}</div>
+                <div id="cp_div_bg"></div>  
+                <div id="cp_date">${competition.competitionDate}</div>
+                <div class="cp_contentsView">
+                	<div id="cp_contentsImg">
+                        <img src="../../../resources/upload/competition/${competition.competitionImg}">
+                    </div>
+                    <div id="cp_contents">
+                        ${competition.competitionContents}
+                    </div>
+                </div>
+            </div>
+            <div id="cp_btn">
+                <button onclick="location.href='/competitionParticipate.do?competitionNo=${competition.competitionNo}'">대회참가 신청하기</button>
+            </div>
+<!--
+			 <button onclick="location.href='/competitionUpdate.do?competitionNo=${competition.competitionNo}'">수정하기</button>   
+          <button  onclick="location.href='/competitionDelete.do?competitionNo=${competition.competitionNo}'" >삭제하기</button>
+-->
 		</div>
 	</div>
 	</section>

@@ -18,7 +18,11 @@
 	<div class="section_content">
 		<br>
 		<p id="tmr">이달의 레시피</p>
-		<button onclick="location.href='/lmt.do'">지난 달 레시피</button>
+		<button class="btn btn-primary" style="float:right;">선택</button>
+		<select class="form-control" style="float:right;">
+			<option>지난 달의 레시피</option>
+		</select>
+		
 		<br>
 		<hr>
 		<div style="height:25px; text-align:center; font-size:14pt; font-weight:bold;">
@@ -30,21 +34,21 @@
 		</div>
 		<hr>
 		
-		<c:forEach items="${list }" var ="vo" varStatus="i">
+		<c:forEach items="${tpd.list }" var ="vo" varStatus="i">
 		<div style="height:100px; text-align: center;" id="tmrDiv">
 			<div style="width:30%">
 				<c:choose>
-					<c:when test="${i.count eq 1}">
-						<span class="rank" id="rank${i.count }">${i.count }</span>
+					<c:when test="${tpd.start+i.index eq 1}">
+						<span class="rank" id="rank${tpd.start+i.index }">${tpd.start+i.index }</span>
 					</c:when>
-					<c:when test="${i.count eq 2}">
-						<span class="rank" id="rank${i.count }">${i.count }</span>
+					<c:when test="${tpd.start+i.index eq 2}">
+						<span class="rank" id="rank${tpd.start+i.index }">${tpd.start+i.index }</span>
 					</c:when>
-					<c:when test="${i.count eq 3}">
-						<span class="rank" id="rank${i.count }">${i.count }</span>
+					<c:when test="${tpd.start+i.index eq 3}">
+						<span class="rank" id="rank${tpd.start+i.index }">${tpd.start+i.index }</span>
 					</c:when>
 					<c:otherwise>
-						<span class="rank">${i.count }</span>
+						<span class="rank">${tpd.start+i.index }</span>
 					</c:otherwise>
 				</c:choose>
 			</div>
@@ -65,6 +69,7 @@
 		</div>
 		<hr>
 		</c:forEach>
+		<div style="margin-bottom:100px; text-align:center;">${tpd.pageNavi }</div>
 	</div>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>

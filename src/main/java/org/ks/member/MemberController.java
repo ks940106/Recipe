@@ -23,6 +23,14 @@ public class MemberController {
 	public String loginPage() {
 		return "member/loginPage";
 	}
+	@RequestMapping(value="/joinPage.do")
+	public String joinPage() {
+		return "member/joinPage";
+	}
+	@RequestMapping(value="/insert.do")
+	public String insert() {
+		return "member/insert";
+	}
 	@RequestMapping(value="/login.do")
 	public String login(HttpServletRequest request,@RequestParam String id,@RequestParam String pw ) {
 		Member m = new Member();
@@ -30,14 +38,20 @@ public class MemberController {
 		m.setPw(pw);
 		Member member = memberService.login(m);
 		String view="";
-		if(member!= null) {
+		if(member==null) {
+				request.setAttribute("msg", "로그인 실패");
+				//request.setAttribute("loc", "WEB-INF/views/member/loginPage.jsp");
+		}
+		else if(member.getName().equals("관리자")) {
+			HttpSession session =request.getSession();
+			session.setAttribute("member", member);
+			request.setAttribute("msg","관리자 입니다" );
+			request.setAttribute("loc", "/");
+		}else if(member!= null) {
 			HttpSession session =request.getSession();
 			session.setAttribute("member", member);
 			request.setAttribute("msg","로그인성공" );
 			request.setAttribute("loc", "/");
-		}else {
-			request.setAttribute("msg", "로그인 실패");
-			//request.setAttribute("loc", "WEB-INF/views/member/loginPage.jsp");
 		}
 		view="common/msg";
 		return view;
