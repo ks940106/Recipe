@@ -27,6 +27,10 @@ public class MemberController {
 	public String joinPage() {
 		return "member/joinPage";
 	}
+	@RequestMapping(value="/insert.do")
+	public String insert() {
+		return "member/insert";
+	}
 	@RequestMapping(value="/login.do")
 	public String login(HttpServletRequest request,@RequestParam String id,@RequestParam String pw ) {
 		Member m = new Member();
