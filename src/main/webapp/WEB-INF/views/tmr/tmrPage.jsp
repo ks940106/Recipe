@@ -18,7 +18,11 @@
 	<div class="section_content">
 		<br>
 		<p id="tmr">이달의 레시피</p>
-		<button onclick="location.href='/lmt.do'">지난 달 레시피</button>
+		<button class="btn btn-primary" style="float:right;">선택</button>
+		<select class="form-control" style="float:right;">
+			<option>지난 달의 레시피</option>
+		</select>
+		
 		<br>
 		<hr>
 		<div style="height:25px; text-align:center; font-size:14pt; font-weight:bold;">

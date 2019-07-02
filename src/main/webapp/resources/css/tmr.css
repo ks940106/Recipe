@@ -34,6 +34,10 @@ hr{
 	width:30px;
 	height:30px;
 }
-.pageBtn{}
-.selectPage{}
-.pageNum{font-size: 15pt;}
+.pageBtn{font-weight: bold;
+		font-size: 30pt;
+		}
+.selectPage{font-weight: bold;
+		font-size: 30pt;}
+.pageNum{font-weight: bold;
+		font-size: 30pt;}
