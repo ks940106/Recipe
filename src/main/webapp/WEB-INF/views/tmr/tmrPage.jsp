@@ -18,11 +18,6 @@
 	<div class="section_content">
 		<br>
 		<p id="tmr">이달의 레시피</p>
-		<button class="btn btn-primary" style="float:right;">선택</button>
-		<select class="form-control" style="float:right;">
-			<option>지난 달의 레시피</option>
-		</select>
-		
 		<br>
 		<hr>
 		<div style="height:25px; text-align:center; font-size:14pt; font-weight:bold;">
@@ -69,7 +64,7 @@
 		</div>
 		<hr>
 		</c:forEach>
-		<div style="margin-bottom:100px; text-align:center;">${tpd.pageNavi }</div>
+		<div style="margin-bottom:75px;margin-top:25px; text-align:center;">${tpd.pageNavi }</div>
 	</div>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
