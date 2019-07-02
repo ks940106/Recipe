@@ -1,5 +1,5 @@
 @charset "UTF-8";
-.register_title {
+.regi_title {
     background: #f8f8f8;
     border-bottom: 1px solid #e6e7e8;
     padding: 14px 18px;
@@ -46,22 +46,6 @@
 }
 
 
-
-.form-control {
-    display: block;
-    width: 100%;
-    height: 34px;
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #555;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-}
 
 .step_cont {
     display: inline-block;
@@ -124,9 +108,6 @@
     width: 250px;
 }
 
-.img_up_list .img_box:first-child {
-}
-
 .img_up_list .img_box img {
     width: 100%;
     height: 100%;
@@ -164,6 +145,7 @@
     background: url("../img/recipe/pic_none4.gif");
 }
 
+
 .cont_line .thumb_m {
     display: inline-block;
     margin-left: 10px;
@@ -180,4 +162,218 @@
 
 img {
     vertical-align: middle;
+}
+
+.cont_box .noti {
+    color: #f43434;
+    font-size: 13px;
+    text-align: center;
+    border-top: 1px solid #e4e4e4!important;
+    padding-top: 15px;
+}
+
+.cont_box .cont_tit3 {
+    font-size: 20px;
+    font-weight: normal;
+    margin: 0;
+    width: 100%;
+}
+
+.btn_add .btn {
+    border: none;
+    background: none;
+    margin: 10px 0 0 0;
+    padding: 0;
+    font-size: 16px;
+    color: #444;
+}
+
+.btn_add .btn span {
+    color: #74b243;
+    font-size: 16px;
+    margin-right: 4px;
+}
+
+
+.regi_btm .btn-lg {
+    padding: 12px 50px;
+}
+.btn-group-lg>.btn, .btn-lg {
+    padding: 10px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.3333333;
+    border-radius: 3px;
+    margin: 0 4px;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #74b243;
+    border: 1px solid #497725;
+}
+
+.regi_btm .btn-lg {
+    padding: 12px 50px;
+}
+.btn-group-lg>.btn, .btn-lg {
+    padding: 10px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.3333333;
+    border-radius: 3px;
+    margin: 0 4px;
+}
+.btn-warning {
+    color: #fff;
+    background-color: #f0ad4e;
+    border: 1px solid #d88e24;
+}
+
+.regi_btm .btn-lg {
+    padding: 12px 50px;
+}
+.btn-group-lg>.btn, .btn-lg {
+    padding: 10px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.3333333;
+    border-radius: 3px;
+    margin: 0 4px;
+}
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+.regi_btm {
+    border: 1px solid #e6e7e8;
+    background: #fff;
+    text-align: center;
+    padding: 35px 0 40px 0;
+    border-top: none;
+}
+
+.cont_box .cont_tit2_1 {
+    width: 120px;
+    display: inline-block;
+    font-size: 30px;
+    font-weight: normal;
+    vertical-align: top;
+    color: #74b243;
+    margin-left: 70px;
+}
+
+.cont_box p {
+    font-size: 20px;
+    padding: 0 0 0 2px;
+    margin: 0 0 22px 0;
+    line-height: 50px;
+    display: inline-block;
+}
+.mag_b_25 {
+    margin-bottom: 25px !important;
+}
+.btn_add {
+    text-align: center;
+}
+
+.step {
+    display: inline-block;
+    margin: 6px 0;
+}
+
+:after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+:after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.step_btn {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.step_btn a {
+    width: 30px;
+    height: 30px;
+    background: #eee;
+    color: #999;
+    display: block;
+    font-size: 13px;
+    text-align: center;
+    margin: 1px;
+    line-height: 30px;
+}
+
+.step_btn a span {
+    padding-top: 7px;
+}
+.glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.glyphicon-chevron-down:before {
+    content: "▼";
+    font-weight: bold;
+}
+.glyphicon-chevron-up:before {
+    content: "▲";
+    font-weight: bold;
+}
+
+.glyphicon-plus:before {
+    content: "+";
+    font-weight: bold;
+}
+
+.glyphicon-remove:before {
+    content: "x";
+    font-weight: bold;
+}
+
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+.btn {
+    display: inline-block;
+    padding: 6px 20px;
+    margin: 0 2px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 3px;
+}
+
+.glyphicon-plus-sign:before {
+    content: "+";
+    font-weight: 700;
 }
