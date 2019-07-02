@@ -7,4 +7,5 @@ import org.ks.tmr.vo.TMRPageData;
 
 public interface TMRService {
 	public TMRPageData selectTMR(String month,int reqPage);
+	public void insertLmr(String year,String month);
 }

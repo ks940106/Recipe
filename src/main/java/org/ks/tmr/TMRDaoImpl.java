@@ -1,11 +1,15 @@
 package org.ks.tmr;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.ks.tmr.vo.TMR;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.mybatis.spring.SqlSessionTemplate;
 
 
 @Repository("TMRDaoImpl")
@@ -28,6 +32,15 @@ public class TMRDaoImpl implements TMRDao{
 		map.put("end", Integer.toString(end));
 		List list = sqlsession.selectList("tmr.selectTMR",map); 
 		return list;
+	}
+
+	public void insertLmr(TMR tmr,int rank) {
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("recipeNo",Integer.toString(tmr.getRecipeNo()));
+		map.put("recipeRank",Integer.toString(rank));
+		String date = new SimpleDateFormat("yy/MM/dd").format(tmr.getRecipeDate());
+		map.put("recipeDate", date);
+		sqlsession.insert("tmr.insertLmr",map);
 	}
 	
 }

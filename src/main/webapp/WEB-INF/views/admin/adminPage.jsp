@@ -18,6 +18,7 @@
 	<section>
 	<div class="section_content">
 		<div><a href="/competitionWrite.do">요리대회</a></div>
+		<div><a href="/lmt.do">지난 이달의 레시피 1,2,3 등 목록</a></div>
 	</div>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />

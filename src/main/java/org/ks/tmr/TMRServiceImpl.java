@@ -8,6 +8,7 @@ import org.ks.tmr.vo.TMRPageData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service("TMRServiceImpl")
 public class TMRServiceImpl implements TMRService{
@@ -58,5 +59,12 @@ public class TMRServiceImpl implements TMRService{
 		tpd = new TMRPageData(list,pageNavi,start);
 		return tpd;
 	}
-	
+	@Transactional
+	public void insertLmr(String year,String month) {
+		List list = tmrdaoImpl.totalCount(month);
+		ArrayList<TMR> list2 = (ArrayList<TMR>)list;
+		for(int i = 0; i<3 ;i++) {
+			tmrdaoImpl.insertLmr(list2.get(i),i+1);
+		}
+	}
 }

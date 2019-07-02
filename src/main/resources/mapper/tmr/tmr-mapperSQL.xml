@@ -45,5 +45,8 @@
     recipe_stock as recipeStock
     from(select rownum as rnum, tmr.* from (select * from recipe where to_char(recipe_date,'MM')=#{month} order by recipe_like desc) tmr) where rnum between #{start} and #{end}
 	</select>
+	<insert id="insertLmr" parameterType="map">
+		insert into TMR values(#{recipeNo},#{recipeRank},#{recipeDate})
+	</insert>
 	
 </mapper>
