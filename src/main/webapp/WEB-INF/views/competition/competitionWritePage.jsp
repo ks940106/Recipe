@@ -24,8 +24,8 @@
 				<input type="checkbox" value="N" name="competitionCheck">진행완료
 		<input type="submit" value="완료"><br>
 	</form>
-            <button onclick="competitionUpload('${competition.competitionNo}')">수정하기</button>   
-          <button  onclick="competitionDelete('${competition.competitionNo}')">삭제하기</button>
+<%--             <button onclick="competitionUpload('${competition.competitionNo}')">수정하기</button>    --%>
+<%--           <button  onclick="competitionDelete('${competition.competitionNo}')">삭제하기</button> --%>
          
 	</div>
 	</section>
