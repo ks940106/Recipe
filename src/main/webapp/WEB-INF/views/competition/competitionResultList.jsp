@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,7 +18,7 @@
 	<div class="cp_bg"></div>
 	<div class="section_content">
 		<div class="cp_nav">
-			<div class="cp_nav_l"><a href="/competitionList.do">요리 대회</a></div>
+			<div class="cp_nav_l"><a href="/competitionList.do?competitionCheck='Y'">요리 대회</a></div>
 			<div class="cp_nav_r"><a href="/competitionResultList.do"> 지난 대회 결과</a></div>
 		</div>
 		<div class="cp_content">

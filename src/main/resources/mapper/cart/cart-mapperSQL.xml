@@ -10,4 +10,7 @@
 			b.recipe_title as recipeTitle
 			from cart a inner join recipe b on a.recipe_no = b.recipe_no where id=#{id}
 	</select>
+	<insert id="insertCart" parameterType="cart">
+		insert into cart values(cart_sql.nextval,#{id},#{recipeNo},#{recipePrice},#{recipeCount})
+	</insert>
 </mapper>
