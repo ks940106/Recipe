@@ -1,6 +1,7 @@
 package org.ks.competition;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.ks.competition.vo.Competition;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,15 @@ public class CompetitionServiceImpl implements CompetitionService {
 	@Override
 	public int insertCompetition(Competition c) {
 		return competitionDaoimpl.insertCompetition(c);
+	}
+
+	@Override
+	public Competition competitionView(String competitionCheck) {
+		List list = competitionDaoimpl.competitionView(competitionCheck);
+		Competition c = null;
+		if(!list.isEmpty()) {
+			c = (Competition)list.get(0);
+		}
+		return c;
 	}
 }

@@ -6,17 +6,26 @@ import org.ks.cart.vo.Cart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-@Service("CartServiceImpl")
+@Service("cartServiceImpl")
 public class CartServiceImpl implements CartService {
 	
 	@Autowired
-	@Qualifier("CartDAOImpl")
-	private CartDAO CartDAOImpl;
+	@Qualifier(value="cartDAOImpl")
+	private CartDAO cartDAOImpl;
+	
 	@Override
-	public ArrayList<Cart> allListCart() {
+	public ArrayList<Cart> allListCart(String id) {
 		
-		return (ArrayList<Cart>)(CartDAOImpl.allListCart());
+		return (ArrayList<Cart>)(cartDAOImpl.allListCart(id));
+	}
+	
+	@Transactional
+	@Override
+	public int insertCart(Cart c) {
+		int result=cartDAOImpl.insertCart(c);
+		return result;
 	}
 
 }

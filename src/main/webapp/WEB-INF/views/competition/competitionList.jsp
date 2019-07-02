@@ -19,7 +19,7 @@
 	<div class="cp_bg"></div>
 	<div class="section_content">
 		<div class="cp_nav">
-			<div class="cp_nav_l"><a href="/competitionView.do">요리 대회</a></div>
+			<div class="cp_nav_l"><a href="/competitionList.do?competitionCheck='Y'">요리 대회</a></div>
 			<div class="cp_nav_r"><a href="/competitionResultList.do"> 지난 대회 결과</a></div>
 		</div>
 		<div class="cp_content">
@@ -40,7 +40,7 @@
             <tr>
                <th>내용</th>
                <td>
-               <input name="competitionContent" value="${competition.competitionContent}">
+               <input name="competitionContents" value="${competition.competitionContents}">
               </td>
                
             </tr>
@@ -51,18 +51,9 @@
                </td>
                
             </tr>
-            <tr>
-               <th colspan="2">
-               
-                	<input type="submit" value="수정하기">
-                  <button  onclick="competitionDelete('${competition.competitionNo}')">삭제하기</button>
-               </th>
-            </tr>
          </table>
          </form>
-			<div>
-				<a href="/competitionWrite.do"> 글쓰기 </a>
-			</div>
+			
 		</div>
 	</div>
 	</section>

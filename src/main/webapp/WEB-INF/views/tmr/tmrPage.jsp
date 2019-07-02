@@ -21,7 +21,7 @@
 		<button onclick="location.href='/lmt.do'">지난 달 레시피</button>
 		<br>
 		<hr>
-		<div style="height:25px; text-align:center;">
+		<div style="height:25px; text-align:center; font-size:14pt; font-weight:bold;">
 			<div style="width:30%; float:left;">순위</div>
 			<div style="width:10%; float:left;">레시피 사진</div>
 			<div style="width:30%; float:left;">레시피 제목</div>
@@ -52,7 +52,7 @@
 			<a href="#"><img src="/../resources/img/tmr/b_01.png" id="recipeImg"></a>
 			</div>
 			<div style="width:30%" id="recipeTitle">
-			${vo.recipeTitle }
+			<a href="#">${vo.recipeTitle }</a>
 			</div>
 			<div style="width:30%" id="recipeInfo">
 				<div style="width:50%" style="float:left;">
