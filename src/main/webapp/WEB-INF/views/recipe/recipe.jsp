@@ -17,13 +17,13 @@
 <!-- header Fin -->
 <section>
     <div class="section_content">
-        <div class="register_title">레시피 등록</div>
+        <div class="regi_title">레시피 등록</div>
         <div class="cont_box pad_l_60">
 
             <div class="img_up_list">
-                <!-- 업로드 전 -->
+                <%--이미지 업로드--%>
                 <div class="img_box">
-                    <input type="file" class="hide" accept="image/*" name="noticeBoardFilename" id="noticeBoardFilename" onchange="boardReg.imgSel(this, event)">
+                    <input type="file" class="hide" accept="image/*" name="recipeMainImg" id="recipeMainImg" onchange="boardReg.imgSel(this, event)">
                     <a href="#none" class="upload_btn">
                     </a>
                 </div>
@@ -110,6 +110,101 @@
                     <option value="5">신의경지</option>
                 </select>
             </div>
+        </div>
+        <div class="cont_box pad_l_60">
+            <span class="guide mag_b_15" style="width:100%;">재료가 남거나 부족하지 않도록 정확한 계량정보를 적어주세요.</span>
+            <div class="cont_line pad_b_25">
+                <p class="cont_tit4">재료</p>
+                <textarea name="" id="" class="form-control step_cont"  placeholder="<예시>
+[스테이크 재료] 돼지고기 500g, 양파 1/2개, 고추 1개, 간장
+[파절임] 대파 3개, 고춧가루 1숟가락, 매실엑기스 3숟가락, 식초 3숟가락
+[양념] 고춧가루 2T, 진간장 1T, 참치액 1T, 참기름 1T, 매실액 1T, 통깨 " style="height:200px; width:610px; resize:none;"></textarea>
+            </div>
+            <div class="noti">
+                ※ 양념, 양념장, 소스, 드레싱, 토핑, 시럽, 육수 밑간 등으로 구분해서 작성해주세요.
+            </div>
+        </div>
+        <div class="cont_box pad_l_60">
+            <p class="cont_tit3">요리순서</p>
+            <span class="guide mag_b_15"><b style="font-weight: bold;">요리의 맛이 좌우될 수 있는 중요한 부분은 빠짐없이 적어주세요.</b><br>
+		예) 10분간 익혀주세요 ▷ 10분간 약한불로 익혀주세요.<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;마늘편은 익혀주세요 ▷ 마늘편을 충분히 익혀주셔야 매운 맛이 사라집니다.<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;꿀을 조금 넣어주세요 ▷ 꿀이 없는 경우, 설탕 1스푼으로 대체 가능합니다.</span>
+
+
+
+            <div id="divStepItem_1" class="step" style="">
+                <p id="divStepNum_1" class="cont_tit2_1 ui-sortable-handle" style="cursor:pointer" data-original-title="" title="">Step1</p>
+                <div id="divStepText_1" style="display:inline-block">
+                    <textarea name="step_text[]" id="step_text_1" class="form-control step_cont" placeholder="예) 소고기는 기름기를 떼어내고 적당한 크기로 썰어주세요." style="height:160px; width:430px; resize:none;"></textarea>
+                </div>
+                <div id="divStepUpload_1" style="display:inline-block">
+                    <input type="hidden" name="step_no[]" id="step_no_1" value="">
+                    <input type="hidden" name="step_photo[]" id="step_photo_1" value="">
+                    <input type="hidden" name="new_step_photo[]" id="new_step_photo_1" value="">
+                    <input type="hidden" name="del_step_photo[]" id="del_step_photo_1" value="">
+                    <div class="img_up_list">
+                        <%--이미지 업로드--%>
+                        <div class="img_box">
+                            <input type="file" class="hide" accept="image/*" name="imgStep1" id="imgStep1" onchange="boardReg.imgSel(this, event)">
+                            <a href="#none" class="upload_btn" >
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="divStepBtn_1" class="step_btn" style="display: none;">
+                    <a href="javascript:void(0)"><span class="glyphicon glyphicon-chevron-up moveUp"></span></a>
+                    <a href="javascript:void(0)"><span class="glyphicon glyphicon-chevron-down moveDown"></span></a>
+                    <a href="javascript:adjustStep(1)"><b>맞춤</b></a>
+                    <a href="javascript:addStep(1)"><span class="glyphicon glyphicon-plus"></span></a>
+                    <a href="javascript:delStep(1)"><span class="glyphicon glyphicon-remove"></span></a>
+                </div>
+            </div>
+
+
+
+
+            <!-- step template -->
+            <div id="divStepTemplate" style="display:none">
+                <div id="divStepItem_STEP" class="step">
+                    <p id="divStepNum_STEP" class="cont_tit2_1" style="cursor:pointer">Step 1</p>
+                    <div id="divStepText_STEP" style="display:inline-block">
+                        <textarea name="step_text[]" id="step_text_STEP" class="form-control step_cont" placeholder="" style="height:160px; width:430px; resize:none;"></textarea>
+                    </div>
+                    <div id="divStepUpload_STEP" style="display:inline-block">
+                        <input type="hidden" name="step_no[]" id="step_no_STEP" value="">
+                        <input type="hidden" name="step_photo[]" id="step_photo_STEP" value="">
+                        <input type="hidden" name="new_step_photo[]" id="new_step_photo_STEP" value="">
+                        <input type="hidden" name="del_step_photo[]" id="del_step_photo_STEP" value="">
+                        <div style="position:absolute;left:-3000px"><input type="file" name="q_step_file_STEP" id="q_step_file_STEP" file_gubun="step" accept="jpeg,png,gif" style="display:none;width:0px;height:0px;font-size:0px;" text=""></div>
+                        <div id="divStepPhotoBox_STEP" is_over="0">
+                            <img id="stepPhotoHolder_STEP" onclick="browseStepFile(__STEP)" src="${pageContext.request.contextPath}/resources/img/recipe/pic_none2.gif" width="160" height="160" style="cursor:pointer">
+                        </div>
+                    </div>
+                    <div id="divStepBtn_STEP" class="step_btn" style="display:none">
+                        <a href="javascript:void(0)"><span class="glyphicon glyphicon-chevron-up moveUp"></span></a>
+                        <a href="javascript:void(0)"><span class="glyphicon glyphicon-chevron-down moveDown"></span></a>
+                        <a href="javascript:adjustStep(__STEP)"><b>맞춤</b></a>
+                        <a href="javascript:addStep(__STEP)"><span class="glyphicon glyphicon-plus"></span></a>
+                        <a href="javascript:delStep(__STEP)"><span class="glyphicon glyphicon-remove"></span></a>
+                    </div>
+
+                </div>
+            </div>
+            <!--/step template-->
+
+            <div class="btn_add mag_b_25" style="padding:0 0 20px 180px; width:640px;">
+                <button type="button" onclick="addStep()" class="btn btn-default">
+                    <span class="glyphicon glyphicon-plus-sign">
+                    </span>
+                    순서추가
+                </button>
+            </div>
+        </div>
+        <div class="regi_btm">
+            <button type="button" onclick="doSubmit('save')" class="btn-lg btn-primary">저장</button>
+            <button type="button" onclick="doSubmit('save_public')" class="btn-lg btn-warning">저장 후 공개하기</button>
+            <button type="button" onclick="history.back();" class="btn-lg btn-default">취소</button>
         </div>
     </div>
 </section>

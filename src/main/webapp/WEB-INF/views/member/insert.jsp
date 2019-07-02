@@ -3,7 +3,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script src="http://code.jquery.com/jquery-3.4.0.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../resources/css/import.css" rel="stylesheet" />
 <title>Insert title here</title>
 </head>
 <body>
@@ -39,6 +41,19 @@
 				<span id="nickStatus" class="glyphicon form-control-feedback" aria-hidden="true"></span>
 				<span id="nickMsg" style="display: none;"></span>
 			</div>
+			<div id="zip code" class="form-group has-feedback">
+				<input type="text" name="zipcode" class="form-control" id="zipcode"placeholder="우편번호">
+			</div>
+			<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+			<div id="addr1_div" class="form-group has-feedback">
+				<input type="text" name="addr1" class="form-control" id="addr1" placeholder="주소">
+			</div>
+			<div id="addr2_div" class="form-group has-feedback">
+				<input type="text" name="addr2" class="form-control" id="addr2" placeholder="상세주소">
+			</div>
+			<div id="phone" class="form-group has-feedback">
+				<input type="text" name="phone" class="form-control" id="phone" placeholder="핸드폰 번호">
+			</div>
 			<div class="form-group has-feedback">
 				<div class="btn_gender" style="width: 220px; left: 20px;">
 					<span class="input-group-btn">
@@ -59,4 +74,33 @@
 	</div>
 	</section>
 </body>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script>
+
+function sample6_execDaumPostcode() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+            var addr = ''; // 주소 변수
+            var extraAddr = ''; // 참고항목 변수
+
+            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                addr = data.roadAddress;
+            } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                addr = data.jibunAddress;
+            }
+            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+            document.getElementById('zipcode').value = data.zonecode;
+            document.getElementById("addr1").value = addr;
+            // 커서를 상세주소 필드로 이동한다.
+            document.getElementById("addr2").focus();
+        }
+    }).open();
+}
+
+</script>
 </html>

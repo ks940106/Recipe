@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class TMRContoller {
 	@Autowired
-	@Qualifier("TMRService")
-	private TMRService tmrservice;
+	@Qualifier("TMRServiceImpl")
+	private TMRService tmrserviceImpl;
 	
 	@RequestMapping(value="/tmr.do")
 	public String tmrPage(Model model,HttpServletRequest request) {
@@ -27,7 +27,7 @@ public class TMRContoller {
 			reqPage = 1;
 		}
 		String month = new SimpleDateFormat("MM").format(new Date(System.currentTimeMillis()));
-		TMRPageData tpd = tmrservice.selectTMR(month,reqPage);
+		TMRPageData tpd = tmrserviceImpl.selectTMR(month,reqPage);
 		model.addAttribute("tpd", tpd);
 		return "tmr/tmrPage";
 	}
