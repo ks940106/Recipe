@@ -306,4 +306,102 @@ body.joinback {
     margin: 0;
     background: #f1f1f2;
 }
-
+section.memberinsert .container_etc {
+    margin: 0 auto 30px;
+    padding-top: 20px;
+}
+section.memberinsert .container_etc h2 {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+section.memberinsert .container_etc input {
+    height: 60px;
+}
+section.memberinsert .container_etc .form-group {
+    margin-bottom: -1px;
+}
+section.memberinsert .has-feedback {
+    position: relative;
+}
+section.memberinsert .container_etc .form-control {
+    display: block;
+    width: 95%;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    margin-bottom: -1px !important;
+}
+section.memberinsert .form-control-feedback {
+    position: absolute;
+    top: 8px;
+    right: 0;
+    z-index: 2;
+    display: block;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    pointer-events: none;
+}
+section.memberinsert .has-error .form-control-feedback {
+    color: #a94442;
+}
+section.memberinsert .text-danger {
+    color: #a94442;
+}
+section.memberinsert .mag_b_10 {
+    margin-bottom: 10px !important;
+}
+section.memberinsert .container_etc .btn_gender {
+    position: absolute;
+    left: 250px;
+    top: 13px;
+    z-index: 100;
+}
+section.memberinsert .input-group-btn {
+    position: relative;
+    font-size: 0;
+    white-space: nowrap;
+    width: 1%;
+}
+section.memberinsert .container_etc .btn_gender span .btn {
+    height: 32px;
+}
+section.memberinsert .btn-default {
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+section.memberinsert .container_etc .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    cursor: not-allowed;
+    background-color: #eee;
+    opacity: 1;
+}
+section.memberinsert .container_etc .btn-lg {
+    margin-top: 25px;
+    height: 60px;
+}
+section.memberinsert .container_etc .btn {
+    margin: 25px 4px 20px 0;
+    position: relative;
+}
+section.memberinsert .btn-block {
+    display: block;
+    width: 100%;
+}
+section.memberinsert .btn-primary {
+    color: #fff;
+    background-color: #74b243;
+    border: 1px solid #497725;
+}
