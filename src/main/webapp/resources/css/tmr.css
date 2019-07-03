@@ -22,14 +22,11 @@ hr{
 	height:80px;
 	border-radius: 50px;
 }
-#recipeTitle{
+.recipeFont{
 	font-size: 15pt;
 	font-weight: bold;
 }
-#recipeInfo{
-	font-size : 15pt;
-	font-weight: bold;
-}
+
 #recipeInfoImg{
 	width:30px;
 	height:30px;

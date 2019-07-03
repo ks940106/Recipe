@@ -21,9 +21,10 @@
 		<br>
 		<hr>
 		<div style="height:25px; text-align:center; font-size:14pt; font-weight:bold;">
-			<div style="width:30%; float:left;">순위</div>
+			<div style="width:15%; float:left;">순위</div>
 			<div style="width:10%; float:left;">레시피 사진</div>
 			<div style="width:30%; float:left;">레시피 제목</div>
+			<div style="width:15%; float:left;">레시피 작성자</div>
 			<div style="width:15%; float:left;">추천수</div>
 			<div style="width:15%; float:left;">조회수</div>
 		</div>
@@ -31,7 +32,7 @@
 		
 		<c:forEach items="${tpd.list }" var ="vo" varStatus="i">
 		<div style="height:100px; text-align: center;" id="tmrDiv">
-			<div style="width:30%">
+			<div style="width:15%">
 				<c:choose>
 					<c:when test="${tpd.start+i.index eq 1}">
 						<span class="rank" id="rank${tpd.start+i.index }">${tpd.start+i.index }</span>
@@ -50,8 +51,11 @@
 			<div style="padding-top:10px; width:10%">
 			<a href="#"><img src="/../resources/img/tmr/b_01.png" id="recipeImg"></a>
 			</div>
-			<div style="width:30%" id="recipeTitle">
+			<div style="width:30%" class="recipeFont">
 			<a href="#">${vo.recipeTitle }</a>
+			</div>
+			<div style="width:15%" class="recipeFont">
+			${vo.recipeWriter }
 			</div>
 			<div style="width:30%" id="recipeInfo">
 				<div style="width:50%" style="float:left;">
@@ -65,7 +69,7 @@
 		<hr>
 		</c:forEach>
 		<div style="margin-bottom:75px;margin-top:25px; text-align:center;">${tpd.pageNavi }</div>
-	</div>
+		</div>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
