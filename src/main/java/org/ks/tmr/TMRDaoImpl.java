@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.mybatis.spring.SqlSessionTemplate;
 
 
-@Repository("TMRDao")
+@Repository("TMRDaoImpl")
 public class TMRDaoImpl implements TMRDao{
 	@Autowired
 	SqlSessionTemplate sqlsession;
@@ -16,7 +16,6 @@ public class TMRDaoImpl implements TMRDao{
 	public List totalCount(String month) {
 		System.out.println(month);
 //		List list = sqlsession.selectList("tmrBatis.totalCount", month); 
-		System.out.println("DAO : "+sqlsession);
 		List list = sqlsession.selectList("tmr.totalCount",month);
 		return list;
 	}
