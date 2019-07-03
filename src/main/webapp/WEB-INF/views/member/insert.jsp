@@ -138,12 +138,13 @@ function EmailCheck(){
 		}
 	}
 	//이메일 인증
-	function emailcertification(){
-		var email = $("#emailcertification").val();
-		var url="/emailcertification.do"
+	$("#emailcertification").click(function(){
+		var email = $("#id").val();
+		console.log(email);
+		var url="/emailcertification.do";
 		var pop=window.opne("emailCheck.jsp","emailcertification","width=400,height=300");
 		pop.location.href=url+"?email="+email;
-	}
+	})
 	
 	//비밀번호 정규식
 	function chkPasswd1() {

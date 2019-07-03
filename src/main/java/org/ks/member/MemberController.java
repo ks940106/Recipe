@@ -101,6 +101,7 @@ public class MemberController {
 		Member m = new Member(id, pw, name, nickname, gender, addr1, addr2, phone, memberImg,zipCode);
 		
 	}
+	//이메일 중복확인
 	@RequestMapping(value="emailCheck.do")
 	public void emailCheck (HttpServletRequest request,HttpServletResponse response) throws IOException{
 		String id=request.getParameter("email");
@@ -113,6 +114,7 @@ public class MemberController {
 		}
 		
 	}
+	//닉네임 중복확인
 	@RequestMapping(value="/nickCheck.do")
 	public void nickCheck(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		String nickname = request.getParameter("nickname");
@@ -127,6 +129,7 @@ public class MemberController {
 	@RequestMapping(value="/emailcertification.do")
 	public void emailcertification(HttpServletRequest request,HttpServletResponse response) {
 		String id = request.getParameter("email");
+		System.out.println("메일 인증");
 		String host = "smtp.naver.com"; // 네이버일 경우 네이버 계정, gmail경우 gmail 계정 
 
 	      final String user = "fghij7410@gmail.com"; 
