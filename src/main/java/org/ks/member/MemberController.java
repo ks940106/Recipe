@@ -69,5 +69,8 @@ public class MemberController {
 			e.printStackTrace();
 		}
 	}
-	
+	@RequestMapping(value="/mypage.do")
+	public String mypage() {
+		return "member/mypage";
+	}
 }

@@ -21,10 +21,10 @@ $(document).ready(function () {
 				 merchant_uid : "상품명_"+date,	//거래ID
 				 name : "걸제테스트",				//결제명
 				 amount : price,				//결제금액
-				 buyer_email : "rudtjr008@naver.com",	//구매자 email
-				 buyer_name	: '고경석',					//구매자 이름
-				 buyer_tel	: '010-3337-4380',
-				 buyer_addr : '부천',
+				 buyer_email : "admin@naver.com",	//구매자 email
+				 buyer_name	: '관리자',					//구매자 이름
+				 buyer_tel	: '010-0000-0000',
+				 buyer_addr : '서울',
 				 buyer_postcode : '123-456'				//우편번호
 				},function(rsp){
 					if(rsp.success){
@@ -34,6 +34,8 @@ $(document).ready(function () {
 						var info3 = '카드 승인 번호 :' + rsp.apply_num;
 						$("#paymentResult").html(msg+"<br>"+info1+"<br>"+info2+"<br>"+info3);
 						
+						
+						location.href="/"
 					}else{
 						$('#paymentResult').html('에러내용 :' +rsp.error_msg+date);
 					}
