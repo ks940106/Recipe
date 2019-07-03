@@ -18,12 +18,14 @@
 			<div class="sidebar_mypage">
 				<div class="sidebar_name">MyPage</div>
 				<hr>
-				
+				<div>
+					<a href="#">개인정보 변경</a>
+				</div>
 				<div>
 					<a href="cart.do">장바구니</a>
 				</div>
 			</div>
-		
+			<div class="content"></div>
 		
 		
 		

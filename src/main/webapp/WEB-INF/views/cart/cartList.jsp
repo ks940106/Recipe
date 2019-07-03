@@ -23,36 +23,45 @@
 			<div class="sidebar_mypage">
 				<div class="sidebar_name">MyPage</div>
 				<hr>
-				
+				<div>
+					<a href="#">개인정보 변경</a>
+				</div>
 				<div>
 					<a href="cart.do">장바구니</a>
 				</div>
 			</div>
+			<h3>장바구니</h3>
 			<div class="content">
-				 <table class="table">
-				    <thead>
-				      <tr>
-				       <th></th><th>주문번호</th><th>주문자</th><th>레시피제목</th><th>가격</th><th>인분</th>
-				      </tr>
-				    </thead>
-				    <tbody>
-					     <c:forEach items="${list }" var="c" >
-						<tr>
-							<td ><input type="checkbox" class="count" name="count"></td>
-							<td>${c.cartNo }</td>
-							<td>${c.id }</td>
-							<td>${c.recipeTitle }</td>
-							<td class="co">${c.recipePrice }</td>
-							<td>${c.recipeCount }</td>
-						</tr>				
-						</c:forEach>
-						<c:if test="${empty list }">
-						 <tr>
-						 	<td colspan="5"><h1>장바구니가 비었습니다.</h1></td>
-						 </tr>
-						</c:if>
-				    </tbody>
-				  </table>
+				<form action="/order.do" method="post">  <!-- 주문하기 페이지로 넘기는 form -->
+					 <table class="table">
+					    <thead>
+					      <tr>
+					       <th></th><th>번호</th><th>주문자</th><th>레시피제목</th><th>가격</th><th>인분</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+						    <c:forEach items="${list }" var="c" varStatus="i">
+								<tr>
+									<td ><input type="checkbox" class="count" name="cartNo" value="${c.cartNo }"></td>
+									<td>${i.count }</td>
+									<td>${c.id }</td>
+									<td>${c.recipeTitle }</td>
+									<td class="co">${c.recipePrice }</td>
+									<td>${c.recipeCount }</td>
+								</tr>				
+							</c:forEach>
+							<c:if test="${empty list }">
+								 <tr>
+								 	<td colspan="5"><h1>장바구니가 비었습니다.</h1></td>
+								 </tr>
+							</c:if>
+					    </tbody>
+					  </table>
+				  <button type="submit" >주문하기</button>
+				</form>
+				  <h3>총결제금액<span id="countSpan"></span>원</h3>
+					<button type="button" id="payment" >결제하기</button>
+					<p id="paymentResult"></p>
 			</div>
 		</div>
 	</section>
