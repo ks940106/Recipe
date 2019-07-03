@@ -377,3 +377,5 @@ img {
     content: "+";
     font-weight: 700;
 }
+
+.step_btn a:hover, .step_btn a:active, .step_btn a.active {background:#53961f; color:#fff;}

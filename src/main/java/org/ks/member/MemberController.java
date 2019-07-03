@@ -1,4 +1,4 @@
-package org.ks.member;
+﻿package org.ks.member;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -84,6 +84,7 @@ public class MemberController {
 			e.printStackTrace();
 		}
 	}
+
 	//회원가입
 	@RequestMapping(value="/insertMember.do")
 	public void insertMember(HttpServletRequest request,@RequestParam MultipartFile fileUpload) {
@@ -203,6 +204,11 @@ public class MemberController {
 	          e.printStackTrace(); 
 	          } 
 	       }
+	@RequestMapping(value="/mypage.do")
+	public String mypage() {
+		return "member/mypage";
 	}
+
 	
+}
 
