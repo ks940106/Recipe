@@ -19,7 +19,7 @@
    <header>
     <h1 class="logo">
         <a href="/" class="logo_btn">
-            <img src="../resources/img/logo.png" alt="로고">
+            <img src="../resources/img/logo2.png" alt="로고">
         </a>
     </h1>
     <div class="nav_menu">

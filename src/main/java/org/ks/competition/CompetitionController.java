@@ -38,6 +38,10 @@ public class CompetitionController {
 		}
 		return mav;
 	}
+	@RequestMapping(value="/pom.do")
+	public String pom() {
+		return "common/pom";
+	}
 	@RequestMapping(value="/competitionAdminResultList.do")
 	public ModelAndView competitionAdminResult() {
 		ArrayList<Competition> list = competitionServiceimpl.competitionList();

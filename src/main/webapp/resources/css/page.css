@@ -9,5 +9,6 @@ section {
 	width: 1240px;
 	min-height: 100vh;
 	margin: 0 auto;
+	float:right;
 }
 
