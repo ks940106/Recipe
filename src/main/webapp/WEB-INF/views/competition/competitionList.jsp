@@ -33,7 +33,7 @@
                 <div id="cp_date">${competition.competitionDate}</div>
                 <div class="cp_contentsView">
                 	<div id="cp_contentsImg">
-                        <img src="../../../resources/upload/competition/${competition.competitionImg}">
+                        <img src="../../../resources/upload/competition/${competition.competitionImg}" width="800px;">
                     </div>
                     <div id="cp_contents">
                         ${competition.competitionContents}
