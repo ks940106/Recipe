@@ -41,8 +41,8 @@
 				<c:forEach items="${list}" var="c">
 					<tr>
 						<td>${c.competitionNo}</td>
-						<td><a href="competitionView.do?competitionNo=${c.competitionNo}">${c.competitionTitle }</a></td>
-						<td>${c.competitionDate }</td>
+						<td><a href="competitionView.do?competitionNo=${c.competitionNo}">${c.competitionTitle}</a></td>
+						<td>${c.competitionDate}</td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -50,6 +50,6 @@
 	</div>
 	</div>
 	</section>
-	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>

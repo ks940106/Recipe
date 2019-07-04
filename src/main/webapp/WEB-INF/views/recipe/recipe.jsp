@@ -132,63 +132,40 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;꿀을 조금 넣어주세요 ▷ 꿀이 없는 경우, 설탕 1스푼으로 대체 가능합니다.</span>
 
 
+            <div id="divStepArea" class="ui-sortable">
 
-            <div id="divStepItem_1" class="step" style="">
-                <p id="divStepNum_1" class="cont_tit2_1 ui-sortable-handle" style="cursor:pointer" data-original-title="" title="">Step1</p>
-                <div id="divStepText_1" style="display:inline-block">
-                    <textarea name="step_text[]" id="step_text_1" class="form-control step_cont" placeholder="예) 소고기는 기름기를 떼어내고 적당한 크기로 썰어주세요." style="height:160px; width:430px; resize:none;"></textarea>
-                </div>
-                <div id="divStepUpload_1" style="display:inline-block">
-                    <input type="hidden" name="step_no[]" id="step_no_1" value="">
-                    <input type="hidden" name="step_photo[]" id="step_photo_1" value="">
-                    <input type="hidden" name="new_step_photo[]" id="new_step_photo_1" value="">
-                    <input type="hidden" name="del_step_photo[]" id="del_step_photo_1" value="">
-                    <div class="img_up_list">
-                        <%--이미지 업로드--%>
-                        <div class="img_box">
-                            <input type="file" class="hide" accept="image/*" name="imgStep1" id="imgStep1" onchange="boardReg.imgSel(this, event)">
-                            <a href="#none" class="upload_btn" >
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div id="divStepBtn_1" class="step_btn" style="display: none;">
-                    <a href="javascript:void(0)"><span class="glyphicon glyphicon-chevron-up moveUp"></span></a>
-                    <a href="javascript:void(0)"><span class="glyphicon glyphicon-chevron-down moveDown"></span></a>
-                    <a href="javascript:adjustStep(1)"><b>맞춤</b></a>
-                    <a href="javascript:addStep(1)"><span class="glyphicon glyphicon-plus"></span></a>
-                    <a href="javascript:delStep(1)"><span class="glyphicon glyphicon-remove"></span></a>
-                </div>
             </div>
 
 
 
 
             <!-- step template -->
-            <div id="divStepTemplate" style="display:none">
-                <div id="divStepItem_STEP" class="step">
-                    <p id="divStepNum_STEP" class="cont_tit2_1" style="cursor:pointer">Step 1</p>
+            <div id="divStepTemplate" style="display: none">
+                <div id="divStepItem_STEP" class="step" style="">
+                    <p id="divStepNum_STEP" class="cont_tit2_1 ui-sortable-handle" style="cursor:pointer" data-original-title="" title="">Step</p>
                     <div id="divStepText_STEP" style="display:inline-block">
-                        <textarea name="step_text[]" id="step_text_STEP" class="form-control step_cont" placeholder="" style="height:160px; width:430px; resize:none;"></textarea>
+                        <textarea name="step_text[]" id="step_text_STEP" class="form-control step_cont" placeholder="예) 소고기는 기름기를 떼어내고 적당한 크기로 썰어주세요." style="height:160px; width:430px; resize:none;"></textarea>
                     </div>
                     <div id="divStepUpload_STEP" style="display:inline-block">
                         <input type="hidden" name="step_no[]" id="step_no_STEP" value="">
-                        <input type="hidden" name="step_photo[]" id="step_photo_STEP" value="">
-                        <input type="hidden" name="new_step_photo[]" id="new_step_photo_STEP" value="">
-                        <input type="hidden" name="del_step_photo[]" id="del_step_photo_STEP" value="">
-                        <div style="position:absolute;left:-3000px"><input type="file" name="q_step_file_STEP" id="q_step_file_STEP" file_gubun="step" accept="jpeg,png,gif" style="display:none;width:0px;height:0px;font-size:0px;" text=""></div>
-                        <div id="divStepPhotoBox_STEP" is_over="0">
-                            <img id="stepPhotoHolder_STEP" onclick="browseStepFile(__STEP)" src="${pageContext.request.contextPath}/resources/img/recipe/pic_none2.gif" width="160" height="160" style="cursor:pointer">
+                        <%--<input type="hidden" name="step_photo[]" id="step_photo_STEP" value="">--%>
+                        <%--<input type="hidden" name="new_step_photo[]" id="new_step_photo_STEP" value="">--%>
+                        <%--<input type="hidden" name="del_step_photo[]" id="del_step_photo_STEP" value="">--%>
+                        <div class="img_up_list" style="display: inline-block;vertical-align: middle; float: none; margin: 0;">
+                            <%--이미지 업로드--%>
+                            <div class="img_box" style="width: 160px;height: 160px;">
+                                <input type="file" class="hide" accept="image/*" name="step_photo" id="step_photo_STEP" onchange="boardReg.imgSel(this, event)">
+                                <a href="javascript:void(0);" onclick="uploadStepImg(this);" class="upload_btn" style="background: url('${pageContext.request.contextPath}/resources/img/recipe/pic_none2.gif') no-repeat;" >
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <div id="divStepBtn_STEP" class="step_btn" style="display:none">
+                    <div id="divStepBtn_STEP" class="step_btn" style="display: none;">
                         <a href="javascript:void(0)"><span class="glyphicon glyphicon-chevron-up moveUp"></span></a>
                         <a href="javascript:void(0)"><span class="glyphicon glyphicon-chevron-down moveDown"></span></a>
-                        <a href="javascript:adjustStep(__STEP)"><b>맞춤</b></a>
-                        <a href="javascript:addStep(__STEP)"><span class="glyphicon glyphicon-plus"></span></a>
-                        <a href="javascript:delStep(__STEP)"><span class="glyphicon glyphicon-remove"></span></a>
+                        <a href="javascript:addStep(__Step)"><span class="glyphicon glyphicon-plus"></span></a>
+                        <a href="javascript:delStep(__Step)"><span class="glyphicon glyphicon-remove"></span></a>
                     </div>
-
                 </div>
             </div>
             <!--/step template-->
@@ -211,4 +188,5 @@
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 <script type="text/javascript" src="/resources/js/recipe.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </html>
