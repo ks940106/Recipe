@@ -10,7 +10,14 @@
 		addr1 as addr1,
 		addr2 as addr2,
 		phone as phone,
-		Member_img as MemberImg
+		Member_img as MemberImg,
+		zip_code as zipCode
 		from member where id=#{id} and pw=#{pw}
+	</select>
+	<select id="emailCheck" parameterType="String" resultType="String">
+		select id from member where id=#{id}
+	</select>
+	<select id="nickCheck" parameterType="String" resultType="String">
+		select nickname from member where nickname=#{nick}
 	</select>
 </mapper>

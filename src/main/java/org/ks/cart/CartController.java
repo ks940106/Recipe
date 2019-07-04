@@ -2,6 +2,7 @@ package org.ks.cart;
 
 import java.util.ArrayList;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
 import org.ks.cart.vo.Cart;
@@ -49,4 +50,19 @@ public class CartController {
 			return "common/msg";
 		}
 	}
+	@RequestMapping(value="order.do")
+	public ModelAndView order(HttpServletRequest request) {
+		String[] cartNo = request.getParameterValues("cartNo");
+		ArrayList<Cart> list = cartServiceImpl.orderListCart(cartNo);
+		ModelAndView mav = new ModelAndView();
+		if(!list.isEmpty()) {
+			mav.addObject("list",list);
+			mav.setViewName("order/order");
+		}else {
+			mav.setViewName("order/order"); //장바구니가 하나도 없을때 뷰페이지에서 if문으로 처리해준다.
+		}
+		return mav;
+	}
+	//관리자 페이지용 소스 
+	
 }

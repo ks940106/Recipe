@@ -16,4 +16,16 @@ public class MemberDaoImpl implements MemberDAO{
 		Member m1= sqlSession.selectOne("member.login",m);
 		return m1;
 	}
+	public String emailCheck(String id) {
+		
+		String idck = sqlSession.selectOne("member.emailCheck",id);
+		System.out.println(idck);
+		return idck;
+	}
+	@Override
+	public String nickCheck(String nick) {
+		String nickCh=sqlSession.selectOne("member.nickCheck",nick);
+		System.out.println(nickCh);
+		return nickCh;
+	}
 }

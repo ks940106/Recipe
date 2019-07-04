@@ -6,11 +6,29 @@ public class Member {
 	private String name;
 	private String nickname;
 	private String gender;
-	private String add1;
+	private String addr1;
 	private String addr2;
 	private String phone;
 	private String memberImg;
-	
+	private String zipCode;
+	public Member() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Member(String id, String pw, String name, String nickname, String gender, String addr1, String addr2,
+			String phone, String memberImg, String zipCode) {
+		super();
+		this.id = id;
+		this.pw = pw;
+		this.name = name;
+		this.nickname = nickname;
+		this.gender = gender;
+		this.addr1 = addr1;
+		this.addr2 = addr2;
+		this.phone = phone;
+		this.memberImg = memberImg;
+		this.zipCode = zipCode;
+	}
 	public String getId() {
 		return id;
 	}
@@ -41,11 +59,11 @@ public class Member {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public String getAdd1() {
-		return add1;
+	public String getAddr1() {
+		return addr1;
 	}
-	public void setAdd1(String add1) {
-		this.add1 = add1;
+	public void setAddr1(String addr1) {
+		this.addr1 = addr1;
 	}
 	public String getAddr2() {
 		return addr2;
@@ -65,23 +83,13 @@ public class Member {
 	public void setMemberImg(String memberImg) {
 		this.memberImg = memberImg;
 	}
-	public Member(String id, String pw, String name, String nickname, String gender, String add1, String addr2,
-			String phone, String memberImg) {
-		super();
-		this.id = id;
-		this.pw = pw;
-		this.name = name;
-		this.nickname = nickname;
-		this.gender = gender;
-		this.add1 = add1;
-		this.addr2 = addr2;
-		this.phone = phone;
-		this.memberImg = memberImg;
+	public String getZipCode() {
+		return zipCode;
 	}
-	public Member() {
-		super();
-		// TODO Auto-generated constructor stub
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
 	}
+	
 	
 	
 }

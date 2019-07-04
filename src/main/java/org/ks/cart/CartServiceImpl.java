@@ -28,4 +28,10 @@ public class CartServiceImpl implements CartService {
 		return result;
 	}
 
+	@Override
+	public ArrayList<Cart> orderListCart(String[] cartNo) {
+		
+		return (ArrayList<Cart>)(cartDAOImpl.orderLisgCart(cartNo));
+	}
+
 }
