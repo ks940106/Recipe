@@ -9,12 +9,14 @@ public class Order {
 	private int recipeNo;
 	private int orderCount;
 	private String orderState;
+	private String zipCode;
+	private String phone;
 	public Order() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public Order(int orderNo, String orderCode, String id, String addr1, String addr2, int recipeNo, int orderCount,
-			String orderState) {
+			String orderState, String zipCode, String phone) {
 		super();
 		this.orderNo = orderNo;
 		this.orderCode = orderCode;
@@ -24,6 +26,8 @@ public class Order {
 		this.recipeNo = recipeNo;
 		this.orderCount = orderCount;
 		this.orderState = orderState;
+		this.zipCode = zipCode;
+		this.phone = phone;
 	}
 	public int getOrderNo() {
 		return orderNo;
@@ -73,5 +77,18 @@ public class Order {
 	public void setOrderState(String orderState) {
 		this.orderState = orderState;
 	}
+	public String getZipCode() {
+		return zipCode;
+	}
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	
 	
 }

@@ -2,7 +2,12 @@
  * 
  */
 
-function payment(id,name,phone) {
+function payment(id,name,phone,zibCode,addr1,addr2) {
+				var recipeCount = $("[name='recipeCount']");
+				var noarray1 = new Array();
+				for(var i=0;i<recipeCount.length;i++){
+					noarray1[i] = recipeCount.eq(i).val();
+				}
 				var recipeNo = $("[name='recipeNo']");
 				var noarray = new Array();
 				for(var i=0;i<recipeNo.length;i++){
@@ -20,7 +25,7 @@ function payment(id,name,phone) {
 				 buyer_email : id,	//구매자 email
 				 buyer_name	: name,					//구매자 이름
 				 buyer_tel	: phone,
-				 buyer_addr : '서울',
+				 buyer_addr : addr1+addr2,
 				 buyer_postcode : '123-456'				//우편번호
 				},function(rsp){
 					if(rsp.success){
@@ -34,7 +39,9 @@ function payment(id,name,phone) {
 						
 					}else{
 						$('#paymentResult').html('에러내용 :' +rsp.error_msg+date);
-						location.href="/successOrder.do?recipe="+noarray
+						
+						location.href="/successOrder.do?recipe="+noarray+"&id="+id+"&orderCode="+date+"&zibCode="+zibCode+
+									"&addr1="+addr1+"&addr2="+addr2+"&phone="+phone+"&recipeCount="+noarray1
 					}
 				});
 			};
