@@ -24,21 +24,12 @@
  	<jsp:include page="/WEB-INF/views/common/adminHeader.jsp" /> 
 <!-- 	<!-- header Fin --> 
 	<section>
-<<<<<<< HEAD
     <div class="wrapper">
         <nav class="lnb_wrap">
             <div class="lnb_con">싱싱레시피 관리자 페이지</div>
         </nav>
         <div class="contents">싱싱레시피 관리자 페이지</div>
-       
-    </div>
-=======
-	<div class="section_content">
-		<div><a href="/competitionWrite.do">요리대회</a></div>
-		<div><a href="/lmr.do">지난 이달의 레시피 1,2,3 등 목록</a></div>
-		<div><a href="/ccInsertPage.do">쿠킹클래스 등록</a></div>
-	</div>
->>>>>>> a8caf3f6d0a0ac23d0e0251fba77405ef284c662
+  	</div>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>

@@ -35,9 +35,9 @@
             <img src="../resources/img/admin/competition_icon.png" class="ico set"  width="50px;">
             <div class="menu_text">요리대회</div>
         </a>
-        <a href="stock_index.html" class="menu_btn">
-            <img src="../resources/img/admin/class_icon.png" class="ico set"  width="50px;">
-            <div class="menu_text">쿠킹 클래스</div>
+        <a href="/lmr.do" class="menu_btn">
+            <img src="../resources/img/admin/tmr_icon.png" class="ico set"  width="50px;">
+            <div class="menu_text">이달의 레시피</div>
         </a>
         <a href="stock_index.html" class="menu_btn">
             <img src="../resources/img/admin/board_icon.png" class="ico set"  width="50px;">

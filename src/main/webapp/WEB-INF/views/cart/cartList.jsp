@@ -59,9 +59,6 @@
 					  </table>
 				  <button type="submit" >주문하기</button>
 				</form>
-				  <h3>총결제금액<span id="countSpan"></span>원</h3>
-					<button type="button" id="payment" >결제하기</button>
-					<p id="paymentResult"></p>
 			</div>
 		</div>
 	</section>

@@ -16,59 +16,33 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<section>
 	<div class="section_content">
-		<br>
-		<p id="tmr">이달의 레시피</p>
-		<br>
+		<h1>이달의 레시피</h1>
+		<button type="button" onclick="location.href='/c.do'"></button>
 		<hr>
-		<div style="height:25px; text-align:center; font-size:14pt; font-weight:bold;">
-			<div style="width:15%; float:left;">순위</div>
-			<div style="width:10%; float:left;">레시피 사진</div>
-			<div style="width:30%; float:left;">레시피 제목</div>
-			<div style="width:15%; float:left;">레시피 작성자</div>
-			<div style="width:15%; float:left;">추천수</div>
-			<div style="width:15%; float:left;">조회수</div>
-		</div>
+			순위 레시피 사진 레시피 제목 레시피 작성자 추천수 조회수
 		<hr>
-		
 		<c:forEach items="${tpd.list }" var ="vo" varStatus="i">
-		<div style="height:100px; text-align: center;" id="tmrDiv">
-			<div style="width:15%">
 				<c:choose>
 					<c:when test="${tpd.start+i.index eq 1}">
-						<span class="rank" id="rank${tpd.start+i.index }">${tpd.start+i.index }</span>
+						<span id="rank${tpd.start+i.index }">${tpd.start+i.index }</span>
 					</c:when>
 					<c:when test="${tpd.start+i.index eq 2}">
-						<span class="rank" id="rank${tpd.start+i.index }">${tpd.start+i.index }</span>
+						<span id="rank${tpd.start+i.index }">${tpd.start+i.index }</span>
 					</c:when>
 					<c:when test="${tpd.start+i.index eq 3}">
-						<span class="rank" id="rank${tpd.start+i.index }">${tpd.start+i.index }</span>
+						<span id="rank${tpd.start+i.index }">${tpd.start+i.index }</span>
 					</c:when>
 					<c:otherwise>
-						<span class="rank">${tpd.start+i.index }</span>
+						<span>${tpd.start+i.index }</span>
 					</c:otherwise>
 				</c:choose>
-			</div>
-			<div style="padding-top:10px; width:10%">
-			<a href="#"><img src="/../resources/img/tmr/b_01.png" id="recipeImg"></a>
-			</div>
-			<div style="width:30%" class="recipeFont">
-			<a href="#">${vo.recipeTitle }</a>
-			</div>
-			<div style="width:15%" class="recipeFont">
-			${vo.recipeWriter }
-			</div>
-			<div style="width:30%" id="recipeInfo">
-				<div style="width:50%" style="float:left;">
-					<img src="/../resources/img/tmr/recommend.png" id="recipeInfoImg"> ${vo.recipeLike }
-				</div>
-				<div style="width:50%" style="float:left;">
-					<img src="/../resources/img/tmr/view.png" id="recipeInfoImg"> ${vo.recipeHit }
-				</div>
-			</div>
-		</div>
+			<a href="#"><img src="${vo.recipeMainimg }"></a> 
+			<a href="#">${vo.recipeTitle }</a> ${vo.recipeWriter } 
+			<img src="/../resources/img/tmr/recommend.png">${vo.recipeLike }
+			<img src="/../resources/img/tmr/view.png"> ${vo.recipeHit }
 		<hr>
 		</c:forEach>
-		<div style="margin-bottom:75px;margin-top:25px; text-align:center;">${tpd.pageNavi }</div>
+		<div style="text-align:center;">${tpd.pageNavi }</div>
 		</div>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
