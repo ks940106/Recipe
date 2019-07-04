@@ -70,4 +70,9 @@ public class TMRContoller {
 		model.addAttribute("lpd",lpd);
 		return "admin/lmr/lmrPage";
 	}
+	
+	@RequestMapping(value="/c.do")
+	public String c() {
+		return "tmr/c";
+	}
 }

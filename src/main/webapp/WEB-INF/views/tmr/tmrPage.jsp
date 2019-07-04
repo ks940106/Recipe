@@ -17,6 +17,7 @@
 	<section>
 	<div class="section_content">
 		<h1>이달의 레시피</h1>
+		<button type="button" onclick="location.href='/c.do'"></button>
 		<hr>
 			순위 레시피 사진 레시피 제목 레시피 작성자 추천수 조회수
 		<hr>
