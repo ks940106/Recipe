@@ -33,6 +33,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class MemberController {
+
 	@Autowired
 	@Qualifier(value="memberServiceImpl")
 	private MemberService memberService;
@@ -258,5 +259,5 @@ public class MemberController {
 	}
 
 	
-}
+
 

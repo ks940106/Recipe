@@ -1,40 +1,44 @@
 @charset "UTF-8";
-#tmr{
-	color : #1f6054; 
-	font-weight: bolder;
-	font-size : 35pt;
+#cp_table_tmr{
+	 width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    margin-top: 50px;
+    border-top: 3px solid #313131;
+    color: #222;
 }
-#tmrDiv div{
-	line-height: 100px;
-	float:left;
+#cp_table_tmr th{
+	padding: 15px 0 15px 0;  
+    font-weight: lighter;
+    border: 1px solid #ccc;
+    background-color: #f0eef1;
 }
-hr{
-	border:2px solid #1f6054;
+#cp_table_tmr th:first-child{
+    width: 90px;
 }
-#rank1{color:yellow;}
-#rank2{color:red;}
-#rank3{color:blue;}
-.rank{ font-size : 40pt;
-		font-weight: bold;
-		}
-#recipeImg{
-	width:80px;
-	height:80px;
-	border-radius: 50px;
+#cp_table_tmr th:nth-child(2){
+    width: 60px;
 }
-.recipeFont{
-	font-size: 15pt;
-	font-weight: bold;
+#cp_table_tmr th:nth-child(3){
+    width: 100px;
 }
-
-#recipeInfoImg{
-	width:30px;
-	height:30px;
+#cp_table_tmr th:nth-child(4){
+	overflow : hidden;
+	text-overflow:ellipsis;
 }
-.pageBtn{font-weight: bold;
-		font-size: 30pt;
-		}
-.selectPage{font-weight: bold;
-		font-size: 30pt;}
-.pageNum{font-weight: bold;
-		font-size: 30pt;}
+#cp_table_tmr th:last-child{
+    width: 200px;
+    overflow : hidden;
+    text-overflow:ellipsis;
+}
+#cp_table_tmr tr{
+    border: 1px solid #ccc;
+    padding: 15px 0 15px 0;
+}
+#cp_table_tmr td{
+	border: 1px solid #ccc;
+    line-height: 45px;
+}
+.pageNo{} 
+.pageSelected{}
+.pageBtn{}
