@@ -53,6 +53,7 @@
 						<c:forEach items="${list }" var="c" varStatus="i">
 							<tr>
 								<input type="hidden" name="recipeNo" value="${c.recipeNo }">
+								<input type="hidden" name="recipeCount" value="${c.recipeCount }">
 								<td>${i.count }</td>
 								<td>${c.id }</td>
 								<td>${c.recipeTitle }</td>
@@ -72,7 +73,10 @@
 						
 				총결제금액<span id="countSpan"><c:out value="${total }"/></span>원
 			</h3>
-			<button type="button"  onclick="payment('${sessionScope.member.id}','${sessionScope.member.name}','${sessionScope.member.phone}')">결제하기</button>
+			<button type="button"  onclick="payment('${sessionScope.member.id}','${sessionScope.member.name}','${sessionScope.member.phone}',
+														'${sessionScope.member.zipCode}',
+														'${sessionScope.member.addr1 }',
+														'${sessionScope.member.addr2 }')">결제하기</button>
 			<p id="paymentResult"></p>
 		</div>
 	</div>

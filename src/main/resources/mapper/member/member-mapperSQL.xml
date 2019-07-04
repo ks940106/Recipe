@@ -20,4 +20,7 @@
 	<select id="nickCheck" parameterType="String" resultType="String">
 		select nickname from member where nickname=#{nick}
 	</select>
+	<insert id="insertMember" parameterType="member">
+		insert into member values(#{id},#{pw},#{name},#{nickname},#{gender},#{addr1},#{addr2},#{phone},#{memberImg},#{zipCode})
+	</insert>
 </mapper>
