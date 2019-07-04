@@ -28,4 +28,12 @@ public class MemberDaoImpl implements MemberDAO{
 		System.out.println(nickCh);
 		return nickCh;
 	}
+	@Override
+	public int insertMember(Member m) {
+		System.out.println(m.getId());
+		System.out.println(m.getMemberImg());
+		System.out.println(m.getZipCode());
+		int result = sqlSession.insert("member.insertMember",m);
+		return result;
+	}
 }

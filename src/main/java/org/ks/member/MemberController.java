@@ -1,7 +1,12 @@
 ﻿package org.ks.member;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Properties;
 import java.util.Random;
 
@@ -86,8 +91,9 @@ public class MemberController {
 	}
 
 	//회원가입
-	@RequestMapping(value="/insertMember.do")
-	public void insertMember(HttpServletRequest request,@RequestParam MultipartFile fileUpload) {
+	/*@RequestMapping(value="/insertMember.do")
+	public String insertMember(HttpServletRequest request,@RequestParam MultipartFile fileUpload) {
+		System.out.println("컨트롤러");
 		String id=request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String name=request.getParameter("name");
@@ -96,11 +102,46 @@ public class MemberController {
 		String addr2=request.getParameter("addr2");
 		String phone = request.getParameter("phone");
 		String gender = request.getParameter("gender");
-		String memberImg = request.getParameter("memberImg");
-		String zipCode=request.getParameter("zipCode");
-		Member m = new Member(id, pw, name, nickname, gender, addr1, addr2, phone, memberImg,zipCode);
 		
-	}
+		String zipCode=request.getParameter("zipCode");
+		//파일 업로드
+		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/member");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+		Date d = new Date();
+		String date = sdf.format(d);
+		String originName = fileUpload.getOriginalFilename();
+		String onlyFileName = originName.substring(0,originName.indexOf('.'));
+		String extension = originName.substring(originName.indexOf('.'));
+		String filePath = onlyFileName + "_"+ date + extension;
+		String memberImg = savePath+"/" + filePath;
+		Member m = new Member(id, pw, name, nickname, gender, addr1, addr2, phone,memberImg,zipCode);
+		int result = memberService.insertMember(m);
+		if(!fileUpload.isEmpty()) {
+			byte[] bytes;
+			try {
+				bytes = fileUpload.getBytes();
+				File f = new File(memberImg);		
+				FileOutputStream fos = new FileOutputStream(f);
+				BufferedOutputStream bos = new BufferedOutputStream(fos);
+				bos.write(bytes);
+				bos.close();
+				System.out.println("업로드성공성공!!!");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		String view="";
+		if(result>0) {
+			request.setAttribute("msg", "회원가입 성공");
+			request.setAttribute("loc", "/login.do");
+			view = "common/msg";
+		}else {
+			request.setAttribute("msg", "회원가입 실패");
+			request.setAttribute("loc", "/insert.do");
+			view = "common/msg";
+		}return view;
+	}*/
 	//이메일 중복확인
 	@RequestMapping(value="emailCheck.do")
 	public void emailCheck (HttpServletRequest request,HttpServletResponse response) throws IOException{
@@ -126,11 +167,12 @@ public class MemberController {
 			Y.print("N");
 		}
 	}
+	//이메일 인증
 	@RequestMapping(value="/emailcertification.do")
 	public void emailcertification(HttpServletRequest request,HttpServletResponse response) {
 		String id = request.getParameter("email");
 		System.out.println("메일 인증");
-		String host = "smtp.naver.com"; // 네이버일 경우 네이버 계정, gmail경우 gmail 계정 
+		String host = "smtp.googlemail.com"; // 네이버일 경우 네이버 계정, gmail경우 gmail 계정 
 
 	      final String user = "fghij7410@gmail.com"; 
 	      final String password = "user1404";       
@@ -139,7 +181,9 @@ public class MemberController {
 	      props.put("mail.smtp.host", host); 
 	      props.put("mail.smtp.port", 587); 
 	      props.put("mail.smtp.auth", "true");
-	      
+	      props.put("mail.smtp.starttls.enable","true");
+
+	  
 	      Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() { 
 	          protected PasswordAuthentication getPasswordAuthentication() { 
 	             return new PasswordAuthentication(user, password); 
@@ -157,8 +201,8 @@ public class MemberController {
 	       Random random = new Random();
 	       String num = new String();
 	       for(int i =0;i<7;i++) {
-	          num+=String.valueOf(random.nextInt(10));
-	          System.out.println(num);
+	          num+=String.valueOf(random.nextInt(9)+1);
+	    
 	          
 	       }
 	       // 메일 내용 
@@ -181,7 +225,7 @@ public class MemberController {
 	 				"        저희 싱싱레시피를 이용해 주셔서 감사합니다.<br><br>\r\n" + 
 	 				"        \r\n" + 
 	 				"        회원님의 본인인증 키는 <span style=\"font-size:20px;\"> "+num+" </span>입니다.<br><br>\r\n" + 
-	 				"        보안을 위해 이 링크는 전송된 후 2분이 지나면 만료됩니다. 암호화 관련된 문제가 계속 발생 하는경우 <a href=\"http://192.168.10.58/fAQ\">KS Sports Football 고객센터로</a> 문의하세요.<br><br>\r\n" + 
+	 				"        보안을 위해 이 링크는 전송된 후 2분이 지나면 만료됩니다.<br><br>\r\n" + 
 	 				"        감사합니다. <br>\r\n" + 
 	 				"       싱싱레시피 \r\n" + 
 	 				"    </p>\r\n" + 
@@ -192,7 +236,7 @@ public class MemberController {
 	       // send the message 
 	       Transport.send(message); 
 	       System.out.println("Success Message Send"); 
-	       RequestDispatcher rd = request.getRequestDispatcher("/views/login/insert2.jsp");
+	       RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/member/emailcertification.jsp");
 	       request.setAttribute("num", num);
 	       try {
 			rd.forward(request, response);
@@ -206,7 +250,8 @@ public class MemberController {
 	       } catch (MessagingException e) { 
 	          e.printStackTrace(); 
 	          } 
-	       }
+	    }
+	
 	@RequestMapping(value="/mypage.do")
 	public String mypage() {
 		return "member/mypage";

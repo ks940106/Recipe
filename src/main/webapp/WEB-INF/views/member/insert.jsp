@@ -16,7 +16,7 @@
 	</div>
 	<div class="container_etc" style="width: 460px;">
 		<h2>회원가입</h2>
-		<form name="form_insert" id="frmInsert" method="post" action="/insertMember.do" autocomplete="off" onsubmit="return doSubmit()" enctype="multipart/form-data">
+		<form name="form_insert" id="frmInsert" method="post" action="/insertMember.do" onsubmit="return doSubmit()" enctype="multipart/form-data">
 			<input type="hidden" name="q_mode" value="insert"> 
 				<input type="hidden" name="q_path" value="">
 				
@@ -67,7 +67,7 @@
 				<input type="text" class="form-control" disabled=""> 
 				<span id="genderMsg" style="display: none;"></span>
 			</div>
-			<input type="file" id="memberImg" accept=".jpg,.jpeg,.png">
+			<input type="file" id="fileUpload" name="fileUpload" accept=".jpg,.jpeg,.png">
 			<input type="hidden" name="frm[pro_tg_gender]" id="pro_tg_gender">
 			<button type="submit" class="btn btn-primary btn-block btn-lg">회원가입</button>
 		</form>
@@ -96,7 +96,7 @@ function sample6_execDaumPostcode() {
                 addr = data.jibunAddress;
             }
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
-            document.getElementById('zipcode').value = data.zonecode;
+            document.getElementById('zipCode').value = data.zonecode;
             document.getElementById("addr1").value = addr;
             // 커서를 상세주소 필드로 이동한다.
             document.getElementById("addr2").focus();
@@ -129,6 +129,7 @@ function EmailCheck(){
 						$("#idMsg").html("중복된 이메일입니다");
 						$("#idMsg").css("display", "block");
 						$("#emailcertification").prop("disabled",true);
+						return;
 					}
 				},
 				error : function () {
@@ -142,7 +143,7 @@ function EmailCheck(){
 		var email = $("#id").val();
 		console.log(email);
 		var url="/emailcertification.do";
-		var pop=window.opne("emailCheck.jsp","emailcertification","width=400,height=300");
+		var pop=window.open("emailcertification.jsp","emailcertification","width=400,height=300");
 		pop.location.href=url+"?email="+email;
 	})
 	
@@ -157,6 +158,7 @@ function EmailCheck(){
 		if (!pwchk.test(pw)) {
 			$("#pwMsg").html("패스워드는 영어,숫자,특수문자 포함 6~12글자 입니다");
 			$("#pwMsg").css("display", "block")
+			return;
 		}
 	}
 	//비밀번호확인
@@ -170,6 +172,7 @@ function EmailCheck(){
 		if (pw_check != pw) {
 			$("#pwMsg2").html("패스워드와 패스워드 확인이 다릅니다");
 			$("#pwMsg2").css("display", "block");
+			return;
 		}
 	}
 	//닉네임 중복체크
@@ -179,6 +182,7 @@ function EmailCheck(){
 		if(!nickname){
 			$("#nickMsg").html("닉네임을 입력해주세요");
 			$("#nickMsg").css("display","block");
+			return;
 		}
 		if(nickname){
 			console.log(nickname);
@@ -193,6 +197,7 @@ function EmailCheck(){
 					}else{
 						$("#nickMsg").html("사용불가능한 닉네임 입니다");
 						$("#nickMsg").css("display","block");
+						return;
 					}
 				},
 				error :function(){
@@ -202,6 +207,21 @@ function EmailCheck(){
 		}
 	}
 	
+	function doSubmit(){
+		console.log("서브밋");
+		if(!EmailCheck){
+			EmailCheck();
+			return false;
+		}
+		if(!chkPasswd1){
+			chkPasswd1();
+			return false;
+		}
+		if(!chkNick){
+			chkNick();
+			return false;
+		}
+	}
  	
  	
 </script>
