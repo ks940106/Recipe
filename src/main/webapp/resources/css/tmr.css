@@ -1,40 +1,4 @@
 @charset "UTF-8";
-#tmr{
-	color : #1f6054; 
-	font-weight: bolder;
-	font-size : 35pt;
-}
-#tmrDiv div{
-	line-height: 100px;
-	float:left;
-}
-hr{
-	border:2px solid #1f6054;
-}
-#rank1{color:yellow;}
-#rank2{color:red;}
-#rank3{color:blue;}
-.rank{ font-size : 40pt;
-		font-weight: bold;
-		}
-#recipeImg{
-	width:80px;
-	height:80px;
-	border-radius: 50px;
-}
-.recipeFont{
-	font-size: 15pt;
-	font-weight: bold;
-}
-
-#recipeInfoImg{
-	width:30px;
-	height:30px;
-}
-.pageBtn{font-weight: bold;
-		font-size: 30pt;
-		}
-.selectPage{font-weight: bold;
-		font-size: 30pt;}
-.pageNum{font-weight: bold;
-		font-size: 30pt;}
+.pageNo{} 
+.pageSelected{}
+.pageBtn{}

@@ -95,9 +95,9 @@ public class TMRServiceImpl implements TMRService{
 		int i = 1;
 		while( !(i++>pageNaviSize || pageNo>totalPage) ) { //둘 중 하나라도 만족하면 수행하지 않겠다
 			if(reqPage == pageNo) {
-				pageNavi += "<span class='selectPage'>"+pageNo+"</span>"; //4페이지 상태에서 4페이지를 누를수가 없도록 하기 위해서 a태그 없애줌 
+				pageNavi += "<span class='pageSelected'>"+pageNo+"</span>"; //4페이지 상태에서 4페이지를 누를수가 없도록 하기 위해서 a태그 없애줌 
 			}else {
-		pageNavi += "<a class='pageNum' href='/lmr.do?reqPage="+pageNo+"'>"+pageNo+"</a>";
+		pageNavi += "<a class='pageNo' href='/lmr.do?reqPage="+pageNo+"'>"+pageNo+"</a>";
 			}
 			pageNo++;
 		}

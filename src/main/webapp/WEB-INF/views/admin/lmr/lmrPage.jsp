@@ -7,47 +7,40 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>싱싱레시피 지난 이달의 레시피</title>
 
-<link href="../resources/css/import.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="../resources/css/import.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/ui.css">
+	<link rel="stylesheet" type="text/css" href="../resources/css/style.css">
+	<link rel="stylesheet" type="text/css" href="../resources/css/jquery-ui.min.css">
+	<script src="../resources/js/jquery-3.1.1.min.js"></script>
+	<script src="../resources/js/jquery-ui-1.12.1.js"></script>
+	<script src="../resources/js/ui.js"></script>
+	<script src="../resources/js/search.js"></script>
+	<script src="../resources/js/include.js"></script>
+	
 <link href="../resources/css/tmr.css" rel="stylesheet" />
 
 <script type="text/javascript" src="../resources/js/tmr.js" /> 
 </head>
 <body>
-	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<jsp:include page="/WEB-INF/views/common/adminHeader.jsp" /> 
 	<section>
+	<div class="wrapper">
+	        <nav class="lnb_wrap">
+	             <jsp:include page="/WEB-INF/views/common/competition_nav.jsp"/>
+	        </nav>
 	<div class="section_content">
-		<br>
-		<h1 id="tmr">지난 이달의 레시피</h1>
-		<br>
-		<hr>
+		<h1>지난 이달의 레시피</h1>
 		<hr>
 		<c:forEach items="${lpd.list }" var="vo">
-			<div style="font-size : 15pt;font-weight: bold; height:100px;">
-			<div style="float:left; width:13%; font-size: 20pt; line-height:100px;">${vo.recipeDate }</div>
-			<div style="float:left; width:29%;">
-				<div style="float:left; width:8%; font-size: 20pt; line-height:100px;">1</div>
-				<div style="float:left; width:24%; padding-top: 10px;"><a href="#"><img src="/../resources/img/tmr/b_01.png" id="recipeImg"></a></div>
-				<div style="float:left; width:68%; padding-top: 5px; overflow:hidden; height:75px; text-overflow:ellipsis"><a href="#">${vo.recipeTitle1 }</a></div>
-				<div style="float:left; width:68%; overflow:hidden; height:25px; text-overflow:ellipsis">${vo.recipeWriter1 }</div>
-			</div>
-			<div style="float:left; width:29%;">
-				<div style="float:left; width:8%; font-size: 20pt; line-height:100px;">2</div>
-				<div style="float:left; width:24%; padding-top: 10px;"><a href="#"><img src="/../resources/img/tmr/b_01.png" id="recipeImg"></a></div>
-				<div style="float:left; width:68%; padding-top: 5px; overflow:hidden; height:75px; text-overflow:ellipsis"><a href="#">${vo.recipeTitle2 }</a></div>
-				<div style="float:left; width:68%; overflow:hidden; height:25px; text-overflow:ellipsis">${vo.recipeWriter2 }</div>
-			</div>
-			<div style="float:left; width:29%;">
-				<div style="float:left; width:8%; font-size: 20pt; line-height:100px;">3</div>
-				<div style="float:left; width:24%; padding-top: 10px;"><a href="#"><img src="/../resources/img/tmr/b_01.png" id="recipeImg"></a></div>
-				<div style="float:left; width:68%; padding-top: 5px; overflow:hidden; height:75px; text-overflow:ellipsis"><a href="#">${vo.recipeTitle3 }</a></div>
-				<div style="float:left; width:68%; overflow:hidden; height:25px; text-overflow:ellipsis">${vo.recipeWriter3 }</div>
-			</div> 
-			</div>
+			${vo.recipeDate } <br>
+			1등 : <a href="#"><img src="${vo.recipeImg1 }"></a> <a href="#">${vo.recipeTitle1 }</a> ${vo.recipeWriter1 }<br>
+			2등 : <a href="#"><img src="${vo.recipeImg2 }"></a> <a href="#">${vo.recipeTitle2 }</a> ${vo.recipeWriter2 }<br>
+			3등 : <a href="#"><img src="${vo.recipeImg3 }"></a> <a href="#">${vo.recipeTitle3 }</a> ${vo.recipeWriter3 }<br>
 		<hr>
 		</c:forEach>
-		<div style="margin-bottom:75px;margin-top:25px; text-align:center;">${lpd.pageNavi }</div>
-		</div>
 	</div>
+	</div>
+	<center>${lpd.pageNavi }</center>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
