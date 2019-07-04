@@ -405,3 +405,8 @@ section.memberinsert .btn-primary {
     background-color: #74b243;
     border: 1px solid #497725;
 }
+section.memberinsert .btn-success {
+    color: #fff;
+    background-color: #4a89dc;
+    border: 1px solid #497725;
+}

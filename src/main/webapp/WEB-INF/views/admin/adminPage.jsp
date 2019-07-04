@@ -36,6 +36,7 @@
 	<div class="section_content">
 		<div><a href="/competitionWrite.do">요리대회</a></div>
 		<div><a href="/lmr.do">지난 이달의 레시피 1,2,3 등 목록</a></div>
+		<div><a href="/ccInsertPage.do">쿠킹클래스 등록</a></div>
 	</div>
 >>>>>>> a8caf3f6d0a0ac23d0e0251fba77405ef284c662
 	</section>
