@@ -130,3 +130,16 @@
     padding: 10px;
     color: #fff;
 }
+.cp_admin_table{
+    width: 800px;
+    
+}
+.cp_admin_table tr:nth-child(2n+1){
+    background: #f1f1f1;    
+}
+.cp_admin_table tr td:first-child{
+    width: 677px;
+}
+.cp_th{
+    padding: 0px;
+}

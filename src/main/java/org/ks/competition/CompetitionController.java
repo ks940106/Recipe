@@ -38,9 +38,29 @@ public class CompetitionController {
 		}
 		return mav;
 	}
-	@RequestMapping(value="/competitionWrite.do")
+	@RequestMapping(value="/competitionAdminResultList.do")
+	public ModelAndView competitionAdminResult() {
+		ArrayList<Competition> list = competitionServiceimpl.competitionList();
+		ModelAndView mav = new ModelAndView();
+		if(!list.isEmpty()) {
+			mav.addObject("list",list);
+			mav.setViewName("admin/competition/competitionAdmin_ResultList");
+		}else {
+			mav.setViewName("admin/competition/competitionResultListError");
+		}
+		return mav;
+	}
+	@RequestMapping(value="/competitionAdmin_ResultList.do")
+	public String competitionAdminResultList() {
+		return "/admin/competition/competitionAdmin_ResultList";
+	}
+	@RequestMapping(value="/competitionAdmin.do")
+	public String competitionAdmin() {
+		return "/admin/competition/competitionAdmin";
+	}
+	@RequestMapping(value="/competitionAdminWrite.do")
 	public String competitionWrite() {
-		return "competition/competitionWritePage";
+		return "/admin/competition/competitionWritePage";
 	}
 	@RequestMapping(value="/competitionWritePage.do")
 	public String upload(HttpServletRequest request, Competition c, @RequestParam MultipartFile fileUpload) {
@@ -86,6 +106,12 @@ public class CompetitionController {
 		Competition c = competitionServiceimpl.competitionView(competitionCheck);
 		model.addAttribute("competition",c);
 		return "competition/competitionList";
+	}
+	@RequestMapping(value="/competitionAdminList.do")
+	public String competitionAdminList(@RequestParam String competitionCheck, Model model) {
+		Competition c = competitionServiceimpl.competitionView(competitionCheck);
+		model.addAttribute("competition",c);
+		return "admin/competition/competitionAdmin";
 	}
 	@RequestMapping(value="/adminPage.do")
 	public String adminPage() {
