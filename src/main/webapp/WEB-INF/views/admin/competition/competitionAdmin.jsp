@@ -56,7 +56,7 @@
 							<td>${competition.competitionDate }</td>
 							<td>
 								<div>
-									<a href="/competitionUpdate.do?competitionNo=${competition.competitionNo}" class="btn small col_main f_w">수정</a>
+									<a href="/competitionUpdateWrite.do?competitionNo=${competition.competitionNo}" class="btn small col_main f_w">수정</a>
 									<a href="/competitionDelete.do?competitionNo=${competition.competitionNo}" class="btn small col_main f_w">삭제</a>
 								</div>
 							</td>

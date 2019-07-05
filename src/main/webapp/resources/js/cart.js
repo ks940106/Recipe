@@ -2,7 +2,7 @@
  * 
  */
 
-function payment(id,name,phone,zibCode,addr1,addr2) {
+function payment(id,name,phone,zipCode,addr1,addr2) {
 				var recipeCount = $("[name='recipeCount']");
 				var noarray1 = new Array();
 				for(var i=0;i<recipeCount.length;i++){
@@ -40,7 +40,7 @@ function payment(id,name,phone,zibCode,addr1,addr2) {
 					}else{
 						$('#paymentResult').html('에러내용 :' +rsp.error_msg+date);
 						
-						location.href="/successOrder.do?recipe="+noarray+"&id="+id+"&orderCode="+date+"&zibCode="+zibCode+
+						location.href="/successOrder.do?recipe="+noarray+"&id="+id+"&orderCode="+date+"&zipCode="+zipCode+
 									"&addr1="+addr1+"&addr2="+addr2+"&phone="+phone+"&recipeCount="+noarray1
 					}
 				});
