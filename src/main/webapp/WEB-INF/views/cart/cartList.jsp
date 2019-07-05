@@ -58,6 +58,7 @@
 					    </tbody>
 					  </table>
 				  <button type="submit" >주문하기</button>
+				  <button type="button" onclick="deletecart();">삭제하기</button>
 				</form>
 			</div>
 		</div>
