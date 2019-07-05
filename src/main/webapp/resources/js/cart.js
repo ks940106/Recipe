@@ -46,3 +46,12 @@ function payment(id,name,phone,zipCode,addr1,addr2) {
 				});
 			};
 
+function deletecart() {
+	var values = document.getElementsByName("cartNo");
+	for(var i =0;i<values.length;i++){
+		if(values[i].checked){
+			alert(values[i].value);
+		}
+	}
+	
+};
