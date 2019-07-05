@@ -13,7 +13,7 @@
 		from competition where competition_check='N'
 	</select>
 	<insert id="insertCompetition" parameterType="competition">
-		insert into competition values(seq_competition_no.nextval,#{competitionTitle},#{competitionContents},#{competitionImg},null,null,sysdate,#{competitionCheck})
+		insert into competition values(seq_competition_no.nextval,#{competitionTitle},#{competitionContents},#{competitionImg, jdbcType=VARCHAR},null,null,sysdate,#{competitionCheck})
 	</insert>
 	<select id="competitionView" parameterType="competition" resultType="competition">
 		select competition_no as competitionNo,
@@ -41,7 +41,7 @@
 		from competition where competition_no=#{competitionNo}
 	</select>
 	<update id="competitionUpdate" parameterType="competition">
-		update competition set competition_title=#{competitionTitle} , competition_contents=#{competitionContents} , competition_img=#{competitionImg},competition_check=#{competitionCheck} 
+		update competition set competition_title=#{competitionTitle} , competition_contents=#{competitionContents} , competition_img=#{competitionImg, jdbcType=VARCHAR},competition_check=#{competitionCheck} 
 		where competition_no=#{competitionNo}
 	</update>
 </mapper>
