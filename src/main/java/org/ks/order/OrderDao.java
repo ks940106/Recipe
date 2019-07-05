@@ -1,5 +1,9 @@
 package org.ks.order;
 
+import java.util.ArrayList;
+
+import org.ks.order.vo.Order;
+
 public interface OrderDao {
-	//private int insertOrder(Order);
+	public int insertOrder(Order o);
 }

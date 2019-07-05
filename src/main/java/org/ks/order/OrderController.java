@@ -19,7 +19,7 @@ public class OrderController {
 	
 	
 	@RequestMapping(value="successOrder.do")
-	public void insertOrder(HttpServletRequest request) {
+	public String insertOrder(HttpServletRequest request) {
 		String recipeNo = request.getParameter("recipe");
 		String recipeCount = request.getParameter("recipeCount");
 		String id = request.getParameter("id");
@@ -53,16 +53,14 @@ public class OrderController {
 			o.setPhone(phone);
 			list.add(o);
 		}
-		for(Order e : list) {
-			System.out.println(e.getOrderCode());
-			System.out.println(e.getId());
-			System.out.println(e.getAddr1());
-			System.out.println(e.getAddr2());
-			System.out.println(e.getRecipeNo());
-			System.out.println(e.getOrderCount());
-			System.out.println(e.getOrderState());
-			System.out.println(e.getZipCode());
-			System.out.println(e.getPhone());
+		int result = orderServiceImpl.insertOrder(list);
+		if(list.size()==result) {
+			request.setAttribute("msg", "결제성공");
+			request.setAttribute("loc", "/");
+		}else {
+			request.setAttribute("msg", "결제실패");
+			request.setAttribute("loc", "/");
 		}
+		return "common/msg";
 	}
 }
