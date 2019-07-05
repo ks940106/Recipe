@@ -28,4 +28,10 @@ public class MemberServiceImpl implements MemberService{
 		return nickCh;
 	}
 
+	@Override
+	public int insertMember(Member m) {
+		int result = memberDao.insertMember(m);
+		return result;
+	}
+
 }

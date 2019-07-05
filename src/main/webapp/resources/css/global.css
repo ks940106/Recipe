@@ -41,7 +41,7 @@
     footer > div {
         max-width: 767px;
         margin: 0 auto;
-        padding: 70px 0;
+        padding: 20px 0;
     }
 
     .btn_more {
@@ -327,7 +327,7 @@
     footer > div {
         max-width: 1024px;
         margin: 0 auto;
-        padding: 70px 0 0 0;
+        padding: 35px 0 0 0;
     }
 
     .btn_more {
@@ -628,7 +628,7 @@
     footer > div {
         width: 940px;
         margin: 0 auto;
-        padding: 70px 0;
+        padding: 35px 0;
     }
 
     .btn_more {
@@ -790,7 +790,7 @@
         footer > div div {
             width: 290px;
             float: left;
-            margin: 0 0 70px 35px;
+            margin: 0 0 10px 35px;
         }
 
             footer > div div:first-of-type {

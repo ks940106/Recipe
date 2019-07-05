@@ -4,14 +4,23 @@
 @import url('page.css');
 @import url('competition.css');
 @import url('member.css');
-<<<<<<< HEAD
+
+@import url('pom.css');
+@import url('nav_pom.css');
+
+
+
 /* @import url('ui.css'); */
 /* @import url('jquey-ui.min.css'); */
 /* @import url('style.css'); */
 
-=======
+
+
 @import url('mypage.css');
->>>>>>> a8caf3f6d0a0ac23d0e0251fba77405ef284c662
+
+
+@import url('mypage.css');
+
 
 /*font SET*/
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900|Roboto:300,400,900');

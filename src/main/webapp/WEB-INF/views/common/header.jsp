@@ -20,7 +20,7 @@
         <div>
             <h1>
                 <a href="#">
-                    <img src="../resources/img/logo.png" alt="Tajam" />
+                    <img src="../resources/img/logo.png" />
                 </a>
             </h1>
             <nav>
@@ -37,7 +37,7 @@
      				<li><a href="/tmr.do">이달의레시피</a></li>
                     <li><a href="/competitionList.do?competitionCheck='Y'">요리대회</a></li>
                     <li><a href="#">토크</a></li>
-                    <li><a href="#">쿠킹클래스</a></li>
+                    <li><a href="/pom.do">쿠킹클래스</a></li>
                     <c:choose>
                     <c:when test="${sessionScope.member==null }">
                     	<li><a href="/loginPage.do" style="color: #1f6054;">로그인</a></li>

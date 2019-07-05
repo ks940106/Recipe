@@ -23,7 +23,7 @@
 	<section>
 	<div class="wrapper">
 		<nav class="lnb_wrap"> 
-			<jsp:include	page="/WEB-INF/views/common/competition_nav.jsp" />
+			<jsp:include page="/WEB-INF/views/common/competition_nav.jsp" />
 		</nav>
 		<div class="section_content">
             <div class="set_field">
