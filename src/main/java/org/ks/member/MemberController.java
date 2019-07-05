@@ -92,7 +92,7 @@ public class MemberController {
 	}
 
 	//회원가입
-	/*@RequestMapping(value="/insertMember.do")
+	@RequestMapping(value="/insertMember.do")
 	public String insertMember(HttpServletRequest request,@RequestParam MultipartFile fileUpload) {
 		System.out.println("컨트롤러");
 		String id=request.getParameter("id");
@@ -103,7 +103,8 @@ public class MemberController {
 		String addr2=request.getParameter("addr2");
 		String phone = request.getParameter("phone");
 		String gender = request.getParameter("gender");
-		
+		String fileUpload1 =request.getParameter("fileUpload");
+		System.out.println(fileUpload1);
 		String zipCode=request.getParameter("zipCode");
 		//파일 업로드
 		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/member");
@@ -126,23 +127,21 @@ public class MemberController {
 				BufferedOutputStream bos = new BufferedOutputStream(fos);
 				bos.write(bytes);
 				bos.close();
-				System.out.println("업로드성공성공!!!");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		String view="";
+		String view = "common/msg";
+		System.out.println(view);
 		if(result>0) {
 			request.setAttribute("msg", "회원가입 성공");
-			request.setAttribute("loc", "/login.do");
-			view = "common/msg";
+			request.setAttribute("loc", "/loginPage.do");
 		}else {
 			request.setAttribute("msg", "회원가입 실패");
 			request.setAttribute("loc", "/insert.do");
-			view = "common/msg";
 		}return view;
-	}*/
+	}
 	//이메일 중복확인
 	@RequestMapping(value="emailCheck.do")
 	public void emailCheck (HttpServletRequest request,HttpServletResponse response) throws IOException{
