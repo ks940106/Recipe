@@ -106,7 +106,6 @@ function sample6_execDaumPostcode() {
 //아이디 확인
 function EmailCheck(){
 	EmailCheckFlag=false;
-	console.log(EmailCheckFlag);
 	var email=$("#id").val();
 	var emailchk=/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 	
@@ -145,7 +144,7 @@ function EmailCheck(){
 	function phoneck(){
 		var phone = $("#phone");
 		var phonech=/^\d{3}-\d{3,4}-\d{4}$/;
-		console.log(phone);
+		console.log(phonech);
 		if(!phonech.test(phone)){
 			$("#phoneMsg").html("핸드폰 형식을 맞춰주세요");
 			$("#phoneMsg").css("display","block");
@@ -154,17 +153,20 @@ function EmailCheck(){
 	}
 	//이메일 인증
 	$("#emailcertification").click(function(){
+		emailcertification=false;
 		var email = $("#id").val();
 		console.log(email);
 		var url="/emailcertification.do";
 		var pop=window.open("emailcertification.jsp","emailcertification","width=400,height=300");
 		pop.location.href=url+"?email="+email;
+		console.log(emailcertification);
 	})
 	
 	//비밀번호 정규식
 	function chkPasswd1() {
 		var pw = $("#pw").val();
 		var pwchk = /^[A-Za-z0-9!@#$%^&*()_+=.,/]{6,12}$/;
+		console.log(pwchk)
 		pwchkFlag=false;
 		console.log(pwchkFlag);
 		if (pwchk.test(pw)) {
@@ -185,9 +187,11 @@ function EmailCheck(){
 	function chkPasswd2() {
 		var pw = $("#pw").val();
 		var pw_check = $("#pw_check").val();
+		pw2ck=false;
 		console.log(pw_check);
 		if (pw_check == pw) {
 			$("#pwMsg2").css("display", "none");
+			pw2ck=true;
 		}
 		if (pw_check != pw) {
 			$("#pwMsg2").html("패스워드와 패스워드 확인이 다릅니다");
@@ -205,6 +209,7 @@ function EmailCheck(){
 			$("#nickMsg").css("display","block");
 			return;
 		}
+		
 		if(nickname){
 			console.log(nickname);
 			$.ajax({
@@ -240,7 +245,7 @@ function EmailCheck(){
 			chkNick();
 			return false;
 		}
-		if(chkPasswd2){
+		if(!chkPasswd2){
 			chkPasswd2();
 			return false;
 		}
