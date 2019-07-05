@@ -21,11 +21,14 @@ public class Recipe {
     private int recipePrice;
     private Date recipeDate;
     private int recipeStock;
+    private String recipeWorkImg;
+    private String recipeVideo;
+    private int recipeState;
 
     public Recipe() {
     }
 
-    public Recipe(int recipeNo, String recipeTitle, String recipeWriter, String recipeContents, String recipeMainImg, String recipeCat1, String recipeCat2, String recipeCount, String recipeTime, String recipeLevel, String recipeItem, String recipeStep, String recipeStepImg, int recipeLike, int recipeHit, int recipePrice, Date recipeDate, int recipeStock) {
+    public Recipe(int recipeNo, String recipeTitle, String recipeWriter, String recipeContents, String recipeMainImg, String recipeCat1, String recipeCat2, String recipeCount, String recipeTime, String recipeLevel, String recipeItem, String recipeStep, String recipeStepImg, int recipeLike, int recipeHit, int recipePrice, Date recipeDate, int recipeStock, String recipeWorkImg, String recipeVideo, int recipeState) {
         this.recipeNo = recipeNo;
         this.recipeTitle = recipeTitle;
         this.recipeWriter = recipeWriter;
@@ -44,6 +47,60 @@ public class Recipe {
         this.recipePrice = recipePrice;
         this.recipeDate = recipeDate;
         this.recipeStock = recipeStock;
+        this.recipeWorkImg = recipeWorkImg;
+        this.recipeVideo = recipeVideo;
+        this.recipeState = recipeState;
+    }
+
+    public int getRecipeState() {
+        return recipeState;
+    }
+
+    public void setRecipeState(int recipeState) {
+        this.recipeState = recipeState;
+    }
+
+    @Override
+    public String toString() {
+        return "Recipe{" +
+                "recipeNo=" + recipeNo +
+                ", recipeTitle='" + recipeTitle + '\'' +
+                ", recipeWriter='" + recipeWriter + '\'' +
+                ", recipeContents='" + recipeContents + '\'' +
+                ", recipeMainImg='" + recipeMainImg + '\'' +
+                ", recipeCat1='" + recipeCat1 + '\'' +
+                ", recipeCat2='" + recipeCat2 + '\'' +
+                ", recipeCount='" + recipeCount + '\'' +
+                ", recipeTime='" + recipeTime + '\'' +
+                ", recipeLevel='" + recipeLevel + '\'' +
+                ", recipeItem='" + recipeItem + '\'' +
+                ", recipeStep='" + recipeStep + '\'' +
+                ", recipeStepImg='" + recipeStepImg + '\'' +
+                ", recipeLike=" + recipeLike +
+                ", recipeHit=" + recipeHit +
+                ", recipePrice=" + recipePrice +
+                ", recipeDate=" + recipeDate +
+                ", recipeStock=" + recipeStock +
+                ", recipeWorkImg='" + recipeWorkImg + '\'' +
+                ", recipeVideo='" + recipeVideo + '\'' +
+                ", recipeState=" + recipeState +
+                '}';
+    }
+
+    public String getRecipeWorkImg() {
+        return recipeWorkImg;
+    }
+
+    public void setRecipeWorkImg(String recipeWorkImg) {
+        this.recipeWorkImg = recipeWorkImg;
+    }
+
+    public String getRecipeVideo() {
+        return recipeVideo;
+    }
+
+    public void setRecipeVideo(String recipeVideo) {
+        this.recipeVideo = recipeVideo;
     }
 
     public int getRecipeNo() {
@@ -190,27 +247,4 @@ public class Recipe {
         this.recipeStock = recipeStock;
     }
 
-    @Override
-    public String toString() {
-        return "Recipe{" +
-                "recipeNo=" + recipeNo +
-                ", recipeTitle='" + recipeTitle + '\'' +
-                ", recipeWriter='" + recipeWriter + '\'' +
-                ", recipeContents='" + recipeContents + '\'' +
-                ", recipeMainImg='" + recipeMainImg + '\'' +
-                ", recipeCat1='" + recipeCat1 + '\'' +
-                ", recipeCat2='" + recipeCat2 + '\'' +
-                ", recipeCount='" + recipeCount + '\'' +
-                ", recipeTime='" + recipeTime + '\'' +
-                ", recipeLevel='" + recipeLevel + '\'' +
-                ", recipeItem='" + recipeItem + '\'' +
-                ", recipeStep='" + recipeStep + '\'' +
-                ", recipeStepImg='" + recipeStepImg + '\'' +
-                ", recipeLike=" + recipeLike +
-                ", recipeHit=" + recipeHit +
-                ", recipePrice=" + recipePrice +
-                ", recipeDate=" + recipeDate +
-                ", recipeStock=" + recipeStock +
-                '}';
-    }
 }

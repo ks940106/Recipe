@@ -33,7 +33,7 @@ public class MemberDaoImpl implements MemberDAO{
 		System.out.println(m.getId());
 		System.out.println(m.getMemberImg());
 		System.out.println(m.getZipCode());
-		int result = sqlSession.insert("member.insertMember",m);
+		int result = sqlSession.update("member.insertMember",m);
 		return result;
 	}
 }
