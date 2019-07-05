@@ -32,4 +32,14 @@ public class CompetitionDaoImpl implements CompetitionDao {
 	public int deleteCompetition(int competitionNo) {
 		return sqlsession.delete("competition.deleteCompetition",competitionNo);
 	}
+
+	@Override
+	public int competitionUpdate(Competition c) {
+		return sqlsession.update("competition.competitionUpdate",c);
+	}
+
+	@Override
+	public Competition updateSelectOne(int competitionNo) {
+		return sqlsession.selectOne("competition.updateSelectOne", competitionNo);
+	}
 }
