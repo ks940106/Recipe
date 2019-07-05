@@ -157,10 +157,12 @@ public class CompetitionController {
 				bos.write(bytes);
 				bos.close();
 				System.out.println("업로드성공성공!!!");
-				if(oldFilename != null ) {	
+				if(f!= null) {
+					if(oldFilename != null) {
 						File deleteFile = new File(savePath+"/"+filePath);
 						boolean bool = deleteFile.delete();
-						System.out.println(bool?"삭제성":"삭제실패");
+						System.out.println(bool?"삭제성공":"삭제실패");
+					}
 				}else {
 					if(status.equals("stay")) {
 						c.setCompetitionImg(oldFilename);
