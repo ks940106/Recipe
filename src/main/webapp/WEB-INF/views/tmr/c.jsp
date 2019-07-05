@@ -116,46 +116,47 @@
 			}
 		}
 		
-		var clickState = 0;
-		var startId = 0;
-		var endId = 0;
-		var startDate = 0;
-		var endDate = 0;
+		var clickState = 0; //클릭상태 
+		var startId = 0; //시작td id
+		var endId = 0; //끝 td id
+		var startDate = 0; // 시작 날
+		var endDate = 0; // 끝 날
 		$("#day td").click(function(){
-			var className = $(this).attr("class");
-			if(className == 'impossible'){
+			var className = $(this).attr("class"); //클래스이름을 가져오기 (impossible/possible)
+			if(className == 'impossible'){ //클래스이름이 impossible이면 선택불가.
 				alert('선택이 불가능한 날짜 입니다.');
-			}else if(className == 'possible'){
-				if(clickState == 0){
-					for(var i = startId; i<Number(endId)+1; i++){
-						$("#"+i).css("background-color","lightgreen");
+			}else if(className == 'possible'){ //클래스이름이 possible이면
+				if(clickState == 0){ //클릭상태가 0이면
+					if(startId !=0){ //제일 첫 선택이 아니면 
+						for(var i = startId; i<Number(endId)+1; i++){ //기존의 선택한 startId,endId 사이의 css를 해제함.
+							$("#"+i).css("background-color","lightgreen");
+						}
 					}
 					clickState = clickState + 1;
-					$(this).css("background-color","orange");
-					startId = $(this).attr('id');
-				}else if(clickState == 1){
-					clickState = clickState + 1;
-					if(startId == $(this).attr('id')){
-						$(this).css("background-color","lightgreen");
-						clickState = 0;
-					}else{
-						$(this).css("background-color","orange");
-						endId = $(this).attr('id');
-						if(startId>endId){
+					$(this).css("background-color","orange"); //누른부분 orange색으로
+					startId = $(this).attr('id'); //startId에 누른 곳 Id 값이 시작값으로 들어감.
+				}else if(clickState == 1){ //한 번 클릭한 뒤 또 클릭하면
+					if(startId == $(this).attr('id')){ //만약 startId 와 누른곳의 Id가 같다면
+						$(this).css("background-color","lightgreen"); //그곳의 css를 해제하고 
+						clickState = 0; //클릭상태0으로만듬
+					}else{ //정상적인경우
+						$(this).css("background-color","orange"); //누른곳 orange색으로
+						endId = $(this).attr('id'); //endId에 누른곳 Id 값이 끝값으로 들어감
+						if(startId>endId){ //시작Id값은 더 작아야 함.
 							var temp = startId;
 							startId = endId;
 							endId = temp;
 						}
-						for(var i = 0 ; i<endId-startId;i++){
-							var startDayId = Number(startId) + i;
-							$("#"+startDayId).css("background-color","orange");
-							if(i==0){
+						for(var i = 0 ; i<endId-startId;i++){// 만약 1~3숙박이면 (3-1) = i= 0,1 두번반복 
+							var startDayId = Number(startId) + i; // 1,2
+							$("#"+startDayId).css("background-color","orange"); //1번째,2번째css바꿈
+							if(i==0){ //첫번째 아이디 val값을 startDate에 대입
 								startDate = $("#hidden"+startDayId).val();
 							}
-							if(endId-startId == 1){
+							if(endId-startId == 1){ //반복횟수가 1인경우 endDate 에도 첫번째 아이디 val값을 대입
 								endDate = $("#hidden"+startDayId).val();
 							}
-							if(endId-startId > 1 && i == endId-startId-1){
+							if(endId-startId > 1 && i == endId-startId-1){ // 반복횟수가 1이상인경우 2번이상반복하는 것이며(2박3일이상), 동시에 i가 최대반복 전이면 마지막 날이므로 endDate에 대입
 								endDate = $("#hidden"+startDayId).val();
 							}
 							
@@ -164,10 +165,9 @@
 						//다음 달 전 달로 넘어갈 시 로직(전 달)
 						//쿼리고민
 						//아작스실행 (검색해오기)
-						clickState = 0;
 						alert(startDate);
 						alert(endDate);
-						
+						clickState = 0;
 					}
 				}
 			}
