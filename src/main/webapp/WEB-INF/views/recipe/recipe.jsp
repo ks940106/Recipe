@@ -110,13 +110,8 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;마늘편은 익혀주세요 ▷ 마늘편을 충분히 익혀주셔야 매운 맛이 사라집니다.<br>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;꿀을 조금 넣어주세요 ▷ 꿀이 없는 경우, 설탕 1스푼으로 대체 가능합니다.</span>
 
-
                 <div id="divStepArea" class="ui-sortable">
-
                 </div>
-
-
-
 
                 <!-- step template -->
                 <div id="divStepTemplate" style="display: none">
