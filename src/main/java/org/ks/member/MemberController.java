@@ -1,4 +1,4 @@
-﻿package org.ks.member;
+package org.ks.member;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -260,6 +260,6 @@ public class MemberController {
 		return "member/mypage";
 	}
 }
-	
+
 
 

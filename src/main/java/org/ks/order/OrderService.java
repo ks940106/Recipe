@@ -1,5 +1,9 @@
 package org.ks.order;
 
-public interface OrderService {
+import java.util.ArrayList;
 
+import org.ks.order.vo.Order;
+
+public interface OrderService {
+		public int insertOrder(ArrayList<Order> list);
 }

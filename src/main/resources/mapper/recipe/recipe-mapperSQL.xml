@@ -8,4 +8,8 @@
             CATEGORY_NAME as categoryName
         from CATEGORY
     </select>
+    <insert id="recipeReg" parameterType="recipe">
+        insert into RECIPE (RECIPE_NO, RECIPE_TITLE, RECIPE_WRITER, RECIPE_CONTENTS, RECIPE_MAINIMG, RECIPE_CAT1, RECIPE_CAT2, RECIPE_COUNT, RECIPE_TIME, RECIPE_LEVEL, RECIPE_ITEM, RECIPE_STEP, RECIPE_STEPIMG, RECIPE_LIKE, RECIPE_HIT, RECIPE_PRICE, RECIPE_DATE, RECIPE_STOCK, RECIPE_WORKIMG, RECIPE_VIDEO, RECIPE_STATE)
+        values (SEQ_RECIPE_NO.nextval,#{recipeTitle},#{recipeWriter},#{recipeContents},#{recipeMainImg},#{recipeCat1},#{recipeCat2},#{recipeCount},#{recipeTime},#{recipeLevel},#{recipeItem},#{recipeStep},#{recipeStepImg},#{recipeLike},#{recipeHit},#{recipePrice},sysdate,#{recipeStock},#{recipeWorkImg},#{recipeVideo},#{recipeState})
+    </insert>
 </mapper>

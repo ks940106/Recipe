@@ -33,9 +33,21 @@ public class CompetitionServiceImpl implements CompetitionService {
 		}
 		return c;
 	}
-
+	
 	@Override
 	public int deleteCompetition(int competitionNo) {
 		return competitionDaoimpl.deleteCompetition(competitionNo);
 	}
+	
+	@Override
+	public int competitionUpdate(Competition c) {
+		return competitionDaoimpl.competitionUpdate(c);
+	}
+
+	@Override
+	public Competition updateSelectOne(int competitionNo) {
+		return competitionDaoimpl.updateSelectOne(competitionNo);
+	}
+
+	
 }

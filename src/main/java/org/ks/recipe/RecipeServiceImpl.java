@@ -1,9 +1,11 @@
 package org.ks.recipe;
 
 import org.ks.recipe.vo.Category;
+import org.ks.recipe.vo.Recipe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -18,5 +20,11 @@ public class RecipeServiceImpl implements RecipeService {
     public List<Category> categoryList() {
         List<Category> categories = recipeDaoImpl.categoryList();
         return categories;
+    }
+
+    @Override
+    @Transactional
+    public int recipeReg(Recipe recipe) {
+        return recipeDaoImpl.recipeReg(recipe);
     }
 }

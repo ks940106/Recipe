@@ -113,36 +113,7 @@
                 <div id="divStepArea" class="ui-sortable">
                 </div>
 
-                <!-- step template -->
-                <div id="divStepTemplate" style="display: none">
-                    <div id="divStepItem_STEP" class="step" style="">
-                        <p id="divStepNum_STEP" class="cont_tit2_1 ui-sortable-handle" style="cursor:pointer" data-original-title="" title="">Step</p>
-                        <div id="divStepText_STEP" style="display:inline-block">
-                            <textarea name="step_text[]" id="step_text_STEP" class="form-control step_cont" placeholder="예) 소고기는 기름기를 떼어내고 적당한 크기로 썰어주세요." style="height:160px; width:430px; resize:none;"></textarea>
-                        </div>
-                        <div id="divStepUpload_STEP" style="display:inline-block">
-                            <input type="hidden" name="step_no[]" id="step_no_STEP" value="">
-                            <%--<input type="hidden" name="step_photo[]" id="step_photo_STEP" value="">--%>
-                            <%--<input type="hidden" name="new_step_photo[]" id="new_step_photo_STEP" value="">--%>
-                            <%--<input type="hidden" name="del_step_photo[]" id="del_step_photo_STEP" value="">--%>
-                            <%--이미지 업로드--%>
-                            <div class="img_up_list" style="display: inline-block;vertical-align: middle; float: none; margin: 0;">
-                                <div class="img_box" style="width: 160px;height: 160px;">
-                                    <input type="file" class="hide" accept="image/*" name="step_photo[]" id="step_photo_STEP" onchange="boardReg.imgSel(this, event)">
-                                    <a href="javascript:void(0);" onclick="uploadImg(this);" class="upload_btn" style="background: url('${pageContext.request.contextPath}/resources/img/recipe/pic_none2.gif') no-repeat;" >
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="divStepBtn_STEP" class="step_btn" style="display: none;">
-                            <a href="javascript:void(0)"><span class="glyphicon glyphicon-chevron-up moveUp"></span></a>
-                            <a href="javascript:void(0)"><span class="glyphicon glyphicon-chevron-down moveDown"></span></a>
-                            <a href="javascript:addStep(__Step)"><span class="glyphicon glyphicon-plus"></span></a>
-                            <a href="javascript:delStep(__Step)"><span class="glyphicon glyphicon-remove"></span></a>
-                        </div>
-                    </div>
-                </div>
-                <!--/step template-->
+
 
                 <div class="btn_add mag_b_25" style="padding:0 0 20px 180px; width:640px;">
                     <button type="button" onclick="addStep()" class="btn btn-default">
@@ -204,6 +175,36 @@
             </div>
         </div>
     </form>
+    <!-- step template -->
+    <div id="divStepTemplate" style="display: none">
+        <div id="divStepItem_STEP" class="step" style="">
+            <p id="divStepNum_STEP" class="cont_tit2_1 ui-sortable-handle" style="cursor:pointer" data-original-title="" title="">Step</p>
+            <div id="divStepText_STEP" style="display:inline-block">
+                <textarea name="step_text[]" id="step_text_STEP" class="form-control step_cont" placeholder="예) 소고기는 기름기를 떼어내고 적당한 크기로 썰어주세요." style="height:160px; width:430px; resize:none;"></textarea>
+            </div>
+            <div id="divStepUpload_STEP" style="display:inline-block">
+                <input type="hidden" name="step_no[]" id="step_no_STEP" value="">
+                <%--<input type="hidden" name="step_photo[]" id="step_photo_STEP" value="">--%>
+                <%--<input type="hidden" name="new_step_photo[]" id="new_step_photo_STEP" value="">--%>
+                <%--<input type="hidden" name="del_step_photo[]" id="del_step_photo_STEP" value="">--%>
+                <%--이미지 업로드--%>
+                <div class="img_up_list" style="display: inline-block;vertical-align: middle; float: none; margin: 0;">
+                    <div class="img_box" style="width: 160px;height: 160px;">
+                        <input type="file" class="hide" accept="image/*" name="step_photo[]" id="step_photo_STEP" onchange="boardReg.imgSel(this, event)">
+                        <a href="javascript:void(0);" onclick="uploadImg(this);" class="upload_btn" style="background: url('${pageContext.request.contextPath}/resources/img/recipe/pic_none2.gif') no-repeat;" >
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="divStepBtn_STEP" class="step_btn" style="display: none;">
+                <a href="javascript:void(0)"><span class="glyphicon glyphicon-chevron-up moveUp"></span></a>
+                <a href="javascript:void(0)"><span class="glyphicon glyphicon-chevron-down moveDown"></span></a>
+                <a href="javascript:addStep(__Step)"><span class="glyphicon glyphicon-plus"></span></a>
+                <a href="javascript:delStep(__Step)"><span class="glyphicon glyphicon-remove"></span></a>
+            </div>
+        </div>
+    </div>
+    <!--/step template-->
 </section>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
