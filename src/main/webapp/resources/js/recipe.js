@@ -92,11 +92,14 @@ $(document).ready(function () {
 });
 function stepNum() {
     $(".step>p").each(function (index,e) {
-       $(e).text("Step"+(index+1));
+        $(e).text("Step"+(index+1));
+    });
+    $(".step input[name='step_no[]']").each(function (index,e) {
+        $(e).val((index+1));
     });
     $(".step_btn").each(function (index,e) {
-       $(e).find('a').eq(2).attr("href","javascript:addStep("+(index+1)+")");
-       $(e).find('a').eq(3).attr("href","javascript:delStep("+(index+1)+")");
+        $(e).find('a').eq(2).attr("href","javascript:addStep("+(index+1)+")");
+        $(e).find('a').eq(3).attr("href","javascript:delStep("+(index+1)+")");
     });
 }
 
@@ -107,28 +110,38 @@ function delStep(i) {
 
 //upload form
 function doSubmit(option) {
+    // var step_photo = $("#divStepArea input[name='step_photo[]']");
+    var formData = new FormData($("#recipeForm")[0]);
+    var steps = [];
+    $('#divStepArea [name="step_text[]"]').each(function () {
+        // steps.push($(this).val());
+        formData.append('steps',$(this).val());
+    });
+    // var json_arr = JSON.stringify(steps);
+
+    var recipe_state;
     if (option === 'save_public') {
-        var step_photo = $("#divStepArea input[name='step_photo[]']");
-        var formData = new FormData($("#recipeForm")[0]);
-        var array = ['a','b','c','d'];
-        var json_arr = JSON.stringify(array);
-        formData.append('array',json_arr);
-        $.ajax({
-            type:"post",
-            url:"/recipeReg.do",
-            data:formData,
-            processData:false,
-            contentType:false,
-            success:function (html) {
-                alert("파일 업로드성공");
-            },
-            error:function (error) {
-                alert("파일업로드 실패");
-                console.log(error);
-                console.log(error.status);
-            }
-        })
-
-
+        recipe_state = 1;
+    }else if(option === 'save'){
+        recipe_state = 0;
     }
+
+    formData.append('recipe_state',recipe_state);
+
+    $.ajax({
+        type:"post",
+        url:"/recipeReg.do",
+        data:formData,
+        processData:false,
+        contentType:false,
+        success:function (html) {
+            alert("파일 업로드성공");
+        },
+        error:function (error) {
+            alert("파일업로드 실패");
+            console.log(error);
+            console.log(error.status);
+        }
+    })
+
 }

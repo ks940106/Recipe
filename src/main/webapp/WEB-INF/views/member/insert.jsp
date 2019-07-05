@@ -11,7 +11,7 @@
 <body>
 	<section class="memberinsert">
 	<div class="nav_etc">
-		<a href="/index.html"><img
+		<a href="/index.jsp"><img
 			src="http://recipe1.ezmember.co.kr/img/logo3.png"></a>
 	</div>
 	<div class="container_etc" style="width: 460px;">
@@ -50,18 +50,18 @@
 			</div>
 			<div id="addr2_div" class="form-group has-feedback">
 				<input type="text" name="addr2" class="form-control" id="addr2" placeholder="상세주소">
-				<span id="nickMsg" style="display: none;"></span>
 			</div>
-			<div id="phone" class="form-group has-feedback">
-				<input type="text" name="phone" class="form-control" id="phone" placeholder="핸드폰 번호">
+			<div id="phone_div" class="form-group has-feedback">
+				<input type="text" name="phone" class="form-control" id="phone" onblur="phoneck()" placeholder="핸드폰 번호 ex)010-0000-0000">
+				<span id="phoneMsg" style="display: none;"></span>
 			</div>
 			<div class="form-group has-feedback">
 				<div class="btn_gender" style="width: 220px; left: 20px;">
 					<span class="input-group-btn">
-						<input type="button" id="genderM" class="btn btn-sm btn-default"style="width: 100px;" onclick="chkGenderM()" value="남">남자</button>
+						<input type="radio" id="genderM" name="gender" class="btn btn-sm btn-default"style="width: 100px;" onclick="chkGenderM()" value="남">남자</button>
 					</span> 
 					<span class="input-group-btn">
-						<input type="button" id="genderF" class="btn btn-sm btn-default" style="width: 100px;" onclick="chkGenderF()" value="여">여자</button>
+						<input type="radio" id="genderF" name="gender" class="btn btn-sm btn-default" style="width: 100px;" onclick="chkGenderF()" value="여">여자</button>
 					</span>
 				</div>
 				<input type="text" class="form-control" disabled=""> 
@@ -105,6 +105,8 @@ function sample6_execDaumPostcode() {
 }
 //아이디 확인
 function EmailCheck(){
+	EmailCheckFlag=false;
+	console.log(EmailCheckFlag);
 	var email=$("#id").val();
 	var emailchk=/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 	
@@ -125,6 +127,7 @@ function EmailCheck(){
 						$("#idMsg").html("사용가능한 이메일 입니다");
 						$("#idMsg").css("display", "block");
 						$("#emailcertification").prop("disabled",false);
+						EmailCheckFlag=true;
 					}else{
 						$("#idMsg").html("중복된 이메일입니다");
 						$("#idMsg").css("display", "block");
@@ -136,6 +139,17 @@ function EmailCheck(){
 	            alert("에러 발생")
 	         	}
 			})
+		}
+	}
+	//핸드폰 정규식
+	function phoneck(){
+		var phone = $("#phone");
+		var phonech=/^\d{3}-\d{3,4}-\d{4}$/;
+		console.log(phone);
+		if(!phonech.test(phone)){
+			$("#phoneMsg").html("핸드폰 형식을 맞춰주세요");
+			$("#phoneMsg").css("display","block");
+			return;
 		}
 	}
 	//이메일 인증
@@ -151,13 +165,19 @@ function EmailCheck(){
 	function chkPasswd1() {
 		var pw = $("#pw").val();
 		var pwchk = /^[A-Za-z0-9!@#$%^&*()_+=.,/]{6,12}$/;
+		pwchkFlag=false;
+		console.log(pwchkFlag);
 		if (pwchk.test(pw)) {
 			$("#pwMsg").html("사용 가능한 패스워드 입니다");
-			$("#pwMsg").css("display", "block")
+			$("#pwMsg").css("display", "block");
+			pwchkFlag=true;
 		}
 		if (!pwchk.test(pw)) {
 			$("#pwMsg").html("패스워드는 영어,숫자,특수문자 포함 6~12글자 입니다");
-			$("#pwMsg").css("display", "block")
+			$("#pwMsg").css("display", "block");
+			return;
+		}
+		if(!pw){
 			return;
 		}
 	}
@@ -177,6 +197,7 @@ function EmailCheck(){
 	}
 	//닉네임 중복체크
 	function chkNick(){
+		nicknameFlag=false;
 		var nickname =$("#nickname").val();
 		var nicknameCheck="";
 		if(!nickname){
@@ -194,6 +215,7 @@ function EmailCheck(){
 					if(data.trim()=="Y"){//중복 없음
 						$("#nickMsg").html("사용가능한 닉네임 입니다");
 						$("#nickMsg").css("display","block");
+						nicknameFlag=true;
 					}else{
 						$("#nickMsg").html("사용불가능한 닉네임 입니다");
 						$("#nickMsg").css("display","block");
@@ -208,19 +230,29 @@ function EmailCheck(){
 	}
 	
 	function doSubmit(){
-		console.log("서브밋");
-		if(!EmailCheck){
+		console.log(EmaiEmailCheckFlag);
+		if(!EmaiEmailCheckFlag){
 			EmailCheck();
 			return false;
 		}
-		if(!chkPasswd1){
-			chkPasswd1();
-			return false;
-		}
-		if(!chkNick){
+		
+		if(!chkNickFlag){
 			chkNick();
 			return false;
 		}
+		if(chkPasswd2){
+			chkPasswd2();
+			return false;
+		}
+		if(!pwchkFlag){
+			chkPasswd1();
+			return false;
+		}
+		if(phoneck){
+			phoneck();
+			return false;
+		}
+		
 	}
  	
  	
