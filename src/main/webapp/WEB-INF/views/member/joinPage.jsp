@@ -11,7 +11,7 @@
 <body class="joinback">
 	<section class="join">
 	<div class="nav_etc">
-		<a href="/index.html">
+		<a href="/index.jsp">
 			<img src="http://recipe1.ezmember.co.kr/img/logo3.png">
 		</a>
 	</div>

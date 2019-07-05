@@ -11,7 +11,7 @@
 <body>
 	<section class="memberinsert">
 	<div class="nav_etc">
-		<a href="/index.html"><img
+		<a href="/index.jsp"><img
 			src="http://recipe1.ezmember.co.kr/img/logo3.png"></a>
 	</div>
 	<div class="container_etc" style="width: 460px;">
