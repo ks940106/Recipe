@@ -257,6 +257,7 @@ public class MemberController {
 	public String mypage() {
 		return "member/mypage";
 	}
+}
 
 	
 

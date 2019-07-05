@@ -27,7 +27,7 @@
             <div class="pomNav">
                 <jsp:include page="/WEB-INF/views/common/navPom.jsp"/>
             </div>
-            <div class="section_content">
+            <div class="section_content_nav">
                 <!--<div class="cp_nav">
                     <jsp:include page="/WEB-INF/views/common/navPom.jsp"/>
                 </div>-->
