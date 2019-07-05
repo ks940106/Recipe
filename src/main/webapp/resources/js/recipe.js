@@ -94,6 +94,9 @@ function stepNum() {
     $(".step>p").each(function (index,e) {
        $(e).text("Step"+(index+1));
     });
+    $(".step input[name='step_no[]']").each(function (index,e) {
+        $(e).val((index+1));
+    });
     $(".step_btn").each(function (index,e) {
        $(e).find('a').eq(2).attr("href","javascript:addStep("+(index+1)+")");
        $(e).find('a').eq(3).attr("href","javascript:delStep("+(index+1)+")");
@@ -108,11 +111,15 @@ function delStep(i) {
 //upload form
 function doSubmit(option) {
     if (option === 'save_public') {
-        var step_photo = $("#divStepArea input[name='step_photo[]']");
+        // var step_photo = $("#divStepArea input[name='step_photo[]']");
         var formData = new FormData($("#recipeForm")[0]);
-        var array = ['a','b','c','d'];
-        var json_arr = JSON.stringify(array);
-        formData.append('array',json_arr);
+        var steps = [];
+        $('#divStepArea [name="step_text[]"]').each(function () {
+           steps.push($(this).val());
+        });
+        var json_arr = JSON.stringify(steps);
+        formData.append('steps',json_arr);
+
         $.ajax({
             type:"post",
             url:"/recipeReg.do",
