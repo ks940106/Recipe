@@ -21,7 +21,7 @@
 	<tr>
 		<th><button type="button" id="prev"><</button></th>
 		<th colspan="5" id="YearMonth"></th>
-		<th><button type="button" id="next">></button></th>
+		<th><button type="button" id="next" class="next">></button></th>
 	</tr>
 	<tr>
 		<th style="color:red;">일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th style="color:blue;">토</th>
@@ -49,29 +49,32 @@
 			var nowMonth = date.getMonth()+1;
 			month = nowMonth;
 			//var nowDate = date.getDate();
+			
 			calender(year,month);
 		}
-		$("#next").click(function(){
+		$(".next").click(function(){
 			month = month+1;
 			if(month==13){
 				year= year+1;
 				month= 1;
 			}
+			$("#prev").addClass('prev');
+			///////////
 			init();
 			calender(year,month);
 		});
-		$("#prev").click(function(){
+		$(".prev").click(function(){
 			month = month-1;
 			if(month==1){
 				year=year-1;
 				month=12;
 			}
+			var date = new Date();
+			if(date.getFullYear()==year && date.getMonth()==month){
+				$("#prev").removeClass('prev');
+			}
 			init();
 			calender(year,month);
-			//var date = new Date();
-			//if(date.getFullYear()==year && date.getMonth()==month){
-			//}
-			///////////////////////////////////////////////////////
 		})
 		function calender(y,m){
 			var firstDay= new Date(y,m-1,1).getDay(); //첫 요일
