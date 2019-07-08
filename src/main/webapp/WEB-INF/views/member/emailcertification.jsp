@@ -83,6 +83,7 @@
        if($("#checkMsg").html() == "인증 시간이 초과 되었습니다."){
           opener.$("#eTxt").text("인증실패");
           opener.$("#eTxt").css("color","red");
+          opener.emailcertification=true;
           self.close();
        }
    });

@@ -95,10 +95,8 @@ public class MemberController {
 	//회원가입
 	@RequestMapping(value="/insertMember.do")
 	public String insertMember(HttpServletRequest request,@RequestParam MultipartFile fileUpload)throws Exception{
-		System.out.println("컨트롤러");
 		String id=request.getParameter("id");
 		String pw1 = request.getParameter("pw");
-		
 		String name=request.getParameter("name");
 		String nickname=request.getParameter("nickname");
 		String addr1=request.getParameter("addr1");
