@@ -16,7 +16,7 @@
 	</div>
 	<div class="container_etc" style="width: 460px;">
 		<h2>회원가입</h2>
-		<form name="form_insert" id="frmInsert" method="post" action="/insertMember.do" onsubmit="return doSubmit()" enctype="multipart/form-data">
+		<form name="form_insert" id="frmInsert" method="post" action="/insertMember.do"  enctype="multipart/form-data">
 			<input type="hidden" name="q_mode" value="insert"> 
 				<input type="hidden" name="q_path" value="">
 				
@@ -35,7 +35,7 @@
 				<span id="pwMsg2" style="display: none;" class="text-danger">비밀번호 확인을 입력해주세요.</span>
 			</div>
 			<div id="name" class="form-group has-feedback">
-				<input type="text" name="name" class="form-control" id="name"placeholder="이름">
+				<input type="text" name="name" class="form-control" id="name" onblur="nameck()" placeholder="이름">
 			</div>
 			<div id="nickFrms" class="form-group has-feedback">
 				<input type="text" name="nickname" class="form-control" id="nickname" onblur="chkNick()" placeholder="닉네임"> 
@@ -49,7 +49,7 @@
 				<input type="text" name="addr1" class="form-control" id="addr1" placeholder="주소">
 			</div>
 			<div id="addr2_div" class="form-group has-feedback">
-				<input type="text" name="addr2" class="form-control" id="addr2" placeholder="상세주소">
+				<input type="text" name="addr2" class="form-control" id="addr2" onblur="addrck()" placeholder="상세주소">
 			</div>
 			<div id="phone_div" class="form-group has-feedback">
 				<input type="text" name="phone" class="form-control" id="phone" onblur="phoneck()" placeholder="핸드폰 번호 ex)010-0000-0000">
@@ -58,10 +58,10 @@
 			<div class="form-group has-feedback">
 				<div class="btn_gender" style="width: 220px; left: 20px;">
 					<span class="input-group-btn">
-						<input type="radio" id="genderM" name="gender" class="btn btn-sm btn-default"style="width: 100px;" onclick="chkGenderM()" value="남">남자</button>
+						<input type="radio" id="genderM" name="gender" class="btn btn-sm btn-default"style="width: 100px;" onblur="genderck()" value="남">
 					</span> 
 					<span class="input-group-btn">
-						<input type="radio" id="genderF" name="gender" class="btn btn-sm btn-default" style="width: 100px;" onclick="chkGenderF()" value="여">여자</button>
+						<input type="radio" id="genderF" name="gender" class="btn btn-sm btn-default" style="width: 100px;" onblur="genderck()" value="여">
 					</span>
 				</div>
 				<input type="text" class="form-control" disabled=""> 
@@ -69,7 +69,7 @@
 			</div>
 			<input type="file" id="fileUpload" name="fileUpload" accept=".jpg,.jpeg,.png">
 			<input type="hidden" name="frm[pro_tg_gender]" id="pro_tg_gender">
-			<button type="submit" class="btn btn-primary btn-block btn-lg">회원가입</button>
+			<input type="submit" class="btn btn-primary btn-block btn-lg" onclick="return doSubmit()" value="회원가입">
 		</form>
 	</div>
 	</section>
@@ -78,6 +78,8 @@
 <script>
 $(document).ready(function(){
 	$("#emailcertification").prop("disabled",true);
+	 insert=[false,false,false,false,false,false,false,false,false];
+	 console.log(insert);
 })
 function sample6_execDaumPostcode() {
     new daum.Postcode({
@@ -103,9 +105,19 @@ function sample6_execDaumPostcode() {
         }
     }).open();
 }
-//아이디 확인
+//이메일 인증 insert[0]
+$("#emailcertification").click(function(){
+	emailcertification=false;
+	var email = $("#id").val();
+	console.log(email);
+	var url="/emailcertification.do";
+	var pop=window.open("emailcertification.jsp","emailcertification","width=400,height=300");
+	pop.location.href=url+"?email="+email;
+	console.log(emailcertification);
+})
+//아이디 확인 insert[1]
 function EmailCheck(){
-	EmailCheckFlag=false;
+	console.log(insert);
 	var email=$("#id").val();
 	var emailchk=/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 	
@@ -113,6 +125,7 @@ function EmailCheck(){
 		$("#idMsg").html("이메일 주소가 올바르지 않습니다");
 		$("#idMsg").css("display", "block");
 		$("#emailcertification").prop("disabled",true);
+		insert[1]=false;
 		return;
 	}
 	if (emailchk.test(email)) {
@@ -126,11 +139,12 @@ function EmailCheck(){
 						$("#idMsg").html("사용가능한 이메일 입니다");
 						$("#idMsg").css("display", "block");
 						$("#emailcertification").prop("disabled",false);
-						EmailCheckFlag=true;
+						insert[1]=true;
 					}else{
 						$("#idMsg").html("중복된 이메일입니다");
 						$("#idMsg").css("display", "block");
 						$("#emailcertification").prop("disabled",true);
+						insert[1]=false;
 						return;
 					}
 				},
@@ -140,39 +154,17 @@ function EmailCheck(){
 			})
 		}
 	}
-	//핸드폰 정규식
-	function phoneck(){
-		var phone = $("#phone");
-		var phonech=/^\d{3}-\d{3,4}-\d{4}$/;
-		console.log(phonech);
-		if(!phonech.test(phone)){
-			$("#phoneMsg").html("핸드폰 형식을 맞춰주세요");
-			$("#phoneMsg").css("display","block");
-			return;
-		}
-	}
-	//이메일 인증
-	$("#emailcertification").click(function(){
-		emailcertification=false;
-		var email = $("#id").val();
-		console.log(email);
-		var url="/emailcertification.do";
-		var pop=window.open("emailcertification.jsp","emailcertification","width=400,height=300");
-		pop.location.href=url+"?email="+email;
-		console.log(emailcertification);
-	})
 	
-	//비밀번호 정규식
+	//비밀번호 정규식 insert[2]
 	function chkPasswd1() {
 		var pw = $("#pw").val();
 		var pwchk = /^[A-Za-z0-9!@#$%^&*()_+=.,/]{6,12}$/;
-		console.log(pwchk)
 		pwchkFlag=false;
 		console.log(pwchkFlag);
 		if (pwchk.test(pw)) {
 			$("#pwMsg").html("사용 가능한 패스워드 입니다");
 			$("#pwMsg").css("display", "block");
-			pwchkFlag=true;
+			insert[2]=true;
 		}
 		if (!pwchk.test(pw)) {
 			$("#pwMsg").html("패스워드는 영어,숫자,특수문자 포함 6~12글자 입니다");
@@ -183,7 +175,7 @@ function EmailCheck(){
 			return;
 		}
 	}
-	//비밀번호확인
+	//비밀번호확인 insert[3]
 	function chkPasswd2() {
 		var pw = $("#pw").val();
 		var pw_check = $("#pw_check").val();
@@ -191,7 +183,7 @@ function EmailCheck(){
 		console.log(pw_check);
 		if (pw_check == pw) {
 			$("#pwMsg2").css("display", "none");
-			pw2ck=true;
+			insert[3]=true;
 		}
 		if (pw_check != pw) {
 			$("#pwMsg2").html("패스워드와 패스워드 확인이 다릅니다");
@@ -199,9 +191,8 @@ function EmailCheck(){
 			return;
 		}
 	}
-	//닉네임 중복체크
+	//닉네임 중복체크 insert[4]
 	function chkNick(){
-		nicknameFlag=false;
 		var nickname =$("#nickname").val();
 		var nicknameCheck="";
 		if(!nickname){
@@ -209,7 +200,6 @@ function EmailCheck(){
 			$("#nickMsg").css("display","block");
 			return;
 		}
-		
 		if(nickname){
 			console.log(nickname);
 			$.ajax({
@@ -220,7 +210,7 @@ function EmailCheck(){
 					if(data.trim()=="Y"){//중복 없음
 						$("#nickMsg").html("사용가능한 닉네임 입니다");
 						$("#nickMsg").css("display","block");
-						nicknameFlag=true;
+						insert[4]=true;
 					}else{
 						$("#nickMsg").html("사용불가능한 닉네임 입니다");
 						$("#nickMsg").css("display","block");
@@ -233,29 +223,105 @@ function EmailCheck(){
 			})
 		}
 	}
-	
-	function doSubmit(){
-		console.log(EmaiEmailCheckFlag);
-		if(!EmaiEmailCheckFlag){
-			EmailCheck();
-			return false;
+	//핸드폰 정규식 insert[5]
+	function phoneck(){
+		var phone = $("#phone").val();
+		var phonech=/^[0-9]{3}-[0-9]{3,4}-[0-9]{4}$/;
+		console.log(phone);
+		if(phonech.test(phone)){
+			$("#phoneMsg").css("display","none");
+			insert[5]=true;
+		}
+		if(!phonech.test(phone)){
+			$("#phoneMsg").html("핸드폰 형식을 맞춰주세요");
+			$("#phoneMsg").css("display","block");
+			insert[5]=false;
+		}
+	}
+	//이름 체크 insert[6]
+	function nameck(){
+		var name=$("#name").val();
+		var nameck=/[a-z,A-Z,가-힣]{1,50}/
+		if(!nameck.test(name)){
+			insert[6]=true;
+		}
+		if(nameck.test(name)){
+			insert[6]=false;
+		}
+	}
+	//주소 빈값 체크 insert[7]
+	function addrck(){
+		var addr1=$("#addr1").val();
+		var addr2=$("#addr2").val();
+		var zipCode=$("#zipCode").val();
+		console.log(addr2);
+		if(zipCode.length!=0){
+			if(addr1.length!=0){
+				if(addr1.length!=0){
+					insert[7]=true;
+				}
+			}
 		}
 		
-		if(!chkNickFlag){
-			chkNick();
-			return false;
+	}
+	function genderck(){
+		var gender = $('input[name="gender"]:checked').val();
+		if(gender.length!=0){
+			insert[8]=true;
 		}
-		if(!chkPasswd2){
-			chkPasswd2();
-			return false;
-		}
-		if(!pwchkFlag){
-			chkPasswd1();
-			return false;
-		}
-		if(phoneck){
-			phoneck();
-			return false;
+	}
+	
+	function doSubmit(){
+		for(var i= 0;i<insert.length;i++){
+			console.log(insert);
+			if(!insert[0]){
+				 alert("이메일 인증을 해주세요");
+                 event.isDefaultPrevented;
+                 return false;
+			}
+			if(!insert[1]){
+				$("#idFrms").focus();
+				EmailCheck();
+                event.isDefaultPrevented;
+                return false;
+			}
+			if(!insert[2]){
+				alert("패스워드를 입력 해주세요");
+				chkPasswd1();
+                event.isDefaultPrevented;
+                return false;
+			}
+			if(!insert[3]){
+				$("#pw_check").focus();
+				chkPasswd2();
+                event.isDefaultPrevented;
+                return false;
+			}
+			if(!insert[4]){
+				chkNick();
+                event.isDefaultPrevented;
+                return false;
+			}
+			if(!insert[5]){
+				alert("핸드폰 번호를 입력 해주세요");
+                event.isDefaultPrevented;
+                return false;
+			}
+			if(!insert[6]){
+				nameck();
+                event.isDefaultPrevented;
+                return false;
+			}
+			if(!insert[7]){
+				alert("주소를 입력 해주세요");
+                event.isDefaultPrevented;
+                return false;
+			}
+			if(!insert[8]){
+				genderck();
+                event.isDefaultPrevented;
+                return false;
+			}
 		}
 		
 	}

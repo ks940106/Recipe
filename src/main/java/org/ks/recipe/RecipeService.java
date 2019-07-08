@@ -10,4 +10,6 @@ public interface RecipeService {
     List<Category> categoryList();
 
     int recipeReg(Recipe recipe);
+
+    List<Recipe> recipeList();
 }

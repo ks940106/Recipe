@@ -53,25 +53,23 @@ public class MemberController {
 	}
 	//로그인
 	@RequestMapping(value="/login.do")
-	public String login(HttpServletRequest request,@RequestParam String id,@RequestParam String pw ) {
+	public String login(HttpServletRequest request,@RequestParam String id,@RequestParam String pw )throws Exception {
 		Member m = new Member();
 		m.setId(id);
-		m.setPw(pw);
+		m.setPw(new SHA256Util().encData(pw));
 		Member member = memberService.login(m);
 		String view="";
 		if(member==null) {
 				request.setAttribute("msg", "로그인 실패");
-				//request.setAttribute("loc", "WEB-INF/views/member/loginPage.jsp");
+				request.setAttribute("loc", "/loginPage.do");
 		}
 		else if(member.getName().equals("관리자")) {
 			HttpSession session =request.getSession();
 			session.setAttribute("member", member);
-			request.setAttribute("msg","관리자 입니다" );
 			request.setAttribute("loc", "/");
 		}else if(member!= null) {
 			HttpSession session =request.getSession();
 			session.setAttribute("member", member);
-			request.setAttribute("msg","로그인성공" );
 			request.setAttribute("loc", "/");
 		}
 		view="common/msg";

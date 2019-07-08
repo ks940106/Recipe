@@ -74,7 +74,7 @@
       if(form==authNum){
          opener.$("#eTxt").text("인증완료");
          opener.$("#eTxt").css("color","blue");
-         opener.result=true;
+         opener.insert[0]=true;
          self.close();
       }
    }

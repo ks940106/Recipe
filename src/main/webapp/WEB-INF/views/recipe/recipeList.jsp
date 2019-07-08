@@ -10,15 +10,15 @@
     <title>싱싱레시피 요리대회</title>
     <link href="../resources/css/import.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/recipe.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 
 </head>
 
 <body>
-
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 <!-- header Fin -->
 <section>
@@ -34,7 +34,7 @@
         <%--<jsp:include page="/WEB-INF/views/common/navPom.jsp"/>--%>
         <%--</div>--%>
         <div class="section_content">
-            <div class="cp_content">
+            <div class="rcp_content">
                 <%--검색필터--%>
                 <table class="table">
                     <tr>
@@ -56,6 +56,29 @@
                     </tr>
 
                 </table>
+                <div class="rcp_m_list2">
+                    <div class="m_list_tit">
+                        총 <b>120,788</b>개의 맛있는 레시피가 있습니다.
+                        <ul class="nav nav-tabs2 pull-right" style="position:relative;">
+                            <li role="presentation" class="active"><a href="javascript:void(0);" onclick="goSearchRecipe('order','accuracy')">정확순</a></li>
+                            <li role="presentation"><a href="javascript:void(0);" onclick="goSearchRecipe('order','date')">최신순</a></li>
+                            <li role="presentation"><a href="javascript:void(0);" onclick="goSearchRecipe('order','reco')">추천순</a></li>
+                        </ul>
+                    </div>
+                    <div class="row">
+                        <c:forEach var="recipe" items="${recipeList}">
+                            <div class="col-xs-4">
+                                <a href="#" class="thumbnail">
+                                    <img src="${pageContext.request.contextPath}/resources/upload/recipe/${recipe.recipeMainImg}" style="width:275px; height:275px;">
+                                    <div class="caption">
+                                        <h4 class="ellipsis_title2">${recipe.recipeTitle}</h4>
+                                        <p>by ${recipe.recipeWriter}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

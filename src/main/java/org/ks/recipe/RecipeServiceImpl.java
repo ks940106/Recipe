@@ -27,4 +27,9 @@ public class RecipeServiceImpl implements RecipeService {
     public int recipeReg(Recipe recipe) {
         return recipeDaoImpl.recipeReg(recipe);
     }
+
+    @Override
+    public List<Recipe> recipeList() {
+        return recipeDaoImpl.recipeList();
+    }
 }

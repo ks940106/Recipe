@@ -23,4 +23,9 @@ public class RecipeDaoImpl implements RecipeDao {
     public int recipeReg(Recipe recipe) {
         return sqlSession.insert("recipe.recipeReg",recipe);
     }
+
+    @Override
+    public List<Recipe> recipeList() {
+        return sqlSession.selectList("recipe.recipeAll");
+    }
 }
