@@ -51,6 +51,10 @@ public class MemberController {
 	public String insert() {
 		return "member/insert";
 	}
+	@RequestMapping(value="/memberUpdatePage.do")
+	public String memberUpdate() {
+		return "member/memberUpdatePage";
+	}
 	//로그인
 	@RequestMapping(value="/login.do")
 	public String login(HttpServletRequest request,@RequestParam String id,@RequestParam String pw )throws Exception {
