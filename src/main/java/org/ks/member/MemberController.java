@@ -66,11 +66,14 @@ public class MemberController {
 		else if(member.getName().equals("관리자")) {
 			HttpSession session =request.getSession();
 			session.setAttribute("member", member);
+			request.setAttribute("loc", "/");
 		}else if(member!= null) {
 			HttpSession session =request.getSession();
 			session.setAttribute("member", member);
+			request.setAttribute("loc", "/");
 		}
-		return "redirect:/index.jsp";
+		view="common/msg";
+		return view;
 	}
 	//로그아웃
 	@RequestMapping(value="/logout.do")
