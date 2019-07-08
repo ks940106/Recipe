@@ -32,7 +32,7 @@ public class RecipeController {
     public String recipePage(Model model){
         List<Category> categories = recipeService.categoryList();
         model.addAttribute("categories",categories);
-        return "recipe/recipe";
+        return "recipe/recipeList";
     }
 
     @RequestMapping(value = "/recipeReg.do", method = RequestMethod.POST, produces = "text/plain")
