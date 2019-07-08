@@ -18,20 +18,30 @@
 	 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	
 	<section>
-		<div class="section_content">
-			<!-- 컨텐츠 사이드 메뉴 -->
-			<div class="sidebar_mypage">
-				<div class="sidebar_name">MyPage</div>
-				<hr>
-				<div>
-					<a href="#">개인정보 변경</a>
-				</div>
-				<div>
-					<a href="cart.do">장바구니</a>
-				</div>
+		<div class="pom_bg">
+		<div class="pom_top">
+			<h1>마이페이지</h1>
+			<div id="pom_div_bg"></div>
+
+		</div>
+	</div>
+	<div class="pom_wrap">
+		<div class="pomNav">
+			<nav class="nav_wrap">
+			<div class="nav_con">
+				<div class="nav_title">마이페이지</div>
+				<ul class="nav_menu">
+					<li><a href="/cart.do">장바구니</a><span>></span></li>
+					<li><a href="/competitionResultList.do">결제내역</a><span>></span></li>
+				</ul>
 			</div>
-			<h3>장바구니</h3>
-			<div class="content">
+			</nav>
+		</div>
+		<div class="section_content_nav">
+			<!--<div class="cp_nav">
+                    <jsp:include page="/WEB-INF/views/common/navPom.jsp"/>
+                </div>-->
+			<div class="cp_content">
 				<form action="/order.do" method="post">  <!-- 주문하기 페이지로 넘기는 form -->
 					 <table class="table">
 					    <thead>
@@ -62,6 +72,7 @@
 				</form>
 			</div>
 		</div>
+	</section>
 	</section>
   <!-- header Fin -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
