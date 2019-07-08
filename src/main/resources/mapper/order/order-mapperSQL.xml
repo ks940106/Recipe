@@ -4,4 +4,8 @@
   	<insert id="insertOrder" parameterType="order">
   			insert into order_tbl values(order_sql.nextval,#{orderCode},#{id},#{addr1},#{addr2},#{recipeNo},#{orderCount},#{orderState},#{zipCode},#{phone})
   	</insert>
+  	
+  	<delete id="deleteCart" parameterType="order">
+  		 delete from cart where recipe_no=#{recipeNo}
+  	</delete>
 </mapper>

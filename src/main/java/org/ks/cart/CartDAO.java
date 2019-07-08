@@ -9,4 +9,5 @@ public interface CartDAO {
 	public List allListCart(String id);
 	public int insertCart(Cart c);
 	public List orderLisgCart(String[] cartNo);
+	public int deleteCart(String[] cartNo);
 }

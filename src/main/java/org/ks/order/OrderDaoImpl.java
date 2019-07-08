@@ -20,4 +20,10 @@ public class OrderDaoImpl implements OrderDao {
 		
 	}
 
+	@Override
+	public int deleteCart(Order o) {
+		int result = sqlSession.update("order.deleteCart",o);
+		return result;
+	}
+
 }

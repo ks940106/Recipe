@@ -9,4 +9,5 @@ public interface CartService {
 	public ArrayList<Cart> allListCart(String id);
 	public int insertCart(Cart c);
 	public ArrayList<Cart> orderListCart(String[] cartNo);
+	public int deleteCart(String[] cartNo);
 }

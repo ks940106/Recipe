@@ -25,4 +25,10 @@
 				#{cartNo}
 			</foreach>
 	</select>
+	<delete id="deleteCart" >
+		delete from cart where cart_no in
+			<foreach item="cartNo" collection="array" open="(" separator="," close=")">
+				#{cartNo}
+			</foreach>
+	</delete>
 </mapper>

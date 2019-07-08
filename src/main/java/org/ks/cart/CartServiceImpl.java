@@ -34,4 +34,10 @@ public class CartServiceImpl implements CartService {
 		return (ArrayList<Cart>)(cartDAOImpl.orderLisgCart(cartNo));
 	}
 
+	@Override
+	public int deleteCart(String[] cartNo) {
+		int result=cartDAOImpl.deleteCart(cartNo);
+		return result;
+	}
+
 }
