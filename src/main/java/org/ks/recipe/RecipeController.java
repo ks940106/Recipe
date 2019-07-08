@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.util.Arrays;
@@ -26,16 +28,23 @@ public class RecipeController {
     @Qualifier(value = "recipeServiceImpl")
     RecipeService recipeService;
 
-
-
     @RequestMapping("/recipePage.do")
     public String recipePage(Model model){
-        List<Category> categories = recipeService.categoryList();
-        model.addAttribute("categories",categories);
+        List<Category> categoryList = recipeService.categoryList();
+        model.addAttribute("categoryList",categoryList);
+        List<Recipe> recipeList = recipeService.recipeList();
+        model.addAttribute("recipeList",recipeList);
         return "recipe/recipeList";
     }
 
-    @RequestMapping(value = "/recipeReg.do", method = RequestMethod.POST, produces = "text/plain")
+    @RequestMapping("/recipeRegPage.do")
+    public String recipeRegPage(Model model) {
+        List<Category> categoryList = recipeService.categoryList();
+        model.addAttribute("categoryList",categoryList);
+        return "recipe/recipe";
+    }
+
+    @RequestMapping(value = "/recipeReg.do", method = RequestMethod.POST)
     public String recipeReg(HttpSession session, MultipartHttpServletRequest multi) throws Exception{
 
         Member member = (Member) session.getAttribute("member");
@@ -149,5 +158,11 @@ public class RecipeController {
         int result = recipeService.recipeReg(recipe);
 
         return "recipe/recipe";
+    }
+
+    @RequestMapping(value = "/recipe/{recipeNo}")
+    public String getRecipeByNo(@PathVariable("recipeNo") String recipeNo, Model model){
+
+        return "recipe/recipeDetail";
     }
 }

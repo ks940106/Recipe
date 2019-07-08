@@ -9,4 +9,6 @@ public interface RecipeDao {
     List<Category> categoryList();
 
     int recipeReg(Recipe recipe);
+
+    List<Recipe> recipeList();
 }
