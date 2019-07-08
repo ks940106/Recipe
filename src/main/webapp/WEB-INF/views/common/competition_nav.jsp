@@ -10,7 +10,7 @@
 				<ul class="lnb_sub_menu">
 					<li><a href="/competitionAdminList.do?competitionCheck='Y'">진행중인 대회</a></li>
 					<li><a href="/competitionAdminResultList.do">지난 대회 관리</a></li>
-					<li><a href="reg_list.html" class="">대회 참가자 리스트</a></li>
+					<li><a href="/competitionAdminSearch.do">대회 참가자 리스트</a></li>
 				</ul>
 			</li>
 		</ul>

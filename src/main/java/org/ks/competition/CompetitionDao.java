@@ -11,4 +11,5 @@ public interface CompetitionDao {
 	public int deleteCompetition(int competitionNo);
 	public int competitionUpdate(Competition c);
 	public Competition updateSelectOne(int competitionNo);
+	public List competitionResultView(int competitionNo);
 }

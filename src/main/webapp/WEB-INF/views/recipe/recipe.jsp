@@ -42,7 +42,7 @@
                 <div class="cont_line"><p class="cont_tit4">카테고리</p>
                     <select name="cok_sq_category_1" id="cok_sq_category_1" text="종류별">
                         <option value="">종류별</option>
-                        <c:forEach var="category1" items="${categories}" varStatus="">
+                        <c:forEach var="category1" items="${categoryList}" varStatus="">
                             <c:if test="${category1.categoryType == 1}">
                                 <option value="${category1.categoryNo}">${category1.categoryName}</option>
                             </c:if>
@@ -50,7 +50,7 @@
                     </select>
                     <select name="cok_sq_category_2" id="cok_sq_category_2" text="상황별">
                         <option value="">상황별</option>
-                        <c:forEach var="category2" items="${categories}" varStatus="">
+                        <c:forEach var="category2" items="${categoryList}" varStatus="">
                             <c:if test="${category2.categoryType == 2}">
                                 <option value="${category2.categoryNo}">${category2.categoryName}</option>
                             </c:if>

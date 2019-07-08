@@ -31,40 +31,52 @@
                 <!--<div class="cp_nav">
                     <jsp:include page="/WEB-INF/views/common/navPom.jsp"/>
                 </div>-->
-                <div class="cp_content">
-					<div class="cp_content">
-			<!--                <img src="../../../resources/img/logo.png" width="200px;">-->
-			<!--<h1>요리 대회</h1>
+			<div class="cp_content">
+				<div class="cp_content">
+					<!--                <img src="../../../resources/img/logo.png" width="200px;">-->
+					<!--<h1>요리 대회</h1>
 			<p>싱싱레시피의 요리 대회 소식을 확인하실 수 있습니다.</p>-->
-<!--			<div id="cp_div_bg"></div>-->
-            <div class="cp_notice">
-                <div id="cp_title">${competition.competitionTitle}</div>
-                <div id="cp_div_bg"></div>  
-                <div id="cp_date">${competition.competitionDate}</div>
-                <div class="cp_contentsView">
-                	<div id="cp_contentsImg">
-	                	<c:if test="${not empty competition.competitionImg  }">
-	                        <img src="../../../resources/upload/competition/${competition.competitionImg}" width="800px;">
-	                    </c:if>
-                    </div>
-                    <div id="cp_contents">
-                        ${competition.competitionContents}
-                    </div>
-                </div>
-            </div>
-            <div id="cp_btn">
-                <button onclick="location.href='/competitionParticipate.do?competitionNo=${competition.competitionNo}'">대회참가 신청하기</button>
-            </div>
-<!--
+					<!--			<div id="cp_div_bg"></div>-->
+					<div class="cp_notice">
+						<div id="cp_title">${competition.competitionTitle}</div>
+						<div id="cp_div_bg"></div>
+						<div id="cp_date">${competition.competitionDate}</div>
+						<div class="cp_contentsView">
+							<div id="cp_contentsImg">
+								<c:if test="${not empty competition.competitionImg  }">
+									<img
+										src="../../../resources/upload/competition/${competition.competitionImg}"
+										width="800px;">
+								</c:if>
+							</div>
+							<div id="cp_contents">${competition.competitionContents}</div>
+						</div>
+					</div>
+					<div id="cp_btn">
+
+						<button id="counter">대회참가 신청하기</button>
+					</div>
+					<!--
 			 <button onclick="location.href='/competitionUpdate.do?competitionNo=${competition.competitionNo}'">수정하기</button>   
           <button  onclick="location.href='/competitionDelete.do?competitionNo=${competition.competitionNo}'" >삭제하기</button>
 -->
+				</div>
+			</div>
 		</div>
-                </div>
-            </div>
         </div>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	<script>
+		var n = 0;
+	  $('#counter').click(function(){ 
+		  	n = n+1;
+		  	alert(n);
+		   	if(n>=10){
+				$('#counter').attr('disabled', true);
+			}
+
+		});
+	</script>
 </body>
 
 </html>
