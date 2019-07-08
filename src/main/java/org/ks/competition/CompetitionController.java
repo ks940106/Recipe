@@ -136,6 +136,8 @@ public class CompetitionController {
 	@RequestMapping(value="/competitionUpdate.do")
 	public String competitionUpdate(HttpServletRequest request, HttpServletResponse response, @RequestParam String oldFilename, @RequestParam MultipartFile fileUpload, Competition c) {
 		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/competition");
+		String status = request.getParameter("status");
+		if(!fileUpload.isEmpty()) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 		Date d = new Date();
 		String date = sdf.format(d);
@@ -145,9 +147,8 @@ public class CompetitionController {
 		String filePath = onlyFileName + "_"+ date + extension;
 		String fullPath = savePath+"/" + filePath;
 		c.setCompetitionImg(filePath);
-		System.out.println(oldFilename);
-		String status = request.getParameter("status");
-		if(!fileUpload.isEmpty()) {
+		System.out.println("새파일  : "+filePath);
+		System.out.println("올드파일 : "+oldFilename);
 			byte[] bytes;
 			try {
 				bytes = fileUpload.getBytes();
@@ -157,26 +158,25 @@ public class CompetitionController {
 				bos.write(bytes);
 				bos.close();
 				System.out.println("업로드성공성공!!!");
-				if(f!= null) {
-					if(oldFilename != null) {
-						File deleteFile = new File(savePath+"/"+filePath);
-						boolean bool = deleteFile.delete();
-						System.out.println(bool?"삭제성공":"삭제실패");
-					}
-				}else {
-					if(status.equals("stay")) {
-						c.setCompetitionImg(oldFilename);
-					}else {
-						File deleteFile = new File(savePath+"/"+filePath);
-						boolean bool = deleteFile.delete();
-						System.out.println(bool?"삭제성공":"삭제실패");
-					}
+				if(oldFilename != null) {
+					File deleteFile = new File(savePath+"/"+oldFilename);
+					System.out.println(savePath+"/"+oldFilename);
+					boolean bool = deleteFile.delete();
+					System.out.println(bool?"삭제":"삭제실패");
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+		}else {
+				if(status.equals("stay")) {
+					c.setCompetitionImg(oldFilename);
+				}else {
+					File deleteFile = new File(savePath+"/"+oldFilename);
+					boolean bool = deleteFile.delete();
+					System.out.println(bool?"삭제성공":"삭제실패");
+				}
+			}
 		int result = competitionServiceimpl.competitionUpdate(c);
 		String view="";
 		if(result>0) {

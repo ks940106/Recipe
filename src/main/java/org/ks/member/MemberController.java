@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.ks.member.commons.SHA256Util;
 import org.ks.member.vo.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -93,10 +94,9 @@ public class MemberController {
 
 	//회원가입
 	@RequestMapping(value="/insertMember.do")
-	public String insertMember(HttpServletRequest request,@RequestParam MultipartFile fileUpload) {
-		System.out.println("컨트롤러");
+	public String insertMember(HttpServletRequest request,@RequestParam MultipartFile fileUpload)throws Exception{
 		String id=request.getParameter("id");
-		String pw = request.getParameter("pw");
+		String pw1 = request.getParameter("pw");
 		String name=request.getParameter("name");
 		String nickname=request.getParameter("nickname");
 		String addr1=request.getParameter("addr1");
@@ -116,6 +116,7 @@ public class MemberController {
 		String extension = originName.substring(originName.indexOf('.'));
 		String filePath = onlyFileName + "_"+ date + extension;
 		String memberImg = savePath+"/" + filePath;
+		String pw =new SHA256Util().encData(pw1);
 		Member m = new Member(id, pw, name, nickname, gender, addr1, addr2, phone,memberImg,zipCode);
 		int result = memberService.insertMember(m);
 		if(!fileUpload.isEmpty()) {
