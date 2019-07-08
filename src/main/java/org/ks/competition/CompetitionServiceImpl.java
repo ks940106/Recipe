@@ -49,5 +49,15 @@ public class CompetitionServiceImpl implements CompetitionService {
 		return competitionDaoimpl.updateSelectOne(competitionNo);
 	}
 
+	@Override
+	public Competition competitionResultView(int competitionNo) {
+		List list = competitionDaoimpl.competitionResultView(competitionNo);
+		Competition c = null;
+		if(!list.isEmpty()) {
+			c = (Competition)list.get(0);
+		}
+		return c;
+	}
+
 	
 }

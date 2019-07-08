@@ -204,4 +204,14 @@ public class CompetitionController {
 		}
 		return view;
 	}	
+	@RequestMapping(value="/competitionResultAdmin.do")
+	public String competitionResultAdmin(@RequestParam int competitionNo, Model model) {
+		Competition c = competitionServiceimpl.competitionResultView(competitionNo);
+		model.addAttribute("competition",c);
+		return "admin/competition/competitionAdmin_ResultView";
+	}
+	@RequestMapping(value="/competitionAdminSearch.do")
+	public String competitionSearch(){
+		return "admin/competition/competitionAdmin_search";
+	}
 }

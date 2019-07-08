@@ -42,4 +42,9 @@ public class CompetitionDaoImpl implements CompetitionDao {
 	public Competition updateSelectOne(int competitionNo) {
 		return sqlsession.selectOne("competition.updateSelectOne", competitionNo);
 	}
+
+	@Override
+	public List competitionResultView(int competitionNo) {
+		return sqlsession.selectList("competition.competitionResultView", competitionNo);
+	}
 }
