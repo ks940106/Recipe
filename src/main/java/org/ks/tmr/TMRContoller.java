@@ -28,15 +28,15 @@ public class TMRContoller {
 		}catch(NumberFormatException e){
 			reqPage = 1;
 		}
-		String month = new SimpleDateFormat("MM").format(new Date(System.currentTimeMillis()));
-		String year = new SimpleDateFormat("yy").format(new Date(System.currentTimeMillis()));
+		String month = new SimpleDateFormat("MM").format(new Date(System.currentTimeMillis())); //현재 월 받아오기
+		String year = new SimpleDateFormat("yy").format(new Date(System.currentTimeMillis())); //현재 연 받아오기
 		TMRPageData tpd = tmrserviceImpl.selectTMR(year,month,reqPage);
 		model.addAttribute("tpd", tpd);
 		return "tmr/tmrPage";
 	}
 	
 	@Scheduled(cron="0 0 0 1 * *")
-	public void scheduleTest2() {
+	public void lmrInsert() {
 		String year = new SimpleDateFormat("yy").format(new Date(System.currentTimeMillis()));
 		String month = new SimpleDateFormat("MM").format(new Date(System.currentTimeMillis()));
 		if(month.equals("01")) {
@@ -51,11 +51,8 @@ public class TMRContoller {
 		if(Integer.parseInt(month)<10) {
 			month="0"+month;
 		}
-		insertLmr(year,month);
+		tmrserviceImpl.insertLMR(year,month);
 		System.out.println("지난 달 레시피 등록 성공");
-	}
-	public void insertLmr(String year,String month) {
-		tmrserviceImpl.insertLmr(year,month);
 	}
 	
 	@RequestMapping(value="/lmr.do")
