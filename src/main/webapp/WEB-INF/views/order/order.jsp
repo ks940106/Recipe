@@ -18,6 +18,8 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <link href="../resources/css/import.css" rel="stylesheet" />
+<link href="../resources/css/cart.css" rel="stylesheet" />
+
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
@@ -80,12 +82,12 @@
 						</c:if>
 					</tbody>
 				</table>
-				<h2>배송지 설정</h2>
+				<h2 id="addrName">배송지 설정</h2>
 				<table class="table">
 					<tr>
-						<td><input type="radio">기본 배송지</td>
-						<td><input type="radio">새로운 배송지</td>
-						<td><input type="radio">캠핑장으로</td>
+						<td><input type="radio" name="addr">기본 배송지</td>
+						<td><input type="radio" name="addr">새로운 배송지</td>
+						<td><input type="radio" name="addr">캠핑장으로</td>
 					</tr>
 				</table>
 				<input type="button" onclick="sample6_execDaumPostcode()"
