@@ -9,19 +9,37 @@
 
 <link href="../resources/css/import.css" rel="stylesheet" />
 <link href="../resources/css/tmr.css" rel="stylesheet" />
-
 <script type="text/javascript" src="../resources/js/tmr.js" /> 
+
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<section>
-	<div class="section_content">
-		<h1>이달의 레시피</h1>
-		<button type="button" onclick="location.href='/c.do'"></button>
+	<div class="pom_bg">
+        <div class="pom_top">
+            <h1>이달의 레시피</h1>
+            <div id="pom_div_bg"></div>
+            <p>한 달동안 가장 많은 추천을 받은 레시피</p>
+        </div>
+    </div>
+    <div class="pom_wrap">
+            <div class="pomNav">
+                <jsp:include page="/WEB-INF/views/tmr/tmrNav.jsp"/>
+            </div>
+            <div class="section_content_nav">
+                <!--<div class="cp_nav">
+                    <jsp:include page="/WEB-INF/views/common/navPom.jsp"/>
+                </div>-->
+                <div class="cp_content">
+                
 		<hr>
-			순위 레시피 사진 레시피 제목 레시피 작성자 추천수 조회수
+			<div class="tmrNav">
+			<div>순위</div><div>사진</div><div>제목</div><div>작성자</div><div>추천수</div><div>조회수</div> 
+			</div>    
 		<hr>
 		<c:forEach items="${tpd.list }" var ="vo" varStatus="i">
+			<div class="tmrDiv">
+				<div>
 				<c:choose>
 					<c:when test="${tpd.start+i.index eq 1}">
 						<span id="rank${tpd.start+i.index }">${tpd.start+i.index }</span>
@@ -36,14 +54,29 @@
 						<span>${tpd.start+i.index }</span>
 					</c:otherwise>
 				</c:choose>
-			<a href="#"><img src="${vo.recipeMainImg }"></a> 
-			<a href="#">${vo.recipeTitle }</a> ${vo.recipeWriter } 
-			<img src="/../resources/img/tmr/recommend.png">${vo.recipeLike }
-			<img src="/../resources/img/tmr/view.png"> ${vo.recipeHit }
+				</div>
+				<div>
+					<a href="#"><img src="${vo.recipeMainImg }"></a> 
+				</div>
+				<div>
+					<a href="#">${vo.recipeTitle }</a> 
+				</div>
+				<div>
+					${vo.recipeWriter } 
+				</div>
+				<div>
+					<img src="/../resources/img/tmr/recommend.png"> ${vo.recipeLike }
+				</div>
+				<div>
+					<img src="/../resources/img/tmr/view.png"> ${vo.recipeHit }
+				</div>
+			</div>
 		<hr>
 		</c:forEach>
 		<div style="text-align:center;">${tpd.pageNavi }</div>
-		</div>
+                </div>
+            </div>
+        </div>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
