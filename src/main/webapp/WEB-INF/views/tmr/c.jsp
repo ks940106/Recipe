@@ -37,7 +37,7 @@
 		</tr>
 	</c:forEach>
 	</table>
-	
+	<div>///</div>
 	<script>
 		var nowYear = 0; //현재 년
 		var nowMonth = 0; //현재 월
@@ -204,6 +204,7 @@
 							reservationDate[i] = $("#hidden"+reservationId).val(); //데이터넣기
 						}
 						alert(reservationDate);
+						selectReservation();
 						clickState = 0;//클릭상태 0 으로만듬
 						}else if(oneClickSelected == 2){ //다음달에서 선택 시
 							$(this).css("background-color","orange"); //누른곳 orange색으로
@@ -232,6 +233,7 @@
 								$("#"+plusId).css("background-color","orange");
 							}
 							alert(reservationDate);
+							selectReservation();
 							clickState = 0;//클릭상태 0 으로만듬
 						}else if(oneClickSelected == 0){
 							$(this).css("background-color","orange"); //누른곳 orange색으로
@@ -264,6 +266,7 @@
 								reservationDate[index+i] = startYear+"/"+startMonth+"/"+change; 
 							}
 							alert(reservationDate);
+							selectReservation();
 							clickState = 0;
 						}
 				}
@@ -294,6 +297,19 @@
 			}
 		}
 		
+		////////////////////////////////
+		function selectReservation(){
+			$.ajax({
+				url:"/selectReservation.do",
+				data:{"reservationDate":reservationDate},
+				success: function(){
+					
+				},
+				error: function(){
+					
+				}
+			});
+		}
 	</script>
 </body>
 </html>

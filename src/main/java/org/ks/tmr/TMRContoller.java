@@ -68,8 +68,20 @@ public class TMRContoller {
 		return "admin/lmr/lmrPage";
 	}
 	
+	@RequestMapping(value="/popup.do")
+	public String popup() {
+		return "tmr/tmrPopup";
+	}
+	
 	@RequestMapping(value="/c.do")
 	public String c() {
+		return "tmr/c";
+	}
+	@RequestMapping(value="/selectReservation.do")
+	public String selectReservation(HttpServletRequest request) {
+		String[] reservationDate = request.getParameterValues("reservationDate");
+		System.out.println(reservationDate[0]);
+		System.out.println(reservationDate[1]);
 		return "tmr/c";
 	}
 }

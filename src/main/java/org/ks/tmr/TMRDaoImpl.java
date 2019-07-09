@@ -41,15 +41,12 @@ public class TMRDaoImpl implements TMRDao{
 		map.put("recipeNo1",Integer.toString(tmr1.getRecipeNo()));
 		map.put("recipeTitle1", tmr1.getRecipeTitle());
 		map.put("recipeWriter1", tmr1.getRecipeWriter());
-		map.put("recipeImg1", tmr1.getRecipeMainImg());
 		map.put("recipeNo2",Integer.toString(tmr2.getRecipeNo()));
 		map.put("recipeTitle2", tmr2.getRecipeTitle());
 		map.put("recipeWriter2", tmr2.getRecipeWriter());
-		map.put("recipeImg2", tmr2.getRecipeMainImg());
 		map.put("recipeNo3",Integer.toString(tmr3.getRecipeNo()));
 		map.put("recipeTitle3", tmr3.getRecipeTitle());
 		map.put("recipeWriter3", tmr3.getRecipeWriter());
-		map.put("recipeImg3", tmr3.getRecipeMainImg());
 		String date = new SimpleDateFormat("yy/MM/dd").format(tmr1.getRecipeDate());
 		map.put("recipeDate", date);
 		sqlsession.insert("tmr.insertLmr",map);
