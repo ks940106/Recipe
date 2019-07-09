@@ -13,7 +13,6 @@ function payment(id,name,phone,zipCode,addr1,addr2) {
 				for(var i=0;i<recipeNo.length;i++){
 					noarray[i] = recipeNo.eq(i).val();
 				}
-				console.log(noarray);
 				var price = $("#countSpan").html();
 				var d = new Date();
 				var date = d.getFullYear()+''+(d.getMonth()+1)+''+d.getDate()+''+d.getHours()+''+d.getMinutes()+''+d.getSeconds();
@@ -41,17 +40,30 @@ function payment(id,name,phone,zipCode,addr1,addr2) {
 						$('#paymentResult').html('에러내용 :' +rsp.error_msg+date);
 						
 						location.href="/successOrder.do?recipe="+noarray+"&id="+id+"&orderCode="+date+"&zipCode="+zipCode+
-									"&addr1="+addr1+"&addr2="+addr2+"&phone="+phone+"&recipeCount="+noarray1
+									"&addr1="+addr1+"&addr2="+addr2+"&phone="+phone+"&recipeCount="+noarray1;
+		
 					}
 				});
 			};
 
 function deletecart() {
-	var values = document.getElementsByName("cartNo");
-	for(var i =0;i<values.length;i++){
-		if(values[i].checked){
-			alert(values[i].value);
-		}
-	}
+	/*
+	var queryString = $("form[name=orderForm]").serialize();
+	$.ajax({
+		type : 'post',
+		url : '/deleteCart.do',
+		data : queryString,
+		dataType : "json",
+		success : function(json) {
+			
+		},
+	});
 	
+	 * */
+	var cartNo = $("[name='cartNo']");
+	var noarray1 = new Array();
+	for(var i=0;i<cartNo.length;i++){
+		noarray1[i] = cartNo.eq(i).val();
+		alert(noarray1[i]);
+	}
 };

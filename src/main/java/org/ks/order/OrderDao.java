@@ -6,4 +6,5 @@ import org.ks.order.vo.Order;
 
 public interface OrderDao {
 	public int insertOrder(Order o);
+	public int deleteCart(Order o);
 }

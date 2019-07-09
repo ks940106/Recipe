@@ -54,13 +54,33 @@ public class OrderController {
 			list.add(o);
 		}
 		int result = orderServiceImpl.insertOrder(list);
-		if(list.size()==result) {
-			request.setAttribute("msg", "결제성공");
-			request.setAttribute("loc", "/");
-		}else {
+		if (list.size() == result) {
+			int result1 = orderServiceImpl.deleteCart(list);
+			if (list.size() == result1) {
+
+				request.setAttribute("msg", "결제성공");
+				request.setAttribute("loc", "/");
+			} else {
+				request.setAttribute("msg", "결제실패");
+				request.setAttribute("loc", "/");
+			}
+		} else {
 			request.setAttribute("msg", "결제실패");
 			request.setAttribute("loc", "/");
 		}
 		return "common/msg";
 	}
+	/*
+	@RequestMapping(value="deleteCart.do")
+	public void deleteCart(HttpServletRequest request) {
+		String cartNo = request.getParameter("cartNo");
+		StringTokenizer st = new StringTokenizer(cartNo, ",");
+		String[] array = new String[st.countTokens()];
+		int i = 0;
+		while(st.hasMoreTokens()) {
+			array[i] = st.nextToken();
+			i++;
+		}
+	}
+	 * */
 }

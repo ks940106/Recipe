@@ -41,7 +41,7 @@
 				<c:forEach items="${list}" var="c">
 					<tr>
 						<td>${c.competitionNo}</td>
-						<td><a href="competitionView.do?competitionNo=${c.competitionNo}">${c.competitionTitle}</a></td>
+						<td><a href="/competitionResultAdmin.do?competitionNo=${c.competitionNo}">${c.competitionTitle}</a></td>
 						<td>${c.competitionDate}</td>
 					</tr>
 				</c:forEach>

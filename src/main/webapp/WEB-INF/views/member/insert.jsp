@@ -271,7 +271,7 @@ function EmailCheck(){
 		}
 	}
 	
-	function doSubmit(){
+	 function doSubmit(){
 		for(var i= 0;i<insert.length;i++){
 			console.log(insert);
 			if(!insert[0]){
@@ -324,7 +324,7 @@ function EmailCheck(){
 			}
 		}
 		
-	}
+	} 
  	
  	
 </script>

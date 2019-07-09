@@ -31,4 +31,16 @@ public class OrderServiceImpl implements OrderService {
 		
 	}
 
+	@Override
+	public int deleteCart(ArrayList<Order> list) {
+		int result = 0;
+		for(Order o : list) {
+			int re = orderDaoImpl.deleteCart(o);
+			if(re>0) {
+				result++;
+			}
+		}
+		return result;
+	}
+
 }

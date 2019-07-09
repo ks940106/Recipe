@@ -3,14 +3,14 @@ package org.ks.competition.vo;
 import java.sql.Date;
 
 public class Competition {
-	private int competitionNo;
-	private String competitionTitle;
-	private String competitionContents;
-	private String competitionImg;
-	private String competitionVideo;
-	private String competitionResult;
-	private Date competitionDate;
-	private String competitionCheck;
+	private int competitionNo;					//대회번호
+	private String competitionTitle;			//대회 타이틀
+	private String competitionContents;			//대회내용
+	private String competitionImg;				//이미지
+	private String competitionVideo;			//비디오
+	private String competitionResult;			//요리대회 결과
+	private Date competitionDate;				//게시글 날짜
+	private String competitionCheck;			//대회진행여부 Y,N
 	public Competition() {
 		super();
 		// TODO Auto-generated constructor stub
