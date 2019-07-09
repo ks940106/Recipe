@@ -473,36 +473,5 @@
 	</section>
 	
 </body>
-<script>
-
-function doAgreeCheck()
-{
-    if(!$('#contractCheck').is(':checked') || !$('#privacyCheck').is(':checked'))
-    {
-        $('#checkMsg').show();
-        return ;
-    }else{
-    	location.href="/insert.do"
-    }
-}
-
-$(document).ready(function() {
-    $("#allchk").click(function() {
-        var chked = ($('#allchk').is(':checked')) ? true : false;
-        $('#contractCheck').prop("checked",chked);
-        $('#privacyCheck').prop("checked",chked);
-    });
-    $("#contractCheck").click(function() {
-        if (!$('#contractCheck').is(':checked')) $('#allchk').prop("checked", false);
-        else if ($('#contractCheck').is(':checked') && $('#privacyCheck').is(':checked')) $('#allchk').prop("checked", true);
-    });
-    $("#privacyCheck").click(function() {
-        if (!$('#privacyCheck').is(':checked')) $('#allchk').prop("checked", false);
-        else if ($('#contractCheck').is(':checked') && $('#privacyCheck').is(':checked')) $('#allchk').prop("checked", true);
-    });
-
-});
-
-
-</script>
+<script type="text/javascript" src="/resources/js/member.js"></script>
 </html>
