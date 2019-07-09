@@ -85,13 +85,22 @@
 				<h2 id="addrName">배송지 설정</h2>
 				<table class="table">
 					<tr>
-						<td><input type="radio" name="addr">기본 배송지</td>
-						<td><input type="radio" name="addr">새로운 배송지</td>
-						<td><input type="radio" name="addr">캠핑장으로</td>
+						<td><input type="radio" name="addrs" checked>기본 배송지</td>
+						<td><input type="radio" name="addrs" id="newAddrs">새로운 배송지</td>
+						<td><input type="radio" name="addrs" id="campingAddrs" >캠핑장으로</td>
+					</tr>
+					<tr>
+						
+						<td colspan="3">
+						<input type="hidden" onclick="sample6_execDaumPostcode()" id="addrsApi" value="우편번호 찾기">
+						<input type="text" name="zipCode" id="zipCode" value="${sessionScope.member.zipCode }">
+						<input type="text" name="addr1" id="addr1" value="${sessionScope.member.addr1 }">
+						<input type="text" name="addr2" id="addr2" value="${sessionScope.member.addr2 }">
+						</td>
 					</tr>
 				</table>
-				<input type="button" onclick="sample6_execDaumPostcode()"
-					value="우편번호 찾기"><br>
+				
+					<!-- 
 				<div id="zip_code" class="form-group has-feedback">
 					<input type="text" name="zipCode" id="zipCode" placeholder="우편번호">
 				</div>
@@ -102,6 +111,7 @@
 					<input type="text" name="addr2" id="addr2" onblur="addrck()"
 						placeholder="상세주소">
 				</div>
+					 -->
 				<h3>
 				총결제금액<span id="countSpan"><c:out value="${total }"/></span>원
 			</h3>
