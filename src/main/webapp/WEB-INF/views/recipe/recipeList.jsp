@@ -53,6 +53,9 @@
                         <td>
                             <label>카테고리2<select></select></label>
                         </td>
+                        <td>
+                            <a href="${pageContext.request.contextPath}/recipeRegPage.do">레시피등록</a>
+                        </td>
                     </tr>
 
                 </table>
