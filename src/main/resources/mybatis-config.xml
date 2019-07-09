@@ -16,5 +16,6 @@
 		<typeAlias type="org.ks.order.vo.Order" alias="order"/>
 		<typeAlias type="org.ks.recipe.vo.Category" alias="category"/>
 		<typeAlias type="org.ks.recipe.vo.Recipe" alias="recipe"/>
+		<typeAlias type="org.ks.participant.vo.Participant" alias="participant"/>
 	</typeAliases>
 </configuration>
