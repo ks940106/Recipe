@@ -67,11 +67,20 @@ public class CartController {
 		}
 		return mav;
 	}
-	@ResponseBody
+	
 	@RequestMapping(value="deleteCart.do")
-	public void deleteCart(HttpServletRequest request) {
+	public String deleteCart(HttpServletRequest request) {
 		String[] cartNo = request.getParameterValues("cartNo");
-		 cartServiceImpl.deleteCart(cartNo);
+		int result= cartServiceImpl.deleteCart(cartNo);
+		if(result>0) {
+			request.setAttribute("msg", "장바구니 삭제완료");
+			request.setAttribute("loc", "cart.do");
+			return "common/msg";
+		}else {
+			request.setAttribute("msg", "장바구니 삭제실패");
+			request.setAttribute("loc", "cart.do");
+			return "common/msg";
+		}
 	
 	}
 	//관리자 페이지용 소스 

@@ -60,10 +60,10 @@ function deletecart() {
 	});
 	
 	 * */
-	var cartNo = $("[name='cartNo']");
+	var cartNo = $("[name='cartNo']:checked");
 	var noarray1 = new Array();
 	for(var i=0;i<cartNo.length;i++){
 		noarray1[i] = cartNo.eq(i).val();
-		alert(noarray1[i]);
 	}
+	location.href="/deleteCart.do?cartNo="+noarray1;
 };

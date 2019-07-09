@@ -42,6 +42,8 @@
                     <jsp:include page="/WEB-INF/views/common/navPom.jsp"/>
                 </div>-->
 			<div class="cp_content">
+				<div id="contentName">장바구니</div>
+				<div id="contentNamebar"></div>
 				<form action="/order.do" method="post" name="orderForm">  <!-- 주문하기 페이지로 넘기는 form -->
 					 <table class="table">
 					    <thead>
