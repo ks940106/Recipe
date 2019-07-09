@@ -66,18 +66,18 @@ public class MemberController {
 		if(member==null) {
 				request.setAttribute("msg", "로그인 실패");
 				request.setAttribute("loc", "/loginPage.do");
+				view="common/msg";
+				return view;
 		}
 		else if(member.getName().equals("관리자")) {
 			HttpSession session =request.getSession();
 			session.setAttribute("member", member);
-			request.setAttribute("loc", "/");
 		}else if(member!= null) {
 			HttpSession session =request.getSession();
 			session.setAttribute("member", member);
-			request.setAttribute("loc", "/");
 		}
-		view="common/msg";
-		return view;
+		return "redirect:/index.jsp";
+
 	}
 	//로그아웃
 	@RequestMapping(value="/logout.do")

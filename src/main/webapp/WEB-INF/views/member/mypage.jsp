@@ -27,7 +27,7 @@
 			<div class="nav_con">
 				<div class="nav_title">마이페이지</div>
 				<ul class="nav_menu">
-					<li><a href="/memberUpdatePage.do">개인정보수정</a><span>></span></li>
+					<li><a href="/mypage.do">개인정보수정</a><span>></span></li>
 					<li><a href="/cart.do">장바구니</a><span>></span></li>
 					<li><a href="/competitionResultList.do">결제내역</a><span>></span></li>
 				</ul>

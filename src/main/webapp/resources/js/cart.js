@@ -91,3 +91,8 @@ function sample6_execDaumPostcode() {
         }
     }).open();
 };
+
+$("#newAddrs").click(function() {
+	$("#addrsApi").attr("type","button");
+});
+	

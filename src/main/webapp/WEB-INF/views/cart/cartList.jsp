@@ -10,6 +10,7 @@
 <script src="http://code.jquery.com/jquery-3.4.0.js"></script>
 
 <link href="../resources/css/import.css" rel="stylesheet" />
+<link href="../resources/css/cart.css" rel="stylesheet" />
 </head>
 <body>
 	 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
