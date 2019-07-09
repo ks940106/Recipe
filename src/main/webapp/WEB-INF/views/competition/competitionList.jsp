@@ -43,19 +43,42 @@
 						<div id="cp_date">${competition.competitionDate}</div>
 						<div class="cp_contentsView">
 							<div id="cp_contentsImg">
-								<c:if test="${not empty competition.competitionImg  }">
-									<img
-										src="../../../resources/upload/competition/${competition.competitionImg}"
-										width="800px;">
+								<c:if test="${not empty competition.competitionImg}">
+									<img src="../../../resources/upload/competition/${competition.competitionImg}" width="800px;">
 								</c:if>
 							</div>
 							<div id="cp_contents">${competition.competitionContents}</div>
 						</div>
+						<form action="/participantInsert.do" method="post">
+							<table>
+							<input type="hidden" name="competitionNo" value="${competition.competitionNo}">
+								<tr>
+									<td>
+										아이디 : <input type="text" name="id" value="${sessionScope.member.id}"> 
+									</td>
+								</tr>
+								<tr>
+									<td>
+										이름 : <input type="text" name="name" value="${sessionScope.member.name}"> 
+									</td>
+								</tr>
+								<tr>
+									<td>
+										전화번호 : <input type="text" name="phone" value="${sessionScope.member.phone}"> 
+									</td>
+								</tr>
+								<tr>
+									<td>
+										성별 : <input type="text" name="gender" value="${sessionScope.member.gender}"> 
+									</td>
+								</tr>
+							</table>
+							<div id="cp_btn">
+								<button>대회참가 신청하기</button>
+							</div>
+						</form>
 					</div>
-					<div id="cp_btn">
-
-						<button id="counter">대회참가 신청하기</button>
-					</div>
+					
 					<!--
 			 <button onclick="location.href='/competitionUpdate.do?competitionNo=${competition.competitionNo}'">수정하기</button>   
           <button  onclick="location.href='/competitionDelete.do?competitionNo=${competition.competitionNo}'" >삭제하기</button>
@@ -66,7 +89,7 @@
         </div>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-	<script>
+	<!-- <script>
 		var n = 0;
 	  $('#counter').click(function(){ 
 		  	n = n+1;
@@ -76,7 +99,7 @@
 			}
 
 		});
-	</script>
+	</script> -->
 </body>
 
 </html>
