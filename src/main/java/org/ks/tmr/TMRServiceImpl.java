@@ -23,7 +23,7 @@ public class TMRServiceImpl implements TMRService{
 		//페이지 당 게시물 수
 		int numPerPage = 10;
 		//총 게시물 수 구하기
-		List countList = tmrdaoImpl.totalCount(year,month);
+		List countList = tmrdaoImpl.tmrCount(year,month);
 		int totalCount = countList.size();
 		//총 페이지 수 구하기
 		int totalPage = (totalCount%numPerPage==0)?(totalCount/numPerPage):(totalCount/numPerPage)+1;
@@ -62,10 +62,10 @@ public class TMRServiceImpl implements TMRService{
 		return tpd;
 	}
 	@Transactional
-	public void insertLmr(String year,String month) {
-		List list = tmrdaoImpl.totalCount(year,month);
+	public void insertLMR(String year,String month) {
+		List list = tmrdaoImpl.tmrCount(year,month);
 		ArrayList<TMR> list2 = (ArrayList<TMR>)list;
-		tmrdaoImpl.insertLmr(list2.get(0),list2.get(1),list2.get(2));
+		tmrdaoImpl.insertLMR(list2.get(0),list2.get(1),list2.get(2));
 	}
 	public LMRPageData selectLMR(int reqPage) {
 		//페이지 당 게시물 수

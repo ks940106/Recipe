@@ -36,7 +36,7 @@
 						<span>${tpd.start+i.index }</span>
 					</c:otherwise>
 				</c:choose>
-			<a href="#"><img src="${vo.recipeMainimg }"></a> 
+			<a href="#"><img src="${vo.recipeMainImg }"></a> 
 			<a href="#">${vo.recipeTitle }</a> ${vo.recipeWriter } 
 			<img src="/../resources/img/tmr/recommend.png">${vo.recipeLike }
 			<img src="/../resources/img/tmr/view.png"> ${vo.recipeHit }
