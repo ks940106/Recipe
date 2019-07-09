@@ -47,6 +47,8 @@
                     <jsp:include page="/WEB-INF/views/common/navPom.jsp"/>
                 </div>-->
 			<div class="cp_content">
+				<div id="contentName">결제</div>
+				<div id="contentNamebar"></div>
 				<table class="table">
 					<thead>
 						<tr>
@@ -78,11 +80,30 @@
 						</c:if>
 					</tbody>
 				</table>
-			<h3>
-						
+				<h2>배송지 설정</h2>
+				<table class="table">
+					<tr>
+						<td><input type="radio">기본 배송지</td>
+						<td><input type="radio">새로운 배송지</td>
+						<td><input type="radio">캠핑장으로</td>
+					</tr>
+				</table>
+				<input type="button" onclick="sample6_execDaumPostcode()"
+					value="우편번호 찾기"><br>
+				<div id="zip_code" class="form-group has-feedback">
+					<input type="text" name="zipCode" id="zipCode" placeholder="우편번호">
+				</div>
+				<div id="addr1_div" class="form-group has-feedback">
+					<input type="text" name="addr1" id="addr1" placeholder="주소">
+				</div>
+				<div id="addr2_div" class="form-group has-feedback">
+					<input type="text" name="addr2" id="addr2" onblur="addrck()"
+						placeholder="상세주소">
+				</div>
+				<h3>
 				총결제금액<span id="countSpan"><c:out value="${total }"/></span>원
 			</h3>
-			<button type="button"  onclick="payment('${sessionScope.member.id}','${sessionScope.member.name}','${sessionScope.member.phone}',
+			<button type="button" class="button button1" onclick="payment('${sessionScope.member.id}','${sessionScope.member.name}','${sessionScope.member.phone}',
 														'${sessionScope.member.zipCode}',
 														'${sessionScope.member.addr1 }',
 														'${sessionScope.member.addr2 }')">결제하기</button>
@@ -93,6 +114,6 @@
 	<!-- header Fin -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	<script type="text/javascript" src="/resources/js/cart.js"></script>
-
+	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </body>
 </html>

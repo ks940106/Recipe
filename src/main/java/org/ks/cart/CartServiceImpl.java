@@ -36,7 +36,6 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public int deleteCart(String[] cartNo) {
-		System.out.println("서비스="+cartNo);
 		int result=cartDAOImpl.deleteCart(cartNo);
 		return result;
 	}
