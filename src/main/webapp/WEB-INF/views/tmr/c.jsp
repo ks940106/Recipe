@@ -61,7 +61,15 @@
 			calender(year,month,state);
 			
 		}
+		var oneClickSelected = 1; //1번 체크하고 다음다음,전전 달 넘어갈 경우 막기위해
 		$(".next").click(function(){
+			if(clickState == 1){
+				if(oneClickSelected == 2){
+					alert("퇴실 날짜를 클릭해주세요.");
+					return;
+				}
+				oneClickSelected = oneClickSelected+1;
+			}
 			month = month+1; //다음 버튼 클릭 시 월 추가 로직
 			if(month>12){
 				year= year+1;
@@ -72,6 +80,17 @@
 			calender(year,month,state);
 		});
 		$(".prev").click(function(){
+			if(clickState == 1){
+				if(state == 1){
+					alert("퇴실날짜는 지난 날짜를 선택할 수 없습니다.");
+					return;
+				}
+				if(oneClickSelected == 0){
+					alert("퇴실 날짜를 클릭해주세요.");
+					return;
+				}
+				oneClickSelected = oneClickSelected - 1;
+			}
 			month = month-1; //이전 버튼 클릭 시 월 감소 로직
 			if(month<1){
 				year=year-1;
@@ -86,6 +105,7 @@
 			var lastDate= new Date(y,m,0).getDate(); //마지막 날짜
 			var id = 0; //td 아이디 얻기위한 용도
 			var value = ""; //td안의 input(hidden) value값을 주기 위해
+			var idPlus = 0; //두개 선택해서 값이 들어왔을 때 마지막 날보다 하루 더 오렌지색 칠해주기위해
 			$("#YearMonth").text(y+"년 "+m+"월");
 			for(var i = 1; i<=lastDate;i++){
 				
@@ -106,83 +126,117 @@
 				
 				if(s==1 && i>=nowDate){
 					$("#"+id).addClass('possible');
+					$("#"+id).css("background-color","lightgreen");
 				}else if(s==1 && i<nowDate){
 					$("#"+id).addClass('impossible');
+					$("#"+id).css("background-color","lightgray");
 				}else if(s==0){
 					$("#"+id).addClass('impossible');
+					$("#"+id).css("background-color","lightgray");
 				}else if(s==2){
 					$("#"+id).addClass('possible');
+					$("#"+id).css("background-color","lightgreen");
 				}
+				
+				for(var j = 0; j<reservationDate.length; j++){
+					if(reservationDate[j]==$("#hidden"+id).val()){
+						$("#"+id).css("background-color","orange");
+						if(clickState == 0 && j==reservationDate.length-1){ //한개클릭이 아닌 두 개 다 클릭된 상황일 때
+							idPlus = id+1;
+						}
+					}
+				}
+			}
+			if(idPlus != 0){
+				$("#"+idPlus).css("background-color","orange");
 			}
 		}
 		
 		var clickState = 0; //클릭상태 
 		var startId = 0; //시작td id
 		var endId = 0; //끝 td id
-		var startDate = 0; // 시작 날
-		var endDate = 0; // 끝 날
+		var reservationDate = new Array();
 		$("#day td").click(function(){
 			var className = $(this).attr("class"); //클래스이름을 가져오기 (impossible/possible)
 			if(className == 'impossible'){ //클래스이름이 impossible이면 선택불가.
 				alert('선택이 불가능한 날짜 입니다.');
 			}else if(className == 'possible'){ //클래스이름이 possible이면
 				if(clickState == 0){ //클릭상태가 0이면
-					if(startId !=0){ //제일 첫 선택이 아니면 
-						for(var i = startId; i<Number(endId)+1; i++){ //기존의 선택한 startId,endId 사이의 css를 해제함.
-							$("#"+i).css("background-color","lightgreen");
-						}
-					}
+					$(".possible").css("background-color","lightgreen");
 					clickState = clickState + 1;
 					$(this).css("background-color","orange"); //누른부분 orange색으로
 					startId = $(this).attr('id'); //startId에 누른 곳 Id 값이 시작값으로 들어감.
+					reservationDate = [$("#hidden"+startId).val()];
 				}else if(clickState == 1){ //한 번 클릭한 뒤 또 클릭하면
 					if(startId == $(this).attr('id')){ //만약 startId 와 누른곳의 Id가 같다면
 						$(this).css("background-color","lightgreen"); //그곳의 css를 해제하고 
-						clickState = 0; //클릭상태0으로만듬
+						clickState = 0; //클릭상태 0 으로만듬
+						oneClickSelected = 1;
 					}else{ //정상적인경우
+						if(oneClickSelected == 1){ //같은 달 내에서
 						$(this).css("background-color","orange"); //누른곳 orange색으로
 						endId = $(this).attr('id'); //endId에 누른곳 Id 값이 끝값으로 들어감
-						if(startId>endId){ //시작Id값은 더 작아야 함.
+						if(Number(startId)>endId){ //시작Id값은 더 작아야 함. //Number로 해야 이상하게 해당날짜가 포함이 됨...
 							var temp = startId;
 							startId = endId;
 							endId = temp;
 						}
+						var reservationId = 0;
+						reservationDate = new Array(); //DB컬럼용 배열
 						for(var i = 0 ; i<endId-startId;i++){// 만약 1~3숙박이면 (3-1) = i= 0,1 두번반복 
-							var startDayId = Number(startId) + i; // 1,2
-							$("#"+startDayId).css("background-color","orange"); //1번째,2번째css바꿈
-							if(i==0){ //첫번째 아이디 val값을 startDate에 대입
-								startDate = $("#hidden"+startDayId).val();
-							}
-							if(endId-startId == 1){ //반복횟수가 1인경우 endDate 에도 첫번째 아이디 val값을 대입
-								endDate = $("#hidden"+startDayId).val();
-							}
-							if(endId-startId > 1 && i == endId-startId-1){ // 반복횟수가 1이상인경우 2번이상반복하는 것이며(2박3일이상), 동시에 i가 최대반복 전이면 마지막 날이므로 endDate에 대입
-								endDate = $("#hidden"+startDayId).val();
-							}
-							
+							reservationId = Number(startId) + i; // 1,2
+							$("#"+reservationId).css("background-color","orange"); //1번째,2번째css바꿈
+							reservationDate[i] = $("#hidden"+reservationId).val();
 						}
-						//현재 조금 불확실함 이유는 모름 -> 이것부터 확인
-						//다음 달 전 달로 넘어갈 시 로직(전 달)
-						//쿼리고민
-						//아작스실행 (검색해오기)
-						alert(startDate);
-						alert(endDate);
-						clickState = 0;
+						alert(reservationDate);
+						clickState = 0;//클릭상태 0 으로만듬
+						oneClickSelected = 1;
+						}else if(oneClickSelected == 2){ //다음달에서 선택 시
+							var startValue = reservationDate[0];
+							var endText = $(this).text();
+							var endId = $(this).attr("id");
+							var startYear = startValue.substring(0,4);
+							var startMonth = startValue.substring(5,7);
+							var startDate = startValue.substring(8,10);
+							var startLastDate =new Date(startYear,startMonth,0).getDate();
+							var index = startLastDate-startDate+1;
+							for(var i =0; i<index;i++){
+								var plusDate = Number(startDate)+i;
+								if(plusDate<10){
+									plusDate= "0"+plusDate;
+								}
+								reservationDate[i] = startYear+"/"+startMonth+"/"+plusDate; 
+							}
+							for(var i = 0; i<endText-1; i++){
+								var plusId = Number(endId) + i -1;
+								alert(plusId);
+								reservationDate[index+i] = $("#hidden"+plusId).val();
+								$("#"+plusId).css("background-color","orange");
+							}
+							/////
+							//endValue 받아서 1일부터 현재일까지 value값 넣고 css변경
+							/////
+							alert(reservationDate);
+							clickState = 0;//클릭상태 0 으로만듬
+							oneClickSelected = 1;//한번클릭한곳의 위치를 알기위한 변수
+							
+							//monthChange - t/f 로 전 달 마지막칸 구분.
+							//쿼리고민(누른날부터 끝날까지 다 ,구분자로 가져와서 하나하나 like로 그날짜들에 예약이 되어있는 카라반들을 제외하고 나오게하면 됨)
+							//아작스실행 (검색해오기)
+						}
 					}
 				}
 			}
 		})
 		
 		
-		function init(){
+		function init(){ //달 넘어 갈 시 모든 것을 우선 초기화
 			$("#day td").html("");
 			$("#day td").removeClass("possible");
 			$("#day td").removeClass("impossible");
-			for(var i = startId; i<Number(endId)+1; i++){
-				$("#"+i).css("background-color","lightgreen");
-			}
+			$("#day td").css("background-color","white");
 		}
-		function stateNum(y,m){
+		function stateNum(y,m){ //과거 현재 미래 판단
 			var date = new Date();
 			if(date.getFullYear()==y){
 				if(date.getMonth()+1>m){
