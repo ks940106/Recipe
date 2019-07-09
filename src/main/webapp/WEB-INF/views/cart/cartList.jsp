@@ -8,10 +8,7 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script src="http://code.jquery.com/jquery-3.4.0.js"></script>
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 <link href="../resources/css/import.css" rel="stylesheet" />
 </head>
 <body>
@@ -69,8 +66,8 @@
 							</c:if>
 					    </tbody>
 					  </table>
-				  <button type="submit" >주문하기</button>
-				  <button type="button" onclick="deletecart();">삭제하기</button>
+				  <button type="submit" class="button button1">주문하기</button>
+				  <button type="button" class="button button1" onclick="deletecart();">삭제하기</button>
 				</form>
 			</div>
 		</div>
