@@ -34,4 +34,10 @@ public class MemberServiceImpl implements MemberService{
 		return result;
 	}
 
+	@Override
+	public Member pwCheck(String id, String pw) {
+		Member m =memberDao.pwCheck(id,pw);
+		return m;
+	}
+
 }

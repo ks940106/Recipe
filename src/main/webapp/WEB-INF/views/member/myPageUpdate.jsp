@@ -42,10 +42,9 @@
 			<form method="post" action="/myPagePwCheck.do">
 				<h1>개인 정보 수정</h1>
 				<div>
-					<p>개인 정보 수정을 위해 비밀번호를 입력해주세요</p>
-					<input type="password" id="pwcheck" name="pwcheck">
+					
 				</div>
-				<button type="submit">확인</button>
+				<button type="submit">변경</button>
 			</form>
 			</div>
 		</div>
