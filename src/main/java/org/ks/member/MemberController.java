@@ -296,6 +296,7 @@ public class MemberController {
 		Member m = new Member();
 		m.setId(request.getParameter("id"));
 		String pw1 = request.getParameter("new_pw");
+		System.out.println(m.getPw());
 		m.setNickname(request.getParameter("nickname"));
 		m.setAddr1(request.getParameter("addr1"));
 		m.setAddr2(request.getParameter("addr2"));
@@ -320,6 +321,7 @@ public class MemberController {
 			e1.printStackTrace();
 		}
 		m.setPw(pw);
+		m.setMemberImg(filePath);
 		int result = memberService.updateMember(m);
 		if(!fileUpload.isEmpty()) {
 			byte[] bytes;

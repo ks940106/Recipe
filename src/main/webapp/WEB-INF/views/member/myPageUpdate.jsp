@@ -46,7 +46,7 @@
 						<tbody>
 							<tr>
 								<th>아이디</th>
-								<td>${member.id }<input type="hidden" name="id" id="id"> </td>
+								<td>${member.id }</td>
 							</tr>
 							<tr>
 								<th>새 비밀번호</th>
