@@ -1,5 +1,6 @@
 package org.ks.cart;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.ks.cart.vo.Cart;
@@ -21,6 +22,19 @@ public class CartDAOImpl implements CartDAO {
 	public int insertCart(Cart c) {
 		
 		return sqlSession.update("cart.insertCart",c);
+	}
+
+
+	@Override
+	public List orderLisgCart(String[] cartNo) {
+		return sqlSession.selectList("cart.orderListCart",cartNo);
+	}
+
+
+	@Override
+	public int deleteCart(String[] cartNo) {
+		
+		return sqlSession.update("cart.deleteCart",cartNo);
 	}
 
 }

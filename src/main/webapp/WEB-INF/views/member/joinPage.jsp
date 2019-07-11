@@ -4,13 +4,14 @@
 <html>
 <head>
 <link href="../resources/css/import.css" rel="stylesheet" />
+<script src="http://code.jquery.com/jquery-3.4.0.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body class="joinback">
 	<section class="join">
 	<div class="nav_etc">
-		<a href="/index.html">
+		<a href="/index.jsp">
 			<img src="http://recipe1.ezmember.co.kr/img/logo3.png">
 		</a>
 	</div>
@@ -472,8 +473,5 @@
 	</section>
 	
 </body>
-<script>
-	
-
-</script>
+<script type="text/javascript" src="/resources/js/member.js"></script>
 </html>

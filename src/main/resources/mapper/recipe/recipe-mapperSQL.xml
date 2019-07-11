@@ -1,4 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="mybatis">
+<mapper namespace="recipe">
+    <resultMap id="recipe" type="org.ks.recipe.vo.Recipe">
+        <result column="recipe_no" property="recipeNo"/>
+        <result column="recipe_title" property="recipeTitle"/>
+        <result column="recipe_writer" property="recipeWriter"/>
+        <result column="recipe_contents" property="recipeContents"/>
+        <result column="recipe_mainimg" property="recipeMainImg"/>
+        <result column="recipe_cat1" property="recipeCat1"/>
+        <result column="recipe_cat2" property="recipeCat2"/>
+        <result column="recipe_count" property="recipeCount"/>
+        <result column="recipe_time" property="recipeTime"/>
+        <result column="recipe_level" property="recipeLevel"/>
+        <result column="recipe_item" property="recipeItem"/>
+        <result column="recipe_step" property="recipeStep"/>
+        <result column="recipe_stepimg" property="recipeStepImg"/>
+        <result column="recipe_like" property="recipeLike"/>
+        <result column="recipe_hit" property="recipeHit"/>
+        <result column="recipe_price" property="recipePrice"/>
+        <result column="recipe_date" property="recipeDate"/>
+        <result column="recipe_stock" property="recipeStock"/>
+        <result column="recipe_workimg" property="recipeWorkImg"/>
+        <result column="recipe_video" property="recipeVideo"/>
+        <result column="recipe_state" property="recipeState"/>
+
+    </resultMap>
+    <select id="categoryAll" resultType="category">
+        select
+            CATEGORY_NO as categoryNo,
+            CATEGORY_TYPE as categoryType,
+            CATEGORY_NAME as categoryName
+        from CATEGORY
+    </select>
+    <insert id="recipeReg" parameterType="recipe">
+        insert into RECIPE (RECIPE_NO, RECIPE_TITLE, RECIPE_WRITER, RECIPE_CONTENTS, RECIPE_MAINIMG, RECIPE_CAT1, RECIPE_CAT2, RECIPE_COUNT, RECIPE_TIME, RECIPE_LEVEL, RECIPE_ITEM, RECIPE_STEP, RECIPE_STEPIMG, RECIPE_LIKE, RECIPE_HIT, RECIPE_PRICE, RECIPE_DATE, RECIPE_STOCK, RECIPE_WORKIMG, RECIPE_VIDEO, RECIPE_STATE)
+        values (SEQ_RECIPE_NO.nextval,#{recipeTitle},#{recipeWriter},#{recipeContents},#{recipeMainImg},#{recipeCat1},#{recipeCat2},#{recipeCount},#{recipeTime},#{recipeLevel},#{recipeItem},#{recipeStep},#{recipeStepImg},#{recipeLike},#{recipeHit},#{recipePrice},sysdate,#{recipeStock},#{recipeWorkImg},#{recipeVideo},#{recipeState})
+    </insert>
+    <select id="recipeAll" resultMap="recipe">
+        select * from RECIPE
+    </select>
 </mapper>

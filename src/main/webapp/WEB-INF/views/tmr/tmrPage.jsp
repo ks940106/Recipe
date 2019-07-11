@@ -9,63 +9,74 @@
 
 <link href="../resources/css/import.css" rel="stylesheet" />
 <link href="../resources/css/tmr.css" rel="stylesheet" />
-
 <script type="text/javascript" src="../resources/js/tmr.js" /> 
+
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<section>
-	<div class="section_content">
-		<br>
-		<p id="tmr">이달의 레시피</p>
-		<button onclick="location.href='/lmt.do'">지난 달 레시피</button>
-		<br>
+	<div class="pom_bg">
+        <div class="pom_top">
+            <h1>이달의 레시피</h1>
+            <div id="pom_div_bg"></div>
+            <p>이번달에 가장 많은 추천을 받은 레시피</p>
+        </div>
+    </div>
+    <div class="pom_wrap">
+            <div class="pomNav">
+                <jsp:include page="/WEB-INF/views/tmr/tmrNav.jsp"/>
+            </div>
+            <div class="section_content_nav">
+                <!--<div class="cp_nav">
+                    <jsp:include page="/WEB-INF/views/common/navPom.jsp"/>
+                </div>-->
+                <div class="cp_content">
+                
 		<hr>
-		<div style="height:25px; text-align:center; font-size:14pt; font-weight:bold;">
-			<div style="width:30%; float:left;">순위</div>
-			<div style="width:10%; float:left;">레시피 사진</div>
-			<div style="width:30%; float:left;">레시피 제목</div>
-			<div style="width:15%; float:left;">추천수</div>
-			<div style="width:15%; float:left;">조회수</div>
-		</div>
+			<div class="tmrNav">
+			<div>순위</div><div>사진</div><div>제목</div><div>작성자</div><div>추천수</div><div>조회수</div> 
+			</div>    
 		<hr>
-		
-		<c:forEach items="${list }" var ="vo" varStatus="i">
-		<div style="height:100px; text-align: center;" id="tmrDiv">
-			<div style="width:30%">
+		<c:forEach items="${tpd.list }" var ="vo" varStatus="i">
+			<div class="tmrDiv">
+				<div>
 				<c:choose>
-					<c:when test="${i.count eq 1}">
-						<span class="rank" id="rank${i.count }">${i.count }</span>
+					<c:when test="${tpd.start+i.index eq 1}">
+						<span id="rank${tpd.start+i.index }">${tpd.start+i.index }</span>
 					</c:when>
-					<c:when test="${i.count eq 2}">
-						<span class="rank" id="rank${i.count }">${i.count }</span>
+					<c:when test="${tpd.start+i.index eq 2}">
+						<span id="rank${tpd.start+i.index }">${tpd.start+i.index }</span>
 					</c:when>
-					<c:when test="${i.count eq 3}">
-						<span class="rank" id="rank${i.count }">${i.count }</span>
+					<c:when test="${tpd.start+i.index eq 3}">
+						<span id="rank${tpd.start+i.index }">${tpd.start+i.index }</span>
 					</c:when>
 					<c:otherwise>
-						<span class="rank">${i.count }</span>
+						<span>${tpd.start+i.index }</span>
 					</c:otherwise>
 				</c:choose>
-			</div>
-			<div style="padding-top:10px; width:10%">
-			<a href="#"><img src="/../resources/img/tmr/b_01.png" id="recipeImg"></a>
-			</div>
-			<div style="width:30%" id="recipeTitle">
-			<a href="#">${vo.recipeTitle }</a>
-			</div>
-			<div style="width:30%" id="recipeInfo">
-				<div style="width:50%" style="float:left;">
-					<img src="/../resources/img/tmr/recommend.png" id="recipeInfoImg"> ${vo.recipeLike }
 				</div>
-				<div style="width:50%" style="float:left;">
-					<img src="/../resources/img/tmr/view.png" id="recipeInfoImg"> ${vo.recipeHit }
+				<div>
+					<a href="#"><img src="${vo.recipeMainImg }"></a> 
+				</div>
+				<div>
+					<a href="#">${vo.recipeTitle }</a> 
+				</div>
+				<div>
+					${vo.recipeWriter } 
+				</div>
+				<div>
+					<img src="/../resources/img/tmr/recommend.png"> ${vo.recipeLike }
+				</div>
+				<div>
+					<img src="/../resources/img/tmr/view.png"> ${vo.recipeHit }
 				</div>
 			</div>
-		</div>
 		<hr>
 		</c:forEach>
-	</div>
+		<div style="text-align:center;">${tpd.pageNavi }</div>
+                </div>
+            </div>
+        </div>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>

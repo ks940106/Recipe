@@ -34,7 +34,7 @@ var boardReg	=	{
         var name = $(e).closest('div').find('input').prop('name');
         if (name) {
             var num = name.substr(name.length - 1);
-            $('#isDel_' + num).val(1);
+            // $('#isDel_' + num).val(1);
         }
         $(e).closest('div').find('input').val('');
         $(e).closest('div').find('img').remove();
@@ -46,13 +46,12 @@ var boardReg	=	{
 
 //imgUpload
 
-$('.img_box .upload_btn').on('click', function () {
-    console.log("asdf");
-
-
-    $(this).siblings().trigger('click');
-
-});
+// $('.img_box .upload_btn').on('click', function () {
+//     $(this).siblings().trigger('click');
+// });
+function uploadImg(e){
+    $(e).siblings().trigger('click');
+}
 
 $('#cok_video_url').blur(function () {
     var iframe_src       = $('#cok_video_url').val();
@@ -65,5 +64,84 @@ $('#cok_video_url').blur(function () {
     }
 });
 
+var step = 1;
+var content = $("#divStepTemplate").html();
+function addStep(i) {
+    if(i == null){
+        $("#divStepArea").append(content.replace(/STEP/g,step));
+        step++;
+    } else {
+        $("#divStepArea>div:nth-child("+i+")").after(content.replace(/STEP/g,i+1));
+        step++;
+    }
+    stepNum();
+    $(".step").hover(function () {
+        $(this).find('.step_btn').show();
+    },function () {
+        $(this).find('.step_btn').hide();
+    });
+}
 
+$(document).ready(function () {
+    addStep();
+    $(".ui-sortable").sortable({
+        update:function(event,ui){
+            stepNum();
+        }
+    });
+});
+function stepNum() {
+    $(".step>p").each(function (index,e) {
+        $(e).text("Step"+(index+1));
+    });
+    $(".step input[name='step_no[]']").each(function (index,e) {
+        $(e).val((index+1));
+    });
+    $(".step_btn").each(function (index,e) {
+        $(e).find('a').eq(2).attr("href","javascript:addStep("+(index+1)+")");
+        $(e).find('a').eq(3).attr("href","javascript:delStep("+(index+1)+")");
+    });
+}
 
+function delStep(i) {
+    $("#divStepArea>div:nth-child("+i+")").remove();
+    stepNum();
+}
+
+//upload form
+function doSubmit(option) {
+    // var step_photo = $("#divStepArea input[name='step_photo[]']");
+    var formData = new FormData($("#recipeForm")[0]);
+    var steps = [];
+    $('#divStepArea [name="step_text[]"]').each(function () {
+        // steps.push($(this).val());
+        formData.append('steps',$(this).val());
+    });
+    // var json_arr = JSON.stringify(steps);
+
+    var recipe_state;
+    if (option === 'save_public') {
+        recipe_state = 1;
+    }else if(option === 'save'){
+        recipe_state = 0;
+    }
+
+    formData.append('recipe_state',recipe_state);
+
+    $.ajax({
+        type:"post",
+        url:"/recipeReg.do",
+        data:formData,
+        processData:false,
+        contentType:false,
+        success:function (html) {
+            alert("파일 업로드성공");
+        },
+        error:function (error) {
+            alert("파일업로드 실패");
+            console.log(error);
+            console.log(error.status);
+        }
+    })
+
+}

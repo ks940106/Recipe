@@ -27,4 +27,24 @@ public class CompetitionDaoImpl implements CompetitionDao {
 	public List competitionView(String competitionCheck) {
 		return sqlsession.selectList("competition.competitionView",competitionCheck);
 	}
+
+	@Override
+	public int deleteCompetition(int competitionNo) {
+		return sqlsession.delete("competition.deleteCompetition",competitionNo);
+	}
+
+	@Override
+	public int competitionUpdate(Competition c) {
+		return sqlsession.update("competition.competitionUpdate",c);
+	}
+
+	@Override
+	public Competition updateSelectOne(int competitionNo) {
+		return sqlsession.selectOne("competition.updateSelectOne", competitionNo);
+	}
+
+	@Override
+	public List competitionResultView(int competitionNo) {
+		return sqlsession.selectList("competition.competitionResultView", competitionNo);
+	}
 }

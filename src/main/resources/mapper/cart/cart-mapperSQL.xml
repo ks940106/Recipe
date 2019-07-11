@@ -13,4 +13,22 @@
 	<insert id="insertCart" parameterType="cart">
 		insert into cart values(cart_sql.nextval,#{id},#{recipeNo},#{recipePrice},#{recipeCount})
 	</insert>
+	<select id="orderListCart" resultType="cart">
+		select cart_no as cartNo,
+			id,
+			a.recipe_no as recipeNo,
+			a.recipe_price as recipePrice,
+			a.recipe_count as recipeCount,
+			b.recipe_title as recipeTitle
+			from cart a inner join recipe b on a.recipe_no = b.recipe_no where cart_no in
+			<foreach item="cartNo" collection="array" open="(" separator="," close=")">
+				#{cartNo}
+			</foreach>
+	</select>
+	<delete id="deleteCart" >
+		delete from cart where cart_no in
+			<foreach item="cartNo" collection="array" open="(" separator="," close=")">
+				#{cartNo}
+			</foreach>
+	</delete>
 </mapper>

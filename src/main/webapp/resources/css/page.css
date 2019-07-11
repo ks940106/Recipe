@@ -10,3 +10,10 @@ section {
 	min-height: 100vh;
 	margin: 0 auto;
 }
+.section_content_nav {
+	width: 1240px;
+	min-height: 100vh;
+	margin: 0 auto;
+	float:right;
+}
+

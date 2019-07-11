@@ -9,9 +9,10 @@
 	integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
 	crossorigin="anonymous">
 	</script>
-<%--	<link rel="stylesheet" href="/css/common/bootstrap_copy.css">--%>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
@@ -20,7 +21,7 @@
         <div>
             <h1>
                 <a href="#">
-                    <img src="../resources/img/logo.png" alt="Tajam" />
+                    <img src="../resources/img/logo.png" />
                 </a>
             </h1>
             <nav>
@@ -31,14 +32,16 @@
                 </label>
                 <input type="checkbox" id="mnav" class="mui" />
                 <ul>
-                    <li><a href="/insertcart.do" class="active">홈</a></li>
+                    <li><a href="/cart.do" class="active">홈</a></li>
                     <li><a href="/recipePage.do">레시피</a></li>
+                    <li><a href="#">레시피 팔아요</a>
      				<li><a href="/tmr.do">이달의레시피</a></li>
 
                     <li><a href="/competitionList.do?competitionCheck='Y'">요리대회</a></li>
-                    <li><a href="mainBoard.do">토크</a></li>
 
-                    <li><a href="#">쿠킹클래스</a></li>
+                    <li><a href="mainBoard.do">토크</a></li>
+                    <li><a href="/pom.do">쿠킹클래스</a></li>
+
                     <c:choose>
                     <c:when test="${sessionScope.member==null }">
                     	<li><a href="/loginPage.do" style="color: #1f6054;">로그인</a></li>
@@ -48,7 +51,7 @@
                   		<li><a href="/logout.do" style="color: #1f6054;">로그아웃</a></li>
                     </c:when>
                     <c:when test="${sessionScope.member !=null }">
-                    	<li><a href="/#" style="color: #1f6054;">마이페이지</a></li>
+                    	<li><a href="/mypage.do" style="color: #1f6054;">마이페이지</a></li>
                     	<li><a href="/logout.do" style="color: #1f6054;">로그아웃</a></li>
                     </c:when>
                     </c:choose>
