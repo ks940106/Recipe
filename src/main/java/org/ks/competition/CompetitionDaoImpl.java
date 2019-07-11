@@ -63,12 +63,12 @@ public class CompetitionDaoImpl implements CompetitionDao {
 	}
 
 	@Override
-	public List participantView() {
-		return sqlsession.selectList("competition.participantView");
+	public List participantView(int competitionNo) {
+		return sqlsession.selectList("competition.participantMember",competitionNo);
 	}
 
-	@Override
+	/*@Override
 	public List participantMember() {
 		return sqlsession.selectList("competition.participantMember");
-	}
+	}*/
 }

@@ -15,6 +15,5 @@ public interface CompetitionDao {
 	public List competitionResultView(int competitionNo);
 	public List participantCheck(int competitionNo, String id);
 	public List competitionListView(int competitionNo);
-	public List participantView();
-	public List participantMember();
+	public List participantView(int competitionNo);
 }

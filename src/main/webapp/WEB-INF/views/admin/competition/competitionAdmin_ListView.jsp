@@ -84,25 +84,25 @@
 					</tr>
 					</thead>
 					<tbody>
-					<c:forEach items="${participant}" var="p">
+					<c:forEach items="${list}" var="vo">
 					<tr>
 						<td>
 							<label>
 								<input type="checkbox" name="">
 							</label>
 						</td>
-						<td>${p.participantNo}</td>
-						<td>${p.id }</td>
-						<td>${m.name }</td>
-						<td>${m.phone }</td>
+						<td>${vo.participantNo}</td>
+						<td>${vo.id }</td>
+						<td>${vo.name }</td>
+						<td>${vo.phone }</td>
 						<td>
-							${m.gender }
+							${vo.gender }
 						</td>
 						<td>
-							${p.participantResult}
+							${vo.participantResult}
 						</td>
 						<td>
-							${p.participantContent}
+							${vo.participantContent}
 						</td>
 					</tr>
 					</c:forEach>
@@ -121,6 +121,6 @@
 		</div>
         </div>
 	</section>
-	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp"/>
 </body>
 </html>

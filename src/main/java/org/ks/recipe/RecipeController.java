@@ -2,15 +2,14 @@ package org.ks.recipe;
 
 import org.ks.member.vo.Member;
 import org.ks.recipe.vo.Category;
+import org.ks.recipe.vo.Like;
 import org.ks.recipe.vo.Recipe;
 import org.ks.recipe.vo.RecipeDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -159,11 +158,34 @@ public class RecipeController {
     }
 
     @RequestMapping(value = "/recipe/{recipeNo}")
-    public String getRecipeByNo(@PathVariable("recipeNo") String recipeNo, Model model){
+    public String getRecipeByNo(@PathVariable("recipeNo") String recipeNo, Model model, HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+        Member member = new Member();
+        if(session != null && session.getAttribute("member") != null){
+            member = (Member) session.getAttribute("member");
+        }
         RecipeDetail recipeDetail = recipeService.getRecipeDetail(recipeNo);
         recipeService.recipeHit(recipeNo);
+        boolean isLiked = recipeService.getLike(recipeNo,member.getId());
         System.out.println(recipeDetail);
         model.addAttribute("recipe",recipeDetail);
+        model.addAttribute("isLiked",isLiked);
         return "recipe/recipeDetail";
+    }
+
+    @RequestMapping(value = "/recipeLike", produces="text/plain;charset=UTF-8")
+    @ResponseBody
+    public String recipeLike(@RequestParam(value = "recipeNo") String recipeNo, HttpSession session) {
+        Member member = (Member) session.getAttribute("member");
+        Like like = new Like(Integer.parseInt(recipeNo),member.getId());
+        boolean result = recipeService.recipeLike(like);
+        String message="";
+        if(result){
+            message = "좋아요!";
+        }else {
+            message = "이미 좋아요한 글입니다.";
+        }
+
+        return message;
     }
 }

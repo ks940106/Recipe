@@ -8,4 +8,5 @@ public interface MemberService {
 	public String nickCheck(String nick);
 	public int insertMember(Member m);
 	public Member pwCheck(String id,String pw);
+	public int updateMember(Member m);
 }

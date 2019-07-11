@@ -3,8 +3,8 @@ package org.ks.competition;
 import java.util.ArrayList;
 
 import org.ks.competition.vo.Competition;
-import org.ks.member.vo.Member;
 import org.ks.participant.vo.Participant;
+import org.ks.participant.vo.ParticipantMember;
 
 public interface CompetitionService {
 	public ArrayList<Competition> competitionList();
@@ -16,6 +16,6 @@ public interface CompetitionService {
 	public Competition competitionResultView(int competitionNo);
 	public Participant participantCheck(int competitionNo, String id);
 	public Competition competitionListView(int competitionNo);
-	public Participant participantView();
-	public Member participantMember();
+	public ArrayList<ParticipantMember> participantView(int competitionNo);
+	/*public Member participantMember();*/
 }

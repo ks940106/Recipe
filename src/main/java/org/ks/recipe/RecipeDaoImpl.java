@@ -1,6 +1,7 @@
 package org.ks.recipe;
 
 import org.ks.recipe.vo.Category;
+import org.ks.recipe.vo.Like;
 import org.ks.recipe.vo.Recipe;
 import org.ks.recipe.vo.RecipeDetail;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -37,6 +38,17 @@ public class RecipeDaoImpl implements RecipeDao {
 
     @Override
     public void recipeHit(int recipeNo) {
-        
+        sqlSession.update("recipe.recipeHit",recipeNo);
+    }
+
+    @Override
+    public int recipeLike(Like like) {
+        return sqlSession.update("recipe.recipeLike",like);
+    }
+
+    @Override
+    public Like getLike(String recipeNo, String id) {
+        Like key = new Like(Integer.parseInt(recipeNo),id);
+        return sqlSession.selectOne("recipe.getLike",key);
     }
 }
