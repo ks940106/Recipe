@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: 이윤석
@@ -11,14 +12,49 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>싱싱레시피</title>
-    <link href="/resources/css/import.css" rel="stylesheet" />
-    <link href="/resources/css/page.css" rel="stylesheet"/>
-    <link href="/resources/css/recipe.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/resources/css/import.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/resources/css/page.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/resources/css/recipe.css" rel="stylesheet"/>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <section>
-
+    <div class="section_content detail_content" style="border: 1px solid">
+        <div class="detail">
+            <div class="main_img">
+                <img src="${pageContext.request.contextPath}/resources/upload/recipe/${recipe.recipe.recipeMainImg}" alt="main_img"/>
+            </div>
+            <c:forEach var="step" items="${recipe.recipeStep}">
+                <div class="recipe_step">
+                    <div class="step_text">
+                            ${step.step}
+                    </div>
+                    <div class="step_img">
+                        <c:if test="${not empty step.img}">
+                            <img src="${pageContext.request.contextPath}/resources/upload/recipe/${step.img}" alt="step_img"/>
+                        </c:if>
+                        <c:if test="${empty step.img}">
+                            <img src="${pageContext.request.contextPath}/resources/img/recipe/pic_none2.gif" alt="step_img"/>
+                        </c:if>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
+        <div class="detail_right">
+            <div class="user_info">
+                ${recipe.member.id}
+            </div>
+            <div class="recipe_title">
+                recipe_title
+            </div>
+            <div class="recipe_info">
+                recipe_info
+            </div>
+            <div class="recipe_item">
+                recipe_item
+            </div>
+        </div>
+    </div>
 </section>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>

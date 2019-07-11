@@ -3,6 +3,7 @@ package org.ks.recipe;
 
 import org.ks.recipe.vo.Category;
 import org.ks.recipe.vo.Recipe;
+import org.ks.recipe.vo.RecipeDetail;
 
 import java.util.List;
 
@@ -12,4 +13,6 @@ public interface RecipeService {
     int recipeReg(Recipe recipe);
 
     List<Recipe> recipeList();
+
+    RecipeDetail getRecipeDetail(String recipeNo);
 }

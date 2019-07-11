@@ -2,6 +2,7 @@ package org.ks.recipe;
 
 import org.ks.recipe.vo.Category;
 import org.ks.recipe.vo.Recipe;
+import org.ks.recipe.vo.RecipeDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -31,5 +32,10 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     public List<Recipe> recipeList() {
         return recipeDaoImpl.recipeList();
+    }
+
+    @Override
+    public RecipeDetail getRecipeDetail(String recipeNo) {
+        return recipeDaoImpl.getRecipeDetail(Integer.parseInt(recipeNo));
     }
 }

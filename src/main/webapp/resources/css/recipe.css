@@ -552,6 +552,49 @@ img {
     color: #999;
     margin: 0;
 }
+.detail {
+    float: left;
+    width: 70%;
+}
+.main_img {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    margin: 50px auto 50px;
+    overflow: hidden;
+}
+.main_img img{
+    min-width: 600px;
 
+}
+.detail_right{
+    float: right;
+    width: 30%;
+}
 
+.detail_content{
+text-align: center;
+}
+
+.recipe_step {
+    width: 860px;
+    position: relative;
+}
+
+.step_text {
+    float: left;
+    width: 60%;
+    height: 300px;
+}
+.step_img {
+    float: left;
+    width: 40%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.step_img img{
+    max-width: 300px;
+
+}
 

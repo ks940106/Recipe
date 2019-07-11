@@ -2,6 +2,7 @@ package org.ks.recipe;
 
 import org.ks.recipe.vo.Category;
 import org.ks.recipe.vo.Recipe;
+import org.ks.recipe.vo.RecipeDetail;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -27,5 +28,10 @@ public class RecipeDaoImpl implements RecipeDao {
     @Override
     public List<Recipe> recipeList() {
         return sqlSession.selectList("recipe.recipeAll");
+    }
+
+    @Override
+    public RecipeDetail getRecipeDetail(int recipeNo) {
+        return sqlSession.selectOne("recipe.recipeDetail",recipeNo);
     }
 }
