@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.ks.competition.vo.Competition;
 import org.ks.member.vo.Member;
 import org.ks.participant.vo.Participant;
+import org.ks.participant.vo.ParticipantMember;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -128,10 +129,9 @@ public class CompetitionController {
 	public String competitionAdmin_ListView(@RequestParam int competitionNo, Model model) {
 		Competition c = competitionServiceimpl.competitionListView(competitionNo);
 		model.addAttribute("competition",c);
-		Participant p = competitionServiceimpl.participantView();
-		model.addAttribute("participant",p);
-		Member m = competitionServiceimpl.participantMember();
-		model.addAttribute("member",m);
+		ArrayList<ParticipantMember> list = competitionServiceimpl.participantView(competitionNo);
+		model.addAttribute("list",list);
+		System.out.println(list.get(0));
 		return "admin/competition/competitionAdmin_ListView";
 	}
 	@RequestMapping(value="/adminPage.do")

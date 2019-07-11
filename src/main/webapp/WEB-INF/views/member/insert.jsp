@@ -9,11 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp" />
 	<section class="memberinsert">
-	<div class="nav_etc">
-		<a href="/index.jsp"><img
-			src="http://recipe1.ezmember.co.kr/img/logo3.png"></a>
-	</div>
 	<div class="container_etc" style="width: 460px;">
 		<h2>회원가입</h2>
 		<form name="form_insert" id="frmInsert" method="post" action="/insertMember.do"  enctype="multipart/form-data">
@@ -62,13 +59,14 @@
 						<input type="radio" id="genderM" name="gender" class="btn btn-sm btn-default"style="width: 100px;" onblur="genderck()" value="남">남
 					</span> 
 					<span class="input-group-btn">
-						<input type="radio" id="genderF" name="gender" class="btn btn-sm btn-default" style="width: 100px;" onblur="genderck()" value="여">
+						<input type="radio" id="genderF" name="gender" class="btn btn-sm btn-default" style="width: 100px;" onblur="genderck()" value="여">여
 					</span>
 				</div>
 				<input type="text" class="form-control" disabled=""> 
 				<span id="genderMsg" style="display: none;"></span>
 			</div>
 			<input type="file" id="fileUpload" name="fileUpload" accept=".jpg,.jpeg,.png">
+			<img id="image_section" src="#" alt="your image" />
 			<input type="hidden" name="frm[pro_tg_gender]" id="pro_tg_gender">
 			<input type="submit" class="btn btn-primary btn-block btn-lg" onclick="return doSubmit()" value="회원가입">
 		</form>
@@ -76,9 +74,6 @@
 	</section>
 </body>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script type="text/javascript" src="/resources/js/member.js">
+<script type="text/javascript" src="/resources/js/member.js"></script>
 
- 	
- 	
-</script>
 </html>

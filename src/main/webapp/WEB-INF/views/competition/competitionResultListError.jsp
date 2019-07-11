@@ -10,12 +10,12 @@
 </head>
 <body>
 	
-  		<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+  		<jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp"/>
   		<!-- header Fin -->
   		<div>
   			<h1>진행중인 대회가 없습니다.</h1>
   		</div>
-	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp"/>
 
 </body>
 </html>

@@ -8,7 +8,7 @@
 			<li>
 				<a href="#none" class="menu_name">이달의 레시피 관리</a>
 				<ul class="lnb_sub_menu">
-					<li><a href="#">이달의 레시피 혜택 배너 관리</a></li>
+					<li><a href="/lmrImg.do">이달의 레시피 혜택 배너 관리</a></li>
 				</ul>
 			</li>
 		</ul>
