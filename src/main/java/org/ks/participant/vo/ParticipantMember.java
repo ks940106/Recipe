@@ -2,7 +2,7 @@ package org.ks.participant.vo;
 
 import java.sql.Date;
 
-public class Participant {
+public class ParticipantMember {
 	private int participantNo;
 	private int competitionNo;
 	private String id;
@@ -10,12 +10,17 @@ public class Participant {
 	private String participantContent;
 	private String participantResult;
 	private Date participantDate;
-	public Participant() {
+	private String name;
+	private String nickname;
+	private String gender;
+	private String phone;
+	public ParticipantMember() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Participant(int participantNo, int competitionNo, String id, String participantPass,
-			String participantContent, String participantResult, Date participantDate) {
+	public ParticipantMember(int participantNo, int competitionNo, String id, String participantPass,
+			String participantContent, String participantResult, Date participantDate, String name, String nickname,
+			String gender, String phone) {
 		super();
 		this.participantNo = participantNo;
 		this.competitionNo = competitionNo;
@@ -24,6 +29,10 @@ public class Participant {
 		this.participantContent = participantContent;
 		this.participantResult = participantResult;
 		this.participantDate = participantDate;
+		this.name = name;
+		this.nickname = nickname;
+		this.gender = gender;
+		this.phone = phone;
 	}
 	public int getParticipantNo() {
 		return participantNo;
@@ -66,6 +75,30 @@ public class Participant {
 	}
 	public void setParticipantDate(Date participantDate) {
 		this.participantDate = participantDate;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	
 }

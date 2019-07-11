@@ -37,9 +37,18 @@
                     <li><a href="#">레시피 팔아요</a>
      				<li><a href="/tmr.do">이달의레시피</a></li>
 
+     				<c:choose>
+     					<c:when test="${empty sessionScope.member }">
+     						<li><a href="/competitionList.do?competitionCheck='Y'&id='null'">요리대회</a></li>
+     					</c:when>
+     					<c:otherwise>
+     						<li><a href="/competitionList.do?competitionCheck='Y'&id=${sessionScope.member.id}">요리대회</a></li>
+     					</c:otherwise>
+     				</c:choose>
                     <li><a href="/competitionList.do?competitionCheck='Y'">요리대회</a></li>
 
                     <li><a href="mainBoard.do">토크</a></li>
+
                     <li><a href="/pom.do">쿠킹클래스</a></li>
 
                     <c:choose>

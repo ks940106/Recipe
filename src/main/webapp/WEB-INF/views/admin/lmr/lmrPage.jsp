@@ -25,7 +25,7 @@
 	<section>
 		<div class="wrapper">
 	        <nav class="lnb_wrap">
-	             <jsp:include page="/WEB-INF/views/tmr/tmrAdminNav.jsp"/>
+	             <jsp:include page="/WEB-INF/views/admin/lmr/lmrAdminNav.jsp"/>
 	        </nav>
 			<div class="section_content">
 				<div class="set_field">
@@ -69,6 +69,6 @@
 		
 	</section>
 	
-	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp"/>
 </body>
 </html>

@@ -72,8 +72,13 @@
     	recipe_writer3 as recipeWriter3,
     	recipe_date as recipeDate
     	from 
-        (select rownum as rnum, lmr.* from (select * from lmr order by recipe_date desc) lmr) where rnum between #{start} and #{end}
+        (select rownum as rnum, lmr.* from (select * from lmr where recipe_no1 != 0 order by recipe_date desc) lmr) where rnum between #{start} and #{end}
 	</select>
+	<select id="lmrImg" resultType="lmr">
+		select recipe_title1 as recipeTitle1 from lmr where recipe_no1 = 0
+	</select>
+	
+	
 	<select id="selectReservation" resultType="reservation">
 		select distinct
 		caravan_no as caravanNo 

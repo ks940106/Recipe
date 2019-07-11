@@ -12,9 +12,9 @@
 </head>
 <body>
   	<div class="main_bg">
-  		 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+  		 <jsp:include page="/WEB-INF/views/common/indexHeader.jsp"/>
   		<!-- header Fin -->
   	</div>
-	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	<jsp:include page="/WEB-INF/views/common/indexfooter.jsp"/>
 </body>
 </html>

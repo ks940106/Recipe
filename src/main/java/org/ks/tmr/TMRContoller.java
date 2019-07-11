@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonIOException;
 
 @Controller
 public class TMRContoller {
@@ -77,8 +76,16 @@ public class TMRContoller {
 	}
 	
 	@RequestMapping(value="/popup.do")
-	public String popup() {
+	public String popup(Model model) {
+		String img = tmrserviceImpl.lmrImg();
+		model.addAttribute("img", img);
 		return "tmr/tmrPopup";
+	}
+	@RequestMapping(value="/lmrImg.do")
+	public String lmrImg(Model model) {
+		String img = tmrserviceImpl.lmrImg();
+		model.addAttribute("img", img);
+		return "admin/lmr/lmrImg";
 	}
 	
 	@RequestMapping(value="/c.do")
@@ -93,7 +100,6 @@ public class TMRContoller {
 		
 		response.setContentType("text/html;charset=utf-8");
 		String jsonList = new Gson().toJson(list);
-		System.out.println(jsonList);
 		try {
 			response.getWriter().append(jsonList);
 		} catch (IOException e) {

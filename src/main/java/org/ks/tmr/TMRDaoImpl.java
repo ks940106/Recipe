@@ -62,6 +62,12 @@ public class TMRDaoImpl implements TMRDao{
 		List list = sqlsession.selectList("tmr.selectLmr",map);
 		return list;
 	}
+	public List lmrImg() {
+		List list = sqlsession.selectList("tmr.lmrImg");
+		return list;
+	}
+	
+	
 	public List selectReservation(String[] reservationDate) {
 		List list = sqlsession.selectList("tmr.selectReservation", reservationDate);
 		return list;

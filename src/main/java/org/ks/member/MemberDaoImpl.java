@@ -48,4 +48,9 @@ public class MemberDaoImpl implements MemberDAO{
 		Member m  =sqlSession.selectOne("member.pwCheck",map);
 		return m;
 	}
+	@Override
+	public int updateMember(Member m) {
+		int result = sqlSession.update("member.updateMember",m);
+		return result;
+	}
 }

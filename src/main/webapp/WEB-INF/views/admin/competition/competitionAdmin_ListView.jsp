@@ -49,9 +49,68 @@
 							<div id="cp_contents">${competition.competitionContents}</div>
 						</div>
 					</div>
+					<!--                <img src="../../../resources/img/logo.png" width="200px;">-->
+							<div class="list_field">
+				<div class="list_menu">
+					</span>
+						<a href="javascript:void(0)" class="btn col_darkGrey f_w">선택변경</a>
+					</span>
+				</div>
+				<table class="list_table">
+					<colgroup>
+						<col width="40">
+						<col width="45">
+						<col width="220">
+						<col width="100">
+						<col width="220">
+						<col width="80">
+						<col width="80">
+						<col width="120">
+					</colgroup>
+					<thead>
+					<tr>
+						<th>
+							<label>
+								<input type="checkbox" name="all_chk">
+							</label>
+						</th>
+						<th>No</th>
+						<th>ID</th>
+						<th>이름</th>
+						<th>연락처</th>
+						<th>성별</th>
+						<th>상태</th>
+						<th>내용</th>
+					</tr>
+					</thead>
+					<tbody>
+					<c:forEach items="${list}" var="vo">
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" name="">
+							</label>
+						</td>
+						<td>${vo.participantNo}</td>
+						<td>${vo.id }</td>
+						<td>${vo.name }</td>
+						<td>${vo.phone }</td>
+						<td>
+							${vo.gender }
+						</td>
+						<td>
+							${vo.participantResult}
+						</td>
+						<td>
+							${vo.participantContent}
+						</td>
+					</tr>
+					</c:forEach>
+					</tbody>  
+				</table>
+			</div>
 					<div id="cp_btn">
-
-						<button onclick="location.href='/competitionAdminResultList.do'">목록으로 가기</button>
+						<button onclick="location.href='/competitionAdmin.do'">목록으로 가기</button>
 					</div>
 					<!--
 			 <button onclick="location.href='/competitionUpdate.do?competitionNo=${competition.competitionNo}'">수정하기</button>   

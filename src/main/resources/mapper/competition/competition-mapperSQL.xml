@@ -55,4 +55,44 @@
 		competition_check as competitionCheck
 		from competition where competition_No=#{competitionNo}
 	</select>
+	<select id="participantCheck" parameterType="map" resultType="participant">
+		select 
+		id as id
+		from participant 
+		where competition_no = #{competitionNo} and id=#{id}
+	</select>
+	<select id="competitionListView" resultType="competition" parameterType="_int">
+		select competition_no as competitionNo,
+		competition_title as competitionTitle,
+		competition_contents as competitionContents,
+		competition_img as competitionImg,
+		competition_video as competitionVideo,
+		competition_result as competitionResult,
+		competition_date as competitionDate,
+		competition_check as competitionCheck
+		from competition where competition_No=#{competitionNo}
+	</select>
+	<select id="participantMember" resultType="participantMember">
+		select participant_no as participantNo,
+		competition_no as competitionNo,
+		(PARTICIPANT.id) as id,
+		participant_pass as participantPass,
+		participant_content as participantContent,
+		participant_result as participantResult,
+		participant_date as participantDate,
+		name as name,
+		nickname as nickname,
+		gender as gender,
+		phone as phone
+		from participant join member on participant.id = member.id where competition_no = #{competitionNo}
+	</select>
+<!-- 	<select id="participantMember" resultType="member">
+		select id as id,
+		name as name,
+		nickname as nickname,
+		gender as gender,
+		phone as phone
+		from member where 
+	</select> -->
+	
 </mapper>

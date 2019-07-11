@@ -2,6 +2,7 @@ package org.ks.participant;
 
 import java.util.List;
 
+import org.ks.participant.vo.Participant;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -10,10 +11,12 @@ import org.springframework.stereotype.Repository;
 public class ParticipantDaoImpl implements ParticipantDao{
 	@Autowired
 	SqlSessionTemplate sqlsession;
-	
+
 	@Override
-	public List participantMemberList(String id) {
-		return sqlsession.selectList("participant.participantMemberList",id);
+	public void participantInsert(Participant vo) {
+		sqlsession.insert("participant.participantInsert",vo);
 	}
+	
+	
 
 }
