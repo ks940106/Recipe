@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -39,7 +40,7 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
-	<h1>글쓰기</h1>
+	<h1>글수정</h1>
 	
 	<form action="/modifyCompleteTalkBoard.do" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="boardNo" value="${tb.boardNo }">
@@ -48,9 +49,9 @@
 		<textarea rows="30" cols="150" name="boardContents">${tb.boardContents }</textarea>
 		<br>
 		<div id="attach">
-             <input id="uploadInputBox" type="file" name="filedata" multiple="multiple" />
+             <input class="uploadInputBox" id='img_${fn:length(img)}' type="file" name="filedata"/>
          </div>
-        
+        <input type="hidden" id="imgN" value="${fn:length(img) }">
 		<div id="preview">
 		<input type="hidden" name="fullImg" value="${tb.boardImg }">
 		<c:forTokens items="${tb.boardImg }" delims="/" var="item" varStatus="status">
@@ -70,6 +71,15 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 	
   <script>
+		  var imgN = $("#imgN").val();
+		  
+			$(document).on('change','.uploadInputBox',function(){
+				imgN++;
+				$(this).css('display','none');
+				$('#attach').append("<input class='uploadInputBox' id='img_"+imgN+"' type='file' name='filedata'/>");
+				
+			});
+  		
         //임의의 file object영역
         var files = {};
         var no = $('.preview-box:last').attr('value');
@@ -122,7 +132,7 @@
             var imgNum = obj.attributes['value'].value;
             delete files[imgNum];
             $("#preview .preview-box[value=" + imgNum + "]").remove();
-            resizeHeight();
+            $("#img_"+imgNum+"").remove();
         }
  
         //client-side validation
@@ -141,10 +151,12 @@
             }
         }
  
-        $(document).ready(function() {
+        $(document).on('click','.uploadInputBox',function(){
             // <input type=file> 태그 기능 구현
-            $('#attach input[type=file]').change(function() {
+            console.log("클릭");
+            $(this).change(function() {
                 addPreview($(this)); //preview form 추가하기
+                console.log("프리뷰 추가");
             });
         });
     </script>

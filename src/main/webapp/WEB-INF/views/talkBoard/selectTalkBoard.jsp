@@ -31,9 +31,30 @@
 		.d4{
 			border : 1px solid red;
 			width : 100%;
-			height : 120px;
+			height : 100px;
 			float: right;
 		}
+		.d5{
+			border : 1px solid red;
+			width : 100%;
+			height : 100%;
+			float: right;
+			position: relative;
+		}
+		.btn-like{
+			width:10%;
+			border : 1px solid green;
+			margin-right : 0;
+			box-sizing: border-box;
+			float: left;
+		}
+		.comment-box{
+			width : 80%;
+			border : 1px solid blue;
+			float: left;
+			position: relative;
+		}
+		
 	</style>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
@@ -84,8 +105,22 @@
 				
 			</div>
 			
-			<div class="d4">
+			<div class="d5">
 			
+				<form class="cmtForm"action="/siPreBoardCommentUpdate" method="post">
+				
+                <div class="btn-like">
+                    <button type="button" class="btn btn-default"><img src="http://recipe1.ezmember.co.kr/img/btn_feel.gif"></button>
+                </div>
+                
+                <div id="area_dv" class="comment-box">
+                    <textarea name="comment_tx" id="comment_tx" class="form-control" placeholder="" style="height:100px; width:80%; resize:none;"></textarea>
+                    <span class="input-group-btn">
+                    <button id="reply_submit_btn" class="btn btn-default" type="button" style="height:100px; width:100px;">등록</button>
+                    </span>
+                </div>
+                	
+				</form>
 			</div>
 			
 	 </div>

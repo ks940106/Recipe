@@ -47,7 +47,7 @@
 		<textarea rows="30" cols="150" name="boardContents"></textarea>
 		<br>
 		<div id="attach">
-             <input class="uploadInputBox" id="img_0" type="file" name="filedata" multiple="multiple"/>
+             <input class="uploadInputBox" id="img_0" type="file" name="filedata"/>
              
          </div>
 		<div id="preview"></div><br>
@@ -61,7 +61,7 @@
    		var imgN = 1;
   		$(document).on('change','.uploadInputBox',function(){
   			$(this).css('display','none');
-  			$('#attach').append("<input class='uploadInputBox' id='img_"+imgN+"' type='file' name='filedata' multiple='multiple'/>");
+  			$('#attach').append("<input class='uploadInputBox' id='img_"+imgN+"' type='file' name='filedata'/>");
   			imgN++;
   		});
  	
@@ -72,12 +72,16 @@
         // input = file object[]
         function addPreview(input) {
         	console.log("addpreview");
+        	
             if (input[0].files) {
                 //파일 선택이 여러개였을 시의 대응
+                console.log(input[0].files.length);
                 for (var fileIndex = 0; fileIndex < input[0].files.length; fileIndex++) {
                     var file = input[0].files[fileIndex];
                     if(validation(file.name)) continue;
                     setPreviewForm(file);
+                    console.log(file);
+                    console.log(files);
                 }
             } else
                 alert('invalid file input'); // 첨부클릭 후 취소시의 대응책은 세우지 않았다.
