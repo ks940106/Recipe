@@ -54,6 +54,9 @@
 			float: left;
 			position: relative;
 		}
+		#comment_tx{
+			float: left;
+		}
 	</style>
 <body>
 	<jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp"/>
@@ -118,7 +121,6 @@
                     <button id="reply_submit_btn" class="btn btn-default" type="button" style="height:100px; width:100px;">등록</button>
                     </span>
                 </div>
-                	
 				</form>
 			</div>
 			
