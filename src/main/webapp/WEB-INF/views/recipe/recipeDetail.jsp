@@ -17,7 +17,7 @@
     <link href="${pageContext.request.contextPath}/resources/css/recipe.css" rel="stylesheet"/>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+<jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp"/>
 <section>
     <div class="section_content detail_content">
         <div class="detail">
@@ -80,7 +80,7 @@
         </div>
     </div>
 </section>
-<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp"/>
 </body>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/recipe.js"></script>
