@@ -23,4 +23,7 @@
 	<insert id="insertMember" parameterType="member">
 		insert into member values(#{id},#{pw},#{name},#{nickname},#{gender},#{addr1},#{addr2},#{phone},#{memberImg},#{zipCode})
 	</insert>
+	<select id="pwCheck" parameterType="map" resultType="member">
+		select * from member where id=#{id} and pw=#{pw}
+	</select>
 </mapper>

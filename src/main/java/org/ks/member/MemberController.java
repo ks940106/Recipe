@@ -57,10 +57,15 @@ public class MemberController {
 	}
 	//로그인
 	@RequestMapping(value="/login.do")
-	public String login(HttpServletRequest request,@RequestParam String id,@RequestParam String pw )throws Exception {
+	public String login(HttpServletRequest request,@RequestParam String id,@RequestParam String pw ){
 		Member m = new Member();
 		m.setId(id);
-		m.setPw(new SHA256Util().encData(pw));
+		try {
+			m.setPw(new SHA256Util().encData(pw));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Member member = memberService.login(m);
 		String view="";
 		if(member==null) {
@@ -96,7 +101,7 @@ public class MemberController {
 
 	//회원가입
 	@RequestMapping(value="/insertMember.do")
-	public String insertMember(HttpServletRequest request,@RequestParam MultipartFile fileUpload)throws Exception{
+	public String insertMember(HttpServletRequest request,@RequestParam MultipartFile fileUpload){
 		String id=request.getParameter("id");
 		String pw1 = request.getParameter("pw");
 		String name=request.getParameter("name");
@@ -118,7 +123,13 @@ public class MemberController {
 		String extension = originName.substring(originName.indexOf('.'));
 		String filePath = onlyFileName + "_"+ date + extension;
 		String memberImg = savePath+"/" + filePath;
-		String pw =new SHA256Util().encData(pw1);
+		String pw = null;
+		try {
+			pw = new SHA256Util().encData(pw1);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		Member m = new Member(id, pw, name, nickname, gender, addr1, addr2, phone,memberImg,zipCode);
 		int result = memberService.insertMember(m);
 		if(!fileUpload.isEmpty()) {
@@ -254,6 +265,30 @@ public class MemberController {
 	          e.printStackTrace(); 
 	          } 
 	    }
+	//마이페이지 비밀번호 체크
+	@RequestMapping(value="/myPagePwCheck.do")
+	public String myPagePwCheck(HttpServletRequest request){
+		String pwCheck=request.getParameter("pwcheck");
+		String pw = null;
+		try {
+			pw = new SHA256Util().encData(pwCheck);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		HttpSession session = request.getSession(false);
+		String id=((Member)session.getAttribute("member")).getId();
+		System.out.println(id);
+		Member member = memberService.pwCheck(id,pw);
+		String view="";
+		if(member!=null) {
+			view="member/myPageUpdate";
+		}else {
+			request.setAttribute("msg", "비밀번호를 다시 확인해주세요");
+			request.setAttribute("loc", "/mypage.do");
+			view="common/msg";
+		}return view;
+	}
 	
 	@RequestMapping(value="/mypage.do")
 	public String mypage() {
