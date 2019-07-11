@@ -2,6 +2,7 @@ package org.ks.recipe;
 
 
 import org.ks.recipe.vo.Category;
+import org.ks.recipe.vo.Like;
 import org.ks.recipe.vo.Recipe;
 import org.ks.recipe.vo.RecipeDetail;
 
@@ -17,4 +18,8 @@ public interface RecipeService {
     RecipeDetail getRecipeDetail(String recipeNo);
 
     void recipeHit(String recipeNo);
+
+    boolean recipeLike(Like like);
+
+    boolean getLike(String recipeNo, String id);
 }

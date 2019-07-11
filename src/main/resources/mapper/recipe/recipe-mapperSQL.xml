@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="recipe">
+    <resultMap id="like" type="org.ks.recipe.vo.Like">
+        <result column="recipe_no" property="recipeNo"/>
+        <result column="id" property="id"/>
+    </resultMap>
     <resultMap id="recipe" type="org.ks.recipe.vo.Recipe">
         <result column="recipe_no" property="recipeNo"/>
         <result column="recipe_title" property="recipeTitle"/>
@@ -99,5 +103,21 @@
                  join MEMBER
                       on RECIPE.RECIPE_WRITER = MEMBER.ID
         where RECIPE_NO = #{recipeNo}
+    </select>
+    <update id="recipeHit" parameterType="int">
+        update RECIPE set RECIPE_HIT = RECIPE_HIT+1 where RECIPE_NO=#{recipeNo}
+    </update>
+
+    <update id="recipeLike" parameterType="org.ks.recipe.vo.Like" >
+        MERGE into RECIPE_LIKE
+        using dual
+        on (RECIPE_LIKE.RECIPE_NO = #{recipeNo} and RECIPE_LIKE.id = #{id})
+        when not matched then
+            insert (recipe_like.recipe_no,recipe_like.id)
+            values(#{recipeNo},#{id})
+    </update>
+
+    <select id="getLike" parameterType="org.ks.recipe.vo.Like" resultMap="like">
+        select * from RECIPE_LIKE where RECIPE_NO = #{recipeNo} and id = #{id}
     </select>
 </mapper>

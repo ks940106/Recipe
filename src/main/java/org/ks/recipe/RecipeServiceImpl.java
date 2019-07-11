@@ -1,6 +1,7 @@
 package org.ks.recipe;
 
 import org.ks.recipe.vo.Category;
+import org.ks.recipe.vo.Like;
 import org.ks.recipe.vo.Recipe;
 import org.ks.recipe.vo.RecipeDetail;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,24 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
+    @Transactional
     public void recipeHit(String recipeNo) {
         recipeDaoImpl.recipeHit(Integer.parseInt(recipeNo));
+    }
+
+    @Override
+    @Transactional
+    public boolean recipeLike(Like like) {
+        if(recipeDaoImpl.recipeLike(like)>0){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean getLike(String recipeNo, String id) {
+        Like like = recipeDaoImpl.getLike(recipeNo,id);
+        return like != null;
     }
 }

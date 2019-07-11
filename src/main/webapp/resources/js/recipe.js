@@ -145,3 +145,13 @@ function doSubmit(option) {
     })
 
 }
+
+function like (recipeNo) {
+    $.ajax({
+        url:"/recipeLike.do",
+        data: {recipeNo:recipeNo},
+        success:function (message) {
+            alert(message);
+        }
+    })
+}
