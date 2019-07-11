@@ -25,6 +25,27 @@
         <result column="recipe_state" property="recipeState"/>
 
     </resultMap>
+
+    <resultMap id="member" type="org.ks.member.vo.Member">
+        <result column="id" property="id"/>
+        <result column="pw" property="pw"/>
+        <result column="name" property="name"/>
+        <result column="nickname" property="nickname"/>
+        <result column="gender" property="gender"/>
+        <result column="addr1" property="addr1"/>
+        <result column="addr2" property="addr2"/>
+        <result column="phone" property="phone"/>
+        <result column="member_img" property="memberImg"/>
+        <result column="zip_code" property="zipCode"/>
+    </resultMap>
+
+    <resultMap id="recipeDetail" type="org.ks.recipe.vo.RecipeDetail">
+        <result property="category1" column="category1"/>
+        <result property="category2" column="category2"/>
+        <association property="member" resultMap="member"/>
+        <association property="recipe" resultMap="recipe"/>
+    </resultMap>
+
     <select id="categoryAll" resultType="category">
         select
             CATEGORY_NO as categoryNo,
@@ -32,11 +53,51 @@
             CATEGORY_NAME as categoryName
         from CATEGORY
     </select>
+
     <insert id="recipeReg" parameterType="recipe">
         insert into RECIPE (RECIPE_NO, RECIPE_TITLE, RECIPE_WRITER, RECIPE_CONTENTS, RECIPE_MAINIMG, RECIPE_CAT1, RECIPE_CAT2, RECIPE_COUNT, RECIPE_TIME, RECIPE_LEVEL, RECIPE_ITEM, RECIPE_STEP, RECIPE_STEPIMG, RECIPE_LIKE, RECIPE_HIT, RECIPE_PRICE, RECIPE_DATE, RECIPE_STOCK, RECIPE_WORKIMG, RECIPE_VIDEO, RECIPE_STATE)
         values (SEQ_RECIPE_NO.nextval,#{recipeTitle},#{recipeWriter},#{recipeContents},#{recipeMainImg},#{recipeCat1},#{recipeCat2},#{recipeCount},#{recipeTime},#{recipeLevel},#{recipeItem},#{recipeStep},#{recipeStepImg},#{recipeLike},#{recipeHit},#{recipePrice},sysdate,#{recipeStock},#{recipeWorkImg},#{recipeVideo},#{recipeState})
     </insert>
     <select id="recipeAll" resultMap="recipe">
         select * from RECIPE
+    </select>
+    <select id="recipeDetail" parameterType="_int" resultMap="recipeDetail">
+        select RECIPE_NO,
+               RECIPE_TITLE,
+               RECIPE_WRITER,
+               RECIPE_CONTENTS,
+               RECIPE_MAINIMG,
+               RECIPE_CAT1,
+               RECIPE_CAT2,
+               RECIPE_COUNT,
+               RECIPE_TIME,
+               RECIPE_LEVEL,
+               RECIPE_ITEM,
+               RECIPE_STEP,
+               RECIPE_STEPIMG,
+               RECIPE_LIKE,
+               RECIPE_HIT,
+               RECIPE_PRICE,
+               RECIPE_DATE,
+               RECIPE_STOCK,
+               RECIPE_WORKIMG,
+               RECIPE_VIDEO,
+               RECIPE_STATE,
+               ID,
+               PW,
+               NAME,
+               NICKNAME,
+               GENDER,
+               ADDR1,
+               ADDR2,
+               PHONE,
+               MEMBER_IMG,
+               ZIP_CODE,
+               (select CATEGORY_NAME from CATEGORY where RECIPE_CAT1=CATEGORY_NO)as category1,
+               (select CATEGORY_NAME from CATEGORY where RECIPE_CAT2=CATEGORY_NO)as category2
+        from RECIPE
+                 join MEMBER
+                      on RECIPE.RECIPE_WRITER = MEMBER.ID
+        where RECIPE_NO = #{recipeNo}
     </select>
 </mapper>

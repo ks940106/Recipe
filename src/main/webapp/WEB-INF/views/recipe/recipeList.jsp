@@ -71,7 +71,7 @@
                     <div class="row">
                         <c:forEach var="recipe" items="${recipeList}">
                             <div class="col-xs-4">
-                                <a href="#" class="thumbnail">
+                                <a href="/recipe/${recipe.recipeNo}" class="thumbnail">
                                     <img src="${pageContext.request.contextPath}/resources/upload/recipe/${recipe.recipeMainImg}" style="width:275px; height:275px;">
                                     <div class="caption">
                                         <h4 class="ellipsis_title2">${recipe.recipeTitle}</h4>
