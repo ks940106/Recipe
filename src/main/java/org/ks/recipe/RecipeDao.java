@@ -1,6 +1,7 @@
 package org.ks.recipe;
 
 import org.ks.recipe.vo.Category;
+import org.ks.recipe.vo.Like;
 import org.ks.recipe.vo.Recipe;
 import org.ks.recipe.vo.RecipeDetail;
 
@@ -16,4 +17,8 @@ public interface RecipeDao {
     RecipeDetail getRecipeDetail(int parseInt);
 
     void recipeHit(int recipeNo);
+
+    int recipeLike(Like like);
+
+    Like getLike(String recipeNo, String id);
 }

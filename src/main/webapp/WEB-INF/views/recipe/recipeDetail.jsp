@@ -17,7 +17,7 @@
     <link href="${pageContext.request.contextPath}/resources/css/recipe.css" rel="stylesheet"/>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+<jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp"/>
 <section>
     <div class="section_content detail_content">
         <div class="detail">
@@ -53,6 +53,13 @@
             </div>
             <div class="recipe_title">
                 <h2>${recipe.recipe.recipeTitle}</h2>
+                조회수 : ${recipe.recipe.recipeHit}<br>
+                <c:if test="${not empty sessionScope.member &&isLiked}">
+                    <a href="javaScript:unlike(${recipe.recipe.recipeNo})">좋아요 취소</a> : ${recipe.recipe.recipeLike}
+                </c:if>
+                <c:if test="${not empty sessionScope.member && !isLiked}">
+                    <a href="javaScript:like(${recipe.recipe.recipeNo})">좋아요</a> : ${recipe.recipe.recipeLike}
+                </c:if>
             </div>
             <div class="recipe_info">
                 ${recipe.recipe.recipeContents}
@@ -73,7 +80,7 @@
         </div>
     </div>
 </section>
-<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp"/>
 </body>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/recipe.js"></script>
