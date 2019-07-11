@@ -52,7 +52,7 @@
     from(select rownum as rnum, tmr.* from (select * from recipe where to_char(recipe_date,'MM')=#{month} and to_char(recipe_date,'yy')=#{year} order by recipe_like desc) tmr) where rnum between #{start} and #{end}
 	</select>
 	<insert id="insertLmr" parameterType="map">
-		insert into LMR values(#{recipeNo1},#{recipeTitle1},#{recipeWriter1},#{recipeImg1},#{recipeNo2},#{recipeTitle2},#{recipeWriter2},#{recipeImg2},#{recipeNo3},#{recipeTitle3},#{recipeWriter3},#{recipeImg3},#{recipeDate})
+		insert into LMR values(#{recipeNo1},#{recipeTitle1},#{recipeWriter1},#{recipeNo2},#{recipeTitle2},#{recipeWriter2},#{recipeNo3},#{recipeTitle3},#{recipeWriter3},#{recipeDate})
 	</insert>
 	<select id="lmrCount" resultType="lmr">
 		select 
@@ -64,15 +64,12 @@
 		recipe_no1 as recipeNo1,
     	recipe_title1 as recipeTitle1,
     	recipe_writer1 as recipeWriter1,
-    	recipe_img1 as recipeImg1,
     	recipe_no2 as recipeNo2,
     	recipe_title2 as recipeTitle2,
     	recipe_writer2 as recipeWriter2,
-    	recipe_img2 as recipeImg2,
     	recipe_no3 as recipeNo3,
     	recipe_title3 as recipeTitle3,
     	recipe_writer3 as recipeWriter3,
-    	recipe_img3 as recipeImg3,
     	recipe_date as recipeDate
     	from 
         (select rownum as rnum, lmr.* from (select * from lmr order by recipe_date desc) lmr) where rnum between #{start} and #{end}

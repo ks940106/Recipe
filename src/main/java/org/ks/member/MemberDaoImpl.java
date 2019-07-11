@@ -1,5 +1,8 @@
 package org.ks.member;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.ks.member.vo.Member;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +39,13 @@ public class MemberDaoImpl implements MemberDAO{
 		System.out.println(m.getGender());
 		int result = sqlSession.insert("member.insertMember",m);
 		return result;
+	}
+	@Override
+	public Member pwCheck(String id, String pw) {
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("id",id);
+		map.put("pw",pw);
+		Member m  =sqlSession.selectOne("member.pwCheck",map);
+		return m;
 	}
 }

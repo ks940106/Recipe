@@ -6,8 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>싱싱레시피 지난 이달의 레시피</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../resources/css/import.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/ui.css">
 	<link rel="stylesheet" type="text/css" href="../resources/css/style.css">
@@ -27,11 +25,11 @@
 	<section>
 		<div class="wrapper">
 	        <nav class="lnb_wrap">
-	             <jsp:include page="/WEB-INF/views/common/competition_nav.jsp"/>
+	             <jsp:include page="/WEB-INF/views/tmr/tmrAdminNav.jsp"/>
 	        </nav>
 			<div class="section_content">
 				<div class="set_field">
-					<h1>이달의 레시피</h1>
+					<h1>이달의 레시피 관리</h1>
 					<div id="cp_div_bg"></div>
 				</div>
 				<div class="cp_content" style="margin-left:100px;">
@@ -39,38 +37,36 @@
 						<tr>
 							<th>날짜</th>
 							<th>등수</th>
-							<th>레시피사진</th>
-							<th>레시피제목</th>
-							<th>레시피작성자</th>
+							<th>제목</th>
+							<th>작성자</th>
 						</tr>
 						<c:forEach items="${lpd.list }" var="vo">
 							<tr>
 								<td>${vo.recipeDate }</td>
 								<td>1</td>
-								<td><a href="#"><img src="${vo.recipeImg1 }"></a></td>
 								<td><a href="#">${vo.recipeTitle1 }</a></td>
 								<td><a href="#">${vo.recipeWriter1 }</a></td>
 							</tr>
 							<tr>
 								<td>${vo.recipeDate }</td>
 								<td>2</td>
-								<td><a href="#"><img src="${vo.recipeImg2 }"></a></td>
 								<td><a href="#">${vo.recipeTitle2 }</a></td>
 								<td><a href="#">${vo.recipeWriter2 }</a></td>
 							</tr>
 							<tr>
 								<td>${vo.recipeDate }</td>
 								<td>3</td>
-								<td><a href="#"><img src="${vo.recipeImg3 }"></a></td>
 								<td><a href="#">${vo.recipeTitle3 }</a></td>
 								<td><a href="#">${vo.recipeWriter3 }</a></td>
 							</tr>
 						</c:forEach>
 					</table>
+					<br><br>
+					${lpd.pageNavi }
 				</div>
 			</div>
 		</div>
-		<center>${lpd.pageNavi }</center>
+		
 	</section>
 	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
