@@ -12,6 +12,21 @@
   </select>
   
   <insert id="insertTalkBoard" parameterType="talk">
-  	insert into board values(req_board_no.nextval,#{boardType},'',#{boardImg},#{boardContents})
+  	insert into board values(req_board_no.nextval,#{boardType},#{nickname},#{boardImg},#{boardContents})
   </insert>
+  
+   <select id="selectTalkBoard" parameterType="talk" resultType="talk">
+  	select board_no as boardNo,
+  	board_type as boardType,
+  	nickname as nickname,
+  	board_img as boardImg,
+  	board_contents as boardContents
+  	from board where board_no = #{boardNo}
+  </select>
+  <delete id="deleteTalkBoard">
+  	delete from board where board_no = #{boardNo}
+  </delete>
+  <update id="updateTalkBoard" parameterType="talk">
+  	update board set board_img = #{boardImg}, board_contents = #{boardContents} where board_no = #{boardNo}
+  </update>
 </mapper>

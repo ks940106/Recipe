@@ -22,4 +22,21 @@ public class TalkBoardDaoImpl implements TalkBoardDao{
 	public int insertTalkBoard(TalkBoard tb) {
 		return sqlSession.update("mybatis.insertTalkBoard",tb);
 	}
+
+	@Override
+	public TalkBoard selectTalkBoard(int no) {
+		return sqlSession.selectOne("mybatis.selectTalkBoard",no);
+	}
+
+	@Override
+	public int deleteTalkBoard(int no) {
+		return sqlSession.update("mybatis.deleteTalkBoard",no);
+	}
+
+	@Override
+	public int updateTalkBoard(TalkBoard tb) {
+		return sqlSession.update("mybatis.updateTalkBoard",tb);
+	}
+	
+	
 }
