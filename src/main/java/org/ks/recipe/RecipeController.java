@@ -3,6 +3,7 @@ package org.ks.recipe;
 import org.ks.member.vo.Member;
 import org.ks.recipe.vo.Category;
 import org.ks.recipe.vo.Recipe;
+import org.ks.recipe.vo.RecipeDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -16,10 +17,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
-import java.util.Arrays;
-import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class RecipeController {
@@ -93,7 +91,7 @@ public class RecipeController {
         StringBuffer recipeStep = new StringBuffer();
         StringBuffer recipeStepImg = new StringBuffer();
         StringBuffer recipeWorkImg = new StringBuffer();
-        String deli = "|*|";
+        String deli = "<:>";
 
         //step text
         for(int i = 0;i<steps.length;i++){
@@ -123,9 +121,9 @@ public class RecipeController {
 
                 //file upload
                 if(fileName.trim().length() > 0) {
-                    //업로드할 파일이 존재할때
-                    newFileName = System.currentTimeMillis() + "."
-                            + fileName.substring(fileName.lastIndexOf(".") + 1);
+                    UUID uuid = UUID.randomUUID();
+                    //업로드할 파일이 존재할때 fileName.substring(0,fileName.indexOf("."))+
+                    newFileName = uuid.toString() + "." + fileName.substring(fileName.lastIndexOf(".") + 1);
                     try {
                         m.transferTo(new File(path + newFileName));
                         System.out.println("File upload complete");
@@ -162,7 +160,10 @@ public class RecipeController {
 
     @RequestMapping(value = "/recipe/{recipeNo}")
     public String getRecipeByNo(@PathVariable("recipeNo") String recipeNo, Model model){
-
+        RecipeDetail recipeDetail = recipeService.getRecipeDetail(recipeNo);
+        recipeService.recipeHit(recipeNo);
+        System.out.println(recipeDetail);
+        model.addAttribute("recipe",recipeDetail);
         return "recipe/recipeDetail";
     }
 }
