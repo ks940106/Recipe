@@ -9,12 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body class="joinback">
+<jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp" />
 	<section class="join">
-	<div class="nav_etc">
-		<a href="/index.jsp">
-			<img src="http://recipe1.ezmember.co.kr/img/logo3.png">
-		</a>
-	</div>
 	<div class="container_etc" style="width: 490px;">
 		<div class="panel panel-default">
 			<div class="panel-body">

@@ -38,6 +38,7 @@
 	</c:forEach>
 	</table>
 	</div>
+	예약 가능 카라반 번호<br>
 	<div id="reservation" style="float: left; border:1px solid black; width:400px; height:400px;"></div>
 	<script>
 		var nowYear = 0; //현재 년
