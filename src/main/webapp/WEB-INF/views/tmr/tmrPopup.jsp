@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>회원정보 수정</h1>
-	
+	팝업창!
 </body>
 </html>

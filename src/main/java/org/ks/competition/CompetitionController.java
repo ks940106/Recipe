@@ -56,7 +56,7 @@ public class CompetitionController {
 			mav.addObject("list",list);
 			mav.setViewName("admin/competition/competitionAdmin_ResultList");
 		}else {
-			mav.setViewName("admin/competition/competitionResultListError");
+			mav.setViewName("admin/competition/competitionAdminError");
 		}
 		return mav;
 	}

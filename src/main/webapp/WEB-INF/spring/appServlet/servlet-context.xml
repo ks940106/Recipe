@@ -22,22 +22,22 @@
    <!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
    <resources mapping="/resources/**" location="/resources/" />
 
-   <!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-   <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-      <beans:property name="prefix" value="/WEB-INF/views/" />
-      <beans:property name="suffix" value=".jsp" />
-   </beans:bean>
-   <context:component-scan base-package="org.ks.member" />
-   <context:component-scan base-package="org.ks.recipe" />
-   <context:component-scan base-package="org.ks.cart"/>
-   <context:component-scan base-package="org.ks.tmr"/>
-   <context:component-scan base-package="org.ks.order"/>
-   <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
-   <task:annotation-driven/>
-   <context:component-scan base-package="org.ks.competition"/>
-   <!-- 파일업로드 DI 설정 -->
-   <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-      <beans:property name="maxUploadSize" value="10485760"/>
-   </beans:bean>
-   
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	<context:component-scan base-package="org.ks.member" />
+	<context:component-scan base-package="org.ks.recipe" />
+	<context:component-scan base-package="org.ks.cart"/>
+	<context:component-scan base-package="org.ks.tmr"/>
+	<context:component-scan base-package="org.ks.talkBoard"/>
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	<task:annotation-driven/>
+	<context:component-scan base-package="org.ks.competition"/>
+	<!-- 파일업로드 DI 설정 -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="104857600"/>
+	</beans:bean>
+	
 </beans:beans>

@@ -7,4 +7,5 @@ public interface MemberService {
 	public String emailCheck(String id);
 	public String nickCheck(String nick);
 	public int insertMember(Member m);
+	public Member pwCheck(String id,String pw);
 }

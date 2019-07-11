@@ -3,38 +3,41 @@ package org.ks.tmr.vo;
 import java.sql.Date;
 
 public class TMR {
-	 private int recipeNo;
-	 private String recipeTitle;
-	 private String recipeWriter;
-	 private String recipeContents;
-	 private String recipeMainimg;
-	 private String recipeCat1;
-	 private String recipeCat2;
-	 private String recipeCount;
-	 private String recipeTime;
-	 private String recipeLevel;
-	 private String recipeItem;
-	 private String recipeStep;
-	 private String recipeStepimg;
-	 private int recipeLike;
-	 private int recipeHit;
-	 private int recipePrice;
-	 private Date recipeDate;
-	 private int recipeStock;
+	private int recipeNo;
+    private String recipeTitle;
+    private String recipeWriter;
+    private String recipeContents;
+    private String recipeMainImg;
+    private String recipeCat1;
+    private String recipeCat2;
+    private String recipeCount;
+    private String recipeTime;
+    private String recipeLevel;
+    private String recipeItem;
+    private String recipeStep;
+    private String recipeStepImg;
+    private int recipeLike;
+    private int recipeHit;
+    private int recipePrice;
+    private Date recipeDate;
+    private int recipeStock;
+    private String recipeWorkImg;
+    private String recipeVideo;
+    private int recipeState;
 	public TMR() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public TMR(int recipeNo, String recipeTitle, String recipeWriter, String recipeContents, String recipeMainimg,
+	public TMR(int recipeNo, String recipeTitle, String recipeWriter, String recipeContents, String recipeMainImg,
 			String recipeCat1, String recipeCat2, String recipeCount, String recipeTime, String recipeLevel,
-			String recipeItem, String recipeStep, String recipeStepimg, int recipeLike, int recipeHit, int recipePrice,
-			Date recipeDate, int recipeStock) {
+			String recipeItem, String recipeStep, String recipeStepImg, int recipeLike, int recipeHit, int recipePrice,
+			Date recipeDate, int recipeStock, String recipeWorkImg, String recipeVideo, int recipeState) {
 		super();
 		this.recipeNo = recipeNo;
 		this.recipeTitle = recipeTitle;
 		this.recipeWriter = recipeWriter;
 		this.recipeContents = recipeContents;
-		this.recipeMainimg = recipeMainimg;
+		this.recipeMainImg = recipeMainImg;
 		this.recipeCat1 = recipeCat1;
 		this.recipeCat2 = recipeCat2;
 		this.recipeCount = recipeCount;
@@ -42,12 +45,15 @@ public class TMR {
 		this.recipeLevel = recipeLevel;
 		this.recipeItem = recipeItem;
 		this.recipeStep = recipeStep;
-		this.recipeStepimg = recipeStepimg;
+		this.recipeStepImg = recipeStepImg;
 		this.recipeLike = recipeLike;
 		this.recipeHit = recipeHit;
 		this.recipePrice = recipePrice;
 		this.recipeDate = recipeDate;
 		this.recipeStock = recipeStock;
+		this.recipeWorkImg = recipeWorkImg;
+		this.recipeVideo = recipeVideo;
+		this.recipeState = recipeState;
 	}
 	public int getRecipeNo() {
 		return recipeNo;
@@ -73,11 +79,11 @@ public class TMR {
 	public void setRecipeContents(String recipeContents) {
 		this.recipeContents = recipeContents;
 	}
-	public String getRecipeMainimg() {
-		return recipeMainimg;
+	public String getRecipeMainImg() {
+		return recipeMainImg;
 	}
-	public void setRecipeMainimg(String recipeMainimg) {
-		this.recipeMainimg = recipeMainimg;
+	public void setRecipeMainImg(String recipeMainImg) {
+		this.recipeMainImg = recipeMainImg;
 	}
 	public String getRecipeCat1() {
 		return recipeCat1;
@@ -121,11 +127,11 @@ public class TMR {
 	public void setRecipeStep(String recipeStep) {
 		this.recipeStep = recipeStep;
 	}
-	public String getRecipeStepimg() {
-		return recipeStepimg;
+	public String getRecipeStepImg() {
+		return recipeStepImg;
 	}
-	public void setRecipeStepimg(String recipeStepimg) {
-		this.recipeStepimg = recipeStepimg;
+	public void setRecipeStepImg(String recipeStepImg) {
+		this.recipeStepImg = recipeStepImg;
 	}
 	public int getRecipeLike() {
 		return recipeLike;
@@ -156,5 +162,23 @@ public class TMR {
 	}
 	public void setRecipeStock(int recipeStock) {
 		this.recipeStock = recipeStock;
+	}
+	public String getRecipeWorkImg() {
+		return recipeWorkImg;
+	}
+	public void setRecipeWorkImg(String recipeWorkImg) {
+		this.recipeWorkImg = recipeWorkImg;
+	}
+	public String getRecipeVideo() {
+		return recipeVideo;
+	}
+	public void setRecipeVideo(String recipeVideo) {
+		this.recipeVideo = recipeVideo;
+	}
+	public int getRecipeState() {
+		return recipeState;
+	}
+	public void setRecipeState(int recipeState) {
+		this.recipeState = recipeState;
 	}
 }

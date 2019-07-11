@@ -129,6 +129,8 @@
     cursor: pointer;
     padding: 10px;
     color: #fff;
+    width: 170px;
+    margin-top: 20px;
 }
 .cp_admin_table{
     width: 800px;
@@ -142,4 +144,22 @@
 }
 .cp_th{
     padding: 0px;
+}
+.cp_table{
+    width: 800px;
+    margin: 0 auto;
+    text-align: left;
+    
+}
+.cp_table input{
+    width: 618px;
+}
+.cp_participant{
+    width: 100%;
+    line-height: 35px;
+}
+.cp_form{
+    width: 1240px;
+    margin: 0 auto;
+    text-align: center;
 }

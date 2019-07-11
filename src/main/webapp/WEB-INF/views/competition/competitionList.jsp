@@ -19,7 +19,7 @@
 	<div class="pom_bg">
         <div class="pom_top">
             <h1>요리대회</h1>
-            <div id="pom_div_bg"></div>
+            <div class="pom_div_bg"></div>
             <p>자연속에서 즐기는 요리대회</p>
         </div>
     </div>
@@ -43,19 +43,55 @@
 						<div id="cp_date">${competition.competitionDate}</div>
 						<div class="cp_contentsView">
 							<div id="cp_contentsImg">
-								<c:if test="${not empty competition.competitionImg  }">
-									<img
-										src="../../../resources/upload/competition/${competition.competitionImg}"
-										width="800px;">
+								<c:if test="${not empty competition.competitionImg}">
+									<img src="../../../resources/upload/competition/${competition.competitionImg}" width="800px;">
 								</c:if>
 							</div>
 							<div id="cp_contents">${competition.competitionContents}</div>
 						</div>
+						<c:if test="${sessionScope.member != null }">
+						<div class="cp_participant">
+				            <h1>요리대회 신청하기</h1>
+				            <div class="pom_div_bg"></div>
+				        </div>
+						<form action="/participantInsert.do" method="post">
+						<div class="cp_form">
+							<table class="cp_table">
+							<input type="hidden" name="competitionNo" value="${competition.competitionNo}">
+								<tr>
+									<td>
+										아이디 <br> <input type="text" name="id" value="${sessionScope.member.id}"> 
+									</td>
+								</tr>
+								<tr>
+									<td>
+										이름 <br> <input type="text" name="name" value="${sessionScope.member.name}"> 
+									</td>
+								</tr>
+								<tr>
+									<td>
+										전화번호 <br> <input type="text" name="phone" value="${sessionScope.member.phone}"> 
+									</td>
+								</tr>
+								<tr>
+									<td>
+										성별 <br> <input type="text" name="gender" value="${sessionScope.member.gender}"> 
+									</td>
+								</tr>
+								<tr>
+									<td>
+										신청이유 <br> <textarea rows="10" cols="85" name="participantContent"></textarea> 
+									</td>
+								</tr>
+							</table>
+							</div>
+                            <div id="cp_btn">
+								<button>대회참가 신청하기</button>
+				            </div>
+						</form>
+						</c:if>
 					</div>
-					<div id="cp_btn">
-
-						<button id="counter">대회참가 신청하기</button>
-					</div>
+					
 					<!--
 			 <button onclick="location.href='/competitionUpdate.do?competitionNo=${competition.competitionNo}'">수정하기</button>   
           <button  onclick="location.href='/competitionDelete.do?competitionNo=${competition.competitionNo}'" >삭제하기</button>
@@ -66,7 +102,7 @@
         </div>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-	<script>
+	<!-- <script>
 		var n = 0;
 	  $('#counter').click(function(){ 
 		  	n = n+1;
@@ -76,7 +112,7 @@
 			}
 
 		});
-	</script>
+	</script> -->
 </body>
 
 </html>

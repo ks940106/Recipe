@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="tmr">
-	<select id="totalCount" parameterType="map" resultType="tmr">
+	<select id="tmrCount" parameterType="map" resultType="tmr">
 	select
 	recipe_no as recipeNo,
     recipe_title as recipeTitle,
     recipe_writer as recipeWriter,
     recipe_contents as recipeContents,
-    recipe_mainimg as recipeMainimg,
+    recipe_mainimg as recipeMainImg,
     recipe_cat1 as recipeCat1,
     recipe_cat2 as recipeCat2,
     recipe_count as recipeCount,
@@ -15,12 +15,15 @@
     recipe_level as recipeLevel,
     recipe_item as recipeItem,
     recipe_step as recipeStep,
-    recipe_stepimg as recipeStepimg,
+    recipe_stepimg as recipeStepImg,
     recipe_like as recipeLike,
     recipe_hit as recipeHit,
     recipe_price as recipePrice,
     recipe_date as recipeDate,
-    recipe_stock as recipeStock
+    recipe_stock as recipeStock,
+    recipe_workimg as recipeWorkImg,
+    recipe_video as recipeVideo,
+    recipe_state as recipeState
     from recipe where to_char(recipe_date,'MM')= #{month} and to_char(recipe_date,'yy')=#{year} order by recipe_like desc
 	</select>
 	<select id="selectTMR" parameterType="map" resultType="tmr">
@@ -29,7 +32,7 @@
     recipe_title as recipeTitle,
     recipe_writer as recipeWriter,
     recipe_contents as recipeContents,
-    recipe_mainimg as recipeMainimg,
+    recipe_mainimg as recipeMainImg,
     recipe_cat1 as recipeCat1,
     recipe_cat2 as recipeCat2,
     recipe_count as recipeCount,
@@ -37,38 +40,51 @@
     recipe_level as recipeLevel,
     recipe_item as recipeItem,
     recipe_step as recipeStep,
-    recipe_stepimg as recipeStepimg,
+    recipe_stepimg as recipeStepImg,
     recipe_like as recipeLike,
     recipe_hit as recipeHit,
     recipe_price as recipePrice,
     recipe_date as recipeDate,
-    recipe_stock as recipeStock
+    recipe_stock as recipeStock,
+    recipe_workimg as recipeWorkImg,
+    recipe_video as recipeVideo,
+    recipe_state as recipeState
     from(select rownum as rnum, tmr.* from (select * from recipe where to_char(recipe_date,'MM')=#{month} and to_char(recipe_date,'yy')=#{year} order by recipe_like desc) tmr) where rnum between #{start} and #{end}
 	</select>
 	<insert id="insertLmr" parameterType="map">
-		insert into LMR values(#{recipeNo1},#{recipeTitle1},#{recipeWriter1},#{recipeImg1},#{recipeNo2},#{recipeTitle2},#{recipeWriter2},#{recipeImg2},#{recipeNo3},#{recipeTitle3},#{recipeWriter3},#{recipeImg3},#{recipeDate})
+		insert into LMR values(#{recipeNo1},#{recipeTitle1},#{recipeWriter1},#{recipeNo2},#{recipeTitle2},#{recipeWriter2},#{recipeNo3},#{recipeTitle3},#{recipeWriter3},#{recipeDate})
 	</insert>
 	<select id="lmrCount" resultType="lmr">
 		select 
-		recipe_no_1 as recipeNo1
+		recipe_no1 as recipeNo1
     	from LMR
 	</select>
 	<select id="selectLmr" parameterType="map" resultType="lmr">
 		select 
-		recipe_no_1 as recipeNo1,
-    	recipe_title_1 as recipeTitle1,
-    	recipe_writer_1 as recipeWriter1,
-    	recipe_img_1 as recipeImg1,
-    	recipe_no_2 as recipeNo2,
-    	recipe_title_2 as recipeTitle2,
-    	recipe_writer_2 as recipeWriter2,
-    	recipe_img_2 as recipeImg2,
-    	recipe_no_3 as recipeNo3,
-    	recipe_title_3 as recipeTitle3,
-    	recipe_writer_3 as recipeWriter3,
-    	recipe_img_3 as recipeImg3,
+		recipe_no1 as recipeNo1,
+    	recipe_title1 as recipeTitle1,
+    	recipe_writer1 as recipeWriter1,
+    	recipe_no2 as recipeNo2,
+    	recipe_title2 as recipeTitle2,
+    	recipe_writer2 as recipeWriter2,
+    	recipe_no3 as recipeNo3,
+    	recipe_title3 as recipeTitle3,
+    	recipe_writer3 as recipeWriter3,
     	recipe_date as recipeDate
     	from 
         (select rownum as rnum, lmr.* from (select * from lmr order by recipe_date desc) lmr) where rnum between #{start} and #{end}
 	</select>
+	<select id="selectReservation" resultType="reservation">
+		select distinct
+		caravan_no as caravanNo 
+		from reservation where caravan_no not in
+		(select distinct caravan_no from reservation a where 
+		<foreach item="addr" collection="array" separator="or">
+				reservation_date like '%'||#{addr}||'%'
+		</foreach>
+		) order by caravan_no
+	</select>
+	<insert id="insertReservation" parameterType="map">
+		insert into reservation values(#{caravanNo},#{reservationDateString})
+	</insert>
 </mapper>

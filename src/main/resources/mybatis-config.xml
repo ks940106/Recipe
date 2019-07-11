@@ -10,12 +10,15 @@
 	<typeAliases>
 		<typeAlias type="org.ks.tmr.vo.TMR" alias="tmr"/>
 		<typeAlias type="org.ks.tmr.vo.LMR" alias="lmr"/>
+		<typeAlias type="org.ks.tmr.vo.Reservation" alias="reservation"/>
 		<typeAlias type="java.util.Map" alias="map"/>
 		<typeAlias type="org.ks.competition.vo.Competition" alias="competition"/>
+		<typeAlias type="org.ks.talkBoard.vo.TalkBoard" alias="talk"/>
 		<typeAlias type="org.ks.cart.vo.Cart" alias="cart"/>
 		<typeAlias type="org.ks.member.vo.Member" alias="member"/>
 		<typeAlias type="org.ks.order.vo.Order" alias="order"/>
 		<typeAlias type="org.ks.recipe.vo.Category" alias="category"/>
 		<typeAlias type="org.ks.recipe.vo.Recipe" alias="recipe"/>
+		<typeAlias type="org.ks.participant.vo.Participant" alias="participant"/>
 	</typeAliases>
 </configuration>

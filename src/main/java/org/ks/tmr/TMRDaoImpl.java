@@ -17,11 +17,11 @@ public class TMRDaoImpl implements TMRDao{
 	@Autowired
 	SqlSessionTemplate sqlsession;
 	
-	public List totalCount(String year,String month) { 
+	public List tmrCount(String year,String month) { 
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("year", year);
 		map.put("month",month);
-		List list = sqlsession.selectList("tmr.totalCount",map);
+		List list = sqlsession.selectList("tmr.tmrCount",map);
 		return list;
 	}
 	
@@ -36,23 +36,19 @@ public class TMRDaoImpl implements TMRDao{
 		return list;
 	}
 
-	public void insertLmr(TMR tmr1,TMR tmr2,TMR tmr3) {
+	public void insertLMR(TMR tmr1,TMR tmr2,TMR tmr3) {
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("recipeNo1",Integer.toString(tmr1.getRecipeNo()));
 		map.put("recipeTitle1", tmr1.getRecipeTitle());
 		map.put("recipeWriter1", tmr1.getRecipeWriter());
-		map.put("recipeImg1", tmr1.getRecipeMainimg());
 		map.put("recipeNo2",Integer.toString(tmr2.getRecipeNo()));
 		map.put("recipeTitle2", tmr2.getRecipeTitle());
 		map.put("recipeWriter2", tmr2.getRecipeWriter());
-		map.put("recipeImg2", tmr2.getRecipeMainimg());
 		map.put("recipeNo3",Integer.toString(tmr3.getRecipeNo()));
 		map.put("recipeTitle3", tmr3.getRecipeTitle());
 		map.put("recipeWriter3", tmr3.getRecipeWriter());
-		map.put("recipeImg3", tmr3.getRecipeMainimg());
 		String date = new SimpleDateFormat("yy/MM/dd").format(tmr1.getRecipeDate());
 		map.put("recipeDate", date);
-		
 		sqlsession.insert("tmr.insertLmr",map);
 	}
 	public List lmrCount() {
@@ -65,5 +61,15 @@ public class TMRDaoImpl implements TMRDao{
 		map.put("end", end);
 		List list = sqlsession.selectList("tmr.selectLmr",map);
 		return list;
+	}
+	public List selectReservation(String[] reservationDate) {
+		List list = sqlsession.selectList("tmr.selectReservation", reservationDate);
+		return list;
+	}
+	public void insertReservation(String caravanNo,String reservationDateString) {
+		Map map = new HashMap<String,String>();
+		map.put("caravanNo", caravanNo);
+		map.put("reservationDateString", reservationDateString);
+		sqlsession.insert("tmr.insertReservation",map);
 	}
 }
