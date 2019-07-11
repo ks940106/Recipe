@@ -50,6 +50,7 @@
 							<div id="cp_contents">${competition.competitionContents}</div>
 						</div>
 						<c:if test="${sessionScope.member != null }">
+							<c:if test="${participant == null }">
 						<div class="cp_participant">
 				            <h1>요리대회 신청하기</h1>
 				            <div class="pom_div_bg"></div>
@@ -60,22 +61,22 @@
 							<input type="hidden" name="competitionNo" value="${competition.competitionNo}">
 								<tr>
 									<td>
-										아이디 <br> <input type="text" name="id" value="${sessionScope.member.id}"> 
+										아이디 <br> <input type="text" name="id" value="${sessionScope.member.id}" readonly> 
 									</td>
 								</tr>
 								<tr>
 									<td>
-										이름 <br> <input type="text" name="name" value="${sessionScope.member.name}"> 
+										이름 <br> <input type="text" value="${sessionScope.member.name}" readonly> 
 									</td>
 								</tr>
 								<tr>
 									<td>
-										전화번호 <br> <input type="text" name="phone" value="${sessionScope.member.phone}"> 
+										전화번호 <br> <input type="text" value="${sessionScope.member.phone}" readonly> 
 									</td>
 								</tr>
 								<tr>
 									<td>
-										성별 <br> <input type="text" name="gender" value="${sessionScope.member.gender}"> 
+										성별 <br> <input type="text" value="${sessionScope.member.gender}" readonly> 
 									</td>
 								</tr>
 								<tr>
@@ -85,10 +86,15 @@
 								</tr>
 							</table>
 							</div>
-                            <div id="cp_btn">
-								<button>대회참가 신청하기</button>
-				            </div>
+							<input type="submit" value="대회참가 신청하기">
+                            <!-- <div id="cp_btn">
+								<input type="submit" value="대회참가 신청하기">
+				            </div> -->
 						</form>
+							</c:if>
+							<c:if test="${participant != null}">
+								<button type="button">이미 참가한 대회</button>
+							</c:if>
 						</c:if>
 					</div>
 					

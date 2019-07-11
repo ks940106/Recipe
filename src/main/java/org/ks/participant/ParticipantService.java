@@ -1,9 +1,7 @@
 package org.ks.participant;
 
-import java.util.ArrayList;
-
-import org.ks.member.vo.Member;
+import org.ks.participant.vo.Participant;
 
 public interface ParticipantService {
-	public Member participantMemberList(String id);
+	public void participantInsert(Participant vo);
 }

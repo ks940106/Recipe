@@ -1,11 +1,12 @@
 package org.ks.competition;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.ks.competition.vo.Competition;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Repository;
 
 @Repository("competitionDaoimpl")
@@ -46,5 +47,28 @@ public class CompetitionDaoImpl implements CompetitionDao {
 	@Override
 	public List competitionResultView(int competitionNo) {
 		return sqlsession.selectList("competition.competitionResultView", competitionNo);
+	}
+
+	@Override
+	public List participantCheck(int competitionNo, String id) {
+		Map map = new HashMap<String, String>();
+		map.put("competitionNo", Integer.toString(competitionNo));
+		map.put("id", id);
+		return sqlsession.selectList("competition.participantCheck",map);
+	}
+
+	@Override
+	public List competitionListView(int competitionNo) {
+		return sqlsession.selectList("competition.competitionListView",competitionNo);
+	}
+
+	@Override
+	public List participantView() {
+		return sqlsession.selectList("competition.participantView");
+	}
+
+	@Override
+	public List participantMember() {
+		return sqlsession.selectList("competition.participantMember");
 	}
 }

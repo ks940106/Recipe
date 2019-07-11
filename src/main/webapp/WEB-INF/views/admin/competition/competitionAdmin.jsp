@@ -52,7 +52,7 @@
 						<tbody>
 						<tr>
 							<td>${competition.competitionNo }</td>
-							<td>${competition.competitionTitle}</td>
+							<td><a href="/competitionAdmin_List.do?competitionNo=${competition.competitionNo }">${competition.competitionTitle}</a></td>
 							<td>${competition.competitionDate }</td>
 							<td>
 								<div>
