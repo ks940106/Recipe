@@ -49,13 +49,13 @@
 							</div>
 							<div id="cp_contents">${competition.competitionContents}</div>
 						</div>
+						<c:if test="${sessionScope.member != null }">
 						<div class="cp_participant">
 				            <h1>요리대회 신청하기</h1>
 				            <div class="pom_div_bg"></div>
 				        </div>
 						<form action="/participantInsert.do" method="post">
 						<div class="cp_form">
-						<c:if test="${ }"></c:if>
 							<table class="cp_table">
 							<input type="hidden" name="competitionNo" value="${competition.competitionNo}">
 								<tr>
@@ -89,6 +89,7 @@
 								<button>대회참가 신청하기</button>
 				            </div>
 						</form>
+						</c:if>
 					</div>
 					
 					<!--
