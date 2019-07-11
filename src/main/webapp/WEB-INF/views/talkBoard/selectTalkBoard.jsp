@@ -54,10 +54,9 @@
 			float: left;
 			position: relative;
 		}
-		
 	</style>
 <body>
-	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp"/>
 	<!-- 
 	<h1>부히힛</h1>
 	<table>
@@ -133,7 +132,7 @@
 	 <input type="button" onclick="modifyTalkBoard(${tb.boardNo})" value="수정">
 	 </c:if>
 	 </section>
-	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp"/>
 	
 	<script>
 		function deleteBoard(boardNo){

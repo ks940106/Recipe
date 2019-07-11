@@ -37,7 +37,7 @@
 
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+<jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp"/>
 
 	<h1>글쓰기</h1>
 	
@@ -55,7 +55,7 @@
    		<br><br><br><br><br><br><br><br><br><br>
 		<input type="submit" value="등록">
 	</form>
-	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp"/>
 	
   <script>
    		var imgN = 1;
