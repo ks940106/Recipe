@@ -17,7 +17,7 @@
 	function popup(){
 		 var url = "/popup.do";
       var name = "이달의 레시피 혜택";
-      var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+      var option = "width = 700, height = 700, top = 100, left = 200, location = no"
       window.open(url, name, option);
 	}
 	</script>

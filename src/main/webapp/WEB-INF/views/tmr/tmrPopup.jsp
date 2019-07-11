@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	팝업창!
+	<img src="/../resources/upload/tmr/${img } " style="width:680px; height: 680px;">
 </body>
 </html>

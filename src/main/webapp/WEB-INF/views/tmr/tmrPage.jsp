@@ -13,7 +13,7 @@
 
 </head>
 <body>
-	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp"/>
 	<section>
 	<div class="pom_bg">
         <div class="pom_top">
@@ -78,6 +78,6 @@
             </div>
         </div>
 	</section>
-	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp"/>
 </body>
 </html>
