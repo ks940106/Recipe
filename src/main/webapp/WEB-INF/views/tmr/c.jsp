@@ -15,7 +15,7 @@
 </style>
 </head>
 <body>
-
+	<div style="float: left;">
 	<table>
 	<tr>
 		<th><button type="button" id="prev"><</button></th>
@@ -37,7 +37,8 @@
 		</tr>
 	</c:forEach>
 	</table>
-	<div>///</div>
+	</div>
+	<div id="reservation" style="float: left; border:1px solid black; width:400px; height:400px;"></div>
 	<script>
 		var nowYear = 0; //현재 년
 		var nowMonth = 0; //현재 월
@@ -299,14 +300,19 @@
 		
 		////////////////////////////////
 		function selectReservation(){
+			var reservationDateString = reservationDate.join(",");
 			$.ajax({
 				url:"/selectReservation.do",
-				data:{"reservationDate":reservationDate},
-				success: function(){
-					
-				},
+				data:{"reservationDateString":reservationDateString},
+				dataType:"json",
+				success: function(jsonList){
+							$("#reservation").html("");
+						for(var index in jsonList){
+							$("#reservation").append("<a href='/insertReservation.do?caravanNo="+jsonList[index].caravanNo+"&reservationDateString="+reservationDateString+"'>"+jsonList[index].caravanNo +"</a><br>");
+						}
+					},
 				error: function(){
-					
+					alert("아작스 에러!");
 				}
 			});
 		}

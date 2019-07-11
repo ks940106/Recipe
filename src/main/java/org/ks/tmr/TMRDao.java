@@ -10,4 +10,7 @@ public interface TMRDao {
 	public void insertLMR(TMR tmr1,TMR tmr2,TMR tmr3);
 	public List lmrCount();
 	public List selectLMR(int start,int end);
+	
+	public List selectReservation(String[] reservationDate);
+	public void insertReservation(String caravanNo,String reservationDateString);
 }

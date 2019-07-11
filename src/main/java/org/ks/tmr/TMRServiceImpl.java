@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.ks.tmr.vo.LMR;
 import org.ks.tmr.vo.LMRPageData;
+import org.ks.tmr.vo.Reservation;
 import org.ks.tmr.vo.TMR;
 import org.ks.tmr.vo.TMRPageData;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -108,5 +109,14 @@ public class TMRServiceImpl implements TMRService{
 		LMRPageData lpd = null;
 		lpd = new LMRPageData(list,pageNavi);
 		return lpd;
+	}
+	
+	public ArrayList<Reservation> selectReservation(String[] reservationDate){
+		List list = tmrdaoImpl.selectReservation(reservationDate);
+		return (ArrayList<Reservation>)list;
+	}
+	@Transactional
+	public void insertReservation(String caravanNo,String reservationDateString) {
+		tmrdaoImpl.insertReservation(caravanNo,reservationDateString);
 	}
 }
