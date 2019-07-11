@@ -74,4 +74,17 @@
     	from 
         (select rownum as rnum, lmr.* from (select * from lmr order by recipe_date desc) lmr) where rnum between #{start} and #{end}
 	</select>
+	<select id="selectReservation" resultType="reservation">
+		select distinct
+		caravan_no as caravanNo 
+		from reservation where caravan_no not in
+		(select distinct caravan_no from reservation a where 
+		<foreach item="addr" collection="array" separator="or">
+				reservation_date like '%'||#{addr}||'%'
+		</foreach>
+		) order by caravan_no
+	</select>
+	<insert id="insertReservation" parameterType="map">
+		insert into reservation values(#{caravanNo},#{reservationDateString})
+	</insert>
 </mapper>

@@ -1,11 +1,15 @@
 package org.ks.tmr;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.ks.tmr.vo.LMRPageData;
+import org.ks.tmr.vo.Reservation;
 import org.ks.tmr.vo.TMRPageData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,6 +17,10 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
 
 @Controller
 public class TMRContoller {
@@ -78,10 +86,24 @@ public class TMRContoller {
 		return "tmr/c";
 	}
 	@RequestMapping(value="/selectReservation.do")
-	public String selectReservation(HttpServletRequest request) {
-		String[] reservationDate = request.getParameterValues("reservationDate");
-		System.out.println(reservationDate[0]);
-		System.out.println(reservationDate[1]);
+	public void selectReservation(HttpServletRequest request,Model model,HttpServletResponse response) {
+		String reservationDateString = request.getParameter("reservationDateString");
+		String[] reservationDate = reservationDateString.split(",");
+		ArrayList<Reservation> list = tmrserviceImpl.selectReservation(reservationDate);
+		
+		response.setContentType("text/html;charset=utf-8");
+		String jsonList = new Gson().toJson(list);
+		System.out.println(jsonList);
+		try {
+			response.getWriter().append(jsonList);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	@RequestMapping(value="/insertReservation.do")
+	public String insertReservation(@RequestParam String caravanNo,@RequestParam String reservationDateString) {
+			tmrserviceImpl.insertReservation(caravanNo,reservationDateString);
 		return "tmr/c";
 	}
 }
