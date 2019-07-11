@@ -15,4 +15,6 @@ public interface RecipeService {
     List<Recipe> recipeList();
 
     RecipeDetail getRecipeDetail(String recipeNo);
+
+    void recipeHit(String recipeNo);
 }

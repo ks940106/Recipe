@@ -161,6 +161,7 @@ public class RecipeController {
     @RequestMapping(value = "/recipe/{recipeNo}")
     public String getRecipeByNo(@PathVariable("recipeNo") String recipeNo, Model model){
         RecipeDetail recipeDetail = recipeService.getRecipeDetail(recipeNo);
+        recipeService.recipeHit(recipeNo);
         System.out.println(recipeDetail);
         model.addAttribute("recipe",recipeDetail);
         return "recipe/recipeDetail";

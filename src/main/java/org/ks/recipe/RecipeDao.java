@@ -14,4 +14,6 @@ public interface RecipeDao {
     List<Recipe> recipeList();
 
     RecipeDetail getRecipeDetail(int parseInt);
+
+    void recipeHit(int recipeNo);
 }

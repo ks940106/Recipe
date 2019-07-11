@@ -40,6 +40,8 @@
     </resultMap>
 
     <resultMap id="recipeDetail" type="org.ks.recipe.vo.RecipeDetail">
+        <result property="category1" column="category1"/>
+        <result property="category2" column="category2"/>
         <association property="member" resultMap="member"/>
         <association property="recipe" resultMap="recipe"/>
     </resultMap>
@@ -60,11 +62,42 @@
         select * from RECIPE
     </select>
     <select id="recipeDetail" parameterType="_int" resultMap="recipeDetail">
-        select
-               *
+        select RECIPE_NO,
+               RECIPE_TITLE,
+               RECIPE_WRITER,
+               RECIPE_CONTENTS,
+               RECIPE_MAINIMG,
+               RECIPE_CAT1,
+               RECIPE_CAT2,
+               RECIPE_COUNT,
+               RECIPE_TIME,
+               RECIPE_LEVEL,
+               RECIPE_ITEM,
+               RECIPE_STEP,
+               RECIPE_STEPIMG,
+               RECIPE_LIKE,
+               RECIPE_HIT,
+               RECIPE_PRICE,
+               RECIPE_DATE,
+               RECIPE_STOCK,
+               RECIPE_WORKIMG,
+               RECIPE_VIDEO,
+               RECIPE_STATE,
+               ID,
+               PW,
+               NAME,
+               NICKNAME,
+               GENDER,
+               ADDR1,
+               ADDR2,
+               PHONE,
+               MEMBER_IMG,
+               ZIP_CODE,
+               (select CATEGORY_NAME from CATEGORY where RECIPE_CAT1=CATEGORY_NO)as category1,
+               (select CATEGORY_NAME from CATEGORY where RECIPE_CAT2=CATEGORY_NO)as category2
         from RECIPE
-        join MEMBER
-        on RECIPE.RECIPE_WRITER = MEMBER.ID
+                 join MEMBER
+                      on RECIPE.RECIPE_WRITER = MEMBER.ID
         where RECIPE_NO = #{recipeNo}
     </select>
 </mapper>

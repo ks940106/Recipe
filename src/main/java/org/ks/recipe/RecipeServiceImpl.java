@@ -38,4 +38,9 @@ public class RecipeServiceImpl implements RecipeService {
     public RecipeDetail getRecipeDetail(String recipeNo) {
         return recipeDaoImpl.getRecipeDetail(Integer.parseInt(recipeNo));
     }
+
+    @Override
+    public void recipeHit(String recipeNo) {
+        recipeDaoImpl.recipeHit(Integer.parseInt(recipeNo));
+    }
 }

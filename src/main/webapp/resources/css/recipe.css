@@ -284,20 +284,10 @@ img {
     margin: 6px 0;
 }
 
-:after, :before {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-:after, :before {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
 
 .step_btn {
     display: inline-block;
-    vertical-align: middle;
+    vertical-align: top;
 }
 
 .step_btn a {
@@ -475,11 +465,7 @@ ol, ul {
     display: table;
     content: " ";
 }
-:after, :before {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
+
 .rcp_m_list2 .row {
     margin: 0 -4px 0 -4px;
 }
@@ -561,7 +547,6 @@ img {
     width: 600px;
     height: 600px;
     margin: 50px auto 50px;
-    overflow: hidden;
 }
 .main_img img{
     min-width: 600px;
@@ -573,28 +558,59 @@ img {
 }
 
 .detail_content{
-text-align: center;
+    text-align: center;
+    overflow: auto;
+    border: 1px solid black;
 }
 
 .recipe_step {
     width: 860px;
-    position: relative;
+    margin: 10px;
+    overflow: auto;
 }
 
 .step_text {
     float: left;
-    width: 60%;
-    height: 300px;
+    width: 450px;
+    height: 170px;
+    padding: 20px;
+    border: 1px solid black;
+    margin: 10px;
 }
-.step_img {
+.step_img{
     float: left;
-    width: 40%;
-    height: 300px;
-    overflow: hidden;
+    width: 320px;
+    height: 170px;
+    border: 1px solid black;
+    margin: 10px;
 }
 
 .step_img img{
-    max-width: 300px;
-
+    max-width: 100%;
+    height: auto;
 }
 
+.image-container{
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.user_profile{
+    width: 180px;
+    height: 200px;
+}
+.user_info table tr{
+    text-align: center;
+    height: 50%;
+}
+
+.recipe_title{
+    margin: 10px 0;
+}
+.recipe_title{
+    display: inline-block; width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.detail_right>div{
+    width: 100%;
+}

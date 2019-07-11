@@ -34,4 +34,9 @@ public class RecipeDaoImpl implements RecipeDao {
     public RecipeDetail getRecipeDetail(int recipeNo) {
         return sqlSession.selectOne("recipe.recipeDetail",recipeNo);
     }
+
+    @Override
+    public void recipeHit(int recipeNo) {
+        
+    }
 }
