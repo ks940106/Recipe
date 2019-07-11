@@ -19,7 +19,7 @@
 	<div class="pom_bg">
         <div class="pom_top">
             <h1>요리대회</h1>
-            <div id="pom_div_bg"></div>
+            <div class="pom_div_bg"></div>
             <p>자연속에서 즐기는 요리대회</p>
         </div>
     </div>
@@ -49,33 +49,45 @@
 							</div>
 							<div id="cp_contents">${competition.competitionContents}</div>
 						</div>
+						<div class="cp_participant">
+				            <h1>요리대회 신청하기</h1>
+				            <div class="pom_div_bg"></div>
+				        </div>
 						<form action="/participantInsert.do" method="post">
-							<table>
+						<div class="cp_form">
+						<c:if test="${ }"></c:if>
+							<table class="cp_table">
 							<input type="hidden" name="competitionNo" value="${competition.competitionNo}">
 								<tr>
 									<td>
-										아이디 : <input type="text" name="id" value="${sessionScope.member.id}"> 
+										아이디 <br> <input type="text" name="id" value="${sessionScope.member.id}"> 
 									</td>
 								</tr>
 								<tr>
 									<td>
-										이름 : <input type="text" name="name" value="${sessionScope.member.name}"> 
+										이름 <br> <input type="text" name="name" value="${sessionScope.member.name}"> 
 									</td>
 								</tr>
 								<tr>
 									<td>
-										전화번호 : <input type="text" name="phone" value="${sessionScope.member.phone}"> 
+										전화번호 <br> <input type="text" name="phone" value="${sessionScope.member.phone}"> 
 									</td>
 								</tr>
 								<tr>
 									<td>
-										성별 : <input type="text" name="gender" value="${sessionScope.member.gender}"> 
+										성별 <br> <input type="text" name="gender" value="${sessionScope.member.gender}"> 
+									</td>
+								</tr>
+								<tr>
+									<td>
+										신청이유 <br> <textarea rows="10" cols="85" name="participantContent"></textarea> 
 									</td>
 								</tr>
 							</table>
-							<div id="cp_btn">
-								<button>대회참가 신청하기</button>
 							</div>
+                            <div id="cp_btn">
+								<button>대회참가 신청하기</button>
+				            </div>
 						</form>
 					</div>
 					
