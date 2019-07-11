@@ -271,14 +271,15 @@ public class MemberController {
 		String pwCheck=request.getParameter("pwcheck");
 		String pw = null;
 		try {
+			System.out.println("!!");
 			pw = new SHA256Util().encData(pwCheck);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println(pw);
 		HttpSession session = request.getSession(false);
 		String id=((Member)session.getAttribute("member")).getId();
-		System.out.println(id);
 		Member member = memberService.pwCheck(id,pw);
 		String view="";
 		if(member!=null) {
@@ -287,6 +288,60 @@ public class MemberController {
 			request.setAttribute("msg", "비밀번호를 다시 확인해주세요");
 			request.setAttribute("loc", "/mypage.do");
 			view="common/msg";
+		}return view;
+	}
+	
+	@RequestMapping(value="/myPageUpdate.do")
+	public String myPageUpdate(HttpServletRequest request,@RequestParam MultipartFile fileUpload) {
+		Member m = new Member();
+		m.setId(request.getParameter("id"));
+		String pw1 = request.getParameter("new_pw");
+		m.setNickname(request.getParameter("nickname"));
+		m.setAddr1(request.getParameter("addr1"));
+		m.setAddr2(request.getParameter("addr2"));
+		m.setPhone(request.getParameter("phone"));
+		m.setMemberImg(request.getParameter("fileUpload")); 
+		m.setZipCode(request.getParameter("zipCode"));
+		//파일 업로드
+		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/member");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+		Date d = new Date();
+		String date = sdf.format(d);
+		String originName = fileUpload.getOriginalFilename();
+		String onlyFileName = originName.substring(0,originName.indexOf('.'));
+		String extension = originName.substring(originName.indexOf('.'));
+		String filePath = onlyFileName + "_"+ date + extension;
+		String memberImg = savePath+"/" + filePath;
+		String pw = null;
+		try {
+			pw = new SHA256Util().encData(pw1);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		m.setPw(pw);
+		int result = memberService.updateMember(m);
+		if(!fileUpload.isEmpty()) {
+			byte[] bytes;
+			try {
+				bytes = fileUpload.getBytes();
+				File f = new File(memberImg);		
+				FileOutputStream fos = new FileOutputStream(f);
+				BufferedOutputStream bos = new BufferedOutputStream(fos);
+				bos.write(bytes);
+				bos.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		String view="";
+		if(result>0) {
+			view="member/mypage";
+		}else {
+			view="common/msg";
+			request.setAttribute("msg", "회원정보 변경 실패");
+			request.setAttribute("loc", "/mypage.do");
 		}return view;
 	}
 	
