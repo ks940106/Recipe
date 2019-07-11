@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.ks.competition.vo.Competition;
-import org.ks.member.vo.Member;
 import org.ks.participant.vo.Participant;
+import org.ks.participant.vo.ParticipantMember;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -82,16 +82,12 @@ public class CompetitionServiceImpl implements CompetitionService {
 	}
 
 	@Override
-	public Participant participantView() {
-		List list = competitionDaoimpl.participantView();
-		Participant p = null;
-		if(!list.isEmpty()) {
-			p = (Participant)list.get(0);
-		}
-		return p;
+	public  ArrayList<ParticipantMember> participantView(int competitionNo) {
+		return (ArrayList<ParticipantMember>)( competitionDaoimpl.participantView(competitionNo));
+		
 	}
 
-	@Override
+	/*@Override
 	public Member participantMember() {
 		List list = competitionDaoimpl.participantMember();
 		Member m = null;
@@ -99,5 +95,5 @@ public class CompetitionServiceImpl implements CompetitionService {
 			m = (Member)list.get(0);
 		}
 		return m;
-	}	
+	}	*/
 }

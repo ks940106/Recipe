@@ -72,23 +72,27 @@
 		competition_check as competitionCheck
 		from competition where competition_No=#{competitionNo}
 	</select>
-	<select id="participantView" resultType="participant">
+	<select id="participantMember" resultType="participantMember">
 		select participant_no as participantNo,
 		competition_no as competitionNo,
-		id as id,
+		(PARTICIPANT.id) as id,
 		participant_pass as participantPass,
 		participant_content as participantContent,
 		participant_result as participantResult,
-		participant_date as participantDate
-		from participant 		
+		participant_date as participantDate,
+		name as name,
+		nickname as nickname,
+		gender as gender,
+		phone as phone
+		from participant join member on participant.id = member.id where competition_no = #{competitionNo}
 	</select>
-	<select id="participantMember" resultType="member">
+<!-- 	<select id="participantMember" resultType="member">
 		select id as id,
 		name as name,
 		nickname as nickname,
 		gender as gender,
 		phone as phone
 		from member where 
-	</select>
+	</select> -->
 	
 </mapper>
