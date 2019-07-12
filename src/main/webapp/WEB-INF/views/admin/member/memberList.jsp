@@ -59,17 +59,14 @@
 							<td>${m.nickname }</td>
 							<td>
 								<div>
-									<a href="/memberDetail.do?id=${m.id}" class="btn small col_main f_w">수정</a>
-									<a href="/memberDelete.do?id=${m.id}" class="btn small col_main f_w">삭제</a>
+									<a href="/memberDelete.do?id=${m.id}" class="btn small col_main f_w">탈퇴</a>
 								</div>
 							</td>
 						</tr>
 						</c:forEach> 
 						</tbody>
 					</table>
-					<div id="cp_admin_btn">
-						<a href="/competitionAdminWrite.do" class="btn small col_main f_w">글쓰기</a>
-					</div>
+					
 				</div>
 			</div>
 		</div>

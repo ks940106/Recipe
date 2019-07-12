@@ -380,6 +380,19 @@ public class MemberController {
 		}
 		return mav;
 	}
+	@RequestMapping(value="memberDelete.do")
+	public String memberDelete(HttpServletRequest request) {
+		String id = request.getParameter("id");
+		int result = memberService.deleteMember(id);
+		String view="common/msg";
+		if(result>0) {
+			request.setAttribute("msg", "회원 삭제");
+			request.setAttribute("loc", "memberList.do");
+		}else {
+			request.setAttribute("msg", "삭제 실패");
+			request.setAttribute("loc", "memberList.do");
+		}return view;
+	}
 }
 
 
