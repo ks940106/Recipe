@@ -1,5 +1,7 @@
 package org.ks.member;
 
+import java.util.ArrayList;
+
 import org.ks.member.vo.Member;
 
 public interface MemberDAO {
@@ -10,4 +12,5 @@ public interface MemberDAO {
 	public Member pwCheck(String id,String pw);
 	public int updateMember(Member m);
 	public int deleteMember(String id);
+	public ArrayList<Member> memberList();
 }

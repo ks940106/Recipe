@@ -1,6 +1,8 @@
 package org.ks.member;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.ks.member.vo.Member;
@@ -57,5 +59,10 @@ public class MemberDaoImpl implements MemberDAO{
 	public int deleteMember(String id) {
 		int result = sqlSession.delete("member.deleteMember",id);
 		return result;
+	}
+	@Override
+	public ArrayList<Member> memberList() {
+		List<Member> list = sqlSession.selectList("member.memberList");
+		return (ArrayList<Member>) list;
 	}
 }

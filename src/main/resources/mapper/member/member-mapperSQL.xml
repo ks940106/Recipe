@@ -32,4 +32,7 @@
 	<delete id="deleteMember">
 		delete from member where id=#{id} 
 	</delete>
+	<select id="memberList" resultType="member">
+		select * from member
+	</select>
 </mapper>
