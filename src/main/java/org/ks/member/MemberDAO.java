@@ -9,4 +9,5 @@ public interface MemberDAO {
 	public int insertMember(Member m);
 	public Member pwCheck(String id,String pw);
 	public int updateMember(Member m);
+	public int deleteMember(String id);
 }

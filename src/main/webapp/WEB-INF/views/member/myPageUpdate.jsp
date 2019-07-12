@@ -39,18 +39,18 @@
                     <jsp:include page="/WEB-INF/views/common/navPom.jsp"/>
                 </div>-->
 			<div class="mypage">
-			<form method="post" action="/myPageUpdate.do" enctype="multipart/form-data">
+			<form method="post" action="/myPageUpdate.do" id="myPageFrm" enctype="multipart/form-data" onsubmit="return reg()">
 				<h1>개인 정보 수정</h1>
 				<div>
 					<table>
 						<tbody>
 							<tr>
 								<th>아이디</th>
-								<td>${member.id }</td>
+								<td>${member.id }<input type="hidden" name="id"value=${member.id }></td>
 							</tr>
 							<tr>
 								<th>새 비밀번호</th>
-								<td><input type="password" id="new_pw"name="pw"></td>
+								<td><input type="password" id="new_pw"name="new_pw"></td>
 							</tr>
 							<tr>
 								<th>새 비밀번호 확인</th>
@@ -62,11 +62,11 @@
 							</tr>
 							<tr>
 								<th>닉네임</th>
-								<td><input type="text" value=${member.nickname }></td>
+								<td>${member.nickname }</td>
 							</tr>
 							<tr>
 								<th>핸드폰 번호</th>
-								<td><input type="text" value=${member.phone }></td>
+								<td><input type="text" name="phone" value=${member.phone }></td>
 							</tr>
 						</tbody>
 					</table>
@@ -76,10 +76,11 @@
 					<input type="text" name="addr1"  id="addr1" placeholder="주소">
 					<input type="text" name="addr2"  id="addr2" placeholder="상세주소">
 					<h1>프로필 사진 변경</h1>
-					<!--  <img id="image_section" src="#" alt="your image" /><br>  -->
+					 <img id="image_section" src="../resources/upload/member/${member.memberImg}"/><br>
 					<input type="file" id="fileUpload" name="fileUpload" accept=".jpg,.jpeg,.png">
 				</div>
-				<button type="submit">수정</button>
+				<button type="submit">수정 </button>
+				<a href="/myPageDelete.do?id=${member.id}" class="btn">탈퇴하기</a>
 			</form>
 			</div>
 		</div>
