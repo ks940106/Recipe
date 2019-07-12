@@ -11,7 +11,7 @@
 <link href="../resources/css/cart.css" rel="stylesheet" />
 </head>
 <body>
-	<jsp:include page="/WEB-INF/views/common/header.jsp" />
+	<jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp" />
 	
 	<section>
 	<div class="pom_bg">
@@ -80,7 +80,7 @@
 		</div>
 	</section>
 	<!-- header Fin -->
-	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />
 	<script type="text/javascript" src="/resources/js/order.js"></script>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </body>
