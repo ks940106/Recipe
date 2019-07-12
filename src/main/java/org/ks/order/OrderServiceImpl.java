@@ -43,4 +43,15 @@ public class OrderServiceImpl implements OrderService {
 		return result;
 	}
 
+	@Override
+	public ArrayList<Order> seleteAllOrderList(String id) {
+		return (ArrayList<Order>)(orderDaoImpl.seleteAllOrderList(id));
+	}
+
+	@Override
+	public int cancellationOrder(String[] orderNo) {
+		int result = orderDaoImpl.cancellationOrder(orderNo);
+		return result;
+	}
+
 }
