@@ -7,6 +7,7 @@ public class Participant {
 	private int competitionNo;
 	private String id;
 	private String participantPass;
+	private String participantContent;
 	private String participantResult;
 	private Date participantDate;
 	public Participant() {
@@ -14,12 +15,13 @@ public class Participant {
 		// TODO Auto-generated constructor stub
 	}
 	public Participant(int participantNo, int competitionNo, String id, String participantPass,
-			String participantResult, Date participantDate) {
+			String participantContent, String participantResult, Date participantDate) {
 		super();
 		this.participantNo = participantNo;
 		this.competitionNo = competitionNo;
 		this.id = id;
 		this.participantPass = participantPass;
+		this.participantContent = participantContent;
 		this.participantResult = participantResult;
 		this.participantDate = participantDate;
 	}
@@ -47,6 +49,12 @@ public class Participant {
 	public void setParticipantPass(String participantPass) {
 		this.participantPass = participantPass;
 	}
+	public String getParticipantContent() {
+		return participantContent;
+	}
+	public void setParticipantContent(String participantContent) {
+		this.participantContent = participantContent;
+	}
 	public String getParticipantResult() {
 		return participantResult;
 	}
@@ -59,4 +67,5 @@ public class Participant {
 	public void setParticipantDate(Date participantDate) {
 		this.participantDate = participantDate;
 	}
+	
 }

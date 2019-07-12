@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="participant">
-	<select id="participantMemberList" parameterType="participant" resultType="participant">
-		select id as id,
-		pw as pw,
-		name as name,
-		nickname as nickname,
-		gender as gender,
-		addr1 as addr1,
-		addr2 as addr2,
-		phone as phone,
-		Member_img as MemberImg,
-		zip_code as zipCode
-		from member where id=#{id}
+	<select id="participantInsert" parameterType="participant">
+		insert into participant values(seq_participant_no.nextval,#{competitionNo},#{id},default,#{participantContent},null,sysdate)
 	</select>
 </mapper>

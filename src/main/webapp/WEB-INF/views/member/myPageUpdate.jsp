@@ -1,24 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<% System.out.println("test!!!JSP"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>싱싱레시피 마이페이지</title>
-<script type="text/javascript"
-	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
 <script src="http://code.jquery.com/jquery-3.4.0.js"></script>
 <link href="../resources/css/import.css" rel="stylesheet" />
 </head>
 <body>
-	<jsp:include page="/WEB-INF/views/common/header.jsp" />
+	<jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp" />
 	<section>
 	<div class="pom_bg">
 		<div class="pom_top">
 			<h1>마이페이지</h1>
 			<div id="pom_div_bg"></div>
-
 		</div>
 	</div>
 	<div class="pom_wrap">
@@ -39,16 +39,53 @@
                     <jsp:include page="/WEB-INF/views/common/navPom.jsp"/>
                 </div>-->
 			<div class="mypage">
-			<form method="post" action="/myPagePwCheck.do">
+			<form method="post" action="/myPageUpdate.do" enctype="multipart/form-data">
 				<h1>개인 정보 수정</h1>
 				<div>
-					
+					<table>
+						<tbody>
+							<tr>
+								<th>아이디</th>
+								<td>${member.id }</td>
+							</tr>
+							<tr>
+								<th>새 비밀번호</th>
+								<td><input type="password" id="new_pw"name="pw"></td>
+							</tr>
+							<tr>
+								<th>새 비밀번호 확인</th>
+								<td><input type="password" id="pwck"name="pwck"></td>
+							</tr>
+							<tr>
+								<th>이름</th>
+								<td>${member.name }</td>
+							</tr>
+							<tr>
+								<th>닉네임</th>
+								<td><input type="text" value=${member.nickname }></td>
+							</tr>
+							<tr>
+								<th>핸드폰 번호</th>
+								<td><input type="text" value=${member.phone }></td>
+							</tr>
+						</tbody>
+					</table>
+					<h1>배송지 변경</h1>
+					<input type="text" name="zipCode"  id="zipCode"placeholder="우편번호">
+					<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+					<input type="text" name="addr1"  id="addr1" placeholder="주소">
+					<input type="text" name="addr2"  id="addr2" placeholder="상세주소">
+					<h1>프로필 사진 변경</h1>
+					<!--  <img id="image_section" src="#" alt="your image" /><br>  -->
+					<input type="file" id="fileUpload" name="fileUpload" accept=".jpg,.jpeg,.png">
 				</div>
-				<button type="submit">변경</button>
+				<button type="submit">수정</button>
 			</form>
 			</div>
 		</div>
 	</section>
-	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />
+	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+	<script type="text/javascript" src="/resources/js/member/myPageUpdate.js"></script>
 </body>
 </html>

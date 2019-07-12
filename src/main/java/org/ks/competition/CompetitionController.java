@@ -7,24 +7,21 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.ks.competition.vo.Competition;
+import org.ks.member.vo.Member;
+import org.ks.participant.vo.Participant;
+import org.ks.participant.vo.ParticipantMember;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -112,9 +109,14 @@ public class CompetitionController {
 		return view;
 	}
 	@RequestMapping(value="/competitionList.do")
-	public String competitionView(@RequestParam String competitionCheck, Model model) {
+	public String competitionView(@RequestParam String competitionCheck, Model model, @RequestParam String id) {
 		Competition c = competitionServiceimpl.competitionView(competitionCheck);
 		model.addAttribute("competition",c);
+		Participant p = null;
+		if(!id.equals("'null'")) {
+			p = competitionServiceimpl.participantCheck(c.getCompetitionNo(),id);
+		}
+		model.addAttribute("participant",p);
 		return "competition/competitionList";
 	}
 	@RequestMapping(value="/competitionAdminList.do")
@@ -122,6 +124,15 @@ public class CompetitionController {
 		Competition c = competitionServiceimpl.competitionView(competitionCheck);
 		model.addAttribute("competition",c);
 		return "admin/competition/competitionAdmin";
+	}
+	@RequestMapping(value="/competitionAdmin_List.do")
+	public String competitionAdmin_ListView(@RequestParam int competitionNo, Model model) {
+		Competition c = competitionServiceimpl.competitionListView(competitionNo);
+		model.addAttribute("competition",c);
+		ArrayList<ParticipantMember> list = competitionServiceimpl.participantView(competitionNo);
+		model.addAttribute("list",list);
+		System.out.println(list.get(0));
+		return "admin/competition/competitionAdmin_ListView";
 	}
 	@RequestMapping(value="/adminPage.do")
 	public String adminPage() {

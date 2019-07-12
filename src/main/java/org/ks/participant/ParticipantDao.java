@@ -1,7 +1,7 @@
 package org.ks.participant;
 
-import java.util.List;
+import org.ks.participant.vo.Participant;
 
 public interface ParticipantDao {
-	public List participantMemberList(String id);
+	public void participantInsert(Participant vo);
 }

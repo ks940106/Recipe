@@ -4,6 +4,7 @@
 	<!--null 세팅용-->
 	<settings>
 		<setting name="cacheEnabled" value="false"/>
+		<setting name="callSettersOnNulls" value="true"/>
 		<setting name="jdbcTypeForNull" value="NULL"/>
 	</settings>
 	<typeAliases>
@@ -19,5 +20,6 @@
 		<typeAlias type="org.ks.recipe.vo.Category" alias="category"/>
 		<typeAlias type="org.ks.recipe.vo.Recipe" alias="recipe"/>
 		<typeAlias type="org.ks.participant.vo.Participant" alias="participant"/>
+		<typeAlias type="org.ks.participant.vo.ParticipantMember" alias="participantMember"/>
 	</typeAliases>
 </configuration>

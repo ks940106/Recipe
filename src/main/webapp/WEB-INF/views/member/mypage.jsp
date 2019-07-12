@@ -6,13 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>싱싱레시피 마이페이지</title>
-<script type="text/javascript"
-	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script src="http://code.jquery.com/jquery-3.4.0.js"></script>
 <link href="../resources/css/import.css" rel="stylesheet" />
 </head>
 <body>
-	<jsp:include page="/WEB-INF/views/common/header.jsp" />
+	<jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp" />
 	<section>
 	<div class="pom_bg">
 		<div class="pom_top">
@@ -43,13 +41,13 @@
 				<h1>개인 정보 수정</h1>
 				<div>
 					<p>개인 정보 수정을 위해 비밀번호를 입력해주세요</p>
-					<input type="password" id="pwcheck" name="pwcheck">
+					<input type="password" name="pwcheck">
 				</div>
 				<button type="submit">확인</button>
 			</form>
 			</div>
 		</div>
 	</section>
-	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />
 </body>
 </html>

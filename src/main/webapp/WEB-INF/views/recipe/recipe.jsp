@@ -12,7 +12,7 @@
     <link href="/resources/css/recipe.css" rel="stylesheet"/>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+<jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp"/>
 
 <!-- header Fin -->
 <section>
@@ -28,14 +28,14 @@
                         <a href="javascript:void(0);" onclick="uploadImg(this);" class="upload_btn" style="background: url('${pageContext.request.contextPath}/resources/img/recipe/pic_none4.gif') no-repeat;" ></a>
                     </div>
                 </div>
-                <div class="cont_line"><p class="cont_tit4">레시피 제목</p><input type="text" name="cok_title" id="cok_title" value="" class="form-control" placeholder="예) 소고기 미역국 끓이기" style="width:610px; ">
+                <div class="cont_line"><p class="cont_tit4">레시피 제목</p><input type="text" name="cok_title" id="cok_title" value="" class="" placeholder="예) 소고기 미역국 끓이기" style="width:610px; ">
                 </div>
 
-                <div class="cont_line pad_b_25"><p class="cont_tit4">요리소개</p><textarea name="cok_intro" id="cok_intro" class="form-control step_cont" placeholder="이 레시피의 탄생배경을 적어주세요. 예) 남편의 생일을 맞아 소고기 미역국을 끓여봤어요. 어머니로부터 배운 미역국 레시피를 남편의 입맛에 맞게 고안했습니다." style="height:100px; width:610px; resize:none;"></textarea></div>
+                <div class="cont_line pad_b_25"><p class="cont_tit4">요리소개</p><textarea name="cok_intro" id="cok_intro" class=" step_cont" placeholder="이 레시피의 탄생배경을 적어주세요. 예) 남편의 생일을 맞아 소고기 미역국을 끓여봤어요. 어머니로부터 배운 미역국 레시피를 남편의 입맛에 맞게 고안했습니다." style="height:100px; width:610px; resize:none;"></textarea></div>
 
                 <div class="cont_line pad_b_25">
                     <p class="cont_tit4">동영상</p>
-                    <textarea name="cok_video_url" id="cok_video_url" class="form-control step_cont" prev_url="" placeholder="동영상이 있으면 주소를 입력하세요.(Youtube,네이버tvcast,다음tvpot 만 가능) 예)http://youtu.be/lA0Bxo3IZmM" style="height:100px; width:380px; resize:none;"></textarea>
+                    <textarea name="cok_video_url" id="cok_video_url" class=" step_cont" prev_url="" placeholder="동영상이 있으면 주소를 입력하세요.(Youtube,네이버tvcast,다음tvpot 만 가능) 예)http://youtu.be/lA0Bxo3IZmM" style="height:100px; width:380px; resize:none;"></textarea>
                     <div id="divVideoPhotoBox" is_over="0" class="thumb_m"><img id="videoPhotoHolder" src="${pageContext.request.contextPath}/resources/img/recipe/pic_none5.gif" style="width: 178px; height: 100px;"></div>
                 </div>
 
@@ -61,7 +61,8 @@
                 <div class="cont_line"><p class="cont_tit4">요리정보</p>
                     인원
                     <select name="cok_portion" id="cok_portion" text="인원">
-                        <option value="">인원</option><option value="1">1인분</option>
+                        <option value="">인원</option>
+                        <option value="1">1인분</option>
                         <option value="2">2인분</option>
                         <option value="3">3인분</option>
                         <option value="4">4인분</option>
@@ -70,7 +71,8 @@
                     </select>
                     <span class="pad_l_30">시간 </span>
                     <select name="cok_time" id="cok_time" text="요리시간">
-                        <option value="">시간</option><option value="5">5분이내</option>
+                        <option value="">시간</option>
+                        <option value="5">5분이내</option>
                         <option value="10">10분이내</option>
                         <option value="15">15분이내</option>
                         <option value="20">20분이내</option>
@@ -82,7 +84,8 @@
                     </select>
                     <span class="pad_l_30">난이도 </span>
                     <select name="cok_degree" id="cok_degree" text="난이도">
-                        <option value="">난이도</option><option value="1">아무나</option>
+                        <option value="">난이도</option>
+                        <option value="1">아무나</option>
                         <option value="2">초급</option>
                         <option value="3">중급</option>
                         <option value="4">고급</option>
@@ -188,7 +191,7 @@
                 <%--<input type="hidden" name="new_step_photo[]" id="new_step_photo_STEP" value="">--%>
                 <%--<input type="hidden" name="del_step_photo[]" id="del_step_photo_STEP" value="">--%>
                 <%--이미지 업로드--%>
-                <div class="img_up_list" style="display: inline-block;vertical-align: middle; float: none; margin: 0;">
+                <div class="img_up_list" style="display: inline-block;vertical-align: middle;  margin: 0;">
                     <div class="img_box" style="width: 160px;height: 160px;">
                         <input type="file" class="hide" accept="image/*" name="step_photo[]" id="step_photo_STEP" onchange="boardReg.imgSel(this, event)">
                         <a href="javascript:void(0);" onclick="uploadImg(this);" class="upload_btn" style="background: url('${pageContext.request.contextPath}/resources/img/recipe/pic_none2.gif') no-repeat;" >
@@ -197,8 +200,6 @@
                 </div>
             </div>
             <div id="divStepBtn_STEP" class="step_btn" style="display: none;">
-                <a href="javascript:void(0)"><span class="glyphicon glyphicon-chevron-up moveUp"></span></a>
-                <a href="javascript:void(0)"><span class="glyphicon glyphicon-chevron-down moveDown"></span></a>
                 <a href="javascript:addStep(__Step)"><span class="glyphicon glyphicon-plus"></span></a>
                 <a href="javascript:delStep(__Step)"><span class="glyphicon glyphicon-remove"></span></a>
             </div>
@@ -206,7 +207,7 @@
     </div>
     <!--/step template-->
 </section>
-<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp"/>
 </body>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="/resources/js/recipe.js"></script>

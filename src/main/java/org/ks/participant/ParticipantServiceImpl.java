@@ -3,9 +3,11 @@ package org.ks.participant;
 import java.util.List;
 
 import org.ks.member.vo.Member;
+import org.ks.participant.vo.Participant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service("participantServiceimpl")
 public class ParticipantServiceImpl implements ParticipantService{
@@ -14,12 +16,10 @@ public class ParticipantServiceImpl implements ParticipantService{
 	private ParticipantDao participantDaoimpl;
 
 	@Override
-	public Member participantMemberList(String id) {
-		List list = participantDaoimpl.participantMemberList(id);
-		Member m = null;
-		if(!list.isEmpty()) {
-			m = (Member)list.get(0);
-		}
-		return m;
+	@Transactional
+	public void participantInsert(Participant vo) {
+		participantDaoimpl.participantInsert(vo);		
 	}
+
+
 }

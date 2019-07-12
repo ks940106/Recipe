@@ -110,6 +110,13 @@ public class TMRServiceImpl implements TMRService{
 		lpd = new LMRPageData(list,pageNavi);
 		return lpd;
 	}
+	public String lmrImg() {
+		List list1 = tmrdaoImpl.lmrImg();
+		ArrayList<LMR> list2 = (ArrayList<LMR>)list1;
+		return list2.get(0).getRecipeTitle1();
+	}
+	
+	
 	
 	public ArrayList<Reservation> selectReservation(String[] reservationDate){
 		List list = tmrdaoImpl.selectReservation(reservationDate);

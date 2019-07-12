@@ -7,12 +7,9 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.ks.talkBoard.vo.TalkBoard;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,9 +47,7 @@ public class TalkBoardController {
 		System.out.println(filedata);
 		System.out.println(request.getFiles("filedata").size());
 		String[] FF = request.getParameterValues("fileName");
-		System.out.println(FF.length);
 		List<MultipartFile> fi = request.getFiles("filedata");
-		HashMap<String, String> map = new HashMap<String, String>();
 		
 		
 		if(fi.size()>0) {
@@ -62,17 +57,19 @@ public class TalkBoardController {
 				fi.remove(m);
 			}
 		}
-	
-		
 		}
+		
+		
 		if(FF != null) {
 			if(!fi.isEmpty()) {
 				String savePath = request.getSession().getServletContext().getRealPath("/resources/talkBoard");
 				String img = "";
-				int q = 0;
 				for(MultipartFile m : fi) {
-						System.out.println("q : "+q);
-						if(m.getOriginalFilename().equals(FF[q])) {
+//				for(int i = 0; i<FF.length;i++) {
+						System.out.println(m.getOriginalFilename());
+						//현재 동작안함
+//						if(m.getOriginalFilename().equals(FF[i])){
+							System.out.println("if문 지나서 ㅅㅂ");
 						System.out.println(savePath);
 						//List<MultipartFile> fileList = request.getFiles("filedata");
 						//img1.jpg
@@ -113,8 +110,14 @@ public class TalkBoardController {
 						
 						System.out.println(img);
 						tb.setBoardImg(img);
-						}
-					q++;
+						
+//						}else {
+//							
+//						}
+//						
+//						System.out.println("if 지남");
+//				}
+					
 				}
 		}else {
 			tb.setBoardImg("");
@@ -122,16 +125,6 @@ public class TalkBoardController {
 		}else {
 			tb.setBoardImg("");
 		}
-		
-					
-			
-		
-		
-		
-		
-		
-		
-		
 		
 		int result = talkBoardService.insertTalkBoard(tb);
 		if(result>0) {
@@ -155,7 +148,8 @@ public class TalkBoardController {
 	}
 	
 	@RequestMapping(value="/deleteTalkBoard.do")
-	public String deleteTalkBoard(@RequestParam String boardNo) {
+	public String deleteTalkBoard(HttpServletRequest request,@RequestParam String boardNo) {
+		String savePath = request.getSession().getServletContext().getRealPath("/resources/talkBoard");
 		int no = Integer.parseInt(boardNo);
 		TalkBoard tb = talkBoardService.selectTalkBoard(no);
 		System.out.println(tb.getBoardImg());
@@ -163,7 +157,7 @@ public class TalkBoardController {
 		String[] file = img.split("/");
 		File f = null;
 		for(int i=0;i<file.length;i++) {
-			f = new File("C:\\Users\\wlsdh\\Desktop\\Recipe\\src\\main\\webapp\\resources\\talkBoard\\"+file[i]);
+			f = new File(savePath+"\\"+file[i]);
 			f.delete();
 		}
 		int result = talkBoardService.deleteTalkBoard(no);
@@ -179,6 +173,8 @@ public class TalkBoardController {
 		int no = Integer.parseInt(boardNo);
 		TalkBoard tb = talkBoardService.selectTalkBoard(no);
 		ModelAndView mv = new ModelAndView();
+		String[] img = tb.getBoardImg().split("/");
+		mv.addObject("img",img);
 		mv.addObject("tb",tb);
 		mv.setViewName("talkBoard/modifyTalkBoard");
 		return mv;
@@ -186,7 +182,7 @@ public class TalkBoardController {
 	@RequestMapping(value="/modifyCompleteTalkBoard.do")
 	public String modifyCompleteTalkBoard(MultipartHttpServletRequest request,@RequestParam MultipartFile filedata,TalkBoard tb) {
 		System.out.println("11");
-		
+		String savePath = request.getSession().getServletContext().getRealPath("/resources/talkBoard");
 		String fullImg = request.getParameter("fullImg");	//DB에 저장된 img값
 		String[] fImg = fullImg.split("/");					//DB에 저장된 img값을 구분자/로 잘라서 fImg에 배열로저장
 		String[] img = request.getParameterValues("oneImg");	//jsp에서 넘어온 배열을 img배열에 저장
@@ -197,37 +193,47 @@ public class TalkBoardController {
 		File f = null;
 		if(img[0].isEmpty()) {
 			for(int i=0; i<fImg.length;i++) {
-				f = new File("C:\\Users\\wlsdh\\Desktop\\Recipe\\src\\main\\webapp\\resources\\talkBoard\\"+fImg[i]);
+				f = new File(savePath+"\\"+fImg[i]);
 				f.delete();
 			}
 		}else {
 		String modifyImg = fullImg;
-		for(int i=0;i<fImg.length;i++) {
+		String m = modifyImg;
+		
+		//뷰에서 넘어온 프리뷰 이미지중 DB에 저장되어 이름만 넘어온 파일의 name을 하나로 합함
 			for(int j=0; j<img.length;j++) {
-				if(fImg[i].equals(img[j])) {
-					System.out.println("수정 파일 : "+img[j]);
-					modifyImg = modifyImg.replaceAll(img[j]+"/", "");
 					saveImg += img[j]+"/";
-					System.out.println("삭제 이미지 누적 : "+modifyImg);
-				}
 			}
+			
+			System.out.println(saveImg);
+		// DB저장된 풀이미지 네임과 비교했을때 비교값과 같은 String을 ""처리하고  m에 저장
+		for(int i =0; i<img.length;i++) {
+			m = m.replace(img[i]+"/", "");
 		}
-		System.out.println(modifyImg);
-		System.out.println(saveImg);
-		String[] deleteImg = modifyImg.split("/");
+		String[] deleteImg = m.split("/");
 		
 		for(int i=0;i<deleteImg.length;i++) {
-			f = new File("C:\\Users\\wlsdh\\Desktop\\Recipe\\src\\main\\webapp\\resources\\talkBoard\\"+deleteImg[i]);
+			f = new File(savePath+"\\"+deleteImg[i]);
 			f.delete();
+			}
+		}
+		
+		List<MultipartFile> fi = request.getFiles("filedata");
+		if(fi.size()>0) {
+		for(MultipartFile m : fi) {
+			//System.out.println(m.getOriginalFilename());
+			if(m.isEmpty()) {
+				fi.remove(m);
+			}
 		}
 		}
+		
+		
 		if(!filedata.isEmpty()) {
 		System.out.println(tb.getNickname());
-		String savePath = request.getSession().getServletContext().getRealPath("/resources/talkBoard");
 		System.out.println(savePath);
 		String imgName = "";
-		List<MultipartFile> fileList = request.getFiles("filedata");
-		for (MultipartFile mf : fileList) {
+		for (MultipartFile mf : fi) {
             String originName = mf.getOriginalFilename();
             System.out.println(originName);
           //img1
@@ -254,7 +260,7 @@ public class TalkBoardController {
     				e.printStackTrace();
     			}
     		}
-    		if(fileList.size() > 1 ) {
+    		if(fi.size() > 1 ) {
     			imgName += filePath+"/";
     		}else {
     			imgName = filePath;
