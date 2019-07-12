@@ -20,8 +20,8 @@
    <header>
         <div>
             <h1>
-                <a href="#">
-                    <img src="../resources/img/logo.png" />
+                <a href="/singsingCampingIndex.do">
+                    <img src="" alt="싱싱캠핑" />
                 </a>
             </h1>
             <nav>
@@ -32,28 +32,15 @@
                 </label>
                 <input type="checkbox" id="mnav" class="mui" />
                 <ul>
-                    <li><a href="/cart.do" class="active">홈</a></li>
-                    <li><a href="/recipePage.do">레시피</a></li>
-                    <li><a href="#">레시피 팔아요</a>
-     				<li><a href="/tmr.do">이달의레시피</a></li>
-
-     				<c:choose>
-     					<c:when test="${empty sessionScope.member }">
-     						<li><a href="/competitionList.do?competitionCheck='Y'&id='null'">요리대회</a></li>
-     					</c:when>
-     					<c:otherwise>
-     						<li><a href="/competitionList.do?competitionCheck='Y'&id=${sessionScope.member.id}">요리대회</a></li>
-     					</c:otherwise>
-     				</c:choose>
-                    <li><a href="/competitionList.do?competitionCheck='Y'">요리대회</a></li>
-
-                    <li><a href="mainBoard.do">토크</a></li>
-
-                    <li><a href="/singsingCampingIndex.do">싱싱캠핑장</a></li>
+                    <li><a href="/index.jsp" class="active">홈</a></li>
+                    <li><a href="#">캠핑장소개</a></li>
+                    <li><a href="#">주변관광지</a>
+     				<li><a href="#">예약</a></li>
+                    <li><a href="#">커뮤니티</a></li>
 
                     <c:choose>
                     <c:when test="${sessionScope.member==null }">
-                    	<li><a href="/loginPage.do" style="color: #1f6054;">로그인</a></li>
+                    	<li><a href="/loginPageCamping.do" style="color: #1f6054;">로그인</a></li>
                     </c:when>
                     <c:when test="${sessionScope.member.name=='관리자' }">
                   		<li><a href="/adminPage.do" style="color: #1f6054;">관리자 페이지</a></li>

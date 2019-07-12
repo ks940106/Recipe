@@ -43,6 +43,10 @@ public class MemberController {
 	public String loginPage() {
 		return "member/loginPage";
 	}
+	@RequestMapping(value="/loginPageCamping.do")
+	public String loginPageCamping() {
+		return "member/loginPageCamping";
+	}
 	@RequestMapping(value="/joinPage.do")
 	public String joinPage() {
 		return "member/joinPage";
@@ -82,6 +86,34 @@ public class MemberController {
 			session.setAttribute("member", member);
 		}
 		return "redirect:/index.jsp";
+
+	}
+	@RequestMapping(value="/loginCamping.do")
+	public String loginCamping(HttpServletRequest request,@RequestParam String id,@RequestParam String pw ) {
+		Member m = new Member();
+		m.setId(id);
+		try {
+			m.setPw(new SHA256Util().encData(pw));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Member member = memberService.login(m);
+		String view="";
+		if(member==null) {
+				request.setAttribute("msg", "로그인 실패");
+				request.setAttribute("loc", "/loginPageCamping.do");
+				view="common/msg";
+				return view;
+		}
+		else if(member.getName().equals("관리자")) {
+			HttpSession session =request.getSession();
+			session.setAttribute("member", member);
+		}else if(member!= null) {
+			HttpSession session =request.getSession();
+			session.setAttribute("member", member);
+		}
+		return "redirect:/singsingCampingIndex.do";
 
 	}
 	//로그아웃
@@ -154,6 +186,62 @@ public class MemberController {
 		}else {
 			request.setAttribute("msg", "회원가입 실패");
 			request.setAttribute("loc", "/insert.do");
+		}return view;
+	}
+	@RequestMapping(value="/insertMemberCamping.do")
+	public String insertMemberCamping(HttpServletRequest request,@RequestParam MultipartFile fileUpload){
+		String id=request.getParameter("id");
+		String pw1 = request.getParameter("pw");
+		String name=request.getParameter("name");
+		String nickname=request.getParameter("nickname");
+		String addr1=request.getParameter("addr1");
+		String addr2=request.getParameter("addr2");
+		String phone = request.getParameter("phone");
+		String gender = request.getParameter("gender");
+		String fileUpload1 =request.getParameter("fileUpload");
+		System.out.println(fileUpload1);
+		String zipCode=request.getParameter("zipCode");
+		//파일 업로드
+		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/member");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+		Date d = new Date();
+		String date = sdf.format(d);
+		String originName = fileUpload.getOriginalFilename();
+		String onlyFileName = originName.substring(0,originName.indexOf('.'));
+		String extension = originName.substring(originName.indexOf('.'));
+		String filePath = onlyFileName + "_"+ date + extension;
+		String memberImg = savePath+"/" + filePath;
+		String pw = null;
+		try {
+			pw = new SHA256Util().encData(pw1);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		Member m = new Member(id, pw, name, nickname, gender, addr1, addr2, phone,memberImg,zipCode);
+		int result = memberService.insertMember(m);
+		if(!fileUpload.isEmpty()) {
+			byte[] bytes;
+			try {
+				bytes = fileUpload.getBytes();
+				File f = new File(memberImg);		
+				FileOutputStream fos = new FileOutputStream(f);
+				BufferedOutputStream bos = new BufferedOutputStream(fos);
+				bos.write(bytes);
+				bos.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		String view = "common/msg";
+		System.out.println(view);
+		if(result>0) {
+			request.setAttribute("msg", "회원가입 성공");
+			request.setAttribute("loc", "/loginPageCamping.do");
+		}else {
+			request.setAttribute("msg", "회원가입 실패");
+			request.setAttribute("loc", "/insertCamping.do");
 		}return view;
 	}
 	//이메일 중복확인
