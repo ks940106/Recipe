@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>싱싱레시피 지난 이달의 레시피</title>
+<title>회원 관리 </title>
 <link rel="stylesheet" type="text/css" href="../resources/css/import.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/ui.css">
 	<link rel="stylesheet" type="text/css" href="../resources/css/style.css">
@@ -15,60 +15,62 @@
 	<script src="../resources/js/ui.js"></script>
 	<script src="../resources/js/search.js"></script>
 	<script src="../resources/js/include.js"></script>
-	
-<link href="../resources/css/tmr.css" rel="stylesheet" />
-<script type="text/javascript" src="../resources/js/tmr.js" /> 
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/adminHeader.jsp" /> 
-	
 	<section>
 		<div class="wrapper">
 	        <nav class="lnb_wrap">
-	             <jsp:include page="/WEB-INF/views/admin/lmr/lmrAdminNav.jsp"/>
+	             <jsp:include page="/WEB-INF/views/common/competition_nav.jsp"/>
 	        </nav>
 			<div class="section_content">
 				<div class="set_field">
-					<h1>이달의 레시피 관리</h1>
+					<h1>회원 관리</h1>
 					<div id="cp_div_bg"></div>
 				</div>
-				<div class="cp_content" style="margin-left:100px;">
-					<table id="cp_table_tmr"> <!-- tmr.css -->
+				<div class="list_field">
+					<table class="list_table">
+						<colgroup>
+							<col width="40">
+							<col width="75">
+							<col width="150">
+							<col width="100">
+							<col width="100">
+							<col width="200">
+							<col width="120">
+							<col width="85">
+							<col width="100">
+						</colgroup>
+						<thead>
 						<tr>
-							<th>날짜</th>
-							<th>등수</th>
-							<th>제목</th>
-							<th>작성자</th>
+							<th>아이디</th>
+							<th>이름</th>
+							<th>닉네임</th>
+							<th>관리</th>
 						</tr>
-						<c:forEach items="${lpd.list }" var="vo">
-							<tr>
-								<td></td>
-								<td>1</td>
-								<td><a href="#">${vo.recipeTitle1 }</a></td>
-								<td><a href="#">${vo.recipeWriter1 }</a></td>
-							</tr>
-							<tr>
-								<td style="border-top-style: hidden;">${vo.recipeDate }</td>
-								<td>2</td>
-								<td><a href="#">${vo.recipeTitle2 }</a></td>
-								<td><a href="#">${vo.recipeWriter2 }</a></td>
-							</tr>
-							<tr>
-								<td style="border-top-style: hidden;"></td>
-								<td>3</td>
-								<td><a href="#">${vo.recipeTitle3 }</a></td>
-								<td><a href="#">${vo.recipeWriter3 }</a></td>
-							</tr>
-						</c:forEach>
+						</thead>
+						<tbody>
+						
+						 <c:forEach items="${list }" var="m">
+						 
+						<tr>
+							<td><a href="/memberDetail.do?id=${m.id }">${m.id}</a></td>
+							<td>${m.name }</td>
+							<td>${m.nickname }</td>
+							<td>
+								<div>
+									<a href="/memberDelete.do?id=${m.id}" class="btn small col_main f_w">탈퇴</a>
+								</div>
+							</td>
+						</tr>
+						</c:forEach> 
+						</tbody>
 					</table>
-					<br><br>
-					${lpd.pageNavi }
+					
 				</div>
 			</div>
 		</div>
-		
 	</section>
-	
-	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp"/>
+	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />
 </body>
 </html>

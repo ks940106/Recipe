@@ -8,15 +8,18 @@ public class Order {
 	private String addr2;
 	private int recipeNo;
 	private int orderCount;
-	private String orderState;
+	private int orderPirce;
+	private int orderState;
 	private String zipCode;
 	private String phone;
+	private String recipeTitle;
 	public Order() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	public Order(int orderNo, String orderCode, String id, String addr1, String addr2, int recipeNo, int orderCount,
-			String orderState, String zipCode, String phone) {
+			int orderPirce, int orderState, String zipCode, String phone, String recipeTitle) {
 		super();
 		this.orderNo = orderNo;
 		this.orderCode = orderCode;
@@ -25,71 +28,122 @@ public class Order {
 		this.addr2 = addr2;
 		this.recipeNo = recipeNo;
 		this.orderCount = orderCount;
+		this.orderPirce = orderPirce;
 		this.orderState = orderState;
 		this.zipCode = zipCode;
 		this.phone = phone;
+		this.recipeTitle = recipeTitle;
 	}
+
 	public int getOrderNo() {
 		return orderNo;
 	}
+
 	public void setOrderNo(int orderNo) {
 		this.orderNo = orderNo;
 	}
+
 	public String getOrderCode() {
 		return orderCode;
 	}
+
 	public void setOrderCode(String orderCode) {
 		this.orderCode = orderCode;
 	}
+
 	public String getId() {
 		return id;
 	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
+
 	public String getAddr1() {
 		return addr1;
 	}
+
 	public void setAddr1(String addr1) {
 		this.addr1 = addr1;
 	}
+
 	public String getAddr2() {
 		return addr2;
 	}
+
 	public void setAddr2(String addr2) {
 		this.addr2 = addr2;
 	}
+
 	public int getRecipeNo() {
 		return recipeNo;
 	}
+
 	public void setRecipeNo(int recipeNo) {
 		this.recipeNo = recipeNo;
 	}
+
 	public int getOrderCount() {
 		return orderCount;
 	}
+
 	public void setOrderCount(int orderCount) {
 		this.orderCount = orderCount;
 	}
-	public String getOrderState() {
+
+	public int getOrderPirce() {
+		return orderPirce;
+	}
+
+	public void setOrderPirce(int orderPirce) {
+		this.orderPirce = orderPirce;
+	}
+
+	public int getOrderState() {
 		return orderState;
 	}
-	public void setOrderState(String orderState) {
+
+	public void setOrderState(int orderState) {
 		this.orderState = orderState;
 	}
+
 	public String getZipCode() {
 		return zipCode;
 	}
+
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
+
 	public String getPhone() {
 		return phone;
 	}
+
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	
-	
+
+	public String getRecipeTitle() {
+		return recipeTitle;
+	}
+
+	public void setRecipeTitle(String recipeTitle) {
+		this.recipeTitle = recipeTitle;
+	}
+
+	public String getState() {
+		if(orderState==1) {
+			return "결제진행중";
+		}else if(orderState==2) {
+			return "결제완료";
+		}else if(orderState==3) {
+			return "결제취소대기중";
+		}else if(orderState==4) {
+			return "결제취소완료";
+		}else {
+			return "결제 실패";
+		}
+		
+	}
 	
 }

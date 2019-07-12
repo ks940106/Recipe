@@ -66,7 +66,9 @@ public class TMRDaoImpl implements TMRDao{
 		List list = sqlsession.selectList("tmr.lmrImg");
 		return list;
 	}
-	
+	public void updateFile(String fileName) {
+		sqlsession.update("tmr.updateFile",fileName);
+	}
 	
 	public List selectReservation(String[] reservationDate) {
 		List list = sqlsession.selectList("tmr.selectReservation", reservationDate);

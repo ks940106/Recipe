@@ -12,6 +12,7 @@ public interface TMRService {
 	public void insertLMR(String year,String month);
 	public LMRPageData selectLMR(int reqPage);
 	public String lmrImg();
+	public void updateFile(String fileName);
 	
 	public ArrayList<Reservation> selectReservation(String[] reservationDate);
 	public void insertReservation(String caravanNo,String reservationDateString);

@@ -19,10 +19,11 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <link href="../resources/css/import.css" rel="stylesheet" />
 <link href="../resources/css/cart.css" rel="stylesheet" />
-
 </head>
 <body>
+
 	<jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp" />
+	
 
 	<section>
 	<div class="pom_bg">
@@ -38,8 +39,9 @@
 			<div class="nav_con">
 				<div class="nav_title">마이페이지</div>
 				<ul class="nav_menu">
+					<li><a href="/mypage.do">개인정보수정</a><span>></span></li>
 					<li><a href="/cart.do">장바구니</a><span>></span></li>
-					<li><a href="/competitionResultList.do">결제내역</a><span>></span></li>
+					<li><a href="/orderList.do">결제내역</a><span>></span></li>
 				</ul>
 			</div>
 			</nav>
@@ -67,6 +69,7 @@
 							<tr>
 								<input type="hidden" name="recipeNo" value="${c.recipeNo }">
 								<input type="hidden" name="recipeCount" value="${c.recipeCount }">
+								<input type="hidden" name="recipePrice" value="${c.recipePrice }">
 								<td>${i.count }</td>
 								<td>${c.id }</td>
 								<td>${c.recipeTitle }</td>
@@ -85,9 +88,9 @@
 				<h2 id="addrName">배송지 설정</h2>
 				<table class="table">
 					<tr>
-						<td><input type="radio" name="addrs" checked>기본 배송지</td>
-						<td><input type="radio" name="addrs" id="newAddrs">새로운 배송지</td>
-						<td><input type="radio" name="addrs" id="campingAddrs" >캠핑장으로</td>
+						<td><input type="radio" name="addrs" id="addrs" checked class="delivery">기본 배송지</td>
+						<td><input type="radio" name="addrs" id="newAddrs" class="delivery">새로운 배송지</td>
+						<td><input type="radio" name="addrs" id="campingAddrs" class="delivery">캠핑장으로</td>
 					</tr>
 					<tr>
 						
@@ -100,25 +103,10 @@
 					</tr>
 				</table>
 				
-					<!-- 
-				<div id="zip_code" class="form-group has-feedback">
-					<input type="text" name="zipCode" id="zipCode" placeholder="우편번호">
-				</div>
-				<div id="addr1_div" class="form-group has-feedback">
-					<input type="text" name="addr1" id="addr1" placeholder="주소">
-				</div>
-				<div id="addr2_div" class="form-group has-feedback">
-					<input type="text" name="addr2" id="addr2" onblur="addrck()"
-						placeholder="상세주소">
-				</div>
-					 -->
 				<h3>
 				총결제금액<span id="countSpan"><c:out value="${total }"/></span>원
 			</h3>
-			<button type="button" class="button button1" onclick="payment('${sessionScope.member.id}','${sessionScope.member.name}','${sessionScope.member.phone}',
-														'${sessionScope.member.zipCode}',
-														'${sessionScope.member.addr1 }',
-														'${sessionScope.member.addr2 }')">결제하기</button>
+			<button type="button" class="button button1" onclick="payment('${sessionScope.member.id}','${sessionScope.member.name}','${sessionScope.member.phone}')">결제하기</button>
 			<p id="paymentResult"></p>
 			</div>
 		</div>

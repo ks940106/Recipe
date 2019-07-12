@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
 import java.util.Random;
@@ -31,6 +32,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MemberController {
@@ -42,6 +44,10 @@ public class MemberController {
 	@RequestMapping(value="/loginPage.do")
 	public String loginPage() {
 		return "member/loginPage";
+	}
+	@RequestMapping(value="/loginPageCamping.do")
+	public String loginPageCamping() {
+		return "member/loginPageCamping";
 	}
 	@RequestMapping(value="/joinPage.do")
 	public String joinPage() {
@@ -84,6 +90,34 @@ public class MemberController {
 		return "redirect:/index.jsp";
 
 	}
+	@RequestMapping(value="/loginCamping.do")
+	public String loginCamping(HttpServletRequest request,@RequestParam String id,@RequestParam String pw ) {
+		Member m = new Member();
+		m.setId(id);
+		try {
+			m.setPw(new SHA256Util().encData(pw));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Member member = memberService.login(m);
+		String view="";
+		if(member==null) {
+				request.setAttribute("msg", "로그인 실패");
+				request.setAttribute("loc", "/loginPageCamping.do");
+				view="common/msg";
+				return view;
+		}
+		else if(member.getName().equals("관리자")) {
+			HttpSession session =request.getSession();
+			session.setAttribute("member", member);
+		}else if(member!= null) {
+			HttpSession session =request.getSession();
+			session.setAttribute("member", member);
+		}
+		return "redirect:/singsingCampingIndex.do";
+
+	}
 	//로그아웃
 	@RequestMapping(value="/logout.do")
 	public void logout(HttpServletRequest request,HttpServletResponse response) {
@@ -102,6 +136,62 @@ public class MemberController {
 	//회원가입
 	@RequestMapping(value="/insertMember.do")
 	public String insertMember(HttpServletRequest request,@RequestParam MultipartFile fileUpload){
+		String id=request.getParameter("id");
+		String pw1 = request.getParameter("pw");
+		String name=request.getParameter("name");
+		String nickname=request.getParameter("nickname");
+		String addr1=request.getParameter("addr1");
+		String addr2=request.getParameter("addr2");
+		String phone = request.getParameter("phone");
+		String gender = request.getParameter("gender");
+		String fileUpload1 =request.getParameter("fileUpload");
+		System.out.println(fileUpload1);
+		String zipCode=request.getParameter("zipCode");
+		//파일 업로드
+		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/member");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+		Date d = new Date();
+		String date = sdf.format(d);
+		String originName = fileUpload.getOriginalFilename();
+		String onlyFileName = originName.substring(0,originName.indexOf('.'));
+		String extension = originName.substring(originName.indexOf('.'));
+		String memberImg = onlyFileName + "_"+ date + extension;
+		/*String memberImg1 = savePath+"/" + memberImg;*/
+		String pw = null;
+		try {
+			pw = new SHA256Util().encData(pw1);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		Member m = new Member(id, pw, name, nickname, gender, addr1, addr2, phone,memberImg,zipCode);
+		int result = memberService.insertMember(m);
+		if(!fileUpload.isEmpty()) {
+			byte[] bytes;
+			try {
+				bytes = fileUpload.getBytes();
+				File f = new File(memberImg);		
+				FileOutputStream fos = new FileOutputStream(f);
+				BufferedOutputStream bos = new BufferedOutputStream(fos);
+				bos.write(bytes);
+				bos.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		String view = "common/msg";
+		System.out.println(view);
+		if(result>0) {
+			request.setAttribute("msg", "회원가입 성공");
+			request.setAttribute("loc", "/loginPage.do");
+		}else {
+			request.setAttribute("msg", "회원가입 실패");
+			request.setAttribute("loc", "/insert.do");
+		}return view;
+	}
+	@RequestMapping(value="/insertMemberCamping.do")
+	public String insertMemberCamping(HttpServletRequest request,@RequestParam MultipartFile fileUpload){
 		String id=request.getParameter("id");
 		String pw1 = request.getParameter("pw");
 		String name=request.getParameter("name");
@@ -150,10 +240,10 @@ public class MemberController {
 		System.out.println(view);
 		if(result>0) {
 			request.setAttribute("msg", "회원가입 성공");
-			request.setAttribute("loc", "/loginPage.do");
+			request.setAttribute("loc", "/loginPageCamping.do");
 		}else {
 			request.setAttribute("msg", "회원가입 실패");
-			request.setAttribute("loc", "/insert.do");
+			request.setAttribute("loc", "/insertCamping.do");
 		}return view;
 	}
 	//이메일 중복확인
@@ -290,13 +380,13 @@ public class MemberController {
 			view="common/msg";
 		}return view;
 	}
-	
+	//마이페이지 회원정보 수정
 	@RequestMapping(value="/myPageUpdate.do")
-	public String myPageUpdate(HttpServletRequest request,@RequestParam MultipartFile fileUpload) {
+	public String myPageUpdate(HttpServletRequest request,HttpServletResponse response,@RequestParam MultipartFile fileUpload)throws ServletException, IOException {
 		Member m = new Member();
 		m.setId(request.getParameter("id"));
+		System.out.println(m.getId());
 		String pw1 = request.getParameter("new_pw");
-		System.out.println(m.getPw());
 		m.setNickname(request.getParameter("nickname"));
 		m.setAddr1(request.getParameter("addr1"));
 		m.setAddr2(request.getParameter("addr2"));
@@ -322,6 +412,7 @@ public class MemberController {
 		}
 		m.setPw(pw);
 		m.setMemberImg(filePath);
+		System.out.println(m.getAddr1());
 		int result = memberService.updateMember(m);
 		if(!fileUpload.isEmpty()) {
 			byte[] bytes;
@@ -337,19 +428,58 @@ public class MemberController {
 				e.printStackTrace();
 			}
 		}
-		String view="";
+		String view ="common/msg";
 		if(result>0) {
-			view="member/mypage";
+			request.setAttribute("msg","회원 정보 수정 성공");
+			request.setAttribute("loc", "/");
 		}else {
-			view="common/msg";
-			request.setAttribute("msg", "회원정보 변경 실패");
-			request.setAttribute("loc", "/mypage.do");
+			request.setAttribute("msg","정보 수정 실패");
+		}return view;
+	}
+	//마이페이지 탈퇴
+	@RequestMapping(value="/myPageDelete.do")
+	public String myPageDelete(HttpServletRequest request,HttpSession session) {
+		String id = request.getParameter("id");
+		System.out.println(id);
+		int result = memberService.deleteMember(id);
+		String view="common/msg";
+		if(result>0) {
+			request.setAttribute("msg", "회원 탈퇴 되었습니다");
+			request.setAttribute("loc", "/");
+			session=request.getSession(false);
+			session.invalidate();
+		}else {
+			request.setAttribute("msg", "회원탈퇴 불가");
 		}return view;
 	}
 	
 	@RequestMapping(value="/mypage.do")
 	public String mypage() {
 		return "member/mypage";
+	}
+	//관리자 페이지 시작
+	@RequestMapping(value="/memberList.do")
+	public ModelAndView memberList() {
+		ArrayList<Member> list = memberService.memberList();
+		ModelAndView mav = new ModelAndView();
+		if(!list.isEmpty()) {
+			mav.addObject("list",list);
+			mav.setViewName("admin/member/memberList");
+		}
+		return mav;
+	}
+	@RequestMapping(value="memberDelete.do")
+	public String memberDelete(HttpServletRequest request) {
+		String id = request.getParameter("id");
+		int result = memberService.deleteMember(id);
+		String view="common/msg";
+		if(result>0) {
+			request.setAttribute("msg", "회원 삭제");
+			request.setAttribute("loc", "memberList.do");
+		}else {
+			request.setAttribute("msg", "삭제 실패");
+			request.setAttribute("loc", "memberList.do");
+		}return view;
 	}
 }
 

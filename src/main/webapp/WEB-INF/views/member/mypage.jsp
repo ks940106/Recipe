@@ -27,7 +27,7 @@
 				<ul class="nav_menu">
 					<li><a href="/mypage.do">개인정보수정</a><span>></span></li>
 					<li><a href="/cart.do">장바구니</a><span>></span></li>
-					<li><a href="/competitionResultList.do">결제내역</a><span>></span></li>
+					<li><a href="/orderList.do">결제내역</a><span>></span></li>
 				</ul>
 			</div>
 			</nav>

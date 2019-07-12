@@ -19,7 +19,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	
 <link href="../resources/css/tmr.css" rel="stylesheet" />
-<script type="text/javascript" src="../resources/js/tmr.js" /> 
+<script type="text/javascript" src="/resources/js/tmr.js" /> 
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/adminHeader.jsp" /> 
@@ -37,6 +37,7 @@
 				<div class="cp_content" style="margin-left:100px;">
 				<br>
 				<form action="/lmrUpload.do" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="originfile" value="${img }">
 					<div>
 					<img id="beforeImg" src="/../resources/upload/tmr/${img }" style="width:500px; height:500px; position: relative;">
 					<button id="cancelBt" class="btn btn-danger" type="button" style="position:absolute;">X</button>
@@ -47,8 +48,8 @@
 					</label>
 					
 					</div>
-					<input id="file" type="file" name="file" style="display: none;"><br>
-					<input class="btn btn-success btn-lg" type="submit" value="업로드">
+					<input id="file" type="file" name="file" style="display: none;" onchange="loadImg(this)"><br>
+					<input id="submitBt" class="btn btn-success btn-lg" type="submit" value="업로드" style="display:none;">
 					<button class="btn btn-primary btn-lg" type="button" onclick="location.href='/lmr.do'">목록으로</button>
 				</form>
 				</div>
@@ -61,10 +62,25 @@ $("#cancelBt").click(function(){
 	$("#beforeImg").css("display","none");
 	$("#cancelBt").css("display","none");
 	$("#uploadImg").css("display","block");
+	$("#submitBt").css("display","none");
 });
-$("#file").change(function(){
-	
-})
+function loadImg(f){
+	if(f.files.length!=0 && f.files[0]!=0){ //f.file -> 선택한 파일을 가져옴 (배열형태로) , f.files[0] -> 0번재 파일의 크기
+		var reader = new FileReader();	//JS의 FileReader 객체 -> 객체 내부의 result 속성에 파일 컨텐츠가 있음
+		reader.readAsDataURL(f.files[0]);	//선택한 파일의 경로를 읽어옴
+		reader.onload = function(e){
+			$("#beforeImg").css("display","inline");
+			$("#cancelBt").css("display","inline");
+			$("#beforeImg").attr("src",e.target.result);
+			$("#uploadImg").css("display","none");
+			$("#submitBt").css("display","inline");
+		}
+	} else{ //파일을 뺄 경우
+		$("#submitBt").css("display","none");
+	}
+}
+var count;
+
 </script>
 </body>
 </html>

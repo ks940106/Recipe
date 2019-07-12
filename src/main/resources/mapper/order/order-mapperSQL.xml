@@ -2,10 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="order">
   	<insert id="insertOrder" parameterType="order">
-  			insert into order_tbl values(order_sql.nextval,#{orderCode},#{id},#{addr1},#{addr2},#{recipeNo},#{orderCount},#{orderState},#{zipCode},#{phone})
+  			insert into order_tbl values(order_sql.nextval,#{orderCode},#{id},#{addr1},#{addr2},#{recipeNo},#{orderCount},#{orderState},#{zipCode},#{phone},#{orderPirce})
   	</insert>
   	
   	<delete id="deleteCart" parameterType="order">
   		 delete from cart where recipe_no=#{recipeNo}
   	</delete>
+  	<select id="selectAllOrderList" parameterType="string" resultType="order">
+  		select order_no as orderNo,
+  		order_code as orderCode,
+  		id,addr1,addr2,
+  		a.recipe_no as recipeNo,
+  		order_count as orderCount,
+  		order_pirce as orderPirce,
+  		order_state as orderState,
+  		zip_code as zipCode, 
+  		b.recipe_title as recipeTitle
+  		from order_tbl a inner join recipe b on a.recipe_no = b.recipe_no where id=#{id}
+  	</select>
+  	<update id="cancellationOrder">
+  	  update order_tbl set  order_state=3 where order_no in 
+  	  <foreach collection="array" item="orderNo" open="(" separator="," close=")">
+  	  	#{orderNo}
+  	  </foreach>
+  	</update>
 </mapper>
