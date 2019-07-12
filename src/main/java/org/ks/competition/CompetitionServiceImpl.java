@@ -87,13 +87,27 @@ public class CompetitionServiceImpl implements CompetitionService {
 		
 	}
 
-	/*@Override
-	public Member participantMember() {
-		List list = competitionDaoimpl.participantMember();
-		Member m = null;
-		if(!list.isEmpty()) {
-			m = (Member)list.get(0);
+	@Override
+	public int participantUpdate(String[] checkArr, int competitionNo) {
+		int result = 0;
+		for(int i=0; i<checkArr.length; i++) {
+			result = competitionDaoimpl.participantUpdate(checkArr[i],competitionNo); 
+			System.out.println(result);
+			System.out.println("ddd :"+checkArr[i]);
 		}
-		return m;
-	}	*/
+		return result;
+	}
+	@Override
+	public ArrayList<ParticipantMember> participantPassList(int competitionNo) {
+		return (ArrayList<ParticipantMember>)(competitionDaoimpl.participantPassList(competitionNo));
+	}
+	@Override
+	public int participantPass(String[] checkPass, int competitionNo) {
+		int result = 0;
+		for(int i=0; i<checkPass.length; i++) {
+			result = competitionDaoimpl.participantPass(checkPass[i], competitionNo);
+		}
+		return result;
+	}
+
 }

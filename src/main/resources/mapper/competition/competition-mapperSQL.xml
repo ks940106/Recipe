@@ -41,7 +41,7 @@
 		from competition where competition_no=#{competitionNo}
 	</select>
 	<update id="competitionUpdate" parameterType="competition">
-		update competition set competition_title=#{competitionTitle} , competition_contents=#{competitionContents} , competition_img=#{competitionImg, jdbcType=VARCHAR},competition_check=#{competitionCheck} 
+		update competition set competition_title=#{competitionTitle} , competition_contents=#{competitionContents} , competition_img=#{competitionImg, jdbcType=VARCHAR},competition_result=#{competitionResult},competition_check=#{competitionCheck} 
 		where competition_no=#{competitionNo}
 	</update>
 	<select id="competitionResultView" resultType="competition" parameterType="_int">
@@ -84,15 +84,27 @@
 		nickname as nickname,
 		gender as gender,
 		phone as phone
-		from participant join member on participant.id = member.id where competition_no = #{competitionNo}
+		from participant join member on participant.id = member.id where competition_no = #{competitionNo} and participant_pass='N'
 	</select>
-<!-- 	<select id="participantMember" resultType="member">
-		select id as id,
+	<update id="participantUpdate" parameterType="map">
+		update participant set participant_pass='Y' where participant_no=#{checkArr} and competition_no=#{competitionNo}
+	</update>
+	<select id="participantPassList" resultType="participantMember">
+		select participant_no as participantNo,
+		competition_no as competitionNo,
+		(PARTICIPANT.id) as id,
+		participant_pass as participantPass,
+		participant_content as participantContent,
+		participant_result as participantResult,
+		participant_date as participantDate,
 		name as name,
 		nickname as nickname,
 		gender as gender,
 		phone as phone
-		from member where 
-	</select> -->
+		from participant join member on participant.id = member.id where competition_no = #{competitionNo} and participant_pass='Y'
+	</select>
+	<update id="participantPassUpdate" parameterType="map">
+		update participant set participant_pass='N' where participant_no=#{checkPass} and competition_no=#{competitionNo}
+	</update>
 	
 </mapper>

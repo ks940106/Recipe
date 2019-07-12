@@ -17,5 +17,7 @@ public interface CompetitionService {
 	public Participant participantCheck(int competitionNo, String id);
 	public Competition competitionListView(int competitionNo);
 	public ArrayList<ParticipantMember> participantView(int competitionNo);
-	/*public Member participantMember();*/
+	public ArrayList<ParticipantMember> participantPassList(int competitionNo);
+	public int participantUpdate(String[] checkArr, int competitionNo);
+	public int participantPass(String[] checkPass, int competitionNo);
 }

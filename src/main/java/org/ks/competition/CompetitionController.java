@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.ks.competition.vo.Competition;
-import org.ks.member.vo.Member;
 import org.ks.participant.vo.Participant;
 import org.ks.participant.vo.ParticipantMember;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -131,7 +130,9 @@ public class CompetitionController {
 		model.addAttribute("competition",c);
 		ArrayList<ParticipantMember> list = competitionServiceimpl.participantView(competitionNo);
 		model.addAttribute("list",list);
-		System.out.println(list.get(0));
+		ArrayList<ParticipantMember> passList = competitionServiceimpl.participantPassList(competitionNo);
+		model.addAttribute("passList",passList);
+		model.addAttribute("count",passList.size());
 		return "admin/competition/competitionAdmin_ListView";
 	}
 	@RequestMapping(value="/adminPage.do")
@@ -224,5 +225,28 @@ public class CompetitionController {
 	@RequestMapping(value="/competitionAdminSearch.do")
 	public String competitionSearch(){
 		return "admin/competition/competitionAdmin_search";
+	}
+	@RequestMapping(value="/participantCheck.do")
+	public ModelAndView participantCheck(HttpServletRequest request, @RequestParam String[] checkArr, @RequestParam int competitionNo) {
+		System.out.println(checkArr[0]);
+		int result = competitionServiceimpl.participantUpdate(checkArr,competitionNo);
+		ModelAndView mav = new ModelAndView();
+		if(result>0) {
+			mav.setViewName("redirect:/competitionAdminList.do?competitionCheck='Y'");
+		}else {
+			mav.setViewName("redirect:/index.jsp");
+		}
+		return mav;
+	}
+	@RequestMapping(value="/participantPassCheck.do")
+	public ModelAndView participantPassList(HttpServletRequest request, @RequestParam String[] checkPass, @RequestParam int competitionNo) {
+		int result = competitionServiceimpl.participantPass(checkPass,competitionNo);
+		ModelAndView mav = new ModelAndView();
+		if(result>0) {
+			mav.setViewName("redirect:/competitionAdminList.do?competitionCheck='Y'");
+		}else {
+			mav.setViewName("redirect:/index.jsp");
+		}
+		return mav;
 	}
 }

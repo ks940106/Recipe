@@ -55,7 +55,7 @@
 				            <h1>요리대회 신청하기</h1>
 				            <div class="pom_div_bg"></div>
 				        </div>
-						<form action="/participantInsert.do" method="post">
+						<form action="/participantInsert.do" method="post" onsubmit="return check()">
 						<div class="cp_form">
 							<table class="cp_table">
 							<input type="hidden" name="competitionNo" value="${competition.competitionNo}">
@@ -81,12 +81,12 @@
 								</tr>
 								<tr>
 									<td>
-										신청이유 <br> <textarea rows="10" cols="85" name="participantContent"></textarea> 
+										신청이유 <br> <textarea rows="10" cols="85" name="participantContent" id="pContent"></textarea> 
 									</td>
 								</tr>
 							</table>
 							</div>
-							<input type="submit" value="대회참가 신청하기">
+							<input type="submit" value="대회참가 신청하기" >
                             <!-- <div id="cp_btn">
 								<input type="submit" value="대회참가 신청하기">
 				            </div> -->
@@ -108,17 +108,19 @@
         </div>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />
-	<!-- <script>
-		var n = 0;
-	  $('#counter').click(function(){ 
-		  	n = n+1;
-		  	alert(n);
-		   	if(n>=10){
-				$('#counter').attr('disabled', true);
-			}
-
-		});
-	</script> -->
+	<script>
+	  function check(){
+		 var con =  $("#pContent").val();
+		 alert(con);
+		 var exp = /^.{20,500}$/;
+		 if(!exp.test(con)){
+			 alert("사연을 20자~500자 사이로 적어주세요");
+			 return false;
+		 }else{
+			 return true;
+		 }    
+	  }
+	</script> 
 </body>
 
 </html>
