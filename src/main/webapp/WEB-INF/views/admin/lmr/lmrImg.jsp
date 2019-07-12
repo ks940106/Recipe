@@ -79,6 +79,7 @@ function loadImg(f){
 		$("#submitBt").css("display","none");
 	}
 }
+var count;
 
 </script>
 </body>
