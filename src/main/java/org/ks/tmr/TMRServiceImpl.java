@@ -115,7 +115,10 @@ public class TMRServiceImpl implements TMRService{
 		ArrayList<LMR> list2 = (ArrayList<LMR>)list1;
 		return list2.get(0).getRecipeTitle1();
 	}
-	
+	@Transactional
+	public void updateFile(String fileName) {
+		tmrdaoImpl.updateFile(fileName);
+	}
 	
 	
 	public ArrayList<Reservation> selectReservation(String[] reservationDate){

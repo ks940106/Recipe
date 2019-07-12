@@ -77,7 +77,9 @@
 	<select id="lmrImg" resultType="lmr">
 		select recipe_title1 as recipeTitle1 from lmr where recipe_no1 = 0
 	</select>
-	
+	<update id="updateFile" parameterType="string">
+		update lmr set recipe_title1=#{fileName} where recipe_no1 = 0
+	</update>
 	
 	<select id="selectReservation" resultType="reservation">
 		select distinct
