@@ -306,6 +306,7 @@ body.joinback {
     margin: 0;
     background: #f1f1f2;
 }
+/*회원가입   */
 section.memberinsert .container_etc {
     margin: 0 auto 30px;
     padding-top: 20px;
@@ -342,6 +343,15 @@ section.memberinsert .container_etc .form-control {
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
     margin-bottom: -1px !important;
 }
+section.memberinsert .container_etc .id{
+	display:inline;
+	width:72.3%;
+}
+section.memberinsert .container_etc .zipCode{
+	display:inline;
+	width:69%;
+}
+
 section.memberinsert .form-control-feedback {
     position: absolute;
     top: 8px;
@@ -371,7 +381,7 @@ section.memberinsert .container_etc .btn_gender {
 }
 section.memberinsert .input-group-btn {
     position: relative;
-    font-size: 0;
+    
     white-space: nowrap;
     width: 1%;
 }
@@ -409,4 +419,54 @@ section.memberinsert .btn-success {
     color: #fff;
     background-color: #4a89dc;
     border: 1px solid #497725;
+}
+section.memberinsert img{
+	width: 250px;
+	height: 250px;
+}
+/*마이페이지 업데이트  */
+.myPageUpdate{
+	align-content: center;
+}
+.myPageUpdate table {
+	width:40%;
+    border-top: 2px solid #666;
+}
+.myPageUpdate table th{
+	 border-bottom: 1px solid #ddd;
+	 text-align: left;
+	 padding: 12px 0 12px 12px;
+}
+.myPageUpdate table input[type=text]{
+	width: 80%;
+}
+.myPageUpdate table input[type=password]{
+	width: 80%;
+}
+.myPageUpdate table tr td{
+	border-left: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	padding: 9px 0 9px 12px;
+}
+.myPageUpdate img{
+	width: 250px;
+	height: 250px;
+}
+/*마이페이지   */
+.myPage table {
+	width:40%;
+    border-top: 2px solid #666;
+}
+.myPage table th{
+	 border-bottom: 1px solid #ddd;
+	 text-align: left;
+	 padding: 12px 0 12px 12px;
+}
+.myPage table input{
+	width: 80%;
+}
+.myPage table tr td{
+	border-left: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	padding: 9px 0 9px 12px;
 }
