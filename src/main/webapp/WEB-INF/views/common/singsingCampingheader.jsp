@@ -36,7 +36,7 @@
                     <li><a href="/campingAbout.do">캠핑장소개</a></li>
                     <li><a href="#">주변관광지</a>
                     <li><a href="#">카라반소개</a></li>
-     				<li><a href="#">예약</a></li>
+       				<li><a href="/calendar.do">예약</a></li>
                     <li><a href="#">커뮤니티</a></li>
 
                     <c:choose>

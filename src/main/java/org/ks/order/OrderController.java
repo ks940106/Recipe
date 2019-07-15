@@ -1,18 +1,28 @@
 package org.ks.order;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.ks.member.vo.Member;
 import org.ks.order.vo.Order;
+import org.ks.order.vo.OrderPageData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonObject;
 
 @Controller
 public class OrderController {
@@ -107,5 +117,102 @@ public class OrderController {
 			request.setAttribute("loc", "/orderList.do");
 			return "common/msg";
 		}
+	}
+	
+	//관리자
+	
+	@RequestMapping(value="/orderAdminList.do") //결제페이지 조회
+	public String orderAdminList() {
+		/*
+		OrderPageData list = orderServiceImpl.seleteAllOrderAdminList();
+		ModelAndView mav = new ModelAndView();
+		if(!list.isEmpty()) {
+			mav.addObject("list",list);
+			mav.setViewName("admin/order/orderAdminList");
+		}else {
+			mav.setViewName("admin/order/orderAdminList");
+		}
+		 * */
+		return "admin/order/orderAdminList";
+	}
+	@ResponseBody
+	@RequestMapping(value="/seletecancelAdminList") //결제 취소 신청 리스트
+	public void seletecancelAdminList(HttpServletResponse response, HttpServletRequest request,@RequestParam String pageNo ) throws JsonIOException, IOException {
+		int reqPage = Integer.parseInt(pageNo);
+		OrderPageData list = orderServiceImpl.seletecancelAdminList(reqPage);
+		response.setContentType("application/json"); //text형태로 나온다.
+		response.setCharacterEncoding("utf-8");
+		new Gson().toJson(list,response.getWriter());
+		
+	}
+	@ResponseBody
+	@RequestMapping(value="/seletecancelsuccessAdminList") //결제 취소 완료
+	public void seletecancelsuccessAdminList(HttpServletResponse response, HttpServletRequest request,@RequestParam String pageNo ) throws JsonIOException, IOException {
+		int reqPage = Integer.parseInt(pageNo);
+		OrderPageData list = orderServiceImpl.seletecancelsuccessAdminList(reqPage);
+		response.setContentType("application/json"); //text형태로 나온다.
+		response.setCharacterEncoding("utf-8");
+		new Gson().toJson(list,response.getWriter());
+		
+	}
+	@ResponseBody
+	@RequestMapping(value="/seletepaymentSuccessAdminList") //결제 완료
+	public void seletepaymentSuccessAdminList(HttpServletResponse response, HttpServletRequest request,@RequestParam String pageNo ) throws JsonIOException, IOException {
+		int reqPage = Integer.parseInt(pageNo);
+		OrderPageData list = orderServiceImpl.seletepaymentSuccessAdminList(reqPage);
+		response.setContentType("application/json"); //text형태로 나온다.
+		response.setCharacterEncoding("utf-8");
+		new Gson().toJson(list,response.getWriter());
+		
+	}
+	@ResponseBody
+	@RequestMapping(value="/seletepaymentAdminList") //결제 진행중
+	public void seletepaymentAdminList(HttpServletResponse response, HttpServletRequest request,@RequestParam String pageNo ) throws JsonIOException, IOException {
+		int reqPage = Integer.parseInt(pageNo);
+		OrderPageData list = orderServiceImpl.seletepaymentAdminList(reqPage);
+		response.setContentType("application/json"); //text형태로 나온다.
+		response.setCharacterEncoding("utf-8");
+		new Gson().toJson(list,response.getWriter());
+		
+	}
+	@RequestMapping(value="/cancellationAdminOrder.do") 
+	public ModelAndView cancellationAdminOrder(HttpServletRequest request) {
+		String[] orderNo = request.getParameterValues("orderNo");
+		int result = orderServiceImpl.cancellationAdminOrder(orderNo);
+		ModelAndView mav = new ModelAndView();
+		if(result>0) {
+			mav.addObject("msg","결제를 취소했습니다.");
+			mav.addObject("loc","/orderAdminList.do");
+			mav.setViewName("common/msg");
+		}else {
+			mav.addObject("msg","결제취소를 실패 했습니다.");
+			mav.addObject("loc","/orderAdminList.do");
+			mav.setViewName("common/msg");
+		}
+		return mav;
+	}
+	@RequestMapping(value="/successAdminOrder.do")
+	public ModelAndView successAdminOrder(HttpServletRequest request) {
+		String orderNo = request.getParameter("orderNo");
+		StringTokenizer st = new StringTokenizer(orderNo, ",");
+		String[] array = new String[st.countTokens()];
+		int i=0;
+		while(st.hasMoreTokens()) {
+			array[i] = st.nextToken();
+			i++;
+		}
+		int result = orderServiceImpl.successAdminOrder(array);
+		ModelAndView mav = new ModelAndView();
+		if(result>0) {
+			mav.addObject("msg","결제를 확정했습니다.");
+			mav.addObject("loc","/orderAdminList.do");
+			mav.setViewName("common/msg");
+		}else {
+			mav.addObject("msg","결제확정을 실패 했습니다.");
+			mav.addObject("loc","/orderAdminList.do");
+			mav.setViewName("common/msg");
+		}
+		return mav;
+		
 	}
 }
