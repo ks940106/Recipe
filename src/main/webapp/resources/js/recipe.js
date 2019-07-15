@@ -167,3 +167,16 @@ function unLike(recipeNo) {
         }
     })
 }
+
+var total;
+var count;
+$("input[name='count']").change(function () {
+count = $(this).val();
+total = $("#price").html()*$(this).val();
+$("#total_price").text(total);
+});
+
+function cart(recipeNo) {
+        location.href = "/insertcart.do?recipeNo=" + recipeNo + "&count=" + count;
+}
+
