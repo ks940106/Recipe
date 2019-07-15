@@ -5,41 +5,61 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.0.min.js" ></script>
-<title>Insert title here</title>
+<title>싱싱캠핑 예약</title>
+
+<link href="../resources/css/campingImport.css" rel="stylesheet" />
+<link href="../resources/css/reservation.css" rel="stylesheet" />
+<script type="text/javascript" src="../resources/js/reservation.js" />
 <style>
-	table * {border:1px solid black; width:100px;height:100px;}
-	table td{text-align: center;}
-	.possible{background-color: lightgreen;}
-	.impossible{background-color: lightgray;}
+	
 </style>
 </head>
 <body>
-	<div style="float: left;">
-	<table>
-	<tr>
-		<th><button type="button" id="prev"><</button></th>
-		<th colspan="5" id="YearMonth"></th>
-		<th><button type="button" id="next">></button></th>
-	</tr>
-	<tr>
-		<th style="color:red;">일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th style="color:blue;">토</th>
-	</tr>
-	<c:forEach var="i" begin="1" end="6">
-		<tr id="day">
-			<td id="${7*(i-1)+1 }" style="color:red;"></td>
-			<td id="${7*(i-1)+2 }"></td>
-			<td id="${7*(i-1)+3 }"></td>
-			<td id="${7*(i-1)+4 }"></td>
-			<td id="${7*(i-1)+5 }"></td>
-			<td id="${7*(i-1)+6 }"></td>
-			<td id="${7*(i-1)+7 }" style="color:blue;"></td>
-		</tr>
-	</c:forEach>
-	</table>
-	</div>
-	예약 가능 카라반 번호<br>
-	<div id="reservation" style="float: left; border:1px solid black; width:400px; height:400px;"></div>
+<jsp:include page="/WEB-INF/views/common/singsingCampingheader.jsp"/>
+<section>
+	<div class="pom_bg">
+        <div class="pom_top">
+            <h1>예약</h1>
+            <div id="pom_div_bg"></div>
+            <p>카라반 예약하기</p>
+        </div>
+    </div>
+    <div class="pom_wrap">
+            <div class="pomNav">
+                <jsp:include page="/WEB-INF/views/tmr/tmrNav.jsp"/>
+            </div>
+            <div class="section_content_nav">
+                <div class="cp_content">
+                	<div style="float: left;">
+						<table>
+							<tr>
+								<th><button type="button" id="prev"><</button></th>
+								<th colspan="5" id="YearMonth"></th>
+								<th><button type="button" id="next">></button></th>
+							</tr>
+							<tr>
+								<th style="color:red;">일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th style="color:blue;">토</th>
+							</tr>
+						<c:forEach var="i" begin="1" end="6">
+							<tr id="day">
+								<td id="${7*(i-1)+1 }" style="color:red;"></td>
+								<td id="${7*(i-1)+2 }"></td>
+								<td id="${7*(i-1)+3 }"></td>
+								<td id="${7*(i-1)+4 }"></td>
+								<td id="${7*(i-1)+5 }"></td>
+								<td id="${7*(i-1)+6 }"></td>
+								<td id="${7*(i-1)+7 }" style="color:blue;"></td>
+							</tr>
+						</c:forEach>
+						</table>
+					</div>
+					예약 가능 카라반 번호<br>
+					<div id="reservation" style="float: left; border:1px solid black; width:400px; height:400px;"></div>
+                </div>
+            </div>
+    </div>
+</section>
+	<jsp:include page="/WEB-INF/views/common/singsingCampingfooter.jsp"/>
 	<script>
 		var nowYear = 0; //현재 년
 		var nowMonth = 0; //현재 월
@@ -310,13 +330,16 @@
 							$("#reservation").html("");
 						for(var index in jsonList){
 							//$("#reservation").append("<a href='/insertReservation.do?caravanNo="+jsonList[index].caravanNo+"&reservationDateString="+reservationDateString+"'>"+jsonList[index].caravanNo +"</a><br>");
-							$("#reservation").append("<a href='/insertReservation.do?caravanNo="+jsonList[index].caravanNo+"&reservationDateString="+reservationDateString+"'>카라반 이름 : "+jsonList[index].caravanName+", 카라반 기준/최대인원 : "+jsonList[index].caravanPeople+"/"+jsonList[index].caravanMaxPeople+", 카라반 가격 : "+jsonList[index].caravanCost+"</a><button type='button' onclick='location.href='/''>카라반 자세히 보러가기</button><br>");
+							$("#reservation").append("<a href='/insertReservation.do?caravanNo="+jsonList[index].caravanNo+"&reservationDateString="+reservationDateString+"'>카라반 이름 : "+jsonList[index].caravanName+", 카라반 기준/최대인원 : "+jsonList[index].caravanPeople+"/"+jsonList[index].caravanMaxPeople+", 카라반 가격 : "+jsonList[index].caravanCost+"</a><button type='button' onclick='goView()'>카라반 자세히 보러가기</button><br>");
 						}
 					},
 				error: function(){
 					alert("아작스 에러!");
 				}
 			});
+		}
+		function goView(){
+			location.href="/index.jsp";
 		}
 	</script>
 </body>
