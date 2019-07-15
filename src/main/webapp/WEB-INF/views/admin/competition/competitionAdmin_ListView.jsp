@@ -114,6 +114,7 @@
 						<div class="list_menu">
 							</span>
 								<button id="checkPass">선택변경</button>
+								<button id="cResult" >우승자등록</button>
 							</span>
 						</div>
 						<table class="list_table">
@@ -167,6 +168,10 @@
 								<td>
 									${pl.participantContent}
 								</td>
+								<td>
+									<input type="text" value="${pl.participantResult }" id="pResult">
+								</td>
+								
 							</tr>
 							</c:forEach>
 							</tbody>  
@@ -189,7 +194,11 @@
 	 <script>
 	 window.onload = function(){
 		 totalCount = (Number)($("#totalCount").val());
-		 alert(totalCount);
+		 alert(totalCount);	
+		 if($("#pResult").val() == "우승"){
+				$("#pResult").parent().parent().css("background-color","red");
+			 }
+			
 	 }
 	 	
 		$("#checkResult").click(function(){
@@ -219,6 +228,21 @@
 			});
 			location.href="/participantPassCheck.do?checkPass="+checkPass+"&competitionNo=${competition.competitionNo}";
 		});
+		$("#cResult").click(function(){
+			var checkRes = $("input[name='passName']:checked");	
+			var checkResult = checkRes.val();
+			alert(checkResult);
+			if($("input[name='passName']:checked").length>1){
+				alert("1명만 선택해주세요");
+				return;
+			}
+			if($("#pResult").val("우승")){
+				alert("우승자가 있습니다.");
+				return;
+			}
+			location.href="/participantResult.do?checkResult="+checkResult+"&competitionNo=${competition.competitionNo}";
+		});
+		
 	</script> 
 </body>
 </html>

@@ -91,4 +91,23 @@ public class CompetitionDaoImpl implements CompetitionDao {
 		int result = sqlsession.update("competition.participantPassUpdate",map);
 		return result;
 	}
+
+	@Override
+	public int participantResult(String checkResult, int competitionNo) {
+		Map map = new HashMap<String, String>();
+		map.put("competitionNo",Integer.toString(competitionNo));
+		map.put("checkResult",checkResult);
+		int result = sqlsession.update("competition.participantResult",map);
+		return result;
+	}
+
+	@Override
+	public List competitionMypage(String id) {
+		return sqlsession.selectList("competition.competitionMypage",id);
+	}
+
+	@Override
+	public List participantResultList(int competitionNo) {
+		return sqlsession.selectList("competition.participantResultList",competitionNo);
+	}
 }

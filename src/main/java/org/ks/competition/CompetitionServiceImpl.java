@@ -110,4 +110,24 @@ public class CompetitionServiceImpl implements CompetitionService {
 		return result;
 	}
 
+	@Override
+	public int participantResult(String checkResult, int competitionNo) {
+		return competitionDaoimpl.participantResult(checkResult, competitionNo);
+	}
+
+	@Override
+	public ParticipantMember competitionMypage(String id) {
+		List list = competitionDaoimpl.competitionMypage(id);
+		ParticipantMember p = null;
+		if(!list.isEmpty()) {
+			p = (ParticipantMember)list.get(0);
+		}
+		return p;
+	}
+
+	@Override
+	public ArrayList<ParticipantMember> participantResultList(int competitionNo) {
+		return (ArrayList<ParticipantMember>) (competitionDaoimpl.participantResultList(competitionNo));
+	}
+
 }

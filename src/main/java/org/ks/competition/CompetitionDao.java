@@ -19,4 +19,7 @@ public interface CompetitionDao {
 	public int participantUpdate(String checkArr, int competitionNo);
 	public int participantPass(String checkPass, int competitionNo);
 	public List participantPassList(int competitionNo);
+	public int participantResult(String checkResult, int competitionNo);
+	public List competitionMypage(String id);
+	public List participantResultList(int competitionNo);
 }

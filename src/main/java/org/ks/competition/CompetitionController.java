@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.ks.competition.vo.Competition;
+import org.ks.member.vo.Member;
 import org.ks.participant.vo.Participant;
 import org.ks.participant.vo.ParticipantMember;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -124,6 +125,15 @@ public class CompetitionController {
 		model.addAttribute("competition",c);
 		return "admin/competition/competitionAdmin";
 	}
+	@RequestMapping(value = "/mypageCompetitionResult.do")
+	public String mypageCompetition(Model model,HttpSession session) {
+		Member m = (Member)session.getAttribute("member");
+		String id = m.getId();
+		System.out.println("확인"+id);
+		ParticipantMember p = competitionServiceimpl.competitionMypage(id);
+		model.addAttribute("participant",p);
+		return "competition/competitionMypage";		
+	}
 	@RequestMapping(value="/competitionAdmin_List.do")
 	public String competitionAdmin_ListView(@RequestParam int competitionNo, Model model) {
 		Competition c = competitionServiceimpl.competitionListView(competitionNo);
@@ -134,6 +144,14 @@ public class CompetitionController {
 		model.addAttribute("passList",passList);
 		model.addAttribute("count",passList.size());
 		return "admin/competition/competitionAdmin_ListView";
+	}
+	@RequestMapping(value="/competitionResultAdmin.do")
+	public String competitionResultAdmin(@RequestParam int competitionNo, Model model) {
+		Competition c = competitionServiceimpl.competitionResultView(competitionNo);
+		model.addAttribute("competition",c);
+		ArrayList<ParticipantMember> resultList = competitionServiceimpl.participantResultList(competitionNo); 
+		model.addAttribute("participant",resultList);
+		return "admin/competition/competitionAdmin_ResultView";
 	}
 	@RequestMapping(value="/adminPage.do")
 	public String adminPage() {
@@ -216,12 +234,6 @@ public class CompetitionController {
 		}
 		return view;
 	}	
-	@RequestMapping(value="/competitionResultAdmin.do")
-	public String competitionResultAdmin(@RequestParam int competitionNo, Model model) {
-		Competition c = competitionServiceimpl.competitionResultView(competitionNo);
-		model.addAttribute("competition",c);
-		return "admin/competition/competitionAdmin_ResultView";
-	}
 	@RequestMapping(value="/competitionAdminSearch.do")
 	public String competitionSearch(){
 		return "admin/competition/competitionAdmin_search";
@@ -241,6 +253,17 @@ public class CompetitionController {
 	@RequestMapping(value="/participantPassCheck.do")
 	public ModelAndView participantPassList(HttpServletRequest request, @RequestParam String[] checkPass, @RequestParam int competitionNo) {
 		int result = competitionServiceimpl.participantPass(checkPass,competitionNo);
+		ModelAndView mav = new ModelAndView();
+		if(result>0) {
+			mav.setViewName("redirect:/competitionAdminList.do?competitionCheck='Y'");
+		}else {
+			mav.setViewName("redirect:/index.jsp");
+		}
+		return mav;
+	}
+	@RequestMapping(value="/participantResult.do")
+	public ModelAndView participantResult(HttpServletRequest request, @RequestParam String checkResult, @RequestParam int competitionNo) {
+		int result = competitionServiceimpl.participantResult(checkResult,competitionNo);
 		ModelAndView mav = new ModelAndView();
 		if(result>0) {
 			mav.setViewName("redirect:/competitionAdminList.do?competitionCheck='Y'");
