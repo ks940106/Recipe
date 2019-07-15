@@ -28,6 +28,7 @@
 					<li><a href="/mypage.do">개인정보수정</a><span>></span></li>
 					<li><a href="/cart.do">장바구니</a><span>></span></li>
 					<li><a href="/orderList.do">결제내역</a><span>></span></li>
+					<li><a href="/mypageCompetitionResult.do">대회신청결과</a><span>></span></li>
 				</ul>
 			</div>
 			</nav>
@@ -36,13 +37,20 @@
 			<!--<div class="cp_nav">
                     <jsp:include page="/WEB-INF/views/common/navPom.jsp"/>
                 </div>-->
-			<div class="mypage">
+			<div class="myPage">
 			<form method="post" action="/myPagePwCheck.do">
 				<h1>개인 정보 수정</h1>
-				<div>
 					<p>개인 정보 수정을 위해 비밀번호를 입력해주세요</p>
-					<input type="password" name="pwcheck">
-				</div>
+					<table>
+					<tr>
+						<th>아이디</th>
+						<td>${member.id }</td>
+					</tr>
+					<tr>
+						<th>비밀번호</th>
+						<td><input type="password" name="pwcheck"></td>
+					</tr>
+					</table>
 				<button type="submit">확인</button>
 			</form>
 			</div>

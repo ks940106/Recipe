@@ -38,6 +38,7 @@
 	<task:annotation-driven/>
 	<context:component-scan base-package="org.ks.competition"/>
 	<context:component-scan base-package="org.ks.common"/>
+	<context:component-scan base-package="org.ks.participant"/>
 	<!-- 파일업로드 DI 설정 -->
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxUploadSize" value="104857600"/>
