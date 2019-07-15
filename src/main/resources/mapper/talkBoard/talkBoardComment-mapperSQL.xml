@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="talkbatis">
+  
+   <select id="selectTalkBoardComment" parameterType="talkComment" resultType="talkComment">
+  	select comment_no as commentNo,
+  	board_no as boardNO,
+  	comment_level as commentLevel,
+  	comment_writer as commentWriter,
+  	comment_contents as commentContents,
+  	comment_ref as commentRef
+  	from board_comment where board_no = #{boardNo}
+  </select>
+  
+  <insert id="insertTalkBoardComment" parameterType="talkComment">
+  	insert into board_comment values(req_comment_no.nextval,#{boardNo},#{commentLevel},#{commentWriter},#{commentContents},null)
+  </insert>
+  
+  <delete id="deleteTalkBoardComment" parameterType="_int">
+  	delete from board_comment where board_no = #{boardNo}
+  </delete>
+  <delete id="deleteComment" parameterType="_int">
+  	delete from board_comment where comment_no = #{commentNo}
+  </delete>
+  
+  
+</mapper>
