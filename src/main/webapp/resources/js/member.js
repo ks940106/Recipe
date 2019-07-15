@@ -8,7 +8,16 @@ function doAgreeCheck()
     	location.href="/insert.do"
     }
 }
-
+function doAgreeCheckCamping()
+{
+    if(!$('#contractCheck').is(':checked') || !$('#privacyCheck').is(':checked'))
+    {
+        $('#checkMsg').show();
+        return ;
+    }else{
+    	location.href="/insertCamping.do"
+    }
+}
 $(document).ready(function() {
     $("#allchk").click(function() {
         var chked = ($('#allchk').is(':checked')) ? true : false;
