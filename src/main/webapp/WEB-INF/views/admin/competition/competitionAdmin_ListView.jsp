@@ -114,6 +114,7 @@
 						<div class="list_menu">
 							</span>
 								<button id="checkPass">선택변경</button>
+								<button id="cResult" >우승자등록</button>
 							</span>
 						</div>
 						<table class="list_table">
@@ -167,6 +168,10 @@
 								<td>
 									${pl.participantContent}
 								</td>
+								<td>
+									<input type="text" value="${pl.participantResult }" class="pResult">
+								</td>
+								
 							</tr>
 							</c:forEach>
 							</tbody>  
@@ -189,7 +194,15 @@
 	 <script>
 	 window.onload = function(){
 		 totalCount = (Number)($("#totalCount").val());
-		 alert(totalCount);
+		 alert(totalCount);	
+		 for(var i = 0;i<$('.pResult').length;i++){
+			 if($(".pResult").eq(i).val() == "우승"){
+					$(".pResult").eq(i).parent().parent().css("background-color","red");
+					$(".checkPassList").eq(i).prop("checked",true);
+				}
+		 }
+		 
+			
 	 }
 	 	
 		$("#checkResult").click(function(){
@@ -219,6 +232,23 @@
 			});
 			location.href="/participantPassCheck.do?checkPass="+checkPass+"&competitionNo=${competition.competitionNo}";
 		});
+		$("#cResult").click(function(){
+			var checkRes = $("input[name='passName']:checked");	
+			var checkResult = checkRes.val();
+			alert(checkResult);
+			if($("input[name='passName']:checked").length>1){
+				alert("1명만 선택해주세요");
+				return;
+			}
+			 for(var i = 0;i<$('.pResult').length;i++){
+				 if($(".pResult").eq(i).val() == "우승"){
+						$(".pResult").eq(i).parent().parent().css("background-color","#fff");
+						$(".checkPassList").eq(i).prop("checked",false);
+					}
+			 }
+			location.href="/participantResult.do?checkResult="+checkResult+"&competitionNo=${competition.competitionNo}";
+		});
+		
 	</script> 
 </body>
 </html>

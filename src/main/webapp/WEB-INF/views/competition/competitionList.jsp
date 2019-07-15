@@ -113,6 +113,13 @@
 		 var con =  $("#pContent").val();
 		 alert(con);
 		 var exp = /^.{20,500}$/;
+		 con = con.replace(/</g,"&lt;");
+		 con = con.replace(/>/g,"&gt;");
+		 con = con.replace(/\"/g,"&quot;");
+		 con = con.replace(/\'/g,"&#39;");
+		 con = con.replace(/\n/g,"<br />");
+		 return con;
+		 alert(con);
 		 if(!exp.test(con)){
 			 alert("사연을 20자~500자 사이로 적어주세요");
 			 return false;

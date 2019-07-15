@@ -49,6 +49,58 @@
 							<div id="cp_contents">${competition.competitionContents}</div>
 						</div>
 					</div>
+					<table class="list_table">
+							<colgroup>
+								<col width="40">
+								<col width="45">
+								<col width="220">
+								<col width="100">
+								<col width="220">
+								<col width="80">
+								<col width="80">
+								<col width="120">
+							</colgroup>
+							<thead>
+							<tr>
+								<th>
+									<label>
+										<input type="checkbox" name="all_chk">
+									</label>
+								</th>
+								<th>No</th>
+								<th>ID</th>
+								<th>이름</th>
+								<th>연락처</th>
+								<th>성별</th>
+								<th>상태</th>
+								<th>내용</th>
+							</tr>
+							</thead>
+							<tbody>
+							<c:forEach items="${participant}" var="pl">
+							<tr>
+								<td>
+									<label>
+										<input type="checkbox" class="checkPassList" name="passName" value="${pl.participantNo}">
+									</label>
+								</td>
+								<td>${pl.participantNo}</td>
+								<td>${pl.id}</td>
+								<td>${pl.name}</td>
+								<td>${pl.phone}</td>
+								<td>
+									${pl.gender}
+								</td>
+								<td>
+									${pl.participantPass}
+								</td>
+								<td>
+									${pl.participantContent}
+								</td>
+							</tr>
+							</c:forEach>
+							</tbody>  
+						</table>
 					<div id="cp_btn">
 
 						<button onclick="location.href='/competitionAdminResultList.do'">목록으로 가기</button>
