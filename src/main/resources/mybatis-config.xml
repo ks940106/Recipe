@@ -10,7 +10,9 @@
 	<typeAliases>
 		<typeAlias type="org.ks.tmr.vo.TMR" alias="tmr"/>
 		<typeAlias type="org.ks.tmr.vo.LMR" alias="lmr"/>
-		<typeAlias type="org.ks.tmr.vo.Reservation" alias="reservation"/>
+		<typeAlias type="org.ks.reservation.vo.Reservation" alias="reservation"/>
+		<typeAlias type="org.ks.caravan.vo.Caravan" alias="caravan"/>
+		
 		<typeAlias type="java.util.Map" alias="map"/>
 		<typeAlias type="org.ks.competition.vo.Competition" alias="competition"/>
 		<typeAlias type="org.ks.talkBoard.vo.TalkBoard" alias="talk"/>

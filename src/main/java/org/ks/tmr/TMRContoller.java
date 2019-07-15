@@ -6,13 +6,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.ks.tmr.vo.LMRPageData;
-import org.ks.tmr.vo.Reservation;
 import org.ks.tmr.vo.TMRPageData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -22,8 +19,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
-import com.google.gson.Gson;
 
 @Controller
 public class TMRContoller {
@@ -122,30 +117,5 @@ public class TMRContoller {
 		String img = tmrserviceImpl.lmrImg();
 		model.addAttribute("img", img);
 		return "admin/lmr/lmrImg";
-	}
-	
-	@RequestMapping(value="/c.do")
-	public String c() {
-		return "tmr/c";
-	}
-	@RequestMapping(value="/selectReservation.do")
-	public void selectReservation(HttpServletRequest request,Model model,HttpServletResponse response) {
-		String reservationDateString = request.getParameter("reservationDateString");
-		String[] reservationDate = reservationDateString.split(",");
-		ArrayList<Reservation> list = tmrserviceImpl.selectReservation(reservationDate);
-		
-		response.setContentType("text/html;charset=utf-8");
-		String jsonList = new Gson().toJson(list);
-		try {
-			response.getWriter().append(jsonList);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	@RequestMapping(value="/insertReservation.do")
-	public String insertReservation(@RequestParam String caravanNo,@RequestParam String reservationDateString) {
-			tmrserviceImpl.insertReservation(caravanNo,reservationDateString);
-		return "tmr/c";
 	}
 }

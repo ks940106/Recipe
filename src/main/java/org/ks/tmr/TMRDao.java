@@ -13,6 +13,4 @@ public interface TMRDao {
 	public List lmrImg();
 	public void updateFile(String fileName);
 	
-	public List selectReservation(String[] reservationDate);
-	public void insertReservation(String caravanNo,String reservationDateString);
 }

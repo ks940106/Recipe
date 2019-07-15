@@ -13,6 +13,12 @@ $("#cancellation").click(function(event) {
 		if(state=="결제취소대기중"){
 			alert("취소진행중입니다.");
 			event.preventDefault();
+		}else if(state=="결제완료"){
+			alert("결제 완료된 제품입니다.")
+			event.preventDefault();
+		}else if(state=="결제취소완료"){
+			alert("결제 취소 완료된 제품입니다.")
+			event.preventDefault();
 		}else{
 			var result =confirm("결제 취소를 하시겠습니까?");
 			if(!result){

@@ -8,9 +8,6 @@
 			<li>
                 <a href="javascript:popup()" target="_blank">이달의 레시피 혜택 안내</a><span>></span>
             </li>
-            <li>
-                <a href="/c.do">(임시)달력 가기</a><span>></span>
-            </li>
 		</ul>
 	</div>
 	<script>
