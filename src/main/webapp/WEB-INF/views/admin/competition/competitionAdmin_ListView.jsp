@@ -169,7 +169,7 @@
 									${pl.participantContent}
 								</td>
 								<td>
-									<input type="text" value="${pl.participantResult }" id="pResult">
+									<input type="text" value="${pl.participantResult }" class="pResult">
 								</td>
 								
 							</tr>
@@ -195,9 +195,13 @@
 	 window.onload = function(){
 		 totalCount = (Number)($("#totalCount").val());
 		 alert(totalCount);	
-		 if($("#pResult").val() == "우승"){
-				$("#pResult").parent().parent().css("background-color","red");
-			 }
+		 for(var i = 0;i<$('.pResult').length;i++){
+			 if($(".pResult").eq(i).val() == "우승"){
+					$(".pResult").eq(i).parent().parent().css("background-color","red");
+					$(".checkPassList").eq(i).prop("checked",true);
+				}
+		 }
+		 
 			
 	 }
 	 	
@@ -236,10 +240,12 @@
 				alert("1명만 선택해주세요");
 				return;
 			}
-			if($("#pResult").val("우승")){
-				alert("우승자가 있습니다.");
-				return;
-			}
+			 for(var i = 0;i<$('.pResult').length;i++){
+				 if($(".pResult").eq(i).val() == "우승"){
+						$(".pResult").eq(i).parent().parent().css("background-color","#fff");
+						$(".checkPassList").eq(i).prop("checked",false);
+					}
+			 }
 			location.href="/participantResult.do?checkResult="+checkResult+"&competitionNo=${competition.competitionNo}";
 		});
 		

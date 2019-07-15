@@ -40,11 +40,11 @@
 							<th>제목</th>
 							<th>작성자</th>
 						</tr>
-						<c:forEach items="${lpd.list }" var="vo">
+						<c:forEach items="${lpd.list}" var="vo">
 							<tr>
 								<td></td>
 								<td>1</td>
-								<td><a href="#">${vo.recipeTitle1 }</a></td>
+								<td><a href="#">${vo.recipeTitle1}</a></td>
 								<td><a href="#">${vo.recipeWriter1 }</a></td>
 							</tr>
 							<tr>

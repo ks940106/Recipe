@@ -20,7 +20,7 @@
    <header>
         <div>
             <h1>
-                <a href="/singsingCampingIndex.do">
+                <a href="/views/singsingCampingIndex.jsp">
                     <img src="" alt="싱싱캠핑" />
                 </a>
             </h1>

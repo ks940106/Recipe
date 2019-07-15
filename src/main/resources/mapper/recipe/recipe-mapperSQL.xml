@@ -79,7 +79,7 @@
                RECIPE_ITEM,
                RECIPE_STEP,
                RECIPE_STEPIMG,
-               RECIPE_LIKE,
+               (select count(*) from RECIPE_LIKE where RECIPE.RECIPE_NO=RECIPE_LIKE.RECIPE_NO)as RECIPE_LIKE,
                RECIPE_HIT,
                RECIPE_PRICE,
                RECIPE_DATE,
@@ -116,8 +116,22 @@
             insert (recipe_like.recipe_no,recipe_like.id)
             values(#{recipeNo},#{id})
     </update>
+    <update id="updateLike" parameterType="_int">
+        update RECIPE set RECIPE_LIKE = (select count(*) from RECIPE_LIKE where RECIPE_LIKE.RECIPE_NO = #{recipeNo}) where RECIPE_NO=#{recipeNo}
+    </update>
+    <update id="recipeUnLike" parameterType="org.ks.recipe.vo.Like">
+        delete RECIPE_LIKE where RECIPE_NO = #{recipeNo} and ID = #{id}
+    </update>
 
     <select id="getLike" parameterType="org.ks.recipe.vo.Like" resultMap="like">
         select * from RECIPE_LIKE where RECIPE_NO = #{recipeNo} and id = #{id}
     </select>
+
+    <select id="likeRank" resultMap="recipe">
+        select ROWNUM, rank.* from (select * from RECIPE where RECIPE_PRICE = 0 order by RECIPE_LIKE desc) rank where ROWNUM between 1 and 10
+    </select>
+
+    <update id="orderReg" parameterType="map">
+        update RECIPE set RECIPE_PRICE = #{price} where RECIPE_NO = #{recipeNo}
+    </update>
 </mapper>

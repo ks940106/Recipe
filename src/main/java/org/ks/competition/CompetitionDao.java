@@ -22,4 +22,5 @@ public interface CompetitionDao {
 	public int participantResult(String checkResult, int competitionNo);
 	public List competitionMypage(String id);
 	public List participantResultList(int competitionNo);
+	public void setNull(int competitionNo);
 }
