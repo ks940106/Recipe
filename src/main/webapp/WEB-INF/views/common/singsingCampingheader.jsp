@@ -14,14 +14,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>싱싱캠핑</title>
 </head>
 <body>
    <header>
         <div>
             <h1>
                 <a href="/views/singsingCampingIndex.jsp">
-                    <img src="" alt="싱싱캠핑" />
+                    <img src="../resources/img/camping/campinglogo.png" alt="싱싱캠핑" style="width:200px;"/>
                 </a>
             </h1>
             <nav>
@@ -57,21 +57,6 @@
                 </ul>
                 
             </nav>
-            <!-- <ul>
-                <li>
-                    <h2>We Are Awesome Creative Agency</h2>
-                    <p>
-                        This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.
-                    </p>
-                    <a href="#" class="btn_more">LEARN MORE</a>
-                </li>
-            </ul>
-            <ol>
-                <li><a href="#" class="active">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-            </ol> -->
         </div>
     </header>
 </body>

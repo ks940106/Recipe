@@ -10,7 +10,7 @@
  <footer>
         <div>
             <div>
-                <h2><img src="#" alt="camping" style="width:150px";/></h2>
+                <h2><img src="../../resources/img/camping/campinglogo3.png" alt="camping" style="width:150px";/></h2>
                 <p>
                     lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh elit. Duis sed odio sit amet auctror a ornare odio non mauris vitae erat in elit
                 </p>

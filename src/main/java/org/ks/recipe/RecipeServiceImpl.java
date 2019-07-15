@@ -50,6 +50,7 @@ public class RecipeServiceImpl implements RecipeService {
     @Transactional
     public boolean recipeLike(Like like) {
         if(recipeDaoImpl.recipeLike(like)>0){
+            recipeDaoImpl.updateLike(like.getRecipeNo());
             return true;
         }else {
             return false;
@@ -60,5 +61,26 @@ public class RecipeServiceImpl implements RecipeService {
     public boolean getLike(String recipeNo, String id) {
         Like like = recipeDaoImpl.getLike(recipeNo,id);
         return like != null;
+    }
+
+    @Override
+    @Transactional
+    public boolean recipeUnLike(Like like) {
+        if(recipeDaoImpl.recipeUnLike(like)>0){
+            recipeDaoImpl.updateLike(like.getRecipeNo());
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    @Override
+    public List<Recipe> likeRank() {
+        return recipeDaoImpl.likeRank();
+    }
+
+    @Override
+    public int orderReg(int recipeNo, int price) {
+        return recipeDaoImpl.orderReg(recipeNo,price);
     }
 }
