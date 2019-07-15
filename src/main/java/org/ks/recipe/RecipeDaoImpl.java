@@ -8,7 +8,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository("recipeDaoImpl")
 public class RecipeDaoImpl implements RecipeDao {
@@ -50,5 +52,29 @@ public class RecipeDaoImpl implements RecipeDao {
     public Like getLike(String recipeNo, String id) {
         Like key = new Like(Integer.parseInt(recipeNo),id);
         return sqlSession.selectOne("recipe.getLike",key);
+    }
+
+    @Override
+    public int recipeUnLike(Like like) {
+
+        return sqlSession.update("recipe.recipeUnLike",like);
+    }
+
+    @Override
+    public int updateLike(int recipeNo){
+        return sqlSession.update("recipe.updateLike",recipeNo);
+    }
+
+    @Override
+    public List<Recipe> likeRank() {
+        return sqlSession.selectList("recipe.likeRank");
+    }
+
+    @Override
+    public int orderReg(int recipeNo, int price) {
+        Map<String,Integer> map = new HashMap<String, Integer>();
+        map.put("recipeNo",recipeNo);
+        map.put("price",price);
+        return sqlSession.update("recipe.orderReg",map);
     }
 }
