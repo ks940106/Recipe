@@ -1,0 +1,108 @@
+@charset "UTF-8";
+/* <![CDATA[ */
+
+#IntroTop {height:90px; width:100%; max-width:1300px; margin:0 auto;}
+#IntroTop .left {width:100%; text-align:center; line-height:90px; margin-top: 10px;}
+#IntroTop .left img {vertical-align:middle; margin-left:20px;}
+#IntroTop .right {width:60%; float:right;}
+#IntroTop {}
+#IntroTop .introTopWrap{float:right;}
+#IntroTop .introTopLink{float:right;margin-right:8px;}
+#IntroTop .introTopLink a{color:#f26c4f;padding:5px 10px;border:1px solid #f26c4f;font-weight:300;font-size:0.67rem;line-height:90px;}
+#introWeather  {float:right;}
+#introWeather ul {float:right;}
+#introWeather ul li img {vertical-align:middle;}
+#introWeather ul li {float:left; line-height:90px; padding:0 5px;}
+#introWeather ul li span {display:inline-block; width:42px; height:42px; margin:0 10px; background-color:#ed1c24; border-radius: 21px; background-image:url('/images/css/diagram.png'); background-repeat:no-repeat; background-position:1px -97px; vertical-align:middle;}
+#introWeather ul li a {vertical-align:middle; color:#000000; border-bottom:2px solid #ed1c24;}
+
+#IntroVisual { position: relative; clear:both;  overflow:hidden;}
+/*#IntroVisual img {position:absolute; left:50%; top:80%; margin-left:-100px; margin-top:-41px; }*/
+#IntroVisual video {width:100%;}
+#IntroVisual .left { transform: skewX(-15deg); -ms-transform: skewX(-15deg); /* IE 9 */ -webkit-transform: skewX(-15deg); /* Safari and Chrome */ width: calc(50% + 110px); height: 900px; 	margin-left:-110px; /* new styles */ position: relative; overflow: hidden; -webkit-transform-origin: 50% right; -ms-transform-origin: 50% right; transform-origin: 50% right; 	float:left; cursor:pointer;}
+#IntroVisual .left div.bg { transform: skewX(15deg); -ms-transform: skewX(15deg); /* IE 9 */ -webkit-transform: skewX(15deg); /* Safari and Chrome */ background-image: url('../img/left_bg.jpg'); background-repeat: no-repeat; background-position: 50% 50%; 	background-size:cover; /* new styles */ position: absolute; -webkit-transform-origin: 50% right; -ms-transform-origin: 50% right; transform-origin: 50% right; width:calc(100% + 40px); max-width: 1300px; /* something ridiculously big */ height: 900px; /* something ridiculously big */ 	right:-120px; 	text-align:center; 	padding-top:150px;  transition: 0.4s;}
+#IntroVisual .left div.bg:hover { 	right:-130px; }
+#IntroVisual .left div.shadow {background-color: rgba(0, 0, 0, 0.45); position:absolute; width:100%; height:100%; display:none;}
+#IntroVisual:hover .left div.shadow {display:block;}
+#IntroVisual:hover .left:hover div.shadow {display:none;}
+#IntroVisual .right { transform: skewX(-15deg); -ms-transform: skewX(-15deg); /* IE 9 */ -webkit-transform: skewX(-15deg); /* Safari and Chrome */ width: calc(50% + 110px); height: 900px; 	margin-right:-110px; /* new styles */ position: relative; overflow: hidden; -webkit-transform-origin: 50% right; -ms-transform-origin: 50% right; transform-origin: 50% right; 	float:left; cursor:pointer;}
+#IntroVisual .right div.bg { transform: skewX(15deg); -ms-transform: skewX(15deg); /* IE 9 */ -webkit-transform: skewX(15deg); /* Safari and Chrome */ background-image: url('../img/right_bg.jpg'); background-repeat: no-repeat; background-position: 50% 50%; 	background-size:cover; /* new styles */ position: absolute; -webkit-transform-origin: 50% right; -ms-transform-origin: 50% right; transform-origin: 50% right; width:calc(100% + 40px); max-width: 1300px; /* something ridiculously big */ height: 900px; /* something ridiculously big */ 	left:-150px; 	text-align:center; 	padding-top:150px;  transition: 0.4s;}
+#IntroVisual .right div.bg:hover {	left:-130px; 	}
+#IntroVisual .right div.shadow {background-color: rgba(0, 0, 0, 0.45); position:absolute; width:100%; height:100%; display:none;}
+#IntroVisual:hover .right div.shadow {display:block;}
+#IntroVisual:hover .right:hover div.shadow {display:none;}
+#IntroVisual > div > div.bg img.go_over {display:none; margin-top:-80px;}
+#IntroVisual > div > div.bg:hover img.go_over {display:inline;}
+#IntroVisual > div > div.bg:hover img.go_basic {display:none;}
+#IntroVisual > div > div.bg img.go_m {display:none;}
+
+#GoBooking {position:absolute; left:50%; top:50%; margin-left:-125px; margin-top:-125px; display:inline-block; padding:30px 30px 24px 30px; background-color: rgba(236, 32, 41, 0.95); z-index:10; border-radius: 100%; transition:all 0.2s ease-out; -webkit-transition: all 0.2s ease-out; -moz-transition: all 0.2s ease-out; transition: all 0.2s ease-out; }
+
+#IntroBanner {width:100%; max-width:1300px; margin:0 auto 2px auto;}
+#IntroBanner a img {width:100%; display:none;}
+#IntroBanner a img:first-child {display:block;}
+
+
+#PopupWrap {position:absolute; top:0; left:0; z-index:1000;}
+#PopupWrap ul {position:relative;}
+#PopupWrap ul li {float:left; margin-top:5px; margin-left:5px;}
+#PopupWrap ul li .popup {border:1px solid #000000;}
+#PopupWrap ul li .popup .close {margin-top:-6px; padding-top:5px; background-color:#ffffff;}
+#PopupWrap ul li .popup .close span {display:inline-block; font-size:0.7rem; padding:0 10px 10px 10px;}
+#PopupWrap ul li .popup .close span.text {width:calc(100% - 50px);}
+#PopupWrap ul li .popup .close span.button {width:45px;}
+
+#PopupWrap ul li .template {width:100%; max-width:350px; background-image:url("/images/main/popup_bg_1.jpg"); background-repeat:no-repeat; background-position:50% 0%;}
+#PopupWrap ul li .template2 {background-image:url("/images/main/popup_bg_2.jpg");}
+#PopupWrap ul li .template .popimg {margin:95px 15px 21px 15px; padding:60px 30px; width:calc(100% -30px); max-width:320px; min-height:290px; background-color:#ffffff;}
+
+
+
+
+@media only screen and (max-width: 1000px){
+
+#IntroTop {height:70px;}
+#IntroTop .left {line-height:70px;}
+#IntroTop .left img {vertical-align:middle; margin-left:10px; width:120px;}
+#IntroTop .right {}
+#IntroTop .right img {height:36px;}
+#introWeather ul li {line-height:66px;}
+#IntroTop .introTopLink a{line-height:66px;}
+
+#IntroVisual { position: relative; height:560px; clear:both; background-image:url('/images/intro/visual_3.gif'); background-size:cover; background-position:50% 50%;}
+#IntroVisual video {display:none;}
+#IntroVisual img {width:100px; top:50%;}
+#IntroVisual .left { transform: skewX(0); -ms-transform: skewX(0); /* IE 9 */ -webkit-transform: skewX(0); /* Safari and Chrome */ width: 100%; height: 280px; 	margin-left:0; /* new styles */  	clear:both;}
+#IntroVisual .left div.bg { transform: skewX(0); -ms-transform: skewX(0); /* IE 9 */ -webkit-transform: skewX(0); /* Safari and Chrome */ background-image: url('/images/intro/left_bg_mo.jpg');  width: 100%; /* something ridiculously big */ height: 100%; /* something ridiculously big */ right:0; 	padding-top:70px;}
+#IntroVisual .left div.bg img {width:184px; }
+#IntroVisual .right { transform: skewX(0); -ms-transform: skewX(0); /* IE 9 */ -webkit-transform: skewX(0); /* Safari and Chrome */ width: 100%; height: 280px; 	margin-right:0; /* new styles */  clear:both;}
+#IntroVisual .right div.bg {transform: skewX(0); -ms-transform: skewX(0); /* IE 9 */ -webkit-transform: skewX(0); /* Safari and Chrome */ background-image: url('/images/intro/right_bg_mo.jpg');  width: 100%; /* something ridiculously big */ height: 100%; /* something ridiculously big */ left:0; 	padding-top:110px; }
+#IntroVisual .right div.bg img {width:184px; }
+#IntroVisual .left div.bg:hover { 	right:0; }
+#IntroVisual .right div.bg:hover {	left:0; 	}
+#IntroVisual > div > div.bg:hover img.go_over {display:none;}
+#IntroVisual > div > div.bg:hover img.go_basic {display:inline;}
+#IntroVisual > div > div.bg img.go_m {display:inline;width: 55px;position: absolute;left: 50%;margin-left: -27px;margin-top: 40px;}
+#IntroVisual .left div.bg img.go_m{margin-top: 0;}
+
+#GoBooking { margin-left:-62.5px; margin-top:-62.5px;padding:15px 15px 6px}
+#GoBooking img {width:90px;}
+
+#IntroBanner {margin-bottom:0;}
+#IntroBanner a img:first-child {display:none;}
+#IntroBanner a img:last-child {display:block;}
+
+}
+
+@media only screen and (max-width: 500px){
+
+#PopupWrap ul {position:relative; width:100%; padding:10px;}
+#PopupWrap ul li {width:100%;}
+#PopupWrap .popimg img { width:100%;}
+#IntroTop .introTopLink{display:none;}
+
+
+}
+
+
+/* ]]> */

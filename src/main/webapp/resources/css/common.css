@@ -1,0 +1,247 @@
+@CHARSET "UTF-8";
+/*------------------------------------------------------------------------------------------------*/
+/* common - css */
+#container {position:relative;width:100%;height:100%;min-width:1200px;}
+.scroll {position:absolute;bottom:0;left:50%;margin-left:-34px;z-index:300;}
+.scroll a {background:url(http://gonylab5.speedgabia.com/graysands/final/images/scroll.png) no-repeat left top;width:68px;height:85px;display:block;}
+
+
+/*------------------------------------------------------------------------------------------------*/
+/* index */
+#index #header h1 {top:10px;}
+#index #header #gnb {top:-65px;}
+
+#index .contents {position:relative;width:100%;height:100%;overflow:hidden;}
+#index .contents .idx_img {position:relative;width:100%;min-height:650px;overflow:hidden;margin-bottom:10px;}
+#index .contents .cont_logo {position:relative;width:100%;overflow:hidden;}
+#index .contents .cont_logo h3 {width:300px;margin:0 auto;padding:50px 0;opacity:0;}
+#index .contents .cont_news {
+	position:relative;width:100%;padding:70px 0 150px;
+	background:url(http://gonylab5.speedgabia.com/graysands/final/images/box_bg.jpg) no-repeat 50% 50%;background-size:cover;
+}
+#index .contents .cont_news .news_top {position:relative;width:100%;overflow:hidden;}
+#index .contents .cont_news .news_top .line {position:absolute;top:30px;border:1px solid #e8e8e8;width:calc(50% - 150px);}
+#index .contents .cont_news .news_top .lt {left:0;} 
+#index .contents .cont_news .news_top .rt {right:0;}
+#index .contents .cont_news .news_top h4 {width:270px;margin:0 auto 70px;}
+#index .contents .cont_news .news_cont {width:1200px;margin:0 auto;overflow:hidden;}
+#index .contents .cont_news .news_cont > div {
+	float:left;width:50%;opacity:0;
+	-moz-transform: scale(0.8);-webkit-transform: scale(0.8);
+	-o-transform: scale(0.8);-ms-transform: scale(0.8);
+	transform: scale(0.8);
+	
+}
+#index .contents .cont_news .news_cont > div strong {display:block;font-size:32px;text-align:center;padding-bottom:20px;margin-bottom:20px;}
+#index .contents .cont_news .news_cont > div strong.nct_01 {color:#558e97;}
+#index .contents .cont_news .news_cont > div strong.nct_02 {color:#d6ce75;}
+#index .contents .cont_news .news_cont > div p {text-align:center;font-size:17px;line-height:1.7em;}
+
+#index .section {position:relative;width:100%;height:100%;overflow:hidden;}
+#index .section > div {margin-bottom:10px;}
+
+#index .cont_02 {min-width:1200px;min-height:500px;padding:100px 0;}
+#index .cont_02 ul {width:90%;height:100%;min-width:1200px;margin:0 auto;overflow:hidden;}
+#index .cont_02 ul li {
+	float:left;width:33.33%;min-width:400px;height:100%;opacity:0;
+	-moz-transform: scale(0);-webkit-transform: scale(0);
+	-o-transform: scale(0);-ms-transform: scale(0);
+	transform: scale(0);
+}
+#index .cont_02 ul li a {position:relative;width:100%;height:310px;display:block;}
+#index .cont_02 ul li a .img {position:relative;width:300px;height:300px;margin:0 auto;overflow:hidden;}
+#index .cont_02 ul li a .img .i_img {
+	position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;
+	-webkit-transform: scale(1);-ms-transform: scale(1);transform: scale(1);
+	-webkit-transition: all 0.3s linear;-ms-transition: all 0.3s linear;transition: all 0.3s linear;
+}
+#index .cont_02 ul li a .img .i_bg {
+	position:absolute;top:0;left:0;width:100%;height:100%;z-index:110;
+	background:url(http://gonylab5.speedgabia.com/graysands/final/images/idx_spc_bg.png) no-repeat 50% 50%;
+}
+#index .cont_02 ul li a:hover > .img > .i_img {-ms-transform: scale(1.07);-webkit-transform: scale(1.07);transform: scale(1.07);}
+#index .cont_02 ul li a img {position:absolute;top:250px;left:50%;margin-left:-44.5px;display:block;z-index:120;}
+#index .cont_02 ul li strong {display:block;font-size:32px;text-align:center;margin:50px 0 25px;}
+#index .cont_02 ul li span {display:block;line-height:1.5em;font-size:15px;text-align:center;}
+
+#index #idx_mov .mov_btn {position:absolute;top:50%;left:3%;margin-top:-35.5px;z-index:300;}
+#index #idx_mov .mov_btn a {display:block;}
+
+#index .cont_03 {min-width:1200px;min-height:500px;padding:100px 0;background:#e8e8e8;}
+#index .cont_03 h4 {text-align:center;font-size:30px;}
+#index .cont_03 h4 span {display:block;font-size:20px;text-align:center;margin:5px 0 10px;}
+
+/*------------------------------------------------------------------------------------------------*/
+/* video */
+#video .pv_cont .tabs .vd {width:1200px;margin:0 auto 70px;}
+
+
+/*------------------------------------------------------------------------------------------------*/
+/* exterior */
+#exterior .ttl {position:fixed;top:50%;left:50%;margin:-60px 0 0 -300px;width:600px;height:120px;z-index:320;font-size:50px;color:#fff;text-align:center;letter-spacing:1px;display:none;}
+#exterior .ttl span {display:block;font-size:20px;margin-top:10px;text-align:center;letter-spacing:1px;}
+#exterior .idx_img {position:relative;width:100%;min-height:650px;overflow:hidden;margin-bottom:10px;}
+#exterior .section {position:relative;width:100%;height:100%;overflow:hidden;}
+#exterior .section > div {margin-bottom:10px;}
+
+
+/*------------------------------------------------------------------------------------------------*/
+/* previews */
+.bnr #visual h3 {position:absolute;top:50%;left:50%;margin:-55px 0 0 -400px;z-index:300;}
+.bnr #visual .bnr_bg {position:fixed;top:0;left:0;width:100%;height:100%;background:#000;opacity:0.5;z-index:250;}
+
+#rpv .prv_lst {width:1200px;margin:0 auto;padding-bottom:100px;overflow:hidden;}
+#rpv .prv_lst > div {float:left;width:48.5%;margin-bottom:60px;}
+#rpv .prv_lst > div.lt {margin-right:1.5%;}
+#rpv .prv_lst > div.rt {margin-left:1.5%;}
+#rpv .prv_lst > div .img {position:relative;width:100%;height:345px;overflow:hidden;}
+#rpv .prv_lst > div .img div {
+	position:absolute;top:0;left:0;width:100%;height:100%;
+	-webkit-transition: all 0.5s linear;-moz-transition: all 0.5s linear;
+	-ms-transition: all 0.5s linear;-o-transition: all 0.5s linear;
+}
+#rpv .prv_lst > div strong {font-size:42px;padding:50px 0 20px;display:block;}
+#rpv .prv_lst > div p {line-height:1.7em;font-size:16px;display:block;}
+#rpv .prv_lst > div ul {width:100%;height:100%;border-top:1px solid #c3c3c3;border-bottom:1px solid #c3c3c3;margin-top:35px;overflow:hidden;}
+#rpv .prv_lst > div ul li {float:left;width:50%;}
+#rpv .prv_lst > div ul li.line {background:url(http://gonylab5.speedgabia.com/graysands/final/images/rpv_line.png) no-repeat right center;}
+#rpv .prv_lst > div ul li a {display:block;padding:20px 0;text-align:center;font-size:16px;}
+#rpv .prv_lst > div ul li a:hover {color:#5f9da5;}
+
+
+/*------------------------------------------------------------------------------------------------*/
+/* room */
+#room #seciton,.section {position:relative;width:100%;height:100%;min-width:1200px;min-height:650px;overflow:hidden;}
+#room #seciton .visual {position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;}
+#room #seciton .visual h3 {position:absolute;top:50%;left:50%;width:700px;height:70px;margin:-35px 0 0 -350px;color:#fff;font-size:70px;text-align:center;z-index:350;}
+#room .contents {position:relative;width:100%;height:100%;background:#fff;}
+#room .contents .detail {position:relative;width:100%;height:100%;margin-bottom:200px;overflow:hidden;
+	background:url(http://gonylab5.speedgabia.com/graysands/final/images/room/d_bg.png) repeat-x left top;background-size:contain;
+}
+#room .contents .detail > div {width:1200px;margin:0 auto;}
+#room .contents .detail .ttl {padding:120px 0 100px;}
+#room .contents .detail .ttl h4 {text-align:center;font-size:70px;}
+#room .contents .detail .ttl h4 em {font-weight:bold;margin-left:10px;}
+#room .contents .detail .ttl span {display:block;text-align:center;font-size:20px;color:#4c4c4c;padding-top:15px;}
+#room .contents .detail .d_in {height:760px;}
+#room .contents .detail .d_in > div {position:relative;float:left;height:100%;width:50%;}
+#room .contents .detail .d_in > div.txt div {position:absolute;top:50%;width:500px;left:50px;}
+#room .contents .detail .d_in > div.txt div h5 {font-size:40px;line-height:1.1em;font-family:escrow,serif;font-weight:400;font-style:normal;}
+#room .contents .detail .d_in > div.txt div h5 > span {font-size:15px;color:#a7834b;display:block;font-weight:bold;margin-bottom:10px;}
+#room .contents .detail .d_in > div.txt div > span {font-size:14px;color:#a6a6a6;display:block;margin:20px 0;}
+#room .contents .detail .d_in > div.txt div p {font-size:15px;line-height:1.5em;margin:20px 0;}
+#room .contents .detail .d_in > div.txt div > ul {width:100%;margin-top:30px;}
+#room .contents .detail .d_in > div.txt div > ul > li {overflow:hidden;line-height:1.5em;}
+#room .contents .detail .d_in > div.txt div > ul > li.add {font-weight:bold;margin-top:20px;}
+#room .contents .detail .d_in > div.txt div > ul > li > span {display:block;float:left;height:24px;margin-right:5px;}
+#room .contents .detail .d_in > div.txt div > ul > li > ul {float:left;width:400px;}
+#room .contents .detail .d_in > div.txt div > ul > li > ul li {float:left;margin-left:5px;}
+#room .contents .section > div {position:relative;margin-bottom:10px;min-width:1200px;min-height:650px;overflow:hidden;}
+
+
+/*------------------------------------------------------------------------------------------------*/
+/* special */
+.special .pv_cont > ul {width:700px!important;margin:0 auto 50px!important;}
+.service .pv_cont > ul {width:1150px!important;margin:0 auto 50px!important;}
+.service .pv_cont > ul > li {width:11.25%;}
+.service .pv_cont > ul > li.lt {width:16.25%;}
+.special .pv_cont > ul > li {width:20%!important;}
+
+#special .spc_lst,#special .svc_lst {width:1200px;margin:0 auto;padding-bottom:100px;overflow:hidden;}
+#special .cont_txt {width:100%;padding:25px 0 70px;margin-bottom:35px;background:url(http://gonylab5.speedgabia.com/graysands/final/images/box_bg.jpg) repeat-y left center;}
+#special .cont_txt h4 {width:550px;margin:0 auto 20px;padding:20px 0;text-align:center;font-size:40px;border-top:1px solid #bcbcbb;border-bottom:1px solid #bcbcbb;}
+#special .cont_txt h4 span {text-align:center;display:block;font-size:16px;margin-top:15px;}
+#special .cont_txt p {font-size:15px;width:900px;margin:0 auto;text-align:center;line-height:1.5em;}
+/* add */
+.service .svc_lst .svc_lst_box {width:48.5%;float:left;}
+.service .svc_lst .left {margin-right:1.5%;}
+.service .svc_lst .right {margin-left:1.5%;}
+.service .svc_lst .slide {min-width:auto!important;min-height:auto!important;height:345px!important;}
+.service .svc_lst .cont_txt {height:300px;}
+.service .svc_lst .cont_txt p {width:90%!important;margin:0 auto;}
+
+#special #visual {min-width:1200px;height:550px;}
+#special #visual .banner_vd {top:-15%!important;}
+#special .pv_cont {top:550px!important;}
+.service .slide_show > li {min-height:auto!important;height:55%!important;}
+
+/*------------------------------------------------------------------------------------------------*/
+/* banner */
+.bnr #visual {position:fixed;top:0;left:0;width:100%;height:400px;z-index:280;}
+.bnr .pv_cont {position:relative;top:400px;left:0;padding-top:70px;width:100%;min-width:1200px;background:#fff;z-index:310;}
+.bnr .pv_cont > h2 {text-align:center;margin-bottom:25px;}
+.bnr .pv_cont > h2 span {font-size:50px;display:block;margin-bottom:5px;}
+.bnr .pv_cont > h2 b {font-size:20px;display:block;}
+.bnr .pv_cont > ul {width:650px;height:67px;margin:0 auto;border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8;}
+.bnr .pv_cont > ul > li {float:left;background:url(http://gonylab5.speedgabia.com/graysands/final/images/pv_b.gif) no-repeat right center;}
+.bnr .pv_cont > ul > li.last {background:none;}
+.bnr .pv_cont > ul > li a {display:block;padding:25px 0;font-size:17px;text-align:center;color:#4d4d4d;}
+.bnr .pv_cont > ul > li a:hover {color:#000;}
+.bnr .pv_cont > ul > li a.active {color:#000;font-weight:bold;}
+.bnr .pv_cont > .tabs {padding-top:70px;}
+
+/* about */
+#about .pv_cont > ul > li {width:50%;}
+#about .pv_cont .location .info_address {width:750px;margin:0 auto;text-align:center;padding-bottom:70px;}
+#about .pv_cont .location .info_address span {display:block;float:left;width:50%;font-size:16px;color:#292929;}
+#about .pv_cont .location .info_location {width:1200px;margin:100px auto;line-height:1.5em;font-size:15px;}
+#about .pv_cont .location .info_location span {display:block;font-weight:bold;}
+#about .pv_cont .location #map {width:100%;height:500px;text-align:center;position:relative;z-index:250;}
+
+#about .pv_cont .travel {width:1200px;margin:0 auto;}
+#about .pv_cont .travel ul {overflow:hidden;height:100%;}
+#about .pv_cont .travel ul li {width:50%;height:100%;float:left;min-height:730px;}
+#about .pv_cont .travel ul li .img {min-height:400px;height:20%;width:100%;}
+#about .pv_cont .travel ul li .tcont {width:100%;margin:50px 0;}
+#about .pv_cont .travel ul li .line {background:url(http://gonylab5.speedgabia.com/graysands/final/images/travel/line.png) no-repeat right bottom;}
+#about .pv_cont .travel ul li .tcont div {width:530px;margin:0 auto;}
+#about .pv_cont .travel ul li .tcont div h4 {color:#292929;font-size:32px;font-weight:lighter;margin-bottom:20px;}
+#about .pv_cont .travel ul li .tcont div h4 span {font-size:17px;}
+#about .pv_cont .travel ul li .tcont div p {font-size:15px;line-height:1.6em;color:#292929;}
+#about .pv_cont .travel ul li .tcont div a {display:block;font-size:20px;color:#000;margin-top:30px;}
+#about .pv_cont .travel ul li .tcont div a:hover {font-weight:bold;}
+#about .pv_cont .travel ul li.tlst_01 .img {background:url(http://gonylab5.speedgabia.com/graysands/final/images/travel/1.jpg) no-repeat 50% 50%;background-size:cover;}
+#about .pv_cont .travel ul li.tlst_02 .img {background:url(http://gonylab5.speedgabia.com/graysands/final/images/travel/2.jpg) no-repeat 50% 50%;background-size:cover;}
+#about .pv_cont .travel ul li.tlst_03 .img {background:url(http://gonylab5.speedgabia.com/graysands/final/images/travel/3.jpg) no-repeat 50% 50%;background-size:cover;}
+#about .pv_cont .travel ul li.tlst_04 .img {background:url(http://gonylab5.speedgabia.com/graysands/final/images/travel/4.jpg) no-repeat 50% 50%;background-size:cover;}
+#about .pv_cont .travel ul li.tlst_05 .img {background:url(http://gonylab5.speedgabia.com/graysands/final/images/travel/5.jpg) no-repeat 50% 50%;background-size:cover;}
+#about .pv_cont .travel ul li.tlst_06 .img {background:url(http://gonylab5.speedgabia.com/graysands/final/images/travel/6.jpg) no-repeat 50% 50%;background-size:cover;}
+#about .pv_cont .travel ul li.tlst_07 .img {background:url(http://gonylab5.speedgabia.com/graysands/final/images/travel/7.jpg) no-repeat 50% 50%;background-size:cover;}
+#about .pv_cont .travel ul li.tlst_08 .img {background:url(http://gonylab5.speedgabia.com/graysands/final/images/travel/8.jpg) no-repeat 50% 50%;background-size:cover;}
+
+/* reserve */
+#reserve .pv_cont > ul > li {width:50%;}
+#reserve .pv_cont .tabs {width:1200px;margin:0 auto;}
+#reserve .pv_cont .rv {position:relative;}
+#reserve .pv_cont .gd {padding:30px 0 50px;}
+#reserve .pv_cont .gd h2 {width:250px;margin:50px auto;}
+#reserve .pv_cont .gd table {width:1200px;border:1px solid #e7e7e7;font-family:'ë‹ì›€',Dotum!important;}
+#reserve .pv_cont .gd table tr th {border-right:1px solid #e7e7e7;border-bottom:1px solid #e7e7e7;}
+#reserve .pv_cont .gd table tr th,#reserve .pv_cont .gd table tr td {
+	border-right:1px solid #e7e7e7;border-bottom:1px solid #e7e7e7;text-align:center;font-size:13px;color:#676767;
+}
+#reserve .pv_cont .gd > div > h3 {margin-bottom:10px;}
+#reserve .pv_cont .gd ul li{
+	padding-left:10px;font-size:12px;line-height:1.6em;color:#676767;font-family:'ë‹ì›€',Dotum!important;
+	background:url(http://gonylab2.speedgabia.com/common/li_b.gif) no-repeat left 3px;
+}
+#reserve .pv_cont .gd ul li span {color:#ee3939;}
+#reserve .pv_cont .gd .r_info_01 {position:relative;margin-bottom:30px;}
+#reserve .pv_cont .gd .r_info_01 h4 {text-align:left;margin-bottom:10px;}
+#reserve .pv_cont .gd .r_info_01 table {margin-bottom:20px;}
+#reserve .pv_cont .gd .r_info_01 table .room_ {background:#efefef;height:50px;}
+#reserve .pv_cont .gd .r_info_01 table > thead {line-height:1.1em;}
+#reserve .pv_cont .gd .r_info_01 table > thead {background:#f8f8f8;}
+#reserve .pv_cont .gd .r_info_01 table > thead tr th {font-weight:bold;}
+#reserve .pv_cont .gd .r_info_01 table > tbody tr td {line-height:3em;}
+#reserve .pv_cont .gd .r_info_02 {margin:50px 0;text-align:left;} 
+#reserve .pv_cont .gd .r_info_03 {padding-bottom:150px;text-align:left;}
+#reserve .pv_cont .gd .r_info_03 table {line-height:1.5em;margin-top:20px;}
+#reserve .pv_cont .gd .r_info_03 table > thead {background:#f2f2f2;}
+
+/* table */
+#table .pv_cont > ul > li {width:33.33%;}
+#table .pv_cont .tabs {width:1200px;margin:0 auto 70px;}
+#table .pv_cont .tabs .ttl {padding-bottom:20px;width:100%;border-bottom:1px solid #292929;}
+#table .pv_cont .tabs .ttl h3 {font-size:35px;}
+#table .pv_cont .tabs .ttl p {font-size:15px;padding:15px 0 10px;}

@@ -1,0 +1,235 @@
+@CHARSET "UTF-8";
+
+/*------------------------------------------------------------------------------------------------*/
+/* banner */
+#about #visual {background:url(http://gonylab5.speedgabia.com/graysands/final/banner/1.jpg) no-repeat 50% 50%;background-size:cover;}
+#video #visual {background:url(http://gonylab5.speedgabia.com/graysands/final/banner/1.jpg) no-repeat 50% 50%;background-size:cover;}
+#reserve #visual {background:url(http://gonylab5.speedgabia.com/graysands/final/banner/3.jpg) no-repeat 50% 50%;background-size:cover;}
+#table #visual {background:url(http://gonylab5.speedgabia.com/graysands/final/banner/4.jpg) no-repeat 50% 50%;background-size:cover;}
+
+/*------------------------------------------------------------------------------------------------*/
+/* index */
+#index #idx_vsl {background:url(http://gonylab5.speedgabia.com/graysands/final/main/1.jpg) no-repeat 50% 50%;background-size:cover;}
+
+#index #section01 {background:url(http://gonylab5.speedgabia.com/graysands/final/main/2.jpg) no-repeat 50% 50%;background-size:cover;}
+#index #section02 {background:url(http://gonylab5.speedgabia.com/graysands/final/main/3.jpg) no-repeat 50% 50%;background-size:cover;}
+#index #section03 {background:url(http://gonylab5.speedgabia.com/graysands/final/main/4.jpg) no-repeat 50% 50%;background-size:cover;}
+#index #section04 {background:url(http://gonylab5.speedgabia.com/graysands/final/main/5.jpg) no-repeat 50% 50%;background-size:cover;}
+#index #section05 {background:url(http://gonylab5.speedgabia.com/graysands/final/main/6.jpg) no-repeat 50% 50%;background-size:cover;}
+#index #section06 {background:url(http://gonylab5.speedgabia.com/graysands/final/main/7.jpg) no-repeat 50% 50%;background-size:cover;}
+#index #section07 {background:url(http://gonylab5.speedgabia.com/graysands/final/main/8.jpg) no-repeat 50% 50%;background-size:cover;}
+#index #section08 {background:url(http://gonylab5.speedgabia.com/graysands/final/main/9.jpg) no-repeat 50% 50%;background-size:cover;}
+#index #section09 {background:url(http://gonylab5.speedgabia.com/graysands/final/main/10.jpg) no-repeat 50% 50%;background-size:cover;}
+#index #section10 {background:url(http://gonylab5.speedgabia.com/graysands/final/main/11.jpg) no-repeat 50% 50%;background-size:cover;}
+#index #section11 {background:url(http://gonylab5.speedgabia.com/graysands/final/main/12.jpg) no-repeat 50% 50%;background-size:cover;}
+
+#index .idx_spc_01 .img > .i_img {background:url(http://gonylab5.speedgabia.com/graysands/final/special/1/1.jpg) no-repeat 50% 50%;background-size:cover;}
+#index .idx_spc_02 .img > .i_img {background:url(http://gonylab5.speedgabia.com/graysands/final/special/2/1.jpg) no-repeat 50% 50%;background-size:cover;}
+#index .idx_spc_03 .img > .i_img {background:url(http://gonylab5.speedgabia.com/graysands/final/special/3/1.jpg) no-repeat 50% 50%;background-size:cover;}
+
+
+/*------------------------------------------------------------------------------------------------*/
+/* exterior */
+#exterior #section01 {background:url(http://gonylab5.speedgabia.com/graysands/final/exterior/1.jpg) no-repeat 50% 50%;background-size:cover;}
+#exterior #section02 {background:url(http://gonylab5.speedgabia.com/graysands/final/exterior/2.jpg) no-repeat 50% 50%;background-size:cover;}
+#exterior #section03 {background:url(http://gonylab5.speedgabia.com/graysands/final/exterior/3.jpg) no-repeat 50% 50%;background-size:cover;}
+#exterior #section04 {background:url(http://gonylab5.speedgabia.com/graysands/final/exterior/4.jpg) no-repeat 50% 50%;background-size:cover;}
+#exterior #section05 {background:url(http://gonylab5.speedgabia.com/graysands/final/exterior/5.jpg) no-repeat 50% 50%;background-size:cover;}
+#exterior #section06 {background:url(http://gonylab5.speedgabia.com/graysands/final/exterior/6.jpg) no-repeat 50% 50%;background-size:cover;}
+
+
+/*------------------------------------------------------------------------------------------------*/
+/* previews */
+#rpv #visual {background:url(http://gonylab5.speedgabia.com/graysands/final/banner/2.jpg) no-repeat 50% 50%;background-size:cover;}
+#rpv .lst_01 .img > div {background:url(http://gonylab5.speedgabia.com/graysands/final/room/501/1.jpg) no-repeat 50% 50%;background-size:cover;}
+#rpv .lst_02 .img > div {background:url(http://gonylab5.speedgabia.com/graysands/final/room/502/1.jpg) no-repeat 50% 50%;background-size:cover;}
+#rpv .lst_03 .img > div {background:url(http://gonylab5.speedgabia.com/graysands/final/room/401/1.jpg) no-repeat 50% 50%;background-size:cover;}
+#rpv .lst_04 .img > div {background:url(http://gonylab5.speedgabia.com/graysands/final/room/402/1.jpg) no-repeat 50% 50%;background-size:cover;}
+
+#rpv .lst_05 .img > div {background:url(http://gonylab5.speedgabia.com/graysands/final/room/301/1.jpg) no-repeat 50% 50%;background-size:cover;}
+#rpv .lst_06 .img > div {background:url(http://gonylab5.speedgabia.com/graysands/final/room/302/1.jpg) no-repeat 50% 50%;background-size:cover;}
+#rpv .lst_07 .img > div {background:url(http://gonylab5.speedgabia.com/graysands/final/room/303/1.jpg) no-repeat 50% 50%;background-size:cover;}
+#rpv .lst_08 .img > div {background:url(http://gonylab5.speedgabia.com/graysands/final/room/201/1.jpg) no-repeat 50% 50%;background-size:cover;}
+#rpv .lst_09 .img > div {background:url(http://gonylab5.speedgabia.com/graysands/final/room/202/1.jpg) no-repeat 50% 50%;background-size:cover;}
+
+/*------------------------------------------------------------------------------------------------*/
+/* room */
+.room_01 #seciton .visual {background:url(http://gonylab5.speedgabia.com/graysands/final/room/501/1.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_01 #section01 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/501/2.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_01 #section02 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/501/3.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_01 #section03 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/501/4.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_01 #section04 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/501/5.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_01 #section05 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/501/6.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_01 #section06 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/501/7.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_01 #section07 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/501/8.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_01 #section08 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/501/9.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_01 #section09 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/501/10.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_01 #section10 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/501/11.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_01 #section11 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/501/12.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_01 #section12 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/501/13.jpg) no-repeat 50% 50%;background-size:cover;}
+
+.room_01 .contents .img_01 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/501/0/1.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_01 .contents .img_02 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/501/0/2.jpg) no-repeat 50% 50%;background-size:cover;}
+
+
+.room_02 #seciton .visual {background:url(http://gonylab5.speedgabia.com/graysands/final/room/502/1.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_02 #section01 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/502/2.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_02 #section02 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/502/3.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_02 #section03 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/502/4.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_02 #section04 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/502/5.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_02 #section05 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/502/6.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_02 #section06 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/502/7.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_02 #section07 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/502/8.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_02 #section08 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/502/9.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_02 #section09 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/502/10.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_02 #section10 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/502/11.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_02 #section11 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/502/12.jpg) no-repeat 50% 50%;background-size:cover;}
+
+.room_02 .contents .img_01 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/502/0/1.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_02 .contents .img_02 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/502/0/2.jpg) no-repeat 50% 50%;background-size:cover;}
+
+
+.room_03 #seciton .visual {background:url(http://gonylab5.speedgabia.com/graysands/final/room/401/1.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_03 #section01 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/401/2.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_03 #section02 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/401/3.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_03 #section03 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/401/4.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_03 #section04 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/401/5.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_03 #section05 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/401/6.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_03 #section06 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/401/7.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_03 #section07 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/401/8.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_03 #section08 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/401/9.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_03 #section09 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/401/10.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_03 #section10 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/401/11.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_03 #section11 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/401/12.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_03 #section12 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/401/13.jpg) no-repeat 50% 50%;background-size:cover;}
+
+.room_03 .contents .img_01 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/401/0/1.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_03 .contents .img_02 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/401/0/2.jpg) no-repeat 50% 50%;background-size:cover;}
+
+
+.room_04 #seciton .visual {background:url(http://gonylab5.speedgabia.com/graysands/final/room/402/1.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_04 #section01 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/402/2.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_04 #section02 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/402/3.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_04 #section03 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/402/4.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_04 #section04 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/402/5.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_04 #section05 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/402/6.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_04 #section06 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/402/7.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_04 #section07 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/402/8.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_04 #section08 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/402/9.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_04 #section09 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/402/10.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_04 #section10 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/402/11.jpg) no-repeat 50% 50%;background-size:cover;}
+
+.room_04 .contents .img_01 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/402/0/1.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_04 .contents .img_02 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/402/0/2.jpg) no-repeat 50% 50%;background-size:cover;}
+
+
+.room_05 #seciton .visual {background:url(http://gonylab5.speedgabia.com/graysands/final/room/301/1.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_05 #section01 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/301/2.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_05 #section02 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/301/3.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_05 #section03 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/301/4.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_05 #section04 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/301/5.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_05 #section05 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/301/6.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_05 #section06 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/301/7.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_05 #section07 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/301/8.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_05 #section08 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/301/9.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_05 #section09 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/301/10.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_05 #section10 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/301/11.jpg) no-repeat 50% 50%;background-size:cover;}
+/*.room_05 #section11 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/301/12.jpg) no-repeat 50% 50%;background-size:cover;}*/
+
+.room_05 .contents .img_01 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/301/0/1.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_05 .contents .img_02 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/301/0/2.jpg) no-repeat 50% 50%;background-size:cover;}
+
+
+.room_06 #seciton .visual {background:url(http://gonylab5.speedgabia.com/graysands/final/room/302/1.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_06 #section01 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/302/2.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_06 #section02 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/302/3.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_06 #section03 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/302/4.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_06 #section04 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/302/5.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_06 #section05 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/302/6.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_06 #section06 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/302/7.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_06 #section07 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/302/8.jpg) no-repeat 50% 50%;background-size:cover;}
+/*.room_06 #section08 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/302/9.jpg) no-repeat 50% 50%;background-size:cover;}*/
+
+.room_06 .contents .img_01 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/302/0/1.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_06 .contents .img_02 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/302/0/2.jpg) no-repeat 50% 50%;background-size:cover;}
+
+
+.room_07 #seciton .visual {background:url(http://gonylab5.speedgabia.com/graysands/final/room/303/1.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_07 #section01 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/303/2.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_07 #section02 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/303/3.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_07 #section03 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/303/4.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_07 #section04 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/303/5.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_07 #section05 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/303/6.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_07 #section06 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/303/7.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_07 #section07 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/303/8.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_07 #section08 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/303/9.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_07 #section09 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/303/10.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_07 #section10 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/303/11.jpg) no-repeat 50% 50%;background-size:cover;}
+
+.room_07 .contents .img_01 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/303/0/1.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_07 .contents .img_02 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/303/0/2.jpg) no-repeat 50% 50%;background-size:cover;}
+
+
+.room_08 #seciton .visual {background:url(http://gonylab5.speedgabia.com/graysands/final/room/201/1.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_08 #section01 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/201/2.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_08 #section02 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/201/3.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_08 #section03 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/201/4.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_08 #section04 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/201/5.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_08 #section05 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/201/6.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_08 #section06 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/201/7.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_08 #section07 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/201/8.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_08 #section08 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/201/9.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_08 #section09 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/201/10.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_08 #section10 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/201/11.jpg) no-repeat 50% 50%;background-size:cover;}
+
+.room_08 .contents .img_01 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/201/0/1.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_08 .contents .img_02 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/201/0/2.jpg) no-repeat 50% 50%;background-size:cover;}
+
+
+.room_09 #seciton .visual {background:url(http://gonylab5.speedgabia.com/graysands/final/room/202/1.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_09 #section01 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/202/2.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_09 #section02 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/202/3.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_09 #section03 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/202/4.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_09 #section04 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/202/5.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_09 #section05 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/202/6.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_09 #section06 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/202/7.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_09 #section07 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/202/8.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_09 #section08 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/202/9.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_09 #section09 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/202/10.jpg) no-repeat 50% 50%;background-size:cover;}
+
+.room_09 .contents .img_01 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/202/0/1.jpg) no-repeat 50% 50%;background-size:cover;}
+.room_09 .contents .img_02 {background:url(http://gonylab5.speedgabia.com/graysands/final/room/202/0/2.jpg) no-repeat 50% 50%;background-size:cover;}
+
+
+/*------------------------------------------------------------------------------------------------*/
+/* special */
+#special #visual {/*background:url(http://gonylab5.speedgabia.com/graysands/final/banner/1.jpg) no-repeat 50% 50%;background-size:cover;*/}
+.special .cont_01 #slide_01 {background:url(http://gonylab5.speedgabia.com/graysands/final/special/1/1.jpg) no-repeat 50% 50%;background-size:cover;}
+.special .cont_01 #slide_02 {background:url(http://gonylab5.speedgabia.com/graysands/final/special/1/2.jpg) no-repeat 50% 50%;background-size:cover;}
+.special .cont_01 #slide_03 {background:url(http://gonylab5.speedgabia.com/graysands/final/special/1/3.jpg) no-repeat 50% 50%;background-size:cover;}
+.special .cont_01 #slide_04 {background:url(http://gonylab5.speedgabia.com/graysands/final/special/1/4.jpg) no-repeat 50% 50%;background-size:cover;}
+.special .cont_01 #slide_05 {background:url(http://gonylab5.speedgabia.com/graysands/final/special/1/5.jpg) no-repeat 50% 50%;background-size:cover;}
+.special .cont_01 #slide_06 {background:url(http://gonylab5.speedgabia.com/graysands/final/special/1/6.jpg) no-repeat 50% 50%;background-size:cover;}
+
+.special .cont_02 #slide_01 {background:url(http://gonylab5.speedgabia.com/graysands/final/special/2/1.jpg) no-repeat 50% 50%;background-size:cover;}
+.special .cont_02 #slide_02 {background:url(http://gonylab5.speedgabia.com/graysands/final/special/2/2.jpg) no-repeat 50% 50%;background-size:cover;}
+.special .cont_02 #slide_03 {background:url(http://gonylab5.speedgabia.com/graysands/final/special/2/3.jpg) no-repeat 50% 50%;background-size:cover;}
+.special .cont_02 #slide_04 {background:url(http://gonylab5.speedgabia.com/graysands/final/special/2/4.jpg) no-repeat 50% 50%;background-size:cover;}
+
+.special .cont_03 #slide_01 {background:url(http://gonylab5.speedgabia.com/graysands/final/special/3/1.jpg) no-repeat 50% 50%;background-size:cover;}
+.special .cont_03 #slide_02 {background:url(http://gonylab5.speedgabia.com/graysands/final/special/3/2.jpg) no-repeat 50% 50%;background-size:cover;}
+
+.special .cont_04 #slide_01 {background:url(http://gonylab5.speedgabia.com/graysands/final/special/4/1.jpg) no-repeat 50% 50%;background-size:cover;}
+
+.special .cont_05 #slide_01 {background:url(http://gonylab5.speedgabia.com/graysands/final/special/5/1.jpg) no-repeat 50% 50%;background-size:cover;}
+
+.service .cont_01 #slide_01 {background:url(http://gonylab5.speedgabia.com/graysands/final/service/1.jpg) no-repeat 50% 50%;background-size:cover;}
+.service .cont_02 #slide_01 {background:url(http://gonylab5.speedgabia.com/graysands/final/service/2.jpg) no-repeat 50% 50%;background-size:cover;}
+.service .cont_03 #slide_01 {background:url(http://gonylab5.speedgabia.com/graysands/final/service/3.jpg) no-repeat 50% 50%;background-size:cover;}
+.service .cont_04 #slide_01 {background:url(http://gonylab5.speedgabia.com/graysands/final/service/4.jpg) no-repeat 50% 50%;background-size:cover;}
+.service .cont_05 #slide_01 {background:url(http://gonylab5.speedgabia.com/graysands/final/service/5.jpg) no-repeat 50% 50%;background-size:cover;}
+.service .cont_06 #slide_01 {background:url(http://gonylab5.speedgabia.com/graysands/final/service/6.jpg) no-repeat 50% 50%;background-size:cover;}
+.service .cont_07 #slide_01 {background:url(http://gonylab5.speedgabia.com/graysands/final/service/7.jpg) no-repeat 50% 50%;background-size:cover;}
+.service .cont_08 #slide_01 {background:url(http://gonylab5.speedgabia.com/graysands/final/service/8.jpg) no-repeat 50% 50%;background-size:cover;}
+.service .cont_09 #slide_01 {background:url(http://gonylab5.speedgabia.com/graysands/final/service/9.jpg) no-repeat 50% 50%;background-size:cover;}
+

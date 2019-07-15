@@ -77,19 +77,8 @@
 	<select id="lmrImg" resultType="lmr">
 		select recipe_title1 as recipeTitle1 from lmr where recipe_no1 = 0
 	</select>
+	<update id="updateFile" parameterType="string">
+		update lmr set recipe_title1=#{fileName} where recipe_no1 = 0
+	</update>
 	
-	
-	<select id="selectReservation" resultType="reservation">
-		select distinct
-		caravan_no as caravanNo 
-		from reservation where caravan_no not in
-		(select distinct caravan_no from reservation a where 
-		<foreach item="addr" collection="array" separator="or">
-				reservation_date like '%'||#{addr}||'%'
-		</foreach>
-		) order by caravan_no
-	</select>
-	<insert id="insertReservation" parameterType="map">
-		insert into reservation values(#{caravanNo},#{reservationDateString})
-	</insert>
 </mapper>

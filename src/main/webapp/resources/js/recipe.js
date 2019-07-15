@@ -152,6 +152,31 @@ function like (recipeNo) {
         data: {recipeNo:recipeNo},
         success:function (message) {
             alert(message);
+            location.reload();
         }
     })
 }
+
+function unLike(recipeNo) {
+    $.ajax({
+        url:"/recipeUnLike.do",
+        data: {recipeNo:recipeNo},
+        success:function (message) {
+            alert(message);
+            location.reload();
+        }
+    })
+}
+
+var total;
+var count;
+$("input[name='count']").change(function () {
+count = $(this).val();
+total = $("#price").html()*$(this).val();
+$("#total_price").text(total);
+});
+
+function cart(recipeNo) {
+        location.href = "/insertcart.do?recipeNo=" + recipeNo + "&count=" + count;
+}
+

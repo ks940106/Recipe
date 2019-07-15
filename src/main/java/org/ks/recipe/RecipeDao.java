@@ -21,4 +21,12 @@ public interface RecipeDao {
     int recipeLike(Like like);
 
     Like getLike(String recipeNo, String id);
+
+    int recipeUnLike(Like like);
+
+    int updateLike(int recipeNo);
+
+    List<Recipe> likeRank();
+
+    int orderReg(int recipeNo, int price);
 }

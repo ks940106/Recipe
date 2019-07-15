@@ -1,98 +1,145 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="competition">
-	<select id="competitionList" parameterType="competition" resultType="competition">
-		select competition_no as competitionNo,
-		competition_title as competitionTitle,
-		competition_contents as competitionContents,
-		competition_img as competitionImg,
-		competition_video as competitionVideo,
-		competition_result as competitionResult,
-		competition_date as competitionDate,
-		competition_check as competitionCheck
-		from competition where competition_check='N'
-	</select>
-	<insert id="insertCompetition" parameterType="competition">
-		insert into competition values(seq_competition_no.nextval,#{competitionTitle},#{competitionContents},#{competitionImg, jdbcType=VARCHAR},null,null,sysdate,#{competitionCheck})
-	</insert>
-	<select id="competitionView" parameterType="competition" resultType="competition">
-		select competition_no as competitionNo,
-		competition_title as competitionTitle,
-		competition_contents as competitionContents,
-		competition_img as competitionImg,
-		competition_video as competitionVideo,
-		competition_result as competitionResult,
-		competition_date as competitionDate,
-		competition_check as competitionCheck
-		from (select rownum as rnum,c.* from( select * from competition where competition_check='Y' order by competition_no desc) c) where rnum= 1
-	</select>
-	<delete id="deleteCompetition" parameterType="_int">
-		delete from competition where competition_no=#{competitionNo}
-	</delete>
-	<select id="updateSelectOne" parameterType="_int" resultType="competition">
-		select competition_no as competitionNo,
-		competition_title as competitionTitle,
-		competition_contents as competitionContents,
-		competition_img as competitionImg,
-		competition_video as competitionVideo,
-		competition_result as competitionResult,
-		competition_date as competitionDate,
-		competition_check as competitionCheck
-		from competition where competition_no=#{competitionNo}
-	</select>
-	<update id="competitionUpdate" parameterType="competition">
-		update competition set competition_title=#{competitionTitle} , competition_contents=#{competitionContents} , competition_img=#{competitionImg, jdbcType=VARCHAR},competition_check=#{competitionCheck} 
-		where competition_no=#{competitionNo}
-	</update>
-	<select id="competitionResultView" resultType="competition" parameterType="_int">
-		select competition_no as competitionNo,
-		competition_title as competitionTitle,
-		competition_contents as competitionContents,
-		competition_img as competitionImg,
-		competition_video as competitionVideo,
-		competition_result as competitionResult,
-		competition_date as competitionDate,
-		competition_check as competitionCheck
-		from competition where competition_No=#{competitionNo}
-	</select>
-	<select id="participantCheck" parameterType="map" resultType="participant">
-		select 
-		id as id
-		from participant 
-		where competition_no = #{competitionNo} and id=#{id}
-	</select>
-	<select id="competitionListView" resultType="competition" parameterType="_int">
-		select competition_no as competitionNo,
-		competition_title as competitionTitle,
-		competition_contents as competitionContents,
-		competition_img as competitionImg,
-		competition_video as competitionVideo,
-		competition_result as competitionResult,
-		competition_date as competitionDate,
-		competition_check as competitionCheck
-		from competition where competition_No=#{competitionNo}
-	</select>
-	<select id="participantMember" resultType="participantMember">
-		select participant_no as participantNo,
-		competition_no as competitionNo,
-		(PARTICIPANT.id) as id,
-		participant_pass as participantPass,
-		participant_content as participantContent,
-		participant_result as participantResult,
-		participant_date as participantDate,
-		name as name,
-		nickname as nickname,
-		gender as gender,
-		phone as phone
-		from participant join member on participant.id = member.id where competition_no = #{competitionNo}
-	</select>
-<!-- 	<select id="participantMember" resultType="member">
-		select id as id,
-		name as name,
-		nickname as nickname,
-		gender as gender,
-		phone as phone
-		from member where 
-	</select> -->
-	
+	   <select id="competitionList" parameterType="competition" resultType="competition">
+      select competition_no as competitionNo,
+      competition_title as competitionTitle,
+      competition_contents as competitionContents,
+      competition_img as competitionImg,
+      competition_video as competitionVideo,
+      competition_result as competitionResult,
+      competition_date as competitionDate,
+      competition_check as competitionCheck
+      from competition where competition_check='N'
+   </select>
+   <insert id="insertCompetition" parameterType="competition">
+      insert into competition values(seq_competition_no.nextval,#{competitionTitle},#{competitionContents},#{competitionImg, jdbcType=VARCHAR},null,null,sysdate,#{competitionCheck})
+   </insert>
+   <select id="competitionView" parameterType="competition" resultType="competition">
+      select competition_no as competitionNo,
+      competition_title as competitionTitle,
+      competition_contents as competitionContents,
+      competition_img as competitionImg,
+      competition_video as competitionVideo,
+      competition_result as competitionResult,
+      competition_date as competitionDate,
+      competition_check as competitionCheck
+      from (select rownum as rnum,c.* from( select * from competition where competition_check='Y' order by competition_no desc) c) where rnum= 1
+   </select>
+   <delete id="deleteCompetition" parameterType="_int">
+      delete from competition where competition_no=#{competitionNo}
+   </delete>
+   <select id="updateSelectOne" parameterType="_int" resultType="competition">
+      select competition_no as competitionNo,
+      competition_title as competitionTitle,
+      competition_contents as competitionContents,
+      competition_img as competitionImg,
+      competition_video as competitionVideo,
+      competition_result as competitionResult,
+      competition_date as competitionDate,
+      competition_check as competitionCheck
+      from competition where competition_no=#{competitionNo}
+   </select>
+   <update id="competitionUpdate" parameterType="competition">
+      update competition set competition_title=#{competitionTitle} , competition_contents=#{competitionContents} , competition_img=#{competitionImg, jdbcType=VARCHAR},competition_result=#{competitionResult},competition_check=#{competitionCheck} 
+      where competition_no=#{competitionNo}
+   </update>
+   <select id="competitionResultView" resultType="competition" parameterType="_int">
+      select competition_no as competitionNo,
+      competition_title as competitionTitle,
+      competition_contents as competitionContents,
+      competition_img as competitionImg,
+      competition_video as competitionVideo,
+      competition_result as competitionResult,
+      competition_date as competitionDate,
+      competition_check as competitionCheck
+      from competition where competition_No=#{competitionNo}
+   </select>
+   <select id="participantCheck" parameterType="map" resultType="participant">
+      select 
+      id as id
+      from participant 
+      where competition_no = #{competitionNo} and id=#{id}
+   </select>
+   <select id="competitionListView" resultType="competition" parameterType="_int">
+      select competition_no as competitionNo,
+      competition_title as competitionTitle,
+      competition_contents as competitionContents,
+      competition_img as competitionImg,
+      competition_video as competitionVideo,
+      competition_result as competitionResult,
+      competition_date as competitionDate,
+      competition_check as competitionCheck
+      from competition where competition_No=#{competitionNo}
+   </select>
+   <select id="participantMember" resultType="participantMember">
+      select participant_no as participantNo,
+      competition_no as competitionNo,
+      (PARTICIPANT.id) as id,
+      participant_pass as participantPass,
+      participant_content as participantContent,
+      participant_result as participantResult,
+      participant_date as participantDate,
+      name as name,
+      nickname as nickname,
+      gender as gender,
+      phone as phone
+      from participant join member on participant.id = member.id where competition_no = #{competitionNo} and participant_pass='N'
+   </select>
+   <update id="participantUpdate" parameterType="map">
+      update participant set participant_pass='Y' where participant_no=#{checkArr} and competition_no=#{competitionNo}
+   </update>
+   <select id="participantPassList" resultType="participantMember">
+      select participant_no as participantNo,
+      competition_no as competitionNo,
+      (PARTICIPANT.id) as id,
+      participant_pass as participantPass,
+      participant_content as participantContent,
+      participant_result as participantResult,
+      participant_date as participantDate,
+      name as name,
+      nickname as nickname,
+      gender as gender,
+      phone as phone
+      from participant join member on participant.id = member.id where competition_no = #{competitionNo} and participant_pass='Y' order by PARTICIPANT_RESULT asc
+   </select>
+   <update id="participantPassUpdate" parameterType="map">
+      update participant set participant_pass='N' where participant_no=#{checkPass} and competition_no=#{competitionNo}
+   </update>
+   
+   <update id="setNull" parameterType="_int">
+   		update participant set participant_result = null where competition_no=#{competitionNo}
+   </update>
+   
+   <update id="participantResult" parameterType="map">
+      update participant set participant_result ='우승' where participant_no=#{checkResult} and competition_no=#{competitionNo}
+   </update>
+   <select id="competitionMypage" resultType="participantMember" parameterType="string">
+      select participant_no as participantNo,
+      competition_no as competitionNo,
+      id as id,
+      participant_pass as participantPass,
+      participant_content as participantContent,
+      participant_result as participantResult,
+      participant_date as participantDate,
+      name as name,
+      competition_title as nickname,
+      gender as gender,
+      phone as phone
+      from (participant join member using(id)) join competition using(competition_no) where id=#{id} 
+   </select>
+   <select id="participantResultList" parameterType="_int" resultType="participantMember">
+      select participant_no as participantNo,
+      competition_no as competitionNo,
+      (PARTICIPANT.id) as id,
+      participant_pass as participantPass,
+      participant_content as participantContent,
+      participant_result as participantResult,
+      participant_date as participantDate,
+      name as name,
+      nickname as nickname,
+      gender as gender,
+      phone as phone
+      from participant join member on participant.id = member.id where competition_no = #{competitionNo} and participant_pass='Y'
+   </select>
 </mapper>

@@ -1,5 +1,7 @@
 package org.ks.member;
 
+import java.util.ArrayList;
+
 import org.ks.member.vo.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -43,6 +45,30 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int updateMember(Member m) {
 		int result = memberDao.updateMember(m);
+		return result;
+	}
+
+	@Override
+	public int deleteMember(String id) {
+		int result = memberDao.deleteMember(id);
+		return result;
+	}
+
+	@Override
+	public ArrayList<Member> memberList() {
+		ArrayList<Member> list = memberDao.memberList();
+		return list;
+	}
+
+	@Override
+	public Member idAndNameCheck(Member m) {
+		Member member = memberDao.idAndNameCheck(m);
+		return member;
+	}
+
+	@Override
+	public int pwUpdate(Member m) {
+		int result = memberDao.pwUpdate(m);
 		return result;
 	}
 

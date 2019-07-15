@@ -40,21 +40,21 @@
 							<th>제목</th>
 							<th>작성자</th>
 						</tr>
-						<c:forEach items="${lpd.list }" var="vo">
+						<c:forEach items="${lpd.list}" var="vo">
 							<tr>
-								<td>${vo.recipeDate }</td>
+								<td></td>
 								<td>1</td>
-								<td><a href="#">${vo.recipeTitle1 }</a></td>
+								<td><a href="#">${vo.recipeTitle1}</a></td>
 								<td><a href="#">${vo.recipeWriter1 }</a></td>
 							</tr>
 							<tr>
-								<td>${vo.recipeDate }</td>
+								<td style="border-top-style: hidden;">${vo.recipeDate }</td>
 								<td>2</td>
 								<td><a href="#">${vo.recipeTitle2 }</a></td>
 								<td><a href="#">${vo.recipeWriter2 }</a></td>
 							</tr>
 							<tr>
-								<td>${vo.recipeDate }</td>
+								<td style="border-top-style: hidden;"></td>
 								<td>3</td>
 								<td><a href="#">${vo.recipeTitle3 }</a></td>
 								<td><a href="#">${vo.recipeWriter3 }</a></td>

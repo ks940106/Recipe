@@ -18,9 +18,10 @@
 				<input type="hidden" name="q_path" value="">
 				
 			<div id="idFrms" class="form-group has-feedback">
-				<input type="text" name="id" class="form-control" id="id" onblur="EmailCheck()" placeholder="이메일"> 
-					<span id="idMsg" style="display: none;"></span>
+				<input type="text" name="id" class="form-control id" id="id" onblur="EmailCheck()" placeholder="이메일"> 
 					<input type="button" id="emailcertification" onclick="emailcertification()" name="emailcertification" class="emailBtn" value="이메일 인증">
+					<span id="idMsg" style="display: none;"></span>
+					
 					<span id="emailMsg" style="display: none;"></span>
 			</div>
 			<div id="pwFrms" class="form-group has-feedback">
@@ -39,9 +40,9 @@
 				<input type="text" name="nickname" class="form-control" id="nickname" onblur="chkNick()" placeholder="닉네임"> 
 				<span id="nickMsg" style="display: none;"></span>
 			</div>
-			<div id="zip_code" class="form-group has-feedback">
-				<input type="text" name="zipCode" class="form-control" id="zipCode"placeholder="우편번호">
-			</div>
+			
+				<input type="text" name="zipCode" class="form-control zipCode" id="zipCode"placeholder="우편번호">
+			
 			<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 			<div id="addr1_div" class="form-group has-feedback">
 				<input type="text" name="addr1" class="form-control" id="addr1" placeholder="주소">
@@ -66,7 +67,7 @@
 				<span id="genderMsg" style="display: none;"></span>
 			</div>
 			<input type="file" id="fileUpload" name="fileUpload" accept=".jpg,.jpeg,.png">
-			<img id="image_section" src="#" alt="your image" />
+			<img id="image_section" src="#" />
 			<input type="hidden" name="frm[pro_tg_gender]" id="pro_tg_gender">
 			<input type="submit" class="btn btn-primary btn-block btn-lg" onclick="return doSubmit()" value="회원가입">
 		</form>

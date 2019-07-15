@@ -46,6 +46,11 @@
 							</td>
 						</tr>
 						<tr>
+						<th>우승자</th>
+							<td><input type="text"  name="competitionResult">
+							</td>
+						</tr>
+						<tr>
 							<th>첨부파일</th>
 							<td><input type="hidden" id="status" name="status"	value="stay">
 								<div class="placeholder">

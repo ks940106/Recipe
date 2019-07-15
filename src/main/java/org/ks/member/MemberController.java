@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
 import java.util.Random;
@@ -27,10 +28,12 @@ import org.ks.member.commons.SHA256Util;
 import org.ks.member.vo.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.codec.multipart.SynchronossPartHttpMessageReader;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MemberController {
@@ -43,6 +46,10 @@ public class MemberController {
 	public String loginPage() {
 		return "member/loginPage";
 	}
+	@RequestMapping(value="/loginPageCamping.do")
+	public String loginPageCamping() {
+		return "member/loginPageCamping";
+	}
 	@RequestMapping(value="/joinPage.do")
 	public String joinPage() {
 		return "member/joinPage";
@@ -54,6 +61,14 @@ public class MemberController {
 	@RequestMapping(value="/memberUpdatePage.do")
 	public String memberUpdate() {
 		return "member/memberUpdatePage";
+	}
+	@RequestMapping(value="/findPasswordPage.do")
+	public String findPasswordPage(){
+		return "member/findPassword";
+	}
+	@RequestMapping(value="/findIdPage.do")
+	public String findIdPage(){
+		return "member/findId";
 	}
 	//로그인
 	@RequestMapping(value="/login.do")
@@ -84,6 +99,34 @@ public class MemberController {
 		return "redirect:/index.jsp";
 
 	}
+	@RequestMapping(value="/loginCamping.do")
+	public String loginCamping(HttpServletRequest request,@RequestParam String id,@RequestParam String pw ) {
+		Member m = new Member();
+		m.setId(id);
+		try {
+			m.setPw(new SHA256Util().encData(pw));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Member member = memberService.login(m);
+		String view="";
+		if(member==null) {
+				request.setAttribute("msg", "로그인 실패");
+				request.setAttribute("loc", "/loginPageCamping.do");
+				view="common/msg";
+				return view;
+		}
+		else if(member.getName().equals("관리자")) {
+			HttpSession session =request.getSession();
+			session.setAttribute("member", member);
+		}else if(member!= null) {
+			HttpSession session =request.getSession();
+			session.setAttribute("member", member);
+		}
+		return "redirect:/views/singsingCampingIndex.jsp";
+
+	}
 	//로그아웃
 	@RequestMapping(value="/logout.do")
 	public void logout(HttpServletRequest request,HttpServletResponse response) {
@@ -111,18 +154,8 @@ public class MemberController {
 		String phone = request.getParameter("phone");
 		String gender = request.getParameter("gender");
 		String fileUpload1 =request.getParameter("fileUpload");
-		System.out.println(fileUpload1);
 		String zipCode=request.getParameter("zipCode");
 		//파일 업로드
-		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/member");
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-		Date d = new Date();
-		String date = sdf.format(d);
-		String originName = fileUpload.getOriginalFilename();
-		String onlyFileName = originName.substring(0,originName.indexOf('.'));
-		String extension = originName.substring(originName.indexOf('.'));
-		String filePath = onlyFileName + "_"+ date + extension;
-		String memberImg = savePath+"/" + filePath;
 		String pw = null;
 		try {
 			pw = new SHA256Util().encData(pw1);
@@ -130,9 +163,17 @@ public class MemberController {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		Member m = new Member(id, pw, name, nickname, gender, addr1, addr2, phone,memberImg,zipCode);
-		int result = memberService.insertMember(m);
+		String filePath=null;
 		if(!fileUpload.isEmpty()) {
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/member");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+			Date d = new Date();
+			String date = sdf.format(d);
+			String originName = fileUpload.getOriginalFilename();
+			String onlyFileName = originName.substring(0,originName.indexOf('.'));
+			String extension = originName.substring(originName.indexOf('.'));
+			filePath = onlyFileName + "_"+ date + extension;
+			String memberImg = savePath+"/" + filePath;
 			byte[] bytes;
 			try {
 				bytes = fileUpload.getBytes();
@@ -145,15 +186,79 @@ public class MemberController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 		}
+		Member m = new Member(id, pw, name, nickname, gender, addr1, addr2, phone,filePath,zipCode);
+		int result = memberService.insertMember(m);
 		String view = "common/msg";
 		System.out.println(view);
 		if(result>0) {
 			request.setAttribute("msg", "회원가입 성공");
-			request.setAttribute("loc", "/loginPage.do");
+			request.setAttribute("loc", "/loginPageCamping.do");
 		}else {
 			request.setAttribute("msg", "회원가입 실패");
-			request.setAttribute("loc", "/insert.do");
+			request.setAttribute("loc", "/insertCamping.do");
+		}return view;
+	}
+	//캠핑에서 회원가입
+	@RequestMapping(value="/insertMemberCamping.do")
+	public String insertMemberCamping(HttpServletRequest request,@RequestParam MultipartFile fileUpload){
+		String id=request.getParameter("id");
+		String pw1 = request.getParameter("pw");
+		String name=request.getParameter("name");
+		String nickname=request.getParameter("nickname");
+		String addr1=request.getParameter("addr1");
+		String addr2=request.getParameter("addr2");
+		String phone = request.getParameter("phone");
+		String gender = request.getParameter("gender");
+		String fileUpload1 =request.getParameter("fileUpload");
+		String zipCode=request.getParameter("zipCode");
+		//파일 업로드
+		
+		
+		String pw = null;
+		try {
+			pw = new SHA256Util().encData(pw1);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		String filePath=null;
+		if(!fileUpload.isEmpty()) {
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/member");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+			Date d = new Date();
+			String date = sdf.format(d);
+			String originName = fileUpload.getOriginalFilename();
+			String onlyFileName = originName.substring(0,originName.indexOf('.'));
+			String extension = originName.substring(originName.indexOf('.'));
+			filePath = onlyFileName + "_"+ date + extension;
+			String memberImg = savePath+"/" + filePath;
+			byte[] bytes;
+			try {
+				bytes = fileUpload.getBytes();
+				File f = new File(memberImg);		
+				FileOutputStream fos = new FileOutputStream(f);
+				BufferedOutputStream bos = new BufferedOutputStream(fos);
+				bos.write(bytes);
+				bos.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		Member m = new Member(id, pw, name, nickname, gender, addr1, addr2, phone,filePath,zipCode);
+		int result = memberService.insertMember(m);
+		String view = "common/msg";
+		System.out.println(view);
+		if(result>0) {
+			request.setAttribute("msg", "회원가입 성공");
+			request.setAttribute("loc", "/loginPageCamping.do");
+		}else {
+			request.setAttribute("msg", "회원가입 실패");
+			request.setAttribute("loc", "/insertCamping.do");
 		}return view;
 	}
 	//이메일 중복확인
@@ -185,7 +290,6 @@ public class MemberController {
 	@RequestMapping(value="/emailcertification.do")
 	public void emailcertification(HttpServletRequest request,HttpServletResponse response) {
 		String id = request.getParameter("email");
-		System.out.println("메일 인증");
 		String host = "smtp.googlemail.com"; // 네이버일 경우 네이버 계정, gmail경우 gmail 계정 
 
 	      final String user = "fghij7410@gmail.com"; 
@@ -249,7 +353,6 @@ public class MemberController {
 	 				"</html>","text/html;charset=euc-kr");  
 	       // send the message 
 	       Transport.send(message); 
-	       System.out.println("Success Message Send"); 
 	       RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/member/emailcertification.jsp");
 	       request.setAttribute("num", num);
 	       try {
@@ -277,7 +380,6 @@ public class MemberController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(pw);
 		HttpSession session = request.getSession(false);
 		String id=((Member)session.getAttribute("member")).getId();
 		Member member = memberService.pwCheck(id,pw);
@@ -290,9 +392,9 @@ public class MemberController {
 			view="common/msg";
 		}return view;
 	}
-	
+	//마이페이지 회원정보 수정
 	@RequestMapping(value="/myPageUpdate.do")
-	public String myPageUpdate(HttpServletRequest request,@RequestParam MultipartFile fileUpload) {
+	public String myPageUpdate(HttpServletRequest request,HttpServletResponse response,@RequestParam MultipartFile fileUpload)throws ServletException, IOException {
 		Member m = new Member();
 		m.setId(request.getParameter("id"));
 		String pw1 = request.getParameter("new_pw");
@@ -300,18 +402,11 @@ public class MemberController {
 		m.setAddr1(request.getParameter("addr1"));
 		m.setAddr2(request.getParameter("addr2"));
 		m.setPhone(request.getParameter("phone"));
-		m.setMemberImg(request.getParameter("fileUpload")); 
+		m.setMemberImg(request.getParameter("beforeImg")); 
+		System.out.println(request.getParameter("beforeImg"));
 		m.setZipCode(request.getParameter("zipCode"));
 		//파일 업로드
-		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/member");
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-		Date d = new Date();
-		String date = sdf.format(d);
-		String originName = fileUpload.getOriginalFilename();
-		String onlyFileName = originName.substring(0,originName.indexOf('.'));
-		String extension = originName.substring(originName.indexOf('.'));
-		String filePath = onlyFileName + "_"+ date + extension;
-		String memberImg = savePath+"/" + filePath;
+		
 		String pw = null;
 		try {
 			pw = new SHA256Util().encData(pw1);
@@ -320,8 +415,32 @@ public class MemberController {
 			e1.printStackTrace();
 		}
 		m.setPw(pw);
-		int result = memberService.updateMember(m);
+		
 		if(!fileUpload.isEmpty()) {
+			
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/member");
+			System.out.println(request.getParameter("beforeImg"));
+			File delFile = new File(savePath+"/"+request.getParameter("beforeImg"));
+			if(delFile.exists()) {
+				if(delFile.delete()) {
+					System.out.println("파일 삭제 성공");
+				}else {
+					System.out.println("파일 삭제 실패");
+				}
+			}else {
+				System.out.println("파일이 존재하지 않습니다.");
+			}
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+			Date d = new Date();
+			String date = sdf.format(d);
+			String originName = fileUpload.getOriginalFilename();
+			String onlyFileName = originName.substring(0,originName.indexOf('.'));
+			String extension = originName.substring(originName.indexOf('.'));
+			String filePath = onlyFileName + "_"+ date + extension;
+			String memberImg = savePath+"/" + filePath;
+			m.setMemberImg(filePath);
+			
 			byte[] bytes;
 			try {
 				bytes = fileUpload.getBytes();
@@ -335,13 +454,30 @@ public class MemberController {
 				e.printStackTrace();
 			}
 		}
-		String view="";
+		
+		int result = memberService.updateMember(m);
+		
+		String view ="common/msg";
 		if(result>0) {
-			view="member/mypage";
+			request.setAttribute("msg","회원 정보 수정 성공");
+			request.setAttribute("loc", "/");
 		}else {
-			view="common/msg";
-			request.setAttribute("msg", "회원정보 변경 실패");
-			request.setAttribute("loc", "/mypage.do");
+			request.setAttribute("msg","정보 수정 실패");
+		}return view;
+	}
+	//마이페이지 탈퇴
+	@RequestMapping(value="/myPageDelete.do")
+	public String myPageDelete(HttpServletRequest request,HttpSession session) {
+		String id = request.getParameter("id");
+		int result = memberService.deleteMember(id);
+		String view="common/msg";
+		if(result>0) {
+			request.setAttribute("msg", "회원 탈퇴 되었습니다");
+			request.setAttribute("loc", "/");
+			session=request.getSession(false);
+			session.invalidate();
+		}else {
+			request.setAttribute("msg", "회원탈퇴 불가");
 		}return view;
 	}
 	
@@ -349,6 +485,102 @@ public class MemberController {
 	public String mypage() {
 		return "member/mypage";
 	}
+	//관리자 페이지 시작
+	@RequestMapping(value="/memberList.do")
+	public ModelAndView memberList() {
+		ArrayList<Member> list = memberService.memberList();
+		ModelAndView mav = new ModelAndView();
+		if(!list.isEmpty()) {
+			mav.addObject("list",list);
+			mav.setViewName("admin/member/memberList");
+		}
+		return mav;
+	}
+	@RequestMapping(value="memberDelete.do")
+	public String memberDelete(HttpServletRequest request) {
+		String id = request.getParameter("id");
+		int result = memberService.deleteMember(id);
+		String view="common/msg";
+		if(result>0) {
+			request.setAttribute("msg", "회원 삭제");
+			request.setAttribute("loc", "memberList.do");
+		}else {
+			request.setAttribute("msg", "삭제 실패");
+			request.setAttribute("loc", "memberList.do");
+		}return view;
+	}
+	//비밀번호 변경
+	@RequestMapping(value="/findPassword.do")
+	public String findPassword(HttpServletRequest request) {
+		Member m = new Member();
+		m.setId(request.getParameter("id")); 
+		m.setName(request.getParameter("name"));
+		System.out.println(m.getId());
+		System.out.println(m.getName());
+		Member member =memberService.idAndNameCheck(m);
+		if(member.getId().isEmpty()) {
+			String view="common/msg";
+			request.setAttribute("msg", "아이디와 이름을 확인해주세요");
+			request.setAttribute("loc","/findPasswordPage.do");
+			return view;
+		}
+		String host = "smtp.googlemail.com"; // 네이버일 경우 네이버 계정, gmail경우 gmail 계정 
+
+	      final String user = "fghij7410@gmail.com"; 
+	      final String password = "user1404";       
+
+	      Properties props = new Properties(); 
+	      props.put("mail.smtp.host", host); 
+	      props.put("mail.smtp.port", 587); 
+	      props.put("mail.smtp.auth", "true");
+	      props.put("mail.smtp.starttls.enable","true");
+	      
+	      Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() { 
+	          protected PasswordAuthentication getPasswordAuthentication() { 
+	             return new PasswordAuthentication(user, password); 
+	             } 
+	          });
+	       String msg=null;
+	       try {
+	    	   String pw = "";
+	   		for (int i = 0; i < 12; i++) {
+	   			pw += (char) ((Math.random() * 26) + 97);
+	   		}
+	   		m.setPw(pw);
+	    	   
+	          MimeMessage message = new MimeMessage(session); 
+	          message.setFrom(new InternetAddress(user)); 
+	          message.addRecipient(Message.RecipientType.TO, new InternetAddress(m.getId())); 
+	          // 메일 제목 
+	          message.setSubject("싱싱레시피");
+	          message.setContent(
+	          "<div align='center' style='border:1px solid black; font-family:verdana'>"+
+				 "<h3 style='color: blue;'>"+
+				 m.getId() + "님의 임시 비밀번호 입니다. 비밀번호를 변경하여 사용하세요.</h3>"+
+				 "<p>임시 비밀번호 : "+
+				 m.getPw() + "</p></div>","text/html;charset=euc-kr");
+				Transport.send(message); 
+	       }catch (Exception e) {
+		}
+	       System.out.println("암호화 이전"+m.getPw());
+	       try {
+			m.setPw(new SHA256Util().encData(m.getPw()));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	       System.out.println("암호화 다음"+m.getPw());
+	       int result = memberService.pwUpdate(m);
+	       String view="common/msg";
+	       if(result>0) {
+	    	   request.setAttribute("msg", "비밀번호 변경 메일을 확인해주세요");
+	    	   request.setAttribute("loc", "/loginPage.do");
+	       }else {
+	    	   request.setAttribute("msg","비밀번호 변경 실패");
+	    	   request.setAttribute("loc", "/findPasswordPage.do");
+	       }return view;
+	}
+	
 }
 
 

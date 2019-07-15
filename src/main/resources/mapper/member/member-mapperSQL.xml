@@ -27,6 +27,18 @@
 		select * from member where id=#{id} and pw=#{pw}
 	</select>
 	<update id="updateMember">
-		update member set pw=#{pw}, nickname=#{nickname}, addr1=#{addr1},addr2=#{addr2},phone=#{phone},member_img=#{memberImg},zip_code=#{zipCode} where id=#{id} 
+		update member set pw=#{pw}, addr1=#{addr1},addr2=#{addr2},phone=#{phone},member_img=#{memberImg},zip_code=#{zipCode} where id=#{id} 
+	</update>
+	<delete id="deleteMember">
+		delete from member where id=#{id} 
+	</delete>
+	<select id="memberList" resultType="member">
+		select * from member
+	</select>
+	<select id="idAndName" resultType="member">
+		select * from member where id=#{id} and name=#{name}
+	</select> 
+	<update id="pwUpdate">
+		update member set pw=#{pw} where id=#{id} and name=#{name}
 	</update>
 </mapper>

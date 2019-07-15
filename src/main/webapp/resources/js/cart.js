@@ -2,11 +2,19 @@
  * 
  */
 
-function payment(id,name,phone,zipCode,addr1,addr2) {
+function payment(id,name,phone) {
+				var zipCode = $("#zipCode").val();
+				var addr1 = $("#addr1").val();
+				var addr2 = $("#addr2").val();
 				var recipeCount = $("[name='recipeCount']");
 				var noarray1 = new Array();
 				for(var i=0;i<recipeCount.length;i++){
 					noarray1[i] = recipeCount.eq(i).val();
+				}
+				var recipePrice = $("[name='recipePrice']");
+				var noarray2 = new Array();
+				for(var i=0;i<recipePrice.length;i++){
+					noarray2[i] = recipePrice.eq(i).val();
 				}
 				var recipeNo = $("[name='recipeNo']");
 				var noarray = new Array();
@@ -40,26 +48,13 @@ function payment(id,name,phone,zipCode,addr1,addr2) {
 						$('#paymentResult').html('에러내용 :' +rsp.error_msg+date);
 						
 						location.href="/successOrder.do?recipe="+noarray+"&id="+id+"&orderCode="+date+"&zipCode="+zipCode+
-									"&addr1="+addr1+"&addr2="+addr2+"&phone="+phone+"&recipeCount="+noarray1;
+									"&addr1="+addr1+"&addr2="+addr2+"&phone="+phone+"&recipeCount="+noarray1+"&recipePrice="+noarray2;
 		
 					}
 				});
 			};
 
 function deletecart() {
-	/*
-	var queryString = $("form[name=orderForm]").serialize();
-	$.ajax({
-		type : 'post',
-		url : '/deleteCart.do',
-		data : queryString,
-		dataType : "json",
-		success : function(json) {
-			
-		},
-	});
-	
-	 * */
 	var cartNo = $("[name='cartNo']:checked");
 	var noarray1 = new Array();
 	for(var i=0;i<cartNo.length;i++){
@@ -92,7 +87,30 @@ function sample6_execDaumPostcode() {
     }).open();
 };
 
-$("#newAddrs").click(function() {
-	$("#addrsApi").attr("type","button");
+//$("#newAddrs").click(function() {
+//	$("#addrsApi").attr("type","button");
+//});
+var zipCode = $("#zipCode").val();
+var addr1 = $("#addr1").val();
+var addr2 = $("#addr2").val();
+$(".delivery").on('click',function(){
+	$("#zipCode").attr("value","");
+	$("#addr1").attr("value","");
+	$("#addr2").attr("value","");
+	if($(this).attr("id")=="addrs"){
+		$("#addrsApi").attr("type","hidden");
+		$("#zipCode").attr("value",zipCode);
+		$("#addr1").attr("value",addr1);
+		$("#addr2").attr("value",addr2);
+	}else if ($(this).attr("id")=="newAddrs"){
+		$("#addrsApi").attr("type","button");
+	}else if ($(this).attr("id")=="campingAddrs"){
+		$("#addrsApi").attr("type","hidden");
+		$("#zipCode").attr("value","1234");
+		$("#addr1").attr("value","서울시 당산동");
+		$("#addr2").attr("value","이레빌딩");
+	}
+
+		
 });
-	
+
