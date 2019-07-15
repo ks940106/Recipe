@@ -28,6 +28,7 @@ import org.ks.member.commons.SHA256Util;
 import org.ks.member.vo.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.codec.multipart.SynchronossPartHttpMessageReader;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -144,17 +145,9 @@ public class MemberController {
 		String addr2=request.getParameter("addr2");
 		String phone = request.getParameter("phone");
 		String gender = request.getParameter("gender");
+		String fileUpload1 =request.getParameter("fileUpload");
 		String zipCode=request.getParameter("zipCode");
 		//파일 업로드
-		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/member");
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-		Date d = new Date();
-		String date = sdf.format(d);
-		String originName = fileUpload.getOriginalFilename();
-		String onlyFileName = originName.substring(0,originName.indexOf('.'));
-		String extension = originName.substring(originName.indexOf('.'));
-		String memberImg = onlyFileName + "_"+ date + extension;
-		/*String memberImg1 = savePath+"/" + memberImg;*/
 		String pw = null;
 		try {
 			pw = new SHA256Util().encData(pw1);
@@ -162,9 +155,17 @@ public class MemberController {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		Member m = new Member(id, pw, name, nickname, gender, addr1, addr2, phone,memberImg,zipCode);
-		int result = memberService.insertMember(m);
+		String filePath=null;
 		if(!fileUpload.isEmpty()) {
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/member");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+			Date d = new Date();
+			String date = sdf.format(d);
+			String originName = fileUpload.getOriginalFilename();
+			String onlyFileName = originName.substring(0,originName.indexOf('.'));
+			String extension = originName.substring(originName.indexOf('.'));
+			filePath = onlyFileName + "_"+ date + extension;
+			String memberImg = savePath+"/" + filePath;
 			byte[] bytes;
 			try {
 				bytes = fileUpload.getBytes();
@@ -177,17 +178,21 @@ public class MemberController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 		}
+		Member m = new Member(id, pw, name, nickname, gender, addr1, addr2, phone,filePath,zipCode);
+		int result = memberService.insertMember(m);
 		String view = "common/msg";
 		System.out.println(view);
 		if(result>0) {
 			request.setAttribute("msg", "회원가입 성공");
-			request.setAttribute("loc", "/loginPage.do");
+			request.setAttribute("loc", "/loginPageCamping.do");
 		}else {
 			request.setAttribute("msg", "회원가입 실패");
-			request.setAttribute("loc", "/insert.do");
+			request.setAttribute("loc", "/insertCamping.do");
 		}return view;
 	}
+	//캠핑에서 회원가입
 	@RequestMapping(value="/insertMemberCamping.do")
 	public String insertMemberCamping(HttpServletRequest request,@RequestParam MultipartFile fileUpload){
 		String id=request.getParameter("id");
@@ -201,15 +206,8 @@ public class MemberController {
 		String fileUpload1 =request.getParameter("fileUpload");
 		String zipCode=request.getParameter("zipCode");
 		//파일 업로드
-		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/member");
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-		Date d = new Date();
-		String date = sdf.format(d);
-		String originName = fileUpload.getOriginalFilename();
-		String onlyFileName = originName.substring(0,originName.indexOf('.'));
-		String extension = originName.substring(originName.indexOf('.'));
-		String filePath = onlyFileName + "_"+ date + extension;
-		String memberImg = savePath+"/" + filePath;
+		
+		
 		String pw = null;
 		try {
 			pw = new SHA256Util().encData(pw1);
@@ -217,9 +215,18 @@ public class MemberController {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		Member m = new Member(id, pw, name, nickname, gender, addr1, addr2, phone,memberImg,zipCode);
-		int result = memberService.insertMember(m);
+		
+		String filePath=null;
 		if(!fileUpload.isEmpty()) {
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/member");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+			Date d = new Date();
+			String date = sdf.format(d);
+			String originName = fileUpload.getOriginalFilename();
+			String onlyFileName = originName.substring(0,originName.indexOf('.'));
+			String extension = originName.substring(originName.indexOf('.'));
+			filePath = onlyFileName + "_"+ date + extension;
+			String memberImg = savePath+"/" + filePath;
 			byte[] bytes;
 			try {
 				bytes = fileUpload.getBytes();
@@ -232,7 +239,10 @@ public class MemberController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 		}
+		Member m = new Member(id, pw, name, nickname, gender, addr1, addr2, phone,filePath,zipCode);
+		int result = memberService.insertMember(m);
 		String view = "common/msg";
 		System.out.println(view);
 		if(result>0) {
@@ -384,18 +394,11 @@ public class MemberController {
 		m.setAddr1(request.getParameter("addr1"));
 		m.setAddr2(request.getParameter("addr2"));
 		m.setPhone(request.getParameter("phone"));
-		m.setMemberImg(request.getParameter("fileUpload")); 
+		m.setMemberImg(request.getParameter("beforeImg")); 
+		System.out.println(request.getParameter("beforeImg"));
 		m.setZipCode(request.getParameter("zipCode"));
 		//파일 업로드
-		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/member");
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-		Date d = new Date();
-		String date = sdf.format(d);
-		String originName = fileUpload.getOriginalFilename();
-		String onlyFileName = originName.substring(0,originName.indexOf('.'));
-		String extension = originName.substring(originName.indexOf('.'));
-		String filePath = onlyFileName + "_"+ date + extension;
-		String memberImg = savePath+"/" + filePath;
+		
 		String pw = null;
 		try {
 			pw = new SHA256Util().encData(pw1);
@@ -404,9 +407,32 @@ public class MemberController {
 			e1.printStackTrace();
 		}
 		m.setPw(pw);
-		m.setMemberImg(filePath);
-		int result = memberService.updateMember(m);
+		
 		if(!fileUpload.isEmpty()) {
+			
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/member");
+			System.out.println(request.getParameter("beforeImg"));
+			File delFile = new File(savePath+"/"+request.getParameter("beforeImg"));
+			if(delFile.exists()) {
+				if(delFile.delete()) {
+					System.out.println("파일 삭제 성공");
+				}else {
+					System.out.println("파일 삭제 실패");
+				}
+			}else {
+				System.out.println("파일이 존재하지 않습니다.");
+			}
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+			Date d = new Date();
+			String date = sdf.format(d);
+			String originName = fileUpload.getOriginalFilename();
+			String onlyFileName = originName.substring(0,originName.indexOf('.'));
+			String extension = originName.substring(originName.indexOf('.'));
+			String filePath = onlyFileName + "_"+ date + extension;
+			String memberImg = savePath+"/" + filePath;
+			m.setMemberImg(filePath);
+			
 			byte[] bytes;
 			try {
 				bytes = fileUpload.getBytes();
@@ -420,6 +446,9 @@ public class MemberController {
 				e.printStackTrace();
 			}
 		}
+		
+		int result = memberService.updateMember(m);
+		
 		String view ="common/msg";
 		if(result>0) {
 			request.setAttribute("msg","회원 정보 수정 성공");
@@ -472,6 +501,7 @@ public class MemberController {
 			request.setAttribute("loc", "memberList.do");
 		}return view;
 	}
+	
 }
 
 
