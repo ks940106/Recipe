@@ -152,6 +152,18 @@ function like (recipeNo) {
         data: {recipeNo:recipeNo},
         success:function (message) {
             alert(message);
+            location.reload();
+        }
+    })
+}
+
+function unLike(recipeNo) {
+    $.ajax({
+        url:"/recipeUnLike.do",
+        data: {recipeNo:recipeNo},
+        success:function (message) {
+            alert(message);
+            location.reload();
         }
     })
 }

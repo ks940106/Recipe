@@ -66,16 +66,8 @@ public class TMRDaoImpl implements TMRDao{
 		List list = sqlsession.selectList("tmr.lmrImg");
 		return list;
 	}
-	
-	
-	public List selectReservation(String[] reservationDate) {
-		List list = sqlsession.selectList("tmr.selectReservation", reservationDate);
-		return list;
+	public void updateFile(String fileName) {
+		sqlsession.update("tmr.updateFile",fileName);
 	}
-	public void insertReservation(String caravanNo,String reservationDateString) {
-		Map map = new HashMap<String,String>();
-		map.put("caravanNo", caravanNo);
-		map.put("reservationDateString", reservationDateString);
-		sqlsession.insert("tmr.insertReservation",map);
-	}
+	
 }

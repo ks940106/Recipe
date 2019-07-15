@@ -67,8 +67,53 @@ public class CompetitionDaoImpl implements CompetitionDao {
 		return sqlsession.selectList("competition.participantMember",competitionNo);
 	}
 
-	/*@Override
-	public List participantMember() {
-		return sqlsession.selectList("competition.participantMember");
-	}*/
+	@Override
+	public int participantUpdate(String checkArr, int competitionNo) {
+		Map map = new HashMap<String, String>();
+		map.put("competitionNo",Integer.toString(competitionNo));
+		map.put("checkArr",checkArr);
+		int result = sqlsession.update("competition.participantUpdate",map);
+		return result;
+	}
+
+	@Override
+	public List participantPassList(int competitionNo) {
+		return sqlsession.selectList("competition.participantPassList",competitionNo);
+	}
+	
+	@Override
+	public int participantPass(String checkPass, int competitionNo) {
+		Map map = new HashMap<String, String>();
+		map.put("competitionNo", Integer.toString(competitionNo));
+		map.put("checkPass", checkPass);
+		System.out.println("대회"+competitionNo);
+		System.out.println("참가자번호"+checkPass);
+		int result = sqlsession.update("competition.participantPassUpdate",map);
+		return result;
+	}
+	
+	public void setNull(int competitionNo) {
+		sqlsession.update("competition.setNull",competitionNo);
+		
+	}
+	
+	@Override
+	public int participantResult(String checkResult, int competitionNo) {
+		Map map = new HashMap<String, String>();
+		map.put("competitionNo",Integer.toString(competitionNo));
+		map.put("checkResult",checkResult);
+		int result = sqlsession.update("competition.participantResult",map);
+		return result;
+	}
+
+	@Override
+	public List competitionMypage(String id) {
+		return sqlsession.selectList("competition.competitionMypage",id);
+	}
+
+	@Override
+	public List participantResultList(int competitionNo) {
+		return sqlsession.selectList("competition.participantResultList",competitionNo);
+	}
+	
 }

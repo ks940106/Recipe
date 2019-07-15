@@ -1,0 +1,82 @@
+@charset "UTF-8";
+/* base */
+
+@media (max-width:1000px){html{font-size:15px;}}
+@media (min-width:1000px){html{font-size:18px;}}
+
+html{ overflow-y:scroll; overflow-x:auto;}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, input, textarea, p, blockquote, th, td, select, span {margin:0;padding:0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+body {font-family: 'Noto Sans KR', sans-serif; letter-spacing:-1px;}
+
+ol, ul, li, dd, dl, dt {list-style:none;}
+fieldset, legend {border:0; margin:0; padding:0;}
+img {border:0; margin:0; padding:0; }
+label{}
+address, caption, em, h1, h2, h3, h4, h5, h6 {font-weight:normal; font-style:normal;}
+
+h2 , h3 , h4 , h5 {letter-spacing:-2px;}
+
+/* link */
+a {text-decoration:none; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+a:hover {text-decoration:none;}
+
+/* table common */
+table {border-collapse:collapse;}
+
+/* Form */
+textarea{}
+
+/* input */
+input[type="text"],
+input[type="password"],
+input[type="button"],
+input[type="submit"] {border:none; cursor:pointer; vertical-align:middle; -webkit-appearance: none; -moz-appearance: none; appearance: none;}
+input[readonly="readonly"] {}
+input[type="checkbox"],
+input[type="radio"] {vertical-align:middle;}
+input[type="file"] {}
+textarea {}
+button {border:none; cursor:pointer;}
+
+/* select */
+select {border:none; cursor:pointer; vertical-align:middle;}
+
+/* align */
+.c {text-align:center;}
+.r {text-align:right;}
+
+@media screen and (max-device-width: 480px){
+	body{-webkit-text-size-adjust: none;}
+
+	#IntroVisual *::-webkit-media-controls-panel {
+		display: none!important;
+		-webkit-appearance: none;
+	}
+
+	#IntroVisual *::-webkit-media-controls-play-button {
+		display: none!important;
+		-webkit-appearance: none;
+	}
+
+	#IntroVisual *::-webkit-media-controls-start-playback-button {
+		display: none!important;
+		-webkit-appearance: none;
+	}
+
+	#MainVisual *::-webkit-media-controls-panel {
+		display: none!important;
+		-webkit-appearance: none;
+	}
+
+	#MainVisual *::-webkit-media-controls-play-button {
+		display: none!important;
+		-webkit-appearance: none;
+	}
+
+	#MainVisual *::-webkit-media-controls-start-playback-button {
+		display: none!important;
+		-webkit-appearance: none;
+	}
+
+}
+

@@ -54,8 +54,11 @@
             <div class="recipe_title">
                 <h2>${recipe.recipe.recipeTitle}</h2>
                 조회수 : ${recipe.recipe.recipeHit}<br>
-                <c:if test="${not empty sessionScope.member &&isLiked}">
-                    <a href="javaScript:unlike(${recipe.recipe.recipeNo})">좋아요 취소</a> : ${recipe.recipe.recipeLike}
+                <c:if test="${empty sessionScope.member}">
+                    좋아요 : ${recipe.recipe.recipeLike}
+                </c:if>
+                <c:if test="${not empty sessionScope.member && isLiked}">
+                    <a href="javaScript:unLike(${recipe.recipe.recipeNo})">좋아요 취소</a> : ${recipe.recipe.recipeLike}
                 </c:if>
                 <c:if test="${not empty sessionScope.member && !isLiked}">
                     <a href="javaScript:like(${recipe.recipe.recipeNo})">좋아요</a> : ${recipe.recipe.recipeLike}
