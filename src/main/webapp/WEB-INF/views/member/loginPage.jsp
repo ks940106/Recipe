@@ -16,7 +16,7 @@
   <div class="panel-body">
     <form name="form_login" id="formLogin" method="post" action="/login.do" autocomplete="off" onsubmit="return doSubmit()">
       <div class="form-group">
-        <input type="text" name="id" class="form-control" id="id_user" placeholder="아이디">
+        <input type="text" name="id" class="form-control" id="userId" placeholder="아이디">
         <span id="idMsg" style="display:none;color:#FF0000;">아이디를 입력해주세요.</span>
       </div>
       <div class="form-group">
@@ -26,7 +26,7 @@
       <button type="submit" class="btn-primary btn-lg btn-block login">로그인</button>
       <div class="checkbox">
         <label>
-          <input type="checkbox" name="id_save" value="1"><span class="id_save">아이디 저장</span>
+          <input type="checkbox" name="idSaveCheck" id="idSaveCheck" value="1"><span class="id_save">아이디 저장</span>
         </label>
       </div>
     </form>
@@ -43,6 +43,7 @@
           </div>
 	</div>
 	</section>
+	
 	<script type="text/javascript" src="/resources/js/member/login.js"></script>
 </body>
 </html>
