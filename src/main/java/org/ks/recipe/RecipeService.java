@@ -22,4 +22,10 @@ public interface RecipeService {
     boolean recipeLike(Like like);
 
     boolean getLike(String recipeNo, String id);
+
+    boolean recipeUnLike(Like like);
+
+    List<Recipe> likeRank();
+
+    int orderReg(int recipeNo, int price);
 }

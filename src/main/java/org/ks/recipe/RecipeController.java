@@ -188,4 +188,42 @@ public class RecipeController {
 
         return message;
     }
+    @RequestMapping(value = "/recipeUnLike", produces="text/plain;charset=UTF-8")
+    @ResponseBody
+    public String recipeUnLike(@RequestParam(value = "recipeNo") String recipeNo, HttpSession session) {
+        Member member = (Member) session.getAttribute("member");
+        Like like = new Like(Integer.parseInt(recipeNo),member.getId());
+        boolean result = recipeService.recipeUnLike(like);
+        String message="";
+        if(result){
+            message = "좋아요가 취소되었습니다.";
+        }else {
+            message = "취소 실패";
+        }
+
+        return message;
+    }
+
+    @RequestMapping(value = "/orderRegPage.do")
+    public String orderRegPage(Model model){
+        List<Category> categoryList = recipeService.categoryList();
+        model.addAttribute("categoryList",categoryList);
+        List<Recipe> recipeList = recipeService.likeRank();
+        model.addAttribute("recipeList",recipeList);
+        return "admin/recipe/orderReg";
+    }
+
+    @RequestMapping(value = "/orderReg.do",produces = "text/plain;charset=UTF-8")
+    @ResponseBody
+    public String orderReg(String recipeNo,String price){
+
+        String message;
+        int result = recipeService.orderReg(Integer.parseInt(recipeNo),Integer.parseInt(price));
+        if(result>0){
+            message = "성공적으로 등록되었습니다.";
+        }else{
+            message = "가격등록에 실패했습니다.";
+        }
+        return message;
+    }
 }
