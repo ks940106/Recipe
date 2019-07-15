@@ -112,6 +112,7 @@ public class CompetitionServiceImpl implements CompetitionService {
 
 	@Override
 	public int participantResult(String checkResult, int competitionNo) {
+		competitionDaoimpl.setNull(competitionNo);
 		return competitionDaoimpl.participantResult(checkResult, competitionNo);
 	}
 
@@ -127,7 +128,7 @@ public class CompetitionServiceImpl implements CompetitionService {
 
 	@Override
 	public ArrayList<ParticipantMember> participantResultList(int competitionNo) {
+		
 		return (ArrayList<ParticipantMember>) (competitionDaoimpl.participantResultList(competitionNo));
 	}
-
 }

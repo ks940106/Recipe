@@ -45,8 +45,6 @@
      						<li><a href="/competitionList.do?competitionCheck='Y'&id=${sessionScope.member.id}">요리대회</a></li>
      					</c:otherwise>
      				</c:choose>
-                    <li><a href="/competitionList.do?competitionCheck='Y'">요리대회</a></li>
-
                     <li><a href="mainBoard.do">토크</a></li>
 
                     <li><a href="/singsingCampingIndex.do">싱싱캠핑장</a></li>

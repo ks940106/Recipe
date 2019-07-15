@@ -91,7 +91,12 @@ public class CompetitionDaoImpl implements CompetitionDao {
 		int result = sqlsession.update("competition.participantPassUpdate",map);
 		return result;
 	}
-
+	
+	public void setNull(int competitionNo) {
+		sqlsession.update("competition.setNull",competitionNo);
+		
+	}
+	
 	@Override
 	public int participantResult(String checkResult, int competitionNo) {
 		Map map = new HashMap<String, String>();
@@ -110,4 +115,5 @@ public class CompetitionDaoImpl implements CompetitionDao {
 	public List participantResultList(int competitionNo) {
 		return sqlsession.selectList("competition.participantResultList",competitionNo);
 	}
+	
 }

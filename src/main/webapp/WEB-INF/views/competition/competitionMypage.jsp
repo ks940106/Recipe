@@ -17,10 +17,25 @@
 	<section>
 	<div class="cp_bg"></div>		
 		<div class="cp_content">
-			<!--                <img src="../../../resources/img/logo.png" width="200px;">-->
-			<h1>지난 요리 대회 결과</h1>
-			<p>싱싱레시피의 요리 대회의 결과를 확인 할 수 있습니다.</p>
-			<div id="cp_div_bg"></div>
+			<h1>지원한 요리 대회</h1>
+			<!-- <p>싱싱레시피의 요리 대회의 결과를 확인 할 수 있습니다.</p> -->
+			<!-- <div id="cp_div_bg"></div> -->
+			<nav class="nav_wrap">
+	<div class="nav_con">
+		<div class="nav_title">요리대회 관리</div>
+		<ul class="nav_menu">
+			<li>
+                <a href="/competitionList.do">진행중인 대회</a><span>></span>
+            </li>
+            <li>
+                <a href="/competitionResultList.do">지난 대회 관리</a><span>></span>
+            </li>
+            <li>
+                 <a href="#">대회 참가자 리스트</a><span>></span>
+            </li>
+		</ul>
+	</div>
+</nav>
 			<table id="cp_table">
 				<tr>
 					<th>대회이름</th>
@@ -28,9 +43,14 @@
 					<th>합격여부</th>
 				</tr>				
 				<tr>
-					<td>${participant.id}</td>
+					<td>${participant.nickname}</td>
 					<td>${participant.participantContent }</td>
-					<td>${participant.participantPass}</td>
+					<c:if test="${participant.participantPass == 'Y' }">
+						<td>합격</td>
+					</c:if>
+					<c:if test="${participant.participantPass == 'N' }">
+						<td>불합격</td>
+					</c:if>
 				</tr>
 			
 			</table>
