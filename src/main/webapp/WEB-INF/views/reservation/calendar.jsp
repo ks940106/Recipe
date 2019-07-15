@@ -309,7 +309,8 @@
 				success: function(jsonList){
 							$("#reservation").html("");
 						for(var index in jsonList){
-							$("#reservation").append("<a href='/insertReservation.do?caravanNo="+jsonList[index].caravanNo+"&reservationDateString="+reservationDateString+"'>"+jsonList[index].caravanNo +"</a><br>");
+							//$("#reservation").append("<a href='/insertReservation.do?caravanNo="+jsonList[index].caravanNo+"&reservationDateString="+reservationDateString+"'>"+jsonList[index].caravanNo +"</a><br>");
+							$("#reservation").append("<a href='/insertReservation.do?caravanNo="+jsonList[index].caravanNo+"&reservationDateString="+reservationDateString+"'>카라반 이름 : "+jsonList[index].caravanName+", 카라반 기준/최대인원 : "+jsonList[index].caravanPeople+"/"+jsonList[index].caravanMaxPeople+", 카라반 가격 : "+jsonList[index].caravanCost+"</a><button type='button' onclick='location.href='/''>카라반 자세히 보러가기</button><br>");
 						}
 					},
 				error: function(){

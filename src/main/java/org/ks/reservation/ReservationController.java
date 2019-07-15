@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.ks.reservation.vo.Reservation;
+import org.ks.caravan.vo.Caravan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -30,7 +30,7 @@ public class ReservationController {
 	public void selectReservation(HttpServletRequest request,Model model,HttpServletResponse response) {
 		String reservationDateString = request.getParameter("reservationDateString");
 		String[] reservationDate = reservationDateString.split(",");
-		ArrayList<Reservation> list = reservationServiceImple.selectReservation(reservationDate);
+		ArrayList<Caravan> list = reservationServiceImple.selectReservation(reservationDate);
 		
 		response.setContentType("text/html;charset=utf-8");
 		String jsonList = new Gson().toJson(list);

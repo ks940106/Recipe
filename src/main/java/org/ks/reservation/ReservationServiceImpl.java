@@ -3,7 +3,7 @@ package org.ks.reservation;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.ks.reservation.vo.Reservation;
+import org.ks.caravan.vo.Caravan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -15,9 +15,9 @@ public class ReservationServiceImpl implements ReservationService{
 	@Qualifier("ReservationDaoImpl")
 	private ReservationDao reservationDaoImpl;
 	
-	public ArrayList<Reservation> selectReservation(String[] reservationDate){
+	public ArrayList<Caravan> selectReservation(String[] reservationDate){
 		List list = reservationDaoImpl.selectReservation(reservationDate);
-		return (ArrayList<Reservation>)list;
+		return (ArrayList<Caravan>)list;
 	}
 	@Transactional
 	public void insertReservation(String caravanNo,String reservationDateString) {
