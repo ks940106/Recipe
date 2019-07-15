@@ -49,7 +49,7 @@
 
                     <li><a href="mainBoard.do">토크</a></li>
 
-                    <li><a href="/singsingCampingIndex.do">싱싱캠핑장</a></li>
+                    <li><a href="/views/singsingCampingIndex.jsp">싱싱캠핑장</a></li>
 
                     <c:choose>
                     <c:when test="${sessionScope.member==null }">

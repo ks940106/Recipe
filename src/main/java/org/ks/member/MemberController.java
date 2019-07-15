@@ -115,7 +115,7 @@ public class MemberController {
 			HttpSession session =request.getSession();
 			session.setAttribute("member", member);
 		}
-		return "redirect:/singsingCampingIndex.do";
+		return "redirect:/views/singsingCampingIndex.jsp";
 
 	}
 	//로그아웃
