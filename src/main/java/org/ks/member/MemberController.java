@@ -62,9 +62,13 @@ public class MemberController {
 	public String memberUpdate() {
 		return "member/memberUpdatePage";
 	}
-	@RequestMapping(value="/findPassword.do")
-	public String findPassword(){
+	@RequestMapping(value="/findPasswordPage.do")
+	public String findPasswordPage(){
 		return "member/findPassword";
+	}
+	@RequestMapping(value="/findIdPage.do")
+	public String findIdPage(){
+		return "member/findId";
 	}
 	//로그인
 	@RequestMapping(value="/login.do")
@@ -504,6 +508,77 @@ public class MemberController {
 			request.setAttribute("msg", "삭제 실패");
 			request.setAttribute("loc", "memberList.do");
 		}return view;
+	}
+	//비밀번호 변경
+	@RequestMapping(value="/findPassword.do")
+	public String findPassword(HttpServletRequest request) {
+		Member m = new Member();
+		m.setId(request.getParameter("id")); 
+		m.setName(request.getParameter("name"));
+		System.out.println(m.getId());
+		System.out.println(m.getName());
+		Member member =memberService.idAndNameCheck(m);
+		if(member.getId().isEmpty()) {
+			String view="common/msg";
+			request.setAttribute("msg", "아이디와 이름을 확인해주세요");
+			request.setAttribute("loc","/findPasswordPage.do");
+			return view;
+		}
+		String host = "smtp.googlemail.com"; // 네이버일 경우 네이버 계정, gmail경우 gmail 계정 
+
+	      final String user = "fghij7410@gmail.com"; 
+	      final String password = "user1404";       
+
+	      Properties props = new Properties(); 
+	      props.put("mail.smtp.host", host); 
+	      props.put("mail.smtp.port", 587); 
+	      props.put("mail.smtp.auth", "true");
+	      props.put("mail.smtp.starttls.enable","true");
+	      
+	      Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() { 
+	          protected PasswordAuthentication getPasswordAuthentication() { 
+	             return new PasswordAuthentication(user, password); 
+	             } 
+	          });
+	       String msg=null;
+	       try {
+	    	   String pw = "";
+	   		for (int i = 0; i < 12; i++) {
+	   			pw += (char) ((Math.random() * 26) + 97);
+	   		}
+	   		m.setPw(pw);
+	    	   
+	          MimeMessage message = new MimeMessage(session); 
+	          message.setFrom(new InternetAddress(user)); 
+	          message.addRecipient(Message.RecipientType.TO, new InternetAddress(m.getId())); 
+	          // 메일 제목 
+	          message.setSubject("싱싱레시피");
+	          message.setContent(
+	          "<div align='center' style='border:1px solid black; font-family:verdana'>"+
+				 "<h3 style='color: blue;'>"+
+				 m.getId() + "님의 임시 비밀번호 입니다. 비밀번호를 변경하여 사용하세요.</h3>"+
+				 "<p>임시 비밀번호 : "+
+				 m.getPw() + "</p></div>","text/html;charset=euc-kr");
+				Transport.send(message); 
+	       }catch (Exception e) {
+		}
+	       System.out.println("암호화 이전"+m.getPw());
+	       try {
+			m.setPw(new SHA256Util().encData(m.getPw()));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	       System.out.println("암호화 다음"+m.getPw());
+	       int result = memberService.pwUpdate(m);
+	       String view="common/msg";
+	       if(result>0) {
+	    	   request.setAttribute("msg", "비밀번호 변경 메일을 확인해주세요");
+	    	   request.setAttribute("loc", "/loginPage.do");
+	       }else {
+	    	   request.setAttribute("msg","비밀번호 변경 실패");
+	    	   request.setAttribute("loc", "/findPasswordPage.do");
+	       }return view;
 	}
 	
 }

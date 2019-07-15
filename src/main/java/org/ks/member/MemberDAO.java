@@ -13,4 +13,6 @@ public interface MemberDAO {
 	public int updateMember(Member m);
 	public int deleteMember(String id);
 	public ArrayList<Member> memberList();
+	public Member idAndNameCheck(Member m);
+	public int pwUpdate(Member m);
 }

@@ -60,4 +60,16 @@ public class MemberServiceImpl implements MemberService{
 		return list;
 	}
 
+	@Override
+	public Member idAndNameCheck(Member m) {
+		Member member = memberDao.idAndNameCheck(m);
+		return member;
+	}
+
+	@Override
+	public int pwUpdate(Member m) {
+		int result = memberDao.pwUpdate(m);
+		return result;
+	}
+
 }
