@@ -34,10 +34,13 @@
    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
       <constructor-arg index="0" ref="sqlSession"></constructor-arg>
    </bean>
+
+   <context:component-scan base-package="org.ks.recipe"/>
    <context:component-scan base-package="org.ks.competition"/>
    <context:component-scan base-package="org.ks.participant"/>
    <context:component-scan base-package="org.ks.tmr"/>
    <context:component-scan base-package="org.ks.cart"/>
+   <context:component-scan base-package="org.ks.campaing"/>   
    <context:component-scan base-package="org.ks.reservation"/>
    <context:component-scan base-package="org.ks.caravan"/>
 </beans>
