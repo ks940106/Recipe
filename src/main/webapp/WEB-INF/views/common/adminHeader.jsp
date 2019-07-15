@@ -27,7 +27,7 @@
             <img src="../resources/img/admin/recipe_icon.png" class="ico set" width="50px;">
             <div class="menu_text">레시피 등록</div>
         </a>
-        <a href="order_list.html" class="menu_btn">
+        <a href="/orderAdminList.do" class="menu_btn">
             <img src="../resources/img/admin/buy_icon.png" class="ico set"  width="50px;">
             <div class="menu_text">레시피 판매</div>
         </a>
