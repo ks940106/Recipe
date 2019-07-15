@@ -144,8 +144,6 @@ public class MemberController {
 		String addr2=request.getParameter("addr2");
 		String phone = request.getParameter("phone");
 		String gender = request.getParameter("gender");
-		String fileUpload1 =request.getParameter("fileUpload");
-		System.out.println(fileUpload1);
 		String zipCode=request.getParameter("zipCode");
 		//파일 업로드
 		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/member");
@@ -201,7 +199,6 @@ public class MemberController {
 		String phone = request.getParameter("phone");
 		String gender = request.getParameter("gender");
 		String fileUpload1 =request.getParameter("fileUpload");
-		System.out.println(fileUpload1);
 		String zipCode=request.getParameter("zipCode");
 		//파일 업로드
 		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/member");
@@ -275,7 +272,6 @@ public class MemberController {
 	@RequestMapping(value="/emailcertification.do")
 	public void emailcertification(HttpServletRequest request,HttpServletResponse response) {
 		String id = request.getParameter("email");
-		System.out.println("메일 인증");
 		String host = "smtp.googlemail.com"; // 네이버일 경우 네이버 계정, gmail경우 gmail 계정 
 
 	      final String user = "fghij7410@gmail.com"; 
@@ -339,7 +335,6 @@ public class MemberController {
 	 				"</html>","text/html;charset=euc-kr");  
 	       // send the message 
 	       Transport.send(message); 
-	       System.out.println("Success Message Send"); 
 	       RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/member/emailcertification.jsp");
 	       request.setAttribute("num", num);
 	       try {
@@ -367,7 +362,6 @@ public class MemberController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(pw);
 		HttpSession session = request.getSession(false);
 		String id=((Member)session.getAttribute("member")).getId();
 		Member member = memberService.pwCheck(id,pw);
@@ -385,7 +379,6 @@ public class MemberController {
 	public String myPageUpdate(HttpServletRequest request,HttpServletResponse response,@RequestParam MultipartFile fileUpload)throws ServletException, IOException {
 		Member m = new Member();
 		m.setId(request.getParameter("id"));
-		System.out.println(m.getId());
 		String pw1 = request.getParameter("new_pw");
 		m.setNickname(request.getParameter("nickname"));
 		m.setAddr1(request.getParameter("addr1"));
@@ -412,7 +405,6 @@ public class MemberController {
 		}
 		m.setPw(pw);
 		m.setMemberImg(filePath);
-		System.out.println(m.getAddr1());
 		int result = memberService.updateMember(m);
 		if(!fileUpload.isEmpty()) {
 			byte[] bytes;
@@ -440,7 +432,6 @@ public class MemberController {
 	@RequestMapping(value="/myPageDelete.do")
 	public String myPageDelete(HttpServletRequest request,HttpSession session) {
 		String id = request.getParameter("id");
-		System.out.println(id);
 		int result = memberService.deleteMember(id);
 		String view="common/msg";
 		if(result>0) {
