@@ -47,7 +47,7 @@
      				</c:choose>
                     <li><a href="/competitionList.do?competitionCheck='Y'">요리대회</a></li>
 
-                    <li><a href="mainBoard.do">토크</a></li>
+                    <li><a href="mainBoard.do?boardType=0">토크</a></li>
 
                     <li><a href="/pom.do">쿠킹클래스</a></li>
 
