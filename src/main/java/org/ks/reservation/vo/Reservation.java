@@ -1,6 +1,7 @@
 package org.ks.reservation.vo;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class Reservation {
 	private int reservationNo;
@@ -108,5 +109,8 @@ public class Reservation {
 	public void setEnrollDate(Date enrollDate) {
 		this.enrollDate = enrollDate;
 	}
-	
+	public String[] getReservationDateArr(){
+		String[] arr = reservationDate.split(",");
+		return arr;
+	}
 }

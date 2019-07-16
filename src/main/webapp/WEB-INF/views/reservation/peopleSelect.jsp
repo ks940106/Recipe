@@ -44,6 +44,7 @@
             		<br>
             		<span id="date"></span> <span id="price" name="totalCost"></span>원
             		<br>
+            		<button type="button" class="btn btn-primary" onclick="location.href='/calendar.do'">이전으로</button>
             		<input type="submit" class="btn btn-success" value="예약 상세 정보 입력">
                		</form>
                 </div>

@@ -33,20 +33,28 @@
                 		<input type="hidden" name="id" value="${r.id }">
                 		<input type="hidden" name="reservationPeople" value="${r.reservationPeople }">
                 		<input type="hidden" name="totalCost" value="${r.totalCost}">
-                		<input type="hidden" name="reservationDate" value="${r.reservationDate }">		
+                		<input type="hidden" name="reservationDate" value="${r.reservationDate }">
+                		<input type="hidden" name="reservationPhone">	
+                		<input type="hidden" name="reservationEmail">		
                 		<h1>선택 객실 목록</h1>
                 		<hr>
                 		<span style="width: 20%; display: inline-block; font-weight: bolder;">객실명</span>
                 		<span style="width: 20%; display: inline-block; font-weight: bolder;">이용일</span>
                 		<span style="width: 30%; display: inline-block; font-weight: bolder;">이용인원</span>
                 		<span style="width: 20%; display: inline-block; font-weight: bolder;">총 결제 금액</span>
-                		<hr>
-                		<span style="width: 20%; display: inline-block;">${caravanName }</span> 
-                		<span style="width: 20%; display: inline-block;">${r.reservationDate }</span>
-                		<span style="width: 30%; display: inline-block;">${r.reservationPeople }명 (기준 : ${caravanPeople }명/ 최대 : ${caravanMaxPeople }명)</span> 
-                		<span style="width: 20%; display: inline-block;"><span style="color:#ea1f62; font-size:20px; font-weight: bolder;">${r.totalCost }</span>원</span>  
-						<hr><BR><BR>
-                		<div id="accept" style="width:48%;float: left;">
+                		
+                		<div style="width: 20%; display: inline-block; float:left;">${caravanName }</div> 
+                		<div style="width: 20%; display: inline-block; float:left; color:#ea1f62;">
+                		<c:forEach items="${r.reservationDateArr}" var="date">
+                			${date }<br>
+                		</c:forEach>
+                		</div>
+                		<div style="width: 30%; display: inline-block; float:left;">${r.reservationPeople }명 (기준 : ${caravanPeople }명/ 최대 : ${caravanMaxPeople }명)</div> 
+                		<div style="width: 20%; display: inline-block; float:left;"><span style="color:#ea1f62; font-size:20px; font-weight: bolder;">${r.totalCost }</span>원</div>  
+						<hr>
+						<BR>
+                		<div id="accept" style="width:48%;float: left; clear: both;">
+                		<br>
                 		<h2>약관동의</h2>
                 		<hr>
                 		<div style="background: lightgray;"><input type="checkbox" id="allChk">전체약관에 모두 동의합니다<br> (이용시 유의사항,개인정보 수집이용,개인정보 제3자제공,성인 확인)</div>
@@ -99,11 +107,55 @@
                 		</div>
                 		
                 		<div style="width:48%;float: right;">
+                		<br>
                 		<h2>예약정보입력</h2>
                 		<hr>
-                		예약자명 * <input class="form-control" style="display:inline;width:80%;"name="reservationName"><br><br>
-                		생년월일 * <input class="form-control" style="display:inline;width:80%;"name="reservationBirth"><br><br>
-                		연락처 * <input class="form-control" style="display:inline;width:80%;"name="reservationBirth"><br><br>
+                		예약자명 * 
+                		<input class="form-control" style="width:80%;"name="reservationName">
+                		<span style="color:#ea1f62">예약자 실명을 입력하세요. 예약확인시 혼동이 될 수 있습니다.</span>
+                		<br><br>
+                		생년월일 * 
+                		<input class="form-control" style="width:80%;"name="reservationBirth" numberOnly>
+                		<span style="color:#ea1f62">예) 800722</span>
+						<br><br>
+                		연락처 * <br>
+                		<select id="phone1" class="form-control" style="display:inline;width:24%;">
+                			<option selected>010</option>
+                			<option>011</option>
+                			<option>016</option>
+                			<option>017</option>
+                			<option>018</option>
+                			<option>019</option>
+                		</select> &nbsp;-&nbsp; 
+                		<input id="phone2" class="form-control" style="display:inline;width:24%;" maxlength="4" numberOnly> &nbsp;-&nbsp;  
+                		<input id="phone3" class="form-control" style="display:inline;width:24%;" maxlength="4" numberOnly><br>
+                		<span style="color:#ea1f62">예약 관련 연락을 받을 번호를 입력해주세요.</span>
+                		<br><br>
+                		이메일 <br>
+                		<input id="email1" class="form-control" style="display:inline;width:38%;"> @ 
+                		<input id="email2" class="form-control" style="display:inline;width:33%;" value="이메일을 선택해주세요." readonly>
+                		<select id="email3" class="form-control" style="display:inline;width:0%;">
+                			<option selected value="이메일을 선택해주세요.">--</option>
+                			<option value="naver.com">naver.com</option>
+                			<option value="hanmail.net">hanmail.net</option>
+                			<option value="nate.com">nate.com</option>
+                			<option value="gmail.com">gmail.com</option>
+                			<option value="daum.net">daum.net</option>
+                			<option value="hotmail.com">hotmail.com</option>
+                			<option value="korea.com">korea.com</option>
+                			<option value="dreamwiz.com">dreamwiz.com</option>
+                			<option value="empal.com">empal.com</option>
+                			<option value="lycos.co.kr">lycos.co.kr</option>
+                			<option value="paran.com">paran.com</option>
+                			<option value="yahoo.co.kr">yahoo.co.kr</option>
+                			<option value="samsung.com">samsung.com</option>
+                			<option value="icloud.com">icloud.com</option>
+                			<option value="1">직접입력</option>
+                		</select><br><br>
+                		요청사항 <br>
+                		<textarea class="form-control" style="display:inline;width:80%;" name="reservationRequest"></textarea><br><br>
+                		
+                		<button class="btn btn-primary" type="button" onclick="location.href='/peopleSelect.do?caravanNo=${r.caravanNo}&reservationDateString=${r.reservationDate}'">이전으로</button>
                 		<input class="btn btn-success" type="submit" value="결제하기">
                 		</div>
                		</form>
@@ -120,6 +172,15 @@
 			$("input[name=accept]").prop("checked",false);
 		}
 	});
+	$("#email3").change(function(){
+		if($(this).val()==1){
+			$("#email2").val("");
+			$("#email2").attr("readonly",false);
+			return;
+		}
+		$("#email2").val($(this).val());
+		$("#email2").attr("readonly",true);
+	});
 	function sbm2(){
 		var chk = new Array();
 		for(var i = 0; i<4;i++){
@@ -131,8 +192,30 @@
 				return false;
 			}
 		}
+		var phone = $("[name=reservationPhone]").val($("#phone1").val()+"-"+$("#phone2").val()+"-"+$("#phone3").val());
+		var email = $("[name=reservationEmail]").val($("#email1").val()+"@"+$("#email2").val());
+		var name = $("[name=reservationName]").val();
+		var nameExp = /^[가-힣]+$/;
+		if(!nameExp.test(name)){
+			alert("예약자명을 확인하세요.");
+			return false;
+		}
+		var birth = $("[name=reservationBirth]").val();
+		var birthExp = /^[0-9]{6}$/;
+		if(!birthExp.test(birth)){
+			alert("생년월일은 6자로 입력 하여야 합니다.");
+			return false;
+		}
+		if($("#phone2").val()=="" ||$("#phone3").val()==""){
+			alert("연락처를 확인하세요.");
+			return false;
+		}
 		return true;
 	}
+	
+	$("input:text[numberOnly]").on("keyup", function() {
+		$(this).val($(this).val().replace(/[^0-9]/g,""));
+		});
 </script>
 </body>
 </html>
