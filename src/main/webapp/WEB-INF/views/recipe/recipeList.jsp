@@ -12,6 +12,7 @@
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/recipe.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/recipeList.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -26,53 +27,51 @@
         <div class="pom_top">
             <h1>레시피</h1>
             <div id="pom_div_bg"></div>
-            <%--<p>자연속에서 즐기는 요리대회</p>--%>
         </div>
     </div>
     <div class="pom_wrap">
-        <%--<div class="pomNav">--%>
-        <%--<jsp:include page="/WEB-INF/views/common/navPom.jsp"/>--%>
-        <%--</div>--%>
         <div class="section_content">
             <div class="rcp_content">
                 <%--검색필터--%>
-                <table class="table">
-                    <tr>
-                        <th>제목</th>
-                        <td colspan="2"><input type="text"></td>
-                    </tr>
-                    <tr>
-                        <th>내용</th>
-                        <td colspan="2"><input type="text"></td>
-                    </tr>
-                    <tr>
-                        <th>카테고리</th>
-                        <td>
-                            <label>카테고리1<select></select></label>
-                        </td>
-                        <td>
-                            <label>카테고리2<select></select></label>
-                        </td>
-                        <td>
-                            <a href="${pageContext.request.contextPath}/recipeRegPage.do">레시피등록</a>
-                        </td>
-                    </tr>
+                <div class="search">
+                    <div class="search_filter">
+                        <input type="text" placeholder="검색어 입력">
+                        <button>검색</button>
+                    </div>
+                    <div class="category">
+                        <select name="category1">
+                            <option value="">종류별</option>
+                        </select>
+                        <select name="category2">
+                            <option value="">상황별</option>
+                        </select>
+                    </div>
+                    <div class="rcp_reg">
+                        <a href="${pageContext.request.contextPath}/recipeRegPage.do"><img
+                                src="${pageContext.request.contextPath}/resources/img/recipe/tmn_write.png" alt="글쓰기"/>
+                        </a>
+                    </div>
+                </div>
 
-                </table>
                 <div class="rcp_m_list2">
                     <div class="m_list_tit">
                         총 <b>120,788</b>개의 맛있는 레시피가 있습니다.
                         <ul class="nav nav-tabs2 pull-right" style="position:relative;">
-                            <li role="presentation" class="active"><a href="javascript:void(0);" onclick="goSearchRecipe('order','accuracy')">정확순</a></li>
-                            <li role="presentation"><a href="javascript:void(0);" onclick="goSearchRecipe('order','date')">최신순</a></li>
-                            <li role="presentation"><a href="javascript:void(0);" onclick="goSearchRecipe('order','reco')">추천순</a></li>
+                            <li role="presentation" class="active"><a href="javascript:void(0);"
+                                                                      onclick="goSearchRecipe('order','accuracy')">정확순</a>
+                            </li>
+                            <li role="presentation"><a href="javascript:void(0);"
+                                                       onclick="goSearchRecipe('order','date')">최신순</a></li>
+                            <li role="presentation"><a href="javascript:void(0);"
+                                                       onclick="goSearchRecipe('order','reco')">추천순</a></li>
                         </ul>
                     </div>
                     <div class="row">
                         <c:forEach var="recipe" items="${recipeList}">
                             <div class="col-xs-4">
                                 <a href="/recipe/${recipe.recipeNo}" class="thumbnail">
-                                    <img src="${pageContext.request.contextPath}/resources/upload/recipe/${recipe.recipeMainImg}" style="width:275px; height:275px;">
+                                    <img src="${pageContext.request.contextPath}/resources/upload/recipe/${recipe.recipeMainImg}"
+                                         style="width:275px; height:275px;">
                                     <div class="caption">
                                         <h4 class="ellipsis_title2">${recipe.recipeTitle}</h4>
                                         <p>by ${recipe.recipeWriter}</p>
@@ -84,6 +83,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </section>
 <jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />

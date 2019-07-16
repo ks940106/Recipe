@@ -25,14 +25,14 @@
 
 
 		<div id="IntroVisual">
-			<div class="left" onclick="location.href='/Contents/contents.php'">
+			<div class="left">
 				<div class="bg">
 					<p><a href="/views/singSingRecipe.jsp"><img src="../../resources/img/button_left.png" class="go_basic"><img src="../../resources/img/left_go.png" class="go_over"><img src="../../resources/img/left_go_m.png" class="go_m"></a></p>
 				</div>
 				<div class="shadow">
 				</div>
 			</div>
-			<div class="right" onclick="location.href='/California/contents.php'">
+			<div class="right">
 				<div class="bg">
 					<p><a href="/views/singsingCampingIndex.jsp"><img src="../../resources/img/button_right.png?ver=0705" class="go_basic"><img src="../../resources/img/right_go.png" class="go_over"><img src="../../resources/img/right_go_m.png" class="go_m"></a></p>
 				</div>
