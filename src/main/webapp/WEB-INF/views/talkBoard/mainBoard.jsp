@@ -6,10 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script src="http://code.jquery.com/jquery-3.4.0.js"></script>
 <link href="../resources/css/import.css" rel="stylesheet" />
 <link href="../resources/css/talkBoard.css" rel="stylesheet" />
 <script type="text/javascript" src="../resources/js/talkBoard/talkBoard.js" />
+
 </head>
 <body>
 
@@ -45,7 +49,7 @@
 					
 				</div>
 				<div class="board_right">
-				<a href="#:;" class="btn btn-info" onclick="insert();">등록</a>				
+				<a href="#:;" class="btn btn-success" onclick="insert();">등록</a>				
 				</div>
 				<div id="go_register_dv" class="list-group talk_smn"
 					style="display:none; width: 250px; position: absolute;  background-color: white; border-top: 1px solid rgb(230, 231, 232); border-bottom: 1px solid rgb(230, 231, 232); z-index: 10;">
@@ -60,10 +64,15 @@
 
 				<div class="d1">
 					<div class="d2"></div>
-					<div class="c1">${t.nickname }</div>
-					<div class="c2" onclick="select(${t.boardNo})">
+					<div class="c1">${t.nickname }
+						<div style="font-size: 35px; float: right; margin-top: 10px;">
+	 			<img src="/resources/img/talk/138533.png"  style="width:30px; height:30px;">    ${t.likeCount }
+	 			<img src="/resources/img/talk/66932.png"  style="width:30px; height:30px;">    ${t.commentCount } 
+	 			</div>
+					</div>
+					<div class="c2" onclick="select('${t.boardNo}','${sessionScope.member.id }')">
 						${t.boardContents }</div>
-					<div class="c3" onclick="select(${t.boardNo})">
+					<div class="c3" onclick="select('${t.boardNo}','${sessionScope.member.id }')">
 						<c:forTokens items="${t.boardImg }" delims="/" var="item" varStatus="g">
 							<c:if test="${g.count==1 }">
 								<img src="/resources/talkBoard/${item}" width="800px"

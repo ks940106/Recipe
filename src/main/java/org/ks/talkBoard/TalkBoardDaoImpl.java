@@ -2,6 +2,7 @@ package org.ks.talkBoard;
 
 import java.util.List;
 
+import org.ks.talkBoard.vo.BoardLike;
 import org.ks.talkBoard.vo.PrintPage;
 import org.ks.talkBoard.vo.TalkBoard;
 import org.ks.talkBoard.vo.TalkBoardComment;
@@ -74,7 +75,32 @@ public class TalkBoardDaoImpl implements TalkBoardDao{
 		return sqlSession.selectOne("mybatis.seeBoardTypeCount",type);
 	}
 
+	@Override
+	public BoardLike boardLike(BoardLike bl) {
+		return sqlSession.selectOne("mybatis.boardLike",bl);
+	}
 
+	@Override
+	public int likeClick(BoardLike bl) {
+		return sqlSession.update("mybatis.likeClick",bl);
+	}
+
+	@Override
+	public int likeDelClick(BoardLike bl) {
+		return sqlSession.update("mybatis.likeDelClick",bl);
+	}
+
+	@Override
+	public int commentCount(int no) {
+		return sqlSession.selectOne("talkbatis.commentCount",no);
+	}
+
+	@Override
+	public int likeCount(int no) {
+		return sqlSession.selectOne("mybatis.likeCount",no);
+	}
+
+	
 	
 	
 }

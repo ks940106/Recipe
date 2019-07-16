@@ -46,4 +46,26 @@
   <select id="seeBoardTypeCount" parameterType="string" resultType="_int">
   	select count(*) cnt from board where board_type = #{type}
   </select>
+  
+  <select id="boardLike" parameterType="bl" resultType="bl">
+  	select 
+  	like_no as likeNo,
+  	board_no as boardNo,
+  	member_id as memberId,
+  	like_check as likeCheck
+  	 from board_like where board_no = #{boardNo} and member_id = #{memberId}
+  </select>
+  
+  <insert id="likeClick" parameterType="bl">
+  	insert into board_like values(req_like_no.nextval,#{boardNo},#{memberId},'1')
+  </insert>
+  
+   <insert id="likeDelClick" parameterType="bl">
+  		delete from board_like where board_no = #{boardNo} and member_id = #{memberId}
+  </insert>
+  
+  <select id="likeCount" parameterType="_int" resultType="_int">
+  	select count(*) cnt from board_like where board_no = #{boardNo}
+  </select>
+  
 </mapper>

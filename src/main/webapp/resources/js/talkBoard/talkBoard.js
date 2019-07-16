@@ -2,8 +2,8 @@
  * 
  */
 
-function select(no){
-			location.href="/selectTalkBoard.do?boardNo="+no;
+function select(no,id){
+			location.href="/selectTalkBoard.do?boardNo="+no+"&memberId="+id;
 		}
 
 function insert(){

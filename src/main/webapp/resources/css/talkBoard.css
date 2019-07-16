@@ -24,7 +24,7 @@
 .c1 {
 	border-bottom : 1px solid #1f6054;
 	width: 80%;
-	height: 7%;
+	height: 10%;
 	box-sizing: border-box;
 	float: right;
 	padding-left: 15px;
@@ -93,8 +93,7 @@
 	width: 100%;
 	font-size: 20px;
 	color : #1f6054;
-	line-height: 30px;
-	margin: 10px
+	line-height: 20px;
 }
 
 
