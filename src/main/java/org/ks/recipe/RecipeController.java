@@ -35,9 +35,14 @@ public class RecipeController {
     }
 
     @RequestMapping("/recipeRegPage.do")
-    public String recipeRegPage(Model model) {
+    public String recipeRegPage(HttpServletRequest request, Model model) {
+        if(request.getSession(false)==null || request.getSession(false).getAttribute("member") ==null){
+            request.setAttribute("msg","로그인 후에 사용할수 있습니다.");
+            request.setAttribute("loc","/loginPage.do");
+            return "common/msg";
+        }
         List<Category> categoryList = recipeService.categoryList();
-        model.addAttribute("categoryList",categoryList);
+        model.addAttribute("categoryList", categoryList);
         return "recipe/recipe";
     }
 
