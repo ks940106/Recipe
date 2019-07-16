@@ -12,9 +12,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>싱싱레시피</title>
+    <link href="${pageContext.request.contextPath}/resources/css/ui.css" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/resources/css/import.css" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/resources/css/page.css" rel="stylesheet"/>
-    <link href="${pageContext.request.contextPath}/resources/css/recipe.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/resources/css/recipeDetail.css" rel="stylesheet"/>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp"/>
@@ -24,6 +25,9 @@
             <div class="main_img image-container">
                 <img src="${pageContext.request.contextPath}/resources/upload/recipe/${recipe.recipe.recipeMainImg}" alt="main_img"/>
             </div>
+            <c:if test="${not empty recipe.recipe.recipeVideo}">
+                <iframe id="player" type="text/html" width="640" height="360" src='https://www.youtube.com/embed${recipe.recipe.recipeVideo.substring(recipe.recipe.recipeVideo.lastIndexOf("/"))}' frameborder="0"></iframe>
+            </c:if>
             <c:forEach var="step" items="${recipe.recipeStep}">
                 <div class="recipe_step">
                     <div class="step_text">
@@ -55,13 +59,13 @@
                 <h2>${recipe.recipe.recipeTitle}</h2>
                 조회수 : ${recipe.recipe.recipeHit}<br>
                 <c:if test="${empty sessionScope.member}">
-                    좋아요 : ${recipe.recipe.recipeLike}
+                    <span class="bg_like">${recipe.recipe.recipeLike}</span>
                 </c:if>
                 <c:if test="${not empty sessionScope.member && isLiked}">
-                    <a href="javaScript:unLike(${recipe.recipe.recipeNo})">좋아요 취소</a> : ${recipe.recipe.recipeLike}
+                    <a class="bg_like" href="javaScript:unLike(${recipe.recipe.recipeNo})">${recipe.recipe.recipeLike}</a>
                 </c:if>
                 <c:if test="${not empty sessionScope.member && !isLiked}">
-                    <a href="javaScript:like(${recipe.recipe.recipeNo})">좋아요</a> : ${recipe.recipe.recipeLike}
+                    <a class="bg_like" href="javaScript:like(${recipe.recipe.recipeNo})">${recipe.recipe.recipeLike}</a>
                 </c:if>
             </div>
             <div class="recipe_info">
@@ -73,13 +77,33 @@
                 ${recipe.level}
             </div>
             <div class="recipe_cat">
-                ${recipe.category1} /
+                ${recipe.category1} ,
                 ${recipe.category2}
             </div>
             <div class="recipe_item">
                 <div class="item_title">재료</div>
                 ${recipe.recipe.recipeItem}
             </div>
+            <c:if test="${recipe.recipe.recipePrice ne 0}">
+                <div class="recipe_order">
+                    <table class="type04">
+                        <tr>
+                            <th>가격</th>
+                            <td id="price">${recipe.recipe.recipePrice}</td>
+                        </tr>
+                        <tr>
+                            <th>갯수</th>
+                            <td><input type="number" name="count" min="1" value="0"></td>
+                        </tr>
+                        <tr>
+                            <th>총 가격</th>
+                            <td><span id="total_price">0</span></td>
+                        </tr>
+                    </table>
+                    <a class="btn normal col_main f_w" href="javaScript:void(0)" onclick="cart(${recipe.recipe.recipeNo})">장바구니에 넣기</a>
+                    <a class="btn normal col_main f_w" href="javaScript:void(0)" onclick="">바로 주문하기</a>
+                </div>
+            </c:if>
         </div>
     </div>
 </section>

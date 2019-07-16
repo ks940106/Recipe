@@ -35,4 +35,10 @@
 	<select id="memberList" resultType="member">
 		select * from member
 	</select>
+	<select id="idAndName" resultType="member">
+		select * from member where id=#{id} and name=#{name}
+	</select> 
+	<update id="pwUpdate">
+		update member set pw=#{pw} where id=#{id} and name=#{name}
+	</update>
 </mapper>

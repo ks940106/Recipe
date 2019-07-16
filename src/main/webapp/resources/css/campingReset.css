@@ -1,0 +1,164 @@
+@charset "UTF-8";
+@import url("https://use.typekit.net/ynd4hhw.css");
+@font-face {
+	font-family: 'nanumbarungothicregular';
+	font-style: normal;
+	src: url('../font/nanumbarungothicregular.eot');
+	src: url('../font/nanumbarungothicregular.ttf');
+	src: url('../font/nanumbarungothicregular.woff');
+}
+
+@font-face {
+	font-family: 'FuturaStd-Book';
+	font-style: normal;
+	src: url('../font/FuturaStd-Book.ttf');
+	src: url('../font/FuturaStd-Book.woff');
+}
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+/*table, caption, tbody, tfoot, thead, tr, th, td,*/
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video
+{
+	margin:0;border:0;outline:0;padding:0;
+	background:transparent;
+	font-family:'FuturaStd-Book','nanumbarungothicregular', 돋움, Dotum, sans-serif;
+	font-style:normal; font-weight:normal;
+	vertical-align:baseline;
+}
+
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body					{line-height:1}
+ol,ul				{list-style:none}
+blockquote,q 		{quotes:none}
+blockquote:before,
+blockquote:after,
+q:before,q:after		{content:'';content:none}
+table				{border-collapse:collapse;border-spacing:0}
+hr					{display:none}
+
+a:link				{color:#000;text-decoration:none}
+a:visited			{color:#000;text-decoration:none}
+a:hover				{color:#000;text-decoration:none}
+a:active				{color:#000;text-decoration:none}
+
+/* float clear */
+.both				{clear:both}
+.clear				{width:auto}
+.clear:after			{content:"";display:block;clear:both;height:0;overflow:hidden}
+
+/* element hide */
+#skipnavi,.alt		{position:absolute;top:0;left:0;width:0;height:0;font-size:0;line-height:0;visibility:hidden;overflow:hidden}
+
+/* default class */
+label				{vertical-align:middle;cursor:pointer}
+input				{vertical-align:middle}
+
+
+/*--------------------------------------------------------------------------------*/
+/* All - COMMON */
+.section 			{position:relative;width:100%;height:100%;overflow:hidden;}
+.mask span 			{position:fixed;top:50%;left:50%;width:190px;height:60px;margin:-25px 0 0 -80px;z-index:710;}
+.mask b 				{background:#000;position:fixed;top:0;left:0;width:100%;height:100%;z-index:700;} 
+
+/* common - mov */
+#MainVideo {position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:auto;overflow:hidden;object-fit:cover;}
+
+.vds {position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%;overflow:hidden;}
+.vds #myVideo {min-width:100%;min-height:100%;width:auto;height:auto;position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);object-fit:cover;}
+
+/* common - bg */
+.bg {background:#000;opacity:0.5;position:absolute;top:0;left:0;width:100%;height:100%;z-index:210;}
+
+/* common - slide */
+.slide {position:relative;width:100%;height:100%;overflow:hidden;min-width:1200px;min-height:650px;height:650px!important;}
+.slide_show {position:relative;width:100%;height:100%;overflow:hidden;min-height:650px;}
+.slide_show > li {position:absolute;top:0;left:0;width:100%;height:100%;min-height:650px;overflow:hidden;}
+.slide_show > li.active {z-index:100!important;}
+.slide .nav > a {position:absolute;top:50%;margin-top:-30.5px;width:61px;height:61px;z-index:350;}
+.slide .nav > a.prev {left:0%;}
+.slide .nav > a.next {right:0%;}
+.slide .nav > ul {position:absolute;left:50%;bottom:30px;z-index:350;}
+.slide .nav > ul li {float:left;width:23px;}
+.slide .nav > ul li a {width:21px;height:21px;display:block;margin:0 auto;}
+.slide .nav > ul li a {background:url(http://gonylab5.speedgabia.com/graysands/final/images/off.png) no-repeat 0 0;}
+.slide .nav > ul li a.active {background:url(http://gonylab5.speedgabia.com/graysands/final/images/on.png) no-repeat 0 0;}
+
+/*--------------------------------------------------------------------------------*/
+/* header */
+#header {position:fixed;top:0;left:0;width:100%;min-width:1200px;z-index:2000;}
+#header h1 {position:absolute;top:-135px;left:50%;margin-left:-90px;z-index:200;}
+#header #gnb {position:relative;width:100%;z-index:300;}
+#header #gnb .top {
+	position:relative;width:100%;height:63px;border-bottom:1px solid #e8e8e8;overflow:hidden;
+	background:url(http://gonylab5.speedgabia.com/graysands/final/images/box_bg.jpg) no-repeat 50% 50%;background-size:cover;
+}
+#header #gnb .top h2 {float:left;width:210px;margin-left:20px;}
+#header #gnb .top h2 a {display:block;}
+#header #gnb .top ul {float:right;width:65%;height:100%;overflow:hidden;}
+#header #gnb .top ul li {float:left;width:17.5%;height:100%;background:url(http://gonylab5.speedgabia.com/graysands/final/images/top_line.jpg) no-repeat right center;}
+#header #gnb .top ul li.top_02 {width:30%;}
+#header #gnb .top ul li.last {background:none;}
+#header #gnb .top ul li a {display:block;text-align:center;font-size:17px;padding:23px 0;}
+#header #gnb .top ul li a:hover {color:#5f9da5;}
+#header #gnb .top ul li a.active {color:#5f9da5;}
+#header #gnb .nav {
+	position:relative;top:0;width:100%;height:0;border-bottom:1px solid #e8e8e8;overflow:hidden;
+	background:url(http://gonylab5.speedgabia.com/graysands/final/images/gnb_bg.png) repeat left top;
+}
+#header #gnb .nav .mov {float:left;margin-left:20px;width:234px;height:172px;padding-top:30px;opacity:0;}
+#header #gnb .nav .mov a {
+	position:relative;width:234px;height:172px;display:block;
+	background:url(http://gonylab5.speedgabia.com/graysands/final/images/nav_mov_bg.jpg) no-repeat left top;
+}
+#header #gnb .nav .mov a img {position:absolute;top:50%;left:50%;margin:-20px 0 0 -80px;display:block;}
+#header #gnb .nav .mov a img:hover {opacity:0.8;}
+#header #gnb .nav > ul {float:right;width:65%;padding-top:20px;overflow:hidden;opacity:0;}
+#header #gnb .nav > ul > li {float:left;width:17.5%;}
+#header #gnb .nav > ul > li.nav_02 {width:30%;}
+#header #gnb .nav > ul > li.nav_02 ul {width:100%;overflow:hidden;}
+#header #gnb .nav > ul > li.nav_02 ul li.long {width:100%;float:none;}
+#header #gnb .nav > ul > li.nav_02 ul li {float:left;width:50%;}
+#header #gnb .nav > ul > li > ul {
+	width:100%;height:170px;padding-top:10px;overflow:hidden;
+	background:url(http://gonylab5.speedgabia.com/graysands/final/images/nav_line.jpg) repeat-y right top;
+}
+#header #gnb .nav > ul > li.last > ul {background:none;}
+#header #gnb .nav ul li a {display:block;text-align:center;font-size:16px;line-height:1.7em;}
+#header #gnb .nav ul li a:hover {color:#77afb6;}
+#header #gnb .nav ul li a.active {color:#77afb6;}
+body .book {position:fixed;top:50%;right:0;margin-top:-99.5px;z-index:1000;}
+body .book a {display:block;}
+
+
+/*--------------------------------------------------------------------------------*/
+/* footer */
+#footer {position:relative;width:100%;border-top:5px solid #576479;background:#333c4b;}
+#footer .inner {width:1100px;padding:50px;margin:0 auto;overflow:hidden;}
+#footer .inner h5 {float:left;width:26%;}
+#footer .inner > div {position:relative;float:left;width:37%;}
+#footer .inner > div strong {display:block;color:#9da8bb;font-size:18px;margin-bottom:25px;}
+#footer .inner > div p {font-size:13px;line-height:1.5em;color:#e8e8e8;letter-spacing:1px;}
+#footer .inner > div ul {width:100%;overflow:hidden;}
+#footer .inner > div ul li {float:left;margin-right:15px;}
+#footer .inner > div ul li a {padding:15px;border:1px solid #e8e8e8;}
+#footer .inner > div > a {margin-top:40px;font-size:13px;color:#e8e8e8;}
+
+#footer .stp {position:absolute;top:0;right:0;}
+#footer a {display:block;}
+

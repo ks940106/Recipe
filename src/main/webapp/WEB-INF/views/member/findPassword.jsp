@@ -11,7 +11,23 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp" />
 <section class="findPassword">
-
+	<h1>비밀번호 변경</h1>
+	<form method="post" action="/findPassword.do">
+	<div class="find">
+	<p>비밀번호 변경을 위해 아이디와 이름을 입력해주세요</p>
+	<p>새로운 비밀번호는 이메일로 전송됩니다</p>
+		<table>
+			<tr>
+				<th>아이디</th>
+				<td><input type="text" name="id" ></td>
+			</tr>
+			<tr>
+				<th>이름</th>
+				<td><input type="text" name="name"></td>
+		</table>
+	</div>
+	<button type="submit">비밀번호 변경</button>
+	</form>
 </section>
 </body>
 </html>

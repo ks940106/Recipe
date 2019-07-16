@@ -2,12 +2,17 @@ package org.ks.cart;
 
 import java.util.ArrayList;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.ks.cart.vo.Cart;
 import org.ks.member.vo.Member;
+import org.ks.recipe.RecipeService;
+import org.ks.recipe.RecipeServiceImpl;
+import org.ks.recipe.vo.RecipeDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -20,7 +25,11 @@ public class CartController {
 	@Autowired
 	@Qualifier(value="cartServiceImpl")
 	private CartService cartServiceImpl;
-	
+
+	@Autowired
+	@Qualifier(value="recipeServiceImpl")
+	private RecipeService recipeService;
+
 	@RequestMapping(value="cart.do")//개인장바구니 조회
 	public ModelAndView cartView(HttpServletRequest request,HttpSession session) { //매개변수로 아이디를 받아서 아이디로 조회한다.
 		Member m = (Member)session.getAttribute("member");
@@ -35,25 +44,36 @@ public class CartController {
 		}
 		return mav;
 	}
-	
+
 	@RequestMapping(value="insertcart.do")
 	public String insertcart(HttpServletRequest request) {
-		String id ="admin@naver.com";
-		int recipeNo = 101;
-		int recipePrice = 1000;
-		int recipeCount = 1;
-		Cart c = new Cart(0, id, recipeNo, recipePrice, recipeCount,null);
+		HttpSession session = request.getSession(false);
+		if(session==null || session.getAttribute("member")==null){
+			request.setAttribute("msg", "로그인이 필요합니다.");
+			request.setAttribute("loc", "/recipe/"+request.getParameter("recipeNo"));
+			return "common/msg";
+		}
+		Member member = (Member) session.getAttribute("member");
+		String id = member.getId();
+		String recipeNo = request.getParameter("recipeNo");
+		RecipeDetail recipeDetail = recipeService.getRecipeDetail(recipeNo);
+		System.out.println("recipeDetail : "+recipeDetail);
+		int recipePrice = recipeDetail.getRecipe().getRecipePrice();
+		int recipeCount = Integer.parseInt(request.getParameter("count"));
+		Cart c = new Cart(0, id, recipeDetail.getRecipe().getRecipeNo(), recipePrice, recipeCount,recipeDetail.getRecipe().getRecipeTitle());
 		int result = cartServiceImpl.insertCart(c);
 		if(result>0) {
-			request.setAttribute("msg", "장바구니 추가 완료");
+			request.setAttribute("confirm", "장바구니 추가 완료. 장바구니로 가시겠습니까?");
+			request.setAttribute("confirmLoc","/cart.do");
 			request.setAttribute("loc", "/");
 			return "common/msg";
 		}else {
 			request.setAttribute("msg", "장바구니 추가 실패");
-			request.setAttribute("loc", "/");
+			request.setAttribute("loc", "/recipe/"+request.getParameter("recipeNo"));
 			return "common/msg";
 		}
 	}
+
 	@RequestMapping(value="order.do")
 	public ModelAndView order(HttpServletRequest request) {
 		String[] cartNo = request.getParameterValues("cartNo");

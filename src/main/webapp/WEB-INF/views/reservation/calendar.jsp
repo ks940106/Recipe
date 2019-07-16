@@ -5,41 +5,61 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.0.min.js" ></script>
-<title>Insert title here</title>
+<title>싱싱캠핑 예약</title>
+
+<link href="../resources/css/campingImport.css" rel="stylesheet" />
+<link href="../resources/css/reservation.css" rel="stylesheet" />
+<script type="text/javascript" src="../resources/js/reservation.js" />
 <style>
-	table * {border:1px solid black; width:100px;height:100px;}
-	table td{text-align: center;}
-	.possible{background-color: lightgreen;}
-	.impossible{background-color: lightgray;}
+	
 </style>
 </head>
 <body>
-	<div style="float: left;">
-	<table>
-	<tr>
-		<th><button type="button" id="prev"><</button></th>
-		<th colspan="5" id="YearMonth"></th>
-		<th><button type="button" id="next">></button></th>
-	</tr>
-	<tr>
-		<th style="color:red;">일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th style="color:blue;">토</th>
-	</tr>
-	<c:forEach var="i" begin="1" end="6">
-		<tr id="day">
-			<td id="${7*(i-1)+1 }" style="color:red;"></td>
-			<td id="${7*(i-1)+2 }"></td>
-			<td id="${7*(i-1)+3 }"></td>
-			<td id="${7*(i-1)+4 }"></td>
-			<td id="${7*(i-1)+5 }"></td>
-			<td id="${7*(i-1)+6 }"></td>
-			<td id="${7*(i-1)+7 }" style="color:blue;"></td>
-		</tr>
-	</c:forEach>
-	</table>
-	</div>
-	예약 가능 카라반 번호<br>
-	<div id="reservation" style="float: left; border:1px solid black; width:400px; height:400px;"></div>
+<jsp:include page="/WEB-INF/views/common/singsingCampingheader.jsp"/>
+<section>
+	<div class="pom_bg">
+        <div class="pom_top">
+            <h1>예약</h1>
+            <div id="pom_div_bg"></div>
+            <p>카라반 예약하기</p>
+        </div>
+    </div>
+    <div class="pom_wrap">
+            <div class="pomNav">
+                <jsp:include page="/WEB-INF/views/tmr/tmrNav.jsp"/>
+            </div>
+            <div class="section_content_nav">
+                <div class="cp_content">
+                	<div style="float: left;">
+						<table id="calendarTb">
+							<tr>
+								<th><button type="button" id="prev"><</button></th>
+								<th colspan="5" id="YearMonth"></th>
+								<th><button type="button" id="next">></button></th>
+							</tr>
+							<tr>
+								<th style="color:red;">일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th style="color:blue;">토</th>
+							</tr>
+						<c:forEach var="i" begin="1" end="6">
+							<tr id="day">
+								<td id="${7*(i-1)+1 }" style="color:red;"></td>
+								<td id="${7*(i-1)+2 }"></td>
+								<td id="${7*(i-1)+3 }"></td>
+								<td id="${7*(i-1)+4 }"></td>
+								<td id="${7*(i-1)+5 }"></td>
+								<td id="${7*(i-1)+6 }"></td>
+								<td id="${7*(i-1)+7 }" style="color:blue;"></td>
+							</tr>
+						</c:forEach>
+						</table>
+					</div>
+					<span id="span1">예약 가능 카라반 번호</span><br>
+					<div id="reservation" style="float: left; width:400px; height:500px;"></div>
+                </div>
+            </div>
+    </div>
+</section>
+	<jsp:include page="/WEB-INF/views/common/singsingCampingfooter.jsp"/>
 	<script>
 		var nowYear = 0; //현재 년
 		var nowMonth = 0; //현재 월
@@ -129,16 +149,16 @@
 				
 				if(s==1 && i>=nowDate){ //현재, 오늘 포함하여 오늘 보다 높은 날짜(오늘 포함한 미래)
 					$("#"+id).addClass('possible');
-					$("#"+id).css("background-color","lightgreen");
+					$("#"+id).css("background-color","#3ac569");
 				}else if(s==1 && i<nowDate){ //현재, 어제부터 이전 날짜
 					$("#"+id).addClass('impossible');
-					$("#"+id).css("background-color","lightgray");
+					$("#"+id).css("background-color","#dadbdb");
 				}else if(s==0){ //과거, 이전 월
 					$("#"+id).addClass('impossible');
-					$("#"+id).css("background-color","lightgray");
+					$("#"+id).css("background-color","#dadbdb");
 				}else if(s==2){ //미래, 이후 월
 					$("#"+id).addClass('possible');
-					$("#"+id).css("background-color","lightgreen");
+					$("#"+id).css("background-color","#3ac569");
 				}
 				
 				if(clickState == 0 && changeMonth == true){ //클릭상태는 0 그러나 클릭할 당시, 달이 바뀌면서 '1'일 만을 참조 할 경우,바뀐 월의 데이터가 남지 않으므로~
@@ -175,7 +195,7 @@
 				alert('선택이 불가능한 날짜 입니다.');
 			}else if(className == 'possible'){ //클래스이름이 possible이고
 				if(clickState == 0){ //클릭상태가 0일 때 클릭할 경우,
-					$(".possible").css("background-color","lightgreen"); //이전에 남아있는 오렌지색을 초록색으로 바꿈
+					$(".possible").css("background-color","#3ac569"); //이전에 남아있는 오렌지색을 초록색으로 바꿈
 					$(this).css("background-color","orange"); //누른부분 orange색으로
 					startId = $(this).attr('id'); //누른 곳 Id 값이 들어감.
 					startText = $(this).text(); //누른 곳 Text 값이 들어감.
@@ -186,7 +206,7 @@
 				}else if(clickState == 1){ //클릭상태가 1일 때 클릭할 경우,
 						if(oneClickSelected == 1){ //같은 달 내에서
 							if(startId == $(this).attr('id')){ //만약 startId 와 누른곳의 Id가 같다면
-								$(this).css("background-color","lightgreen"); //그곳의 css를 해제하고 
+								$(this).css("background-color","#3ac569"); //그곳의 css를 해제하고 
 								clickState = 0; //클릭상태 0 으로 만듬
 								reservationDate = new Array(); //임시 value값 초기화
 								return;
@@ -309,7 +329,8 @@
 				success: function(jsonList){
 							$("#reservation").html("");
 						for(var index in jsonList){
-							$("#reservation").append("<a href='/insertReservation.do?caravanNo="+jsonList[index].caravanNo+"&reservationDateString="+reservationDateString+"'>"+jsonList[index].caravanNo +"</a><br>");
+							//$("#reservation").append("<a href='/insertReservation.do?caravanNo="+jsonList[index].caravanNo+"&reservationDateString="+reservationDateString+"'>"+jsonList[index].caravanNo +"</a><br>");
+							$("#reservation").append("<a href='/insertReservation.do?caravanNo="+jsonList[index].caravanNo+"&reservationDateString="+reservationDateString+"'>"+jsonList[index].caravanName+", 기준/최대인원 : "+jsonList[index].caravanPeople+"/"+jsonList[index].caravanMaxPeople+", 가격(1박) : "+jsonList[index].caravanCost+"원</a><br><br>");
 						}
 					},
 				error: function(){
@@ -317,6 +338,7 @@
 				}
 			});
 		}
+		
 	</script>
 </body>
 </html>

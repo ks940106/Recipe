@@ -65,4 +65,14 @@ public class MemberDaoImpl implements MemberDAO{
 		List<Member> list = sqlSession.selectList("member.memberList");
 		return (ArrayList<Member>) list;
 	}
+	@Override
+	public Member idAndNameCheck(Member m) {
+		Member member = sqlSession.selectOne("member.idAndName",m);
+		return member;
+	}
+	@Override
+	public int pwUpdate(Member m) {
+		int result = sqlSession.update("member.pwUpdate",m);
+		return result;
+	}
 }
