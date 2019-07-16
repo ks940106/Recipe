@@ -71,10 +71,5 @@
 	</section>
 	
 	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />
-	<script>
-	var imgN = $("#imgN").val();
-	
-	console.log(imgN);
-	</script>
 </body>
 </html>

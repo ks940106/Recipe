@@ -10,7 +10,9 @@
 <link href="../resources/css/import.css" rel="stylesheet" />
 <link href="../resources/css/talkBoard.css" rel="stylesheet" />
 <script type="text/javascript" src="../resources/js/talkBoard/selectTalkBoard.js" />
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp"/>
@@ -80,9 +82,8 @@
                     </span>
                 </div>
 			</div>
-			
-	 </div>
-	
+	 	</div>
+	 	
 	 </div>
 	 </section>
 	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp"/>
