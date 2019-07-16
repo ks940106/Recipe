@@ -180,46 +180,49 @@ public class OrderController {
 		System.out.println(orderCode[1]); 
 		System.out.println(orderPrice[0]); 
 		System.out.println(orderPrice[1]); 
+		
 		testGetToken();
-		
-		String test_already_cancelled_merchant_uid = "";
-		CancelData cancel_data = new CancelData(test_already_cancelled_merchant_uid, false); //merchant_uid를 통한 전액취소
-		cancel_data.setEscrowConfirmed(true); //에스크로 구매확정 후 취소인 경우 true설정
 		ModelAndView mav = new ModelAndView();
+		for(int i=0;i<orderNo.length;i++) {
 		
-		try {
-			IamportResponse<Payment> payment_response = client.cancelPaymentByImpUid(cancel_data);
+			String test_already_cancelled_merchant_uid = orderCode[i];
+			CancelData cancel_data = new CancelData(test_already_cancelled_merchant_uid, false); //merchant_uid를 통한 전액취소
+			cancel_data.setEscrowConfirmed(true); //에스크로 구매확정 후 취소인 경우 true설정
 			
-			if(payment_response.getResponse()!=null) {
-				// 이미 취소된 거래는 response가 null이다
-				System.out.println(payment_response.getMessage());
-				int result = orderServiceImpl.cancellationAdminOrder(orderNo);
-				if(result>0) {
-					mav.addObject("msg","결제를 취소했습니다.");
-					mav.addObject("loc","/orderAdminList.do");
-					mav.setViewName("common/msg");
-				}else {
-					mav.addObject("msg","결제취소를 실패 했습니다.");
-					mav.addObject("loc","/orderAdminList.do");
-					mav.setViewName("common/msg");
+			
+			try {
+				IamportResponse<Payment> payment_response = client.cancelPaymentByImpUid(cancel_data);
+				
+				if(payment_response.getResponse()!=null) {
+					// 이미 취소된 거래는 response가 null이다
+					System.out.println(payment_response.getMessage());
+					int result = orderServiceImpl.cancellationAdminOrder(orderNo);
+					if(result>0) {
+						mav.addObject("msg","결제를 취소했습니다.");
+						mav.addObject("loc","/orderAdminList.do");
+						mav.setViewName("common/msg");
+					}else {
+						mav.addObject("msg","결제취소를 실패 했습니다.");
+						mav.addObject("loc","/orderAdminList.do");
+						mav.setViewName("common/msg");
+					}
 				}
-			}
-		} catch (IamportResponseException e) {
-			System.out.println(e.getMessage());
-			
-			switch(e.getHttpStatusCode()) {
-			case 401 :
-				//TODO
-				break;
-			case 500 :
-				//TODO
-				break;
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
-		
+			} catch (IamportResponseException e) {
+				System.out.println(e.getMessage());
+				
+				switch(e.getHttpStatusCode()) {
+				case 401 :
+					//TODO
+					break;
+				case 500 :
+					//TODO
+					break;
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+		}
 		return mav;
 	}
 	@RequestMapping(value="/successAdminOrder.do")
