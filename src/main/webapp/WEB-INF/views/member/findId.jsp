@@ -11,7 +11,7 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp" />
 <section class="findPassword">
-	<h1>비밀번호 변경</h1>
+	<h1>아이디 변경</h1>
 	<form method="post" action="/findId.do">
 	<div class="find">
 	<p>아이디 찾기</p>
