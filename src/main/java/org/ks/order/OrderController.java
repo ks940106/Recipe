@@ -107,7 +107,21 @@ public class OrderController {
 		}
 		return mav;
 	}
-	
+	//캠핌 마이페이지에서 오더리스트
+		@RequestMapping(value="/orderListCamping.do")
+		public ModelAndView orderListCamping(HttpSession session) {
+			Member m = (Member)session.getAttribute("member");
+			String id = m.getId();
+			ArrayList<Order> list = orderServiceImpl.seleteAllOrderList(id);
+			ModelAndView mav = new ModelAndView();
+			if(!list.isEmpty()) {
+				mav.addObject("list",list);
+				mav.setViewName("order/orderListCamping");
+			}else {
+				mav.setViewName("order/orderListCamping");
+			}
+			return mav;
+		}
 	@RequestMapping(value="/cancellationOrder.do")
 	public String cancellationOrder(HttpServletRequest request) {
 		String[] orderNo = request.getParameterValues("orderNo");
