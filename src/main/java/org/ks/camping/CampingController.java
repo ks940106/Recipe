@@ -9,4 +9,8 @@ public class CampingController {
 	public String about() {
 		return "camping/about";
 	}
+	@RequestMapping(value="/campingTravel.do")
+	public String travel() {
+		return "camping/travel";
+	}
 }
