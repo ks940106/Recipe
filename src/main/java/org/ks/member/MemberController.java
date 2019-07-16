@@ -78,6 +78,22 @@ public class MemberController {
 	public String findIdPage(){
 		return "member/findId";
 	}
+	@RequestMapping(value="/findPasswordPageCamping.do")
+	public String findPasswordPageCamping(){
+		return "member/findPasswordCamping";
+	}
+	@RequestMapping(value="/findIdPageCamping.do")
+	public String findIdPageCamping(){
+		return "member/findIdCamping";
+	}
+	@RequestMapping(value="/mypage.do")
+	public String mypage() {
+		return "member/mypage";
+	}
+	@RequestMapping(value="/mypageCamping.do")
+	public String mypageCamping() {
+		return "member/mypageCamping";
+	}
 	//로그인
 	@RequestMapping(value="/login.do")
 	public String login(HttpServletRequest request,@RequestParam String id,@RequestParam String pw ){
@@ -401,6 +417,30 @@ public class MemberController {
 			view="common/msg";
 		}return view;
 	}
+	//마이페이지 캠핑에서 비밀번호 체크
+		@RequestMapping(value="//myPagePwCheckCamping.do")
+		public String myPagePwCheckCamping(HttpServletRequest request){
+			String pwCheck=request.getParameter("pwcheck");
+			String pw = null;
+			try {
+				System.out.println("!!");
+				pw = new SHA256Util().encData(pwCheck);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			HttpSession session = request.getSession(false);
+			String id=((Member)session.getAttribute("member")).getId();
+			Member member = memberService.pwCheck(id,pw);
+			String view="";
+			if(member!=null) {
+				view="member/myPageUpdateCamping";
+			}else {
+				request.setAttribute("msg", "비밀번호를 다시 확인해주세요");
+				request.setAttribute("loc", "/mypageCamping.do");
+				view="common/msg";
+			}return view;
+		}
 	//마이페이지 회원정보 수정
 	@RequestMapping(value="/myPageUpdate.do")
 	public String myPageUpdate(HttpServletRequest request,HttpServletResponse response,@RequestParam MultipartFile fileUpload)throws ServletException, IOException {
@@ -469,11 +509,84 @@ public class MemberController {
 		String view ="common/msg";
 		if(result>0) {
 			request.setAttribute("msg","회원 정보 수정 성공");
-			request.setAttribute("loc", "/");
+			request.setAttribute("loc", "/myPage.do");
 		}else {
 			request.setAttribute("msg","정보 수정 실패");
 		}return view;
 	}
+	//캠핑마이페이지 회원정보 수정
+		@RequestMapping(value="/myPageUpdateCamping.do")
+		public String myPageUpdateCampgin(HttpServletRequest request,HttpServletResponse response,@RequestParam MultipartFile fileUpload)throws ServletException, IOException {
+			Member m = new Member();
+			m.setId(request.getParameter("id"));
+			String pw1 = request.getParameter("new_pw");
+			m.setNickname(request.getParameter("nickname"));
+			m.setAddr1(request.getParameter("addr1"));
+			m.setAddr2(request.getParameter("addr2"));
+			m.setPhone(request.getParameter("phone"));
+			m.setMemberImg(request.getParameter("beforeImg")); 
+			System.out.println(request.getParameter("beforeImg"));
+			m.setZipCode(request.getParameter("zipCode"));
+			//파일 업로드
+			
+			String pw = null;
+			try {
+				pw = new SHA256Util().encData(pw1);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			m.setPw(pw);
+			
+			if(!fileUpload.isEmpty()) {
+				
+				String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/member");
+				System.out.println(request.getParameter("beforeImg"));
+				File delFile = new File(savePath+"/"+request.getParameter("beforeImg"));
+				if(delFile.exists()) {
+					if(delFile.delete()) {
+						System.out.println("파일 삭제 성공");
+					}else {
+						System.out.println("파일 삭제 실패");
+					}
+				}else {
+					System.out.println("파일이 존재하지 않습니다.");
+				}
+				
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+				Date d = new Date();
+				String date = sdf.format(d);
+				String originName = fileUpload.getOriginalFilename();
+				String onlyFileName = originName.substring(0,originName.indexOf('.'));
+				String extension = originName.substring(originName.indexOf('.'));
+				String filePath = onlyFileName + "_"+ date + extension;
+				String memberImg = savePath+"/" + filePath;
+				m.setMemberImg(filePath);
+				
+				byte[] bytes;
+				try {
+					bytes = fileUpload.getBytes();
+					File f = new File(memberImg);		
+					FileOutputStream fos = new FileOutputStream(f);
+					BufferedOutputStream bos = new BufferedOutputStream(fos);
+					bos.write(bytes);
+					bos.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			int result = memberService.updateMember(m);
+			
+			String view ="common/msg";
+			if(result>0) {
+				request.setAttribute("msg","회원 정보 수정 성공");
+				request.setAttribute("loc", "/mypageCamping.do");
+			}else {
+				request.setAttribute("msg","정보 수정 실패");
+			}return view;
+		}
 	//마이페이지 탈퇴
 	@RequestMapping(value="/myPageDelete.do")
 	public String myPageDelete(HttpServletRequest request,HttpSession session) {
@@ -490,10 +603,7 @@ public class MemberController {
 		}return view;
 	}
 	
-	@RequestMapping(value="/mypage.do")
-	public String mypage() {
-		return "member/mypage";
-	}
+	
 	//관리자 페이지 시작
 	@RequestMapping(value="/memberList.do")
 	public ModelAndView memberList() {
@@ -505,6 +615,7 @@ public class MemberController {
 		}
 		return mav;
 	}
+	//관리자 페이지에서 탈퇴시키기
 	@RequestMapping(value="memberDelete.do")
 	public String memberDelete(HttpServletRequest request) {
 		String id = request.getParameter("id");
@@ -588,6 +699,76 @@ public class MemberController {
 	       }
 		}return view;
 	}
+	//캠핑 페이지에서 비밀번호 변경
+		@RequestMapping(value="/findPasswordCamping.do")
+		public String findPasswordCamping(HttpServletRequest request) {
+			Member m = new Member();
+			m.setId(request.getParameter("id")); 
+			m.setName(request.getParameter("name"));
+			Member member =memberService.idAndNameCheck(m);
+			String view="common/msg";
+			if(member==null) {
+				request.setAttribute("msg", "아이디와 이름을 확인해주세요");
+				request.setAttribute("loc","/findPasswordPageCamping.do");
+				return view;
+			}
+			else {
+			String host = "smtp.googlemail.com"; // 네이버일 경우 네이버 계정, gmail경우 gmail 계정 
+
+		      final String user = "fghij7410@gmail.com"; 
+		      final String password = "user1404";       
+
+		      Properties props = new Properties(); 
+		      props.put("mail.smtp.host", host); 
+		      props.put("mail.smtp.port", 587); 
+		      props.put("mail.smtp.auth", "true");
+		      props.put("mail.smtp.starttls.enable","true");
+		      
+		      Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() { 
+		          protected PasswordAuthentication getPasswordAuthentication() { 
+		             return new PasswordAuthentication(user, password); 
+		             } 
+		          });
+		       String msg=null;
+		       try {
+		    	   String pw = "";
+		   		for (int i = 0; i < 12; i++) {
+		   			pw += (char) ((Math.random() * 26) + 97);
+		   		}
+		   		m.setPw(pw);
+		    	   
+		          MimeMessage message = new MimeMessage(session); 
+		          message.setFrom(new InternetAddress(user)); 
+		          message.addRecipient(Message.RecipientType.TO, new InternetAddress(m.getId())); 
+		          // 메일 제목 
+		          message.setSubject("싱싱레시피");
+		          message.setContent(
+		          "<div align='center' style='border:1px solid black; font-family:verdana'>"+
+					 "<h3 style='color: blue;'>"+
+					 m.getId() + "님의 임시 비밀번호 입니다. 비밀번호를 변경하여 사용하세요.</h3>"+
+					 "<p>임시 비밀번호 : "+
+					 m.getPw() + "</p></div>","text/html;charset=euc-kr");
+					Transport.send(message); 
+		       }catch (Exception e) {
+			}
+		       System.out.println("암호화 이전"+m.getPw());
+		       try {
+				m.setPw(new SHA256Util().encData(m.getPw()));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		       System.out.println("암호화 다음"+m.getPw());
+		       int result = memberService.pwUpdate(m);
+		       if(result>0) {
+		    	   request.setAttribute("msg", "비밀번호 변경 메일을 확인해주세요");
+		    	   request.setAttribute("loc", "/loginPageCamping.do");
+		       }else {
+		    	   request.setAttribute("msg","비밀번호 변경 실패");
+		    	   request.setAttribute("loc", "/findPasswordPageCamping.do");
+		       }
+			}return view;
+		}
 	//아이디 찾기
 	@RequestMapping(value="/findId.do")
 	public String findId(HttpServletRequest request) {
@@ -604,12 +785,30 @@ public class MemberController {
 		String email = memberService.email(m);
 		System.out.println(m.getId());
 		view="common/msg";
-		request.setAttribute("msg", "아이디는"+m.getId()+email+"입니다");
+		request.setAttribute("msg", "아이디는"+m.getId()+"@"+email+"입니다");
 		request.setAttribute("loc", "/loginPage.do");
-		
 		}return view;
 	}
-	
+	//캠핑에서 아이디 찾기
+		@RequestMapping(value="/findIdCamping.do")
+		public String findIdCamping(HttpServletRequest request) {
+			Member m = new Member();
+			m.setName(request.getParameter("name"));
+			m.setPhone(request.getParameter("phone"));
+			m.setId(memberService.findId(m));
+			String view="";
+			if(m.getId()==null) {
+				 view="common/msg";
+				request.setAttribute("msg", "이름과 핸드폰 번호를 정확히 입력해주세요");
+				request.setAttribute("loc", "/findIdPage.do");
+			}else {
+			String email = memberService.email(m);
+			System.out.println(m.getId());
+			view="common/msg";
+			request.setAttribute("msg", "아이디는"+m.getId()+"@"+email+"입니다");
+			request.setAttribute("loc", "/loginPageCamping.do");
+			}return view;
+		}
 }
 
 

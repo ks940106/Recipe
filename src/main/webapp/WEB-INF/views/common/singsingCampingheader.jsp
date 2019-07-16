@@ -48,7 +48,7 @@
                   		<li><a href="/logout.do" style="color: #1f6054;">로그아웃</a></li>
                     </c:when>
                     <c:when test="${sessionScope.member !=null }">
-                    	<li><a href="/mypage.do" style="color: #1f6054;">마이페이지</a></li>
+                    	<li><a href="/mypageCamping.do" style="color: #1f6054;">마이페이지</a></li>
                     	<li><a href="/logout.do" style="color: #1f6054;">로그아웃</a></li>
                     </c:when>
                     </c:choose>
