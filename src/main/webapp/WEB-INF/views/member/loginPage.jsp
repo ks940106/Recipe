@@ -37,11 +37,7 @@
         <a href="/findIdPage.do">아이디 찾기</a>
         <a href="/findPasswordPage.do">비밀번호 찾기</a>
     </div>
-    <button type="button" onclick="location.href='https://www.10000recipe.com/user/login_fb.html?q_path=' +encodeURIComponent('') " class="btn btn-primary btn-lg btn-block join_f"><span>페이스북으로 로그인</span></button>
-    <button type="button" onclick="loginWithKakao()" class="btn btn-primary btn-lg btn-block join_k"><span>카카오톡으로 로그인</span></button>
-    <button type="button" onclick="loginWithNaver()" class="btn btn-primary btn-lg btn-block join_n"><span>네이버로 로그인</span></button>
-        <button type="button" onclick="loginWithGoogle()" class="btn btn-primary btn-lg btn-block join_g" id="gooleSigninButton"><span>구글로 로그인</span></button>
-          </div>
+      </div>
 	</div>
 	</section>
 	
