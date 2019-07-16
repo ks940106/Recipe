@@ -73,17 +73,17 @@
 #IntroVisual video {display:none;}
 #IntroVisual img {width:100px; top:50%;}
 #IntroVisual .left { transform: skewX(0); -ms-transform: skewX(0); /* IE 9 */ -webkit-transform: skewX(0); /* Safari and Chrome */ width: 100%; height: 280px; 	margin-left:0; /* new styles */  	clear:both;}
-#IntroVisual .left div.bg { transform: skewX(0); -ms-transform: skewX(0); /* IE 9 */ -webkit-transform: skewX(0); /* Safari and Chrome */ background-image: url('/images/intro/left_bg_mo.jpg');  width: 100%; /* something ridiculously big */ height: 100%; /* something ridiculously big */ right:0; 	padding-top:70px;}
+#IntroVisual .left div.bg { transform: skewX(0); -ms-transform: skewX(0); /* IE 9 */ -webkit-transform: skewX(0); /* Safari and Chrome */ background-image: url('../img/left_bg.jpg');  width: 100%; /* something ridiculously big */ height: 100%; /* something ridiculously big */ right:0; 	padding-top:70px;}
 #IntroVisual .left div.bg img {width:184px; }
 #IntroVisual .right { transform: skewX(0); -ms-transform: skewX(0); /* IE 9 */ -webkit-transform: skewX(0); /* Safari and Chrome */ width: 100%; height: 280px; 	margin-right:0; /* new styles */  clear:both;}
-#IntroVisual .right div.bg {transform: skewX(0); -ms-transform: skewX(0); /* IE 9 */ -webkit-transform: skewX(0); /* Safari and Chrome */ background-image: url('/images/intro/right_bg_mo.jpg');  width: 100%; /* something ridiculously big */ height: 100%; /* something ridiculously big */ left:0; 	padding-top:110px; }
+#IntroVisual .right div.bg {transform: skewX(0); -ms-transform: skewX(0); /* IE 9 */ -webkit-transform: skewX(0); /* Safari and Chrome */ background-image: url('../img/right_bg.jpg');  width: 100%; /* something ridiculously big */ height: 100%; /* something ridiculously big */ left:0; 	padding-top:110px; }
 #IntroVisual .right div.bg img {width:184px; }
 #IntroVisual .left div.bg:hover { 	right:0; }
 #IntroVisual .right div.bg:hover {	left:0; 	}
 #IntroVisual > div > div.bg:hover img.go_over {display:none;}
 #IntroVisual > div > div.bg:hover img.go_basic {display:inline;}
-#IntroVisual > div > div.bg img.go_m {display:inline;width: 55px;position: absolute;left: 50%;margin-left: -27px;margin-top: 40px;}
-#IntroVisual .left div.bg img.go_m{margin-top: 0;}
+#IntroVisual > div > div.bg img.go {display:inline;width: 55px;position: absolute;left: 50%;margin-left: -27px;margin-top: 40px;}
+#IntroVisual .left div.bg img.go{margin-top: 0;}
 
 #GoBooking { margin-left:-62.5px; margin-top:-62.5px;padding:15px 15px 6px}
 #GoBooking img {width:90px;}

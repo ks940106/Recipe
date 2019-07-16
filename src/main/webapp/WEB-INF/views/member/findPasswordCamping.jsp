@@ -9,10 +9,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp" />
+<jsp:include page="/WEB-INF/views/common/singsingCampingheader.jsp" />
 <section class="findPassword">
 	<h1>비밀번호 변경</h1>
-	<form method="post" action="/findPassword.do">
+	<form method="post" action="/findPasswordCamping.do">
 	<div class="find">
 	<p>임시 비밀번호 발급을 위해 아이디와 이름을 입력해주세요</p>
 	<p>임시 비밀번호는 이메일로 전송됩니다</p>

@@ -44,6 +44,21 @@ public class CartController {
 		}
 		return mav;
 	}
+	//캠핑 마이페이지 카트 리스트보기
+	@RequestMapping(value="/cartCamping.do")//개인장바구니 조회
+	public ModelAndView cartViewCamping(HttpServletRequest request,HttpSession session) { //매개변수로 아이디를 받아서 아이디로 조회한다.
+		Member m = (Member)session.getAttribute("member");
+		String id = m.getId();
+		ArrayList<Cart> list = cartServiceImpl.allListCart(id);
+		ModelAndView mav = new ModelAndView();
+		if(!list.isEmpty()) {
+			mav.addObject("list",list);
+			mav.setViewName("cart/cartListCamping");
+		}else {
+			mav.setViewName("cart/cartListCamping"); //장바구니가 하나도 없을때 뷰페이지에서 if문으로 처리해준다.
+		}
+		return mav;
+	}
 
 	@RequestMapping(value="insertcart.do")
 	public String insertcart(HttpServletRequest request) {
@@ -60,7 +75,7 @@ public class CartController {
 		System.out.println("recipeDetail : "+recipeDetail);
 		int recipePrice = recipeDetail.getRecipe().getRecipePrice();
 		int recipeCount = Integer.parseInt(request.getParameter("count"));
-		Cart c = new Cart(0, id, recipeDetail.getRecipe().getRecipeNo(), recipePrice, recipeCount,recipeDetail.getRecipe().getRecipeTitle());
+		Cart c = new Cart(0, id, recipeDetail.getRecipe().getRecipeNo(), recipePrice * recipeCount, recipeCount, recipeDetail.getRecipe().getRecipeTitle());
 		int result = cartServiceImpl.insertCart(c);
 		if(result>0) {
 			request.setAttribute("confirm", "장바구니 추가 완료. 장바구니로 가시겠습니까?");

@@ -12,7 +12,7 @@
 	<link href="../resources/css/cart.css" rel="stylesheet" />
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp" />
+<jsp:include page="/WEB-INF/views/common/singsingCampingheader.jsp" />
 
 <section>
 	<div class="pom_bg">
@@ -28,10 +28,11 @@
 				<div class="nav_con">
 					<div class="nav_title">마이페이지</div>
 					<ul class="nav_menu">
-						<li><a href="/mypage.do">개인정보수정</a><span>></span></li>
-						<li><a href="/cart.do">장바구니</a><span>></span></li>
-						<li><a href="/orderList.do">결제내역</a><span>></span></li>
-					</ul>
+					<li><a href="/mypageCamping.do">개인정보수정</a><span>></span></li>
+					<li><a href="/cartCamping.do">장바구니</a><span>></span></li>
+					<li><a href="/orderListCamping.do">결제내역</a><span>></span></li>
+					<li><a href="/mypageCompetitionResult.do">대회신청결과</a><span>></span></li>
+				</ul>
 				</div>
 			</nav>
 		</div>
@@ -81,7 +82,7 @@
 		</div>
 </section>
 <!-- header Fin -->
-<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />
+<jsp:include page="/WEB-INF/views/common/singsingCampingfooter.jsp" />
 <script type="text/javascript" src="/resources/js/order.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </body>

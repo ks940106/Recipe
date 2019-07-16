@@ -21,7 +21,7 @@
         <div>
             <h1>
                 <a href="/views/singsingCampingIndex.jsp">
-                    <img src="../resources/img/camping/campinglogo.png" alt="싱싱캠핑" style="width:200px;"/>
+                    <img src="../resources/img/camping/campinglogo4.png" alt="싱싱캠핑" style="width:200px;"/>
                 </a>
             </h1>
             <nav>
@@ -35,7 +35,7 @@
                     <li><a href="/index.jsp" class="active">홈</a></li>
                     <li><a href="/campingAbout.do">캠핑장소개</a></li>
                     <li><a href="#">주변관광지</a>
-                    <li><a href="#">카라반소개</a></li>
+                    <li><a href="/caravanIntroduce.do">카라반소개</a></li>
        				<li><a href="/calendar.do">예약</a></li>
                     <li><a href="#">커뮤니티</a></li>
 
@@ -48,7 +48,7 @@
                   		<li><a href="/logout.do" style="color: #1f6054;">로그아웃</a></li>
                     </c:when>
                     <c:when test="${sessionScope.member !=null }">
-                    	<li><a href="/mypage.do" style="color: #1f6054;">마이페이지</a></li>
+                    	<li><a href="/mypageCamping.do" style="color: #1f6054;">마이페이지</a></li>
                     	<li><a href="/logout.do" style="color: #1f6054;">로그아웃</a></li>
                     </c:when>
                     </c:choose>
