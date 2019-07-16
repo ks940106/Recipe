@@ -32,7 +32,7 @@ time, mark, audio, video
 {
 	margin:0;border:0;outline:0;padding:0;
 	background:transparent;
-	font-family:'FuturaStd-Book','nanumbarungothicregular', 돋움, Dotum, sans-serif;
+	font-family: 'Playfair Display';
 	font-style:normal; font-weight:normal;
 	vertical-align:baseline;
 }
@@ -52,10 +52,10 @@ q:before,q:after		{content:'';content:none}
 table				{border-collapse:collapse;border-spacing:0}
 hr					{display:none}
 
-a:link				{color:#000;text-decoration:none}
-a:visited			{color:#000;text-decoration:none}
-a:hover				{color:#000;text-decoration:none}
-a:active				{color:#000;text-decoration:none}
+a:link				{color:#fff;text-decoration:none}
+a:visited			{color:#fff;text-decoration:none}
+a:hover				{color:#fff;text-decoration:none}
+a:active				{color:#fff;text-decoration:none}
 
 /* float clear */
 .both				{clear:both}
@@ -100,65 +100,933 @@ input				{vertical-align:middle}
 .slide .nav > ul li a.active {background:url(http://gonylab5.speedgabia.com/graysands/final/images/on.png) no-repeat 0 0;}
 
 /*--------------------------------------------------------------------------------*/
-/* header */
-#header {position:fixed;top:0;left:0;width:100%;min-width:1200px;z-index:2000;}
-#header h1 {position:absolute;top:-135px;left:50%;margin-left:-90px;z-index:200;}
-#header #gnb {position:relative;width:100%;z-index:300;}
-#header #gnb .top {
-	position:relative;width:100%;height:63px;border-bottom:1px solid #e8e8e8;overflow:hidden;
-	background:url(http://gonylab5.speedgabia.com/graysands/final/images/box_bg.jpg) no-repeat 50% 50%;background-size:cover;
-}
-#header #gnb .top h2 {float:left;width:210px;margin-left:20px;}
-#header #gnb .top h2 a {display:block;}
-#header #gnb .top ul {float:right;width:65%;height:100%;overflow:hidden;}
-#header #gnb .top ul li {float:left;width:17.5%;height:100%;background:url(http://gonylab5.speedgabia.com/graysands/final/images/top_line.jpg) no-repeat right center;}
-#header #gnb .top ul li.top_02 {width:30%;}
-#header #gnb .top ul li.last {background:none;}
-#header #gnb .top ul li a {display:block;text-align:center;font-size:17px;padding:23px 0;}
-#header #gnb .top ul li a:hover {color:#5f9da5;}
-#header #gnb .top ul li a.active {color:#5f9da5;}
-#header #gnb .nav {
-	position:relative;top:0;width:100%;height:0;border-bottom:1px solid #e8e8e8;overflow:hidden;
-	background:url(http://gonylab5.speedgabia.com/graysands/final/images/gnb_bg.png) repeat left top;
-}
-#header #gnb .nav .mov {float:left;margin-left:20px;width:234px;height:172px;padding-top:30px;opacity:0;}
-#header #gnb .nav .mov a {
-	position:relative;width:234px;height:172px;display:block;
-	background:url(http://gonylab5.speedgabia.com/graysands/final/images/nav_mov_bg.jpg) no-repeat left top;
-}
-#header #gnb .nav .mov a img {position:absolute;top:50%;left:50%;margin:-20px 0 0 -80px;display:block;}
-#header #gnb .nav .mov a img:hover {opacity:0.8;}
-#header #gnb .nav > ul {float:right;width:65%;padding-top:20px;overflow:hidden;opacity:0;}
-#header #gnb .nav > ul > li {float:left;width:17.5%;}
-#header #gnb .nav > ul > li.nav_02 {width:30%;}
-#header #gnb .nav > ul > li.nav_02 ul {width:100%;overflow:hidden;}
-#header #gnb .nav > ul > li.nav_02 ul li.long {width:100%;float:none;}
-#header #gnb .nav > ul > li.nav_02 ul li {float:left;width:50%;}
-#header #gnb .nav > ul > li > ul {
-	width:100%;height:170px;padding-top:10px;overflow:hidden;
-	background:url(http://gonylab5.speedgabia.com/graysands/final/images/nav_line.jpg) repeat-y right top;
-}
-#header #gnb .nav > ul > li.last > ul {background:none;}
-#header #gnb .nav ul li a {display:block;text-align:center;font-size:16px;line-height:1.7em;}
-#header #gnb .nav ul li a:hover {color:#77afb6;}
-#header #gnb .nav ul li a.active {color:#77afb6;}
-body .book {position:fixed;top:50%;right:0;margin-top:-99.5px;z-index:1000;}
-body .book a {display:block;}
+
+@charset "UTF-8";
+    header div nav ul li a,
+    body > figure figcaption p,
+    section.videoArea h2,
+    section.expArea ul li > *,
+    section.teamArea > p:last-of-type,
+    section.worksArea h2 a,
+    .talkArea p > *,
+    section.contactArea form fieldset *:not(legend),
+    footer > div div * {
+        font-family: 'Roboto';
+    }
+
+    header div ul li h2,
+    body > figure figcaption h2,
+    section.expArea h2,
+    section.teamArea h2,
+    section.teamArea > p:not(:last-of-type),
+    section.worksArea h2,
+    .talkArea p,
+    section.contactArea form fieldset legend,
+    section.contactArea div h3 {
+        font-family: 'Playfair Display';
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    header div nav label.mui + input[type='checkbox']#mnav{
+        display:none;
+    }
+    /*All Using CSS*/
+
+@media screen and (max-width:767px){
+
+    body > figure,
+    section.expArea,
+    section.worksArea h2,
+    section.contactArea,
+    footer > div {
+        max-width: 767px;
+        margin: 0 auto;
+        padding: 20px 0;
+    }
+
+    .btn_more {
+        max-width: 120px;
+        display: block;
+        text-align: center;
+        padding: 15px;
+        border: 1px solid #f16129;
+        color: #f16129;
+        font-weight: 400;
+    }
+
+    section > hr {
+        width: 50px;
+        border-top: 2px solid #c6c4c9;
+        margin-bottom: 50px;
+    }
+
+    header {
+        padding: 15px 0 70px;
+/*         background: url(../img/main.jpg) no-repeat left top; */
+/*         background-size: cover; */
+/*         height: 1000px; */
+    }
+    .main_bg{
+    background: url(../img/main.jpg) no-repeat left top;
+        background-size: cover;
+        height: 1000px;
+    }
+
+        header div {
+            max-width: 767px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+            header div h1 {
+                width:35%;
+                max-width: 130px;
+                display:inline-block;
+                vertical-align:middle;
+            }
+
+                header div h1 a {
+                    display: block;
+                }
+
+                    header div h1 a img {
+                        width: 100%;
+                    }
+
+            header div nav {
+                margin-left: 14%;
+                display:inline-block;
+                width:50%;
+                vertical-align:middle;
+            }
+
+            header div nav .mui{
+                display:block;
+                margin-left:auto;
+            }
+            header div nav label.mui{
+                padding:3px 3px 0 3px;
+                border:1px solid white;
+                width:20px; cursor:pointer;
+            }
+            header div nav label.mui span{
+                border-top:3px solid white;
+                display:block;
+                margin-bottom:3px;
+            }
+
+            header div nav label.mui + input[type='checkbox']#mnav:checked + ul{
+                height:300px; padding-top:20px;
+            }
+
+            header div nav ul{
+                height:0;
+                overflow:hidden;
+                transition-duration:2s;
+            }
+
+                header div nav ul li {
+                    display: block;
+                    margin-bottom: 20px;
+                    text-align:right;
+                }
+
+                    header div nav ul li a {
+                        font-size: 13px;
+                        font-weight: 900;
+                        color: white;
+                    }
+
+                        header div nav ul li a:hover, header div nav ul li a.active {
+                            color: #f16129;
+                        }
+            /*header nav fin*/
+
+                header div ul li h2 {
+                    text-align: center;
+                    font-size: 32px;
+                    color: white;
+                    font-weight: 900;
+                    padding: 165px 0 20px 0;
+                    margin-bottom: 30px;
+                    background: url(../img/bd_01.png) no-repeat center bottom;
+                }
+
+                header div ul li p {
+                    font-size: 14px;
+                    line-height: 24px;
+                    color: white;
+                    text-align: center;
+                    padding: 0 85px;
+                    margin-bottom: 55px;
+                    font-weight: 300;
+                }
+
+                header div ul li a.btn_more {
+                    width: 120px;
+                    margin: 0 auto 125px auto;
+                }
+
+            header div ol {
+                margin: 0 auto;
+                width: 60px;
+            }
+
+                header div ol li {
+                    display: inline-block;
+                }
+
+                    header div ol li a {
+                        display: block;
+                        text-indent: -9999px;
+                        width: 10px;
+                        height: 10px;
+                        border-radius: 5px;
+                        border: 1px solid white;
+                        box-sizing: border-box;
+                    }
+
+                        header div ol li a.active, header div ol li a:hover {
+                            background-color: #f16129;
+                            border-color: #f16129;
+                        }
+    /*header Fin*/
+
+    footer {
+/*         background: url(../img/bg_05.png) no-repeat left top; */
+		background-color: #445451;
+        background-size: cover;
+    }
 
 
-/*--------------------------------------------------------------------------------*/
-/* footer */
-#footer {position:relative;width:100%;border-top:5px solid #576479;background:#333c4b;}
-#footer .inner {width:1100px;padding:50px;margin:0 auto;overflow:hidden;}
-#footer .inner h5 {float:left;width:26%;}
-#footer .inner > div {position:relative;float:left;width:37%;}
-#footer .inner > div strong {display:block;color:#9da8bb;font-size:18px;margin-bottom:25px;}
-#footer .inner > div p {font-size:13px;line-height:1.5em;color:#e8e8e8;letter-spacing:1px;}
-#footer .inner > div ul {width:100%;overflow:hidden;}
-#footer .inner > div ul li {float:left;margin-right:15px;}
-#footer .inner > div ul li a {padding:15px;border:1px solid #e8e8e8;}
-#footer .inner > div > a {margin-top:40px;font-size:13px;color:#e8e8e8;}
+            footer > div div h2 {
+                font-size: 15px;
+                color: white;
+                font-weight: 900;
+                line-height: 55px;
+                margin-bottom: 25px;
+            }
 
-#footer .stp {position:absolute;top:0;right:0;}
-#footer a {display:block;}
+            footer > div div p, footer > div div address span {
+                font-size: 14px;
+                line-height: 26px;
+                color: white;
+                font-weight: 300;
+                font-style: normal;
+            }
+
+            footer > div div address span {
+                display: block;
+                padding-left: 30px;
+                background-repeat: no-repeat;
+                background-position: left 5px;
+            }
+
+                footer > div div address span:first-child {
+                    background-image: url(../img/bul_map.png);
+                    margin-bottom: 5px;
+                }
+
+                footer > div div address span:last-child {
+                    background-image: url(../img/bul_phone.png);
+                }
+
+                footer > div div address span a {
+                    color: white;
+                    display: block;
+                }
+
+                footer > div div:nth-of-type(3){
+                    clear:both;
+                    margin-bottom:70px;
+                }
+                footer > div div:nth-of-type(3) > *{
+                    display:inline-block;
+                    vertical-align:middle;
+                    margin-bottom:25px;
+                }
+
+            footer > div div input[type='email'] {
+                background-color: transparent;
+                padding: 15px;
+                border: 1px solid rgba(255,255,255,0.5);
+                font-weight: 300;
+                color: white;
+                box-sizing: border-box;
+            }
+
+            footer > div div input[type='submit'] {
+                background: rgba(255,255,255,0.5) url(../img/btn_send.png) no-repeat center;
+                width: 72px;
+                height: 47px;
+                border: none;
+                text-indent: -9999px;
+            }
+            
+                footer > div div ul li {
+                    display: inline-block;
+                }
+
+                    footer > div div ul li a {
+                        display: block;
+                        width: 35px;
+                        height: 35px;
+                        text-indent: -9999px;
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                    }
+
+                    footer > div div ul li:nth-child(1) a {
+                        background-image: url(../img/sns_01.png);
+                    }
+
+                    footer > div div ul li:nth-child(2) a {
+                        background-image: url(../img/sns_02.png);
+                    }
+
+                    footer > div div ul li:nth-child(3) a {
+                        background-image: url(../img/sns_03.png);
+                    }
+
+                    footer > div div ul li:nth-child(4) a {
+                        background-image: url(../img/sns_04.png);
+                    }
+
+                    footer > div div ul li:nth-child(5) a {
+                        background-image: url(../img/sns_05.png);
+                    }
+
+                    footer > div div ul li:nth-child(6) a {
+                        background-image: url(../img/sns_06.png);
+                    }
+
+            footer > div div:last-child {
+                text-align:center;
+            }
+
+                footer > div div:last-child a {
+                    font-size: 14px;
+                    margin-bottom: 15px;
+                    color: white;
+                    display: block;
+                }
+
+                footer > div div:last-child p {
+                   text-align:center;
+                }
+}
+/*Mobile*/
+
+
+@media screen and (min-width:768px) and (max-width:1259px) {
+
+    body > figure,
+    section.expArea,
+    section.worksArea h2,
+    section.contactArea,
+    footer > div {
+        max-width: 1024px;
+        margin: 0 auto;
+        padding: 35px 0 0 0;
+    }
+
+    .btn_more {
+        max-width: 120px;
+        display: block;
+        text-align: center;
+        padding: 15px;
+        border: 1px solid #f16129;
+        color: #f16129;
+        font-weight: 400;
+    }
+
+    section > hr {
+        width: 50px;
+        border-top: 2px solid #c6c4c9;
+        margin-bottom: 50px;
+    }
+
+    header {
+        padding: 15px 0 70px;
+/*         background: url(../img/main.jpg) no-repeat left top; */
+/*         background-size: cover; */
+/*         height: 1000px; */
+    }
+    .main_bg{
+    	background: url(../img/main.jpg) no-repeat left top; 
+        background-size: cover; 
+        height: 1000px; 
+    }
+
+        header div {
+            max-width: 1024px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+            header div h1 {
+                width:13%;
+                max-width: 130px;
+                display:inline-block;
+                vertical-align:middle;
+            }
+
+                header div h1 a {
+                    display: block;
+                }
+
+                    header div h1 a img {
+                        width: 100%;
+                    }
+
+            header div nav {
+                margin-left: 14%;
+                display:inline-block;
+                width:72%;
+                vertical-align:middle;
+            }
+
+                header div nav ul li {
+                    display: inline-block;
+                    margin-left: 20px;
+                }
+
+                    header div nav ul li:first-child {
+                        margin-left: 0;
+                    }
+
+                    header div nav ul li a {
+                        font-size: 13px;
+                        font-weight: 900;
+                        color: white;
+                    }
+
+                        header div nav ul li a:hover, header div nav ul li a.active {
+                            color: #f16129;
+                        }
+            /*header nav fin*/
+
+                header div ul li h2 {
+                    text-align: center;
+                    font-size: 32px;
+                    color: white;
+                    font-weight: 900;
+                    padding: 165px 0 20px 0;
+                    margin-bottom: 30px;
+                    background: url(../img/bd_01.png) no-repeat center bottom;
+                }
+
+                header div ul li p {
+                    font-size: 14px;
+                    line-height: 24px;
+                    color: white;
+                    text-align: center;
+                    padding: 0 85px;
+                    margin-bottom: 55px;
+                    font-weight: 300;
+                }
+
+                header div ul li a.btn_more {
+                    width: 120px;
+                    margin: 0 auto 125px auto;
+                }
+
+            header div ol {
+                margin: 0 auto;
+                width: 60px;
+            }
+
+                header div ol li {
+                    display: inline-block;
+                }
+
+                    header div ol li a {
+                        display: block;
+                        text-indent: -9999px;
+                        width: 10px;
+                        height: 10px;
+                        border-radius: 5px;
+                        border: 1px solid white;
+                        box-sizing: border-box;
+                    }
+
+                        header div ol li a.active, header div ol li a:hover {
+                            background-color: #f16129;
+                            border-color: #f16129;
+                        }
+    /*header Fin*/
+
+    footer {
+/*         background: url(../img/bg_05.png) no-repeat left top; */
+		background-color: #445451;
+        background-size: cover;
+    }
+
+        footer > div:after {
+            content: '';
+            display: block;
+            visibility: hidden;
+            clear: both;
+        }
+
+        footer > div div:not(:nth-of-type(3)) {
+            width: 45%;
+            float: left;
+            margin: 0 0 70px 10%;
+        }
+
+            footer > div div:first-of-type {
+                margin-left: 0;
+            }
+
+                footer > div div:first-of-type h2 {
+                    margin-bottom: 30px;
+                    line-height: 0;
+                }
+
+            footer > div div h2 {
+                font-size: 15px;
+                color: white;
+                font-weight: 900;
+                line-height: 55px;
+                margin-bottom: 25px;
+            }
+
+            footer > div div p, footer > div div address span {
+                font-size: 14px;
+                line-height: 26px;
+                color: white;
+                font-weight: 300;
+                font-style: normal;
+            }
+
+            footer > div div address span {
+                display: block;
+                padding-left: 30px;
+                background-repeat: no-repeat;
+                background-position: left 5px;
+            }
+
+                footer > div div address span:first-child {
+                    background-image: url(../img/bul_map.png);
+                    margin-bottom: 5px;
+                }
+
+                footer > div div address span:last-child {
+                    background-image: url(../img/bul_phone.png);
+                }
+
+                footer > div div address span a {
+                    color: white;
+                    display: block;
+                }
+
+                footer > div div:nth-of-type(3){
+                    clear:both;
+                    margin-bottom:70px;
+                }
+                footer > div div:nth-of-type(3) > *{
+                    display:inline-block;
+                    vertical-align:middle;
+                }
+                footer > div div:nth-of-type(3) h2{margin:0 5% 0 0;}
+
+            footer > div div input[type='email'] {
+                background-color: transparent;
+                padding: 15px;
+                border: 1px solid rgba(255,255,255,0.5);
+                font-weight: 300;
+                color: white;
+                width: 205px;
+                box-sizing: border-box;
+            }
+
+            footer > div div input[type='submit'] {
+                background: rgba(255,255,255,0.5) url(../img/btn_send.png) no-repeat center;
+                width: 72px;
+                height: 47px;
+                border: none;
+                text-indent: -9999px;
+            }
+
+            footer > div div ul {
+                padding-top: 0;
+                margin-left:5%;
+            }
+
+                footer > div div ul li {
+                    display: inline-block;
+                }
+
+                    footer > div div ul li a {
+                        display: block;
+                        width: 35px;
+                        height: 35px;
+                        text-indent: -9999px;
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                    }
+
+                    footer > div div ul li:nth-child(1) a {
+                        background-image: url(../img/sns_01.png);
+                    }
+
+                    footer > div div ul li:nth-child(2) a {
+                        background-image: url(../img/sns_02.png);
+                    }
+
+                    footer > div div ul li:nth-child(3) a {
+                        background-image: url(../img/sns_03.png);
+                    }
+
+                    footer > div div ul li:nth-child(4) a {
+                        background-image: url(../img/sns_04.png);
+                    }
+
+                    footer > div div ul li:nth-child(5) a {
+                        background-image: url(../img/sns_05.png);
+                    }
+
+                    footer > div div ul li:nth-child(6) a {
+                        background-image: url(../img/sns_06.png);
+                    }
+
+            footer > div div:last-child {
+                clear: left;
+                width: 100%;
+                margin-left: 0;
+                position: relative;
+                padding:0 5%;
+                box-sizing:border-box;
+            }
+
+                footer > div div:last-child a {
+                    font-size: 14px;
+                    margin-left: 30px;
+                    color: white;
+                    display: inline-block;
+                }
+
+                    footer > div div:last-child a:first-child {
+                        margin-left: 0;
+                    }
+
+                footer > div div:last-child p {
+                    position: absolute;
+                    right: 5%;
+                    top: 0;
+                    line-height: 14px;
+                }
+}
+/*Tablet*/
+
+@media screen and (min-width:1260px) {
+    body > figure,
+    section.expArea,
+    section.worksArea h2,
+    section.contactArea,
+    footer > div {
+        width: 940px;
+        margin: 0 auto;
+        padding: 35px 0;
+    }
+
+    .btn_more {
+        max-width: 140px;
+        display: block;
+        text-align: center;
+        padding: 15px;
+        border: 1px solid #f16129;
+        color: #f16129;
+        font-weight: 400;
+    }
+
+    section > hr {
+        width: 50px;
+        border-top: 2px solid #c6c4c9;
+        margin-bottom: 50px;
+    }
+
+    header {
+        padding-top: 15px;
+/*         background: url(../img/main.jpg) no-repeat left top; */
+/*         background-size: cover; */
+/*         height: 1000px; */
+    }
+    .main_bg{
+    	background: url(../img/main.jpg) no-repeat left top; 
+        background-size: cover;
+         height: 1000px; 
+    }
+
+        header div {
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+            header div h1 {
+/*                 width: 130px; */
+				width:300px;
+				padding-bottom: 30px;
+				margin: 0 auto;
+            }
+
+                header div h1 a {
+                    display: block;
+                }
+
+                    header div h1 a img {
+                        width: 100%;
+                    }
+
+            header div nav {
+/*                 position: absolute; */
+/*                 top: 17px; */
+/*                 padding-left: 130px; */
+					  right: 0;
+					  width:100%;
+					  padding-top: 20px;
+					  padding-bottom:20px;
+					  text-align: center;
+					  background-color: #0000005c;
+            }
+
+                header div nav ul li {
+                    display: inline-block;
+                     margin-left: 70px; 
+                }
+
+                    header div nav ul li:first-child {
+                        margin-left: 0;
+                    }
+
+                    header div nav ul li a {
+                        font-size: 20px;
+                        font-weight: 900;
+                        color: #fff;
+                    }
+
+/*                         header div nav ul li a:hover, header div nav ul li a.active { */
+/*                             color: #fff; */
+/*                         } */
+/*                          header div nav ul li:last-child{ */
+/*                          	margin-left: 150px; */
+/*                          } */
+/*                          header div nav ul li a:last-child{ */
+/*                          	color: #f16129; */
+/*                          } */
+            /*header nav fin*/
+
+            header div ul {
+                margin-bottom: 125px;
+                width:100%;
+                margin: 0 auto;
+            }
+
+                header div ul li h2 {
+                    text-align: center;
+                    font-size: 32px;
+                    color: white;
+                    font-weight: 900;
+                    padding: 165px 0 20px 0;
+                    margin-bottom: 30px;
+                    background: url(../img/bd_01.png) no-repeat center bottom;
+                }
+
+                header div ul li p {
+                    font-size: 14px;
+                    line-height: 24px;
+                    color: white;
+                    text-align: center;
+                    padding: 0 85px;
+                    margin-bottom: 55px;
+                    font-weight: 300;
+                }
+
+                header div ul li a.btn_more {
+                    width: 120px;
+                    margin: 0 auto;
+                }
+
+            header div ol {
+                margin: 0 auto;
+                width: 60px;
+            }
+
+                header div ol li {
+                    display: inline-block;
+                }
+
+                    header div ol li a {
+                        display: block;
+                        text-indent: -9999px;
+                        width: 10px;
+                        height: 10px;
+                        border-radius: 5px;
+                        border: 1px solid white;
+                        box-sizing: border-box;
+                    }
+
+                        header div ol li a.active, header div ol li a:hover {
+                            background-color: #f16129;
+                            border-color: #f16129;
+                        }
+    /*header Fin*/
+
+    footer {
+/*         background: url(../img/bg_05.png) no-repeat left top; */
+		background-color: #445451;
+        background-size: cover;
+    }
+
+        footer > div:after {
+            content: '';
+            display: block;
+            visibility: hidden;
+            clear: both;
+        }
+
+        footer > div div {
+            width: 290px;
+            float: left;
+            margin: 0 0 10px 35px;
+        }
+
+            footer > div div:first-of-type {
+                margin-left: 0;
+            }
+
+                footer > div div:first-of-type h2 {
+                    margin-bottom: 30px;
+                    line-height: 0;
+                }
+
+            footer > div div h2 {
+                font-size: 15px;
+                color: white;
+                font-weight: 900;
+                line-height: 55px;
+                margin-bottom: 25px;
+            }
+
+            footer > div div p, footer > div div address span {
+                font-size: 14px;
+                line-height: 26px;
+                color: white;
+                font-weight: 300;
+                font-style: normal;
+            }
+
+            footer > div div address span {
+                display: block;
+                padding-left: 30px;
+                background-repeat: no-repeat;
+                background-position: left 5px;
+            }
+
+                footer > div div address span:first-child {
+                    background-image: url(../img/bul_map.png);
+                    margin-bottom: 5px;
+                }
+
+                footer > div div address span:last-child {
+                    background-image: url(../img/bul_phone.png);
+                }
+
+                footer > div div address span a {
+                    color: white;
+                    display: block;
+                }
+
+            footer > div div input[type='email'] {
+                background-color: transparent;
+                padding: 15px;
+                border: 1px solid rgba(255,255,255,0.5);
+                margin-right: 5px;
+                font-weight: 300;
+                vertical-align: top;
+                color: white;
+                width: 205px;
+                box-sizing: border-box;
+            }
+
+            footer > div div input[type='submit'] {
+                background: rgba(255,255,255,0.5) url(../img/btn_send.png) no-repeat center;
+                width: 72px;
+                height: 47px;
+                border: none;
+                text-indent: -9999px;
+            }
+
+            footer > div div ul {
+                padding-top: 25px;
+            }
+
+                footer > div div ul li {
+                    display: inline-block;
+                }
+
+                    footer > div div ul li a {
+                        display: block;
+                        width: 35px;
+                        height: 35px;
+                        text-indent: -9999px;
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                    }
+
+                    footer > div div ul li:nth-child(1) a {
+                        background-image: url(../img/sns_01.png);
+                    }
+
+                    footer > div div ul li:nth-child(2) a {
+                        background-image: url(../img/sns_02.png);
+                    }
+
+                    footer > div div ul li:nth-child(3) a {
+                        background-image: url(../img/sns_03.png);
+                    }
+
+                    footer > div div ul li:nth-child(4) a {
+                        background-image: url(../img/sns_04.png);
+                    }
+
+                    footer > div div ul li:nth-child(5) a {
+                        background-image: url(../img/sns_05.png);
+                    }
+
+                    footer > div div ul li:nth-child(6) a {
+                        background-image: url(../img/sns_06.png);
+                    }
+
+            footer > div div:last-child {
+                clear: left;
+                width: 100%;
+                margin-left: 0;
+                position: relative;
+            }
+
+                footer > div div:last-child a {
+                    font-size: 14px;
+                    margin-left: 30px;
+                    color: white;
+                    display: inline-block;
+                }
+
+                    footer > div div:last-child a:first-child {
+                        margin-left: 0;
+                    }
+
+                footer > div div:last-child p {
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    line-height: 14px;
+                }
+}
+/*PC*/
 

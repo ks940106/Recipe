@@ -1,9 +1,6 @@
 package org.ks.recipe;
 
-import org.ks.recipe.vo.Category;
-import org.ks.recipe.vo.Like;
-import org.ks.recipe.vo.Recipe;
-import org.ks.recipe.vo.RecipeDetail;
+import org.ks.recipe.vo.*;
 
 import java.util.List;
 
@@ -29,4 +26,6 @@ public interface RecipeDao {
     List<Recipe> likeRank();
 
     int orderReg(int recipeNo, int price);
+
+    List<Recipe> recipeList(RecipeSearch recipeSearch);
 }

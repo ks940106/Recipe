@@ -15,4 +15,6 @@ public interface MemberService {
 	public ArrayList<Member>memberList();
 	public Member idAndNameCheck(Member m);
 	public int pwUpdate(Member m);
+	public String findId(Member m);
+	public String email(Member m);
 }

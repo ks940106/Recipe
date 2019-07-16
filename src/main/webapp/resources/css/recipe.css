@@ -444,14 +444,18 @@ ol, ul {
 }
 .nav-tabs2>li.active>a, .nav-tabs2>li.active>a:focus, .nav-tabs2>li.active>a:hover {
     cursor: default;
-    background-color: #44b6b5;
+    background-color: #1f6054;
     border-bottom-color: transparent;
     color: #fff;
+}
+a:hover{
+    text-decoration: none;
 }
 .nav-tabs2>li>a {
     line-height: 1.42857143;
     border: 1px solid transparent;
     padding: 8px 30px;
+    color: black;
 }
 .nav>li>a {
     position: relative;

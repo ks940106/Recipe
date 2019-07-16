@@ -72,4 +72,16 @@ public class MemberServiceImpl implements MemberService{
 		return result;
 	}
 
+	@Override
+	public String findId(Member m) {
+		String id = memberDao.findId(m);
+		return id;
+	}
+
+	@Override
+	public String email(Member m) {
+		String email = memberDao.email(m);
+		return email;
+	}
+
 }

@@ -8,5 +8,6 @@ import org.ks.reservation.vo.Reservation;
 
 public interface ReservationService {
 	public ArrayList<Caravan> selectReservation(String[] reservationDate);
-	public void insertReservation(String caravanNo,String reservationDateString);
+	public Caravan selectOneCaravan(int caravanNo);
+	//public void insertReservation(String caravanNo,String reservationDateString);
 }
