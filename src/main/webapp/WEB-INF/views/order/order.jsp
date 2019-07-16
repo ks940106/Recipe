@@ -46,6 +46,7 @@
 			</div>
 			</nav>
 		</div>
+	</div>
 		<div class="section_content_nav">
 			<!--<div class="cp_nav">
                     <jsp:include page="/WEB-INF/views/common/navPom.jsp"/>
