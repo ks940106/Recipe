@@ -60,7 +60,7 @@ public class CartController {
 		System.out.println("recipeDetail : "+recipeDetail);
 		int recipePrice = recipeDetail.getRecipe().getRecipePrice();
 		int recipeCount = Integer.parseInt(request.getParameter("count"));
-		Cart c = new Cart(0, id, recipeDetail.getRecipe().getRecipeNo(), recipePrice, recipeCount,recipeDetail.getRecipe().getRecipeTitle());
+		Cart c = new Cart(0, id, recipeDetail.getRecipe().getRecipeNo(), recipePrice * recipeCount, recipeCount, recipeDetail.getRecipe().getRecipeTitle());
 		int result = cartServiceImpl.insertCart(c);
 		if(result>0) {
 			request.setAttribute("confirm", "장바구니 추가 완료. 장바구니로 가시겠습니까?");

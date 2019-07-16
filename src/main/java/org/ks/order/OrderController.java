@@ -20,9 +20,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonIOException;
-import com.google.gson.JsonObject;
+import com.siot.IamportRestClient.IamportClient;
+import com.siot.IamportRestClient.exception.IamportResponseException;
+import com.siot.IamportRestClient.request.CancelData;
+import com.siot.IamportRestClient.response.AccessToken;
+import com.siot.IamportRestClient.response.IamportResponse;
+import com.siot.IamportRestClient.response.Payment;
 
 @Controller
 public class OrderController {
@@ -30,7 +34,7 @@ public class OrderController {
 	@Qualifier(value="orderServiceImpl")
 	public OrderService orderServiceImpl;
 	
-	
+	IamportClient client;
 	@RequestMapping(value="/successOrder.do")
 	public String insertOrder(HttpServletRequest request) {
 		String recipeNo = request.getParameter("recipe");
@@ -65,7 +69,7 @@ public class OrderController {
 			o.setAddr2(addr2);
 			o.setRecipeNo(Integer.parseInt(array[i]) );
 			o.setOrderCount(Integer.parseInt(array1[i]));
-			o.setOrderPirce(Integer.parseInt(array2[i]));
+			o.setOrderPrice(Integer.parseInt(array2[i]));
 			o.setOrderState(1);
 			o.setZipCode(zipCode);
 			o.setPhone(phone);
@@ -123,18 +127,10 @@ public class OrderController {
 	
 	@RequestMapping(value="/orderAdminList.do") //결제페이지 조회
 	public String orderAdminList() {
-		/*
-		OrderPageData list = orderServiceImpl.seleteAllOrderAdminList();
-		ModelAndView mav = new ModelAndView();
-		if(!list.isEmpty()) {
-			mav.addObject("list",list);
-			mav.setViewName("admin/order/orderAdminList");
-		}else {
-			mav.setViewName("admin/order/orderAdminList");
-		}
-		 * */
+		
 		return "admin/order/orderAdminList";
 	}
+	
 	@ResponseBody
 	@RequestMapping(value="/seletecancelAdminList") //결제 취소 신청 리스트
 	public void seletecancelAdminList(HttpServletResponse response, HttpServletRequest request,@RequestParam String pageNo ) throws JsonIOException, IOException {
@@ -178,17 +174,52 @@ public class OrderController {
 	@RequestMapping(value="/cancellationAdminOrder.do") 
 	public ModelAndView cancellationAdminOrder(HttpServletRequest request) {
 		String[] orderNo = request.getParameterValues("orderNo");
-		int result = orderServiceImpl.cancellationAdminOrder(orderNo);
+		String[] orderCode = request.getParameterValues("orderCode");
+		String[] orderPrice = request.getParameterValues("orderPrice");
+		System.out.println(orderCode[0]); 
+		System.out.println(orderCode[1]); 
+		System.out.println(orderPrice[0]); 
+		System.out.println(orderPrice[1]); 
+		testGetToken();
+		
+		String test_already_cancelled_merchant_uid = "";
+		CancelData cancel_data = new CancelData(test_already_cancelled_merchant_uid, false); //merchant_uid를 통한 전액취소
+		cancel_data.setEscrowConfirmed(true); //에스크로 구매확정 후 취소인 경우 true설정
 		ModelAndView mav = new ModelAndView();
-		if(result>0) {
-			mav.addObject("msg","결제를 취소했습니다.");
-			mav.addObject("loc","/orderAdminList.do");
-			mav.setViewName("common/msg");
-		}else {
-			mav.addObject("msg","결제취소를 실패 했습니다.");
-			mav.addObject("loc","/orderAdminList.do");
-			mav.setViewName("common/msg");
-		}
+		
+		try {
+			IamportResponse<Payment> payment_response = client.cancelPaymentByImpUid(cancel_data);
+			
+			if(payment_response.getResponse()!=null) {
+				// 이미 취소된 거래는 response가 null이다
+				System.out.println(payment_response.getMessage());
+				int result = orderServiceImpl.cancellationAdminOrder(orderNo);
+				if(result>0) {
+					mav.addObject("msg","결제를 취소했습니다.");
+					mav.addObject("loc","/orderAdminList.do");
+					mav.setViewName("common/msg");
+				}else {
+					mav.addObject("msg","결제취소를 실패 했습니다.");
+					mav.addObject("loc","/orderAdminList.do");
+					mav.setViewName("common/msg");
+				}
+			}
+		} catch (IamportResponseException e) {
+			System.out.println(e.getMessage());
+			
+			switch(e.getHttpStatusCode()) {
+			case 401 :
+				//TODO
+				break;
+			case 500 :
+				//TODO
+				break;
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		
 		return mav;
 	}
 	@RequestMapping(value="/successAdminOrder.do")
@@ -214,5 +245,31 @@ public class OrderController {
 		}
 		return mav;
 		
+	}
+	public void setup() {
+		String test_api_key = "2467380268982332";
+		String test_api_secret = "8oIhttMGVutfixvXmpQDIcSadr6ujuWsSEJm8w230vjj2Ogpd62WjU7xmd2GHY8ACSWKoYOpt7IwVZW8";
+		client = new IamportClient(test_api_key, test_api_secret);
+	}
+	public void testGetToken() {
+		setup();
+		try {
+			IamportResponse<AccessToken> auth_response = client.getAuth();
+			
+		} catch (IamportResponseException e) {
+			System.out.println(e.getMessage());
+			
+			switch(e.getHttpStatusCode()) {
+			case 401 :
+				//TODO
+				break;
+			case 500 :
+				//TODO
+				break;
+			}
+		} catch (IOException e) {
+			//서버 연결 실패
+			e.printStackTrace();
+		}
 	}
 }

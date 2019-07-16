@@ -104,7 +104,7 @@ public class MemberController {
 			HttpSession session =request.getSession();
 			session.setAttribute("member", member);
 		}
-		return "redirect:/index.jsp";
+		return "redirect:/views/singSingRecipe.jsp";
 
 	}
 	//캠핑로그인
@@ -524,15 +524,14 @@ public class MemberController {
 		Member m = new Member();
 		m.setId(request.getParameter("id")); 
 		m.setName(request.getParameter("name"));
-		System.out.println(m.getId());
-		System.out.println(m.getName());
 		Member member =memberService.idAndNameCheck(m);
-		if(member.getId().isEmpty()) {
-			String view="common/msg";
+		String view="common/msg";
+		if(member==null) {
 			request.setAttribute("msg", "아이디와 이름을 확인해주세요");
 			request.setAttribute("loc","/findPasswordPage.do");
 			return view;
 		}
+		else {
 		String host = "smtp.googlemail.com"; // 네이버일 경우 네이버 계정, gmail경우 gmail 계정 
 
 	      final String user = "fghij7410@gmail.com"; 
@@ -580,14 +579,35 @@ public class MemberController {
 		}
 	       System.out.println("암호화 다음"+m.getPw());
 	       int result = memberService.pwUpdate(m);
-	       String view="common/msg";
 	       if(result>0) {
 	    	   request.setAttribute("msg", "비밀번호 변경 메일을 확인해주세요");
 	    	   request.setAttribute("loc", "/loginPage.do");
 	       }else {
 	    	   request.setAttribute("msg","비밀번호 변경 실패");
 	    	   request.setAttribute("loc", "/findPasswordPage.do");
-	       }return view;
+	       }
+		}return view;
+	}
+	//아이디 찾기
+	@RequestMapping(value="/findId.do")
+	public String findId(HttpServletRequest request) {
+		Member m = new Member();
+		m.setName(request.getParameter("name"));
+		m.setPhone(request.getParameter("phone"));
+		m.setId(memberService.findId(m));
+		String view="";
+		if(m.getId()==null) {
+			 view="common/msg";
+			request.setAttribute("msg", "이름과 핸드폰 번호를 정확히 입력해주세요");
+			request.setAttribute("loc", "/loginPage.do");
+		}else {
+		String email = memberService.email(m);
+		System.out.println(m.getId());
+		view="common/msg";
+		request.setAttribute("msg", "아이디는"+m.getId()+email+"입니다");
+		request.setAttribute("loc", "/loginPage.do");
+		
+		}return view;
 	}
 	
 }
