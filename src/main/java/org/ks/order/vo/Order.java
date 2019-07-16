@@ -8,7 +8,7 @@ public class Order {
 	private String addr2;
 	private int recipeNo;
 	private int orderCount;
-	private int orderPirce;
+	private int orderPrice;
 	private int orderState;
 	private String zipCode;
 	private String phone;
@@ -22,7 +22,7 @@ public class Order {
 	
 
 	public Order(int orderNo, String orderCode, String id, String addr1, String addr2, int recipeNo, int orderCount,
-			int orderPirce, int orderState, String zipCode, String phone, String recipeTitle, String name) {
+			int orderPrice, int orderState, String zipCode, String phone, String recipeTitle, String name) {
 		super();
 		this.orderNo = orderNo;
 		this.orderCode = orderCode;
@@ -31,7 +31,7 @@ public class Order {
 		this.addr2 = addr2;
 		this.recipeNo = recipeNo;
 		this.orderCount = orderCount;
-		this.orderPirce = orderPirce;
+		this.orderPrice = orderPrice;
 		this.orderState = orderState;
 		this.zipCode = zipCode;
 		this.phone = phone;
@@ -100,12 +100,12 @@ public class Order {
 		this.orderCount = orderCount;
 	}
 
-	public int getOrderPirce() {
-		return orderPirce;
+	public int getorderPrice() {
+		return orderPrice;
 	}
 
-	public void setOrderPirce(int orderPirce) {
-		this.orderPirce = orderPirce;
+	public void setOrderPrice(int orderPrice) {
+		this.orderPrice = orderPrice;
 	}
 
 	public int getOrderState() {

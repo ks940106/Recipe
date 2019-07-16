@@ -33,7 +33,7 @@ function payment(id,name,phone) {
 				 buyer_name	: name,					//구매자 이름
 				 buyer_tel	: phone,
 				 buyer_addr : addr1+addr2,
-				 buyer_postcode : '123-456'				//우편번호
+				 buyer_postcode :zipCode				//우편번호
 				},function(rsp){
 					if(rsp.success){
 						var msg = '결제가 완료되었습니다.';
@@ -43,12 +43,12 @@ function payment(id,name,phone) {
 						$("#paymentResult").html(msg+"<br>"+info1+"<br>"+info2+"<br>"+info3);
 						
 						
+						location.href="/successOrder.do?recipe="+noarray+"&id="+id+"&orderCode="+date+"&zipCode="+zipCode+
+						"&addr1="+addr1+"&addr2="+addr2+"&phone="+phone+"&recipeCount="+noarray1+"&recipePrice="+noarray2;
 						
 					}else{
 						$('#paymentResult').html('에러내용 :' +rsp.error_msg+date);
 						
-						location.href="/successOrder.do?recipe="+noarray+"&id="+id+"&orderCode="+date+"&zipCode="+zipCode+
-									"&addr1="+addr1+"&addr2="+addr2+"&phone="+phone+"&recipeCount="+noarray1+"&recipePrice="+noarray2;
 		
 					}
 				});

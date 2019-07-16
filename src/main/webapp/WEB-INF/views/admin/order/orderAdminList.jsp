@@ -63,12 +63,14 @@
 									</tr>
 								</thead>
 								<tbody id="payment">
-								
+									
 								</tbody>
 							</table>
 							<button type="submit" class="button button1" class="cancellation">취소확정</button>
 							</form>
-							<div class="paymentCount"></div>
+							<div class="paymentCount">
+								
+							</div>
 						</div>
 						<div class="list_field_con">
 							<p class="cancellationList">결제 진행중</p>
