@@ -70,7 +70,7 @@ public class TMRServiceImpl implements TMRService{
 	public LMRPageData selectLMR(int reqPage) {
 		//페이지 당 게시물 수
 		int numPerPage = 10;
-				//총 게시물 수 구하기
+		//총 게시물 수 구하기
 		List countList = tmrdaoImpl.lmrCount();
 		int totalCount = countList.size();
 		//총 페이지 수 구하기

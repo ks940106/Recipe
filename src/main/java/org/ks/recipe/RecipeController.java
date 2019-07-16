@@ -1,10 +1,7 @@
 package org.ks.recipe;
 
 import org.ks.member.vo.Member;
-import org.ks.recipe.vo.Category;
-import org.ks.recipe.vo.Like;
-import org.ks.recipe.vo.Recipe;
-import org.ks.recipe.vo.RecipeDetail;
+import org.ks.recipe.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -26,11 +23,23 @@ public class RecipeController {
     RecipeService recipeService;
 
     @RequestMapping("/recipePage.do")
-    public String recipePage(Model model){
+    public String recipePage(HttpServletRequest request, Model model){
+        String q = request.getParameter("q");
+        String cat1 = request.getParameter("cat1");
+        String cat2 = request.getParameter("cat2");
+        String order = request.getParameter("order");
+        RecipeSearch recipeSearch = new RecipeSearch();
+        recipeSearch.setQ(q==null?"":q);
+        recipeSearch.setCat1(cat1==null?"":cat1);
+        recipeSearch.setCat2(cat2==null?"":cat2);
+        recipeSearch.setOrder(order==null?"":order);
         List<Category> categoryList = recipeService.categoryList();
         model.addAttribute("categoryList",categoryList);
-        List<Recipe> recipeList = recipeService.recipeList();
-        model.addAttribute("recipeList",recipeList);
+        List<Recipe> recipeList = recipeService.recipeList(recipeSearch);
+//        String pageNav = recipeService.pageNav();
+        model.addAttribute("recipeList", recipeList);
+        model.addAttribute("recipeSearch", recipeSearch);
+//        model.addAttribute("pageNav",pageNav);
         return "recipe/recipeList";
     }
 
@@ -58,8 +67,8 @@ public class RecipeController {
         String video = multi.getParameter("cok_video_url");
         String level = multi.getParameter("cok_degree");
         String title = multi.getParameter("cok_title");
-        String cat1 = multi.getParameter("cok_sq_category_2");
-        String cat2 = multi.getParameter("cok_sq_category_1");
+        String cat1 = multi.getParameter("cok_sq_category_1");
+        String cat2 = multi.getParameter("cok_sq_category_2");
         //step_no[]
         String mainImg = multi.getParameter("recipeMainImg");
         String[] stepPhotos = multi.getParameterValues("step_photo[]");
@@ -221,7 +230,6 @@ public class RecipeController {
     @RequestMapping(value = "/orderReg.do",produces = "text/plain;charset=UTF-8")
     @ResponseBody
     public String orderReg(String recipeNo,String price){
-
         String message;
         int result = recipeService.orderReg(Integer.parseInt(recipeNo),Integer.parseInt(price));
         if(result>0){

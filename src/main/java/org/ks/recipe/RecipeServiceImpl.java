@@ -1,9 +1,6 @@
 package org.ks.recipe;
 
-import org.ks.recipe.vo.Category;
-import org.ks.recipe.vo.Like;
-import org.ks.recipe.vo.Recipe;
-import org.ks.recipe.vo.RecipeDetail;
+import org.ks.recipe.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -82,5 +79,10 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     public int orderReg(int recipeNo, int price) {
         return recipeDaoImpl.orderReg(recipeNo,price);
+    }
+
+    @Override
+    public List<Recipe> recipeList(RecipeSearch recipeSearch) {
+        return recipeDaoImpl.recipeList(recipeSearch);
     }
 }
