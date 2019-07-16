@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,46 +8,77 @@
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-3.4.0.js"></script>
 <link href="../resources/css/import.css" rel="stylesheet" />
+<link href="../resources/css/talkBoard.css" rel="stylesheet" />
+<script type="text/javascript" src="../resources/js/talkBoard/talkBoard.js" />
 </head>
 <body>
 
-	<jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp"/>
-	<h1>토크보드</h1>
-	<br>
-	<br>
-	<a href="/newTalkBoard.do">글쓰기</a>
-	<br>
-	<br>
-	<table>
-		<tr>
-			<th>번호</th>
-			<th>타입</th>
-			<th>닉네임</th>
-			<th>이미지</th>
-			<th>내용</th>
-		</tr>
-		<c:forEach items="${list}" var="t">
-		<tr onclick="select(${t.boardNo})">
-			<td>${t.boardNo }</td>
-			<td>${t.boardType }</td>
-			<td>${t.nickname }</td>
-			<td>
-			<c:forTokens items="${t.boardImg }" delims="/" var="item" varStatus="g">
-			<c:if test="${g.count==1 }">
-			<img src="/resources/talkBoard/${item}" width="100">
-			</c:if>
-			</c:forTokens>
-			</td>
-			<td>${t.boardContents }</td>
-		</tr>
-		</c:forEach>
-	</table>
-	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp"/>
-	
-	<script>
-		function select(no){
-			location.href="/selectTalkBoard.do?boardNo="+no;
-		}
-	</script>
+	<jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp" />
+	<section>
+	<div class="pom_bg">
+		<div class="pom_top">
+			<h1>토크</h1>
+			<div id="pom_div_bg"></div>
+			<p>나만의 특별한 하루를 공유해요</p>
+		</div>
+	</div>
+	<div class="pom_wrap">
+		<div class="pomNav">
+			<jsp:include page="/WEB-INF/views/talkBoard/talkBoardNav.jsp" />
+		</div>
+
+		<div class="section_content">
+			<div class="board_type">
+				<div class="board_left">
+					<c:if test="${pd.type eq '0' }">
+					<span><p>전체글을 볼수 있어요</p></span>
+					</c:if>
+					<c:if test="${pd.type eq '1' }">
+					<span><p>일상톡을 볼수 있어요</p></span>
+					</c:if>
+					<c:if test="${pd.type eq '3' }">
+					<span><p>요리톡을 볼수 있어요</p></span>
+					</c:if>
+					<c:if test="${pd.type eq '5' }">
+					<span><p>후기톡을 볼수 있어요</p></span>
+					</c:if>
+					
+				</div>
+				<div class="board_right">
+				<a href="#:;" class="btn btn-info" onclick="insert();">등록</a>				
+				</div>
+				<div id="go_register_dv" class="list-group talk_smn"
+					style="display:none; width: 250px; position: absolute;  background-color: white; border-top: 1px solid rgb(230, 231, 232); border-bottom: 1px solid rgb(230, 231, 232); z-index: 10;">
+					<a href="/newTalkBoard.do?boardType=1" class="list-group-item">일상톡</a> 
+					<a href="/newTalkBoard.do?boardType=3" class="list-group-item">요리톡</a> 
+					<a href="/newTalkBoard.do?boardType=5" class="list-group-item">후기톡</a>
+				</div>
+			</div>
+				<input type="hidden" id="sessionId" value="${sessionScope.member.id }">
+				
+			<c:forEach items="${pd.list}" var="t">
+
+				<div class="d1">
+					<div class="d2"></div>
+					<div class="c1">${t.nickname }</div>
+					<div class="c2" onclick="select(${t.boardNo})">
+						${t.boardContents }</div>
+					<div class="c3" onclick="select(${t.boardNo})">
+						<c:forTokens items="${t.boardImg }" delims="/" var="item" varStatus="g">
+							<c:if test="${g.count==1 }">
+								<img src="/resources/talkBoard/${item}" width="800px"
+									class="imgsum">
+							</c:if>
+						</c:forTokens>
+					</div>
+				</div>
+			</c:forEach>
+			<div id="pageNavi" class="paging">${pd.pageNavi }</div>
+			</div>
+		
+	</div>
+	</section>
+	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />
+
 </body>
 </html>

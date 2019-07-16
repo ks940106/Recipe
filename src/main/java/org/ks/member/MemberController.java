@@ -54,9 +54,17 @@ public class MemberController {
 	public String joinPage() {
 		return "member/joinPage";
 	}
+	@RequestMapping(value="/joinPageCamping.do")
+	public String joinPageCamping() {
+		return "member/joinPageCamping";
+	}
 	@RequestMapping(value="/insert.do")
 	public String insert() {
 		return "member/insert";
+	}
+	@RequestMapping(value="/insertCamping.do")
+	public String insertCamping() {
+		return "member/insertCamping";
 	}
 	@RequestMapping(value="/memberUpdatePage.do")
 	public String memberUpdate() {
@@ -99,6 +107,7 @@ public class MemberController {
 		return "redirect:/index.jsp";
 
 	}
+	//캠핑로그인
 	@RequestMapping(value="/loginCamping.do")
 	public String loginCamping(HttpServletRequest request,@RequestParam String id,@RequestParam String pw ) {
 		Member m = new Member();

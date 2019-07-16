@@ -12,11 +12,14 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.ks.talkBoard.vo.TalkBoard;
+import org.ks.talkBoard.vo.TalkBoardComment;
+import org.ks.talkBoard.vo.TalkBoardPageData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,21 +31,36 @@ public class TalkBoardController {
 	private TalkBoardService talkBoardService;
 	
 	@RequestMapping(value="/mainBoard.do")
-	public ModelAndView mainBoard() {
-		ArrayList<TalkBoard> list = talkBoardService.mainBoard();
+	public ModelAndView mainBoard(HttpServletRequest request) {
+		String type = request.getParameter("boardType");
+		System.out.println(type);
+		int reqPage;
+		try {
+			reqPage = Integer.parseInt(request.getParameter("reqPage"));
+		}catch(NumberFormatException e) {
+			reqPage = 1;
+		}
+		System.out.println("reqPage : "+reqPage);
+		TalkBoardPageData pd = talkBoardService.mainBoard(reqPage,type);
 		ModelAndView mv = new ModelAndView();
-		System.out.println(list.get(0).getBoardNo());
-		mv.addObject("list",list);
+		mv.addObject("pd",pd);
 		mv.setViewName("talkBoard/mainBoard");
 		return mv;
 	}
 	
 	@RequestMapping(value="/newTalkBoard.do")
-	public String newTalkBoard() {
-		return "talkBoard/newTalkBoard";
+	public ModelAndView newTalkBoard(HttpServletRequest request) {
+		int boardType = Integer.parseInt(request.getParameter("boardType"));
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("boardType",boardType);
+		mv.setViewName("talkBoard/newTalkBoard");
+		return mv;
 	}
 	@RequestMapping(value="/insertTalkBoard.do")
 	public String insertTalkBoard(MultipartHttpServletRequest request,@RequestParam MultipartFile filedata,TalkBoard tb) {
+		String savePath = request.getSession().getServletContext().getRealPath("/resources/talkBoard");
+		System.out.println("보드 타입"+tb.getBoardType());
+		System.out.println("저장경로 : "+savePath);
 		System.out.println(tb.getNickname());
 		System.out.println(filedata);
 		System.out.println(request.getFiles("filedata").size());
@@ -62,7 +80,7 @@ public class TalkBoardController {
 		
 		if(FF != null) {
 			if(!fi.isEmpty()) {
-				String savePath = request.getSession().getServletContext().getRealPath("/resources/talkBoard");
+//				String savePath = request.getSession().getServletContext().getRealPath("/resources/talkBoard");
 				String img = "";
 				for(MultipartFile m : fi) {
 //				for(int i = 0; i<FF.length;i++) {
@@ -140,9 +158,12 @@ public class TalkBoardController {
 		int no = Integer.parseInt(boardNo);
 		System.out.println("넘어온 보드넘버 : "+no);
 		TalkBoard tb = talkBoardService.selectTalkBoard(no);
+		ArrayList<TalkBoardComment> tbc = talkBoardService.selectTalkBoardComment(no);
 		System.out.println(tb.getBoardContents());
+		System.out.println(tbc.isEmpty());
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("tb",tb);
+		mv.addObject("tbc",tbc);
 		mv.setViewName("talkBoard/selectTalkBoard");
 		return mv;
 	}
@@ -154,19 +175,23 @@ public class TalkBoardController {
 		TalkBoard tb = talkBoardService.selectTalkBoard(no);
 		System.out.println(tb.getBoardImg());
 		String img = tb.getBoardImg();
-		String[] file = img.split("/");
-		File f = null;
+		System.out.println("씨바 이미지"+img);
+		if(img != null) {	
+			String[] file = img.split("/");
+			File f = null;
 		for(int i=0;i<file.length;i++) {
 			f = new File(savePath+"\\"+file[i]);
 			f.delete();
 		}
+		}
+		int delComment = talkBoardService.deleteTalkBoardComment(no);
 		int result = talkBoardService.deleteTalkBoard(no);
 		System.out.println("삭제 0실패 1성공 : "+result);
 		if(result ==0) {
 			return "/";
 		}else {
 			return "talkBoard/mainBoard";
-		}
+			}
 	}
 	@RequestMapping(value="/modifyTalkBoard.do")
 	public ModelAndView modifyTalkBoard(@RequestParam String boardNo) {
@@ -186,6 +211,7 @@ public class TalkBoardController {
 		String fullImg = request.getParameter("fullImg");	//DB에 저장된 img값
 		String[] fImg = fullImg.split("/");					//DB에 저장된 img값을 구분자/로 잘라서 fImg에 배열로저장
 		String[] img = request.getParameterValues("oneImg");	//jsp에서 넘어온 배열을 img배열에 저장
+		System.out.println(fullImg);
 		System.out.println("풀 : "+fImg[0]);
 		System.out.println("이미지 : "+img[0]);
 		System.out.println(img[0].isEmpty());
@@ -283,4 +309,37 @@ public class TalkBoardController {
     			return "talkBoard/mainBoard";
     		}
 	}
+	@ResponseBody
+	@RequestMapping(value="/insertTalkBoardComment.do")
+	public String selelctTalkBoardComment(HttpServletRequest request) {
+		TalkBoardComment tbc = new TalkBoardComment();
+		tbc.setCommentWriter(request.getParameter("commentWriter"));
+		tbc.setBoardNo(Integer.parseInt(request.getParameter("boardNo")));
+		tbc.setCommentContents(request.getParameter("commentContents"));
+		tbc.setCommentLevel(Integer.parseInt(request.getParameter("commentLevel")));
+		int result = talkBoardService.insertTalkBoardComment(tbc);
+		if(result>0) {
+			System.out.println("댓글입력성공");
+		}else {
+			System.out.println("댓글 입력 실패");
+		}
+		return "18";
+		
+	}
+	@ResponseBody
+	@RequestMapping(value="/deleteComment.do")
+	public String deleteComment(HttpServletRequest request) {
+		int no = Integer.parseInt(request.getParameter("no"));
+		System.out.println(no);
+		int result = talkBoardService.deleteComment(no);
+		if(result >0 ) {
+			System.out.println("댓글 삭제 성공");
+		}else {
+			System.out.println("댓글 삭제 실패");
+		}
+		return "^^7";
+	}
+	
+	
+	
 }

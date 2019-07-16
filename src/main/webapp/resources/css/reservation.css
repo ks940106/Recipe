@@ -1,0 +1,47 @@
+@charset "UTF-8";
+.pageNo{
+		color:black;
+		border: 1px solid lightgray;
+		width:30px;
+		height:30px;
+		line-height:30px;
+		margin:5px;} 
+.pageSelected{
+		color:white;
+		background-color:#1f6054;
+		border: 1px solid lightgray;
+		display:inline-block;
+		width:30px;
+		height:30px;
+		line-height:30px;
+		margin:5px;}
+.pageBtn{
+		color:black;
+		border: 1px solid lightgray;
+		width:30px;
+		height:30px;
+		line-height:30px;
+		margin:5px;}
+.pageNo:hover{
+	border-color: #1f6054;
+}
+.pageBtn:hover{
+	border-color: #1f6054;
+}
+
+#calendarTb * { font-weight:bolder;
+				font-size:19px;
+				width:100px;
+				height:100px; 
+				text-align: center; 
+				line-height: 100px;}
+#calendarTb th {border: 1px solid #dadbdb;}
+#calendarTb th button{border-radius: 10px;
+				background-color: #dadbdb;
+				border: 1px solid #dadbdb;}
+#calendarTb td {border: 1px solid #dadbdb;}
+	.possible{background-color: #3ac569;}
+	.impossible{background-color: #dadbdb;}
+	
+#span1{margin-left:5px; font-size: 25px; font-weight: bolder;}
+#reservation{margin-left:5px; border: 1px solid #dadbdb;}
