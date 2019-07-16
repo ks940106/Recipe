@@ -12,21 +12,21 @@
 <jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp" />
 <section class="findPassword">
 	<h1>비밀번호 변경</h1>
-	<form method="post" action="/findPassword.do">
+	<form method="post" action="/findId.do">
 	<div class="find">
-	<p>임시 비밀번호 발급을 위해 아이디와 이름을 입력해주세요</p>
-	<p>임시 비밀번호는 이메일로 전송됩니다</p>
+	<p>아이디 찾기</p>
+	<p>아이디 찾기를 위해 이름과 전화번호를 입력해주세요</p>
 		<table>
 			<tr>
-				<th>아이디</th>
-				<td><input type="text" name="id" ></td>
+				<th>이름</th>
+				<td><input type="text" name="name" ></td>
 			</tr>
 			<tr>
-				<th>이름</th>
-				<td><input type="text" name="name"></td>
+				<th>전화번호</th>
+				<td><input type="text" name="phone" placeholder="010-0000-0000"></td>
 		</table>
 	</div>
-	<button type="submit">임시 비밀번호 발급 받기</button>
+	<button type="submit">아이디 찾기</button>
 	</form>
 </section>
 </body>

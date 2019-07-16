@@ -104,7 +104,7 @@ public class MemberController {
 			HttpSession session =request.getSession();
 			session.setAttribute("member", member);
 		}
-		return "redirect:/index.jsp";
+		return "redirect:/views/singSingRecipe.jsp";
 
 	}
 	//캠핑로그인
@@ -588,6 +588,20 @@ public class MemberController {
 	    	   request.setAttribute("msg","비밀번호 변경 실패");
 	    	   request.setAttribute("loc", "/findPasswordPage.do");
 	       }return view;
+	}
+	@RequestMapping(value="/findId.do")
+	public String findId(HttpServletRequest request) {
+		Member m = new Member();
+		m.setName(request.getParameter("name"));
+		m.setPhone(request.getParameter("phone"));
+		System.out.println(m.getPhone());
+		m.setId(memberService.findId(m));
+		String email = memberService.email(m);
+		System.out.println(m.getId());
+		String view="common/msg";
+		request.setAttribute("msg", "아이디는"+m.getId()+email+"입니다");
+		request.setAttribute("loc", "/loginPage.do");
+		return view;
 	}
 	
 }

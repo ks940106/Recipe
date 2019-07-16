@@ -17,28 +17,21 @@ public class MemberDaoImpl implements MemberDAO{
 	
 	@Override
 	public Member login(Member m) {
-		System.out.println(m.getId());
 		Member m1= sqlSession.selectOne("member.login",m);
 		return m1;
 	}
 	public String emailCheck(String id) {
 		
 		String idck = sqlSession.selectOne("member.emailCheck",id);
-		System.out.println(idck);
 		return idck;
 	}
 	@Override
 	public String nickCheck(String nick) {
 		String nickCh=sqlSession.selectOne("member.nickCheck",nick);
-		System.out.println(nickCh);
 		return nickCh;
 	}
 	@Override
 	public int insertMember(Member m) {
-		System.out.println(m.getId());
-		System.out.println(m.getMemberImg());
-		System.out.println(m.getZipCode());
-		System.out.println(m.getGender());
 		int result = sqlSession.insert("member.insertMember",m);
 		return result;
 	}
@@ -74,5 +67,15 @@ public class MemberDaoImpl implements MemberDAO{
 	public int pwUpdate(Member m) {
 		int result = sqlSession.update("member.pwUpdate",m);
 		return result;
+	}
+	@Override
+	public String findId(Member m) {
+		String id = sqlSession.selectOne("member.findId",m);
+		return id;
+	}
+	@Override
+	public String email(Member m) {
+		String email=sqlSession.selectOne("member.email",m);
+		return email;
 	}
 }
