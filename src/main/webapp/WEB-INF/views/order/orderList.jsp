@@ -63,7 +63,7 @@
 								<td><input type="checkbox" name="orderNo" value="${c.orderNo }"></td>
 								<td>${c.orderCode }</td>
 								<td>${c.recipeTitle }</td>
-								<td >${c.orderPirce }</td>
+								<td >${c.orderPrice }</td>
 								<td>${c.orderCount }</td>
 								<td >${c.state }</td>
 							</tr>

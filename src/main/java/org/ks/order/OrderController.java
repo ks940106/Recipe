@@ -127,18 +127,10 @@ public class OrderController {
 	
 	@RequestMapping(value="/orderAdminList.do") //결제페이지 조회
 	public String orderAdminList() {
-		/*
-		OrderPageData list = orderServiceImpl.seleteAllOrderAdminList();
-		ModelAndView mav = new ModelAndView();
-		if(!list.isEmpty()) {
-			mav.addObject("list",list);
-			mav.setViewName("admin/order/orderAdminList");
-		}else {
-			mav.setViewName("admin/order/orderAdminList");
-		}
-		 * */
+		
 		return "admin/order/orderAdminList";
 	}
+	
 	@ResponseBody
 	@RequestMapping(value="/seletecancelAdminList") //결제 취소 신청 리스트
 	public void seletecancelAdminList(HttpServletResponse response, HttpServletRequest request,@RequestParam String pageNo ) throws JsonIOException, IOException {
