@@ -330,7 +330,7 @@
 							$("#reservation").html("");
 						for(var index in jsonList){
 							//$("#reservation").append("<a href='/insertReservation.do?caravanNo="+jsonList[index].caravanNo+"&reservationDateString="+reservationDateString+"'>"+jsonList[index].caravanNo +"</a><br>");
-							$("#reservation").append("<a href='/insertReservation.do?caravanNo="+jsonList[index].caravanNo+"&reservationDateString="+reservationDateString+"'>"+jsonList[index].caravanName+", 기준/최대인원 : "+jsonList[index].caravanPeople+"/"+jsonList[index].caravanMaxPeople+", 가격(1박) : "+jsonList[index].caravanCost+"원</a><br><br>");
+							$("#reservation").append("<a href='/peopleSelect.do?caravanNo="+jsonList[index].caravanNo+"&reservationDateString="+reservationDateString+"'>"+jsonList[index].caravanName+", 기준/최대인원 : "+jsonList[index].caravanPeople+"/"+jsonList[index].caravanMaxPeople+", 가격(1박) : "+jsonList[index].caravanCost+"원</a><br><br>");
 						}
 					},
 				error: function(){

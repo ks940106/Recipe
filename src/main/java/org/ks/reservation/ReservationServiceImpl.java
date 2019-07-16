@@ -7,7 +7,6 @@ import org.ks.caravan.vo.Caravan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service("ReservationServiceImpl")
 public class ReservationServiceImpl implements ReservationService{
@@ -19,8 +18,13 @@ public class ReservationServiceImpl implements ReservationService{
 		List list = reservationDaoImpl.selectReservation(reservationDate);
 		return (ArrayList<Caravan>)list;
 	}
-	@Transactional
-	public void insertReservation(String caravanNo,String reservationDateString) {
-		reservationDaoImpl.insertReservation(caravanNo,reservationDateString);
+	public Caravan selectOneCaravan(int caravanNo) {
+		List list = reservationDaoImpl.selectOneCaravan(caravanNo);
+		Caravan c = ((ArrayList<Caravan>)list).get(0);
+		return c;
 	}
+//	@Transactional
+//	public void insertReservation(String caravanNo,String reservationDateString) {
+//		reservationDaoImpl.insertReservation(caravanNo,reservationDateString);
+//	}
 }

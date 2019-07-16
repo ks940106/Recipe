@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 
 public interface ReservationDao {
 	public List selectReservation(String[] reservationDate);
-	public void insertReservation(String caravanNo,String reservationDateString);
+	public List selectOneCaravan(int caravanNo);
+	//public void insertReservation(String caravanNo,String reservationDateString);
 }
