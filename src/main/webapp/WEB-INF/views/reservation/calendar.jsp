@@ -31,7 +31,7 @@
             <div class="section_content_nav">
                 <div class="cp_content">
                 	<div style="float: left;">
-						<table>
+						<table id="calendarTb">
 							<tr>
 								<th><button type="button" id="prev"><</button></th>
 								<th colspan="5" id="YearMonth"></th>
@@ -53,8 +53,8 @@
 						</c:forEach>
 						</table>
 					</div>
-					예약 가능 카라반 번호<br>
-					<div id="reservation" style="float: left; border:1px solid black; width:400px; height:400px;"></div>
+					<span id="span1">예약 가능 카라반 번호</span><br>
+					<div id="reservation" style="float: left; width:400px; height:500px;"></div>
                 </div>
             </div>
     </div>
@@ -149,16 +149,16 @@
 				
 				if(s==1 && i>=nowDate){ //현재, 오늘 포함하여 오늘 보다 높은 날짜(오늘 포함한 미래)
 					$("#"+id).addClass('possible');
-					$("#"+id).css("background-color","lightgreen");
+					$("#"+id).css("background-color","#3ac569");
 				}else if(s==1 && i<nowDate){ //현재, 어제부터 이전 날짜
 					$("#"+id).addClass('impossible');
-					$("#"+id).css("background-color","lightgray");
+					$("#"+id).css("background-color","#dadbdb");
 				}else if(s==0){ //과거, 이전 월
 					$("#"+id).addClass('impossible');
-					$("#"+id).css("background-color","lightgray");
+					$("#"+id).css("background-color","#dadbdb");
 				}else if(s==2){ //미래, 이후 월
 					$("#"+id).addClass('possible');
-					$("#"+id).css("background-color","lightgreen");
+					$("#"+id).css("background-color","#3ac569");
 				}
 				
 				if(clickState == 0 && changeMonth == true){ //클릭상태는 0 그러나 클릭할 당시, 달이 바뀌면서 '1'일 만을 참조 할 경우,바뀐 월의 데이터가 남지 않으므로~
@@ -195,7 +195,7 @@
 				alert('선택이 불가능한 날짜 입니다.');
 			}else if(className == 'possible'){ //클래스이름이 possible이고
 				if(clickState == 0){ //클릭상태가 0일 때 클릭할 경우,
-					$(".possible").css("background-color","lightgreen"); //이전에 남아있는 오렌지색을 초록색으로 바꿈
+					$(".possible").css("background-color","#3ac569"); //이전에 남아있는 오렌지색을 초록색으로 바꿈
 					$(this).css("background-color","orange"); //누른부분 orange색으로
 					startId = $(this).attr('id'); //누른 곳 Id 값이 들어감.
 					startText = $(this).text(); //누른 곳 Text 값이 들어감.
@@ -206,7 +206,7 @@
 				}else if(clickState == 1){ //클릭상태가 1일 때 클릭할 경우,
 						if(oneClickSelected == 1){ //같은 달 내에서
 							if(startId == $(this).attr('id')){ //만약 startId 와 누른곳의 Id가 같다면
-								$(this).css("background-color","lightgreen"); //그곳의 css를 해제하고 
+								$(this).css("background-color","#3ac569"); //그곳의 css를 해제하고 
 								clickState = 0; //클릭상태 0 으로 만듬
 								reservationDate = new Array(); //임시 value값 초기화
 								return;
@@ -330,7 +330,7 @@
 							$("#reservation").html("");
 						for(var index in jsonList){
 							//$("#reservation").append("<a href='/insertReservation.do?caravanNo="+jsonList[index].caravanNo+"&reservationDateString="+reservationDateString+"'>"+jsonList[index].caravanNo +"</a><br>");
-							$("#reservation").append("<a href='/insertReservation.do?caravanNo="+jsonList[index].caravanNo+"&reservationDateString="+reservationDateString+"'>카라반 이름 : "+jsonList[index].caravanName+", 카라반 기준/최대인원 : "+jsonList[index].caravanPeople+"/"+jsonList[index].caravanMaxPeople+", 카라반 가격 : "+jsonList[index].caravanCost+"</a><button type='button' onclick='goView()'>카라반 자세히 보러가기</button><br>");
+							$("#reservation").append("<a href='/insertReservation.do?caravanNo="+jsonList[index].caravanNo+"&reservationDateString="+reservationDateString+"'>"+jsonList[index].caravanName+", 기준/최대인원 : "+jsonList[index].caravanPeople+"/"+jsonList[index].caravanMaxPeople+", 가격(1박) : "+jsonList[index].caravanCost+"원</a><br><br>");
 						}
 					},
 				error: function(){
@@ -338,9 +338,7 @@
 				}
 			});
 		}
-		function goView(){
-			location.href="/index.jsp";
-		}
+		
 	</script>
 </body>
 </html>

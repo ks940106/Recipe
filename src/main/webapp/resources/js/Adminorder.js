@@ -109,11 +109,13 @@ function seletecancelAdminList(pageNo) {
 			for(var i=0;i<list.length;i++){
 				console.log(list[i].addr1);
 				var td = $('<td><input type="checkbox" name="orderNo" value="'+list[i].orderNo+'"></td>');
+				var hidden = $('<input type="hidden" name="orderCode" value="'+list[i].orderCode+'">')
+				var hidden1 = $('<input type="hidden" name="orderPrice" value="'+list[i].orderPrice+'"> ')
 				var td1 = $('<td>'+list[i].orderCode+'</td>');
 				var td2 = $('<td>'+list[i].name+'</td>');
 				var td3 = $('<td>'+list[i].phone+'</td>');
 				var td4 = $('<td>'+getState(list[i].orderState)+'</td>');
-				var tr = $('<tr>').append(td).append(td1).append(td2).append(td3).append(td4);
+				var tr = $('<tr>').append(hidden1).append(hidden).append(td).append(td1).append(td2).append(td3).append(td4);
 				$("#payment").append(tr);
 			}
 			$(".paymentCount").append(data.pageNavi);

@@ -29,7 +29,19 @@
 	border-color: #1f6054;
 }
 
-table * {border:1px solid black; width:100px;height:100px; text-align: center; line-height: 100px;}
-	table td{}
-	.possible{background-color: lightgreen;}
-	.impossible{background-color: lightgray;}
+#calendarTb * { font-weight:bolder;
+				font-size:19px;
+				width:100px;
+				height:100px; 
+				text-align: center; 
+				line-height: 100px;}
+#calendarTb th {border: 1px solid #dadbdb;}
+#calendarTb th button{border-radius: 10px;
+				background-color: #dadbdb;
+				border: 1px solid #dadbdb;}
+#calendarTb td {border: 1px solid #dadbdb;}
+	.possible{background-color: #3ac569;}
+	.impossible{background-color: #dadbdb;}
+	
+#span1{margin-left:5px; font-size: 25px; font-weight: bolder;}
+#reservation{margin-left:5px; border: 1px solid #dadbdb;}
