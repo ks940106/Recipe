@@ -36,9 +36,6 @@
 			</nav>
 		</div>
 		<div class="section_content_nav">
-			<!--<div class="cp_nav">
-                    <jsp:include page="/WEB-INF/views/common/navPom.jsp"/>
-                </div>-->
 			<div class="cp_content">
 				<div id="contentName">결제 내역</div>
 				<div id="contentNamebar"></div>

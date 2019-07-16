@@ -1,5 +1,7 @@
 package org.ks.caravan;
 
-public interface CaravanDao {
+import java.util.List;
 
+public interface CaravanDao {
+	public List seleteAllCaravanList();
 }

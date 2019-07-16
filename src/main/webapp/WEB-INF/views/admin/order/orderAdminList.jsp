@@ -6,13 +6,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css"
-	href="../resources/css/import.css">
+<title>Fresh 레시피 만매</title>
+<link rel="stylesheet" type="text/css"href="../resources/css/import.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/ui.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/style.css">
-<link rel="stylesheet" type="text/css"
-	href="../resources/css/jquery-ui.min.css">
+<link rel="stylesheet" type="text/css"href="../resources/css/jquery-ui.min.css">
 <script src="../resources/js/jquery-3.1.1.min.js"></script>
 <script src="../resources/js/jquery-ui-1.12.1.js"></script>
 
@@ -161,19 +159,6 @@
 						</div>
 					</div>
 				</div>
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
 		</div>
 	</div>
 	</section>
