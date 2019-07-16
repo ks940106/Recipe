@@ -20,7 +20,21 @@
 		</foreach>
 		) order by caravan_no
 	</select>
-	<insert id="insertReservation" parameterType="map">
+	<select id="selectOneCaravan" parameterType="_int" resultType="caravan">
+		select 
+		caravan_no as caravanNo,
+		caravan_name as caravanName,
+		caravan_area as caravanArea,
+		caravan_people as caravanPeople,
+		caravan_max_people as caravanMaxPeople,
+		caravan_plus_cost as caravanPlusCost,
+		caravan_cost as caravanCost,
+		caravan_Info as caravanInfo,
+		caravan_main_img as caravanMainImg,
+		caravan_img as caravanImg
+		from caravan where caravan_no=#{caravanNo}
+	</select>
+	<!-- <insert id="insertReservation" parameterType="map">
 		insert into reservation values(#{caravanNo},#{reservationDateString})
-	</insert>
+	</insert> -->
 </mapper>

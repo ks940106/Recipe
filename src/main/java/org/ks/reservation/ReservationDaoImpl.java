@@ -17,10 +17,13 @@ public class ReservationDaoImpl implements ReservationDao{
 		List list = sqlSession.selectList("reservation.selectReservation", reservationDate);
 		return list;
 	}
-	public void insertReservation(String caravanNo,String reservationDateString) {
-		Map map = new HashMap<String,String>();
-		map.put("caravanNo", caravanNo);
-		map.put("reservationDateString", reservationDateString);
-		sqlSession.insert("reservation.insertReservation",map);
+	public List selectOneCaravan(int caravanNo) {
+		return sqlSession.selectList("reservation.selectOneCaravan",caravanNo);
 	}
+//	public void insertReservation(String caravanNo,String reservationDateString) {
+//		Map map = new HashMap<String,String>();
+//		map.put("caravanNo", caravanNo);
+//		map.put("reservationDateString", reservationDateString);
+//		sqlSession.insert("reservation.insertReservation",map);
+//	}
 }

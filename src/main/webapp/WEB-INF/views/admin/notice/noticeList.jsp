@@ -25,10 +25,13 @@
 	        </nav>
 			<div class="section_content">
 				<div class="set_field">
-					<h1>공지사항 관리</h1>
+					<h1>회원 관리</h1>
 					<div id="cp_div_bg"></div>
 				</div>
-				
+				<form method="post" action="/adminIdSearch.do">
+					<p>아이디로 검색</p>
+					<input type="text" name="id_search">
+				</form>
 				<div class="list_field">
 					<table class="list_table">
 						<colgroup>
@@ -44,9 +47,9 @@
 						</colgroup>
 						<thead>
 						<tr>
-							<th>공지사항 번호</th>
-							<th>공지사항 제목</th>
-							<th>등록일</th>
+							<th>아이디</th>
+							<th>이름</th>
+							<th>닉네임</th>
 							<th>관리</th>
 						</tr>
 						</thead>
@@ -54,7 +57,7 @@
 						
 						 <c:forEach items="${list }" var="m">
 						 
-						<%-- <tr>
+						<tr>
 							<td><a href="/memberDetail.do?id=${m.id }">${m.id}</a></td>
 							<td>${m.name }</td>
 							<td>${m.nickname }</td>
@@ -63,7 +66,7 @@
 									<a href="/memberDelete.do?id=${m.id}" class="btn small col_main f_w">탈퇴</a>
 								</div>
 							</td>
-						</tr> --%>
+						</tr>
 						</c:forEach> 
 						</tbody>
 					</table>
