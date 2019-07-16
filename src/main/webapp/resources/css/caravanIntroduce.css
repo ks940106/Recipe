@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+#contentName{
+	font-size: 50px;
+	padding-bottom: 50px;
+}
+
+#contentNamebar{
+	border-bottom: 2px solid black;
+	width: 100px;
+	margin: 0 auto;
+	margin-bottom: 50px;
+}
+
+

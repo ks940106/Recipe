@@ -43,9 +43,17 @@
             <img src="../resources/img/admin/board_icon.png" class="ico set"  width="50px;">
             <div class="menu_text">토크 게시판</div>
         </a>
+        <a href="/seletecaravan.do" class="menu_btn">
+            <img src="../resources/img/admin/member_icon.png" class="ico set"  width="50px;">
+            <div class="menu_text">카라반</div>
+        </a>
         <a href="/memberList.do" class="menu_btn">
             <img src="../resources/img/admin/member_icon.png" class="ico set"  width="50px;">
             <div class="menu_text">회원 관리</div>
+        </a>
+        <a href="/noticeList.do" class="menu_btn">
+            <img src="../resources/img/admin/notice_icon.png" class="ico set"  width="50px;">
+            <div class="menu_text">공지사항</div>
         </a>
     </div>
 </header>

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.ks.caravan.vo.Caravan;
+import org.ks.reservation.vo.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -41,9 +42,24 @@ public class ReservationController {
 			e.printStackTrace();
 		}
 	}
-	@RequestMapping(value="/insertReservation.do")
-	public String insertReservation(@RequestParam String caravanNo,@RequestParam String reservationDateString) {
-			reservationServiceImple.insertReservation(caravanNo,reservationDateString);
-		return "reservation/calendar";
+	@RequestMapping(value="/peopleSelect.do")
+	public String costPage(@RequestParam int caravanNo,@RequestParam String reservationDateString,Model model) {
+		Caravan c = reservationServiceImple.selectOneCaravan(caravanNo);
+		model.addAttribute("reservationDateString", reservationDateString);
+		model.addAttribute("c", c);
+		return "reservation/peopleSelect";
 	}
+	@RequestMapping(value="/paymentPage.do")
+	public String payMentPage(Reservation r,Model model,@RequestParam String caravanName,@RequestParam int caravanPeople, @RequestParam int caravanMaxPeople) {
+		model.addAttribute("r", r);
+		model.addAttribute("caravanName", caravanName);
+		model.addAttribute("caravanPeople", caravanPeople);
+		model.addAttribute("caravanMaxPeople", caravanMaxPeople);
+		return "reservation/paymentPage";
+	}
+//	@RequestMapping(value="/insertReservation.do")
+//	public String insertReservation(@RequestParam String caravanNo,@RequestParam String reservationDateString) {
+//			reservationServiceImple.insertReservation(caravanNo,reservationDateString);
+//		return "reservation/calendar";
+//	}
 }
