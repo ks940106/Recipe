@@ -21,7 +21,7 @@
         <div>
             <h1>
                 <a href="/views/singsingCampingIndex.jsp">
-                    <img src="../resources/img/camping/campinglogo.png" alt="싱싱캠핑" style="width:200px;"/>
+                    <img src="../resources/img/camping/campinglogo4.png" alt="싱싱캠핑" style="width:200px;"/>
                 </a>
             </h1>
             <nav>

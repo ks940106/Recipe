@@ -154,21 +154,21 @@
 #special .cont_txt p {font-size:15px;width:900px;margin:0 auto;text-align:center;line-height:1.5em;}
 /* add */
 .service .svc_lst .svc_lst_box {width:48.5%;float:left;}
-.service .svc_lst .left {margin-right:1.5%;}
-.service .svc_lst .right {margin-left:1.5%;}
+/* .service .svc_lst .left {margin-right:1.5%;}
+.service .svc_lst .right {margin-left:1.5%;} */
 .service .svc_lst .slide {min-width:auto!important;min-height:auto!important;height:345px!important;}
 .service .svc_lst .cont_txt {height:300px;}
 .service .svc_lst .cont_txt p {width:90%!important;margin:0 auto;}
 
 #special #visual {min-width:1200px;height:550px;}
 #special #visual .banner_vd {top:-15%!important;}
-#special .pv_cont {top:550px!important;}
+/* #special .pv_cont {top:550px!important;} */
 .service .slide_show > li {min-height:auto!important;height:55%!important;}
 
 /*------------------------------------------------------------------------------------------------*/
 /* banner */
 .bnr #visual {position:fixed;top:0;left:0;width:100%;height:400px;z-index:280;}
-.bnr .pv_cont {position:relative;top:400px;left:0;padding-top:70px;width:100%;min-width:1200px;background:#fff;z-index:310;}
+.bnr .pv_cont {position:relative;/* top:400px; */left:0;padding-top:70px;width:100%;min-width:1200px;background:#fff;z-index:310;}
 .bnr .pv_cont > h2 {text-align:center;margin-bottom:25px;}
 .bnr .pv_cont > h2 span {font-size:50px;display:block;margin-bottom:5px;}
 .bnr .pv_cont > h2 b {font-size:20px;display:block;}
@@ -179,7 +179,7 @@
 .bnr .pv_cont > ul > li a:hover {color:#000;}
 .bnr .pv_cont > ul > li a.active {color:#000;font-weight:bold;}
 .bnr .pv_cont > .tabs {padding-top:70px;}
-
+.ab_cover{width:100%; height:500px; background: url(../../resources/img/camping/ab_bg.jpg) no-repeat center center; background-size: cover;}
 /* about */
 #about .pv_cont > ul > li {width:50%;}
 #about .pv_cont .location .info_address {width:750px;margin:0 auto;text-align:center;padding-bottom:70px;}
@@ -208,7 +208,8 @@
 #about .pv_cont .travel ul li.tlst_06 .img {background:url(http://gonylab5.speedgabia.com/graysands/final/images/travel/6.jpg) no-repeat 50% 50%;background-size:cover;}
 #about .pv_cont .travel ul li.tlst_07 .img {background:url(http://gonylab5.speedgabia.com/graysands/final/images/travel/7.jpg) no-repeat 50% 50%;background-size:cover;}
 #about .pv_cont .travel ul li.tlst_08 .img {background:url(http://gonylab5.speedgabia.com/graysands/final/images/travel/8.jpg) no-repeat 50% 50%;background-size:cover;}
-
+.camping_about{width: 1200px; margin: 0 auto;}
+.camping_about p{font-size: 16px; text-align: left; line-height: 30px;}
 /* reserve */
 #reserve .pv_cont > ul > li {width:50%;}
 #reserve .pv_cont .tabs {width:1200px;margin:0 auto;}
