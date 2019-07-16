@@ -8,7 +8,11 @@
 <link href="../resources/css/campingImport.css" rel="stylesheet" />
 <link href="../resources/css/campingReset.css" rel="stylesheet" />
 <link href="../resources/css/global.css" rel="stylesheet" />
-
+<style>
+	.roughmap_maker_label{
+		display: none;
+	}
+</style>
 
 </head>
 <body id="special" class="service bnr">
@@ -148,58 +152,28 @@
 						<p>전 객실에 설치된 TV와 WIFI를 무료로 사용하실 수 있습니다.</p>
 					</div>
 				</div>
-
-				<div>
-					<div
-						style="font: normal normal 400 12px/normal dotum, sans-serif; width: 900px; height: 392px; color: #333; position: relative">
-						<div style="height: 360px;">
-							<a
-								href="https://map.kakao.com/?urlX=579317.0&amp;urlY=1179986.0&amp;itemId=26843688&amp;q=%EB%8F%99%EB%AC%BC%EC%B9%B4%EB%9D%BC%EB%B0%98%ED%8E%9C%EC%85%98&amp;srcid=26843688&amp;map_type=TYPE_MAP&amp;from=roughmap"
-								target="_blank"> <img class="map"
-								src="//t1.daumcdn.net/roughmap/imgmap/a3cfcdb4ee967dcbeae4fcaba21de6ed85a42eb6bfdfae40c622379a560c3d47"
-								width="898px" height="358px" style="border: 1px solid #ccc;"></a>
-						</div>
-						<div
-							style="overflow: hidden; padding: 7px 11px; border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 0px 0px 2px 2px; background-color: rgb(249, 249, 249);">
-							<a href="https://map.kakao.com" target="_blank"
-								style="float: left;"> <img
-								src="//t1.daumcdn.net/localimg/localimages/07/2018/pc/common/logo_kakaomap.png"
-								width="72" height="16" alt="카카오맵"
-								style="display: block; width: 72px; height: 16px">
-							</a>
-							<div
-								style="float: right; position: relative; top: 1px; font-size: 11px;">
-								<a target="_blank"
-									href="https://map.kakao.com/?from=roughmap&amp;srcid=26843688&amp;confirmid=26843688&amp;q=%EB%8F%99%EB%AC%BC%EC%B9%B4%EB%9D%BC%EB%B0%98%ED%8E%9C%EC%85%98&amp;rv=on"
-									style="float: left; height: 15px; padding-top: 1px; line-height: 15px; color: #000; text-decoration: none;">로드뷰</a>
-								<span
-									style="width: 1px; padding: 0; margin: 0 8px 0 9px; height: 11px; vertical-align: top; position: relative; top: 2px; border-left: 1px solid #d0d0d0; float: left;"></span>
-								<a target="_blank"
-									href="https://map.kakao.com/?from=roughmap&amp;eName=%EB%8F%99%EB%AC%BC%EC%B9%B4%EB%9D%BC%EB%B0%98%ED%8E%9C%EC%85%98&amp;eX=579317.0&amp;eY=1179986.0"
-									style="float: left; height: 15px; padding-top: 1px; line-height: 15px; color: #000; text-decoration: none;">길찾기</a>
-								<span
-									style="width: 1px; padding: 0; margin: 0 8px 0 9px; height: 11px; vertical-align: top; position: relative; top: 2px; border-left: 1px solid #d0d0d0; float: left;"></span>
-								<a target="_blank"
-									href="https://map.kakao.com?map_type=TYPE_MAP&amp;from=roughmap&amp;srcid=26843688&amp;itemId=26843688&amp;q=%EB%8F%99%EB%AC%BC%EC%B9%B4%EB%9D%BC%EB%B0%98%ED%8E%9C%EC%85%98&amp;urlX=579317.0&amp;urlY=1179986.0"
-									style="float: left; height: 15px; padding-top: 1px; line-height: 15px; color: #000; text-decoration: none;">지도
-									크게 보기</a>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
-			<jsp:include page="/WEB-INF/views/common/singsingCampingfooter.jsp" />
-
-			<!-- 공통 적용 스크립트 , 모든 페이지에 노출되도록 설치. 단 전환페이지 설정값보다 항상 하단에 위치해야함 -->
-			<script type="text/javascript" src="//wcs.naver.net/wcslog.js"> </script>
-			<script type="text/javascript"> 
-if (!wcs_add) var wcs_add={};
-wcs_add["wa"] = "s_3ee54e3a8ddc";
-if (!_nasa) var _nasa={};
-wcs.inflow();
-wcs_do(_nasa);
-</script>
+							<!-- * 카카오맵 - 지도 -->
+				<h2>
+					<span>DIRECTIONS</span><b>오시는 길</b>
+				</h2>
+				<div id="daumRoughmapContainer1563256865505" class="root_daum_roughmap root_daum_roughmap_landing" style="margin:0 auto; "></div>
+				<div style="width: 1200px; margin: 0 auto; margin-bottom: 30px;">
+				<img src="../resources/img/camping/camping_directions.png" style="width: 1200px; margin: 0 auto;">
+				</div>
+				<script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+				
+				<!-- 3. 실행 스크립트 -->
+				<script charset="UTF-8">
+					new daum.roughmap.Lander({
+						"timestamp" : "1563256865505",
+						"key" : "udfx",
+						"mapWidth" : "1000",
+						"mapHeight" : "360"
+					}).render();
+				</script>
 		</div>
 	</div>
+	<jsp:include page="/WEB-INF/views/common/singsingCampingfooter.jsp" />
 </body>
 </html>
