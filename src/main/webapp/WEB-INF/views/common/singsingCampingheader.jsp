@@ -21,7 +21,7 @@
         <div>
             <h1>
                 <a href="/views/singsingCampingIndex.jsp">
-                    <img src="../resources/img/camping/campinglogo4.png" alt="싱싱캠핑" style="width:200px;"/>
+                    <img src="../resources/img/camping/campinglogo4.png" alt="싱싱캠핑" style="width:250px;"/>
                 </a>
             </h1>
             <nav>
@@ -34,7 +34,7 @@
                 <ul>
                     <li><a href="/index.jsp" class="active">홈</a></li>
                     <li><a href="/campingAbout.do">캠핑장소개</a></li>
-                    <li><a href="#">주변관광지</a>
+                    <li><a href="/campingTravel.do">주변관광지</a>
                     <li><a href="/caravanIntroduce.do">카라반소개</a></li>
        				<li><a href="/calendar.do">예약</a></li>
                     <li><a href="#">커뮤니티</a></li>
