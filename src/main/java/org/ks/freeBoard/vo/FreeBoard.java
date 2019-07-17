@@ -5,16 +5,18 @@ public class FreeBoard {
 	private int BoardNo;
 	private String BoardType;
 	private String nickname;
+	private String title;
 	private String contents;
 	public FreeBoard() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public FreeBoard(int boardNo, String boardType, String nickname, String contents) {
+	public FreeBoard(int boardNo, String boardType, String nickname, String title, String contents) {
 		super();
-		BoardNo = boardNo;
-		BoardType = boardType;
+		this.BoardNo = boardNo;
+		this.BoardType = boardType;
 		this.nickname = nickname;
+		this.title = title;
 		this.contents = contents;
 	}
 	public int getBoardNo() {
@@ -34,6 +36,12 @@ public class FreeBoard {
 	}
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public String getContents() {
 		return contents;
