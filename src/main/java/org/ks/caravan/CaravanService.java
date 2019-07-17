@@ -6,4 +6,5 @@ import org.ks.caravan.vo.Caravan;
 
 public interface CaravanService {
 	public ArrayList<Caravan> seleteAllCaravanList();
+	public int insertCaravanList(Caravan c);
 }

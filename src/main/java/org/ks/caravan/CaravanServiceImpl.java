@@ -18,5 +18,10 @@ public class CaravanServiceImpl implements CaravanService{
 		
 		return (ArrayList<Caravan>)(CaravanDaoImpl.seleteAllCaravanList());
 	}
+	@Override
+	public int insertCaravanList(Caravan c) {
+		int result = CaravanDaoImpl.insertCaravanList(c);
+		return result;
+	}
 
 }
