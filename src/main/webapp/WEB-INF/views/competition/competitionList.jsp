@@ -25,7 +25,19 @@
     </div>
         <div class="pom_wrap">
             <div class="pomNav">
-                <jsp:include page="/WEB-INF/views/common/navPom.jsp"/>
+               <nav class="nav_wrap">
+					<div class="nav_con">
+						<div class="nav_title">요리대회</div>
+						<ul class="nav_menu">
+							<li>
+				                <a href="/competitionList.do">진행중인 대회</a><span>></span>
+				            </li>
+				            <li>
+				                <a href="/competitionResultList.do">지난 대회 보기</a><span>></span>
+				            </li>
+						</ul>
+					</div>
+				</nav>
             </div>
             <div class="section_content">
                 <!--<div class="cp_nav">
@@ -57,8 +69,38 @@
 				        </div>
 						<form action="/participantInsert.do" method="post" onsubmit="return check()">
 						<div class="cp_form">
-							<table class="cp_table">
-							<input type="hidden" name="competitionNo" value="${competition.competitionNo}">
+						
+						<table class="boardWrite">
+						<input type="hidden" name="competitionNo" value="${competition.competitionNo}">
+						<tbody>
+						<tr>							
+							<th><label for="CSName" class="ess">아이디</label></th>
+							<td><input type="text" name="id" value="${sessionScope.member.id}" readonly></td>
+						</tr>
+						<tr>							
+							<th><label for="CSName" class="ess">이름</label></th>
+							<td><input type="text" name="name" value="${sessionScope.member.name}" readonly></td>
+						</tr>
+						<tr>
+							<th><label for="CSTel1" class="ess">전화번호</label></th>
+							<td class="tel">
+	                            <input id="CSTel" name="CSTel"  type="text" value="${sessionScope.member.phone}" readonly>
+							</td>
+						</tr>
+						<tr>
+							<th><label for="CSTitle" class="ess">성별</label></th>
+							<td>
+								<input type="text" value="${sessionScope.member.gender}" readonly> 
+							</td>
+						</tr>
+						<tr>
+							<th><label for="CSContent" class="ess">내용</label></th>
+							<td><textarea id="CSContent" name="CSContent" class="full" maxlength="2000" title="내용을 입력해주세요"></textarea></td>
+						</tr>
+						</tbody>
+					</table>
+							<%-- <table class="cp_table">
+							
 								<tr>
 									<td>
 										아이디 <br> <input type="text" name="id" value="${sessionScope.member.id}" readonly> 
@@ -84,7 +126,7 @@
 										신청이유 <br> <textarea rows="10" cols="85" name="participantContent" id="pContent"></textarea> 
 									</td>
 								</tr>
-							</table>
+							</table> --%>
 							</div>
 							<input type="submit" value="대회참가 신청하기" >
                             <!-- <div id="cp_btn">
@@ -93,7 +135,38 @@
 						</form>
 							</c:if>
 							<c:if test="${participant != null}">
-								<button type="button">이미 참가한 대회</button>
+							<div class="cp_form">
+							<table class="boardWrite">
+						<input type="hidden" name="competitionNo" value="${competition.competitionNo}">
+						<tbody>
+						<tr>							
+							<th><label for="CSName" class="ess">아이디</label></th>
+							<td><input type="text" name="id" value="${sessionScope.member.id}" readonly></td>
+						</tr>
+						<tr>							
+							<th><label for="CSName" class="ess">이름</label></th>
+							<td><input type="text" name="name" value="${sessionScope.member.name}" readonly></td>
+						</tr>
+						<tr>
+							<th><label for="CSTel1" class="ess">전화번호</label></th>
+							<td class="tel">
+	                            <input id="CSTel" name="CSTel"  type="text" value="${sessionScope.member.phone}" readonly>
+							</td>
+						</tr>
+						<tr>
+							<th><label for="CSTitle" class="ess">성별</label></th>
+							<td>
+								<input type="text" value="${sessionScope.member.gender}" readonly> 
+							</td>
+						</tr>
+						<tr>
+							<th style="padding-top:50px; "><label for="CSContent" class="ess">내용</label></th>
+							<td><textarea id="CSContent" name="CSContent" class="full" maxlength="2000" title="내용을 입력해주세요"></textarea></td>
+						</tr>
+						</tbody>
+					</table>
+							</div>
+								<p id="cp_result">이미 신청한 대회 입니다.</p>							
 							</c:if>
 						</c:if>
 					</div>

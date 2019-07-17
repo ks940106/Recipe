@@ -56,9 +56,6 @@
                     	<li><a href="/logout.do" style="color: #1f6054;">로그아웃</a></li>
                     </c:when>
                     </c:choose>
-                    
-                  
-                	
                 </ul>
                 
             </nav>
