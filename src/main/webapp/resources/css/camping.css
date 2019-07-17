@@ -1,16 +1,13 @@
 @charset "UTF-8";
-    header div nav ul li a,
-    body > figure figcaption p,
-    section.videoArea h2,
-    section.expArea ul li > *,
-    section.teamArea > p:last-of-type,
-    section.worksArea h2 a,
-    .talkArea p > *,
-    section.contactArea form fieldset *:not(legend),
-    footer > div div * {
-        font-family: 'Roboto';
-    }
+@font-face { font-family: 'Arita-dotum-Medium'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Arita-dotum-Medium.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'NanumBarunGothic'; font-style: normal; font-weight: 400; src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot'); src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype'); } @font-face { font-family: 'NanumBarunGothic'; font-style: normal; font-weight: 700; src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot'); src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.ttf') format('truetype') } @font-face { font-family: 'NanumBarunGothic'; font-style: normal; font-weight: 300; src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot'); src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.ttf') format('truetype'); } .nanumbarungothic * { font-family: 'NanumBarunGothic', sans-serif; }
+/* @font-face { font-family: 'BBTreeGR'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGR.woff') format('woff'); font-weight: normal; font-style: normal; }*/
+@font-face { font-family: 'BBTreeGL'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGL.woff') format('woff'); font-weight: normal; font-style: normal; }
 
+    body{
+        font-family: 'Arita-dotum-Medium';
+    }
+	
     header div ul li h2,
     body > figure figcaption h2,
     section.expArea h2,
@@ -20,7 +17,7 @@
     .talkArea p,
     section.contactArea form fieldset legend,
     section.contactArea div h3 {
-        font-family: 'Playfair Display';
+        font-family: 'Arita-dotum-Medium';
     }
 
     a {
@@ -62,6 +59,9 @@
 
     header {
         padding: 15px 0 70px;
+/*         background: url(../img/main.jpg) no-repeat left top; */
+/*         background-size: cover; */
+/*         height: 1000px; */
     }
     .main_bg{
     background: url(../img/camping/campingMain06.jpg) no-repeat left top;
@@ -297,9 +297,9 @@
                         background-image: url(../img/sns_06.png);
                     }
 
-            footer > div div:last-child {
+        	/*   footer > div div:last-child {
                 text-align:center;
-            }
+            } */
 
                 footer > div div:last-child a {
                     font-size: 14px;
@@ -683,7 +683,7 @@
 /*                 padding-left: 130px; */
 					  right: 0;
 					  width:100%;
-					  padding-top: 10px;
+					  padding-top: 20px;
 					  padding-bottom:20px;
 					  text-align: center;
 					  background-color: #0000005c;
@@ -795,7 +795,7 @@
             }
 
                 footer > div div:first-of-type h2 {
-                    margin-bottom: 30px;
+                    margin-bottom: 10px;
                     line-height: 0;
                 }
 
@@ -898,15 +898,15 @@
                     }
 
             footer > div div:last-child {
-                clear: left;
-                width: 100%;
-                margin-left: 0;
+                float: left;
+                width: 290px;
+                /* margin-left: 0; */
                 position: relative;
             }
 
                 footer > div div:last-child a {
                     font-size: 14px;
-                    margin-left: 30px;
+                    margin-right: 19px;
                     color: white;
                     display: inline-block;
                 }
@@ -917,8 +917,9 @@
 
                 footer > div div:last-child p {
                     position: absolute;
-                    right: 0;
-                    top: 0;
+                   /*  right: 0;
+                    top: 0; */
+                    bottom: -50px;                    
                     line-height: 14px;
                 }
 }
