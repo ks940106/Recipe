@@ -23,7 +23,7 @@
 			<div class="section_content">
 				<div class="travel_content">
 					<div id="travel_img1">
-					<img src="../resources/img/camping/travel_img1.jpg" width="500px;">
+					<img src="../resources/img/camping/travel_img1.jpg" width="500px;" height="300px;">
 					</div>
 					<div id="travel_text1">
 						<h3>아침고요수목원</h3>
@@ -49,12 +49,12 @@
 						</p>
 					</div>
 					<div id="travel_img2">
-					<img src="../resources/img/camping/travel_img2.jpg" width="500px;">
+					<img src="../resources/img/camping/travel_img2.jpg" width="500px;" height="300px;">
 					</div>
 				</div>
 				<div class="travel_content">
 					<div id="travel_img3">
-					<img src="../resources/img/camping/travel_img3.jpg" width="500px;">
+					<img src="../resources/img/camping/travel_img3.jpg" width="500px;" height="300px;">
 					</div>
 					<div id="travel_text3">
 						<h3>남이섬</h3>
@@ -82,7 +82,38 @@
 						</p>
 					</div>
 					<div id="travel_img4">
-					<img src="../resources/img/camping/travel_img4.jpg" width="500px;">
+					<img src="../resources/img/camping/travel_img4.jpg" width="500px;" height="300px;">
+					</div>
+				</div>
+				<div class="travel_content">
+					<div id="travel_img5">
+					<img src="../resources/img/camping/travel_img5.jpg" width="500px;" height="300px;">
+					</div>
+					<div id="travel_text5">
+						<h3>강촌 레일바이크</h3>
+						<p>
+							강가역, 강촌역, 김유정역에서 이용 가능한 레일바이크는 <br>브레이크 작동법 등 간단한 사용 방법과
+							주의사항을 들은 후 2인승부터 차례대로 출발합니다.<br>
+							70여 년간 달려온 경춘선 열차가 영원히 멈춰 섰습니다.<br>
+							어떤 이에게는 사랑을, 어떤 이에게는 추억을, 어떤 이에게는 이별을<br> 그리고 어떤 이에게는 희망을 안겨준
+							경춘선 열차에 <br>새로운 생명을 불어넣고 다시 달리고 있습니다.<br>
+							추억과 낭만을 싣고 달릴 경춘선 레일바이크를 <br>
+							시원한 터널과 수려한 주변경관을 감상하며 달려 보시기 바랍니다.
+						</p>
+					</div>
+				</div>
+					<div class="travel_contentlast">
+					<div id="travel_text6">
+						<h3>청평호반 수상레저</h3>
+						<p>
+							1일 드라이브코스로 제격인 청평호반은 청평패리선착장에서 유람선을 타고<br> 북한강으로 거슬러 올라가는
+							뱃길에서 운치를 더해줍니다.<br>
+							호수 주번에는 횟집, 수상스키, 땅콩보트, 플라이피쉬 등 다양한 수상레져를 즐길 수 있어<br>
+							활동성이 많은 젊은이들에게 더할 나위 없이 좋은 곳입니다.<br>
+						</p>
+					</div>
+					<div id="travel_img6">
+					<img src="../resources/img/camping/travel_img6.jpg" width="500px;" height="300px;">
 					</div>
 				</div>
 			</div>
