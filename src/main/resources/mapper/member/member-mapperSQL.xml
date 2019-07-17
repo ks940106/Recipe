@@ -24,7 +24,16 @@
 		insert into member values(#{id},#{pw},#{name},#{nickname},#{gender},#{addr1},#{addr2},#{phone},#{memberImg},#{zipCode})
 	</insert>
 	<select id="pwCheck" parameterType="map" resultType="member">
-		select * from member where id=#{id} and pw=#{pw}
+		select id as id,
+		pw as pw,
+		name as name,
+		nickname as nickname,
+		gender as gender,
+		addr1 as addr1,
+		addr2 as addr2,
+		phone as phone,
+		Member_img as MemberImg,
+		zip_code as zipCode from member where id=#{id} and pw=#{pw}
 	</select>
 	<update id="updateMember">
 		update member set pw=#{pw}, addr1=#{addr1},addr2=#{addr2},phone=#{phone},member_img=#{memberImg},zip_code=#{zipCode} where id=#{id} 

@@ -130,7 +130,7 @@
     <select id="likeRank" resultMap="recipe">
         select ROWNUM, rank.* from (select * from RECIPE where RECIPE_PRICE = 0 order by RECIPE_LIKE desc) rank where ROWNUM between 1 and 10
     </select>
-
+<!-- 
     <select id="search" parameterType="org.ks.recipe.vo.RecipeSearch" resultMap="recipe">
         select * from RECIPE where 1=1
         <if test="q != ''">
@@ -149,7 +149,7 @@
             order by recipe_date desc
         </if>
     </select>
-
+ -->
     <update id="orderReg" parameterType="map">
         update RECIPE set RECIPE_PRICE = #{price} where RECIPE_NO = #{recipeNo}
     </update>

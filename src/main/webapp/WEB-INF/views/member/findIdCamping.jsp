@@ -10,7 +10,7 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/singsingCampingheader.jsp" />
-<section class="findPassword">
+<section class="findId">
 	<h1>아이디 변경</h1>
 	<form method="post" action="/findIdCamping.do">
 	<div class="find">
@@ -29,5 +29,6 @@
 	<button type="submit">아이디 찾기</button>
 	</form>
 </section>
+<jsp:include page="/WEB-INF/views/common/singsingCampingfooter.jsp" />
 </body>
 </html>

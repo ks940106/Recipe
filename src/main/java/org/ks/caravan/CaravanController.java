@@ -2,6 +2,8 @@ package org.ks.caravan;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.ks.caravan.vo.Caravan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,7 +25,7 @@ public class CaravanController {
 	
 	//관리자
 	
-	@RequestMapping(value="seletecaravan.do")
+	@RequestMapping(value="seletecaravan.do") //카라반 전체리스트
 	public ModelAndView caravanMainImg() {
 		ArrayList<Caravan> list = CaravanServiceImpl.seleteAllCaravanList();
 		ModelAndView mav = new ModelAndView();
@@ -34,5 +36,28 @@ public class CaravanController {
 			mav.setViewName("admin/caravan/seletecaravan");
 		}
 		return mav;
+	}
+	@RequestMapping(value="insertCaravan.do")
+	public String insertCaravan() {
+		return "admin/caravan/insertCaravan";
+	}
+	@RequestMapping(value="insertCaravanList.do")
+	public String insertCaravanList(HttpServletRequest request) {//카라반 등록
+		Caravan c = new Caravan();
+		ModelAndView mav = new ModelAndView();
+		c.setCaravanName(request.getParameter("caravanName"));
+		c.setCaravanArea(Integer.parseInt(request.getParameter("caravanArea")) );
+		c.setCaravanPeople(Integer.parseInt(request.getParameter("caravanPeople")));
+		c.setCaravanMaxPeople(Integer.parseInt(request.getParameter("caravanMaxPeople")));
+		c.setCaravanPlusCost(Integer.parseInt(request.getParameter("caravanPlusCost")));
+		c.setCaravanCost(Integer.parseInt(request.getParameter("caravanCost")));
+		c.setCaravanInfo(request.getParameter("caravanInfo"));
+		int result = CaravanServiceImpl.insertCaravanList(c);
+		if(result>0) {
+			return "redirect:/seletecaravan.do";	
+		}else {
+			return "redirect:/seletecaravan.do";
+			
+		}
 	}
 }

@@ -68,6 +68,7 @@ public class MemberController {
 	}
 	@RequestMapping(value="/memberUpdatePage.do")
 	public String memberUpdate() {
+		
 		return "member/memberUpdatePage";
 	}
 	@RequestMapping(value="/findPasswordPage.do")
@@ -395,11 +396,10 @@ public class MemberController {
 	    }
 	//마이페이지 비밀번호 체크
 	@RequestMapping(value="/myPagePwCheck.do")
-	public String myPagePwCheck(HttpServletRequest request){
+	public ModelAndView myPagePwCheck(HttpServletRequest request){
 		String pwCheck=request.getParameter("pwcheck");
 		String pw = null;
 		try {
-			System.out.println("!!");
 			pw = new SHA256Util().encData(pwCheck);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -408,22 +408,22 @@ public class MemberController {
 		HttpSession session = request.getSession(false);
 		String id=((Member)session.getAttribute("member")).getId();
 		Member member = memberService.pwCheck(id,pw);
-		String view="";
+		ModelAndView mav = new ModelAndView();
 		if(member!=null) {
-			view="member/myPageUpdate";
+			mav.addObject("member",member);
+			mav.setViewName("member/myPageUpdate");
 		}else {
-			request.setAttribute("msg", "비밀번호를 다시 확인해주세요");
-			request.setAttribute("loc", "/mypage.do");
-			view="common/msg";
-		}return view;
+			mav.addObject("msg", "비밀번호를 다시 확인해주세요");
+			mav.setViewName("common/msg");
+			
+		}return mav;
 	}
 	//마이페이지 캠핑에서 비밀번호 체크
 		@RequestMapping(value="//myPagePwCheckCamping.do")
-		public String myPagePwCheckCamping(HttpServletRequest request){
+		public ModelAndView myPagePwCheckCamping(HttpServletRequest request){
 			String pwCheck=request.getParameter("pwcheck");
 			String pw = null;
 			try {
-				System.out.println("!!");
 				pw = new SHA256Util().encData(pwCheck);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -432,14 +432,16 @@ public class MemberController {
 			HttpSession session = request.getSession(false);
 			String id=((Member)session.getAttribute("member")).getId();
 			Member member = memberService.pwCheck(id,pw);
-			String view="";
+			ModelAndView mav = new ModelAndView();
 			if(member!=null) {
-				view="member/myPageUpdateCamping";
+				mav.addObject("member",member);
+				mav.setViewName("member/myPageUpdateCamping");
+				System.out.println(mav.getModel());
 			}else {
-				request.setAttribute("msg", "비밀번호를 다시 확인해주세요");
-				request.setAttribute("loc", "/mypageCamping.do");
-				view="common/msg";
-			}return view;
+				mav.addObject("msg", "비밀번호를 다시 확인해주세요");
+				mav.setViewName("common/msg");
+				
+			}return mav;
 		}
 	//마이페이지 회원정보 수정
 	@RequestMapping(value="/myPageUpdate.do")
@@ -509,7 +511,7 @@ public class MemberController {
 		String view ="common/msg";
 		if(result>0) {
 			request.setAttribute("msg","회원 정보 수정 성공");
-			request.setAttribute("loc", "/myPage.do");
+			request.setAttribute("loc", "/mypage.do");
 		}else {
 			request.setAttribute("msg","정보 수정 실패");
 		}return view;

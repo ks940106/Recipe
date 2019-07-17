@@ -100,5 +100,6 @@
 	 </section>
 	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp"/>
 
+	
 </body>
 </html>

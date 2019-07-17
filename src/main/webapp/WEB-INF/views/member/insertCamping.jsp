@@ -55,7 +55,7 @@
 				<span id="phoneMsg" style="display: none;"></span>
 			</div>
 			<div class="form-group has-feedback">
-				<div class="btn_gender" style="width: 220px; left: 20px;">
+				<div class="btn_gender" style="left: 20px;">
 					<span class="input-group-btn">
 						<input type="radio" id="genderM" name="gender" class="btn btn-sm btn-default"style="width: 100px;" onblur="genderck()" value="남">남
 					</span> 
@@ -66,8 +66,8 @@
 				<input type="text" class="form-control" disabled=""> 
 				<span id="genderMsg" style="display: none;"></span>
 			</div>
-			<input type="file" id="fileUpload" name="fileUpload" accept=".jpg,.jpeg,.png">
 			<img id="image_section" src="#" />
+			<input type="file" id="fileUpload" name="fileUpload" accept=".jpg,.jpeg,.png">
 			<input type="hidden" name="frm[pro_tg_gender]" id="pro_tg_gender">
 			<input type="submit" class="btn btn-primary btn-block btn-lg" onclick="return doSubmit()" value="회원가입">
 		</form>

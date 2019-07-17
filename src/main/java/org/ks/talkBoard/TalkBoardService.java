@@ -16,6 +16,8 @@ public interface TalkBoardService {
 	
 	public TalkBoard selectTalkBoard(int no);
 	
+	public TalkBoard modifyTalkBoard(int no);
+	
 	public int deleteTalkBoard(int no);
 	
 	public int updateTalkBoard(TalkBoard tb);

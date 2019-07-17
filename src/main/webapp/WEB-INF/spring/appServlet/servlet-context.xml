@@ -36,6 +36,7 @@
 	<context:component-scan base-package="org.ks.order"></context:component-scan>
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	<task:annotation-driven/>
+	<context:component-scan base-package="org.ks.freeBoard"/>
 	<context:component-scan base-package="org.ks.competition"/>
 	<context:component-scan base-package="org.ks.common"/>
 	<context:component-scan base-package="org.ks.participant"/>
