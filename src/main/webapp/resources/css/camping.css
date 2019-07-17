@@ -19,6 +19,7 @@
     section.contactArea div h3 {
         font-family: 'Arita-dotum-Medium';
     }
+
     a {
         text-decoration: none;
     }
@@ -58,6 +59,9 @@
 
     header {
         padding: 15px 0 70px;
+/*         background: url(../img/main.jpg) no-repeat left top; */
+/*         background-size: cover; */
+/*         height: 1000px; */
     }
     .main_bg{
     background: url(../img/camping/campingMain06.jpg) no-repeat left top;
@@ -293,7 +297,7 @@
                         background-image: url(../img/sns_06.png);
                     }
 
-            /* footer > div div:last-child {
+        	/*   footer > div div:last-child {
                 text-align:center;
             } */
 
@@ -346,7 +350,7 @@
 /*         height: 1000px; */
     }
     .main_bg{
-    	background: url(../img/main.jpg) no-repeat left top; 
+    	background: url(../img/camping/campingMain06.jpg) no-repeat left top; 
         background-size: cover; 
         height: 1000px; 
     }
@@ -647,7 +651,7 @@
 /*         height: 1000px; */
     }
     .main_bg{
-    	background: url(../img/main.jpg) no-repeat left top; 
+    	background: url(../img/camping/campingMain06.jpg) no-repeat left top; 
         background-size: cover;
          height: 1000px; 
     }
@@ -791,7 +795,7 @@
             }
 
                 footer > div div:first-of-type h2 {
-                    margin-bottom: 30px;
+                    margin-bottom: 10px;
                     line-height: 0;
                 }
 
