@@ -297,9 +297,9 @@
                         background-image: url(../img/sns_06.png);
                     }
 
-            /* footer > div div:last-child {
+        	  footer > div div:last-child {
                 text-align:center;
-            } */
+            }
 
                 footer > div div:last-child a {
                     font-size: 14px;

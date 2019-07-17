@@ -425,8 +425,11 @@ section.memberinsert img{
 	height: 250px;
 }
 /*마이페이지 업데이트  */
-.myPageUpdate{
-	align-content: center;
+
+.myPageUpdate h1{
+	font-size: 36px;
+	margin-bottom: 8px;
+	margin-top: 8px;
 }
 .myPageUpdate table {
 	width:40%;
@@ -438,10 +441,12 @@ section.memberinsert img{
 	 padding: 12px 0 12px 12px;
 }
 .myPageUpdate table input[type=text]{
-	width: 80%;
+	width: 215px;
+	height: 24px;
 }
 .myPageUpdate table input[type=password]{
-	width: 80%;
+	width: 215px;
+	height: 24px;
 }
 .myPageUpdate table tr td{
 	border-left: 1px solid #ddd;
@@ -452,10 +457,23 @@ section.memberinsert img{
 	width: 250px;
 	height: 250px;
 }
+.myPageUpdate .input{
+	height:30px;
+	width:150px;
+	margin-bottom: 8px;
+}
+.myPageUpdate .input_addr{
+	width: 240px;
+	height: 30px;
+	
+}
+
 /*마이페이지   */
 .myPage table {
 	width:40%;
     border-top: 2px solid #666;
+    margin: 0px auto 0px auto;
+    height: 100px;
 }
 .myPage table th{
 	 border-bottom: 1px solid #ddd;
@@ -464,9 +482,103 @@ section.memberinsert img{
 }
 .myPage table input{
 	width: 80%;
+	height: 25px;
 }
 .myPage table tr td{
 	border-left: 1px solid #ddd;
 	border-bottom: 1px solid #ddd;
 	padding: 9px 0 9px 12px;
 }
+.myPage{
+	text-align: center;
+}
+.myPage button{
+	margin-top: 20px;
+	width: 80px;
+	height: 40px;
+}
+.myPage h1{
+	font-size: 38px;
+	margin-bottom: 16px;
+}
+.myPage p{
+	margin-bottom: 16px;
+}
+ /*아이디찾기*/
+ section.findId{
+  text-align: center;
+ }
+ section.findId table{
+ margin: 0px auto 0px auto;
+ border-top: 2px solid #666;
+ width: 30%;
+ height: 100px;
+ }
+ section.findId h1{
+ font-size: 40px;
+ margin-bottom: 8px;
+ }
+ section.findId p{
+ margin-bottom: 12px;
+ }
+ section.findId input{
+ height: 24px;
+ width: 210px;
+ }
+ section.findId table th{
+ border-bottom: 1px solid #ddd;
+	 text-align: left;
+	 padding: 12px 0 12px 12px;
+ }
+ section.findId table td{
+ border-left: 1px solid #ddd;
+ padding: 9px 0 9px 12px;
+ border-bottom: 1px solid #ddd;
+ }
+ section.findId button{
+ margin-top: 20px;
+ margin-bottom: 40px;
+ }
+ section.findId .find{
+ border: 1px solid #ddd;
+ height: 200px;
+ }
+ /*비밀번호찾기*/
+section.findPw{
+  text-align: center;
+ }
+ section.findPw table{
+ margin: 0px auto 0px auto;
+ border-top: 2px solid #666;
+ width: 30%;
+ height: 100px;
+ }
+ section.findPw h1{
+ font-size: 40px;
+ margin-bottom: 8px;
+ }
+ section.findPw p{
+ margin-bottom: 12px;
+ }
+ section.findPw input{
+ height: 24px;
+ width: 210px;
+ }
+ section.findPw table th{
+ border-bottom: 1px solid #ddd;
+	 text-align: left;
+	 padding: 12px 0 12px 12px;
+ }
+ section.findPw table td{
+ border-left: 1px solid #ddd;
+ padding: 9px 0 9px 12px;
+ border-bottom: 1px solid #ddd;
+ }
+ section.findPw button{
+ margin-top: 20px;
+ margin-bottom: 40px;
+ }
+ section.findPw .find{
+ border: 1px solid #ddd;
+ height: 200px;
+ }

@@ -67,16 +67,11 @@
 						</tbody>
 					</table>
 					<h1>배송지 변경</h1>
-						<table>
-							<tr>
-								<th><input type="text" name="zipCode" id="zipCode" placeholder="우편번호" value="${member.zipCode }"></th>
-								<td><input type="button"onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br></td>
-							</tr>
-							<tr>
-								<th><input type="text" name="addr1" id="addr1" placeholder="주소"value="${member.addr1 }"></th>
-								<td><input type="text" name="addr2" id="addr2" placeholder="상세주소" value="${member.addr2 }"></td>
-							<tr>
-						</table>
+						<input type="text" class="input" name="zipCode" id="zipCode" placeholder="우편번호" value="${member.zipCode }">
+						<input type="button"onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+						<input type="text" class="input_addr" name="addr1" id="addr1" placeholder="주소"value="${member.addr1 }">
+						<input type="text" class="input_addr"name="addr2" id="addr2" placeholder="상세주소" value="${member.addr2 }">
+						
 						<h1>프로필 사진 변경</h1>
 					 <img id="image_section" src="../resources/upload/member/${member.memberImg}"/><br>
 					 <input type="hidden" name="beforeImg" value="${member.memberImg}">

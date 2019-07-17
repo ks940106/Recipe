@@ -10,13 +10,13 @@
  <footer>
         <div>
             <div>
-                <h2><img src="../resources/img/footer_logo.png" alt="recipe" style="width:150px";/></h2>
+                <h2><img src="../resources/img/footer_logo.png" alt="recipe" style="width:100px;"/></h2>
                 <p>
-                    	팀원 <br> 고경석, 노진오, 박영훈, 박윤주 , 신도재, 이윤석
+                    	팀원 <br> 고경석 노진오 박영훈 박윤주 <br> 신도재 이윤석
                 </p>
             </div>
             <div>
-                <h2>ADDR</h2>
+                <h2>INFO</h2>
                 <address>
                     <span>
                         	서울 영등포구 선유동2로 57 이레빌딩 19층 20층
