@@ -58,6 +58,18 @@ public class RecipeController {
             return "common/msg";
         }
         List<Category> categoryList = recipeService.categoryList();
+        String recipeNo = request.getParameter("recipeNo");
+        if(recipeNo!=null){
+            RecipeDetail recipeDetail = recipeService.getRecipeDetail(recipeNo);
+            String memberId = ((Member)request.getSession(false).getAttribute("member")).getId();
+            if(!memberId.equals(recipeDetail.getMember().getId())){
+                request.setAttribute("msg","권한이 없습니다.");
+                request.setAttribute("loc","/recipeRegPage.do");
+                return "common/msg";
+            }else {
+                model.addAttribute("recipeDetail",recipeDetail);
+            }
+        }
         model.addAttribute("categoryList", categoryList);
         return "recipe/recipe";
     }

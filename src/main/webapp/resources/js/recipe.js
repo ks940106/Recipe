@@ -53,7 +53,8 @@ function uploadImg(e){
     $(e).siblings().trigger('click');
 }
 
-$('#cok_video_url').blur(function () {
+$('#cok_video_url').blur(video_preview());
+function video_preview() {
     var iframe_src       = $('#cok_video_url').val();
     // https://youtu.be/VpDSxXlWEf0
     var youtube_video_id = iframe_src.match(/youtu\.be.*(.{11})/).pop();
@@ -62,7 +63,7 @@ $('#cok_video_url').blur(function () {
         var video_thumbnail = "//img.youtube.com/vi/"+youtube_video_id+"/0.jpg";
         $('#videoPhotoHolder').attr('src',video_thumbnail);
     }
-});
+}
 
 var step = 1;
 var content = $("#divStepTemplate").html();
@@ -179,4 +180,8 @@ $("#total_price").text(total);
 function cart(recipeNo) {
         location.href = "/insertcart.do?recipeNo=" + recipeNo + "&count=" + count;
 }
+
+$.ready(function () {
+   video_preview();
+});
 

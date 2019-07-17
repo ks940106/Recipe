@@ -28,14 +28,14 @@
                         <a href="javascript:void(0);" onclick="uploadImg(this);" class="upload_btn" style="background: url('${pageContext.request.contextPath}/resources/img/recipe/pic_none4.gif') no-repeat;" ></a>
                     </div>
                 </div>
-                <div class="cont_line"><p class="cont_tit4">레시피 제목</p><input type="text" name="cok_title" id="cok_title" value="" class="" placeholder="예) 소고기 미역국 끓이기" style="width:610px; ">
+                <div class="cont_line"><p class="cont_tit4">레시피 제목</p><input type="text" name="cok_title" id="cok_title" value="${recipeDetail.recipe.recipeTitle}" class="" placeholder="예) 소고기 미역국 끓이기" style="width:610px; ">
                 </div>
 
-                <div class="cont_line pad_b_25"><p class="cont_tit4">요리소개</p><textarea name="cok_intro" id="cok_intro" class=" step_cont" placeholder="이 레시피의 탄생배경을 적어주세요. 예) 남편의 생일을 맞아 소고기 미역국을 끓여봤어요. 어머니로부터 배운 미역국 레시피를 남편의 입맛에 맞게 고안했습니다." style="height:100px; width:610px; resize:none;"></textarea></div>
+                <div class="cont_line pad_b_25"><p class="cont_tit4">요리소개</p><textarea name="cok_intro" id="cok_intro" class=" step_cont" placeholder="이 레시피의 탄생배경을 적어주세요. 예) 남편의 생일을 맞아 소고기 미역국을 끓여봤어요. 어머니로부터 배운 미역국 레시피를 남편의 입맛에 맞게 고안했습니다." style="height:100px; width:610px; resize:none;">${recipeDetail.recipe.recipeContents}</textarea></div>
 
                 <div class="cont_line pad_b_25">
                     <p class="cont_tit4">동영상</p>
-                    <textarea name="cok_video_url" id="cok_video_url" class=" step_cont" prev_url="" placeholder="동영상이 있으면 주소를 입력하세요.(Youtube,네이버tvcast,다음tvpot 만 가능) 예)http://youtu.be/lA0Bxo3IZmM" style="height:100px; width:380px; resize:none;"></textarea>
+                    <textarea name="cok_video_url" id="cok_video_url" class=" step_cont" prev_url="" placeholder="동영상이 있으면 주소를 입력하세요.(Youtube,네이버tvcast,다음tvpot 만 가능) 예)http://youtu.be/lA0Bxo3IZmM" style="height:100px; width:380px; resize:none;">${recipeDetail.recipe.recipeVideo}</textarea>
                     <div id="divVideoPhotoBox" is_over="0" class="thumb_m"><img id="videoPhotoHolder" src="${pageContext.request.contextPath}/resources/img/recipe/pic_none5.gif" style="width: 178px; height: 100px;"></div>
                 </div>
 
@@ -44,7 +44,7 @@
                         <option value="">종류별</option>
                         <c:forEach var="category1" items="${categoryList}" varStatus="">
                             <c:if test="${category1.categoryType == 1}">
-                                <option value="${category1.categoryNo}">${category1.categoryName}</option>
+                                <option value="${category1.categoryNo}" <c:if test="${category1.categoryNo eq recipeDetail.recipe.recipeCat1}">selected</c:if> > ${category1.categoryName}</option>
                             </c:if>
                         </c:forEach>
                     </select>
@@ -52,7 +52,7 @@
                         <option value="">상황별</option>
                         <c:forEach var="category2" items="${categoryList}" varStatus="">
                             <c:if test="${category2.categoryType == 2}">
-                                <option value="${category2.categoryNo}">${category2.categoryName}</option>
+                                <option value="${category2.categoryNo}" <c:if test="${category2.categoryNo eq recipeDetail.recipe.recipeCat2}">selected</c:if> >${category2.categoryName}</option>
                             </c:if>
                         </c:forEach>
                     </select>
@@ -69,6 +69,7 @@
                         <option value="5">5인분</option>
                         <option value="6">6인분이상</option>
                     </select>
+
                     <span class="pad_l_30">시간 </span>
                     <select name="cok_time" id="cok_time" text="요리시간">
                         <option value="">시간</option>
@@ -82,6 +83,7 @@
                         <option value="120">2시간이내</option>
                         <option value="999">2시간이상</option>
                     </select>
+
                     <span class="pad_l_30">난이도 </span>
                     <select name="cok_degree" id="cok_degree" text="난이도">
                         <option value="">난이도</option>
@@ -91,6 +93,11 @@
                         <option value="4">고급</option>
                         <option value="5">신의경지</option>
                     </select>
+                    <script type="text/javascript">
+                        $("#cok_portion").val('${recipeDetail.recipe.recipeCount}');
+                        $("#cok_time").val('${recipeDetail.recipe.recipeTime}');
+                        $("#cok_degree").val('${recipeDetail.recipe.recipeLevel}');
+                    </script>
                 </div>
             </div>
             <div class="cont_box pad_l_60">
@@ -100,7 +107,7 @@
                     <textarea name="cok_material" id="" class="form-control step_cont"  placeholder="<예시>
 [스테이크 재료] 돼지고기 500g, 양파 1/2개, 고추 1개, 간장
 [파절임] 대파 3개, 고춧가루 1숟가락, 매실엑기스 3숟가락, 식초 3숟가락
-[양념] 고춧가루 2T, 진간장 1T, 참치액 1T, 참기름 1T, 매실액 1T, 통깨 " style="height:200px; width:610px; resize:none;"></textarea>
+[양념] 고춧가루 2T, 진간장 1T, 참치액 1T, 참기름 1T, 매실액 1T, 통깨 " style="height:200px; width:610px; resize:none;">${recipeDetail.recipe.recipeItem}</textarea>
                 </div>
                 <div class="noti">
                     ※ 양념, 양념장, 소스, 드레싱, 토핑, 시럽, 육수 밑간 등으로 구분해서 작성해주세요.
