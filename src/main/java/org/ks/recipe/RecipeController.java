@@ -28,18 +28,25 @@ public class RecipeController {
         String cat1 = request.getParameter("cat1");
         String cat2 = request.getParameter("cat2");
         String order = request.getParameter("order");
+        String page = request.getParameter("page");
         RecipeSearch recipeSearch = new RecipeSearch();
-        recipeSearch.setQ(q==null?"":q);
-        recipeSearch.setCat1(cat1==null?"":cat1);
-        recipeSearch.setCat2(cat2==null?"":cat2);
-        recipeSearch.setOrder(order==null?"":order);
+        recipeSearch.setQ(q == null ? "" : q);
+        recipeSearch.setCat1(cat1 == null ? "" : cat1);
+        recipeSearch.setCat2(cat2 == null ? "" : cat2);
+        recipeSearch.setOrder(order == null ? "" : order);
+        int pageNum;
+        try {
+            pageNum = Integer.parseInt(page);
+        }catch (Exception e){
+            pageNum = 1;
+        }
+        recipeSearch.setPage(pageNum);
         List<Category> categoryList = recipeService.categoryList();
         model.addAttribute("categoryList",categoryList);
-        List<Recipe> recipeList = recipeService.recipeList(recipeSearch);
-//        String pageNav = recipeService.pageNav();
-        model.addAttribute("recipeList", recipeList);
+        PageData<Recipe> recipePageData = recipeService.recipeList(recipeSearch);
+        model.addAttribute("recipeList", recipePageData.getList());
         model.addAttribute("recipeSearch", recipeSearch);
-//        model.addAttribute("pageNav",pageNav);
+        model.addAttribute("pageNav",recipePageData.getPageNav());
         return "recipe/recipeList";
     }
 
@@ -202,6 +209,7 @@ public class RecipeController {
 
         return message;
     }
+
     @RequestMapping(value = "/recipeUnLike", produces="text/plain;charset=UTF-8")
     @ResponseBody
     public String recipeUnLike(@RequestParam(value = "recipeNo") String recipeNo, HttpSession session) {

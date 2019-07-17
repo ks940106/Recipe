@@ -5,6 +5,7 @@ public class RecipeSearch {
     private String cat1;
     private String cat2;
     private String order;
+    private int page;
 
     @Override
     public String toString() {
@@ -13,6 +14,7 @@ public class RecipeSearch {
                 ", cat1='" + cat1 + '\'' +
                 ", cat2='" + cat2 + '\'' +
                 ", order='" + order + '\'' +
+                ", page=" + page +
                 '}';
     }
 
@@ -49,5 +51,13 @@ public class RecipeSearch {
 
     public void setOrder(String order) {
         this.order = order;
+    }
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
     }
 }

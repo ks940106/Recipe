@@ -26,5 +26,5 @@ public interface RecipeService {
 
     int orderReg(int recipeNo, int price);
 
-    List<Recipe> recipeList(RecipeSearch recipeSearch);
+    PageData<Recipe> recipeList(RecipeSearch recipeSearch);
 }
