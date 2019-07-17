@@ -37,7 +37,7 @@
                     <li><a href="/campingTravel.do">주변관광지</a>
                     <li><a href="/caravanIntroduce.do">카라반소개</a></li>
        				<li><a href="/calendar.do">예약</a></li>
-                    <li><a href="#">커뮤니티</a></li>
+                    <li><a href="/freeBoard.do">커뮤니티</a></li>
 
                     <c:choose>
                     <c:when test="${sessionScope.member==null }">

@@ -182,7 +182,7 @@
 .bnr .pv_cont > .tabs {padding-top:70px;}
 .ab_cover{width:100%; height:400px; background: url(../../resources/img/camping/ab_bg.jpg) no-repeat center center; background-size: cover;}
 .tr_cover{width:100%; height:400px; background: url(../../resources/img/camping/travel_bg.jpg) no-repeat center center; background-size: cover;}
-
+.bd_cover{width:100%; height:400px; background: url(../../resources/img/camping/camping_talk.jpg) no-repeat center 92%; background-size: cover;}
 /*travel*/
 
 .travel_content{margin-top: 50px; overflow: hidden;}

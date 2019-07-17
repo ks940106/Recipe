@@ -94,6 +94,10 @@ public class TalkBoardServiceImpl implements TalkBoardService {
 	public TalkBoard selectTalkBoard(int no) {
 		return talkBoardDao.selectTalkBoard(no);
 	}
+	@Override
+	public TalkBoard modifyTalkBoard(int no) {
+		return talkBoardDao.selectTalkBoard(no);
+	}
 
 	@Override
 	public int deleteTalkBoard(int no) {
