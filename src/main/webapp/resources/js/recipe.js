@@ -99,8 +99,8 @@ function stepNum() {
         $(e).val((index+1));
     });
     $(".step_btn").each(function (index,e) {
-        $(e).find('a').eq(2).attr("href","javascript:addStep("+(index+1)+")");
-        $(e).find('a').eq(3).attr("href","javascript:delStep("+(index+1)+")");
+        $(e).find('a').eq(0).attr("href","javascript:addStep("+(index+1)+")");
+        $(e).find('a').eq(1).attr("href","javascript:delStep("+(index+1)+")");
     });
 }
 
