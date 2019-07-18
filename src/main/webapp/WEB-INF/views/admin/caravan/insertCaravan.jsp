@@ -42,35 +42,32 @@
 				<form action="/insertCaravanList.do"method="post" >
 				<button class="button button1" onclick="location.href='/seletecaravan.do'">취소</button>
 				<button class="button button1" type="submit">등록</button>
-				<table class="list_table" >
+				<table class="list_table left" >
 					
 						<tr>
-							<td>이름</td>
+							<th>이름</th>
 							<td><input type="text" name="caravanName" id="caravanName" class="insertCaravan"></td>
-						</tr>					
-						<tr>
-							<td>평수</td>
+						
+							<th>평수</th>
 							<td><input type="text" name="caravanArea" id="caravanArea" class="insertCaravan">평</td>
 						</tr>
 						<tr>
-							<td>최소인원</td>
+							<th>최소인원</th>
 							<td><input type="text" name="caravanPeople" id="caravanPeople" class="insertCaravan">명</td>						
-						</tr>
-						<tr>
-							<td>최대인원</td>
+						
+							<th>최대인원</th>
 							<td><input type="text" name="caravanMaxPeople" id="caravanMaxPeople" class="insertCaravan">명</td>							
 						</tr>
 						<tr>
-							<td>추가인원 금액</td>
+							<th>추가인원 금액</th>
 							<td><input type="text" name="caravanPlusCost" id="caravanPlusCost" class="insertCaravan">원</td>							
-						</tr>
-						<tr>
-							<td>가격</td>
+						
+							<th>가격</th>
 							<td><input type="text" name="caravanCost" id="caravanCost" class="insertCaravan">원</td>
 						</tr>
 						<tr>
-							<td>기본 정보</td>
-							<td><textarea cols="50" rows="5" name="caravanInfo" id="caravanInfo"></textarea></td>
+							<th>기본 정보</th>
+							<td colspan="3"><textarea cols="50" rows="5" name="caravanInfo" id="caravanInfo"></textarea></td>
 						</tr>
 				</table>
 				</form>

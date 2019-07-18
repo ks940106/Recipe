@@ -60,4 +60,23 @@ public class CaravanController {
 			
 		}
 	}
+	@RequestMapping(value="deleteCaravan.do")
+	public String deleteCaravan(HttpServletRequest request) {
+		String[] caravanNo = request.getParameterValues("caravanNo");
+		CaravanServiceImpl.deleteCaravanList(caravanNo);
+		return "redirect:/seletecaravan.do";
+	}
+	@RequestMapping(value="updateCaravan.do")
+	public ModelAndView updateCaravan(HttpServletRequest request) {
+		String caravanNo = request.getParameter("caravanNo");
+		Caravan c = CaravanServiceImpl.updateCaravanList(caravanNo);
+		ModelAndView mav = new ModelAndView();
+		if(c ==null) {
+			 mav.setViewName("/seletecaravan.do");
+		}else {
+			mav.addObject("caravan", c);
+			mav.setViewName("admin/caravan/updateCaravan");
+		}
+		return mav;
+	}
 }
