@@ -35,8 +35,8 @@ public class NoticeController {
 	}
 	//관라지 페이지에서 공지사항 상세보기
 	@RequestMapping(value="/noticeUpdatePage.do")
-	public ModelAndView noticeDetail(HttpServletRequest request) {
-		String idx = request.getParameter("idx");
+	public ModelAndView noticeUpdatePage(HttpServletRequest request) {
+		int idx = Integer.parseInt(request.getParameter("idx"));
 		Notice n = noticeServiceImpl.noticeDetail(idx);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("n",n);
@@ -78,7 +78,7 @@ public class NoticeController {
 		}
 		return view;
 	}
-	//캠핑 공지사항 보여주기
+	//캠핑 공지사항 리스트 보여주기
 	@RequestMapping(value="/noticeList.do")
 	public ModelAndView noticeList() {
 		ArrayList<Notice> list = noticeServiceImpl.noticeList();
@@ -86,5 +86,15 @@ public class NoticeController {
 		mav.addObject("list",list);
 		mav.setViewName("camping/noticeList");
 	return mav;
+	}
+	//캠핑공지사항 상세보기
+	@RequestMapping(value="/noticeDetail.do")
+	public ModelAndView noticeDetail(HttpServletRequest request) {
+		int idx = Integer.parseInt(request.getParameter("idx"));
+		Notice n = noticeServiceImpl.noticeDetail(idx);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("n",n);
+		mav.setViewName("camping/noticeDetail");
+		return mav;
 	}
 }

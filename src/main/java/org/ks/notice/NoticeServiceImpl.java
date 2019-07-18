@@ -20,7 +20,7 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 
 	@Override
-	public Notice noticeDetail(String idx) {
+	public Notice noticeDetail(int idx) {
 		Notice n = noticeDaoImpl.noticeDetail(idx);
 		return n;
 	}

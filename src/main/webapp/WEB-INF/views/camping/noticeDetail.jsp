@@ -49,16 +49,17 @@
 				     
 				    </thead>
 				    <tbody>
-				    <c:forEach items="${list }" var="n">
+				   
 				      <tr>
 				        <td>${n.idx }</td>
-				        <td><a href="/noticeDetail.do?idx=${n.idx }">${n.noticeTitle }</a></td>
+				        <td>${n.noticeTitle }</a></td>
 				        <td>${n.noticeDate }</td>
 				      </tr>
-				    </c:forEach>
+				  	
 				  
 				    </tbody>
 				  </table>
+				  ${n.noticeContent }
 			</div>
 		</div>
 	</div>

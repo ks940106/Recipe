@@ -20,7 +20,7 @@ public class NoticeDaoImpl implements NoticeDao{
 	}
 
 	@Override
-	public Notice noticeDetail(String idx) {
+	public Notice noticeDetail(int idx) {
 		Notice n = sqlSession.selectOne("notice.noticeDetail",idx);
 		return n;
 	}
@@ -33,9 +33,7 @@ public class NoticeDaoImpl implements NoticeDao{
 
 	@Override
 	public int noticeUpdate(Notice n) {
-		System.out.println("DB전");
 		int result =sqlSession.update("notice.noticeUpdate",n);
-		System.out.println("DB후");
 		return result;
 	}
 }

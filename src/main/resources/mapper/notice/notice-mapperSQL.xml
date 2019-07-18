@@ -4,7 +4,7 @@
 	<select id="noticeList" resultType="notice">
 		select idx as idx,notice_title as noticeTitle,
 		notice_Content as noticeContent,notice_date as noticeDate
-		from notice
+		from notice ORDER by idx desc
 	</select>
 	<select id="noticeDetail" resultType="notice">
 		select 
