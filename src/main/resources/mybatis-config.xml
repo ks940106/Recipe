@@ -21,6 +21,7 @@
 		<typeAlias type="org.ks.talkBoard.vo.PrintPage" alias="pp"/>
 		<typeAlias type="org.ks.cart.vo.Cart" alias="cart"/>
 		<typeAlias type="org.ks.member.vo.Member" alias="member"/>
+		<typeAlias type="org.ks.notice.vo.Notice" alias="notice"/>
 		<typeAlias type="org.ks.order.vo.Order" alias="order"/>
 		<typeAlias type="org.ks.recipe.vo.Category" alias="category"/>
 		<typeAlias type="org.ks.recipe.vo.Recipe" alias="recipe"/>

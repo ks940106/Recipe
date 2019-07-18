@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,17 +22,14 @@
 	<section>
 		<div class="wrapper">
 	        <nav class="lnb_wrap">
-	             <jsp:include page="/WEB-INF/views/common/member_nav.jsp"/>
+	             <jsp:include page="/WEB-INF/views/common/notice_nav.jsp"/>
 	        </nav>
 			<div class="section_content">
 				<div class="set_field">
-					<h1>회원 관리</h1>
+					<h1>공지사항 관리</h1>
 					<div id="cp_div_bg"></div>
 				</div>
-				<form method="post" action="/adminIdSearch.do">
-					<p>아이디로 검색</p>
-					<input type="text" name="id_search">
-				</form>
+				
 				<div class="list_field">
 					<table class="list_table">
 						<colgroup>
@@ -47,31 +45,32 @@
 						</colgroup>
 						<thead>
 						<tr>
-							<th>아이디</th>
-							<th>이름</th>
-							<th>닉네임</th>
+							<th>공지사항 번호</th>
+							<th>공지사항 제목</th>
+							<th>등록일</th>
 							<th>관리</th>
 						</tr>
 						</thead>
 						<tbody>
 						
-						 <c:forEach items="${list }" var="m">
+						 <c:forEach items="${list }" var="n">
 						 
-						<tr>
-							<td><a href="/memberDetail.do?id=${m.id }">${m.id}</a></td>
-							<td>${m.name }</td>
-							<td>${m.nickname }</td>
+						 <tr>
+							<td><a href="/memberDetail.do?id=${n.idx }">${n.idx}</a></td>
+							<td>${n.noticeTitle }</td>
+							<td>${n.noticeDate }</td>
 							<td>
 								<div>
-									<a href="/memberDelete.do?id=${m.id}" class="btn small col_main f_w">탈퇴</a>
+									<a href="/noticeUpdate.do?idx=${n.idx}" class="btn small col_main f_w">수정</a>
 								</div>
 							</td>
-						</tr>
+						</tr> 
 						</c:forEach> 
 						</tbody>
 					</table>
 					
 				</div>
+				<a href="/noticeWritePage.do">게시글 작성</a>
 			</div>
 		</div>
 	</section>
