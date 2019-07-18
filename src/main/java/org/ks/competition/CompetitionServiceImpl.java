@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.ks.competition.vo.Competition;
+import org.ks.competition.vo.CompetitionPageData;
 import org.ks.participant.vo.Participant;
 import org.ks.participant.vo.ParticipantMember;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,36 @@ public class CompetitionServiceImpl implements CompetitionService {
 	private CompetitionDao competitionDaoimpl;
 
 	@Override
-	public ArrayList<Competition> competitionList() {
-		return (ArrayList<Competition>)(competitionDaoimpl.competitionList());
+	public  CompetitionPageData competitionList(int reqPage) {
+		int numPerPage = 10;
+		List countList = competitionDaoimpl.cpdCount();
+		int totalCount = countList.size();
+		int totalPage = (totalCount%numPerPage==0)?(totalCount/numPerPage):(totalCount/numPerPage)+1;
+		int start = (reqPage-1)*numPerPage +1;
+		int end =  reqPage*numPerPage;
+		List l = competitionDaoimpl.competitionList(start,end);
+		ArrayList<Competition> list = (ArrayList<Competition>)l;
+		String pageNavi = "";
+		int pageNaviSize = 5;
+		int pageNo = ((reqPage-1)/pageNaviSize)*pageNaviSize+1;
+		if(pageNo != 1) {
+			pageNavi += "<a class='pageBtn' href='/competitionAdminResultList.do?reqPage="+(pageNo-1)+"'><</a>";
+		}
+		int i = 1;
+		while(!(i++>pageNaviSize || pageNo>totalPage)) {
+			if(reqPage == pageNo) {
+				pageNavi += "<span class'pageSelected'>"+pageNo+"</span>";
+			}else {
+				pageNavi += "<a class='pageNo' href='/competitionAdminResult.do?reqPage="+pageNo+"'>"+pageNo+"</a>";
+			}
+			pageNo++;
+		}
+		if(pageNo <= totalPage) {
+			pageNavi +="<a class='pageBtn' href='/competitionAdminResultList.do?reqPage="+pageNo+"'>></a>";
+		}
+		CompetitionPageData cpd = null;
+		cpd = new CompetitionPageData(list,pageNavi);
+		return cpd;
 	}
 
 	@Override
@@ -131,4 +160,37 @@ public class CompetitionServiceImpl implements CompetitionService {
 		
 		return (ArrayList<ParticipantMember>) (competitionDaoimpl.participantResultList(competitionNo));
 	}
+
+/*	@Override
+	public CompetitionPageData selectPage(int reqPage) {
+		int numPerPage = 10;
+		List countList = competitionDaoimpl.cpdCount();
+		int totalCount = countList.size();
+		int totalPage = (totalCount%numPerPage==0)?(totalCount/numPerPage):(totalCount/numPerPage)+1;
+		int start = (reqPage-1)*numPerPage +1;
+		int end =  reqPage*numPerPage;
+		List l = competitionDaoimpl.selectPage(start,end);
+		ArrayList<Competition> list = (ArrayList<Competition>)l;
+		String pageNavi = "";
+		int pageNaviSize = 5;
+		int pageNo = ((reqPage-1)/pageNaviSize)*pageNaviSize+1;
+		if(pageNo != 1) {
+			pageNavi += "<a class='pageBtn' href='/competitionAdminResultList.do?reqPage="+(pageNo-1)+"'><</a>";
+		}
+		int i = 1;
+		while(!(i++>pageNaviSize || pageNo>totalPage)) {
+			if(reqPage == pageNo) {
+				pageNavi += "<span class'pageSelected'>"+pageNo+"</span>";
+			}else {
+				pageNavi += "<a class='pageNo' href='/competitionAdminResult.do?reqPage="+pageNo+"'>"+pageNo+"</a>";
+			}
+			pageNo++;
+		}
+		if(pageNo <= totalPage) {
+			pageNavi +="<a class='pageBtn' href='/competitionAdminResultList.do?reqPage="+pageNo+"'>></a>";
+		}
+		CompetitionPageData cpd = null;
+		cpd = new CompetitionPageData(list,pageNavi);
+		return cpd;
+	}*/
 }

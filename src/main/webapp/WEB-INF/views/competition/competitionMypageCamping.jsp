@@ -10,7 +10,7 @@
 <link href="../resources/css/import.css" rel="stylesheet" />
 </head>
 <body>
-	<jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp" />
+	<jsp:include page="/WEB-INF/views/common/singsingCampingheader.jsp" />
 	<section>
 	<div class="pom_bg">
 		<div class="pom_top">
@@ -29,7 +29,7 @@
 					<li><a href="/cart.do">장바구니</a><span>></span></li>
 					<li><a href="/orderList.do">결제내역</a><span>></span></li>
 					<li><a href="/mypageCompetitionResult.do">대회신청결과</a><span>></span></li>
-					<li><a href="/mypageReservationResultRecipe.do">예약내역</a><span>></span></li>
+					<li><a href="/mypageReservationResultCamping.do">예약내역</a><span>></span></li>
 				</ul>
 			</div>
 			</nav>
@@ -60,6 +60,6 @@
 			</div>
 		</div>
 	</section>
-	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />
+	<jsp:include page="/WEB-INF/views/common/singsingCampingfooter.jsp" />
 </body>
 </html>

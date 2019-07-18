@@ -29,6 +29,8 @@
 					<li><a href="/mypage.do">개인정보수정</a><span>></span></li>
 					<li><a href="/cart.do">장바구니</a><span>></span></li>
 					<li><a href="/competitionResultList.do">결제내역</a><span>></span></li>
+					<li><a href="/mypageCompetitionResult.do">대회신청결과</a><span>></span></li>
+					<li><a href="/mypageReservationResultRecipe.do">예약내역</a><span>></span></li>
 				</ul>
 			</div>
 			</nav>
@@ -36,8 +38,9 @@
 		<div class="section_content_nav">
 			<div class="myPageUpdate">
 			<form method="post" action="/myPageUpdate.do" id="myPageFrm" enctype="multipart/form-data" onsubmit="return reg()">
-				<h1>개인 정보 수정</h1>
+				
 				<div>
+				<h1>개인 정보 수정</h1>
 					<table>
 						<tbody>
 							<tr>
@@ -66,16 +69,19 @@
 							</tr>
 						</tbody>
 					</table>
+					<div class="Shipping" style="margin-top:40px;">
 					<h1>배송지 변경</h1>
 						<input type="text" class="input" name="zipCode" id="zipCode" placeholder="우편번호" value="${member.zipCode }">
 						<input type="button"onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 						<input type="text" class="input_addr" name="addr1" id="addr1" placeholder="주소"value="${member.addr1 }">
 						<input type="text" class="input_addr"name="addr2" id="addr2" placeholder="상세주소" value="${member.addr2 }">
-						
+					</div>
+					<div style="margin-top:40px;">
 						<h1>프로필 사진 변경</h1>
-					 <img id="image_section" src="../resources/upload/member/${member.memberImg}"/><br>
-					 <input type="hidden" name="beforeImg" value="${member.memberImg}">
-					<input type="file" id="fileUpload" name="fileUpload" accept=".jpg,.jpeg,.png">
+						<img id="image_section" src="../resources/upload/member/${member.memberImg}"/><br>
+						<input type="hidden" name="beforeImg" value="${member.memberImg}">
+						<input type="file" id="fileUpload" name="fileUpload" accept=".jpg,.jpeg,.png">
+					</div>
 				</div>
 				<button type="submit">수정 </button>
 				<a href="/myPageDelete.do?id=${member.id}" class="btn">탈퇴하기</a>

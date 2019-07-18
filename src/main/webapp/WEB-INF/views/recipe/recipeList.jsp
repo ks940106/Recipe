@@ -115,7 +115,9 @@
                             </div>
                         </c:forEach>
                     </div>
-
+                    <div class="page_nav" style="text-align: center">
+                        ${pageNav}
+                    </div>
                 </div>
             </div>
         </div>

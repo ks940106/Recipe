@@ -12,4 +12,24 @@
 			caravan_Info as caravanInfo
 		from caravan
   	</select>
+  	<insert id="insertCaravanList" parameterType="caravan">
+  		insert into caravan values(caravan_no_sequence.nextval,#{caravanName},#{caravanArea},#{caravanPeople},#{caravanMaxPeople},#{caravanPlusCost},#{caravanCost},#{caravanInfo},null,null)
+  	</insert>
+  	<delete id="deleteCaravanList">
+  		delete from caravan where caravan_no in
+  		<foreach collection="array" item="caravanNo" open="(" separator="," close=")">
+  			#{caravanNo}
+  		</foreach>
+  	</delete>
+  	<select id="updateCaravanList" parameterType="string" resultType="caravan">
+  		select caravan_no as caravanNo,
+			caravan_name as caravanName,
+			caravan_area as caravanArea,
+			caravan_people as caravanPeople,
+			caravan_max_people as caravanMaxPeople,
+			caravan_plus_cost as caravanPlusCost,
+			caravan_cost as caravanCost,
+			caravan_Info as caravanInfo
+		from caravan where caravan_no =#{caravanNo}
+  	</select>
 </mapper>

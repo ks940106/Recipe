@@ -28,4 +28,6 @@ public interface RecipeDao {
     int orderReg(int recipeNo, int price);
 
     List<Recipe> recipeList(RecipeSearch recipeSearch);
+
+    int recipeTotal(RecipeSearch recipeSearch);
 }

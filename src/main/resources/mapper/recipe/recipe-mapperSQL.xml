@@ -130,9 +130,36 @@
     <select id="likeRank" resultMap="recipe">
         select ROWNUM, rank.* from (select * from RECIPE where RECIPE_PRICE = 0 order by RECIPE_LIKE desc) rank where ROWNUM between 1 and 10
     </select>
-<!-- 
+
     <select id="search" parameterType="org.ks.recipe.vo.RecipeSearch" resultMap="recipe">
-        select * from RECIPE where 1=1
+        select B.*
+        from (
+            select ROWNUM as rnum, A.*
+            from (
+                select * from RECIPE where 1=1
+                <if test="q != ''">
+                    and (recipe_title like '%'||#{q}||'%' or recipe_contents like '%'||#{q}||'%')
+                </if>
+                <if test="cat1 != ''">
+                    and recipe_cat1 = #{cat1}
+                </if>
+                <if test="cat2 != ''">
+                    and recipe_cat2 = #{cat2}
+                </if>
+                <if test="order == 'reco'">
+                    order by recipe_like desc
+                </if>
+                <if test="order == 'date'">
+                    order by recipe_date desc
+                </if><![CDATA[
+            ) A
+        where ROWNUM <= (#{page}*16)
+        ) B
+        where B.rnum >= ((#{page}-1)*16 + 1)
+    ]]></select>
+
+    <select id="total" parameterType="org.ks.recipe.vo.RecipeSearch" resultType="_int">
+        select count(*) from RECIPE where 1=1
         <if test="q != ''">
             and (recipe_title like '%'||#{q}||'%' or recipe_contents like '%'||#{q}||'%')
         </if>
@@ -142,14 +169,8 @@
         <if test="cat2 != ''">
             and recipe_cat2 = #{cat2}
         </if>
-        <if test="order == 'reco'">
-            order by recipe_like desc
-        </if>
-        <if test="order == 'date'">
-            order by recipe_date desc
-        </if>
     </select>
- -->
+
     <update id="orderReg" parameterType="map">
         update RECIPE set RECIPE_PRICE = #{price} where RECIPE_NO = #{recipeNo}
     </update>

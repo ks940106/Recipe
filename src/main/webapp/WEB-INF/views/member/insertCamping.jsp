@@ -57,10 +57,10 @@
 			<div class="form-group has-feedback">
 				<div class="btn_gender" style="left: 20px;">
 					<span class="input-group-btn">
-						<input type="radio" id="genderM" name="gender" class="btn btn-sm btn-default"style="width: 100px;" onblur="genderck()" value="남">
+						<input type="radio" id="genderM" name="gender" class="btn btn-sm btn-default"style="width: 100px;" onblur="genderck()" value="남">남
 					</span> 
 					<span class="input-group-btn">
-						<input type="radio" id="genderF" name="gender" class="btn btn-sm btn-default" style="width: 100px;" onblur="genderck()" value="여">
+						<input type="radio" id="genderF" name="gender" class="btn btn-sm btn-default" style="width: 100px;" onblur="genderck()" value="여">여
 					</span>
 				</div>
 				<input type="text" class="form-control" disabled=""> 
