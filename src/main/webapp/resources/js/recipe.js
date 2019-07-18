@@ -84,7 +84,15 @@ function addStep(i) {
 }
 
 $(document).ready(function () {
+    if($("#divStepArea").html().trim() === "")
     addStep();
+
+    $(".step").hover(function () {
+        $(this).find('.step_btn').show();
+    },function () {
+        $(this).find('.step_btn').hide();
+    });
+
     $(".ui-sortable").sortable({
         update:function(event,ui){
             stepNum();

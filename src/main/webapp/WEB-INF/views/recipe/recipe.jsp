@@ -26,6 +26,10 @@
                     <div class="img_box">
                         <input type="file" class="hide" accept="image/*" name="recipeMainImg" id="recipeMainImg" onchange="boardReg.imgSel(this, event)">
                         <a href="javascript:void(0);" onclick="uploadImg(this);" class="upload_btn" style="background: url('${pageContext.request.contextPath}/resources/img/recipe/pic_none4.gif') no-repeat;" ></a>
+                        <c:if test="${not empty recipeDetail.recipe.recipeMainImg}">
+                            <img src='${pageContext.request.contextPath}/resources/upload/recipe/${recipeDetail.recipe.recipeMainImg}' alt="이미지">
+                            <a href="javaScript:void(0)" class="del_btn" onclick="boardReg.delImg(this)">삭제</a>
+                        </c:if>
                     </div>
                 </div>
                 <div class="cont_line"><p class="cont_tit4">레시피 제목</p><input type="text" name="cok_title" id="cok_title" value="${recipeDetail.recipe.recipeTitle}" class="" placeholder="예) 소고기 미역국 끓이기" style="width:610px; ">
@@ -115,15 +119,46 @@
             </div>
             <div class="cont_box pad_l_60">
                 <p class="cont_tit3">요리순서</p>
-                <span class="guide mag_b_15"><b style="font-weight: bold;">요리의 맛이 좌우될 수 있는 중요한 부분은 빠짐없이 적어주세요.</b><br>
-		예) 10분간 익혀주세요 ▷ 10분간 약한불로 익혀주세요.<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;마늘편은 익혀주세요 ▷ 마늘편을 충분히 익혀주셔야 매운 맛이 사라집니다.<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;꿀을 조금 넣어주세요 ▷ 꿀이 없는 경우, 설탕 1스푼으로 대체 가능합니다.</span>
+                <span class="guide mag_b_15">
+                    <b style="font-weight: bold;">요리의 맛이 좌우될 수 있는 중요한 부분은 빠짐없이 적어주세요.</b><br>
+		            예) 10분간 익혀주세요 ▷ 10분간 약한불로 익혀주세요.<br>
+		            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;마늘편은 익혀주세요 ▷ 마늘편을 충분히 익혀주셔야 매운 맛이 사라집니다.<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;꿀을 조금 넣어주세요 ▷ 꿀이 없는 경우, 설탕 1스푼으로 대체 가능합니다.
+                </span>
 
                 <div id="divStepArea" class="ui-sortable">
+                    <c:if test="${not empty recipeDetail.recipeStep}">
+                        <c:forEach var="step" items="${recipeDetail.recipeStep}" varStatus="stat">
+                            <div id="divStepItem_${stat.count}" class="step" style="">
+                                <p id="divStepNum_${stat.count}" class="cont_tit2_1 ui-sortable-handle" style="cursor:pointer" data-original-title="" title="">Step${stat.count}</p>
+                                <div id="divStepText_${stat.count}" style="display:inline-block">
+                                    <textarea name="step_text[]" id="step_text_${stat.count}" class="form-control step_cont" placeholder="예) 소고기는 기름기를 떼어내고 적당한 크기로 썰어주세요." style="height:160px; width:430px; resize:none;">${step.step}</textarea>
+                                </div>
+                                <div id="divStepUpload_${stat.count}" style="display:inline-block">
+                                    <input type="hidden" name="step_no[]" id="step_no_${stat.count}" value="${stat.count}">
+                                        <%--<input type="hidden" name="step_photo[]" id="step_photo_STEP" value="">--%>
+                                        <%--<input type="hidden" name="new_step_photo[]" id="new_step_photo_STEP" value="">--%>
+                                        <%--<input type="hidden" name="del_step_photo[]" id="del_step_photo_STEP" value="">--%>
+                                        <%--이미지 업로드--%>
+                                    <div class="img_up_list" style="display: inline-block;vertical-align: middle;  margin: 0;">
+                                        <div class="img_box" style="width: 160px;height: 160px;">
+                                            <input type="file" class="hide" accept="image/*" name="step_photo[]" id="step_photo_${stat.count}" onchange="boardReg.imgSel(this, event)">
+                                            <a href="javascript:void(0);" onclick="uploadImg(this);" class="upload_btn" style="background: url('${pageContext.request.contextPath}/resources/img/recipe/pic_none2.gif') no-repeat;" ></a>
+                                            <c:if test="${not empty step.img}">
+                                                <img src='${pageContext.request.contextPath}/resources/upload/recipe/${step.img}' alt="이미지">
+                                                <a href="javaScript:void(0)" class="del_btn" onclick="boardReg.delImg(this)">삭제</a>
+                                            </c:if>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="divStepBtn_${stat.count}" class="step_btn" style="display: none;">
+                                    <a href="javascript:addStep(${stat.count})"><span class="glyphicon glyphicon-plus"></span></a>
+                                    <a href="javascript:delStep(${stat.count})"><span class="glyphicon glyphicon-remove"></span></a>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </c:if>
                 </div>
-
-
 
                 <div class="btn_add mag_b_25" style="padding:0 0 20px 180px; width:640px;">
                     <button type="button" onclick="addStep()" class="btn btn-default">
@@ -141,8 +176,11 @@
                             <%--이미지 업로드--%>
                             <div class="img_box" style="width: 140px;height: 140px;">
                                 <input type="file" class="hide" accept="image/*" name="work_photo[]" id="work_photo_1" onchange="boardReg.imgSel(this, event)">
-                                <a href="javascript:void(0);" onclick="uploadImg(this);" class="upload_btn" style="background: url('${pageContext.request.contextPath}/resources/img/recipe/pic_none3.gif') no-repeat;" >
-                                </a>
+                                <a href="javascript:void(0);" onclick="uploadImg(this);" class="upload_btn" style="background: url('${pageContext.request.contextPath}/resources/img/recipe/pic_none3.gif') no-repeat;" ></a>
+                                <c:if test="${not empty recipeDetail.recipeWorkImg.get(0)}">
+                                    <img src='${pageContext.request.contextPath}/resources/upload/recipe/${recipeDetail.recipeWorkImg.get(0)}' alt="이미지">
+                                    <a href="javaScript:void(0)" class="del_btn" onclick="boardReg.delImg(this)">삭제</a>
+                                </c:if>
                             </div>
                         </div>
                     </div>

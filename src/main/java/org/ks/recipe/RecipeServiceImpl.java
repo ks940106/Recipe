@@ -112,6 +112,6 @@ public class RecipeServiceImpl implements RecipeService {
         if(pageNo <= totalPage) {
             pageNavi += "<a class='pageNo' href='/recipePage.do?q="+recipeSearch.getQ()+"&cat1="+recipeSearch.getCat1()+"&cat2="+recipeSearch.getCat2()+"&order="+recipeSearch.getOrder()+"&page="+(pageNo)+"'>></a>";
         }
-        return new PageData<>(recipeList,pageNavi);
+        return new PageData<Recipe>(recipeList,pageNavi);
     }
 }
