@@ -11,12 +11,10 @@ public class Caravan {
 	private String caravanInfo;
 	private String caravanMainImg;
 	private String caravanImg;
-	public Caravan() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	private String caravanImg1;
 	public Caravan(int caravanNo, String caravanName, int caravanArea, int caravanPeople, int caravanMaxPeople,
-			int caravanPlusCost, int caravanCost, String caravanInfo, String caravanMainImg, String caravanImg) {
+			int caravanPlusCost, int caravanCost, String caravanInfo, String caravanMainImg, String caravanImg,
+			String caravanImg1) {
 		super();
 		this.caravanNo = caravanNo;
 		this.caravanName = caravanName;
@@ -28,6 +26,17 @@ public class Caravan {
 		this.caravanInfo = caravanInfo;
 		this.caravanMainImg = caravanMainImg;
 		this.caravanImg = caravanImg;
+		this.caravanImg1 = caravanImg1;
+	}
+	public Caravan() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public String getCaravanImg1() {
+		return caravanImg1;
+	}
+	public void setCaravanImg1(String caravanImg1) {
+		this.caravanImg1 = caravanImg1;
 	}
 	public int getCaravanNo() {
 		return caravanNo;
