@@ -30,19 +30,23 @@
 		</nav>
 		<div class="section_content">
 				<div class="set_field">
-					<h1>카라반 등록</h1>
+					<h1>카라반 리스트</h1>
 					<div id="cp_div_bg"></div>
 				</div>
+				<div class="list_field">
+				<button class="button button1">삭제</button>
+				<button class="button button1">수정</button>
+				<button class="button button1" onclick="location.href='/insertCaravan.do'">등록</button>
 				<table class="list_table">
 					<thead>
 						<tr>
 							<td></td>
-							<td>방이름</td>
+							<td>이름</td>
 							<td>평수</td>
 							<td>최소인원</td>
 							<td>최대인원</td>
 							<td>추가인원 금액</td>
-							<td>방 가격</td>
+							<td>가격</td>
 						</tr>
 					</thead>
 					<tbody>
@@ -59,6 +63,7 @@
 						</c:forEach>
 					</tbody>
 				</table>
+			</div>
 		</div>
 	</div>
 	</section>

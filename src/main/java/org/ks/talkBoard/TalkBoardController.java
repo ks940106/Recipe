@@ -241,7 +241,7 @@ public class TalkBoardController {
 	@RequestMapping(value="/modifyTalkBoard.do")
 	public ModelAndView modifyTalkBoard(@RequestParam String boardNo) {
 		int no = Integer.parseInt(boardNo);
-		TalkBoard tb = talkBoardService.selectTalkBoard(no);
+		TalkBoard tb = talkBoardService.modifyTalkBoard(no);
 		ModelAndView mv = new ModelAndView();
 		String[] img = tb.getBoardImg().split("/");
 		mv.addObject("img",img);

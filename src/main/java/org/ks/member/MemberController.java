@@ -412,7 +412,6 @@ public class MemberController {
 		if(member!=null) {
 			mav.addObject("member",member);
 			mav.setViewName("member/myPageUpdate");
-			System.out.println(mav.getModel());
 		}else {
 			mav.addObject("msg", "비밀번호를 다시 확인해주세요");
 			mav.setViewName("common/msg");
@@ -425,7 +424,6 @@ public class MemberController {
 			String pwCheck=request.getParameter("pwcheck");
 			String pw = null;
 			try {
-				System.out.println("!!");
 				pw = new SHA256Util().encData(pwCheck);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block

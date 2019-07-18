@@ -44,4 +44,5 @@
    <context:component-scan base-package="org.ks.campaing"/>   
    <context:component-scan base-package="org.ks.reservation"/>
    <context:component-scan base-package="org.ks.caravan"/>
+   <context:component-scan base-package="org.ks.freeBoard"/>
 </beans>

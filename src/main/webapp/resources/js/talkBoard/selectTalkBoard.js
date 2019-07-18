@@ -2,7 +2,6 @@
  * 
  */
 
-
 		function deleteBoard(boardNo){
 			location.href="/deleteTalkBoard.do?boardNo="+boardNo;
 		}

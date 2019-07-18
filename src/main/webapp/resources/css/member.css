@@ -312,6 +312,7 @@ section.memberinsert .container_etc {
     padding-top: 20px;
 }
 section.memberinsert .container_etc h2 {
+	font-size:30px;
     text-align: center;
     font-weight: bold;
     margin-bottom: 15px;
@@ -375,18 +376,15 @@ section.memberinsert .mag_b_10 {
 }
 section.memberinsert .container_etc .btn_gender {
     position: absolute;
-    left: 250px;
-    top: 13px;
     z-index: 100;
 }
 section.memberinsert .input-group-btn {
     position: relative;
-    
     white-space: nowrap;
     width: 1%;
 }
 section.memberinsert .container_etc .btn_gender span .btn {
-    height: 32px;
+    height: 16px;
 }
 section.memberinsert .btn-default {
     color: #333;
@@ -432,7 +430,7 @@ section.memberinsert img{
 	margin-top: 8px;
 }
 .myPageUpdate table {
-	width:40%;
+	width:100%;
     border-top: 2px solid #666;
 }
 .myPageUpdate table th{
@@ -465,6 +463,9 @@ section.memberinsert img{
 .myPageUpdate .input_addr{
 	width: 240px;
 	height: 30px;
+	
+}
+.myPageUpdate .Shipping{
 	
 }
 
