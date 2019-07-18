@@ -72,9 +72,9 @@
 	 			<img src="/resources/img/talk/66932.png"  style="width:30px; height:30px;">    ${t.commentCount } 
 	 			</div>
 					</div>
-					<div class="c2" onclick="select('${t.boardNo}','${sessionScope.member.id }')">
+					<div class="c2" onclick="select('${t.boardNo}','${sessionScope.member.id }','${t.nickname }')">
 						${t.boardContents }</div>
-					<div class="c3" onclick="select('${t.boardNo}','${sessionScope.member.id }')">
+					<div class="c3" onclick="select('${t.boardNo}','${sessionScope.member.id }','${t.nickname }')">
 						<c:forTokens items="${t.boardImg }" delims="/" var="item" varStatus="g">
 							<c:if test="${g.count==1 }">
 							<!-- 

@@ -36,7 +36,7 @@
 	 	
 	 	<div class="s1">
 					<div class="d2">
-						<img src="/resources/upload/member/${t.memberImg }">
+						<img src="/resources/upload/member/${m.memberImg }">
 					</div>
 	 		<div class="c1">
 	 			${tb.nickname }
@@ -49,9 +49,6 @@
 				<input type="button" onclick="deleteBoard(${tb.boardNo})" class="btn-lg btn-danger" value="삭제">
 				<input type="button" onclick="modifyTalkBoard(${tb.boardNo})" class="btn-lg btn-success" value="수정">
 				</c:if>
-	 		</div>
-	 		<div class="c2">
-	 			${tb.boardContents }
 	 		</div>
 	 	
 	 		<c:forTokens items="${tb.boardImg }" delims="/" var="item">

@@ -75,5 +75,8 @@
   <select id="likeCount" parameterType="_int" resultType="_int">
   	select count(*) cnt from board_like where board_no = #{boardNo}
   </select>
+  <select id="selectImg" parameterType="string" resultType="member">
+  	select member_img as memberImg from member where nickname = #{nickname}
+  </select>
   
 </mapper>

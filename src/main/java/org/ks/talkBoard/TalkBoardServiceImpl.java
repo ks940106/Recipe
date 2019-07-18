@@ -2,6 +2,7 @@ package org.ks.talkBoard;
 
 import java.util.ArrayList;
 
+import org.ks.member.vo.Member;
 import org.ks.talkBoard.vo.BoardLike;
 import org.ks.talkBoard.vo.MainBoard;
 import org.ks.talkBoard.vo.MainPageData;
@@ -156,6 +157,12 @@ public class TalkBoardServiceImpl implements TalkBoardService {
 	@Override
 	public int likeCount(int no) {
 		return talkBoardDao.likeCount(no);
+	}
+
+
+	@Override
+	public Member selectImg(String nickname) {
+		return talkBoardDao.selectImg(nickname);
 	}
 	
 }

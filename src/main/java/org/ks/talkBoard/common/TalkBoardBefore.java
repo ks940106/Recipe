@@ -33,10 +33,13 @@ public class TalkBoardBefore {
 		System.out.println(returnObj);
 		if(returnObj instanceof TalkBoard) {
 			TalkBoard b = (TalkBoard)returnObj;
+			if(b.getBoardContents() != null) {
+				
 			String con = b.getBoardContents().replaceAll("<", "&lt");
 		//	String con = b.replaceAll("<", "&lt");
 			String con2 = con.replace("\n", "<br>");
 			b.setBoardContents(con2);
+			}
 		}
 	}
 	@AfterReturning(value="allPointcut2()",returning="returnObj")

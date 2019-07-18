@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 
 import org.ks.freeBoard.vo.FreeBoard;
+import org.ks.freeBoard.vo.FreeBoardPageData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -51,11 +52,17 @@ public class FreeBoardController {
 	}
 	
 	@RequestMapping(value="/freeBoard.do")
-	public ModelAndView freeBoard() {
+	public ModelAndView freeBoard(HttpServletRequest request) {
 		int type = 1;
-		ArrayList<FreeBoard> list = (ArrayList<FreeBoard>)freeBoardService.mainBoard(type);
+		int reqPage;
+		try {
+			reqPage = Integer.parseInt(request.getParameter("reqPage"));
+		}catch(NumberFormatException e) {
+			reqPage = 1;
+		}
+		FreeBoardPageData fb = freeBoardService.mainBoard(type,reqPage);
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("list",list);
+		mv.addObject("fb",fb);
 		mv.setViewName("/camping/freeBoard");
 		return mv;
 	}
@@ -64,6 +71,7 @@ public class FreeBoardController {
 	public ModelAndView selectFreeBoard(@RequestParam int boardNo) {
 		int no = boardNo;
 		System.out.println(no);
+		int result = freeBoardService.viewCountUp(no);
 		FreeBoard fb = freeBoardService.selectBoard(no);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("fb",fb);
@@ -71,7 +79,36 @@ public class FreeBoardController {
 		return mv;
 	}
 	
-	
-	
+	@RequestMapping(value="/deleteFreeBoard.do")
+	public String deleteFreeBoard(@RequestParam int boardNo) {
+		int result = freeBoardService.deleteFreeBoard(boardNo);
+		if(result>0) {
+			System.out.println("삭제 성공");
+		}else {
+			System.out.println("삭제 실패");
+		}
+		return "camping/freeBoard";
+	}
+	@RequestMapping(value="modifyFreeBoard.do")
+	public ModelAndView modifyFreeBoard(@RequestParam int boardNo) {
+		ModelAndView mv = new ModelAndView();
+		FreeBoard fb = freeBoardService.selectBoard(boardNo);
+		mv.addObject("fb",fb);
+		mv.setViewName("camping/modifyFreeBoard");
+		return mv;
+	}
+	@ResponseBody
+	@RequestMapping(value="/modifyCompleteFreeBoard.do")
+	public String modifyCompleteFreeBoard(@RequestParam String title,@RequestParam String contents,@RequestParam int boardNo) {
+		FreeBoard fb = new FreeBoard();
+		fb.setTitle(title);
+		fb.setContents(contents);
+		fb.setBoardNo(boardNo);
+		System.out.println(fb.getTitle());
+		System.out.println(fb.getContents());
+		System.out.println(fb.getBoardNo());
+		int result = freeBoardService.modifyComplete(fb);
+		return "수정성공";
+	}
 	
 }

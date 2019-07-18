@@ -43,15 +43,15 @@
 			 <table class="table table-hover">
 				    <thead>
 				      <tr>
-				        <th>Firstname</th>
-				        <th>Lastname</th>
-				        <th>Email</th>
-				        <th>4</th>
-				        <th>5</th>
+				        <th>no</th>
+				        <th>title</th>
+				        <th>nickname</th>
+				        <th>contents</th>
+				        <th>view</th>
 				      </tr>
 				    </thead>
 				    <tbody>
-				    <c:forEach items="${list }" var="t">
+				    <c:forEach items="${fb.list }" var="t">
 				      <tr>
 				        <td>${t.boardNo }</td>
 				        <td onclick="select('${t.boardNo}')">${t.title }</td>
@@ -65,6 +65,8 @@
 				  </table>
 			</div>
 		</div>
+			<div id="pageNavi" class="paging">${fb.pageNavi }</div>
+			</div>
 	</div>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/singsingCampingfooter.jsp"></jsp:include>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,7 +18,7 @@
 <link href="../resources/css/talkBoard.css" rel="stylesheet" />
 </head>
 <body>
-	<jsp:include page="/WEB-INF/views/common/singsingCampingheader.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/views/common/singsingCampingheader.jsp"></jsp:include>
 	<div class="bd_cover">
 	</div>
 	<section>
@@ -36,30 +36,47 @@
 			</nav>
 		</div>
 		<div class="section_content">
-			
+			<form action="newFreeBoard.do" method="post">
 			<div class="board_type">
 				<input type="hidden" name="nickname" value="${sessionScope.member.nickname }">
-				<input type="hidden" name="type" value="${no }">
-				${fb.title }
-				${fb.nickname }
+				<input type="hidden" name="type" value="${fb.boardNo }">
+				제목 : <input type="text" id="title" name="title" id="title" value="${fb.title }">
 			</div>
 			<div class="d1">
-				${fb.contents }
+				<textarea id="contents" name="contents">${fb.contents}</textarea>
 			</div>
-			<input type="button" onclick="deleteFreeBoard(${fb.boardNo})" class="btn-lg btn-danger" value="삭제">
-			<input type="button" onclick="modifyFreeBoard(${fb.boardNo})" class="btn-lg btn-success" value="수정">
+			<div class="write_btn">
+                <button type="button" id="submit_btn" class="btn-lg btn-primary">등록</button>
+                <button type="button" class="btn-lg btn-default" data-dismiss="modal" onclick="location.href='/mainBoard.do'">취소</button>
+           	</div>
+           	</form>
 		</div>
 	</div>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/singsingCampingfooter.jsp"></jsp:include>
 	<script>
-		function deleteFreeBoard(no){
-			location.href="/deleteFreeBoard.do?boardNo="+no;
-		}
-		function modifyFreeBoard(no){
-			location.href="/modifyFreeBoard.do?boardNo="+no;
-		}
+		$(document).ready(function(){
+			$('#submit_btn').click(function(){
+				var no = '${fb.boardNo}';
+				var title = $('#title').val();
+				var contents = $('#contents').val();
+				var data = "title="+title+"&contents="+contents+"&boardNo="+no;
+				$.ajax({
+					url:"/modifyCompleteFreeBoard.do",
+					type : "post",
+					data : data,
+					success : function(data){
+						alert(data);
+						location.href="/freeBoard.do";
+					},
+					error : function(){
+						alert("실패다");
+					}
+				});
+			});
+		});
 	</script>
-
+	
+	
 </body>
 </html>

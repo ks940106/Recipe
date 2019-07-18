@@ -11,6 +11,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.ks.member.vo.Member;
 import org.ks.talkBoard.vo.BoardLike;
 import org.ks.talkBoard.vo.MainBoard;
 import org.ks.talkBoard.vo.MainPageData;
@@ -177,14 +178,16 @@ public class TalkBoardController {
 		}
 	}
 	@RequestMapping(value="selectTalkBoard.do")
-	public ModelAndView selectTalkBoard(@RequestParam String boardNo,@RequestParam String memberId) {
+	public ModelAndView selectTalkBoard(@RequestParam String boardNo,@RequestParam String memberId,@RequestParam String nickname) {
 		int no = Integer.parseInt(boardNo);
 		BoardLike bl = new BoardLike();
 		System.out.println("넘어온 세션 아이디 : "+memberId);
 		System.out.println("넘어온 보드넘버 : "+no);
 		bl.setBoardNo(no);
 		bl.setMemberId(memberId);
+		System.out.println("넘어온 닉네임 : "+nickname);
 		TalkBoard tb = talkBoardService.selectTalkBoard(no);
+		Member m = talkBoardService.selectImg(nickname);
 		ArrayList<TalkBoardComment> tbc = talkBoardService.selectTalkBoardComment(no);
 		BoardLike like = talkBoardService.boardLike(bl);
 		int commentCount = talkBoardService.commentCount(no);
@@ -192,6 +195,7 @@ public class TalkBoardController {
 		System.out.println("라이크 카운트"+likeCount);
 		ModelAndView mv = new ModelAndView();
 		if(like == null) {
+			mv.addObject("m",m);
 			mv.addObject("commentCount",commentCount);
 			mv.addObject("likeCount",likeCount);
 			mv.addObject("like",like);
@@ -203,6 +207,7 @@ public class TalkBoardController {
 		System.out.println(tb.getBoardContents());
 		System.out.println(tbc.isEmpty());
 		System.out.println("라이크 체크 : "+like.getLikeCheck());
+		mv.addObject("m",m);
 		mv.addObject("commentCount",commentCount);
 		mv.addObject("likeCount",likeCount);
 		mv.addObject("like",like);
@@ -243,6 +248,11 @@ public class TalkBoardController {
 		int no = Integer.parseInt(boardNo);
 		TalkBoard tb = talkBoardService.modifyTalkBoard(no);
 		ModelAndView mv = new ModelAndView();
+		if(tb.getBoardImg() == null) {
+		mv.addObject("tb",tb);
+		mv.setViewName("talkBoard/modifyTalkBoard");
+		return mv;
+		}
 		String[] img = tb.getBoardImg().split("/");
 		mv.addObject("img",img);
 		mv.addObject("tb",tb);
@@ -255,19 +265,16 @@ public class TalkBoardController {
 		String savePath = request.getSession().getServletContext().getRealPath("/resources/talkBoard");
 		String fullImg = request.getParameter("fullImg");	//DB에 저장된 img값
 		String[] fImg = fullImg.split("/");					//DB에 저장된 img값을 구분자/로 잘라서 fImg에 배열로저장
-		String[] img = request.getParameterValues("oneImg");	//jsp에서 넘어온 배열을 img배열에 저장
-		System.out.println(fullImg);
-		System.out.println("풀 : "+fImg[0]);
-		System.out.println("이미지 : "+img[0]);
-		System.out.println(img[0].isEmpty());
+					//jsp에서 넘어온 배열을 img배열에 저장
 		String saveImg = "";
 		File f = null;
-		if(img[0].isEmpty()) {
+		if(request.getParameter("oneImg")==null) {
 			for(int i=0; i<fImg.length;i++) {
 				f = new File(savePath+"\\"+fImg[i]);
 				f.delete();
 			}
 		}else {
+		String[] img = request.getParameterValues("oneImg");
 		String modifyImg = fullImg;
 		String m = modifyImg;
 		
