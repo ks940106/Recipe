@@ -55,10 +55,6 @@ public class CompetitionController {
 		}catch(NumberFormatException e){
 			reqPage = 1;
 		}
-	/*	CompetitionPageData cpd = competitionServiceimpl.selectPage(reqPage);
-		model.addAttribute("admin/competition/competitionAdmin_ResultList");*/
-		
-		/*리스트 보내기*/
 		CompetitionPageData cpd = competitionServiceimpl.competitionList(reqPage);
 		model.addAttribute("cpd",cpd);
 		return "admin/competition/competitionAdmin_ResultList";
@@ -142,10 +138,21 @@ public class CompetitionController {
 	}
 	@RequestMapping(value="/competitionAdmin_List.do")
 	public String competitionAdmin_ListView(@RequestParam int competitionNo, Model model) {
+		/*요리대회 리스트*/
 		Competition c = competitionServiceimpl.competitionListView(competitionNo);
 		model.addAttribute("competition",c);
+		
+		/*참가자 전체 리스트*/
 		ArrayList<ParticipantMember> list = competitionServiceimpl.participantView(competitionNo);
 		model.addAttribute("list",list);
+		/*for(int i=0; i<list.size(); i++) {
+			if(!list.isEmpty()) {
+				String str = list.get(i).getParticipantContent().replaceAll("<", "&lt");
+				list.get(i).setParticipantContent(str);
+			}
+		}*/
+		
+		/*합격자 리스트 */
 		ArrayList<ParticipantMember> passList = competitionServiceimpl.participantPassList(competitionNo);
 		model.addAttribute("passList",passList);
 		model.addAttribute("count",passList.size());

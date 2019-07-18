@@ -40,7 +40,18 @@
                     <li><a href="/campingAbout.do">캠핑장소개</a></li>
                     <li><a href="/campingTravel.do">주변관광지</a>
                     <li><a href="/caravanIntroduce.do">카라반소개</a></li>
-       				<li><a href="/calendar.do">예약</a></li>
+                    
+       				 <c:choose>
+                    <c:when test="${sessionScope.member==null }">
+                    	<li><a href="/loginPageCamping.do" style="color: #1f6054;">예약</a></li>
+                    </c:when>
+                    <c:when test="${sessionScope.member.name=='관리자' }">
+                  		<li><a href="/adminPage.do" style="color: #1f6054;">예약</a></li>
+                    </c:when>
+                    <c:when test="${sessionScope.member !=null }">
+                    	<li><a href="/calendar.do" style="color: #1f6054;">예약</a></li>
+                    </c:when>
+                    </c:choose>
                     <li><a href="/freeBoard.do">커뮤니티</a></li>
 
                     <c:choose>

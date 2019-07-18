@@ -3,23 +3,23 @@ package org.ks.talkBoard.vo;
 import java.util.ArrayList;
 
 public class TalkBoardPageData {
-	private ArrayList<TalkBoard> list;
+	private ArrayList<MainBoard> list;
 	private String pageNavi;
 	private String type;
 	public TalkBoardPageData() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public TalkBoardPageData(ArrayList<TalkBoard> list, String pageNavi, String type) {
+	public TalkBoardPageData(ArrayList<MainBoard> list, String pageNavi, String type) {
 		super();
 		this.list = list;
 		this.pageNavi = pageNavi;
 		this.type = type;
 	}
-	public ArrayList<TalkBoard> getList() {
+	public ArrayList<MainBoard> getList() {
 		return list;
 	}
-	public void setList(ArrayList<TalkBoard> list) {
+	public void setList(ArrayList<MainBoard> list) {
 		this.list = list;
 	}
 	public String getPageNavi() {
