@@ -388,7 +388,7 @@ header .menu_btn i.marketing:last-child {
     padding: 10px 20px;
 }
 .list_field{
-	margin-top:100px;
+	margin-top:15px;
 	margin-left: 100px;
 	width:1200px;
 }
@@ -450,7 +450,7 @@ header .menu_btn i.marketing:last-child {
 }
 .list_table th, .list_table td {
     text-align: center;
-    color: #3b3b3b;
+    /* color: #3b3b3b; */
     border: 1px solid #ccc;
 }
 

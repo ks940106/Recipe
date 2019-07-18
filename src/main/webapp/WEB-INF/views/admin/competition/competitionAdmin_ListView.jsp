@@ -54,7 +54,7 @@
 					<div class="list_field">
 						<div class="list_menu">
 							</span>
-								<button id="checkResult">선택변경</button>
+								<button id="checkResult">합격자로 변경</button>
 							</span>
 						</div>
 						<table class="list_table">
@@ -113,7 +113,7 @@
 					<div class="list_field">
 						<div class="list_menu">
 							</span>
-								<button id="checkPass">선택변경</button>
+								<button id="checkPass">불합격자로 변경</button>
 								<button id="cResult" >우승자등록</button>
 							</span>
 						</div>
@@ -142,6 +142,7 @@
 								<th>성별</th>
 								<th>상태</th>
 								<th>내용</th>
+								<th width="100px;">결과</th>
 							</tr>
 							</thead>
 							<tbody>
@@ -169,7 +170,8 @@
 									${pl.participantContent}
 								</td>
 								<td>
-									<input type="text" value="${pl.participantResult }" class="pResult">
+									<p class="pResult">${pl.participantResult }</p>
+									<%-- <input type="text" value="${pl.participantResult }" class="pResult"> --%>
 								</td>
 								
 							</tr>
@@ -194,15 +196,14 @@
 	 <script>
 	 window.onload = function(){
 		 totalCount = (Number)($("#totalCount").val());
-		 alert(totalCount);	
+		/*  alert(totalCount);	 */
 		 for(var i = 0;i<$('.pResult').length;i++){
-			 if($(".pResult").eq(i).val() == "우승"){
+			 if($(".pResult").eq(i).text() == "우승"){
 					$(".pResult").eq(i).parent().parent().css("background-color","red");
+					$(".pResult").eq(i).parent().parent().css("color","#fff");
 					$(".checkPassList").eq(i).prop("checked",true);
 				}
-		 }
-		 
-			
+		 }		
 	 }
 	 	
 		$("#checkResult").click(function(){
@@ -235,13 +236,13 @@
 		$("#cResult").click(function(){
 			var checkRes = $("input[name='passName']:checked");	
 			var checkResult = checkRes.val();
-			alert(checkResult);
+			/* alert(checkResult); */
 			if($("input[name='passName']:checked").length>1){
 				alert("1명만 선택해주세요");
 				return;
 			}
 			 for(var i = 0;i<$('.pResult').length;i++){
-				 if($(".pResult").eq(i).val() == "우승"){
+				 if($(".pResult").eq(i).text() == "우승"){
 						$(".pResult").eq(i).parent().parent().css("background-color","#fff");
 						$(".checkPassList").eq(i).prop("checked",false);
 					}

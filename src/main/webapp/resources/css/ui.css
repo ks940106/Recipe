@@ -28,7 +28,7 @@ label {
 }
 
 .col_main {
-    background-color: #3A5889;
+    background-color: #1f6054;
 }
 
 .col_blue {
@@ -396,4 +396,13 @@ background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg)
  -webkit-appearance: none; /* 네이티브 외형 감추기 */ 
  -moz-appearance: none;
   appearance: none; 
+ }
+
+ #checkResult{
+ 	background-color: #1f6054;
+    border: 2px solid #1f6054;
+    border-radius: 10px;
+    padding: 5px;
+    color: #fff;
+    font-weight: 700;
  }

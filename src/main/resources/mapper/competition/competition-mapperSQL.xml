@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="competition">
-	   <select id="competitionList" parameterType="competition" resultType="competition">
+	   <select id="selectPage" parameterType="map" resultType="competition">
       select competition_no as competitionNo,
       competition_title as competitionTitle,
       competition_contents as competitionContents,
@@ -10,7 +10,7 @@
       competition_result as competitionResult,
       competition_date as competitionDate,
       competition_check as competitionCheck
-      from competition where competition_check='N'
+      from (select rownum as rnum, competition.* from(select * from competition where competition_no != 0 order by competition_date desc) competition) where competition_check='N' and rnum between #{start} and #{end}
    </select>
    <insert id="insertCompetition" parameterType="competition">
       insert into competition values(seq_competition_no.nextval,#{competitionTitle},#{competitionContents},#{competitionImg, jdbcType=VARCHAR},null,null,sysdate,#{competitionCheck})
@@ -54,6 +54,9 @@
       competition_date as competitionDate,
       competition_check as competitionCheck
       from competition where competition_No=#{competitionNo}
+   </select>
+   <select id="cpdCount" resultType="competition">
+   	select competition_no as competitionNo from competition
    </select>
    <select id="participantCheck" parameterType="map" resultType="participant">
       select 

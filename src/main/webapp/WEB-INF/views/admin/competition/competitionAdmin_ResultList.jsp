@@ -38,7 +38,7 @@
 					<th>제목</th>
 					<th>등록일</th>
 				</tr>
-				<c:forEach items="${list}" var="c">
+				<c:forEach items="${cpd.list}" var="c">
 					<tr>
 						<td>${c.competitionNo}</td>
 						<td><a href="/competitionResultAdmin.do?competitionNo=${c.competitionNo}">${c.competitionTitle}</a></td>
@@ -46,6 +46,8 @@
 					</tr>
 				</c:forEach>
 			</table>
+			<br><br>
+			${cpd.pageNavi}
 		</div>
 	</div>
 	</div>
