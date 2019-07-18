@@ -220,10 +220,10 @@ public class MemberController {
 		System.out.println(view);
 		if(result>0) {
 			request.setAttribute("msg", "회원가입 성공");
-			request.setAttribute("loc", "/loginPageCamping.do");
+			request.setAttribute("loc", "/loginPage.do");
 		}else {
 			request.setAttribute("msg", "회원가입 실패");
-			request.setAttribute("loc", "/insertCamping.do");
+			request.setAttribute("loc", "/insert.do");
 		}return view;
 	}
 	//캠핑에서 회원가입
