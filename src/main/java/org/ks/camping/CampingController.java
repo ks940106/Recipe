@@ -2,6 +2,7 @@ package org.ks.camping;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class CampingController {
@@ -12,10 +13,6 @@ public class CampingController {
 	@RequestMapping(value="/campingTravel.do")
 	public String travel() {
 		return "camping/travel";
-	}
-	@RequestMapping(value="/freeBoard.do")
-	public String freeBoard() {
-		return "camping/freeBoard";
 	}
 	
 }

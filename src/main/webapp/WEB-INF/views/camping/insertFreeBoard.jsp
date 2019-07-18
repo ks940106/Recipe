@@ -39,13 +39,13 @@
 			<div class="board_type">
 				<input type="hidden" name="nickname" value="${sessionScope.member.nickname }">
 				<input type="hidden" name="type" value="${no }">
-				제목 : <input type="text" name="title" id="title">
+				제목 : <input type="text" id="title" name="title" id="title">
 			</div>
 			<div class="d1">
-				<textarea id="contents" name="content"></textarea>
+				<textarea id="contents" name="contents"></textarea>
 			</div>
 			<div class="write_btn">
-                <button type="submit" id="submit_btn" class="btn-lg btn-primary">등록</button>
+                <button type="button" id="submit_btn" class="btn-lg btn-primary">등록</button>
                 <button type="button" class="btn-lg btn-default" data-dismiss="modal" onclick="location.href='/mainBoard.do'">취소</button>
            	</div>
            	</form>
@@ -53,6 +53,28 @@
 	</div>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/singsingCampingfooter.jsp"></jsp:include>
-	
+	<script>
+		$(document).ready(function(){
+			$('#submit_btn').click(function(){
+				var nickname = '${sessionScope.member.nickname}';
+				var type = '${no}';
+				var title = $('#title').val();
+				var contents = $('#contents').val();
+				var data = "nickname="+nickname+"&boardType="+type+"&title="+title+"&contents="+contents;
+				$.ajax({
+					url:"/newFreeBoard.do",
+					type : "post",
+					data : data,
+					success : function(data){
+						alert(data);
+						location.href="/freeBoard.do";
+					},
+					error : function(){
+						alert("실패다");
+					}
+				});
+			});
+		});
+	</script>
 </body>
 </html>

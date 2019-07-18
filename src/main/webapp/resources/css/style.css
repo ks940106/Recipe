@@ -391,6 +391,7 @@ header .menu_btn i.marketing:last-child {
 	margin-top:15px;
 	margin-left: 100px;
 	width:1200px;
+	margin-bottom: 100px;
 }
 .list_field .list_menu {
     margin: 10px 0;
@@ -452,6 +453,7 @@ header .menu_btn i.marketing:last-child {
     text-align: center;
     /* color: #3b3b3b; */
     border: 1px solid #ccc;
+    vertical-align:middle;
 }
 
 .list_table th {
@@ -462,6 +464,10 @@ header .menu_btn i.marketing:last-child {
     line-height: 16px;
     font-weight: 500;
 }
+
+.list_table.left th{background:#fff;}
+.list_table.left td{text-align:left; padding-left:15px;}
+
 .list_table th:nth-child(2){
 	width: 350px;
 }

@@ -18,63 +18,37 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/adminHeader.jsp" /> 
-	<section>
+	<section class="noticeWrite">
 		<div class="wrapper">
 	        <nav class="lnb_wrap">
-	             <jsp:include page="/WEB-INF/views/common/member_nav.jsp"/>
+	             <jsp:include page="/WEB-INF/views/common/notice_nav.jsp"/>
 	        </nav>
 			<div class="section_content">
+				<form action="/noticeUpdate.do">
+				<input type="hidden" name="idx" value="${n.idx }">
 				<div class="set_field">
-					<h1>회원 관리</h1>
+					<h1>공지사항 관리</h1>
 					<div id="cp_div_bg"></div>
 				</div>
-				<form method="post" action="/adminIdSearch.do">
-					<p>아이디로 검색</p>
-					<input type="text" name="id_search">
-				</form>
-				<div class="list_field">
-					<table class="list_table">
-						<colgroup>
-							<col width="40">
-							<col width="75">
-							<col width="150">
-							<col width="100">
-							<col width="100">
-							<col width="200">
-							<col width="120">
-							<col width="85">
-							<col width="100">
-						</colgroup>
-						<thead>
-						<tr>
-							<th>아이디</th>
-							<th>이름</th>
-							<th>닉네임</th>
-							<th>관리</th>
-						</tr>
-						</thead>
-						<tbody>
-						
-						 <c:forEach items="${list }" var="m">
-						 
-						<tr>
-							<td><a href="/memberDetail.do?id=${m.id }">${m.id}</a></td>
-							<td>${m.name }</td>
-							<td>${m.nickname }</td>
-							<td>
-								<div>
-									<a href="/memberDelete.do?id=${m.id}" class="btn small col_main f_w">탈퇴</a>
-								</div>
-							</td>
-						</tr>
-						</c:forEach> 
-						</tbody>
-					</table>
-					
-				</div>
+				<table>
+					<tr>
+						<th>공지사항 제목</th>
+						<td><input type="text" name="noticeTitle" value="${n.noticeTitle }"></td>
+					</tr>
+					<tr>
+						<th>공지사항 작성일</th>
+						<td>${n.noticeDate }</td>
+					</tr>
+					<tr>
+						<th>공지사항 내용</th>
+						<td><textarea rows="20" cols="20" name="noticeContent">${n.noticeContent }</textarea>
+				</table>
+			<button type="submit">수정</button>
+			</form>
 			</div>
 		</div>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />
+	
 </body>
 </html>
