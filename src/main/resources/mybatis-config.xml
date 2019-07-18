@@ -12,6 +12,7 @@
 		<typeAlias type="org.ks.tmr.vo.LMR" alias="lmr"/>
 		<typeAlias type="org.ks.reservation.vo.Reservation" alias="reservation"/>
 		<typeAlias type="org.ks.caravan.vo.Caravan" alias="caravan"/>
+		<typeAlias type="org.ks.caravan.vo.CaravanImg" alias="caravanImg"/>
 		
 		<typeAlias type="java.util.Map" alias="map"/>
 		<typeAlias type="org.ks.competition.vo.Competition" alias="competition"/>
