@@ -64,12 +64,11 @@
 						<c:if test="${sessionScope.member != null }">
 							<c:if test="${participant == null }">
 						<div class="cp_participant">
-				            <h1>요리대회 신청하기</h1>
-				            <div class="pom_div_bg"></div>
+				          <h1>요리대회 신청하기</h1>
+				         <div class="pom_div_bg"></div>
 				        </div>
 						<form action="/participantInsert.do" method="post" onsubmit="return check()">
 						<div class="cp_form">
-						
 						<table class="boardWrite">
 						<input type="hidden" name="competitionNo" value="${competition.competitionNo}">
 						<tbody>
@@ -99,34 +98,6 @@
 						</tr>
 						</tbody>
 					</table>
-							<%-- <table class="cp_table">
-							
-								<tr>
-									<td>
-										아이디 <br> <input type="text" name="id" value="${sessionScope.member.id}" readonly> 
-									</td>
-								</tr>
-								<tr>
-									<td>
-										이름 <br> <input type="text" value="${sessionScope.member.name}" readonly> 
-									</td>
-								</tr>
-								<tr>
-									<td>
-										전화번호 <br> <input type="text" value="${sessionScope.member.phone}" readonly> 
-									</td>
-								</tr>
-								<tr>
-									<td>
-										성별 <br> <input type="text" value="${sessionScope.member.gender}" readonly> 
-									</td>
-								</tr>
-								<tr>
-									<td>
-										신청이유 <br> <textarea rows="10" cols="85" name="participantContent" id="pContent"></textarea> 
-									</td>
-								</tr>
-							</table> --%>
 							</div>
 							<input type="submit" value="대회참가 신청하기" >
                             <!-- <div id="cp_btn">
