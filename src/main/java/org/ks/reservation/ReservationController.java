@@ -75,4 +75,13 @@ public class ReservationController {
 		model.addAttribute("error", error);
 		return "reservation/failReservation";
 	}
+	
+	@RequestMapping(value="/mypageReservationResultRecipe.do")
+	public String mypageReservationResultRecipe() {
+		return "reservation/mypageReservationResultRecipe";
+	}
+	@RequestMapping(value="/mypageReservationResultCamping.do")
+	public String mypageReservationResultCamping() {
+		return "reservation/mypageReservationResultCamping";
+	}
 }
