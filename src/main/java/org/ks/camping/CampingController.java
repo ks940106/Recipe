@@ -13,4 +13,9 @@ public class CampingController {
 	public String travel() {
 		return "camping/travel";
 	}
+	@RequestMapping(value="/freeBoard.do")
+	public String freeBoard() {
+		return "camping/freeBoard";
+	}
+	
 }

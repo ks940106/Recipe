@@ -2,6 +2,9 @@ package org.ks.talkBoard;
 
 import java.util.ArrayList;
 
+import org.ks.talkBoard.vo.BoardLike;
+import org.ks.talkBoard.vo.MainBoard;
+import org.ks.talkBoard.vo.MainPageData;
 import org.ks.talkBoard.vo.PrintPage;
 import org.ks.talkBoard.vo.TalkBoard;
 import org.ks.talkBoard.vo.TalkBoardComment;
@@ -9,7 +12,6 @@ import org.ks.talkBoard.vo.TalkBoardPageData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Service("talkBoardService")
 public class TalkBoardServiceImpl implements TalkBoardService {
@@ -92,6 +94,10 @@ public class TalkBoardServiceImpl implements TalkBoardService {
 	public TalkBoard selectTalkBoard(int no) {
 		return talkBoardDao.selectTalkBoard(no);
 	}
+	@Override
+	public TalkBoard modifyTalkBoard(int no) {
+		return talkBoardDao.selectTalkBoard(no);
+	}
 
 	@Override
 	public int deleteTalkBoard(int no) {
@@ -121,6 +127,35 @@ public class TalkBoardServiceImpl implements TalkBoardService {
 	@Override
 	public int deleteComment(int no) {
 		return talkBoardDao.deleteComment(no);
+	}
+
+	@Override
+	public BoardLike boardLike(BoardLike bl) {
+		return talkBoardDao.boardLike(bl);
+	}
+
+
+	@Override
+	public int likeClick(BoardLike bl) {
+		return talkBoardDao.likeClick(bl);
+	}
+
+
+	@Override
+	public int likeDelClick(BoardLike bl) {
+		return talkBoardDao.likeDelClick(bl);
+	}
+
+
+	@Override
+	public int commentCount(int no) {
+		return talkBoardDao.commentCount(no);
+	}
+
+
+	@Override
+	public int likeCount(int no) {
+		return talkBoardDao.likeCount(no);
 	}
 	
 }

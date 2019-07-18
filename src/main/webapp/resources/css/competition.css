@@ -96,6 +96,7 @@
 .cp_notice{
     width: 1000px;
     margin: 0 auto;
+    margin-top: 65px;
 }
 .cp_contentsView{
     width: 1000px;
@@ -162,4 +163,71 @@
     width: 1240px;
     margin: 0 auto;
     text-align: center;
+}
+#cp_result{
+	width: 187px;
+    margin: 0 auto;
+    background: #1f6054;
+    padding: 10px;
+    color: #fff;
+    margin-top: 40px;
+}
+.boardWrite{
+	border-top: 2px solid #008546;
+    border-bottom: 1px solid #1f6054;
+    width: 75%;
+}
+.boardWrite tr{
+	display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+.boardWrite tr th:first-child {
+    border-left: 0;
+}
+.boardWrite tr th:last-child{
+	padding-top: 25px;
+}
+.boardWrite tr th{
+	background: #fbfbfb;
+    text-align: left;
+    font-weight: bold;
+    font-size: 16px;
+    color: #555555;
+    border-top: 1px solid #e9e9e9;
+    padding-left: 35px;
+}
+.boardWrite tr td{
+	color: #666666;
+    text-align: left;
+    border-top: 1px solid #e9e9e9;
+    line-height: 34px;
+    padding: 10px 20px;
+    font-size: 13px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.boardWrite tr td input{
+	border: 1px solid #e9e9e9;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: 32px;
+    height: 34px;
+    width: 165px;
+    padding: 0 10px;
+}
+.boardWrite tr td textarea {
+    border: 1px solid #e9e9e9;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: 20px;
+    padding: 10px;
+    height: 115px;
+    vertical-align: top;
+}
+.boardWrite tr td .full {
+    width: 100%;
 }

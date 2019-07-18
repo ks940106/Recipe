@@ -11,6 +11,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.ks.talkBoard.vo.BoardLike;
+import org.ks.talkBoard.vo.MainBoard;
+import org.ks.talkBoard.vo.MainPageData;
 import org.ks.talkBoard.vo.TalkBoard;
 import org.ks.talkBoard.vo.TalkBoardComment;
 import org.ks.talkBoard.vo.TalkBoardPageData;
@@ -41,7 +44,27 @@ public class TalkBoardController {
 			reqPage = 1;
 		}
 		System.out.println("reqPage : "+reqPage);
-		TalkBoardPageData pd = talkBoardService.mainBoard(reqPage,type);
+		TalkBoardPageData mpd = talkBoardService.mainBoard(reqPage,type);
+		
+		
+		
+		ArrayList<MainBoard> list = new ArrayList<MainBoard>();
+		
+		
+		System.out.println("시바 사이즈 : "+mpd.getList().size());
+		for(int i = 0; i < mpd.getList().size();i++) {
+			System.out.println("시바 보드넘버 : "+mpd.getList().get(i).getBoardNo());
+			int commentCount = talkBoardService.commentCount(mpd.getList().get(i).getBoardNo());
+			int likeCount = talkBoardService.likeCount(mpd.getList().get(i).getBoardNo());
+			int a = mpd.getList().get(i).getBoardNo();
+			String b = mpd.getList().get(i).getBoardType();
+			String c = mpd.getList().get(i).getBoardImg();
+			String d = mpd.getList().get(i).getBoardContents();
+			String e = mpd.getList().get(i).getNickname();
+			MainBoard mb = new MainBoard(a, b, e, c, d, commentCount, likeCount);
+			list.add(mb);
+		}
+		MainPageData pd = new MainPageData(list, mpd.getPageNavi(), mpd.getType());
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("pd",pd);
 		mv.setViewName("talkBoard/mainBoard");
@@ -154,17 +177,39 @@ public class TalkBoardController {
 		}
 	}
 	@RequestMapping(value="selectTalkBoard.do")
-	public ModelAndView selectTalkBoard(@RequestParam String boardNo) {
+	public ModelAndView selectTalkBoard(@RequestParam String boardNo,@RequestParam String memberId) {
 		int no = Integer.parseInt(boardNo);
+		BoardLike bl = new BoardLike();
+		System.out.println("넘어온 세션 아이디 : "+memberId);
 		System.out.println("넘어온 보드넘버 : "+no);
+		bl.setBoardNo(no);
+		bl.setMemberId(memberId);
 		TalkBoard tb = talkBoardService.selectTalkBoard(no);
 		ArrayList<TalkBoardComment> tbc = talkBoardService.selectTalkBoardComment(no);
+		BoardLike like = talkBoardService.boardLike(bl);
+		int commentCount = talkBoardService.commentCount(no);
+		int likeCount = talkBoardService.likeCount(no);
+		System.out.println("라이크 카운트"+likeCount);
+		ModelAndView mv = new ModelAndView();
+		if(like == null) {
+			mv.addObject("commentCount",commentCount);
+			mv.addObject("likeCount",likeCount);
+			mv.addObject("like",like);
+			mv.addObject("tb",tb);
+			mv.addObject("tbc",tbc);
+			mv.setViewName("talkBoard/selectTalkBoard");
+			return mv;
+		}else {
 		System.out.println(tb.getBoardContents());
 		System.out.println(tbc.isEmpty());
-		ModelAndView mv = new ModelAndView();
+		System.out.println("라이크 체크 : "+like.getLikeCheck());
+		mv.addObject("commentCount",commentCount);
+		mv.addObject("likeCount",likeCount);
+		mv.addObject("like",like);
 		mv.addObject("tb",tb);
 		mv.addObject("tbc",tbc);
 		mv.setViewName("talkBoard/selectTalkBoard");
+		}
 		return mv;
 	}
 	
@@ -196,7 +241,7 @@ public class TalkBoardController {
 	@RequestMapping(value="/modifyTalkBoard.do")
 	public ModelAndView modifyTalkBoard(@RequestParam String boardNo) {
 		int no = Integer.parseInt(boardNo);
-		TalkBoard tb = talkBoardService.selectTalkBoard(no);
+		TalkBoard tb = talkBoardService.modifyTalkBoard(no);
 		ModelAndView mv = new ModelAndView();
 		String[] img = tb.getBoardImg().split("/");
 		mv.addObject("img",img);
@@ -340,6 +385,23 @@ public class TalkBoardController {
 		return "^^7";
 	}
 	
-	
+	@ResponseBody
+	@RequestMapping(value="/boardLike.do")
+	public int boardLike(HttpServletRequest request) {
+		BoardLike bl = new BoardLike();
+		bl.setMemberId(request.getParameter("memberId"));
+		bl.setBoardNo(Integer.parseInt(request.getParameter("boardNo")));
+		int result = talkBoardService.likeClick(bl);
+		return result;
+	}
+	@ResponseBody
+	@RequestMapping(value="/boardLikeDel.do")
+	public int boardLikeDel(HttpServletRequest request) {
+		BoardLike bl = new BoardLike();
+		bl.setMemberId(request.getParameter("memberId"));
+		bl.setBoardNo(Integer.parseInt(request.getParameter("boardNo")));
+		int result = talkBoardService.likeDelClick(bl);
+		return result;
+	}
 	
 }

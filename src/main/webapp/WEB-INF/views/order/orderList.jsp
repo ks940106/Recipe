@@ -31,14 +31,12 @@
 						<li><a href="/mypage.do">개인정보수정</a><span>></span></li>
 						<li><a href="/cart.do">장바구니</a><span>></span></li>
 						<li><a href="/orderList.do">결제내역</a><span>></span></li>
+						<li><a href="/mypageCompetitionResult.do">대회신청결과</a><span>></span></li>
 					</ul>
 				</div>
 			</nav>
 		</div>
 		<div class="section_content_nav">
-			<!--<div class="cp_nav">
-                    <jsp:include page="/WEB-INF/views/common/navPom.jsp"/>
-                </div>-->
 			<div class="cp_content">
 				<div id="contentName">결제 내역</div>
 				<div id="contentNamebar"></div>

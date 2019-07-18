@@ -53,7 +53,8 @@ function uploadImg(e){
     $(e).siblings().trigger('click');
 }
 
-$('#cok_video_url').blur(function () {
+$('#cok_video_url').blur(video_preview());
+function video_preview() {
     var iframe_src       = $('#cok_video_url').val();
     // https://youtu.be/VpDSxXlWEf0
     var youtube_video_id = iframe_src.match(/youtu\.be.*(.{11})/).pop();
@@ -62,7 +63,7 @@ $('#cok_video_url').blur(function () {
         var video_thumbnail = "//img.youtube.com/vi/"+youtube_video_id+"/0.jpg";
         $('#videoPhotoHolder').attr('src',video_thumbnail);
     }
-});
+}
 
 var step = 1;
 var content = $("#divStepTemplate").html();
@@ -83,7 +84,15 @@ function addStep(i) {
 }
 
 $(document).ready(function () {
+    if($("#divStepArea").html().trim() === "")
     addStep();
+
+    $(".step").hover(function () {
+        $(this).find('.step_btn').show();
+    },function () {
+        $(this).find('.step_btn').hide();
+    });
+
     $(".ui-sortable").sortable({
         update:function(event,ui){
             stepNum();
@@ -98,8 +107,8 @@ function stepNum() {
         $(e).val((index+1));
     });
     $(".step_btn").each(function (index,e) {
-        $(e).find('a').eq(2).attr("href","javascript:addStep("+(index+1)+")");
-        $(e).find('a').eq(3).attr("href","javascript:delStep("+(index+1)+")");
+        $(e).find('a').eq(0).attr("href","javascript:addStep("+(index+1)+")");
+        $(e).find('a').eq(1).attr("href","javascript:delStep("+(index+1)+")");
     });
 }
 
@@ -179,4 +188,8 @@ $("#total_price").text(total);
 function cart(recipeNo) {
         location.href = "/insertcart.do?recipeNo=" + recipeNo + "&count=" + count;
 }
+
+$.ready(function () {
+   video_preview();
+});
 

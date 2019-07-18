@@ -6,6 +6,7 @@
 .scroll a {background:url(http://gonylab5.speedgabia.com/graysands/final/images/scroll.png) no-repeat left top;width:68px;height:85px;display:block;}
 
 
+
 /*------------------------------------------------------------------------------------------------*/
 /* index */
 #index #header h1 {top:10px;}
@@ -182,10 +183,11 @@
 .bnr .pv_cont > .tabs {padding-top:70px;}
 .ab_cover{width:100%; height:400px; background: url(../../resources/img/camping/ab_bg.jpg) no-repeat center center; background-size: cover;}
 .tr_cover{width:100%; height:400px; background: url(../../resources/img/camping/travel_bg.jpg) no-repeat center center; background-size: cover;}
-
+.bd_cover{width:100%; height:400px; background: url(../../resources/img/camping/camping_talk.jpg) no-repeat center 92%; background-size: cover;}
 /*travel*/
 
-.travel_content{margin-top: 50px; overflow: hidden;}
+.travel_content{margin-top: 50px; overflow: hidden; border-bottom: 3px solid #1f6054; padding-bottom: 65px;}
+.travel_contentlast{margin-top: 50px; overflow: hidden; padding-bottom: 65px;}
 #travel_img1{float:left; margin-right: 30px;}
 #travel_text1{line-height: 25px;}
 
@@ -195,6 +197,11 @@
 #travel_text3{line-height: 25px;}
 
 #travel_text4{clear: both;  float: left;  width: 500px;  margin-right: 30px;}
+
+#travel_img5{float:left; margin-right: 30px;}
+#travel_text5{line-height: 25px;}
+
+#travel_text6{clear: both;  float: left;  width: 500px;  margin-right: 30px;}
 
 /* about */
 #about .pv_cont > ul > li {width:50%;}

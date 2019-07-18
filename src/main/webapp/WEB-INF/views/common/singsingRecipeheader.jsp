@@ -12,7 +12,6 @@
 <%--	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">--%>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
@@ -45,10 +44,7 @@
      						<li><a href="/competitionList.do?competitionCheck='Y'&id=${sessionScope.member.id}">요리대회</a></li>
      					</c:otherwise>
      				</c:choose>
-                    <li><a href="mainBoard.do?boardType=0">토크</a></li>
-
-                    <li><a href="/pom.do">쿠킹클래스</a></li>
-
+                    <li><a href="/mainBoard.do?boardType=0">토크</a></li>
                     <c:choose>
                     <c:when test="${sessionScope.member==null }">
                     	<li><a href="/loginPage.do" style="color: #1f6054;">로그인</a></li>

@@ -15,8 +15,12 @@ public class CompetitionDaoImpl implements CompetitionDao {
 	SqlSessionTemplate sqlsession;
 
 	@Override
-	public List competitionList() {
-		return sqlsession.selectList("competition.competitionList");
+	public List competitionList(int start, int end) {
+		Map<String,Integer> map = new HashMap<String,Integer>();
+		map.put("start", start);
+		map.put("end", end);
+		List list = sqlsession.selectList("competition.selectPage",map);
+		return list;
 	}
 
 	@Override
@@ -115,5 +119,20 @@ public class CompetitionDaoImpl implements CompetitionDao {
 	public List participantResultList(int competitionNo) {
 		return sqlsession.selectList("competition.participantResultList",competitionNo);
 	}
+
+	@Override
+	public List cpdCount() {
+		List list = sqlsession.selectList("competition.cpdCount");
+		return list;
+	}
+
+/*	@Override
+	public List selectPage(int start, int end) {
+		Map<String,Integer> map = new HashMap<String,Integer>();
+		map.put("start", start);
+		map.put("end", end);
+		List list = sqlsession.selectList("competition.selectPage",map);
+		return list;
+	}*/
 	
 }

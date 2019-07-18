@@ -108,14 +108,14 @@
         update RECIPE set RECIPE_HIT = RECIPE_HIT+1 where RECIPE_NO=#{recipeNo}
     </update>
 
-    <update id="recipeLike" parameterType="org.ks.recipe.vo.Like" >
+    <update id="recipeLike" parameterType="org.ks.recipe.vo.Like" ><![CDATA[
         MERGE into RECIPE_LIKE
         using dual
         on (RECIPE_LIKE.RECIPE_NO = #{recipeNo} and RECIPE_LIKE.id = #{id})
         when not matched then
             insert (recipe_like.recipe_no,recipe_like.id)
             values(#{recipeNo},#{id})
-    </update>
+        ]]></update>
     <update id="updateLike" parameterType="_int">
         update RECIPE set RECIPE_LIKE = (select count(*) from RECIPE_LIKE where RECIPE_LIKE.RECIPE_NO = #{recipeNo}) where RECIPE_NO=#{recipeNo}
     </update>
@@ -129,6 +129,46 @@
 
     <select id="likeRank" resultMap="recipe">
         select ROWNUM, rank.* from (select * from RECIPE where RECIPE_PRICE = 0 order by RECIPE_LIKE desc) rank where ROWNUM between 1 and 10
+    </select>
+
+    <select id="search" parameterType="org.ks.recipe.vo.RecipeSearch" resultMap="recipe">
+        select B.*
+        from (
+            select ROWNUM as rnum, A.*
+            from (
+                select * from RECIPE where 1=1
+                <if test="q != ''">
+                    and (recipe_title like '%'||#{q}||'%' or recipe_contents like '%'||#{q}||'%')
+                </if>
+                <if test="cat1 != ''">
+                    and recipe_cat1 = #{cat1}
+                </if>
+                <if test="cat2 != ''">
+                    and recipe_cat2 = #{cat2}
+                </if>
+                <if test="order == 'reco'">
+                    order by recipe_like desc
+                </if>
+                <if test="order == 'date'">
+                    order by recipe_date desc
+                </if><![CDATA[
+            ) A
+        where ROWNUM <= (#{page}*16)
+        ) B
+        where B.rnum >= ((#{page}-1)*16 + 1)
+    ]]></select>
+
+    <select id="total" parameterType="org.ks.recipe.vo.RecipeSearch" resultType="_int">
+        select count(*) from RECIPE where 1=1
+        <if test="q != ''">
+            and (recipe_title like '%'||#{q}||'%' or recipe_contents like '%'||#{q}||'%')
+        </if>
+        <if test="cat1 != ''">
+            and recipe_cat1 = #{cat1}
+        </if>
+        <if test="cat2 != ''">
+            and recipe_cat2 = #{cat2}
+        </if>
     </select>
 
     <update id="orderReg" parameterType="map">

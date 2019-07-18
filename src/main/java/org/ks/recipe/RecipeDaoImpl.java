@@ -1,9 +1,6 @@
 package org.ks.recipe;
 
-import org.ks.recipe.vo.Category;
-import org.ks.recipe.vo.Like;
-import org.ks.recipe.vo.Recipe;
-import org.ks.recipe.vo.RecipeDetail;
+import org.ks.recipe.vo.*;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -76,5 +73,15 @@ public class RecipeDaoImpl implements RecipeDao {
         map.put("recipeNo",recipeNo);
         map.put("price",price);
         return sqlSession.update("recipe.orderReg",map);
+    }
+
+    @Override
+    public List<Recipe> recipeList(RecipeSearch recipeSearch) {
+        return sqlSession.selectList("recipe.search",recipeSearch);
+    }
+
+    @Override
+    public int recipeTotal(RecipeSearch recipeSearch) {
+        return sqlSession.selectOne("recipe.total",recipeSearch);
     }
 }

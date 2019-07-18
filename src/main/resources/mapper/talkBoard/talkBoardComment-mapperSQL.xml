@@ -22,6 +22,8 @@
   <delete id="deleteComment" parameterType="_int">
   	delete from board_comment where comment_no = #{commentNo}
   </delete>
-  
+  <select id="commentCount" parameterType="_int" resultType="_int">
+  	select count(*) cnt from board_comment where board_no = #{boardNo}
+  </select>
   
 </mapper>

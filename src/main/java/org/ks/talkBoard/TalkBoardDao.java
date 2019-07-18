@@ -2,6 +2,7 @@ package org.ks.talkBoard;
 
 import java.util.List;
 
+import org.ks.talkBoard.vo.BoardLike;
 import org.ks.talkBoard.vo.PrintPage;
 import org.ks.talkBoard.vo.TalkBoard;
 import org.ks.talkBoard.vo.TalkBoardComment;
@@ -32,4 +33,13 @@ public interface TalkBoardDao {
 	
 	public int seeBoardTypeCount(String type);
 	
+	public BoardLike boardLike(BoardLike bl);
+	
+	public int likeClick(BoardLike bl);
+	
+	public int likeDelClick(BoardLike bl);
+	
+	public int commentCount(int no);
+	
+	public int likeCount(int no);
 }

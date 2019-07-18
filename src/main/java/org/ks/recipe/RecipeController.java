@@ -1,10 +1,7 @@
 package org.ks.recipe;
 
 import org.ks.member.vo.Member;
-import org.ks.recipe.vo.Category;
-import org.ks.recipe.vo.Like;
-import org.ks.recipe.vo.Recipe;
-import org.ks.recipe.vo.RecipeDetail;
+import org.ks.recipe.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -26,11 +23,30 @@ public class RecipeController {
     RecipeService recipeService;
 
     @RequestMapping("/recipePage.do")
-    public String recipePage(Model model){
+    public String recipePage(HttpServletRequest request, Model model){
+        String q = request.getParameter("q");
+        String cat1 = request.getParameter("cat1");
+        String cat2 = request.getParameter("cat2");
+        String order = request.getParameter("order");
+        String page = request.getParameter("page");
+        RecipeSearch recipeSearch = new RecipeSearch();
+        recipeSearch.setQ(q == null ? "" : q);
+        recipeSearch.setCat1(cat1 == null ? "" : cat1);
+        recipeSearch.setCat2(cat2 == null ? "" : cat2);
+        recipeSearch.setOrder(order == null ? "" : order);
+        int pageNum;
+        try {
+            pageNum = Integer.parseInt(page);
+        }catch (Exception e){
+            pageNum = 1;
+        }
+        recipeSearch.setPage(pageNum);
         List<Category> categoryList = recipeService.categoryList();
         model.addAttribute("categoryList",categoryList);
-        List<Recipe> recipeList = recipeService.recipeList();
-        model.addAttribute("recipeList",recipeList);
+        PageData<Recipe> recipePageData = recipeService.recipeList(recipeSearch);
+        model.addAttribute("recipeList", recipePageData.getList());
+        model.addAttribute("recipeSearch", recipeSearch);
+        model.addAttribute("pageNav",recipePageData.getPageNav());
         return "recipe/recipeList";
     }
 
@@ -42,6 +58,18 @@ public class RecipeController {
             return "common/msg";
         }
         List<Category> categoryList = recipeService.categoryList();
+        String recipeNo = request.getParameter("recipeNo");
+        if(recipeNo!=null){
+            RecipeDetail recipeDetail = recipeService.getRecipeDetail(recipeNo);
+            String memberId = ((Member)request.getSession(false).getAttribute("member")).getId();
+            if(!memberId.equals(recipeDetail.getMember().getId())){
+                request.setAttribute("msg","권한이 없습니다.");
+                request.setAttribute("loc","/recipeRegPage.do");
+                return "common/msg";
+            }else {
+                model.addAttribute("recipeDetail",recipeDetail);
+            }
+        }
         model.addAttribute("categoryList", categoryList);
         return "recipe/recipe";
     }
@@ -58,8 +86,8 @@ public class RecipeController {
         String video = multi.getParameter("cok_video_url");
         String level = multi.getParameter("cok_degree");
         String title = multi.getParameter("cok_title");
-        String cat1 = multi.getParameter("cok_sq_category_2");
-        String cat2 = multi.getParameter("cok_sq_category_1");
+        String cat1 = multi.getParameter("cok_sq_category_1");
+        String cat2 = multi.getParameter("cok_sq_category_2");
         //step_no[]
         String mainImg = multi.getParameter("recipeMainImg");
         String[] stepPhotos = multi.getParameterValues("step_photo[]");
@@ -193,6 +221,7 @@ public class RecipeController {
 
         return message;
     }
+
     @RequestMapping(value = "/recipeUnLike", produces="text/plain;charset=UTF-8")
     @ResponseBody
     public String recipeUnLike(@RequestParam(value = "recipeNo") String recipeNo, HttpSession session) {
@@ -221,7 +250,6 @@ public class RecipeController {
     @RequestMapping(value = "/orderReg.do",produces = "text/plain;charset=UTF-8")
     @ResponseBody
     public String orderReg(String recipeNo,String price){
-
         String message;
         int result = recipeService.orderReg(Integer.parseInt(recipeNo),Integer.parseInt(price));
         if(result>0){

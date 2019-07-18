@@ -10,40 +10,27 @@
  <footer>
         <div>
             <div>
-                <h2><img src="../resources/img/footer_logo.png" alt="recipe" style="width:150px";/></h2>
+                <h2><img src="../resources/img/footer_logo.png" alt="recipe" style="width:100px;"/></h2>
                 <p>
-                    lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh elit. Duis sed odio sit amet auctror a ornare odio non mauris vitae erat in elit
+                    	팀원 <br> 고경석 노진오 박영훈 박윤주 <br> 신도재 이윤석
                 </p>
             </div>
             <div>
-                <h2>OUR STUDIO</h2>
+                <h2>INFO</h2>
                 <address>
                     <span>
-                        Ruko cucruk, Jl. Radio luar dalem jos No.12 - 13, Kalideres - Jakarta Barat
-                        11480 - Indonesia
+                        	서울 영등포구 선유동2로 57 이레빌딩 19층 20층
                     </span>
                     <span>
-                        <a href="tel:+622122243333">(+62) 21-2224 3333</a>
+                        <a href="tel:010-1234-5678">010-1234-5678</a>
                     </span>
                 </address>
             </div>
             <div>
-                <h2>STAY IN TOUCH</h2>
-                <input type="email" placeholder="Subscribe our newsletter" title="Subscribe our newsletter"/>
-                <input type="submit" />
-                <ul>
-                    <li><a href="#">facebook</a></li>
-                    <li><a href="#">twitter</a></li>
-                    <li><a href="#">dribbble</a></li>
-                    <li><a href="#">instagram</a></li>
-                    <li><a href="#">googleplus</a></li>
-                    <li><a href="#">youtube</a></li>
-                </ul>
-            </div>
-            <div>
+            	<h2>ABOUT</h2>
                 <a href="#">HELP</a>
-                <a href="#">TERMS &amp; CONDITION</a>
-                <a href="#">PRIVACY</a>
+                <a href="#">NOTICE</a>
+                <a href="#">LOGIN</a>
                 <p>Copyright © 2019 - SingSingRecipe</p>
             </div>
         </div>

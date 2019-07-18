@@ -10,7 +10,7 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/singsingCampingheader.jsp" />
-<section class="findPassword">
+<section class="findPw">
 	<h1>비밀번호 변경</h1>
 	<form method="post" action="/findPasswordCamping.do">
 	<div class="find">
@@ -29,5 +29,6 @@
 	<button type="submit">임시 비밀번호 발급 받기</button>
 	</form>
 </section>
+<jsp:include page="/WEB-INF/views/common/singsingCampingfooter.jsp" />
 </body>
 </html>
