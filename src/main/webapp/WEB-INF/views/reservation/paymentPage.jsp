@@ -8,7 +8,8 @@
 <title>싱싱캠핑 결제</title>
 <link href="../resources/css/campingImport.css" rel="stylesheet" />
 <link href="../resources/css/reservation.css" rel="stylesheet" />
-<script type="text/javascript" src="/resources/js/reservation.js" />
+<script type="text/javascript" src="/resources/js/reservation.js"></script>
+
 <style type="text/css">
 </style>
 </head>
@@ -28,22 +29,23 @@
             </div>
             <div class="section_content_nav">
                 <div class="cp_content">
-                	<form action="/insertReservation.do" onsubmit="return sbm2()">
+                	<form action="/payment.do" onsubmit="return sbm2()">
                 		<input type="hidden" name="caravanNo" value="${r.caravanNo }"> 
                 		<input type="hidden" name="id" value="${r.id }">
                 		<input type="hidden" name="reservationPeople" value="${r.reservationPeople }">
                 		<input type="hidden" name="totalCost" value="${r.totalCost}">
                 		<input type="hidden" name="reservationDate" value="${r.reservationDate }">
                 		<input type="hidden" name="reservationPhone">	
-                		<input type="hidden" name="reservationEmail">		
+                		<input type="hidden" name="reservationEmail">
+                		
+                		<input type="hidden" name="caravanName" value="${caravanName }">
                 		<h1>선택 객실 목록</h1>
-                		<hr>
                 		<span style="width: 20%; display: inline-block; font-weight: bolder;">객실명</span>
                 		<span style="width: 20%; display: inline-block; font-weight: bolder;">이용일</span>
                 		<span style="width: 30%; display: inline-block; font-weight: bolder;">이용인원</span>
                 		<span style="width: 20%; display: inline-block; font-weight: bolder;">총 결제 금액</span>
                 		
-                		<div style="width: 20%; display: inline-block; float:left;">${caravanName }</div> 
+                		<div id="caravanName" style="width: 20%; display: inline-block; float:left;">${caravanName }</div> 
                 		<div style="width: 20%; display: inline-block; float:left; color:#ea1f62;">
                 		<c:forEach items="${r.reservationDateArr}" var="date">
                 			${date }<br>
@@ -51,7 +53,6 @@
                 		</div>
                 		<div style="width: 30%; display: inline-block; float:left;">${r.reservationPeople }명 (기준 : ${caravanPeople }명/ 최대 : ${caravanMaxPeople }명)</div> 
                 		<div style="width: 20%; display: inline-block; float:left;"><span style="color:#ea1f62; font-size:20px; font-weight: bolder;">${r.totalCost }</span>원</div>  
-						<hr>
 						<BR>
                 		<div id="accept" style="width:48%;float: left; clear: both;">
                 		<br>
@@ -154,9 +155,8 @@
                 		</select><br><br>
                 		요청사항 <br>
                 		<textarea class="form-control" style="display:inline;width:80%;" name="reservationRequest"></textarea><br><br>
-                		
                 		<button class="btn btn-primary" type="button" onclick="location.href='/peopleSelect.do?caravanNo=${r.caravanNo}&reservationDateString=${r.reservationDate}'">이전으로</button>
-                		<input class="btn btn-success" type="submit" value="결제하기">
+                		<input class="btn btn-success" type="submit" value="결제하러가기">
                 		</div>
                		</form>
                 </div>
@@ -181,6 +181,7 @@
 		$("#email2").val($(this).val());
 		$("#email2").attr("readonly",true);
 	});
+	
 	function sbm2(){
 		var chk = new Array();
 		for(var i = 0; i<4;i++){
@@ -192,8 +193,8 @@
 				return false;
 			}
 		}
-		var phone = $("[name=reservationPhone]").val($("#phone1").val()+"-"+$("#phone2").val()+"-"+$("#phone3").val());
-		var email = $("[name=reservationEmail]").val($("#email1").val()+"@"+$("#email2").val());
+		$("[name=reservationPhone]").val($("#phone1").val()+"-"+$("#phone2").val()+"-"+$("#phone3").val());
+		$("[name=reservationEmail]").val($("#email1").val()+"@"+$("#email2").val());
 		var name = $("[name=reservationName]").val();
 		var nameExp = /^[가-힣]+$/;
 		if(!nameExp.test(name)){
@@ -203,7 +204,7 @@
 		var birth = $("[name=reservationBirth]").val();
 		var birthExp = /^[0-9]{6}$/;
 		if(!birthExp.test(birth)){
-			alert("생년월일은 6자로 입력 하여야 합니다.");
+			alert("생년월일은 숫자 6자로 입력 하여야 합니다.");
 			return false;
 		}
 		if($("#phone2").val()=="" ||$("#phone3").val()==""){
@@ -212,6 +213,7 @@
 		}
 		return true;
 	}
+		
 	
 	$("input:text[numberOnly]").on("keyup", function() {
 		$(this).val($(this).val().replace(/[^0-9]/g,""));
