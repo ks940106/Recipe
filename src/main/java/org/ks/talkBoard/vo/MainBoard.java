@@ -6,6 +6,7 @@ public class MainBoard {
 	private String nickname;
 	private String boardImg;
 	private String boardContents;
+	private String memberImg;
 	private int commentCount;
 	private int likeCount;
 	public MainBoard() {
@@ -13,13 +14,14 @@ public class MainBoard {
 		// TODO Auto-generated constructor stub
 	}
 	public MainBoard(int boardNo, String boardType, String nickname, String boardImg, String boardContents,
-			int commentCount, int likeCount) {
+			String memberImg, int commentCount, int likeCount) {
 		super();
 		this.boardNo = boardNo;
 		this.boardType = boardType;
 		this.nickname = nickname;
 		this.boardImg = boardImg;
 		this.boardContents = boardContents;
+		this.memberImg = memberImg;
 		this.commentCount = commentCount;
 		this.likeCount = likeCount;
 	}
@@ -52,6 +54,12 @@ public class MainBoard {
 	}
 	public void setBoardContents(String boardContents) {
 		this.boardContents = boardContents;
+	}
+	public String getMemberImg() {
+		return memberImg;
+	}
+	public void setMemberImg(String memberImg) {
+		this.memberImg = memberImg;
 	}
 	public int getCommentCount() {
 		return commentCount;
