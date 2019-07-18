@@ -2,34 +2,39 @@ package org.ks.freeBoard.vo;
 
 public class FreeBoard {
 	
-	private int BoardNo;
-	private String BoardType;
+	private int boardNo;
+	private String boardType;
 	private String nickname;
 	private String title;
 	private String contents;
+	private int commentCount;
+	private int viewCount;
 	public FreeBoard() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public FreeBoard(int boardNo, String boardType, String nickname, String title, String contents) {
+	public FreeBoard(int boardNo, String boardType, String nickname, String title, String contents, int commentCount,
+			int viewCount) {
 		super();
-		this.BoardNo = boardNo;
-		this.BoardType = boardType;
+		this.boardNo = boardNo;
+		this.boardType = boardType;
 		this.nickname = nickname;
 		this.title = title;
 		this.contents = contents;
+		this.commentCount = commentCount;
+		this.viewCount = viewCount;
 	}
 	public int getBoardNo() {
-		return BoardNo;
+		return boardNo;
 	}
 	public void setBoardNo(int boardNo) {
-		BoardNo = boardNo;
+		this.boardNo = boardNo;
 	}
 	public String getBoardType() {
-		return BoardType;
+		return boardType;
 	}
 	public void setBoardType(String boardType) {
-		BoardType = boardType;
+		this.boardType = boardType;
 	}
 	public String getNickname() {
 		return nickname;
@@ -49,6 +54,23 @@ public class FreeBoard {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
+	public int getCommentCount() {
+		return commentCount;
+	}
+	public void setCommentCount(int commentCount) {
+		this.commentCount = commentCount;
+	}
+	public int getViewCount() {
+		return viewCount;
+	}
+	public void setViewCount(int viewCount) {
+		this.viewCount = viewCount;
+	}
+	
+	
+	
+	
+	
 	
 	
 }

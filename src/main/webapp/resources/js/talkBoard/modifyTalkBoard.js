@@ -56,6 +56,7 @@
 
 		//preview 영역에서 삭제 버튼 클릭시 해당 미리보기이미지 영역 삭제
 		function deletePreview(obj) {
+			console.log(obj);
 			var imgNum = obj.attributes['value'].value;
 			delete files[imgNum];
 			$(".preview[value=" + imgNum + "]").remove();

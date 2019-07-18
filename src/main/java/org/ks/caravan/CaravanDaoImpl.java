@@ -24,4 +24,16 @@ public class CaravanDaoImpl  implements CaravanDao{
 		return result;
 	}
 
+	@Override
+	public int deleteCaravanList(String[] caravanNo) {
+		int result = sqlSession.delete("caravan.deleteCaravanList",caravanNo);
+		return 0;
+	}
+
+	@Override
+	public Caravan updateCaravanList(String caravanNo) { //업데이트할 리스트조회
+		
+		return sqlSession.selectOne("caravan.updateCaravanList",caravanNo);
+	}
+
 }

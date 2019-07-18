@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Fresh 카라반</title>
+<title>Fresh 카라반 수정</title>
 <link rel="stylesheet" type="text/css"href="../resources/css/import.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/ui.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/style.css">
@@ -30,41 +30,49 @@
 		</nav>
 		<div class="section_content">
 				<div class="set_field">
-					<h1>카라반 리스트</h1>
+					<h1>카라반 수정</h1>
 					<div id="cp_div_bg"></div>
 				</div>
 				<div class="list_field">
-				<form action="/deleteCaravan.do">
-				<button class="button button1" type="submit">삭제</button>
-				<button class="button button1" type="button" id="updateCaravan">수정</button>
-				<button class="button button1" onclick="location.href='/insertCaravan.do'" type="button">등록</button>
-				<table class="list_table">
-					<thead>
+				<form action="/insertCaravanList.do"method="post" >
+				<button class="button button1" onclick="location.href='/seletecaravan.do'">취소</button>
+				<button class="button button1" type="submit">수정</button>
+				<table class="list_table" >
+					
 						<tr>
-							<td></td>
 							<td>이름</td>
+							<td><input type="text" name="caravanName" id="caravanName" class="insertCaravan" value="${caravan.caravanName }"></td>
+						</tr>					
+						<tr>
 							<td>평수</td>
-							<td>최소인원</td>
-							<td>최대인원</td>
-							<td>추가인원 금액</td>
-							<td>가격</td>
+							<td><input type="text" name="caravanArea" id="caravanArea" class="insertCaravan" value="${caravan.caravanArea }">평</td>
 						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${list}" var="c" >
-							<tr>
-								<td><input type="checkbox" name="caravanNo" value="${c.caravanNo }"></td>
-								<td>${c.caravanName}</td>
-								<td>${c.caravanArea}</td>
-								<td>${c.caravanPeople}</td>
-								<td>${c.caravanMaxPeople}</td>
-								<td>${c.caravanPlusCost}</td>
-								<td>${c.caravanCost }</td>
-							</tr>
-						</c:forEach>
-					</tbody>
+						<tr>
+							<td>최소인원</td>
+							<td><input type="text" name="caravanPeople" id="caravanPeople" class="insertCaravan" value="${caravan.caravanPeople }">명</td>						
+						</tr>
+						<tr>
+							<td>최대인원</td>
+							<td><input type="text" name="caravanMaxPeople" id="caravanMaxPeople" class="insertCaravan" value="${caravan.caravanMaxPeople }">명</td>							
+						</tr>
+						<tr>
+							<td>추가인원 금액</td>
+							<td><input type="text" name="caravanPlusCost" id="caravanPlusCost" class="insertCaravan" value="${caravan.caravanPlusCost }">원</td>							
+						</tr>
+						<tr>
+							<td>가격</td>
+							<td><input type="text" name="caravanCost" id="caravanCost" class="insertCaravan" value="${caravan.caravanCost }">원</td>
+						</tr>
+						<tr>
+							<td>기본 정보</td>
+							<td>
+							<textarea cols="50" rows="5" name="caravanInfo" id="caravanInfo" >
+								${caravan.caravanInfo }
+							</textarea>
+							</td>
+						</tr>
 				</table>
-			</form>
+				</form>
 			</div>
 		</div>
 	</div>

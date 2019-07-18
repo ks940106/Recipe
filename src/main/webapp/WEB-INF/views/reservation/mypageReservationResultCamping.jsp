@@ -1,18 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-		 pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Insert title here</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<script src="http://code.jquery.com/jquery-3.4.0.js"></script>
 	<link href="../resources/css/import.css" rel="stylesheet" />
 	<link href="../resources/css/cart.css" rel="stylesheet" />
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp" />
+<jsp:include page="/WEB-INF/views/common/singsingCampingheader.jsp" />
 
 <section>
 	<div class="pom_bg">
@@ -28,16 +28,18 @@
 				<div class="nav_con">
 					<div class="nav_title">마이페이지</div>
 					<ul class="nav_menu">
-						<li><a href="/mypage.do">개인정보수정</a><span>></span></li>
-						<li><a href="/cart.do">장바구니</a><span>></span></li>
-						<li><a href="/orderList.do">결제내역</a><span>></span></li>
-						<li><a href="/mypageCompetitionResult.do">대회신청결과</a><span>></span></li>
-						<li><a href="/mypageReservationResultRecipe.do">예약내역</a><span>></span></li>
-					</ul>
+					<li><a href="/mypageCamping.do">개인정보수정</a><span>></span></li>
+					<li><a href="/cartCamping.do">장바구니</a><span>></span></li>
+					<li><a href="/orderListCamping.do">결제내역</a><span>></span></li>
+					<li><a href="/mypageCompetitionResult.do">대회신청결과</a><span>></span></li>
+				</ul>
 				</div>
 			</nav>
 		</div>
 		<div class="section_content_nav">
+			<!--<div class="cp_nav">
+                    <jsp:include page="/WEB-INF/views/common/navPom.jsp"/>
+                </div>-->
 			<div class="cp_content">
 				<div id="contentName">결제 내역</div>
 				<div id="contentNamebar"></div>
@@ -80,8 +82,6 @@
 		</div>
 </section>
 <!-- header Fin -->
-<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />
-<script type="text/javascript" src="/resources/js/order.js"></script>
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<jsp:include page="/WEB-INF/views/common/singsingCampingfooter.jsp" />
 </body>
 </html>

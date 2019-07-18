@@ -46,6 +46,7 @@ public class TalkBoardBefore {
 		if(returnObj instanceof TalkBoardPageData) {
 			TalkBoardPageData b = (TalkBoardPageData)returnObj;
 			for(int i=0;i<b.getList().size();i++) {
+				System.out.println(b.getList().get(i).getBoardImg());
 				if(b.getList().get(i).getBoardContents() != null) {
 				System.out.println(b.getList().get(i).getBoardContents());
 				//String con = b.replaceAll("<", "&lt");

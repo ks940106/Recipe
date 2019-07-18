@@ -32,7 +32,7 @@ public class TalkBoardServiceImpl implements TalkBoardService {
 			pp.setStart((reqPage-1)*numPerPage+1);
 			pp.setEnd(reqPage*numPerPage);
 			pp.setType(type);
-			ArrayList<TalkBoard> list = (ArrayList<TalkBoard>)talkBoardDao.mainBoard(pp);
+			ArrayList<MainBoard> list = (ArrayList<MainBoard>)talkBoardDao.mainBoard(pp);
 			String pageNavi = "";
 			int pageNaviSize = 5;
 			int pageNo = ((reqPage-1)/pageNaviSize)*pageNaviSize+1;
@@ -61,7 +61,7 @@ public class TalkBoardServiceImpl implements TalkBoardService {
 			pp.setStart((reqPage-1)*numPerPage+1);
 			pp.setEnd(reqPage*numPerPage);
 			pp.setType(type);
-			ArrayList<TalkBoard> list = (ArrayList<TalkBoard>)talkBoardDao.boardType(pp);
+			ArrayList<MainBoard> list = (ArrayList<MainBoard>)talkBoardDao.boardType(pp);
 			String pageNavi = "";
 			int pageNaviSize = 5;
 			int pageNo = ((reqPage-1)/pageNaviSize)*pageNaviSize+1;

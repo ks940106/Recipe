@@ -51,21 +51,16 @@
 				      </tr>
 				    </thead>
 				    <tbody>
+				    <c:forEach items="${list }" var="t">
 				      <tr>
-				        <td>John</td>
-				        <td>Doe</td>
-				        <td>john@example.com</td>
+				        <td>${t.boardNo }</td>
+				        <td onclick="select('${t.boardNo}')">${t.title }</td>
+				        <td>${t.nickname }</td>
+				        <td>${t.contents }</td>
+				        <td>${t.viewCount }</td>
 				      </tr>
-				      <tr>
-				        <td>Mary</td>
-				        <td>Moe</td>
-				        <td>mary@example.com</td>
-				      </tr>
-				      <tr>
-				        <td>July</td>
-				        <td>Dooley</td>
-				        <td>july@example.com</td>
-				      </tr>
+				    </c:forEach>
+				  
 				    </tbody>
 				  </table>
 			</div>
@@ -77,6 +72,10 @@
 	<script>
 		function insert(){
 			location.href="/insertFreeBoard.do?boardType=1";
+		}
+		
+		function select(boardNo){
+			location.href="/selectFreeBoard.do?boardNo="+boardNo;
 		}
 	</script>
 	

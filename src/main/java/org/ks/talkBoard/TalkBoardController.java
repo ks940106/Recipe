@@ -45,11 +45,8 @@ public class TalkBoardController {
 		}
 		System.out.println("reqPage : "+reqPage);
 		TalkBoardPageData mpd = talkBoardService.mainBoard(reqPage,type);
-		
-		
-		
+
 		ArrayList<MainBoard> list = new ArrayList<MainBoard>();
-		
 		
 		System.out.println("시바 사이즈 : "+mpd.getList().size());
 		for(int i = 0; i < mpd.getList().size();i++) {
@@ -61,7 +58,10 @@ public class TalkBoardController {
 			String c = mpd.getList().get(i).getBoardImg();
 			String d = mpd.getList().get(i).getBoardContents();
 			String e = mpd.getList().get(i).getNickname();
-			MainBoard mb = new MainBoard(a, b, e, c, d, commentCount, likeCount);
+			String f = mpd.getList().get(i).getMemberImg();
+			MainBoard mb = new MainBoard(a, b, e, c, d, f, commentCount, likeCount);
+			System.out.println(f);
+			mpd.getList().get(i).setCommentCount(commentCount);
 			list.add(mb);
 		}
 		MainPageData pd = new MainPageData(list, mpd.getPageNavi(), mpd.getType());
