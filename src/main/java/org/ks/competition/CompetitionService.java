@@ -3,11 +3,12 @@ package org.ks.competition;
 import java.util.ArrayList;
 
 import org.ks.competition.vo.Competition;
+import org.ks.competition.vo.CompetitionPageData;
 import org.ks.participant.vo.Participant;
 import org.ks.participant.vo.ParticipantMember;
 
 public interface CompetitionService {
-	public ArrayList<Competition> competitionList();
+	public  CompetitionPageData competitionList(int reqPage);
 	public int insertCompetition(Competition c);
 	public Competition competitionView(String competitionCheck);
 	public int deleteCompetition(int competitionNo);
@@ -23,4 +24,5 @@ public interface CompetitionService {
 	public int participantResult(String checkResult, int competitionNo);
 	public ParticipantMember competitionMypage(String id);
 	public ArrayList<ParticipantMember> participantResultList(int competitionNo);
+/*	public CompetitionPageData selectPage(int reqPage);*/
 }

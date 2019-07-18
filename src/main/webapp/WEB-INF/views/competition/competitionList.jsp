@@ -69,7 +69,6 @@
 				        </div>
 						<form action="/participantInsert.do" method="post" onsubmit="return check()">
 						<div class="cp_form">
-						
 						<table class="boardWrite">
 						<input type="hidden" name="competitionNo" value="${competition.competitionNo}">
 						<tbody>
@@ -95,38 +94,10 @@
 						</tr>
 						<tr>
 							<th><label for="CSContent" class="ess">내용</label></th>
-							<td><textarea id="CSContent" name="CSContent" class="full" maxlength="2000" title="내용을 입력해주세요"></textarea></td>
+							<td><textarea class="full" name="participantContent" id="pContent" maxlength="500"></textarea></td>
 						</tr>
 						</tbody>
 					</table>
-							<%-- <table class="cp_table">
-							
-								<tr>
-									<td>
-										아이디 <br> <input type="text" name="id" value="${sessionScope.member.id}" readonly> 
-									</td>
-								</tr>
-								<tr>
-									<td>
-										이름 <br> <input type="text" value="${sessionScope.member.name}" readonly> 
-									</td>
-								</tr>
-								<tr>
-									<td>
-										전화번호 <br> <input type="text" value="${sessionScope.member.phone}" readonly> 
-									</td>
-								</tr>
-								<tr>
-									<td>
-										성별 <br> <input type="text" value="${sessionScope.member.gender}" readonly> 
-									</td>
-								</tr>
-								<tr>
-									<td>
-										신청이유 <br> <textarea rows="10" cols="85" name="participantContent" id="pContent"></textarea> 
-									</td>
-								</tr>
-							</table> --%>
 							</div>
 							<input type="submit" value="대회참가 신청하기" >
                             <!-- <div id="cp_btn">
