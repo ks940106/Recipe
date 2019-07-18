@@ -61,7 +61,7 @@
 							<td>${n.noticeDate }</td>
 							<td>
 								<div>
-									<a href="/noticeUpdate.do?idx=${n.idx}" class="btn small col_main f_w">수정</a>
+									<a href="/noticeUpdatePage.do?idx=${n.idx}" class="btn small col_main f_w">수정</a>
 								</div>
 							</td>
 						</tr> 

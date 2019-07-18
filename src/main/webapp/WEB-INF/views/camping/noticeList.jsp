@@ -35,29 +35,25 @@
 			</div>
 			</nav>
 		</div>
-			<div class="board_right">
-				<a href="#:;" class="btn btn-success" onclick="insert();">등록</a>				
-			</div>
+			<h1>공지사항</h1>
 		<div class="section_content">
 		<div class="d1">
 			 <table class="table table-hover">
 				    <thead>
 				      <tr>
-				        <th>Firstname</th>
-				        <th>Lastname</th>
-				        <th>Email</th>
-				        <th>4</th>
-				        <th>5</th>
+				        <th>번호</th>
+				        <th>제목</th>
+				        <th>작성일</th>
+				        
 				      </tr>
+				     
 				    </thead>
 				    <tbody>
-				    <c:forEach items="${list }" var="t">
+				    <c:forEach items="${list }" var="n">
 				      <tr>
-				        <td>${t.boardNo }</td>
-				        <td onclick="select('${t.boardNo}')">${t.title }</td>
-				        <td>${t.nickname }</td>
-				        <td>${t.contents }</td>
-				        <td>${t.viewCount }</td>
+				        <td>${n.idx }</td>
+				        <td>${n.noticeTitle }</td>
+				        <td>${n.noticeDate }</td>
 				      </tr>
 				    </c:forEach>
 				  
@@ -70,9 +66,6 @@
 	<jsp:include page="/WEB-INF/views/common/singsingCampingfooter.jsp"></jsp:include>
 	
 	<script>
-		function insert(){
-			location.href="/insertFreeBoard.do?boardType=1";
-		}
 		
 		function select(boardNo){
 			location.href="/selectFreeBoard.do?boardNo="+boardNo;

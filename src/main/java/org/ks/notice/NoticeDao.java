@@ -8,4 +8,5 @@ public interface NoticeDao {
 	public ArrayList<Notice> noticeList();
 	public Notice noticeDetail(String idx);
 	public int noticeWrite(Notice n);
+	public int noticeUpdate(Notice n);
 }

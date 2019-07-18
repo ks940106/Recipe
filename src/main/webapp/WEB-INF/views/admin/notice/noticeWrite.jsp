@@ -39,8 +39,9 @@
 						<th>공지사항 내용</th>
 						<td><textarea rows="20" cols="20" name="noticeContent"></textarea>
 				</table>
+				<button type="submit">등록</button>
 			</div>
-			<button type="submit">등록</button>
+			
 			</form>
 		</div>
 	</section>

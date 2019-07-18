@@ -30,4 +30,10 @@ public class NoticeServiceImpl implements NoticeService{
 		int result = noticeDaoImpl.noticeWrite(n);
 		return result;
 	}
+
+	@Override
+	public int noticeUpdate(Notice n) {
+		int result = noticeDaoImpl.noticeUpdate(n);
+		return result;
+	}
 }

@@ -23,8 +23,9 @@
 	        <nav class="lnb_wrap">
 	             <jsp:include page="/WEB-INF/views/common/notice_nav.jsp"/>
 	        </nav>
-	        <form action="/noticeWrite.do">
 			<div class="section_content">
+				<form action="/noticeUpdate.do">
+				<input type="hidden" name="idx" value="${n.idx }">
 				<div class="set_field">
 					<h1>공지사항 관리</h1>
 					<div id="cp_div_bg"></div>
@@ -32,7 +33,7 @@
 				<table>
 					<tr>
 						<th>공지사항 제목</th>
-						<td>${n.noticeTitle }</td>
+						<td><input type="text" name="noticeTitle" value="${n.noticeTitle }"></td>
 					</tr>
 					<tr>
 						<th>공지사항 작성일</th>
@@ -42,9 +43,9 @@
 						<th>공지사항 내용</th>
 						<td><textarea rows="20" cols="20" name="noticeContent">${n.noticeContent }</textarea>
 				</table>
-			</div>
-			<button type="submit">등록</button>
+			<button type="submit">수정</button>
 			</form>
+			</div>
 		</div>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />

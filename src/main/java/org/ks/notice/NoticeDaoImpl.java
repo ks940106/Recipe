@@ -27,7 +27,15 @@ public class NoticeDaoImpl implements NoticeDao{
 
 	@Override
 	public int noticeWrite(Notice n) {
-		int result = sqlSession.update("notice.noticeWrite",n);
+		int result = sqlSession.insert("notice.noticeWrite",n);
+		return result;
+	}
+
+	@Override
+	public int noticeUpdate(Notice n) {
+		System.out.println("DB전");
+		int result =sqlSession.update("notice.noticeUpdate",n);
+		System.out.println("DB후");
 		return result;
 	}
 }
