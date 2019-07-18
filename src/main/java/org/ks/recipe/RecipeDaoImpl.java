@@ -79,4 +79,9 @@ public class RecipeDaoImpl implements RecipeDao {
     public List<Recipe> recipeList(RecipeSearch recipeSearch) {
         return sqlSession.selectList("recipe.search",recipeSearch);
     }
+
+    @Override
+    public int recipeTotal(RecipeSearch recipeSearch) {
+        return sqlSession.selectOne("recipe.total",recipeSearch);
+    }
 }
