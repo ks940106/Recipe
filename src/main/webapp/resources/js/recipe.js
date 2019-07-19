@@ -1,3 +1,4 @@
+var delImg = [];
 var boardReg	=	{
 
 
@@ -71,8 +72,11 @@ function video_preview() {
     var iframe_src = $('#cok_video_url').val();
     // https://youtu.be/VpDSxXlWEf0
     if(iframe_src.length >0) {
-        var youtube_video_id = iframe_src.match(/youtu\.be.*(.{11})/).pop();
-        console.log(youtube_video_id);
+        var strarr = iframe_src.match(/youtu\.be.*(.{11})/);
+        var youtube_video_id="";
+        console.log(strarr);
+        if(strarr!=null)
+        youtube_video_id = strarr.pop();
         if (youtube_video_id.length == 11) {
             var video_thumbnail = "//img.youtube.com/vi/" + youtube_video_id + "/0.jpg";
             $('#videoPhotoHolder').attr('src', video_thumbnail);
@@ -129,6 +133,8 @@ function stepNum() {
 }
 
 function delStep(i) {
+    var img = $(this).parent().parent().find("input[name='origin_step_img']").val();
+    alert(img);
     $("#divStepArea>div:nth-child("+i+")").remove();
     stepNum();
 }

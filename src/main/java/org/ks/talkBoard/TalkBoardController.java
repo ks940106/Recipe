@@ -234,6 +234,7 @@ public class TalkBoardController {
 			f.delete();
 		}
 		}
+		int delLike = talkBoardService.deleteTalkBoardLike(no);
 		int delComment = talkBoardService.deleteTalkBoardComment(no);
 		int result = talkBoardService.deleteTalkBoard(no);
 		System.out.println("삭제 0실패 1성공 : "+result);
@@ -411,6 +412,74 @@ public class TalkBoardController {
 		return result;
 	}
 
+	@RequestMapping(value="/adminTalkBoard.do")
+	public ModelAndView adminTalkBoard(HttpServletRequest request) {
+		String type = request.getParameter("boardType");
+		int reqPage;
+		try {
+			reqPage = Integer.parseInt(request.getParameter("reqPage"));
+		}catch(NumberFormatException e) {
+			reqPage = 1;
+		}
+		System.out.println("reqPage : "+reqPage);
+		TalkBoardPageData mpd = talkBoardService.adminTalkBoard(reqPage,type);
+
+		ArrayList<MainBoard> list = new ArrayList<MainBoard>();
+		
+		System.out.println("시바 사이즈 : "+mpd.getList().size());
+		for(int i = 0; i < mpd.getList().size();i++) {
+			System.out.println("시바 보드넘버 : "+mpd.getList().get(i).getBoardNo());
+			int commentCount = talkBoardService.commentCount(mpd.getList().get(i).getBoardNo());
+			int likeCount = talkBoardService.likeCount(mpd.getList().get(i).getBoardNo());
+			int a = mpd.getList().get(i).getBoardNo();
+			String b = mpd.getList().get(i).getBoardType();
+			String c = mpd.getList().get(i).getBoardImg();
+			String d = mpd.getList().get(i).getBoardContents();
+			String e = mpd.getList().get(i).getNickname();
+			String f = mpd.getList().get(i).getMemberImg();
+			MainBoard mb = new MainBoard(a, b, e, c, d, f, commentCount, likeCount);
+			System.out.println(f);
+			mpd.getList().get(i).setCommentCount(commentCount);
+			list.add(mb);
+		}
+		MainPageData pd = new MainPageData(list, mpd.getPageNavi(), mpd.getType());
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("type",type);
+		mv.addObject("pd",pd);
+		mv.setViewName("talkBoard/adminTalkBoardPage");
+		return mv;
+	}
+	@ResponseBody
+	@RequestMapping(value="/adminDeleteTalkBoard.do")
+	public String adminDeleteTalkBoard(HttpServletRequest request,@RequestParam int boardNo) {
+		String savePath = request.getSession().getServletContext().getRealPath("/resources/talkBoard");
+		System.out.println("파람 : "+boardNo);
+		String type = request.getParameter("boardType");
+		System.out.println("타입 : "+type);
+		int no = Integer.parseInt(request.getParameter("boardNo"));
+		System.out.println("리퀘스트 : "+no);
+		TalkBoard tb = talkBoardService.selectTalkBoard(no);
+		System.out.println(tb.getBoardImg());
+		String img = tb.getBoardImg();
+		System.out.println("씨바 이미지"+img);
+		if(img != null) {	
+			String[] file = img.split("/");
+			File f = null;
+		for(int i=0;i<file.length;i++) {
+			f = new File(savePath+"\\"+file[i]);
+			f.delete();
+		}
+		}
+		int delLike = talkBoardService.deleteTalkBoardLike(no);
+		int delComment = talkBoardService.deleteTalkBoardComment(no);
+		int result = talkBoardService.deleteTalkBoard(no);
+		System.out.println("삭제 0실패 1성공 : "+result);
+		if(result ==0) {
+			return "0";
+		}else {
+			return "0";
+			}
+	}
 	
 	
 }

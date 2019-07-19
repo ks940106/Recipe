@@ -27,6 +27,23 @@ public class Recipe {
     private int recipeState;
 
     public Recipe() {
+        recipeNo = 0;
+        recipeTitle = "";
+        recipeWriter = "";
+        recipeContents = "";
+        recipeMainImg = "";
+        recipeCat1 = "0";
+        recipeCat2 = "0";
+        recipeCount = "0";
+        recipeTime = "0";
+        recipeLevel = "0";
+        recipeItem = "";
+        recipeLike = 0;
+        recipeHit = 0;
+        recipePrice = 0;
+        recipeDate = new Date();
+        recipeStock = 0;
+        recipeState = 0;
     }
 
     @Override

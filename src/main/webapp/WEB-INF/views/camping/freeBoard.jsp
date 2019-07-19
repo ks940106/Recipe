@@ -29,14 +29,13 @@
 				<div class="nav_title">커뮤니티</div>
 				<ul class="nav_menu">
 					<li><a href="/noticeList.do">공지사항</a><span>&gt;</span></li>
-					<li><a href="/cart.do">자유게시판</a><span>&gt;</span></li>
-					<li><a href="/orderList.do">Q&A</a><span>&gt;</span></li>
+					<li><a href="/freeBoard.do">자유게시판</a><span>&gt;</span></li>
 				</ul>
 			</div>
 			</nav>
 		</div>
 			<div class="board_right">
-				<a href="#:;" class="btn btn-success" onclick="insert();">등록</a>				
+				<a href="#:;" class="btn btn-success" onclick="insert(${sessionScope.member.nickname});">등록</a>				
 			</div>
 		<div class="section_content">
 		<div class="d1">
@@ -69,11 +68,15 @@
 			</div>
 	</div>
 	</section>
-	<jsp:include page="/WEB-INF/views/common/singsingCampingfooter.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/views/common/freshfooter.jsp"></jsp:include>
 	
 	<script>
-		function insert(){
+		function insert(nickname){
+			if(nickname != null){
 			location.href="/insertFreeBoard.do?boardType=1";
+			}else{
+				alert("로그인해 주세요");
+			}
 		}
 		
 		function select(boardNo){

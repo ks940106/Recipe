@@ -128,62 +128,75 @@ public class RecipeDetail {
         this.category2 = category2;
     }
     public String getCount(){
-        switch (Integer.parseInt(this.recipe.getRecipeCount().trim())){
-            case 1:
-                return "1인분";
-            case 2 :
-                return "2인분";
-            case 3:
-                return "3인분";
-            case 4:
-                return "4인분";
-            case 5:
-                return "5인분";
-            case 6:
-                return "6인분이상";
-            default:
-                return "ERROR";
+        try {
+            switch (Integer.parseInt(this.recipe.getRecipeCount().trim())){
+                case 1:
+                    return "1인분";
+                case 2 :
+                    return "2인분";
+                case 3:
+                    return "3인분";
+                case 4:
+                    return "4인분";
+                case 5:
+                    return "5인분";
+                case 6:
+                    return "6인분이상";
+                default:
+                    return "";
+            }
+        }catch (Exception e){
+            return "";
         }
+
     }
     public String getTime(){
-        switch (Integer.parseInt(this.recipe.getRecipeTime().trim())){
-            case 5 :
-                return "5분이내";
-            case 10 :
-                return "10분이내";
-            case 15:
-                return "15분이내";
-            case 20:
-                return "20분이내";
-            case 30:
-                return "30분이내";
-            case 60:
-                return "60분이내";
-            case 90:
-                return "90분이내";
-            case 120:
-                return "2시간이내";
-            case 999:
-                return "2시간이상";
-            default:
-                return "ERROR";
+        try {
+            switch (Integer.parseInt(this.recipe.getRecipeTime().trim())) {
+                case 5:
+                    return "5분이내";
+                case 10:
+                    return "10분이내";
+                case 15:
+                    return "15분이내";
+                case 20:
+                    return "20분이내";
+                case 30:
+                    return "30분이내";
+                case 60:
+                    return "60분이내";
+                case 90:
+                    return "90분이내";
+                case 120:
+                    return "2시간이내";
+                case 999:
+                    return "2시간이상";
+                default:
+                    return "";
+            }
+        }catch (Exception e){
+            return "";
         }
     }
 
     public String getLevel(){
-        switch (Integer.parseInt(this.recipe.getRecipeLevel().trim())){
-            case 1:
-                return "아무나";
-            case 2:
-                return "초급";
-            case 3:
-                return "중급";
-            case 4:
-                return "고급";
-            case 5:
-                return "신의경지";
-            default:
-                return "ERROR";
+        try {
+            switch (Integer.parseInt(this.recipe.getRecipeLevel().trim())){
+                case 1:
+                    return "아무나";
+                case 2:
+                    return "초급";
+                case 3:
+                    return "중급";
+                case 4:
+                    return "고급";
+                case 5:
+                    return "신의경지";
+                default:
+                    return "";
+            }
+        }catch (Exception e){
+            return "";
         }
     }
 
