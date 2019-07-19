@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>공지사항 관리 </title>
+<title>Fresh 공지사항 </title>
 <link rel="stylesheet" type="text/css" href="../resources/css/import.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/ui.css">
 	<link rel="stylesheet" type="text/css" href="../resources/css/style.css">
@@ -25,7 +25,7 @@
 	        </nav>
 			<div class="section_content">
 				<div class="admin_notice_div">
-					<form action="/noticeUpdate.do">
+					<form action="/noticeUpdate.do" method="post" onsubmit="return insert()">
 						<input type="hidden" name="idx" value="${n.idx }">
 				<div class="set_field">
 					<h1>공지사항 수정</h1>
@@ -34,7 +34,7 @@
 				<table class="adminNotice">
 					<tr>
 						<th>공지사항 제목</th>
-						<td><input type="text" name="noticeTitle" value="${n.noticeTitle }"></td>
+						<td><input type="text" name="noticeTitle" id="title" value="${n.noticeTitle }"></td>
 						<th>공지사항 작성일</th>
 						<td>${n.noticeDate }</td>
 					</tr>
@@ -43,7 +43,7 @@
 					
 					<tr>
 						<th>공지사항 내용</th>
-						<td colspan="3"><textarea rows="20" cols="20" name="noticeContent">${n.noticeContent }</textarea>
+						<td colspan="3"><textarea rows="20" cols="20" id="content" name="noticeContent">${n.noticeContent }</textarea>
 				</table>
 			<button type="submit">수정</button>
 					</form>
@@ -52,6 +52,6 @@
 		</div>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />
-	
+	<script type="text/javascript" src="/resources/js/talkBoard/noticeWrite.js"></script>
 </body>
 </html>

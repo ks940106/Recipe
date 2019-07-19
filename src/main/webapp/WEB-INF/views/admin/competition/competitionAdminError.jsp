@@ -24,12 +24,14 @@
 	             <jsp:include page="/WEB-INF/views/common/competition_nav.jsp"/>
 	        </nav>
 			<div class="section_content">
+				<div class="section_content">
 				<div>
   					<h1>진행중인 대회가 없습니다.</h1>
   				</div>
 			</div>
+			</div>
 		</div>
 	</section>
-	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />
+	<jsp:include page="/WEB-INF/views/common/freshfooter.jsp"/>
 </body>
 </html>

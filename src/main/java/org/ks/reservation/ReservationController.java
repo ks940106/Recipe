@@ -173,10 +173,10 @@ public class ReservationController {
 		reservationServiceImple.reservationUpdate(reservationId,reservationState);
 		return "redirect:/reservationAdminPage.do";
 	}
-	@RequestMapping(value="/reservationApproveList.do")
-	public String reservationApproveList(Model model) {
-		ArrayList<Reservation> list = reservationServiceImple.reservationApproveList();
-		model.addAttribute("list", list);
-		return "admin/reservation/reservationApproveList";
+	@RequestMapping(value="/reservationView.do")
+	public String reservationView(Model model,@RequestParam String reservationId) {
+		Reservation r = reservationServiceImple.selectOneReservation(reservationId);
+		model.addAttribute("r", r);
+		return "admin/reservation/reservationView";
 	}
 }

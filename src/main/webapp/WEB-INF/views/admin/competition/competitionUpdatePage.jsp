@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>요리 대회 관리자</title>
+<title>Fresh 요리 대회</title>
 <link rel="stylesheet" type="text/css"
 	href="../resources/css/import.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/ui.css">
@@ -22,75 +22,69 @@
 	<jsp:include page="/WEB-INF/views/common/adminHeader.jsp" />
 	<section>
 	<div class="wrapper">
-		<nav class="lnb_wrap"> <jsp:include
-			page="/WEB-INF/views/common/competition_nav.jsp" /> </nav>
+		<nav class="lnb_wrap"> 
+		<jsp:include	page="/WEB-INF/views/common/competition_nav.jsp" /> </nav>
 		<div class="section_content">
 			<div class="table-wrapper"
 				style="text-align: center; width: 1160px; margin: 0 auto; margin-top: 100px;">
+				<h2 class="list_field_h2">요리 대회 정보 수정</h2>
+						<div class="pom_div_bg"></div>
 				<form action="/competitionUpdate.do" method="post"
 					enctype="multipart/form-data">
-					<table class="table">
+					<table class="competitionWrite">
+						<tbody>
 						<input type="hidden" name="competitionNo" value="${competition.competitionNo }">
-						<tr class="reviewupdate_tr">
-							<th colspan="2"	style="font-size: 20px; font-weight: bold; background-color: #f69b02; color: #fff;">수정</th>
+						<tr>		
+							<th class="ess">제목</th>
+							<td><input type="text" class="competitionWriteInput" name="competitionTitle" style="width:600px;" value="${competition.competitionTitle }"></td>
 						</tr>
 						<tr>
-							<th>제목</th>
-							<td><input type="text" class="form-control"
-								name="competitionTitle" value="${competition.competitionTitle }"></td>
-						</tr>
-						<tr>
-							<th>대회 진행 여부</th>
-							<td><input type="checkbox" value="Y" name="competitionCheck">진행중
+							<div id="cp_th">
+                            	<th class="ess">대회 진행 여부</th>
+                       		  </div>
+							<td id="cp_table_td" style="font-size: 16px;">
+								<input type="checkbox" value="Y" name="competitionCheck" checked="checked">진행중
 								<input type="checkbox" value="N" name="competitionCheck">진행완료
 							</td>
 						</tr>
 						<tr>
-						<th>우승자</th>
-							<td><input type="text"  name="competitionResult">
-							</td>
-						</tr>
-						<tr>
-							<th>첨부파일</th>
+							<th class="ess" >첨부파일</th>
 							<td><input type="hidden" id="status" name="status"	value="stay">
 								<div class="placeholder">
 									<span style="color: black; font-size: 14px;">*파일유형 jpg,
 										jpeg, png, gif 최대파일크기 10MB</span>
 								</div>
 								<div class="file_box">
-									<label for="hostFile" style="width: 100%; text-align: center;">
+									<label for="hostFile" style="width: 100%;">
 										<span style="color: white;">파일첨부</span> 
 										<c:if test="${not empty competition.competitionImg}">
 											<img src="resources/upload/competition/${competition.competitionImg}" style="width: 300px; height: 300px;" class="file_img">
 										</c:if> 
 										<input type="hidden" name="oldFilename"	value="${competition.competitionImg}"> <!--예전파일명 --> 
-										<input type="file" name="fileUpload" id="competitionFile"	accept="image/*" onchange="loadImg(this)" value="${competition.competitionImg}">
-										<button type="button" class="btn btn-outline-primary"
-											id="imgdelete" style="border-color: #f69b02; color: #f69b02;">삭제하기</button>
+										<input type="file" name="fileUpload" id="competitionFile" accept="image/*" onchange="loadImg(this)" value="${competition.competitionImg}" style="margin-left: 10px;">
+										<button type="button" id="imgdelete">삭제하기</button>
 									</label>
 								</div></td>
 						</tr>
 						<tr>
-							<th>내용</th>
-							<td><textarea name="competitionContents"
-									class="form-control" rows="3">${competition.competitionContents }</textarea>
+							<th class="ess">내용</th>
+							<td><textarea name="competitionContents" class="full" rows="20" cols="50">${competition.competitionContents }</textarea>
 							</td>
 
 						</tr>
 						<tr>
 							<th colspan="2" style="text-align: center;">
-								<button type="submit" class="btn btn-outline-primary"
-									style="border-color: #f69b02; color: #f69b02;">수정하기</button>
+								<button type="submit" id="cp_update">수정하기</button>
 							</th>
 						</tr>
-
+						</tbody>
 					</table>
 				</form>
 			</div>
 		</div>
 	</div>
 	</section>
-	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />
+	<jsp:include page="/WEB-INF/views/common/freshfooter.jsp"/>
 	<script>
       function loadImg(event){
          if(event.files.length!=0 && event.files[0] != 0){

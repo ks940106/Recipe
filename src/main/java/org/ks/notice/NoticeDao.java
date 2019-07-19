@@ -10,4 +10,5 @@ public interface NoticeDao {
 	public Notice noticeDetail(int idx);
 	public int noticeWrite(Notice n);
 	public int noticeUpdate(Notice n);
+	public int noticeDelete(int idx);
 }

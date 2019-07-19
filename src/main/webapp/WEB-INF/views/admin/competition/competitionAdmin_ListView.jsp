@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Fresh 요리 대회</title>
 <link rel="stylesheet" type="text/css" href="../resources/css/import.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/ui.css">
 	<link rel="stylesheet" type="text/css" href="../resources/css/style.css">
@@ -221,14 +221,14 @@
 		</div>
         </div>
 	</section>
-	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp"/>
+	<jsp:include page="/WEB-INF/views/common/freshfooter.jsp"/>
 	 <script>
 	 window.onload = function(){
 		 totalCount = (Number)($("#totalCount").val());
 		/*  alert(totalCount);	 */
 		 for(var i = 0;i<$('.pResult').length;i++){
 			 if($(".pResult").eq(i).text() == "우승"){
-					$(".pResult").eq(i).parent().parent().css("background-color","red");
+					$(".pResult").eq(i).parent().parent().css("background-color","#f69b02");
 					$(".pResult").eq(i).parent().parent().css("color","#fff");
 					$(".checkPassList").eq(i).prop("checked",true);
 				}

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>회원 관리 </title>
+<title>Fresh 공지사항 </title>
 <link rel="stylesheet" type="text/css" href="../resources/css/import.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/ui.css">
 	<link rel="stylesheet" type="text/css" href="../resources/css/style.css">
@@ -34,9 +34,9 @@
 					<table class="list_table">
 						<colgroup>
 							<col width="40">
-							<col width="75">
 							<col width="150">
-							<col width="100">
+							<col width="40">
+							<col width="40">
 							<col width="100">
 							<col width="200">
 							<col width="120">
@@ -62,6 +62,7 @@
 							<td>
 								<div>
 									<a href="/noticeUpdatePage.do?idx=${n.idx}" class="btn small col_main f_w">수정</a>
+									<a href="/noticeDelete.do?idx=${n.idx}" class="btn small col_main f_w">삭제</a>
 								</div>
 							</td>
 						</tr> 
@@ -70,7 +71,7 @@
 					</table>
 				${list.pageNavi }
 				</div>
-				<a href="/noticeWritePage.do">게시글 작성</a>
+				<a href="/noticeWritePage.do" class="btn small col_main f_w">게시글 작성</a>
 			</div>
 		</div>
 	</section>
