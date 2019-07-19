@@ -29,4 +29,7 @@
 	<select id="totalCount" parameterType="_int" resultType="_int">
 		select count(*) cnt from notice
 	</select>
+	<delete id="noticeDelete">
+		delete notice where idx=#{idx}
+	</delete>
 </mapper>

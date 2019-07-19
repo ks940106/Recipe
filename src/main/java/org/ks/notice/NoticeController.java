@@ -114,4 +114,17 @@ public class NoticeController {
 		mav.setViewName("camping/noticeDetail");
 		return mav;
 	}
+	//관리자 페이지에서 공지사항 삭제
+	@RequestMapping(value="/noticeDelete.do")
+	public String noticeDelete(HttpServletRequest request) {
+		int idx = Integer.parseInt(request.getParameter("idx"));
+		int result = noticeServiceImpl.noticeDelete(idx);
+		String view="common/msg";
+		if(result>0) {
+			request.setAttribute("msg", "공지사항 삭제");
+		}else {
+			request.setAttribute("msg", "공지사항 삭제 실패");
+		}request.setAttribute("loc", "/adminNoticeList.do");
+		return view;
+	}
 }
