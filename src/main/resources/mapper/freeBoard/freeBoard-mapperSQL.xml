@@ -57,7 +57,7 @@
 		f_comment_level as commentLevel,
 		f_comment_writer as commentWriter,
 		f_comment_contents as commentContents
-		from free_board_comment where f_board_no = #{no}
+		from (SELECT ROWNUM AS RNUM, M.*FROM (select * from free_board_comment order by f_comment_no asc) M) WHERE f_board_no = #{no}
 	</select>
 	<select id="commentCount" parameterType="_int" resultType="_int">
 		select count(*) cnt from free_board_comment where f_board_no = #{no}

@@ -27,9 +27,8 @@
 			<div class="nav_con">
 				<div class="nav_title">커뮤니티</div>
 				<ul class="nav_menu">
-					<li><a href="/mypage.do">공지사항</a><span>&gt;</span></li>
-					<li><a href="/cart.do">자유게시판</a><span>&gt;</span></li>
-					<li><a href="/orderList.do">Q&A</a><span>&gt;</span></li>
+					<li><a href="/noticeList.do">공지사항</a><span>&gt;</span></li>
+					<li><a href="/freeBoard.do">자유게시판</a><span>&gt;</span></li>/a><span>&gt;</span></li>
 				</ul>
 			</div>
 			</nav>

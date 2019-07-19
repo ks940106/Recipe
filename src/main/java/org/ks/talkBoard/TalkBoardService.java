@@ -42,4 +42,10 @@ public interface TalkBoardService {
 	public int commentCount(int no);
 	
 	public int likeCount(int no);
+	
+	public TalkBoardPageData adminTalkBoard(int reqPage,String type);
+	
+	public int deleteTalkBoardLike(int no);
+	
+	
 }

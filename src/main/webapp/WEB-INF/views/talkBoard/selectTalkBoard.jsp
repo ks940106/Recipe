@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+       <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -45,12 +46,14 @@
 	 			<img src="/resources/img/talk/66932.png"  style="width:30px; height:30px;">    ${commentCount } 
 	 			</div>
 	 			
-	 			<c:if test="${(sessionScope.member.nickname eq tb.nickname) or (loginId eq 'admin')}">
+	 			<c:if test="${(sessionScope.member.nickname eq tb.nickname) or (sessionScope.member.nickname eq '관리자')}">
 				<input type="button" onclick="deleteBoard(${tb.boardNo})" class="btn-lg btn-danger" value="삭제">
 				<input type="button" onclick="modifyTalkBoard(${tb.boardNo})" class="btn-lg btn-success" value="수정">
 				</c:if>
 	 		</div>
-	 	
+	 		<div class="c2">
+	 			${tb.boardContents }
+	 		</div>
 	 		<c:forTokens items="${tb.boardImg }" delims="/" var="item">
 	 		<div class="d3">
 			<img src="/resources/talkBoard/${item}" width="100%">
@@ -67,12 +70,15 @@
 				<c:if test="${not empty tbc[0].commentNo}">
 				<c:forEach items="${tbc}" var="t">
 					<div class="comment-div">
-					
 						<p>${t.commentWriter }</p>
-						<p>${t.commentContents }</p>
-						<c:if test="${(sessionScope.member.nickname eq t.commentWriter) or (sessionScope.member.id eq 'admin')}">
+						<% pageContext.setAttribute("crcn", "\n");%> 
+						<c:set var="commentContent" value="${t.commentContents }"/>
+					    <c:set var="comment" value="${fn:replace(commentContent,'<','&lt') }"/>
+					    <c:set var="comment2" value="${fn:replace(comment,crcn,'<br>') }"/>
+						<p>${comment2 }</p>
+						<c:if test="${(sessionScope.member.nickname eq t.commentWriter) or (sessionScope.member.nickname eq '관리자')}">
 							<span>
-							<input type="button" onclick="del('${t.commentNo}','${tb.boardNo }','${sessionScope.member.id }');" class="btn-xs btn-danger" value="삭제">
+							<input type="button" onclick="del('${sessionScope.member.nickname}','${t.commentNo}','${tb.boardNo }','${sessionScope.member.id }');" class="btn-xs btn-danger" value="삭제">
 							</span>
 						</c:if>
 					</div>
@@ -81,10 +87,10 @@
 				
                 <div class="btn-like">
                 	<c:if test="${like eq null }">
-                    	<button type="button" class="btn btn-default"><img src="http://recipe1.ezmember.co.kr/img/btn_feel.gif" id="like_btn1" value="뿌부" onclick="like('${sessionScope.member.id}','${tb.boardNo }')"></button>
+                    	<button type="button" class="btn btn-default"><img src="http://recipe1.ezmember.co.kr/img/btn_feel.gif" id="like_btn1" value="뿌부" onclick="like('${sessionScope.member.nickname}','${sessionScope.member.id}','${tb.boardNo }')"></button>
                 	</c:if>
                 	<c:if test="${like.likeCheck eq 1 }">
-                    	<button type="button" class="btn btn-default"><img src="/resources/img/talk/btn_feel.gif" id="like_btn3" value="뿌부" onclick="likeDel('${sessionScope.member.id}','${tb.boardNo }')"></button>
+                    	<button type="button" class="btn btn-default"><img src="/resources/img/talk/btn_feel.gif" id="like_btn3" value="뿌부" onclick="likeDel('${sessionScope.member.nickname}','${sessionScope.member.id}','${tb.boardNo }')"></button>
                 	</c:if>
                 </div>
                 
