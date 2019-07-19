@@ -410,5 +410,7 @@ public class TalkBoardController {
 		int result = talkBoardService.likeDelClick(bl);
 		return result;
 	}
+
+	
 	
 }

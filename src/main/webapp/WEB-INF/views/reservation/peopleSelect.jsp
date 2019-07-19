@@ -35,6 +35,7 @@
                 	<input type="hidden" name="caravanPeople" value="${c.caravanPeople }">
                 	<input type="hidden" name="caravanMaxPeople" value="${c.caravanMaxPeople }">
                		<h1>인원을 선택하여 주십시오</h1>
+               		
                		${c.caravanName } ${c.caravanArea }평 기준${c.caravanPeople }명/최대${c.caravanMaxPeople }명<br>
                		<button id="down" type="button" class="btn btn-primary">▽</button> 
                		<span id="people">${c.caravanPeople }</span>명

@@ -19,7 +19,7 @@
   	from (SELECT ROWNUM AS RNUM, M.*FROM (select * from board order by board_no desc) M) a left join member b on (a.nickname=b.nickname) WHERE RNUM BETWEEN #{start} AND #{end}
   </select>
   
-  <select id="boardType" parameterType="pp" resultType="talk">
+  <select id="boardType" parameterType="pp" resultType="main">
   	select board_no as boardNo,
   	board_type as boardType,
   	nickname as nickname,
