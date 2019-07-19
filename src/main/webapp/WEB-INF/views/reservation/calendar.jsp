@@ -12,7 +12,6 @@
 <script type="text/javascript" src="../resources/js/reservation.js" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <style>
-
 </style>
 </head>
 <body>
@@ -32,9 +31,9 @@
                 	<div style="float: left;">
 						<table id="calendarTb">
 							<tr>
-								<th><button type="button" id="prev"><</button></th>
-								<th colspan="5" id="YearMonth"></th>
-								<th><button type="button" id="next">></button></th>
+								<th style="border-style: none;"><button type="button" id="prev" style="cursor: pointer;"><</button></th>
+								<th style="border-style: none;" colspan="5" id="YearMonth"></th>
+								<th style="border-style: none;"><button type="button" id="next" style="cursor: pointer;">></button></th>
 							</tr>
 							<tr>
 								<th style="color:red;">일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th style="color:blue;">토</th>

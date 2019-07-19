@@ -27,7 +27,6 @@ table{table-layout: fixed;}
 				<li><a href="#none" class="menu_name">예약 관리</a>
 					<ul class="lnb_sub_menu">
 						<li><a href="/reservationAdminPage.do">예약 승인,취소</a></li>
-						<li><a href="/reservationApproveList.do">예약 승인 리스트</a></li>
 					</ul></li>
 			</ul>
 		</div>
@@ -38,6 +37,8 @@ table{table-layout: fixed;}
 					<div id="cp_div_bg"></div>
 				</div>
 				<div class="list_field_box">
+									<span style="color:#1f6054;font-weight: bold; font-size: 12pt;"> * '예약 번호'를 클릭하면 예약 상세 보기가 가능합니다.</span>
+									<br><br><br>
 					<div class="list_field_inner">
 						<div class="list_field_con">
 							<p class="cancellationList">예약 대기</p>
@@ -55,7 +56,7 @@ table{table-layout: fixed;}
 									<c:forEach items="${list1 }" var ="vo1" varStatus="i">
 									<tr id="list1tr${i.count }" style="display:none;">
 										<td><input type="checkbox" name="reservationId1" value="${vo1.reservationId }"></td>
-										<td>${vo1.reservationId }</td>
+										<td><a href="/reservationView.do?reservationId=${vo1.reservationId }">${vo1.reservationId }</a></td>
 										<td>${vo1.reservationName }</td>
 										<td style="overflow:auto;">${vo1.reservationDate }</td>
 										<td>${vo1.totalCost }</td>
@@ -97,7 +98,7 @@ table{table-layout: fixed;}
 								<tbody id="payment2">
 									<c:forEach items="${list2 }" var ="vo2" varStatus="i">
 									<tr id="list2tr${i.count }" style="display:none;">
-										<td>${vo2.reservationId }</td>
+										<td><a href="/reservationView.do?reservationId=${vo2.reservationId }">${vo2.reservationId }</a></td>
 										<td>${vo2.reservationName }</td>
 										<td style="overflow:auto;">${vo2.reservationDate }</td>
 										<td>${vo2.totalCost }</td>
@@ -142,7 +143,7 @@ table{table-layout: fixed;}
 									<c:forEach items="${list3 }" var ="vo3" varStatus="i">
 									<tr id="list3tr${i.count }" style="display:none;">
 										<td><input type="checkbox" name="reservationId2" value="${vo3.reservationId }"></td>
-										<td>${vo3.reservationId }</td>
+										<td><a href="/reservationView.do?reservationId=${vo3.reservationId }">${vo3.reservationId }</a></td>
 										<td>${vo3.reservationName }</td>
 										<td style="overflow:auto;">${vo3.reservationDate }</td>
 										<td>${vo3.totalCost }</td>
@@ -184,7 +185,7 @@ table{table-layout: fixed;}
 								<tbody id="payment4">
 									<c:forEach items="${list4 }" var ="vo4" varStatus="i">
 									<tr id="list4tr${i.count }" style="display:none;">
-										<td>${vo4.reservationId }</td>
+										<td><a href="/reservationView.do?reservationId=${vo4.reservationId }">${vo4.reservationId }</a></td>
 										<td>${vo4.reservationName }</td>
 										<td style="overflow:auto;">${vo4.reservationDate }</td>
 										<td>${vo4.totalCost }</td>
