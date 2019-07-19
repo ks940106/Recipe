@@ -26,7 +26,7 @@
 				type : "post",
 				data : data,
 				success : function(str){
-					location.href="/selectTalkBoard.do?boardNo="+boardNo+"&memberId="+memberId;
+					location.href="/selectTalkBoard.do?boardNo="+boardNo+"&memberId="+memberId+"&nickname="+nickname;
 					alert(str);
 				},
 				error : function(){
@@ -36,14 +36,14 @@
 			}
 		}
 		
-		function del(commentNo,boardNo,memberId){
+		function del(nickname,commentNo,boardNo,memberId){
 			var no = commentNo;
 			$.ajax({
 				url : "/deleteComment.do",
 				type : "post",
 				data : {no:no},
 				success : function(data){
-					location.href="/selectTalkBoard.do?boardNo="+boardNo+"&memberId="+memberId;
+					location.href="/selectTalkBoard.do?boardNo="+boardNo+"&memberId="+memberId+"&nickname="+nickname;
 				},
 				error : function(){
 					console.log("댓글삭제 실패해따");
@@ -51,7 +51,7 @@
 			});
 		}
 		
-		function like(id,boardNo){
+		function like(nickname,id,boardNo){
 			if(id == ""){
 				alert("로그인해라");
 			}else{
@@ -62,7 +62,7 @@
 					type : "post",
 					data : data,
 					success : function(data){
-						location.href="/selectTalkBoard.do?boardNo="+boardNo+"&memberId="+id;
+						location.href="/selectTalkBoard.do?boardNo="+boardNo+"&memberId="+id+"&nickname="+nickname;
 						alert("성공해따"+data);
 					},
 					error : function(){ 
@@ -71,7 +71,7 @@
 				});
 			}
 		}
-		function likeDel(id,boardNo){
+		function likeDel(nickname,id,boardNo){
 			var data = "memberId="+id+"&boardNo="+boardNo;
 			console.log(data);
 			$.ajax({
@@ -79,7 +79,7 @@
 				type : "post",
 				data : data,
 				success : function(data){
-					location.href="/selectTalkBoard.do?boardNo="+boardNo+"&memberId="+id;
+					location.href="/selectTalkBoard.do?boardNo="+boardNo+"&memberId="+id+"&nickname="+nickname;
 					alert("좋아요 취소해따"+data);
 				},
 				error : function(){ 

@@ -19,6 +19,8 @@ public class TalkBoardBefore {
 	public void allPointcut() {}
 	@Pointcut("execution(* org.ks.talkBoard.*Service.*main*(..))")
 	public void allPointcut2() {}
+	@Pointcut("execution(* org.ks.talkBoard.*Service.*admin*(..))")
+	public void allPointcut3() {}
 	
 //	@Before("allPointcut()")
 //	public void beforePw(JoinPoint jp) throws Exception {
@@ -60,6 +62,23 @@ public class TalkBoardBefore {
 			}
 		}
 	}
+	@AfterReturning(value="allPointcut3()",returning="returnObj")
+	public void beforePw3(JoinPoint jp,Object returnObj) throws Exception {
+		String methodName = jp.getSignature().getName();
+		System.out.println(returnObj);
+		if(returnObj instanceof TalkBoardPageData) {
+			TalkBoardPageData b = (TalkBoardPageData)returnObj;
+			for(int i=0;i<b.getList().size();i++) {
+				if(b.getList().get(i).getBoardContents() != null) {
+				//String con = b.replaceAll("<", "&lt");
+				String con = b.getList().get(i).getBoardContents().replaceAll("<", "&lt");
+				String con2 = con.replace("\n", "<br>");
+				b.getList().get(i).setBoardContents(con2);
+				}
+			}
+		}
+	}
+
 
 	
 }

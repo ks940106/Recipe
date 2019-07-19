@@ -78,5 +78,17 @@
   <select id="selectImg" parameterType="string" resultType="member">
   	select member_img as memberImg from member where nickname = #{nickname}
   </select>
+  <select id="adminTalkBoard" parameterType="pp" resultType="main">
+  select a.board_no as boardNo,
+  	a.board_type as boardType,
+  	a.nickname as nickname,
+  	a.board_img as boardImg,
+  	a.board_contents as boardContents,
+    b.member_img as memberImg
+  	from (SELECT ROWNUM AS RNUM, M.*FROM (select * from board order by board_no desc) M) a left join member b on (a.nickname=b.nickname) WHERE RNUM BETWEEN #{start} AND #{end}
+  </select>
+  <delete id="deleteTalkBoardLike" parameterType="_int">
+  	delete from board_like where board_no = #{no}
+  </delete>
   
 </mapper>

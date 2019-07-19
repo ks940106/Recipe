@@ -31,9 +31,8 @@
 			<div class="nav_con">
 				<div class="nav_title">커뮤니티</div>
 				<ul class="nav_menu">
-					<li><a href="/mypage.do">공지사항</a><span>&gt;</span></li>
-					<li><a href="/cart.do">자유게시판</a><span>&gt;</span></li>
-					<li><a href="/orderList.do">Q&A</a><span>&gt;</span></li>
+					<li><a href="/noticeList.do">공지사항</a><span>&gt;</span></li>
+					<li><a href="/freeBoard.do">자유게시판</a><span>&gt;</span></li>
 				</ul>
 			</div>
 			</nav>
@@ -96,13 +95,15 @@
 				${fb.contents }
 			</div>
 			 -->
-			
+			<c:if test="${(sessionScope.member.nickname eq t.commentWriter) or (sessionScope.member.nickname eq '관리자')}">
 		</div>
 			<input type="button" onclick="deleteFreeBoard(${fb.boardNo})" class="btn-lg btn-danger" value="삭제">
 			<input type="button" onclick="modifyFreeBoard(${fb.boardNo})" class="btn-lg btn-success" value="수정">
-	</div>
+		</div>
+			</c:if>
+		
 	</section>
-	<jsp:include page="/WEB-INF/views/common/singsingCampingfooter.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/views/common/freshfooter.jsp"></jsp:include>
 	<script>
 		function deleteFreeBoard(no){
 			location.href="/deleteFreeBoard.do?boardNo="+no;
@@ -111,6 +112,10 @@
 			location.href="/modifyFreeBoard.do?boardNo="+no;
 		}
 		function freeComment(nickname,no){
+			console.log("닉네임 : "+nickname);
+			if(nickname == ""){
+				alert("로그인해 주세요");
+			}else{
 			var level = $('#level').val();
 			var contents = $('#comment_tx').val();
 			console.log(nickname);
@@ -130,6 +135,7 @@
 					alert("댓글실패");
 				}
 			});
+			}
 			
 		}
 		

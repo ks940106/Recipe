@@ -9,7 +9,7 @@
   	comment_writer as commentWriter,
   	comment_contents as commentContents,
   	comment_ref as commentRef
-  	from board_comment where board_no = #{boardNo}
+  	from (SELECT ROWNUM AS RNUM, M.*FROM (select * from board_comment order by comment_no asc) M) WHERE board_no = #{boardNo}
   </select>
   
   <insert id="insertTalkBoardComment" parameterType="talkComment">
