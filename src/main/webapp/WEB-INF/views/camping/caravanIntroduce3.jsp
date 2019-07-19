@@ -64,12 +64,12 @@
 			</div>
 			<div class="textBox">								
 				<div class="text on">
-					<p class="title"><span>캠핑장A</span>특별한 추억을 쌓을 수 있는 공간</p>
+					<p class="title"><span>캠핑장C</span>특별한 추억을 쌓을 수 있는 공간</p>
 					<div class="info">
-						<p><span>평수</span>13평</p>
-						<p><span>기준인원</span>성인2인</p>
+						<p><span>평수</span>31평</p>
+						<p><span>기준인원</span>성인4인</p>
 						<p><span>1인당 추가 금액</span>10,000원</p>
-						<p><span>금액</span>40,000원</p>
+						<p><span>금액</span>100,000원</p>
 						<p><span>입실</span>15시</p>
 						<p><span>퇴실</span>11시</p>
 						<p><span>주차</span>1팀당 1대</p>
