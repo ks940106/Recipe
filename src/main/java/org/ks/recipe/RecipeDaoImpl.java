@@ -110,4 +110,36 @@ public class RecipeDaoImpl implements RecipeDao {
     public int recipeDel(Recipe recipe) {
         return sqlSession.update("recipe.delete",recipe);
     }
+
+    @Override
+    public int recipeUpdate(Recipe recipe) {
+        return sqlSession.update("recipe.update",recipe);
+    }
+
+    @Override
+    public int stepUpdate(Recipe recipe) {
+        int result = 0;
+        for (int i = 0;i<recipe.getRecipeStep().size();i++) {
+            Map<String,Object> map = new HashMap<>();
+            map.put("recipeNo", recipe.getRecipeNo());
+            map.put("stepNo",i+1);
+            map.put("stepContent",recipe.getRecipeStep().get(i).getStep());
+            map.put("stepImg",recipe.getRecipeStep().get(i).getImg());
+            result += sqlSession.update("recipe.stepUpdate", map);
+        }
+        return result;
+    }
+
+    @Override
+    public int workImgUpdate(Recipe recipe) {
+        int result = 0;
+        for (int i = 0;i<recipe.getRecipeWorkImg().size();i++){
+            Map<String,Object> map = new HashMap<>();
+            map.put("recipeNo", recipe.getRecipeNo());
+            map.put("workImgNo",i+1);
+            map.put("workImg",recipe.getRecipeWorkImg().get(i));
+            result += sqlSession.update("recipe.workImgUpdate", map);
+        }
+        return result;
+    }
 }

@@ -106,6 +106,7 @@ public class CartController {
 	@RequestMapping(value="deleteCart.do")
 	public String deleteCart(HttpServletRequest request) {
 		String[] cartNo = request.getParameterValues("cartNo");
+		System.out.println(cartNo[0]);
 		int result= cartServiceImpl.deleteCart(cartNo);
 		if(result>0) {
 			request.setAttribute("msg", "장바구니 삭제완료");

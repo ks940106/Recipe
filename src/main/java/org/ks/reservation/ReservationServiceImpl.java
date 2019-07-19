@@ -51,4 +51,9 @@ public class ReservationServiceImpl implements ReservationService{
 		}
 		
 	}
+	@Override
+	public ArrayList<Reservation> reservationApproveList() {
+		List list = reservationDaoImpl.reservationApproveList();
+		return (ArrayList<Reservation>)list;
+	}
 }

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>싱싱레시피 캠핑예약내역</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<script src="http://code.jquery.com/jquery-3.4.0.js"></script>
 	<link href="../resources/css/import.css" rel="stylesheet" />
@@ -43,7 +43,7 @@
                     <jsp:include page="/WEB-INF/views/common/navPom.jsp"/>
                 </div>-->
 			<div class="cp_content">
-				<div id="contentName">예약 내역</div>
+				<div id="contentName">캠핑 예약 내역</div>
 				<div id="contentNamebar"></div>
 					<table class="table" style="table-layout: fixed;">
 						<thead>
@@ -76,7 +76,7 @@
 									<c:when test="${r.reservationState eq 1}"><td style="color:blue;">예약 승인 대기 중</td></c:when>
 									<c:when test="${r.reservationState eq 2}"><td style="color:blue;">예약 승인</td></c:when>
 									<c:when test="${r.reservationState eq 3}"><td style="color:red;">예약 취소 승인 대기 중</td></c:when>
-									<c:otherwise><td style="color:red;"></td>예약 취소</c:otherwise>
+									<c:otherwise><td style="color:red;">예약 취소</td></c:otherwise>
 								</c:choose>
 							</tr>
 						</c:forEach>

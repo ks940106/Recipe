@@ -53,7 +53,7 @@
 						</thead>
 						<tbody>
 						
-						 <c:forEach items="${list }" var="n">
+						 <c:forEach items="${list.notice }" var="n">
 						 
 						 <tr>
 							<td>${n.idx}</td>
@@ -68,7 +68,7 @@
 						</c:forEach> 
 						</tbody>
 					</table>
-					
+				${list.pageNavi }
 				</div>
 				<a href="/noticeWritePage.do">게시글 작성</a>
 			</div>

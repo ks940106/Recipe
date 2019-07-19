@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -173,5 +172,11 @@ public class ReservationController {
 	public String reservationUpdate(@RequestParam String[] reservationId, @RequestParam String reservationState) {
 		reservationServiceImple.reservationUpdate(reservationId,reservationState);
 		return "redirect:/reservationAdminPage.do";
+	}
+	@RequestMapping(value="/reservationApproveList.do")
+	public String reservationApproveList(Model model) {
+		ArrayList<Reservation> list = reservationServiceImple.reservationApproveList();
+		model.addAttribute("list", list);
+		return "admin/reservation/reservationApproveList";
 	}
 }

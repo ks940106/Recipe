@@ -227,4 +227,41 @@
     <update id="delete" parameterType="recipe">
         update RECIPE set RECIPE_STATE = #{recipeState} where recipe_no = #{recipeNo}
     </update>
+
+    <update id="update" parameterType="recipe"><![CDATA[
+        update RECIPE
+        set
+            RECIPE_TITLE = #{recipeTitle},
+            recipe_contents = #{recipeContents},
+            recipe_mainimg = #{recipeMainImg},
+            recipe_cat1 = #{recipeCat1},
+            recipe_cat2 = #{recipeCat2},
+            recipe_count = #{recipeCount},
+            recipe_time = #{recipeTime},
+            recipe_level = #{recipeLevel},
+            recipe_item = #{recipeItem},
+            recipe_video = #{recipeVideo},
+            recipe_state = #{recipeState}
+            where recipe_no = #{recipeNo}
+    ]]></update>
+    <update id="stepUpdate" parameterType="map">
+        MERGE into STEP S
+        using dual
+        on (S.RECIPE_NO = #{recipeNo} and S.step_no = #{stepNo})
+            when matched then
+                update set S.step_content = #{stepContent}, S.step_img = #{stepImg}
+        when not matched then
+            insert
+            values(#{recipeNo},#{stepNo},#{stepContent},#{stepImg})
+    </update>
+    <update id="workImgUpdate" parameterType="map">
+        MERGE into WORK_IMG W
+        using dual
+        on (W.RECIPE_NO = #{recipeNo} and W.WORK_IMG_NO = #{workImgNo})
+        when matched then
+            update set W.WORK_IMG = #{workImg}
+        when not matched then
+            insert
+            values(#{recipeNo},#{workImgNo},#{workImg})
+    </update>
 </mapper>

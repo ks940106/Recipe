@@ -14,4 +14,5 @@ public interface ReservationService {
 	public void cancelReservation(String reservationId);
 	public ArrayList<Reservation> selectAllReservation();
 	public void reservationUpdate(String[] reservationId,String reservationState);
+	public ArrayList<Reservation> reservationApproveList();
 }
