@@ -51,7 +51,7 @@
 		</div>
 	</div>
 	</section>
-	<jsp:include page="/WEB-INF/views/common/singsingCampingfooter.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/views/common/freshfooter.jsp"></jsp:include>
 	<script>
 		$(document).ready(function(){
 			$('#submit_btn').click(function(){

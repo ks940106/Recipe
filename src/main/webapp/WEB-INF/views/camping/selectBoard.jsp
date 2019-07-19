@@ -103,7 +103,7 @@
 			</c:if>
 		
 	</section>
-	<jsp:include page="/WEB-INF/views/common/singsingCampingfooter.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/views/common/freshfooter.jsp"></jsp:include>
 	<script>
 		function deleteFreeBoard(no){
 			location.href="/deleteFreeBoard.do?boardNo="+no;
@@ -112,6 +112,10 @@
 			location.href="/modifyFreeBoard.do?boardNo="+no;
 		}
 		function freeComment(nickname,no){
+			console.log("닉네임 : "+nickname);
+			if(nickname == ""){
+				alert("로그인해 주세요");
+			}else{
 			var level = $('#level').val();
 			var contents = $('#comment_tx').val();
 			console.log(nickname);
@@ -131,6 +135,7 @@
 					alert("댓글실패");
 				}
 			});
+			}
 			
 		}
 		

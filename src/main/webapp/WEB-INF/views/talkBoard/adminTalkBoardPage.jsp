@@ -74,7 +74,7 @@
 		</div>
 
 	</section>
-	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />
+	<jsp:include page="/WEB-INF/views/common/freshfooter.jsp" />
 	
 	<script>
 	function deleteBoard(boardNo,type){
