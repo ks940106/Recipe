@@ -30,16 +30,17 @@ public class RecipeDaoImpl implements RecipeDao {
 
     @Override
     public int stepReg(Recipe recipe) {
-        int result;
-
-        result = sqlSession.update("recipe.stepReg",recipe);
+        int result = 0;
+        if(!recipe.getRecipeStep().isEmpty())
+            result = sqlSession.update("recipe.stepReg",recipe);
         return result;
     }
 
     @Override
     public int workImgReg(Recipe recipe) {
-        int result;
-        result = sqlSession.update("recipe.workImgReg",recipe);
+        int result = 0;
+        if(!recipe.getRecipeWorkImg().isEmpty())
+            result = sqlSession.update("recipe.workImgReg",recipe);
         return result;
     }
 
@@ -119,6 +120,8 @@ public class RecipeDaoImpl implements RecipeDao {
     @Override
     public int stepUpdate(Recipe recipe) {
         int result = 0;
+        int recipeNo = recipe.getRecipeNo();
+        int cnt = sqlSession.selectOne("recipe.stepCount",recipeNo);
         for (int i = 0;i<recipe.getRecipeStep().size();i++) {
             Map<String,Object> map = new HashMap<String, Object>();
             map.put("recipeNo", recipe.getRecipeNo());
@@ -127,12 +130,24 @@ public class RecipeDaoImpl implements RecipeDao {
             map.put("stepImg",recipe.getRecipeStep().get(i).getImg());
             result += sqlSession.update("recipe.stepUpdate", map);
         }
+        Map<String,Integer> map = new HashMap<String, Integer>();
+        map.put("recipeNo",recipeNo);
+        map.put("start",recipe.getRecipeStep().size()+1);
+        map.put("end",cnt);
+        result += sqlSession.update("recipe.stepDel",map);
+        List<String> files = sqlSession.selectList("recipe.getStepImg",map);
+//        for (String file:
+//             ) {
+//
+//        }
         return result;
     }
 
     @Override
     public int workImgUpdate(Recipe recipe) {
         int result = 0;
+        int recipeNo = recipe.getRecipeNo();
+        int cnt = sqlSession.selectOne("recipe.workImgCount",recipeNo);
         for (int i = 0;i<recipe.getRecipeWorkImg().size();i++){
             Map<String,Object> map = new HashMap<String, Object>();
             map.put("recipeNo", recipe.getRecipeNo());
@@ -140,6 +155,12 @@ public class RecipeDaoImpl implements RecipeDao {
             map.put("workImg",recipe.getRecipeWorkImg().get(i));
             result += sqlSession.update("recipe.workImgUpdate", map);
         }
+        Map<String,Integer> map = new HashMap<String, Integer>();
+        map.put("recipeNo",recipeNo);
+        map.put("start",recipe.getRecipeWorkImg().size()+1);
+        map.put("end",cnt);
+        result += sqlSession.update("recipe.workImgDel",map);
+        List<String> files = sqlSession.selectList("recipe.getWorkImgImg",map);
         return result;
     }
 }

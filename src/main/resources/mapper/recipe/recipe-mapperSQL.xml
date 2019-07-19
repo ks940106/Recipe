@@ -264,4 +264,26 @@
             insert
             values(#{recipeNo},#{workImgNo},#{workImg})
     </update>
+
+    <select id="stepCount" parameterType="_int" resultType="int">
+        select count(*) from STEP where RECIPE_NO = #{recipeNo}
+    </select>
+    <update id="stepDel" parameterType="map">
+        delete STEP where RECIPE_NO = #{recipeNo} and (STEP_NO between #{start} and #{end})
+    </update>
+    <select id="workImgCount" parameterType="_int" resultType="int">
+        select count(*) from WORK_IMG where RECIPE_NO = #{recipeNo}
+    </select>
+    <update id="workImgDel" parameterType="map">
+        delete WORK_IMG where RECIPE_NO = #{recipeNo} and (WORK_IMG_NO between #{start} and #{end})
+    </update>
+
+    <select id="getStepImg" parameterType="map" resultType="string">
+        select STEP_IMG from STEP where RECIPE_NO = #{recipeNo} and (STEP_NO between #{start} and #{end})
+    </select>
+
+    <select id="getWorkImgImg" parameterType="map" resultType="string">
+        select WORK_IMG from WORK_IMG where RECIPE_NO = #{recipeNo} and (WORK_IMG_NO between #{start} and #{end})
+    </select>
+
 </mapper>
