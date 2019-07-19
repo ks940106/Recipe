@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="notice">
-	<select id="noticeList" resultType="notice">
-		select idx as idx,notice_title as noticeTitle,
-		notice_Content as noticeContent,notice_date as noticeDate
-		from notice ORDER by idx desc
+	<select id="noticeList" parameterType="map" resultType="notice">
+		   select 
+		idx, noticeTitle,
+		 noticeDate
+  		from(SELECT ROWNUM AS RNUM, M.
+        idx, noticeTitle,
+		 noticeDate
+        FROM (select 
+  		idx as idx,notice_title as noticeTitle,
+		notice_date as noticeDate
+  		 from notice  order by idx desc) M) WHERE RNUM BETWEEN #{start} AND #{end}
 	</select>
 	<select id="noticeDetail" resultType="notice">
 		select 
@@ -19,5 +26,7 @@
 		update notice set notice_title = #{noticeTitle},
 		notice_Content = #{noticeContent} where idx=#{idx}
 	</update>
-	
+	<select id="totalCount" parameterType="_int" resultType="_int">
+		select count(*) cnt from notice
+	</select>
 </mapper>

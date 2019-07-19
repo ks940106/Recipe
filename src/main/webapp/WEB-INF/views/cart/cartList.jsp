@@ -72,8 +72,8 @@
 						</c:if>
 						</tbody>
 					</table>
-					<button type="submit" class="button button1">주문하기</button>
-					<button type="button" class="button button1" onclick="deletecart();">삭제하기</button>
+					<button type="submit" class="button button1" id="order1">주문하기</button>
+					<button type="button" class="button button1" onclick="deletecart(event);">삭제하기</button>
 				</form>
 			</div>
 		</div>

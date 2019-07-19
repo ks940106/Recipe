@@ -54,13 +54,20 @@ function payment(id,name,phone) {
 				});
 			};
 
-function deletecart() {
-	var cartNo = $("[name='cartNo']:checked");
-	var noarray1 = new Array();
-	for(var i=0;i<cartNo.length;i++){
-		noarray1[i] = cartNo.eq(i).val();
+function deletecart(event) {
+	var num =$("[name='cartNo']:checked").length;
+	if(num<=0){
+		alert("삭제할 제품을 선택해주세요");
+		event.preventDefault();		
+	}else{
+		
+		var cartNo = $("[name='cartNo']:checked");
+		var noarray1 = new Array();
+		for(var i=0;i<cartNo.length;i++){
+			noarray1[i] = cartNo.eq(i).val();
+		}
+		location.href="/deleteCart.do?cartNo="+noarray1;
 	}
-	location.href="/deleteCart.do?cartNo="+noarray1;
 };
 function sample6_execDaumPostcode() {
     new daum.Postcode({
@@ -114,3 +121,11 @@ $(".delivery").on('click',function(){
 		
 });
 
+$("#order1").click(function(event) {
+	var num =$("[name='cartNo']:checked").length;
+	if(num<=0){
+		alert("주문할 제품을 선택해주세요");
+		event.preventDefault();		
+	}
+	
+});

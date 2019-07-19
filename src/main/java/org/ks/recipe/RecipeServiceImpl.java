@@ -157,4 +157,14 @@ public class RecipeServiceImpl implements RecipeService {
     public int recipeDel(Recipe recipe) {
         return recipeDaoImpl.recipeDel(recipe);
     }
+
+    @Override
+    public int recipeUpdate(Recipe recipe) {
+        int result = 0;
+        if(recipeDaoImpl.recipeUpdate(recipe)>0){
+            result += recipeDaoImpl.stepUpdate(recipe);
+            result += recipeDaoImpl.workImgUpdate(recipe);
+        }
+        return result;
+    }
 }
