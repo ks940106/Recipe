@@ -397,6 +397,7 @@ header .menu_btn i.marketing:last-child {
 .list_field .list_menu {
     margin: 10px 0;
     position: relative;
+    text-align: right;
 }
 
 .list_field .list_menu .btn {
@@ -469,13 +470,6 @@ header .menu_btn i.marketing:last-child {
 .list_table.left th{background:#fff;}
 .list_table.left td{text-align:left; padding-left:15px;}
 
-.list_table th:nth-child(2){
-	width: 350px;
-}
-.list_table th:nth-child(3){
-	width: 150px;
-}
-
 .list_table td {
     padding: 15px 5px;
     font-weight: 400;
@@ -499,7 +493,10 @@ header .menu_btn i.marketing:last-child {
     width: 60px;
     height: 60px;
 }
-
+ .list_table td:last-child{
+	cursor: pointer;
+	
+} 
 .list_table td .tag {
     display: inline-block;
     text-align: center;
@@ -546,6 +543,218 @@ header .menu_btn i.marketing:last-child {
 .list_table.option td {
     padding: 5px;
 }
+
+
+/*list_table1*/
+
+.list_table1 {
+	width: 100%;
+    border-top: 3px solid #445451;
+}
+
+.list_table1 tr {
+    border-bottom: 1px solid #ccc;
+}
+
+
+.list_table1 th, .list_table1 td {
+    text-align: center;
+    /* color: #3b3b3b; */
+    border: 1px solid #ccc;
+    vertical-align:middle;
+}
+
+.list_table1 th {
+    background-color: #f0eef1;
+    font-size: 13px;
+    text-align: center;
+    padding: 14px 0;
+    line-height: 16px;
+    font-weight: 500;
+}
+
+.list_table1.left th{background:#fff;}
+.list_table1.left td{text-align:left; padding-left:15px;}
+
+.list_table1 td {
+    padding: 15px 5px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.list_table1 td.text-left {
+    text-align: left;
+}
+
+.list_table1 td.text-right {
+    text-align: right;
+}
+
+.list_table1 td div + div {
+    margin-top: 3px;
+}
+
+.list_table1 td .goods_img {
+    width: 60px;
+    height: 60px;
+}
+ 
+.list_table1 td .tag {
+    display: inline-block;
+    text-align: center;
+    padding: 3px 5px;
+}
+
+.list_table1 .accent_bg {
+    background: #fafafa !important;
+}
+
+.list_table1 tfoot td {
+    background-color: #e1e1e1;
+}
+
+.list_table1 .link {
+    text-decoration: underline;
+    -ms-underline-position: below;
+}
+
+.list_table1 .memo,
+.list_table1 .btn.phone {
+    font-size: 12px;
+}
+
+.list_table1 .btn.phone {
+    height: 25px;
+    line-height: 22px;
+    width: auto;
+    padding: 0 5px;
+    background-color: #5cb85c;
+    color: #fff;
+}
+
+.list_table1.small th, .list_table.small td {
+    padding: 7px 5px;
+    font-size: 13px;
+}
+
+.list_table1.option th {
+    padding: 5px 0;
+    font-size: 12px;
+}
+
+.list_table1.option td {
+    padding: 5px;
+}
+
+
+/*list_table2  진행중인 요리대회 관리자  리스트*/
+.list_table2 {
+	width: 100%;
+    border-top: 3px solid #445451;
+}
+
+.list_table2 tr {
+    border-bottom: 1px solid #ccc;
+}
+
+
+.list_table2 th, .list_table2 td {
+    text-align: center;
+    /* color: #3b3b3b; */
+    border: 1px solid #ccc;
+    vertical-align:middle;
+}
+
+.list_table2 th {
+    background-color: #f0eef1;
+    font-size: 13px;
+    text-align: center;
+    padding: 14px 0;
+    line-height: 16px;
+    font-weight: 500;
+}
+.list_table2 th:nth-child(2){
+	width:250px;
+}
+.list_table2.left th{background:#fff;}
+.list_table2.left td{text-align:left; padding-left:15px;}
+
+.list_table2 td {
+    padding: 15px 5px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.list_table2 td.text-left {
+    text-align: left;
+}
+
+.list_table2 td.text-right {
+    text-align: right;
+}
+
+.list_table2 td div + div {
+    margin-top: 3px;
+}
+
+.list_table2 td .goods_img {
+    width: 60px;
+    height: 60px;
+}
+ 
+.list_table2 td .tag {
+    display: inline-block;
+    text-align: center;
+    padding: 3px 5px;
+}
+
+.list_table2 .accent_bg {
+    background: #fafafa !important;
+}
+
+.list_table2 tfoot td {
+    background-color: #e1e1e1;
+}
+
+.list_table2 .link {
+    text-decoration: underline;
+    -ms-underline-position: below;
+}
+
+.list_table2 .memo,
+.list_table2 .btn.phone {
+    font-size: 12px;
+}
+
+.list_table2 .btn.phone {
+    height: 25px;
+    line-height: 22px;
+    width: auto;
+    padding: 0 5px;
+    background-color: #5cb85c;
+    color: #fff;
+}
+
+.list_table2.small th, .list_table.small td {
+    padding: 7px 5px;
+    font-size: 13px;
+}
+
+.list_table2.option th {
+    padding: 5px 0;
+    font-size: 12px;
+}
+
+.list_table2.option td {
+    padding: 5px;
+}
+
+
+
+
+
 
 .set_field + .set_field,
 .list_field + .list_field,
@@ -1050,4 +1259,68 @@ section.login_wrap .login_group .login_box .login_btn{
 	margin-top: 20px;
 	font-size: 26px;
 	width: 100%;
+}
+ .cp_tableWrap{
+	overflow-y: auto;
+    overflow: scroll;
+    height: 500px;
+} 
+
+
+
+
+/*팝업*/
+.layer_popup {
+		border-radius:10px;
+		text-align: center;
+		background:#fff;
+	    position: absolute;
+	    top: 30%;
+	    left: 45%;
+	    display: block;
+	    width: 500px;
+	    z-index: 150;
+	    margin-left: -145px;
+	    
+	}
+.hostpopupMask{
+		top:0;
+		left:0;
+		z-index:99;
+		position: fixed;
+		width: 100%;
+		height: 1000px;
+		background-color: black;
+		opacity: 0.6;
+		display:none;
+	}
+.pop_header{
+    padding: 10px 20px 0px 20px;
+    width: 100%;
+    height: 40px;
+    background-color: #1f6054;
+    border-radius: 10px 10px 0px 0px;
+    color: #fff;
+}
+.pop_p{
+    float: left;
+}
+.pop_header button{
+    float: right;
+    background: none;
+    border: none;
+    color: #fff;
+}
+.pop_container{
+    clear: both;
+    padding: 20px;
+}
+/*pop fin*/
+
+
+.list_field_h2{
+	text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }

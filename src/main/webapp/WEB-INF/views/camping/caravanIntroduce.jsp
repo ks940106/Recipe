@@ -111,52 +111,52 @@
 				</div>
 			</div>
 			</div>
-			<%-- <h2>캠핑장A</h2>
-		<p class="caravan_text">심플하고 모던한 카라반A</p>
-		<div class="sliderWrap">
-			 <div class="slider-wrap2">
-				          <ul id="slider2">
-				          <c:forTokens items="" delims="," var="sliderimg"> 
-				             <li data-color="#1abc9c">				                          
-									<img src="../resources/img/camping/hotel01.jpg" width="745px;">
-				             </li>	 
-				              <li data-color="#1abc9c">				                          
-									<img src="../resources/img/camping/hotel02.jpg" width="745px;">
-				             </li>
-				              <li data-color="#1abc9c">				                          
-									<img src="../resources/img/camping/hotel03.jpg" width="745px;">
-				             </li>  
-				           </c:forTokens>          		             
-				          </ul>				          
-				           <!--controls-->
-				          <div class="btns" id="next2"><img src="../resources/img/right_arrow.png"></div>
-				          <div class="btns" id="previous2"><img src="../resources/img/left_arrow.png"></div>
-				          <div id="counter2"></div>
-				          
-				          <div id="pagination-wrap2">
-				            <ul>
-				            </ul>
-				          </div>
-				          <!--controls-->  				                 
-			</div>
-			<div class="textBox">								
-				<div class="text on">
-					<p class="title"><span>캠핑장A</span>특별한 추억을 쌓을 수 있는 공간</p>
-					<div class="info">
-						<p><span>평수</span>13평</p>
-						<p><span>기준인원</span>성인2인</p>
-						<p><span>1인당 추가 금액</span>10,000원</p>
-						<p><span>금액</span>40,000원</p>
-						<p><span>입실</span>15시</p>
-						<p><span>퇴실</span>11시</p>
-						<p><span>주차</span>1팀당 1대</p>
-						<p><span>바베큐(2인 기준)</span>15,000원</p>
-						<p><span>바베큐 추가 금액(1인)</span>5,000원</p>
-						<p><span>구비시설</span>노래방, 화장실, 샤워실 등</p>
+			<h2>캠핑장A</h2>
+			<p class="caravan_text">심플하고 모던한 카라반A</p>
+			<div class="sliderWrap">
+				 <div class="slider-wrap2">
+					          <ul id="slider2">
+					          <c:forTokens items="" delims="," var="sliderimg"> 
+					             <li data-color="#1abc9c">				                          
+										<img src="../resources/img/camping/hotel01.jpg" width="745px;">
+					             </li>	 
+					              <li data-color="#1abc9c">				                          
+										<img src="../resources/img/camping/hotel02.jpg" width="745px;">
+					             </li>
+					              <li data-color="#1abc9c">				                          
+										<img src="../resources/img/camping/hotel03.jpg" width="745px;">
+					             </li>  
+					           </c:forTokens>          		             
+					          </ul>				          
+					           <!--controls-->
+					          <div class="btns" id="next2"><img src="../resources/img/right_arrow.png"></div>
+					          <div class="btns" id="previous2"><img src="../resources/img/left_arrow.png"></div>
+					          <div id="counter2"></div>
+					          
+					          <div id="pagination-wrap2">
+					            <ul>
+					            </ul>
+					          </div>
+					          <!--controls-->  				                 
+				</div>
+				<div class="textBox">								
+					<div class="text on">
+						<p class="title"><span>캠핑장A</span>특별한 추억을 쌓을 수 있는 공간</p>
+						<div class="info">
+							<p><span>평수</span>13평</p>
+							<p><span>기준인원</span>성인2인</p>
+							<p><span>1인당 추가 금액</span>10,000원</p>
+							<p><span>금액</span>40,000원</p>
+							<p><span>입실</span>15시</p>
+							<p><span>퇴실</span>11시</p>
+							<p><span>주차</span>1팀당 1대</p>
+							<p><span>바베큐(2인 기준)</span>15,000원</p>
+							<p><span>바베큐 추가 금액(1인)</span>5,000원</p>
+							<p><span>구비시설</span>노래방, 화장실, 샤워실 등</p>
+						</div>
 					</div>
 				</div>
-			</div>
-			</div> --%>
+			</div> 
 		</div>
 	</section>
 	<script>
