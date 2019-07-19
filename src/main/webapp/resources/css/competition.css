@@ -46,12 +46,7 @@
     clear: both;
     padding-top: 50px;
 }
-.cp_content p{
 
-   /*
-   padding-top: 15px;
-   /*
-}
 #cp_div_bg{
     width: 1000px;
     background-color: #313131;
@@ -127,7 +122,7 @@
     margin: 0 auto;
 }
 #cp_btn button{
-    background: #313131;
+    background: #1f6054;
     outline: none;
     border: none;
     cursor: pointer;
