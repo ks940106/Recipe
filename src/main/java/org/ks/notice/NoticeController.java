@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 
 import org.ks.notice.vo.Notice;
+import org.ks.notice.vo.NoticePageData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -26,8 +27,14 @@ public class NoticeController {
 	}
 	//관리자 페이지 공지사항 리스트
 	@RequestMapping(value="/adminNoticeList.do")
-	public ModelAndView adminNoticeList() {
-		ArrayList<Notice> list = noticeServiceImpl.noticeList();
+	public ModelAndView adminNoticeList(HttpServletRequest request) {
+		int reqPage;
+		try {
+			reqPage=Integer.parseInt(request.getParameter("reqPage"));
+		}catch (Exception e) {
+			reqPage=1;
+		}
+		NoticePageData list = noticeServiceImpl.noticeList(reqPage);
 		ModelAndView mav = new ModelAndView();
 			mav.addObject("list",list);
 			mav.setViewName("admin/notice/adminNoticeList");
@@ -43,6 +50,7 @@ public class NoticeController {
 		mav.setViewName("admin/notice/noticeDetail");
 		return mav;
 	}
+	//공지사항 수정
 	@RequestMapping(value="/noticeUpdate.do")
 	public String noticeUpdate(HttpServletRequest request) {
 		int idx = Integer.parseInt(request.getParameter("idx"));
@@ -79,14 +87,14 @@ public class NoticeController {
 		return view;
 	}
 	//캠핑 공지사항 리스트 보여주기
-	@RequestMapping(value="/noticeList.do")
+	/*@RequestMapping(value="/noticeList.do")
 	public ModelAndView noticeList() {
 		ArrayList<Notice> list = noticeServiceImpl.noticeList();
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list",list);
 		mav.setViewName("camping/noticeList");
 	return mav;
-	}
+	}*/
 	//캠핑공지사항 상세보기
 	@RequestMapping(value="/noticeDetail.do")
 	public ModelAndView noticeDetail(HttpServletRequest request) {

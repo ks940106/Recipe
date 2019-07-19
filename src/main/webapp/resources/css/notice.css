@@ -1,4 +1,32 @@
 @charset "UTF-8";
+/*관리자 페이지 공지사항 테이블*/
+.admin_notice_div{
+	margin-top: 15px;
+    margin-left: 100px;
+    width: 1200px;
+    margin-bottom: 100px;
+   
+}
+table.adminNotice{
+	text-align:center;
+  border: 2px solid #ddd;
+ border-top:2px solid #ddd;
+ width: 30%;
+ height: 80%;
+ width: 80%;
+}
+table.adminNotice th{
+	width: 20%;
+}
+table.adminNotice td{
+	width: 50%;
+}
+table.adminNotice td input{
+	width: 70%;
+}
+table.adminNotice td textarea{
+	width: -webkit-fill-available;
+}
 /*공지사항*/
 section.noticeWrite table{
  text-align:center;
@@ -14,5 +42,18 @@ section.noticeWrite table td{
 	border-bottom: 2px solid #ddd;
 }
 section.noticeWrite textarea {
+	resize: none;
+}
+
+/*공지사항 상세보기*/
+
+section.noticeUpdate table th{
+	border-bottom: 2px solid #ddd;
+	border-right: 2px solid #ddd;
+}
+section.noticeUpdate table td{
+	border-bottom: 2px solid #ddd;
+}
+section.noticeUpdate textarea {
 	resize: none;
 }
