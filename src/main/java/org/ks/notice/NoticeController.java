@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -54,11 +55,10 @@ public class NoticeController {
 	@RequestMapping(value="/noticeUpdate.do")
 	public String noticeUpdate(HttpServletRequest request) {
 		int idx = Integer.parseInt(request.getParameter("idx"));
-		String noticeTitle = request.getParameter("noticeTitle");
-		String noticeContent = request.getParameter("noticeContent");
+		String noticeTitle = request.getParameter("noticeTitle").replaceAll("<", "&lt");
+		String noticeContent = request.getParameter("noticeContent").replaceAll("<", "&lt");
 		Notice n = new Notice(idx, noticeTitle, noticeContent, null);
 		int result = noticeServiceImpl.noticeUpdate(n);
-		
 		String view="common/msg";
 		if(result>0) {
 			request.setAttribute("msg", "공지사항 수정 성공");
@@ -75,7 +75,10 @@ public class NoticeController {
 		Notice n = new Notice();
 		n.setNoticeTitle(request.getParameter("noticeTitle"));
 		n.setNoticeContent(request.getParameter("noticeContent"));
-		System.out.println(n.getNoticeTitle());
+		String content = n.getNoticeContent().replaceAll("<", "&lt");
+		n.setNoticeContent(content);
+		String title = n.getNoticeTitle().replaceAll("<", "&lt");
+		n.setNoticeTitle(title);
 		int result = noticeServiceImpl.noticeWrite(n);
 		String view="common/msg";
 		if(result>0) {
@@ -87,14 +90,20 @@ public class NoticeController {
 		return view;
 	}
 	//캠핑 공지사항 리스트 보여주기
-	/*@RequestMapping(value="/noticeList.do")
-	public ModelAndView noticeList() {
-		ArrayList<Notice> list = noticeServiceImpl.noticeList();
+	@RequestMapping(value="/noticeList.do")
+	public ModelAndView noticeList(HttpServletRequest request) {
+		int reqPage;
+		try {
+			reqPage=Integer.parseInt(request.getParameter("reqPage"));
+		}catch (Exception e) {
+			reqPage=1;
+		}
+		NoticePageData list = noticeServiceImpl.noticeListCamping(reqPage);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list",list);
 		mav.setViewName("camping/noticeList");
 	return mav;
-	}*/
+	}
 	//캠핑공지사항 상세보기
 	@RequestMapping(value="/noticeDetail.do")
 	public ModelAndView noticeDetail(HttpServletRequest request) {

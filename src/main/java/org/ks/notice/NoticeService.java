@@ -5,6 +5,7 @@ import org.ks.notice.vo.NoticePageData;
 
 public interface NoticeService {
 	public NoticePageData noticeList(int reqPage);
+	public NoticePageData noticeListCamping(int reqPage);
 	public Notice noticeDetail(int idx);
 	public int noticeWrite(Notice n);
 	public int noticeUpdate(Notice n);
