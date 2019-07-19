@@ -51,5 +51,19 @@ public class CaravanServiceImpl implements CaravanService{
 		int result = CaravanDaoImpl.updateInsertCaravan(cImg);
 		return result;
 	}
+	//사용자 
+	@Override
+	public CaravanImg selectCaravanA() {
+		
+		return CaravanDaoImpl.selectCaravanA();
+	}
+	@Override
+	public CaravanImg selectCaravanB() {
+		return CaravanDaoImpl.selectCaravanB();
+	}
+	@Override
+	public CaravanImg selectCaravanC() {
+		return CaravanDaoImpl.selectCaravanC();
+	}
 
 }

@@ -4,6 +4,7 @@ import org.ks.member.vo.Member;
 import org.ks.recipe.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -68,6 +69,7 @@ public class RecipeController {
                 return "common/msg";
             }else {
                 model.addAttribute("recipeDetail",recipeDetail);
+                System.out.println(recipeDetail.getRecipe().toString());
             }
         }
         model.addAttribute("categoryList", categoryList);
@@ -120,21 +122,22 @@ public class RecipeController {
         }
 
 
-        StringBuffer recipeStep = new StringBuffer();
-        StringBuffer recipeStepImg = new StringBuffer();
-        StringBuffer recipeWorkImg = new StringBuffer();
-        String deli = "<:>";
-
+//        StringBuffer recipeStep = new StringBuffer();
+//        StringBuffer recipeStepImg = new StringBuffer();
+//        StringBuffer recipeWorkImg = new StringBuffer();
+//        String deli = "<:>";
+        List<Step> recipeStep = new ArrayList<Step>();
+        List<String> recipeWorkImg = new ArrayList<String>();
         //step text
-        for(int i = 0;i<steps.length;i++){
-            System.out.println("steps"+"["+i+"] : "+steps[i]);
-            if(i==0){
-                recipeStep.append(steps[i]);
-            } else {
-                recipeStep.append(deli);
-                recipeStep.append(steps[i]);
-            }
-        }
+//        for(int i = 0;i<steps.length;i++){
+//            if(i==0){
+//                recipeStep.append(steps[i]);
+//            } else {
+//                recipeStep.append(deli);
+//                recipeStep.append(steps[i]);
+//            }
+//            recipeStep.add(new Step(steps[i],""));
+//        }
 
 
         Iterator <String> files = multi.getFileNames();
@@ -145,13 +148,14 @@ public class RecipeController {
             System.out.println("uploadFile Name : " + uploadFile);
 
             List<MultipartFile> mFile = multi.getFiles(uploadFile);
-
+            int i=0;
             for (MultipartFile m : mFile) {
                 newFileName = "";
                 String fileName = m.getOriginalFilename();
                 System.out.println("OriginalFilename : " + fileName);
 
                 //file upload
+
                 if(fileName.trim().length() > 0) {
                     UUID uuid = UUID.randomUUID();
                     //업로드할 파일이 존재할때 fileName.substring(0,fileName.indexOf("."))+
@@ -169,20 +173,22 @@ public class RecipeController {
                 if(uploadFile.trim().equals("recipeMainImg")){
                     mainImg = newFileName;
                 }else if(uploadFile.trim().equals("step_photo[]")){
-                    recipeStepImg.append(deli);
-                    recipeStepImg.append(newFileName);
+//                    recipeStepImg.append(deli);
+//                    recipeStepImg.append(newFileName);
+                    recipeStep.add(new Step(steps[i++],newFileName));
                 }else if(uploadFile.trim().equals("work_photo[]")&&fileName.trim().length() > 0){
-                    if(recipeWorkImg.toString().trim().length()<=0){
-                        recipeWorkImg.append(newFileName);
-                    }else {
-                        recipeWorkImg.append(deli);
-                        recipeWorkImg.append(newFileName);
-                    }
+//                    if(recipeWorkImg.toString().trim().length()<=0){
+//                        recipeWorkImg.append(newFileName);
+//                    }else {
+//                        recipeWorkImg.append(deli);
+//                        recipeWorkImg.append(newFileName);
+//                    }
+                    recipeWorkImg.add(newFileName);
                 }
 
             }
         }
-        Recipe recipe = new Recipe(0,title,member.getId(),contents,mainImg,cat1,cat2,count,time,level,item,recipeStep.toString(),recipeStepImg.toString().substring(3),0,0,0,null,0,recipeWorkImg.toString(),video, Integer.parseInt(recipeState));
+        Recipe recipe = new Recipe(0,title,member.getId(),contents,mainImg,cat1,cat2,count,time,level,item,recipeStep,0,0,0,null,0,recipeWorkImg,video, Integer.parseInt(recipeState));
         System.out.println(recipe);
 
         int result = recipeService.recipeReg(recipe);
@@ -258,5 +264,38 @@ public class RecipeController {
             message = "가격등록에 실패했습니다.";
         }
         return message;
+    }
+
+    @RequestMapping(value = "/myRecipe.do")
+    public String myRecipe(HttpSession session, Model model, String page){
+        Member member = (Member) session.getAttribute("member");
+        String id = member.getId();
+        System.out.println(id);
+        RecipeSearch recipeSearch = new RecipeSearch();
+        recipeSearch.setId(id);
+        recipeSearch.setPage(page);
+        System.out.println(recipeSearch.getId());
+        PageData<Recipe> recipePageData = recipeService.MyRecipeList(recipeSearch);
+        model.addAttribute("recipeList", recipePageData.getList());
+        model.addAttribute("pageNav",recipePageData.getPageNav());
+        return "member/myRecipe";
+    }
+
+    @RequestMapping(value = "/recipeDel.do", method = RequestMethod.POST)
+    public String recipeDel(HttpServletRequest request){
+        String recipeNo = request.getParameter("recipe_no");
+        String state = request.getParameter("recipe_state");
+        Recipe recipe = new Recipe();
+        recipe.setRecipeNo(Integer.parseInt(recipeNo));
+        recipe.setRecipeState(Integer.parseInt(state));
+        int result = recipeService.recipeDel(recipe);
+        return "recipe/recipe";
+    }
+
+    @RequestMapping(value = "recipeUpdate.do", method = RequestMethod.POST)
+    public String recipeUpdate(MultipartHttpServletRequest multi){
+
+
+        return "recipe/recipe";
     }
 }

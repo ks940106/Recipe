@@ -53,4 +53,27 @@
   	<update id="updateInsertCaravan" parameterType="caravanImg">
   		update caravan set caravan_main_img=#{caravanMainImg},caravan_img=#{caravanImg},caravan_img1=#{caravanImg1} where caravan_no=#{caravanNo}
   	</update>
+  	<!-- 사용자  -->
+  	<select id="selectCaravanA" resultType="caravanImg">
+  		select
+  			caravan_main_img as caravanMainImg,
+  			caravan_img as caravanImg,
+  			caravan_img1 as caravanImg1
+  			from caravan where caravan_no=35
+  	</select>
+  
+  	<select id="selectCaravanB" resultType="caravanImg">
+  		select
+  			caravan_main_img as caravanMainImg,
+  			caravan_img as caravanImg,
+  			caravan_img1 as caravanImg1
+  			from caravan where caravan_no=36
+  	</select>
+  	<select id="selectCaravanC" resultType="caravanImg">
+  		select
+  			caravan_main_img as caravanMainImg,
+  			caravan_img as caravanImg,
+  			caravan_img1 as caravanImg1
+  			from caravan where caravan_no=38
+  	</select>
 </mapper>

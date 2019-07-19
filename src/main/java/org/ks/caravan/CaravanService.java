@@ -13,4 +13,8 @@ public interface CaravanService {
 	public Caravan updateCaravanList(String caravanNo);
 	public CaravanImg updaterepresentationCaravan(String caravanNo);
 	public int updateInsertCaravan(CaravanImg cImg);
+	public CaravanImg selectCaravanA();
+	public CaravanImg selectCaravanB();
+	public CaravanImg selectCaravanC();
+	
 }

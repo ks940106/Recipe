@@ -27,4 +27,9 @@ public interface RecipeService {
     int orderReg(int recipeNo, int price);
 
     PageData<Recipe> recipeList(RecipeSearch recipeSearch);
+
+
+    PageData<Recipe> MyRecipeList(RecipeSearch recipeSearch);
+
+    int recipeDel(Recipe recipe);
 }
