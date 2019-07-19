@@ -12,4 +12,5 @@ public interface ReservationDao {
 	public void cancelReservation(String reservationId);
 	public List selectAllReservation();
 	public void reservationUpdate(String reservationId,String reservationState);
+	public Reservation selectOneReservation(String reservationId);
 }

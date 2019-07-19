@@ -1,5 +1,6 @@
 package org.ks.recipe;
 
+import com.sun.xml.internal.ws.api.ha.StickyFeature;
 import org.ks.member.vo.Member;
 import org.ks.recipe.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -293,8 +294,136 @@ public class RecipeController {
     }
 
     @RequestMapping(value = "recipeUpdate.do", method = RequestMethod.POST)
-    public String recipeUpdate(MultipartHttpServletRequest multi){
+    public String recipeUpdate(MultipartHttpServletRequest multi, HttpSession session){
+        Member member = (Member) session.getAttribute("member");
 
+        String recipeNo = multi.getParameter("recipe_no");
+        String item = multi.getParameter("cok_material");
+        String time = multi.getParameter("cok_time");
+        String count =  multi.getParameter("cok_portion");
+        String contents = multi.getParameter("cok_intro");
+        String video = multi.getParameter("cok_video_url");
+        String level = multi.getParameter("cok_degree");
+        String title = multi.getParameter("cok_title");
+        String cat1 = multi.getParameter("cok_sq_category_1");
+        String cat2 = multi.getParameter("cok_sq_category_2");
+        String mainImg = multi.getParameter("recipeMainImg");
+
+        String recipeState = multi.getParameter("recipe_state");
+        String[] steps = multi.getParameterValues("steps");
+
+        String originMainImg = multi.getParameter("origin_main_img");
+        String newMainImg = multi.getParameter("new_main_img");
+        String delMainImg = multi.getParameter("del_main_img");
+
+        String [] originStepImg = multi.getParameterValues("origin_step_img");
+        String [] newStepImg = multi.getParameterValues("new_step_img");
+        String [] delStepImg = multi.getParameterValues("del_step_img");
+
+        String [] originWorkImg = multi.getParameterValues("origin_work_img");
+        String [] newWorkImg = multi.getParameterValues("new_work_img");
+        String [] delWorkImg = multi.getParameterValues("del_work_img");
+
+
+        // 저장 경로 설정
+        String root = multi.getSession().getServletContext().getRealPath("/");
+        String path = root+"resources/upload/recipe/";
+
+        String newFileName = ""; // 업로드 되는 파일명
+
+        File dir = new File(path); //파일경로 설정
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+
+        List<Step> recipeStep = new ArrayList<Step>();
+        List<String> recipeWorkImg = new ArrayList<String>();
+
+        Iterator <String> files = multi.getFileNames();
+
+        while(files.hasNext()){
+
+            String uploadFile = files.next();
+            System.out.println("uploadFile Name : " + uploadFile);
+
+            List<MultipartFile> mFile = multi.getFiles(uploadFile);
+            int i=0;
+            for (MultipartFile m : mFile) {
+                newFileName = "";
+                String fileName = m.getOriginalFilename();
+                System.out.println("OriginalFilename : " + fileName);
+
+
+                //file upload
+                if(fileName.trim().length() > 0) {
+                    UUID uuid = UUID.randomUUID();
+                    //업로드할 파일이 존재할때 fileName.substring(0,fileName.indexOf("."))+
+                    newFileName = uuid.toString() + "." + fileName.substring(fileName.lastIndexOf(".") + 1);
+                    try {
+                        m.transferTo(new File(path + newFileName));
+                        System.out.println("File upload complete");
+                        System.out.println(path + newFileName);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                //file path
+                if(uploadFile.trim().equals("recipeMainImg")){
+                    if(newMainImg.equals("1")) {
+                        mainImg = newFileName;
+                    }
+                    else if(delMainImg.equals("1")) {
+                        File file = new File(path+originMainImg);
+                        if(file.exists()){
+                            if(file.delete()){
+                                System.out.println(file.toString()+"삭제성공");
+                            }
+                        }
+                        mainImg = "";
+                    }else {
+                        mainImg = originMainImg;
+                    }
+                }else if(uploadFile.trim().equals("step_photo[]")){
+                    if(newStepImg[i].equals("1")){
+                        recipeStep.add(new Step(steps[i],newFileName));
+                    }
+                    else if(delStepImg[i].equals("1")){
+                        File file = new File(path+originStepImg[i]);
+                        if(file.exists()){
+                            if(file.delete()){
+                                System.out.println(file.toString()+"삭제성공");
+                            }
+                            recipeStep.add(new Step(steps[i],""));
+                        }
+                    } else {
+                        recipeStep.add(new Step(steps[i],originStepImg[i]));
+                    }
+                    i++;
+                }else if(uploadFile.trim().equals("work_photo[]")){
+                    if(newWorkImg[i].equals("1")){
+                        recipeWorkImg.add(newFileName);
+                    }
+                    else if(delWorkImg[i].equals("1")){
+                        File file = new File(path+originWorkImg[i]);
+                        if(file.exists()){
+                            if(file.delete()){
+                                System.out.println(file.toString()+"삭제성공");
+                            }
+                            recipeWorkImg.add("");
+                        }
+                    } else {
+                        recipeWorkImg.add(originWorkImg[i]);
+                    }
+                    i++;
+                }
+
+            }
+        }
+        Recipe recipe = new Recipe(Integer.parseInt(recipeNo),title,member.getId(),contents,mainImg,cat1,cat2,count,time,level,item,recipeStep,0,0,0,null,0,recipeWorkImg,video, Integer.parseInt(recipeState));
+        System.out.println(recipe);
+
+        int result = recipeService.recipeUpdate(recipe);
 
         return "recipe/recipe";
     }

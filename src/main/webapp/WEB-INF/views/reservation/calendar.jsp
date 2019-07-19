@@ -6,36 +6,34 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>싱싱캠핑 예약</title>
-
+<link href="../resources/css/import.css" rel="stylesheet" />
 <link href="../resources/css/campingImport.css" rel="stylesheet" />
 <link href="../resources/css/reservation.css" rel="stylesheet" />
 <script type="text/javascript" src="../resources/js/reservation.js" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <style>
-	
 </style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/singsingCampingheader.jsp"/>
+<div class="ab_cover"></div>
 <section>
-	<div class="pom_bg">
-        <div class="pom_top">
-            <h1>예약</h1>
-            <div id="pom_div_bg"></div>
-            <p>카라반 예약하기</p>
-        </div>
-    </div>
     <div class="pom_wrap">
             <div class="pomNav">
-                <jsp:include page="/WEB-INF/views/tmr/tmrNav.jsp"/>
+                <nav class="nav_wrap">
+				<div class="nav_con">
+					<div class="nav_title">카라반 예약</div>
+				</div>
+			</nav>
             </div>
             <div class="section_content_nav">
                 <div class="cp_content">
                 	<div style="float: left;">
 						<table id="calendarTb">
 							<tr>
-								<th><button type="button" id="prev"><</button></th>
-								<th colspan="5" id="YearMonth"></th>
-								<th><button type="button" id="next">></button></th>
+								<th style="border-style: none;"><button type="button" id="prev" style="cursor: pointer;"><</button></th>
+								<th style="border-style: none;" colspan="5" id="YearMonth"></th>
+								<th style="border-style: none;"><button type="button" id="next" style="cursor: pointer;">></button></th>
 							</tr>
 							<tr>
 								<th style="color:red;">일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th style="color:blue;">토</th>
@@ -150,15 +148,39 @@
 				if(s==1 && i>=nowDate){ //현재, 오늘 포함하여 오늘 보다 높은 날짜(오늘 포함한 미래)
 					$("#"+id).addClass('possible');
 					$("#"+id).css("background-color","#3ac569");
+					if(i==15){ //15일을 일단 막는 로직
+						$("#"+id).removeClass('possible');
+						$("#"+id).addClass('impossible');
+						$("#"+id).css("background-color","#dadbdb");
+						$("#"+id).text("요리대회");
+					}
 				}else if(s==1 && i<nowDate){ //현재, 어제부터 이전 날짜
 					$("#"+id).addClass('impossible');
 					$("#"+id).css("background-color","#dadbdb");
+					if(i==15){ //15일을 일단 막는 로직
+						$("#"+id).removeClass('possible');
+						$("#"+id).addClass('impossible');
+						$("#"+id).css("background-color","#dadbdb");
+						$("#"+id).text("요리대회");
+					}
 				}else if(s==0){ //과거, 이전 월
 					$("#"+id).addClass('impossible');
 					$("#"+id).css("background-color","#dadbdb");
+					if(i==15){ //15일을 일단 막는 로직
+						$("#"+id).removeClass('possible');
+						$("#"+id).addClass('impossible');
+						$("#"+id).css("background-color","#dadbdb");
+						$("#"+id).text("요리대회");
+					}
 				}else if(s==2){ //미래, 이후 월
 					$("#"+id).addClass('possible');
 					$("#"+id).css("background-color","#3ac569");
+					if(i==15){ //15일을 일단 막는 로직
+						$("#"+id).removeClass('possible');
+						$("#"+id).addClass('impossible');
+						$("#"+id).css("background-color","#dadbdb");
+						$("#"+id).text("요리대회");
+					}
 				}
 				
 				if(clickState == 0 && changeMonth == true){ //클릭상태는 0 그러나 클릭할 당시, 달이 바뀌면서 '1'일 만을 참조 할 경우,바뀐 월의 데이터가 남지 않으므로~
@@ -221,11 +243,17 @@
 						var reservationId = 0;
 						reservationDate = new Array(); //DB컬럼용 배열
 						for(var i = 0 ; i<endId-startId;i++){
-							reservationId = Number(startId) + i; //
+							reservationId = Number(startId) + i;
+							if($("#"+reservationId).attr("class")=="impossible"){
+								$(".possible").css("background-color","#3ac569"); //이전에 남아있는 오렌지색을 초록색으로 바꿈
+								alert("15일은 대회 기간이라 선택이 불가능합니다.");
+								reservationDate = new Array();
+								clickState=0;
+								return;
+							}
 							$("#"+reservationId).css("background-color","orange"); //오렌지색으로
 							reservationDate[i] = $("#hidden"+reservationId).val(); //데이터넣기
 						}
-						alert(reservationDate);
 						selectReservation();
 						clickState = 0;//클릭상태 0 으로만듬
 						}else if(oneClickSelected == 2){ //다음달에서 선택 시
@@ -247,10 +275,24 @@
 								if(plusDate<10){
 									plusDate= "0"+plusDate;
 								}
+								if(plusDate==15){
+									$(".possible").css("background-color","#3ac569"); //이전에 남아있는 오렌지색을 초록색으로 바꿈
+									alert("15일은 대회 기간이라 선택이 불가능합니다.");
+									reservationDate = new Array();
+									clickState=0;
+									return;
+								}
 								reservationDate[i] = startYear+"/"+startMonth+"/"+plusDate; 
 							}
 							for(var i = 0; i<endText-1; i++){
 								var plusId = Number(endFirstId) + i;
+								if($("#"+plusId).attr("class")=="impossible"){
+									$(".possible").css("background-color","#3ac569"); //이전에 남아있는 오렌지색을 초록색으로 바꿈
+									alert("15일은 대회 기간이라 선택이 불가능합니다.");
+									reservationDate = new Array();
+									clickState=0;
+									return;
+								}
 								reservationDate[index+i] = $("#hidden"+plusId).val();
 								$("#"+plusId).css("background-color","orange");
 							}
@@ -273,6 +315,13 @@
 							var endDate = endValue.substring(8,10); //09
 							var endLastDate =new Date(endYear,endMonth,0).getDate();
 							for(;index<endLastDate-endDate+1;index++){
+								if($("#"+(endId+index)).attr("class")=="impossible"){
+									$(".possible").css("background-color","#3ac569"); //이전에 남아있는 오렌지색을 초록색으로 바꿈
+									alert("15일은 대회 기간이라 선택이 불가능합니다.");
+									reservationDate = new Array();
+									clickState=0;
+									return;
+								}
 								reservationDate[index] = $("#hidden"+(endId+index)).val();
 								$("#"+(endId+index)).css("background-color","orange");
 							}
@@ -284,6 +333,13 @@
 								var change = i+1;
 								if(change<10){
 									change = "0"+change;
+								}
+								if(change==15){
+									$(".possible").css("background-color","#3ac569"); //이전에 남아있는 오렌지색을 초록색으로 바꿈
+									alert("15일은 대회 기간이라 선택이 불가능합니다.");
+									reservationDate = new Array();
+									clickState=0;
+									return;
 								}
 								reservationDate[index+i] = startYear+"/"+startMonth+"/"+change; 
 							}

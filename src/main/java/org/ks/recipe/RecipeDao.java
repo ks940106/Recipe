@@ -36,4 +36,10 @@ public interface RecipeDao {
     int recipeTotal(RecipeSearch recipeSearch);
 
     int recipeDel(Recipe recipe);
+
+    int recipeUpdate(Recipe recipe);
+
+    int stepUpdate(Recipe recipe);
+
+    int workImgUpdate(Recipe recipe);
 }

@@ -44,4 +44,9 @@ public class ReservationDaoImpl implements ReservationDao{
 		map.put("reservationState", reservationState);
 		sqlSession.update("reservation.reservationUpdate",map);
 	}
+	@Override
+	public Reservation selectOneReservation(String reservationId) {
+		Reservation r = sqlSession.selectOne("reservation.selectOneReservation",reservationId);
+		return r;
+	}
 }

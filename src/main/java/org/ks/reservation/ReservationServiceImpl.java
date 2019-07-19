@@ -51,4 +51,9 @@ public class ReservationServiceImpl implements ReservationService{
 		}
 		
 	}
+	@Override
+	public Reservation selectOneReservation(String reservationId) {
+		Reservation r = reservationDaoImpl.selectOneReservation(reservationId);
+		return r;
+	}
 }

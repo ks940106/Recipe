@@ -101,7 +101,6 @@
                         </tr>
                     </table>
                     <a class="btn normal col_main f_w" href="javaScript:void(0)" onclick="cart(${recipe.recipe.recipeNo})">장바구니에 넣기</a>
-                    <a class="btn normal col_main f_w" href="javaScript:void(0)" onclick="">바로 주문하기</a>
                 </div>
             </c:if>
         </div>

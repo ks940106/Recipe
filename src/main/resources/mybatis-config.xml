@@ -31,5 +31,6 @@
 		<typeAlias type="org.ks.participant.vo.ParticipantMember" alias="participantMember"/>
 		<typeAlias type="org.ks.freeBoard.vo.FreeBoard" alias="fb"/>
 		<typeAlias type="org.ks.freeBoard.vo.FreePrintPage" alias="fpp"/>
+		<typeAlias type="org.ks.freeBoard.vo.FreeBoardComment" alias="freeComment"/>
 	</typeAliases>
 </configuration>

@@ -5,24 +5,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>싱싱캠핑 인원선택</title>
+<title>싱싱캠핑 예약</title>
+<link href="../resources/css/import.css" rel="stylesheet" />
 <link href="../resources/css/campingImport.css" rel="stylesheet" />
 <link href="../resources/css/reservation.css" rel="stylesheet" />
-<script type="text/javascript" src="/resources/js/reservation.js" />
+<script type="text/javascript" src="/resources/js/reservation.js" ></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/singsingCampingheader.jsp"/>
+<div class="ab_cover"></div>
 <section>
-	<div class="pom_bg">
-        <div class="pom_top">
-            <h1>예약</h1>
-            <div id="pom_div_bg"></div>
-            <p>카라반 예약하기</p>
-        </div>
-    </div>
     <div class="pom_wrap">
-            <div class="pomNav">
-                <jsp:include page="/WEB-INF/views/tmr/tmrNav.jsp"/>
+           <div class="pomNav">
+                <nav class="nav_wrap">
+				<div class="nav_con">
+					<div class="nav_title">카라반 예약</div>
+				</div>
+				</nav>
             </div>
             <div class="section_content_nav">
                 <div class="cp_content">
@@ -35,11 +35,12 @@
                 	<input type="hidden" name="caravanName" value="${c.caravanName }">
                 	<input type="hidden" name="caravanPeople" value="${c.caravanPeople }">
                 	<input type="hidden" name="caravanMaxPeople" value="${c.caravanMaxPeople }">
-               		<h1>인원을 선택하여 주십시오</h1>
-               		${c.caravanName } ${c.caravanArea }평 기준${c.caravanPeople }명/최대${c.caravanMaxPeople }명<br>
-               		<button id="down" type="button" class="btn btn-primary">▽</button> 
+               		<h1>예약 인원을 선택하여 주십시오</h1>
+               		카라반 이름 : ${c.caravanName } 
+               		 ${c.caravanArea }평 기준${c.caravanPeople }명/최대${c.caravanMaxPeople }명<br>
+               		<button id="down" type="button" class="btn btn-primary btn-sm">▽</button> 
                		<span id="people">${c.caravanPeople }</span>명
-               		<button id="up" type="button" class="btn btn-primary">△</button>
+               		<button id="up" type="button" class="btn btn-primary btn-sm">△</button>
                		, 1인 당 추가금액 : ${c.caravanPlusCost }원 (1박 당)
             		<br>
             		<span id="date"></span> <span id="price" name="totalCost"></span>원
