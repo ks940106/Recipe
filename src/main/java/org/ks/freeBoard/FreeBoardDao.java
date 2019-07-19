@@ -3,6 +3,7 @@ package org.ks.freeBoard;
 import java.util.List;
 
 import org.ks.freeBoard.vo.FreeBoard;
+import org.ks.freeBoard.vo.FreeBoardComment;
 import org.ks.freeBoard.vo.FreePrintPage;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,14 @@ public class FreeBoardDao {
 	}
 	public List mainFreeBoard(FreePrintPage fpp) {
 		return sqlSession.selectList("freebatis.mainFreeBoard",fpp);
+	}
+	public int commentInsert(FreeBoardComment fb) {
+		return sqlSession.update("freebatis.commentInsert",fb);
+	}
+	public List selectBoardComment(int no) {
+		return sqlSession.selectList("freebatis.selectBoardComment",no);
+	}
+	public int commentCount(int no) {
+		return sqlSession.selectOne("freebatis.commentCount",no);
 	}
 }

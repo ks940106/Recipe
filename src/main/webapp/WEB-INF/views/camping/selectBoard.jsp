@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+   <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -36,7 +37,45 @@
 			</nav>
 		</div>
 		<div class="section_content">
-			
+			<div class="d1">
+			 <table class="table table-hover">
+				    <thead>
+				      <tr>
+				        <th colspan="2">${fb.title }</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				    <tr>
+				     <th colspan="2">${fb.nickname }</th>
+				    </tr>
+				      <tr>
+				        <td style="height: 500px;" colspan="2">${fb.contents }</td>
+				      </tr>
+				       
+				    </tbody>
+				    <tfoot>
+				    <c:forEach items="${fbc }" var="t">
+					    <tr>
+					    	<td>${t.commentWriter }</td>
+					    	<c:set var="commentContent" value="${t.commentContents }"/>
+					    	<c:set var="comment" value="${fn:replace(commentContent,'<','&lt') }"/>
+					    	
+					    	<td>${comment }</td>
+					    </tr>
+				    </c:forEach>
+				    <tr>
+				    	<td style="padding: 0;" colspan="2">
+				    	<input type="hidden" id="level" name="level" value="0">
+				    	<textarea name="comment-contents" id="comment_tx" class="form-control" placeholder="" style="height:100px; width:89%; resize:none;"></textarea>
+                    <span class="input-group-btn">
+                    <button class="btn btn-default" onclick="freeComment('${sessionScope.member.nickname}','${fb.boardNo }');" id="commentInsert_btn">등록</button>
+                    </span>
+				    	</td>
+				    </tr>
+				    </tfoot>
+				  </table>
+			</div>
+			<!-- 
 			<div class="board_type">
 				<input type="hidden" name="nickname" value="${sessionScope.member.nickname }">
 				<input type="hidden" name="type" value="${no }">
@@ -46,9 +85,11 @@
 			<div class="d1">
 				${fb.contents }
 			</div>
+			 -->
+			
+		</div>
 			<input type="button" onclick="deleteFreeBoard(${fb.boardNo})" class="btn-lg btn-danger" value="삭제">
 			<input type="button" onclick="modifyFreeBoard(${fb.boardNo})" class="btn-lg btn-success" value="수정">
-		</div>
 	</div>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/singsingCampingfooter.jsp"></jsp:include>
@@ -59,6 +100,29 @@
 		function modifyFreeBoard(no){
 			location.href="/modifyFreeBoard.do?boardNo="+no;
 		}
+		function freeComment(nickname,no){
+			var level = $('#level').val();
+			var contents = $('#comment_tx').val();
+			console.log(nickname);
+			console.log(no);
+			console.log(level);
+			console.log(contents);
+			var data = "nickname="+nickname+"&boardNo="+no+"&level="+level+"&contents="+contents;
+			$.ajax({
+				url : "/freeBoardCommentInset.do",
+				type : "post",
+				data : data,
+				success : function(data){
+					alert(data);
+					location.href="/selectFreeBoard.do?boardNo="+no;
+				},
+				error : function(){
+					alert("댓글실패");
+				}
+			});
+			
+		}
+		
 	</script>
 
 </body>

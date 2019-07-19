@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.ks.freeBoard.vo.FreeBoard;
+import org.ks.freeBoard.vo.FreeBoardComment;
 import org.ks.freeBoard.vo.FreeBoardPageData;
 import org.ks.freeBoard.vo.FreePrintPage;
 import org.ks.talkBoard.vo.MainBoard;
@@ -22,7 +23,7 @@ public class FreeBoardService {
 	}
 	
 	public FreeBoardPageData mainBoard(int type,int reqPage){
-		int numPerPage = 5;
+		int numPerPage = 10;
 		System.out.println("123123123123123123213");
 		
 		
@@ -71,5 +72,14 @@ public class FreeBoardService {
 	public int modifyComplete(FreeBoard fb) {
 		return freeBoardDao.modifyComplete(fb);
 	}
-
+	public int commentInsert(FreeBoardComment fb) {
+		return freeBoardDao.commentInsert(fb);
+	}
+	
+	public ArrayList<FreeBoardComment> selectBoardComment(int no){
+		return (ArrayList<FreeBoardComment>)freeBoardDao.selectBoardComment(no);
+	}
+	public int commentCount(int no) {
+		return freeBoardDao.commentCount(no);
+	}
 }

@@ -47,5 +47,20 @@
   		f_board_view as viewCount
   		from(SELECT ROWNUM AS RNUM, M.*FROM (select * from free_board where f_board_type = #{type} order by f_board_no desc) M) WHERE RNUM BETWEEN #{start} AND #{end}
 	</select>
+	<insert id="commentInsert" parameterType="freeComment">
+		insert into free_board_comment values(req_f_comment_no.nextval,#{boardNo},#{commentLevel},#{commentWriter},#{commentContents},null)
+	</insert>
+	<select id="selectBoardComment" parameterType="_int" resultType="freeComment">
+		select 
+		f_comment_no as commentNo,
+		f_board_no as boardNo,
+		f_comment_level as commentLevel,
+		f_comment_writer as commentWriter,
+		f_comment_contents as commentContents
+		from free_board_comment where f_board_no = #{no}
+	</select>
+	<select id="commentCount" parameterType="_int" resultType="_int">
+		select count(*) cnt from free_board_comment where f_board_no = #{no}
+	</select>
 	
 </mapper>

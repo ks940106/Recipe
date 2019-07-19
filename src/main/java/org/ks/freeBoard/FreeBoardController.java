@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 
 import org.ks.freeBoard.vo.FreeBoard;
+import org.ks.freeBoard.vo.FreeBoardComment;
 import org.ks.freeBoard.vo.FreeBoardPageData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -61,6 +62,13 @@ public class FreeBoardController {
 			reqPage = 1;
 		}
 		FreeBoardPageData fb = freeBoardService.mainBoard(type,reqPage);
+		for(int i=0;i<fb.getList().size();i++) {
+			int no = fb.getList().get(i).getBoardNo();
+			int count = freeBoardService.commentCount(no);
+			fb.getList().get(i).setCommentCount(count);
+			
+		}
+		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("fb",fb);
 		mv.setViewName("/camping/freeBoard");
@@ -73,7 +81,9 @@ public class FreeBoardController {
 		System.out.println(no);
 		int result = freeBoardService.viewCountUp(no);
 		FreeBoard fb = freeBoardService.selectBoard(no);
+		ArrayList<FreeBoardComment> fbc = freeBoardService.selectBoardComment(no);
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("fbc",fbc);
 		mv.addObject("fb",fb);
 		mv.setViewName("/camping/selectBoard");
 		return mv;
@@ -110,5 +120,28 @@ public class FreeBoardController {
 		int result = freeBoardService.modifyComplete(fb);
 		return "수정성공";
 	}
+	@ResponseBody
+	@RequestMapping(value="/freeBoardCommentInset.do")
+	public String commentInsert(HttpServletRequest request) {
+		FreeBoardComment fb = new FreeBoardComment();
+		String nickname = request.getParameter("nickname");
+		int no = Integer.parseInt(request.getParameter("boardNo"));
+		String contents = request.getParameter("contents");
+		int level = Integer.parseInt(request.getParameter("level"));
+		System.out.println(nickname+" : "+no+" : "+contents+" : "+level);
+		fb.setCommentWriter(nickname);
+		fb.setBoardNo(no);
+		fb.setCommentContents(contents);
+		fb.setCommentLevel(level);
+		int result = freeBoardService.commentInsert(fb);
+		if(result>0) {
+			String str = "입력성공이다 시발";
+			return str;
+		}else {
+			String str = "입력실패";
+			return str;
+		}
+	}
+	
 	
 }
