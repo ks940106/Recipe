@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>싱싱레시피 이달의 레시피</title>
 
-<link href="../resources/css/import.css" rel="stylesheet" />
+<link href="../resources/css/tmrimport.css" rel="stylesheet" />
 <link href="../resources/css/tmr.css" rel="stylesheet" />
 <script type="text/javascript" src="../resources/js/tmr.js" /> 
 </head>
