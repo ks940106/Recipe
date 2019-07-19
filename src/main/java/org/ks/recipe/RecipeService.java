@@ -32,4 +32,6 @@ public interface RecipeService {
     PageData<Recipe> MyRecipeList(RecipeSearch recipeSearch);
 
     int recipeDel(Recipe recipe);
+
+    int recipeUpdate(Recipe recipe);
 }
