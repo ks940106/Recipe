@@ -13,7 +13,6 @@
 	<script src="../resources/js/jquery-3.1.1.min.js"></script>
 	<script src="../resources/js/jquery-ui-1.12.1.js"></script>
 	<script src="../resources/js/ui.js"></script>
-	<script src="../resources/js/search.js"></script>
 	<script src="../resources/js/include.js"></script>
 </head>
 <body>
@@ -37,7 +36,7 @@
 					<!--			<div id="cp_div_bg"></div>-->
 					<div class="cp_notice">
 						<div id="cp_title">${competition.competitionTitle}</div>
-						<div id="cp_div_bg"></div>
+						<div id="cp_div_bg1"></div>
 						<div id="cp_date">${competition.competitionDate}</div>
 						<div class="cp_contentsView">
 							<div id="cp_contentsImg">
@@ -47,16 +46,23 @@
 										width="800px;">
 								</c:if>
 							</div>
-							<div id="cp_contents">${competition.competitionContents}</div>
+							<div id="cp_contents">
+							${competition.competitionContents}
+							
+							</div>
 						</div>
 					</div>
 					<!--                <img src="../../../resources/img/logo.png" width="200px;">-->
+					
 					<div class="list_field">
+					<h2 class="list_field_h2">참가자 리스트 테이블</h2>
+					<div class="pom_div_bg"></div>
 						<div class="list_menu">
 							</span>
 								<button id="checkResult">합격자로 변경</button>
 							</span>
 						</div>
+						<div class="cp_tableWrap">
 						<table class="list_table">
 							<colgroup>
 								<col width="40">
@@ -102,7 +108,7 @@
 								<td>
 									${vo.participantPass}
 								</td>
-								<td>
+								<td class="viewQna">								
 									${vo.participantContent}
 								</td>
 							</tr>
@@ -110,14 +116,19 @@
 							</tbody>  
 						</table>
 					</div>
+					</div>
+					
 					<div class="list_field">
+						<h2 class="list_field_h2">합격자 리스트 테이블</h2>
+						<div class="pom_div_bg"></div>
 						<div class="list_menu">
 							</span>
 								<button id="checkPass">불합격자로 변경</button>
 								<button id="cResult" >우승자등록</button>
 							</span>
 						</div>
-						<table class="list_table">
+						<div class="cp_tableWrap">
+						<table class="list_table1">
 							<colgroup>
 								<col width="40">
 								<col width="45">
@@ -147,7 +158,7 @@
 							</thead>
 							<tbody>
 							<tr>
-								<div>게시글 수 : ${count }</div>
+								<div style="margin-bottom: 10px;">합격자 수 : ${count }</div>
 							</tr>
 							<c:forEach items="${passList}" var="pl">
 							<tr>
@@ -178,15 +189,33 @@
 							</c:forEach>
 							</tbody>  
 						</table>
+						</div>
 					</div>
 					<div id="cp_btn">
 					
 						<button onclick="location.href='/competitionAdminList.do?competitionCheck=Y'">목록으로 가기</button>
 					</div>
-					<!--
-			 <button onclick="location.href='/competitionUpdate.do?competitionNo=${competition.competitionNo}'">수정하기</button>   
-          <button  onclick="location.href='/competitionDelete.do?competitionNo=${competition.competitionNo}'" >삭제하기</button>
--->
+					
+					
+			<div class="layer_popup" style="display:none;position:fixed;">
+			<div class="popup_wrap">
+                <div class="pop_header">
+                	<input type="hidden" name="qaNo" class="CommentNo" value="">                    
+					<p class="pop_p">사연</p>
+                    <button><a href="javascript:void(0);" class="popcencle" style="color:#fff; text-decoration: none;">X</a></button>
+                </div>
+				<div class="pop_container">
+                    <div class="box_l">
+                        
+                    </div>
+                   <div class="qna_p">
+				   
+			     </div>
+				</div>
+			</div>
+		</div>
+		<div class="hostpopupMask"> 
+ 		</div> 
 				</div>
 			</div>
 		</div>
@@ -214,7 +243,7 @@
 			var sum = (selectCount+totalCount);
 			console.log("합:"+sum);
 			if(sum>10){
-				alert("갯수를 확인해 주세요");
+				alert("최대 10명 까지만 선택 가능합니다.");
 				return;
 			}
 			for(var i = 0; i<selectCount; i++){
@@ -249,7 +278,19 @@
 			 }
 			location.href="/participantResult.do?checkResult="+checkResult+"&competitionNo=${competition.competitionNo}";
 		});
-		
+		   
+		$(".viewQna").click(function(){	
+			/* var str = $(this).val(); */
+			$('.layer_popup').show();
+			$('.hostpopupMask').show();
+			$('.qna_p').html($(this).html());
+			console.log($(this).html());
+		});
+		$(".popcencle").click(function(){
+			$('.layer_popup').hide();
+			$('.hostpopupMask').hide();
+		});
+
 	</script> 
 </body>
 </html>

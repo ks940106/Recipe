@@ -5,24 +5,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>싱싱캠핑 인원선택</title>
+<title>싱싱캠핑 예약</title>
+<link href="../resources/css/import.css" rel="stylesheet" />
 <link href="../resources/css/campingImport.css" rel="stylesheet" />
 <link href="../resources/css/reservation.css" rel="stylesheet" />
 <script type="text/javascript" src="/resources/js/reservation.js" />
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/singsingCampingheader.jsp"/>
+<div class="ab_cover"></div>
 <section>
-	<div class="pom_bg">
-        <div class="pom_top">
-            <h1>예약</h1>
-            <div id="pom_div_bg"></div>
-            <p>카라반 예약하기</p>
-        </div>
-    </div>
     <div class="pom_wrap">
-            <div class="pomNav">
-                <jsp:include page="/WEB-INF/views/tmr/tmrNav.jsp"/>
+           <div class="pomNav">
+                <nav class="nav_wrap">
+				<div class="nav_con">
+					<div class="nav_title">카라반 예약</div>
+				</div>
+				</nav>
             </div>
             <div class="section_content_nav">
                 <div class="cp_content">
