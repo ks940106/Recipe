@@ -5,6 +5,14 @@ public class Step {
 
     private String img;
 
+    @Override
+    public String toString() {
+        return "Step{" +
+                "step='" + step + '\'' +
+                ", img='" + img + '\'' +
+                '}';
+    }
+
     public Step() {
     }
 

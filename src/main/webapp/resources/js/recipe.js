@@ -44,17 +44,17 @@ var boardReg	=	{
 };
 
 
+
+function uploadImg(e){
+    $(e).siblings().trigger('click');
+}
 //imgUpload
 
 // $('.img_box .upload_btn').on('click', function () {
 //     $(this).siblings().trigger('click');
 // });
-function uploadImg(e){
-    $(e).siblings().trigger('click');
-}
 
-$('#cok_video_url').blur(video_preview());
-function video_preview() {
+$('#cok_video_url').blur(function () {
     var iframe_src       = $('#cok_video_url').val();
     // https://youtu.be/VpDSxXlWEf0
     var youtube_video_id = iframe_src.match(/youtu\.be.*(.{11})/).pop();
@@ -63,9 +63,21 @@ function video_preview() {
         var video_thumbnail = "//img.youtube.com/vi/"+youtube_video_id+"/0.jpg";
         $('#videoPhotoHolder').attr('src',video_thumbnail);
     }
+});
+function video_preview() {
+    var iframe_src = $('#cok_video_url').val();
+    // https://youtu.be/VpDSxXlWEf0
+    if(iframe_src.length >0) {
+        var youtube_video_id = iframe_src.match(/youtu\.be.*(.{11})/).pop();
+        console.log(youtube_video_id);
+        if (youtube_video_id.length == 11) {
+            var video_thumbnail = "//img.youtube.com/vi/" + youtube_video_id + "/0.jpg";
+            $('#videoPhotoHolder').attr('src', video_thumbnail);
+        }
+    }
 }
 
-var step = 1;
+step = 1;
 var content = $("#divStepTemplate").html();
 function addStep(i) {
     if(i == null){
@@ -84,9 +96,10 @@ function addStep(i) {
 }
 
 $(document).ready(function () {
-    if($("#divStepArea").html().trim() === "")
+    video_preview();
+    // console.log($("#divStepArea").html().trim().length);
+    if($("#divStepArea").html().trim().length == 0)
     addStep();
-
     $(".step").hover(function () {
         $(this).find('.step_btn').show();
     },function () {
@@ -128,26 +141,47 @@ function doSubmit(option) {
     });
     // var json_arr = JSON.stringify(steps);
 
-    var recipe_state;
-    if (option === 'save_public') {
+    var recipe_state = 1;
+    var url;
+    if(option === 'save'){
+        url = "/recipeReg.do";
         recipe_state = 1;
-    }else if(option === 'save'){
+    }
+
+    if(option === 'delete'){
+        url = "/recipeDel.do";
         recipe_state = 0;
+    }
+
+    if(option === 'update'){
+        url = "recipeUpdate.do";
+        recipe_state = 1;
     }
 
     formData.append('recipe_state',recipe_state);
 
     $.ajax({
         type:"post",
-        url:"/recipeReg.do",
+        url:url,
         data:formData,
         processData:false,
         contentType:false,
         success:function (html) {
-            alert("파일 업로드성공");
+            switch (option) {
+                case 'save':
+                    alert("레시피가 등록 되었습니다.");
+                    break;
+                case 'update':
+                    alert("레시피가 수정 되었습니다.");
+                    break;
+                case 'delete':
+                    alert("레시피가 삭제 되었습니다.");
+                    break;
+            }
+
         },
         error:function (error) {
-            alert("파일업로드 실패");
+            alert("에러가 발생했습니다. 관리자에게 문의하세요.");
             console.log(error);
             console.log(error.status);
         }
@@ -180,16 +214,12 @@ function unLike(recipeNo) {
 var total;
 var count;
 $("input[name='count']").change(function () {
-count = $(this).val();
-total = $("#price").html()*$(this).val();
-$("#total_price").text(total);
+    count = $(this).val();
+    total = $("#price").html()*$(this).val();
+    $("#total_price").text(total);
 });
 
 function cart(recipeNo) {
-        location.href = "/insertcart.do?recipeNo=" + recipeNo + "&count=" + count;
+    location.href = "/insertcart.do?recipeNo=" + recipeNo + "&count=" + count;
 }
-
-$.ready(function () {
-   video_preview();
-});
 

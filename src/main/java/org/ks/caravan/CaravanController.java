@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.ks.caravan.vo.Caravan;
 import org.ks.caravan.vo.CaravanImg;
@@ -18,8 +19,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
 
 @Controller
 public class CaravanController {
@@ -29,8 +34,40 @@ public class CaravanController {
 	public CaravanService CaravanServiceImpl;
 	
 	@RequestMapping(value="caravanIntroduce.do")
-	public String caravanIntroduce() {
-		return "camping/caravanIntroduce";
+	public ModelAndView caravanIntroduce() {
+		CaravanImg cImg = CaravanServiceImpl.selectCaravanA();
+		ModelAndView mav = new ModelAndView();
+		if(cImg==null) {
+			mav.setViewName("camping/caravanIntroduce");
+		}else {
+			mav.addObject("c",cImg);
+			mav.setViewName("camping/caravanIntroduce");
+		}
+		return mav;
+	}
+	@RequestMapping(value="caravanIntroduce2.do")
+	public ModelAndView caravanIntroduce2() {
+		CaravanImg cImg = CaravanServiceImpl.selectCaravanB();
+		ModelAndView mav = new ModelAndView();
+		if(cImg==null) {
+			mav.setViewName("camping/caravanIntroduce2");
+		}else {
+			mav.addObject("c",cImg);
+			mav.setViewName("camping/caravanIntroduce2");
+		}
+		return mav;
+	}
+	@RequestMapping(value="caravanIntroduce3.do")
+	public ModelAndView caravanIntroduce3() {
+		CaravanImg cImg = CaravanServiceImpl.selectCaravanC();
+		ModelAndView mav = new ModelAndView();
+		if(cImg==null) {
+			mav.setViewName("camping/caravanIntroduce3");
+		}else {
+			mav.addObject("c",cImg);
+			mav.setViewName("camping/caravanIntroduce3");
+		}
+		return mav;
 	}
 	
 	//관리자
@@ -176,7 +213,17 @@ public class CaravanController {
 		
 		}else {
 			return "redirect:/updaterepresentationCaravan.do?caravanNo="+(String)caravanNo;
-		}
-		
+		}	
 	}
+	/*
+	@ResponseBody
+	@RequestMapping(value="/selectCaravanA.do")
+	public void selectCaravanA(HttpServletResponse response) throws JsonIOException, IOException {
+		CaravanImg cImg = CaravanServiceImpl.selectCaravanA();
+		response.setContentType("application/json");
+		response.setCharacterEncoding("utf-8");
+		new Gson().toJson(cImg,response.getWriter());
+	}
+	 * */
+	
 }

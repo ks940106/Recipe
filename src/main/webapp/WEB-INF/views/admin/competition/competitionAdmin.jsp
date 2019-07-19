@@ -29,7 +29,7 @@
 					<div id="cp_div_bg"></div>
 				</div>
 				<div class="list_field">
-					<table class="list_table">
+					<table class="list_table2">
 						<colgroup>
 							<col width="40">
 							<col width="75">

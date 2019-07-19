@@ -54,5 +54,21 @@ public class CaravanDaoImpl  implements CaravanDao{
 		int result = sqlSession.update("caravan.updateInsertCaravan",cImg);
 		return result;
 	}
+	//사용자
+	@Override
+	public CaravanImg selectCaravanA() {
+		
+		return sqlSession.selectOne("caravan.selectCaravanA");
+	}
+
+	@Override
+	public CaravanImg selectCaravanB() {
+		return sqlSession.selectOne("caravan.selectCaravanB");
+	}
+
+	@Override
+	public CaravanImg selectCaravanC() {
+		return sqlSession.selectOne("caravan.selectCaravanC");
+	}
 
 }

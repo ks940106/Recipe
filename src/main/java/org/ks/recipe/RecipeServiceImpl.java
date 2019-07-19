@@ -24,7 +24,12 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     @Transactional
     public int recipeReg(Recipe recipe) {
-        return recipeDaoImpl.recipeReg(recipe);
+        int result = 0;
+        if(recipeDaoImpl.recipeReg(recipe)>0){
+            result += recipeDaoImpl.stepReg(recipe);
+            result += recipeDaoImpl.workImgReg(recipe);
+        }
+        return result;
     }
 
     @Override
@@ -96,7 +101,7 @@ public class RecipeServiceImpl implements RecipeService {
         int pageNo = ((reqPage-1)/pageNaviSize)*pageNaviSize+1;
         //이전 버튼 생성
         if(pageNo !=1) {
-            pageNavi += "<a class='pageBtn' href='/recipePage.do?q="+recipeSearch.getQ()+"&cat1="+recipeSearch.getCat1()+"&cat2="+recipeSearch.getCat2()+"&order="+recipeSearch.getOrder()+"&page="+(pageNo-1)+"'><</a>";
+            pageNavi += "<a class='pageNo' href='/recipePage.do?q="+recipeSearch.getQ()+"&cat1="+recipeSearch.getCat1()+"&cat2="+recipeSearch.getCat2()+"&order="+recipeSearch.getOrder()+"&page="+(pageNo-1)+"'><</a>";
         }
         //페이지 번호 버튼 생성 ( 1 2 3 4 5 )
         int i = 1;
@@ -113,5 +118,43 @@ public class RecipeServiceImpl implements RecipeService {
             pageNavi += "<a class='pageNo' href='/recipePage.do?q="+recipeSearch.getQ()+"&cat1="+recipeSearch.getCat1()+"&cat2="+recipeSearch.getCat2()+"&order="+recipeSearch.getOrder()+"&page="+(pageNo)+"'>></a>";
         }
         return new PageData<Recipe>(recipeList,pageNavi);
+    }
+    @Override
+    public PageData<Recipe> MyRecipeList(RecipeSearch recipeSearch) {
+        //페이지 당 게시물 수
+        int numPerPage = 16;
+        int total = recipeDaoImpl.recipeTotal(recipeSearch);
+        List<Recipe> recipeList = recipeDaoImpl.recipeList(recipeSearch);
+        //총 페이지 수 구하기
+        int totalPage = (total%numPerPage==0)?(total/numPerPage):(total/numPerPage)+1;
+        String pageNavi= "";
+        int pageNaviSize = 5;
+        int reqPage = recipeSearch.getPage();
+        //페이지 번호
+        int pageNo = ((reqPage-1)/pageNaviSize)*pageNaviSize+1;
+        //이전 버튼 생성
+        if(pageNo !=1) {
+            pageNavi += "<a class='pageNo' href='/myRecipe.do?page="+(pageNo-1)+"'><</a>";
+        }
+        //페이지 번호 버튼 생성 ( 1 2 3 4 5 )
+        int i = 1;
+        while( !(i++>pageNaviSize || pageNo>totalPage) ) { //둘 중 하나라도 만족하면 수행하지 않겠다
+            if(reqPage == pageNo) {
+                pageNavi += "<span class='pageSelected'>"+pageNo+"</span>"; //4페이지 상태에서 4페이지를 누를수가 없도록 하기 위해서 a태그 없애줌
+            }else {
+                pageNavi += "<a class='pageNo' href='/myRecipe.do?page="+(pageNo)+"'>"+pageNo+"</a>";
+            }
+            pageNo++;
+        }
+        //다음 버튼 생성
+        if(pageNo <= totalPage) {
+            pageNavi += "<a class='pageNo' href='/myRecipe.do?page="+(pageNo)+"'>></a>";
+        }
+        return new PageData<Recipe>(recipeList,pageNavi);
+    }
+
+    @Override
+    public int recipeDel(Recipe recipe) {
+        return recipeDaoImpl.recipeDel(recipe);
     }
 }

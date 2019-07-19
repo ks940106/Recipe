@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Aspect
 public class competitionBefore {
-	@Pointcut("execution(* org.ks.compeition.*Service.*(..))")
+	@Pointcut("execution(* org.ks.competition.*Service.*(..))")
 	public void allPointcut() {}
 	
 	@AfterReturning(value="allPointcut()",returning="returnObj")

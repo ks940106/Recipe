@@ -1,5 +1,14 @@
 @charset "UTF-8";
 
+#next2{
+	right: 0px;
+    border-radius: 7px 0px 0px 7px;
+	
+}
+#previous2{
+	    left: 0px;
+    border-radius: 0px 7px 7px 0px;
+}
 .slider-wrap{
     width:745px;
     height:500px;
@@ -158,14 +167,14 @@
 	height: 500px;
 }
 .textBox .text {    
-	overflow: hidden;
+	overflow-y: scroll;
     position: absolute;
     top: 1px;
     right: 1px;
     width: 352px;
     height: 405px;
     margin: 0;
-    padding: 55px 10px 40px 13px;
+    padding: 30px 10px 40px 13px;
     background-color: #fff;
     transition: all .3s ease;
 }
@@ -182,7 +191,9 @@
     margin-top: 7px;
     padding-left:165px;
     line-height: 22px;
-    color: #999;}
+    color: #999;
+    margin-bottom: 15px;
+    }
 .textBox .info p span {
     position: absolute;
     top: 0;

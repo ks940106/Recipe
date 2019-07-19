@@ -52,7 +52,7 @@
 				   
 				      <tr>
 				        <td>${n.idx }</td>
-				        <td>${n.noticeTitle }</a></td>
+				        <td><a>${n.noticeTitle }</a></td>
 				        <td>${n.noticeDate }</td>
 				      </tr>
 				  	
