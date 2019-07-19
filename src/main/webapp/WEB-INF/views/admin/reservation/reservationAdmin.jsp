@@ -216,7 +216,7 @@ table{table-layout: fixed;}
 		</div>
 	</div>
 	</section>
-	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />
+<jsp:include page="/WEB-INF/views/common/freshfooter.jsp"/>
 	<script>
 	maxDataCount = [0,"${count1}","${count2}","${count3}","${count4}"]; //각각의 자료 갯수 //28/15/24/33
 	maxPageCount = [0,"${page1}","${page2}","${page3}","${page4}"]; //각각 페이지 개수 //6/3/5/7
