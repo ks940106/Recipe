@@ -34,8 +34,9 @@ function seletecancelsuccessAdminList(pageNo) {
 				var td1 = $('<td>'+list[i].orderCode+'</td>');
 				var td2 = $('<td>'+list[i].name+'</td>');
 				var td3 = $('<td>'+list[i].phone+'</td>');
-				var td4 = $('<td>'+getState(list[i].orderState)+'</td>');
-				var tr = $('<tr>').append(td1).append(td2).append(td3).append(td4);
+				var td4 = $('<td>'+list[i].orderCount+'</td>');
+				var td5 = $('<td>'+list[i].orderPrice+'</td>');
+				var tr = $('<tr>').append(td1).append(td2).append(td3).append(td4).append(td5);
 				$("#payment3").append(tr);
 			}
 			$(".paymentCount3").append(data.pageNavi);
@@ -60,8 +61,9 @@ function seletepaymentSuccessAdminList(pageNo) {
 				var td1 = $('<td>'+list[i].orderCode+'</td>');
 				var td2 = $('<td>'+list[i].name+'</td>');
 				var td3 = $('<td>'+list[i].phone+'</td>');
-				var td4 = $('<td>'+getState(list[i].orderState)+'</td>');
-				var tr = $('<tr>').append(td1).append(td2).append(td3).append(td4);
+				var td4 = $('<td>'+list[i].orderCount+'</td>');
+				var td5 = $('<td>'+list[i].orderPrice+'</td>');
+				var tr = $('<tr>').append(td1).append(td2).append(td3).append(td4).append(td5);
 				$("#payment2").append(tr);
 			}
 			$(".paymentCount2").append(data.pageNavi);
@@ -86,8 +88,9 @@ function seletepaymentAdminList(pageNo) {
 				var td1 = $('<td>'+list[i].orderCode+'</td>');
 				var td2 = $('<td>'+list[i].name+'</td>');
 				var td3 = $('<td>'+list[i].phone+'</td>');
-				var td4 = $('<td>'+getState(list[i].orderState)+'</td>');
-				var tr = $('<tr>').append(td).append(td1).append(td2).append(td3).append(td4);
+				var td4 = $('<td>'+list[i].orderCount+'</td>');
+				var td5 = $('<td>'+list[i].orderPrice+'</td>');
+				var tr = $('<tr>').append(td).append(td1).append(td2).append(td3).append(td4).append(td5);
 				$("#payment1").append(tr);
 			}
 			$(".paymentCount1").append(data.pageNavi);
@@ -114,8 +117,9 @@ function seletecancelAdminList(pageNo) {
 				var td1 = $('<td>'+list[i].orderCode+'</td>');
 				var td2 = $('<td>'+list[i].name+'</td>');
 				var td3 = $('<td>'+list[i].phone+'</td>');
-				var td4 = $('<td>'+getState(list[i].orderState)+'</td>');
-				var tr = $('<tr>').append(hidden1).append(hidden).append(td).append(td1).append(td2).append(td3).append(td4);
+				var td4 = $('<td>'+list[i].orderCount+'</td>');
+				var td5 = $('<td>'+list[i].orderPrice+'</td>');
+				var tr = $('<tr>').append(hidden1).append(hidden).append(td).append(td1).append(td2).append(td3).append(td4).append(td5);
 				$("#payment").append(tr);
 			}
 			$(".paymentCount").append(data.pageNavi);
