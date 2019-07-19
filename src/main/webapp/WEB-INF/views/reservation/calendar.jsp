@@ -10,6 +10,7 @@
 <link href="../resources/css/campingImport.css" rel="stylesheet" />
 <link href="../resources/css/reservation.css" rel="stylesheet" />
 <script type="text/javascript" src="../resources/js/reservation.js" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <style>
 
 </style>
@@ -247,6 +248,7 @@
 							if($("#"+reservationId).attr("class")=="impossible"){
 								$(".possible").css("background-color","#3ac569"); //이전에 남아있는 오렌지색을 초록색으로 바꿈
 								alert("15일은 대회 기간이라 선택이 불가능합니다.");
+								reservationDate = new Array();
 								clickState=0;
 								return;
 							}
@@ -274,10 +276,24 @@
 								if(plusDate<10){
 									plusDate= "0"+plusDate;
 								}
+								if(plusDate==15){
+									$(".possible").css("background-color","#3ac569"); //이전에 남아있는 오렌지색을 초록색으로 바꿈
+									alert("15일은 대회 기간이라 선택이 불가능합니다.");
+									reservationDate = new Array();
+									clickState=0;
+									return;
+								}
 								reservationDate[i] = startYear+"/"+startMonth+"/"+plusDate; 
 							}
 							for(var i = 0; i<endText-1; i++){
 								var plusId = Number(endFirstId) + i;
+								if($("#"+plusId).attr("class")=="impossible"){
+									$(".possible").css("background-color","#3ac569"); //이전에 남아있는 오렌지색을 초록색으로 바꿈
+									alert("15일은 대회 기간이라 선택이 불가능합니다.");
+									reservationDate = new Array();
+									clickState=0;
+									return;
+								}
 								reservationDate[index+i] = $("#hidden"+plusId).val();
 								$("#"+plusId).css("background-color","orange");
 							}
@@ -300,6 +316,13 @@
 							var endDate = endValue.substring(8,10); //09
 							var endLastDate =new Date(endYear,endMonth,0).getDate();
 							for(;index<endLastDate-endDate+1;index++){
+								if($("#"+(endId+index)).attr("class")=="impossible"){
+									$(".possible").css("background-color","#3ac569"); //이전에 남아있는 오렌지색을 초록색으로 바꿈
+									alert("15일은 대회 기간이라 선택이 불가능합니다.");
+									reservationDate = new Array();
+									clickState=0;
+									return;
+								}
 								reservationDate[index] = $("#hidden"+(endId+index)).val();
 								$("#"+(endId+index)).css("background-color","orange");
 							}
@@ -311,6 +334,13 @@
 								var change = i+1;
 								if(change<10){
 									change = "0"+change;
+								}
+								if(change==15){
+									$(".possible").css("background-color","#3ac569"); //이전에 남아있는 오렌지색을 초록색으로 바꿈
+									alert("15일은 대회 기간이라 선택이 불가능합니다.");
+									reservationDate = new Array();
+									clickState=0;
+									return;
 								}
 								reservationDate[index+i] = startYear+"/"+startMonth+"/"+change; 
 							}

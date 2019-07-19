@@ -10,6 +10,7 @@
 <link href="../resources/css/campingImport.css" rel="stylesheet" />
 <link href="../resources/css/reservation.css" rel="stylesheet" />
 <script type="text/javascript" src="/resources/js/reservation.js" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/singsingCampingheader.jsp"/>
