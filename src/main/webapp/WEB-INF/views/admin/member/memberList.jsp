@@ -28,10 +28,10 @@
 					<h1>회원 관리</h1>
 					<div id="cp_div_bg"></div>
 				</div>
-				<form method="post" action="/adminIdSearch.do">
+				<!-- <form method="post" action="/adminIdSearch.do">
 					<p>아이디로 검색</p>
 					<input type="text" name="id_search">
-				</form>
+				</form> -->
 				<div class="list_field">
 					<table class="list_table">
 						<colgroup>
@@ -75,6 +75,6 @@
 			</div>
 		</div>
 	</section>
-	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />
+	<jsp:include page="/WEB-INF/views/common/freshfooter.jsp" />
 </body>
 </html>
