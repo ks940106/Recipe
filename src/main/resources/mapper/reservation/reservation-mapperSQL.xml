@@ -18,7 +18,7 @@
 		<foreach item="arr" collection="array" separator="or">
 				reservation_date like '%'||#{arr}||'%'
 		</foreach>
-		) order by caravan_no
+		) and caravan_name not like '%대표%' order by caravan_no
 	</select>
 	<select id="selectOneCaravan" parameterType="_int" resultType="caravan">
 		select 
