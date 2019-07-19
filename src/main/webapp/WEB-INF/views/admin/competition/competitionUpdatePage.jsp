@@ -84,7 +84,7 @@
 		</div>
 	</div>
 	</section>
-	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />
+	<jsp:include page="/WEB-INF/views/common/freshfooter.jsp"/>
 	<script>
       function loadImg(event){
          if(event.files.length!=0 && event.files[0] != 0){

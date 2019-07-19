@@ -31,7 +31,7 @@
         <div class="contents">싱싱레시피 관리자 페이지</div>
     </div>
 </section>
-<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />
+<jsp:include page="/WEB-INF/views/common/freshfooter.jsp" />
 </body>
 
 </html>
