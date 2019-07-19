@@ -44,6 +44,7 @@
 					<li><a href="/orderList.do">결제내역</a><span>></span></li>
 					<li><a href="/mypageCompetitionResult.do">대회신청결과</a><span>></span></li>
 					<li><a href="/myRecipe.do">나의 레시피</a><span>></span></li>
+					<li><a href="/mypageReservationResultRecipe.do">예약내역</a><span>></span></li>
 				</ul>
 			</div>
 			</nav>

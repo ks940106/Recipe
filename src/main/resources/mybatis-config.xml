@@ -12,19 +12,24 @@
 		<typeAlias type="org.ks.tmr.vo.LMR" alias="lmr"/>
 		<typeAlias type="org.ks.reservation.vo.Reservation" alias="reservation"/>
 		<typeAlias type="org.ks.caravan.vo.Caravan" alias="caravan"/>
+		<typeAlias type="org.ks.caravan.vo.CaravanImg" alias="caravanImg"/>
 		
 		<typeAlias type="java.util.Map" alias="map"/>
 		<typeAlias type="org.ks.competition.vo.Competition" alias="competition"/>
 		<typeAlias type="org.ks.talkBoard.vo.TalkBoard" alias="talk"/>
+		<typeAlias type="org.ks.talkBoard.vo.MainBoard" alias="main"/>
 		<typeAlias type="org.ks.talkBoard.vo.TalkBoardComment" alias="talkComment"/>
 		<typeAlias type="org.ks.talkBoard.vo.BoardLike" alias="bl"/>
 		<typeAlias type="org.ks.talkBoard.vo.PrintPage" alias="pp"/>
 		<typeAlias type="org.ks.cart.vo.Cart" alias="cart"/>
 		<typeAlias type="org.ks.member.vo.Member" alias="member"/>
+		<typeAlias type="org.ks.notice.vo.Notice" alias="notice"/>
 		<typeAlias type="org.ks.order.vo.Order" alias="order"/>
 		<typeAlias type="org.ks.recipe.vo.Category" alias="category"/>
 		<typeAlias type="org.ks.recipe.vo.Recipe" alias="recipe"/>
 		<typeAlias type="org.ks.participant.vo.Participant" alias="participant"/>
 		<typeAlias type="org.ks.participant.vo.ParticipantMember" alias="participantMember"/>
+		<typeAlias type="org.ks.freeBoard.vo.FreeBoard" alias="fb"/>
+		<typeAlias type="org.ks.freeBoard.vo.FreePrintPage" alias="fpp"/>
 	</typeAliases>
 </configuration>

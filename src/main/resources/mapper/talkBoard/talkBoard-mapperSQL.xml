@@ -2,13 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="mybatis">
   
-  <select id="mainBoard" parameterType="pp" resultType="talk">
-  	select board_no as boardNo,
+  <select id="mainBoard" parameterType="pp" resultType="main">
+  <!--   	select board_no as boardNo,
   	board_type as boardType,
   	nickname as nickname,
   	board_img as boardImg,
   	board_contents as boardContents
   	from(SELECT ROWNUM AS RNUM, M.*FROM (select * from board order by board_no desc) M) WHERE RNUM BETWEEN #{start} AND #{end}
+  	 -->
+  select a.board_no as boardNo,
+  	a.board_type as boardType,
+  	a.nickname as nickname,
+  	a.board_img as boardImg,
+  	a.board_contents as boardContents,
+    b.member_img as memberImg
+  	from (SELECT ROWNUM AS RNUM, M.*FROM (select * from board order by board_no desc) M) a left join member b on (a.nickname=b.nickname) WHERE RNUM BETWEEN #{start} AND #{end}
   </select>
   
   <select id="boardType" parameterType="pp" resultType="talk">
@@ -66,6 +74,9 @@
   
   <select id="likeCount" parameterType="_int" resultType="_int">
   	select count(*) cnt from board_like where board_no = #{boardNo}
+  </select>
+  <select id="selectImg" parameterType="string" resultType="member">
+  	select member_img as memberImg from member where nickname = #{nickname}
   </select>
   
 </mapper>

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.ks.competition.vo.Competition;
+import org.ks.competition.vo.CompetitionPageData;
 import org.ks.member.vo.Member;
 import org.ks.participant.vo.Participant;
 import org.ks.participant.vo.ParticipantMember;
@@ -31,32 +32,32 @@ public class CompetitionController {
 	@Qualifier(value="competitionServiceimpl")
 	private CompetitionService competitionServiceimpl;
 	@RequestMapping(value="/competitionResultList.do")
-	public ModelAndView competitionList() {
-		ArrayList<Competition> list = competitionServiceimpl.competitionList();
-		ModelAndView mav = new ModelAndView();
-		if(!list.isEmpty()) {
-			mav.addObject("list",list);
-			mav.setViewName("competition/competitionResultList");
-		}else {
-			mav.setViewName("competition/competitionResultListError");
+	public String competitionList(Model model, HttpServletRequest request) {
+		int reqPage;
+		try {
+			reqPage = Integer.parseInt(request.getParameter("reqPage"));
+		}catch(NumberFormatException e){
+			reqPage = 1;
 		}
-		return mav;
+		CompetitionPageData cpd = competitionServiceimpl.competitionList(reqPage);
+		model.addAttribute("cpd",cpd);
+		return "competition/competitionResultList";
 	}
 	@RequestMapping(value="/pom.do")
 	public String pom() {
 		return "common/pom";
 	}
 	@RequestMapping(value="/competitionAdminResultList.do")
-	public ModelAndView competitionAdminResult() {
-		ArrayList<Competition> list = competitionServiceimpl.competitionList();
-		ModelAndView mav = new ModelAndView();
-		if(!list.isEmpty()) {
-			mav.addObject("list",list);
-			mav.setViewName("admin/competition/competitionAdmin_ResultList");
-		}else {
-			mav.setViewName("admin/competition/competitionAdminError");
+	public String competitionAdminResult(Model model, HttpServletRequest request) {
+		int reqPage;
+		try {
+			reqPage = Integer.parseInt(request.getParameter("reqPage"));
+		}catch(NumberFormatException e){
+			reqPage = 1;
 		}
-		return mav;
+		CompetitionPageData cpd = competitionServiceimpl.competitionList(reqPage);
+		model.addAttribute("cpd",cpd);
+		return "admin/competition/competitionAdmin_ResultList";
 	}
 	@RequestMapping(value="/competitionAdmin_ResultList.do")
 	public String competitionAdminResultList() {
@@ -137,10 +138,21 @@ public class CompetitionController {
 	}
 	@RequestMapping(value="/competitionAdmin_List.do")
 	public String competitionAdmin_ListView(@RequestParam int competitionNo, Model model) {
+		/*요리대회 리스트*/
 		Competition c = competitionServiceimpl.competitionListView(competitionNo);
 		model.addAttribute("competition",c);
+		
+		/*참가자 전체 리스트*/
 		ArrayList<ParticipantMember> list = competitionServiceimpl.participantView(competitionNo);
 		model.addAttribute("list",list);
+		/*for(int i=0; i<list.size(); i++) {
+			if(!list.isEmpty()) {
+				String str = list.get(i).getParticipantContent().replaceAll("<", "&lt");
+				list.get(i).setParticipantContent(str);
+			}
+		}*/
+		
+		/*합격자 리스트 */
 		ArrayList<ParticipantMember> passList = competitionServiceimpl.participantPassList(competitionNo);
 		model.addAttribute("passList",passList);
 		model.addAttribute("count",passList.size());

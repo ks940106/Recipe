@@ -6,7 +6,7 @@ import org.ks.competition.vo.Competition;
 import org.ks.participant.vo.Participant;
 
 public interface CompetitionDao {
-	public List competitionList();
+	public List competitionList(int start, int end);
 	public int insertCompetition(Competition c);
 	public List competitionView(String competitionCheck);
 	public int deleteCompetition(int competitionNo);
@@ -23,4 +23,6 @@ public interface CompetitionDao {
 	public List competitionMypage(String id);
 	public List participantResultList(int competitionNo);
 	public void setNull(int competitionNo);
+	public List cpdCount();
+	/*public List selectPage(int start, int end);*/
 }

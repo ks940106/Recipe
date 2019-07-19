@@ -57,9 +57,31 @@ public class ReservationController {
 		model.addAttribute("caravanMaxPeople", caravanMaxPeople);
 		return "reservation/paymentPage";
 	}
-//	@RequestMapping(value="/insertReservation.do")
-//	public String insertReservation(@RequestParam String caravanNo,@RequestParam String reservationDateString) {
-//			reservationServiceImple.insertReservation(caravanNo,reservationDateString);
-//		return "reservation/calendar";
-//	}
+	@RequestMapping(value="/payment.do")
+	public String payment(Reservation r,Model model,@RequestParam String caravanName) {
+			model.addAttribute("caravanName", caravanName);
+			model.addAttribute("r", r);
+		return "reservation/payment";
+	}
+	@RequestMapping(value="/insertReservation.do")
+	public String insertReservation(Reservation r,Model model,@RequestParam String caravanName) {
+		reservationServiceImple.insertReservation(r);
+		model.addAttribute("r",r);
+		model.addAttribute("caravanName", caravanName);
+		return "reservation/successReservation";
+	}
+	@RequestMapping(value="/failReservation.do")
+	public String failReservation(@RequestParam String error,Model model) {
+		model.addAttribute("error", error);
+		return "reservation/failReservation";
+	}
+	
+	@RequestMapping(value="/mypageReservationResultRecipe.do")
+	public String mypageReservationResultRecipe() {
+		return "reservation/mypageReservationResultRecipe";
+	}
+	@RequestMapping(value="/mypageReservationResultCamping.do")
+	public String mypageReservationResultCamping() {
+		return "reservation/mypageReservationResultCamping";
+	}
 }

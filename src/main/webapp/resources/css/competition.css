@@ -96,6 +96,7 @@
 .cp_notice{
     width: 1000px;
     margin: 0 auto;
+    margin-top: 65px;
 }
 .cp_contentsView{
     width: 1000px;
@@ -183,6 +184,9 @@
 }
 .boardWrite tr th:first-child {
     border-left: 0;
+}
+.boardWrite tr th:last-child{
+	padding-top: 25px;
 }
 .boardWrite tr th{
 	background: #fbfbfb;

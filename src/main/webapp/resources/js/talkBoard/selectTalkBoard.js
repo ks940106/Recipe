@@ -27,7 +27,7 @@
 				data : data,
 				success : function(str){
 					location.href="/selectTalkBoard.do?boardNo="+boardNo+"&memberId="+memberId;
-					alret(str);
+					alert(str);
 				},
 				error : function(){
 					console.log("시발 실패해따");

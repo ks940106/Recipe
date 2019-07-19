@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="notice">
+	<select id="noticeList" resultType="notice">
+		select idx as idx,notice_title as noticeTitle,
+		notice_Content as noticeContent,notice_date as noticeDate
+		from notice ORDER by idx desc
+	</select>
+	<select id="noticeDetail" resultType="notice">
+		select 
+		idx as idx,notice_title as noticeTitle,
+		notice_Content as noticeContent,notice_date as noticeDate
+		from notice where idx=#{idx} 
+	</select>
+	<insert id="noticeWrite" parameterType="notice">
+		insert into notice values(notice_idx_seq.nextval,#{noticeTitle},#{noticeContent},default)
+	</insert>
+	<update id="noticeUpdate" parameterType="notice">
+		update notice set notice_title = #{noticeTitle},
+		notice_Content = #{noticeContent} where idx=#{idx}
+	</update>
+	
+</mapper>

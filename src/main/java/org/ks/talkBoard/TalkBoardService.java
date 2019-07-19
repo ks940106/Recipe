@@ -2,6 +2,7 @@ package org.ks.talkBoard;
 
 import java.util.ArrayList;
 
+import org.ks.member.vo.Member;
 import org.ks.talkBoard.vo.BoardLike;
 import org.ks.talkBoard.vo.MainPageData;
 import org.ks.talkBoard.vo.TalkBoard;
@@ -19,6 +20,8 @@ public interface TalkBoardService {
 	public TalkBoard modifyTalkBoard(int no);
 	
 	public int deleteTalkBoard(int no);
+	
+	public Member selectImg(String nickname);
 	
 	public int updateTalkBoard(TalkBoard tb);
 	

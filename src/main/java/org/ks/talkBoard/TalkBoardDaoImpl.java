@@ -2,6 +2,7 @@ package org.ks.talkBoard;
 
 import java.util.List;
 
+import org.ks.member.vo.Member;
 import org.ks.talkBoard.vo.BoardLike;
 import org.ks.talkBoard.vo.PrintPage;
 import org.ks.talkBoard.vo.TalkBoard;
@@ -98,6 +99,11 @@ public class TalkBoardDaoImpl implements TalkBoardDao{
 	@Override
 	public int likeCount(int no) {
 		return sqlSession.selectOne("mybatis.likeCount",no);
+	}
+
+	@Override
+	public Member selectImg(String nickname) {
+		return sqlSession.selectOne("mybatis.selectImg",nickname);
 	}
 
 	

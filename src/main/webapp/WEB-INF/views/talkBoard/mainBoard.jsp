@@ -63,20 +63,27 @@
 			<c:forEach items="${pd.list}" var="t">
 
 				<div class="d1">
-					<div class="d2"></div>
+					<div class="d2">
+						<img src="/resources/upload/member/${t.memberImg }">
+					</div>
 					<div class="c1">${t.nickname }
 						<div style="font-size: 35px; float: right; margin-top: 10px;">
 	 			<img src="/resources/img/talk/138533.png"  style="width:30px; height:30px;">    ${t.likeCount }
 	 			<img src="/resources/img/talk/66932.png"  style="width:30px; height:30px;">    ${t.commentCount } 
 	 			</div>
 					</div>
-					<div class="c2" onclick="select('${t.boardNo}','${sessionScope.member.id }')">
+					<div class="c2" onclick="select('${t.boardNo}','${sessionScope.member.id }','${t.nickname }')">
 						${t.boardContents }</div>
-					<div class="c3" onclick="select('${t.boardNo}','${sessionScope.member.id }')">
+					<div class="c3" onclick="select('${t.boardNo}','${sessionScope.member.id }','${t.nickname }')">
 						<c:forTokens items="${t.boardImg }" delims="/" var="item" varStatus="g">
 							<c:if test="${g.count==1 }">
+							<!-- 
 								<img src="/resources/talkBoard/${item}" width="800px"
 									class="imgsum">
+							 -->
+							 <div class="img_bg" style="background-image: url('../../resources/talkBoard/${item}');">
+							 	
+							 </div>
 							</c:if>
 						</c:forTokens>
 					</div>

@@ -34,9 +34,10 @@
 					<div id="cp_div_bg"></div>
 				</div>
 				<div class="list_field">
-				<button class="button button1">삭제</button>
-				<button class="button button1">수정</button>
-				<button class="button button1" onclick="location.href='/insertCaravan.do'">등록</button>
+				<form action="/deleteCaravan.do">
+				<button class="button button1" type="submit">삭제</button>
+				<button class="button button1" type="button" id="updateCaravan">수정</button>
+				<button class="button button1" onclick="location.href='/insertCaravan.do'" type="button">등록</button>
 				<table class="list_table">
 					<thead>
 						<tr>
@@ -50,9 +51,9 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${list}" var="c" varStatus="i">
+						<c:forEach items="${list}" var="c" >
 							<tr>
-								<td>${i.count}</td>
+								<td><input type="checkbox" name="caravanNo" value="${c.caravanNo }"></td>
 								<td>${c.caravanName}</td>
 								<td>${c.caravanArea}</td>
 								<td>${c.caravanPeople}</td>
@@ -63,10 +64,12 @@
 						</c:forEach>
 					</tbody>
 				</table>
+			</form>
 			</div>
 		</div>
 	</div>
 	</section>
 		<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />
+		<script type="text/javascript" src="/resources/js/caravan.js"></script>
 </body>
 </html>

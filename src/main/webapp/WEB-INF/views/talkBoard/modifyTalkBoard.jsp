@@ -6,15 +6,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="http://code.jquery.com/jquery-3.4.0.js"></script>
-
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/jquery-3.4.0.js"></script>
 <link href="../resources/css/import.css" rel="stylesheet" />
 <link href="../resources/css/talkBoard.css" rel="stylesheet" />
-<script  src="../resources/js/talkBoard/modifyTalkBoard.js" />
+<script type="text/javascript" src="../resources/js/talkBoard/modifyTalkBoard.js" />
 
 </head>
 <body>
@@ -54,9 +53,9 @@
 							<input class="uploadInputBox" type="file" id='img_${fn:length(img)}' name="filedata">
 						</div>
 						<c:forTokens items="${tb.boardImg }" delims="/" var="item"	varStatus="status">
-							<div class="preview" value="${status.index }">
+							<div class="preview" value="${status.index }"  >
 								<input type="hidden" name="oneImg" value="${item}">
-								 <img class="thumbnail" src="/resources/talkBoard/${item }" value="${status.index }" onclick="deletePreview(this)">
+								 <img class="thumbnail" onclick="deletePreview(this)" src="/resources/talkBoard/${item }" value="${status.index }">
 								<p style='display: none'>${item }</p>
 							</div>
 						</c:forTokens>
@@ -74,5 +73,8 @@
 	</section>
 	
 	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />
+	
+
+
 </body>
 </html>
