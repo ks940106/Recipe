@@ -60,7 +60,7 @@ div.category, div.search_filter{
     content: "";
 }
 div{
-    overflow: auto;
+    overflow: inherit;
 }
 .pageNo{
     display: inline-block;

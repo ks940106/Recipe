@@ -6,19 +6,16 @@ public class RecipeSearch {
     private String cat2;
     private String order;
     private int page;
+    private String id;
 
-    @Override
-    public String toString() {
-        return "RecipeSearch{" +
-                "q='" + q + '\'' +
-                ", cat1='" + cat1 + '\'' +
-                ", cat2='" + cat2 + '\'' +
-                ", order='" + order + '\'' +
-                ", page=" + page +
-                '}';
-    }
 
     public RecipeSearch() {
+        this.q = "";
+        this.cat1 = "";
+        this.cat2 = "";
+        this.order = "";
+        this.id = "";
+        this.page = 1;
     }
 
     public String getQ() {
@@ -59,5 +56,21 @@ public class RecipeSearch {
 
     public void setPage(int page) {
         this.page = page;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setPage(String page) {
+        try{
+            this.page = Integer.parseInt(page);
+        }catch (Exception e){
+            this.page = 1;
+        }
     }
 }

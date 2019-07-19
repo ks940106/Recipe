@@ -9,6 +9,10 @@ public interface RecipeDao {
 
     int recipeReg(Recipe recipe);
 
+    int stepReg(Recipe recipe);
+
+    int workImgReg(Recipe recipe);
+
     List<Recipe> recipeList();
 
     RecipeDetail getRecipeDetail(int parseInt);
@@ -30,4 +34,6 @@ public interface RecipeDao {
     List<Recipe> recipeList(RecipeSearch recipeSearch);
 
     int recipeTotal(RecipeSearch recipeSearch);
+
+    int recipeDel(Recipe recipe);
 }

@@ -5,6 +5,10 @@
         <result column="recipe_no" property="recipeNo"/>
         <result column="id" property="id"/>
     </resultMap>
+    <resultMap id="step" type="org.ks.recipe.vo.Step">
+        <result column="step_content" property="step"/>
+        <result column="step_img" property="img"/>
+    </resultMap>
     <resultMap id="recipe" type="org.ks.recipe.vo.Recipe">
         <result column="recipe_no" property="recipeNo"/>
         <result column="recipe_title" property="recipeTitle"/>
@@ -17,17 +21,20 @@
         <result column="recipe_time" property="recipeTime"/>
         <result column="recipe_level" property="recipeLevel"/>
         <result column="recipe_item" property="recipeItem"/>
-        <result column="recipe_step" property="recipeStep"/>
-        <result column="recipe_stepimg" property="recipeStepImg"/>
         <result column="recipe_like" property="recipeLike"/>
         <result column="recipe_hit" property="recipeHit"/>
         <result column="recipe_price" property="recipePrice"/>
         <result column="recipe_date" property="recipeDate"/>
         <result column="recipe_stock" property="recipeStock"/>
-        <result column="recipe_workimg" property="recipeWorkImg"/>
         <result column="recipe_video" property="recipeVideo"/>
         <result column="recipe_state" property="recipeState"/>
-
+        <collection property="recipeStep" column="recipe_no" javaType="java.util.ArrayList" ofType="org.ks.recipe.vo.Step" select="getStep">
+            <result property="step" column="step_content"/>
+            <result property="img" column="step_img"/>
+        </collection>
+        <collection property="recipeWorkImg" column="recipe_no" javaType="java.util.ArrayList" ofType="string" select="getWorkImg">
+            <result column="work_img"/>
+        </collection>
     </resultMap>
 
     <resultMap id="member" type="org.ks.member.vo.Member">
@@ -58,10 +65,46 @@
         from CATEGORY
     </select>
 
-    <insert id="recipeReg" parameterType="recipe">
-        insert into RECIPE (RECIPE_NO, RECIPE_TITLE, RECIPE_WRITER, RECIPE_CONTENTS, RECIPE_MAINIMG, RECIPE_CAT1, RECIPE_CAT2, RECIPE_COUNT, RECIPE_TIME, RECIPE_LEVEL, RECIPE_ITEM, RECIPE_STEP, RECIPE_STEPIMG, RECIPE_LIKE, RECIPE_HIT, RECIPE_PRICE, RECIPE_DATE, RECIPE_STOCK, RECIPE_WORKIMG, RECIPE_VIDEO, RECIPE_STATE)
-        values (SEQ_RECIPE_NO.nextval,#{recipeTitle},#{recipeWriter},#{recipeContents},#{recipeMainImg},#{recipeCat1},#{recipeCat2},#{recipeCount},#{recipeTime},#{recipeLevel},#{recipeItem},#{recipeStep},#{recipeStepImg},#{recipeLike},#{recipeHit},#{recipePrice},sysdate,#{recipeStock},#{recipeWorkImg},#{recipeVideo},#{recipeState})
-    </insert>
+    <insert id="recipeReg" parameterType="recipe"><![CDATA[
+        insert into RECIPE
+        values (
+                SEQ_RECIPE_NO.nextval,
+                #{recipeTitle},
+                #{recipeWriter},
+                #{recipeContents},
+                #{recipeMainImg},
+                #{recipeCat1},
+                #{recipeCat2},
+                #{recipeCount},
+                #{recipeTime},
+                #{recipeLevel},
+                #{recipeItem},
+                #{recipeLike},
+                #{recipeHit},
+                #{recipePrice},
+                sysdate,
+                #{recipeStock},
+                #{recipeVideo},
+                #{recipeState})
+    ]]></insert>
+
+    <select id="getStep" resultMap="step">
+        select STEP_CONTENT, STEP_IMG from STEP where recipe_no = #{recipe_no}
+    </select>
+    <select id="getWorkImg" resultType="string">
+        select work_img from WORK_IMG where recipe_no = #{recipe_no}
+    </select>
+
+    <update id="stepReg" parameterType="recipe">
+        <foreach collection="recipeStep" item="item" index="index" separator=" " open="INSERT ALL" close="SELECT * FROM DUAL"><![CDATA[
+            INTO step(recipe_no, step_no, step_content, step_img) VALUES(SEQ_RECIPE_NO.currval, #{index}+1, #{item.step}, #{item.img})
+        ]]></foreach>
+    </update>
+    <update id="workImgReg" parameterType="recipe" >
+        <foreach collection="recipeWorkImg" item="item" index="index" separator=" " open="INSERT ALL" close="SELECT * FROM DUAL"><![CDATA[
+            INTO work_img VALUES(SEQ_RECIPE_NO.currval, #{index}+1, #{item})
+        ]]></foreach>
+    </update>
     <select id="recipeAll" resultMap="recipe">
         select * from RECIPE
     </select>
@@ -77,14 +120,11 @@
                RECIPE_TIME,
                RECIPE_LEVEL,
                RECIPE_ITEM,
-               RECIPE_STEP,
-               RECIPE_STEPIMG,
                (select count(*) from RECIPE_LIKE where RECIPE.RECIPE_NO=RECIPE_LIKE.RECIPE_NO)as RECIPE_LIKE,
                RECIPE_HIT,
                RECIPE_PRICE,
                RECIPE_DATE,
                RECIPE_STOCK,
-               RECIPE_WORKIMG,
                RECIPE_VIDEO,
                RECIPE_STATE,
                ID,
@@ -128,7 +168,7 @@
     </select>
 
     <select id="likeRank" resultMap="recipe">
-        select ROWNUM, rank.* from (select * from RECIPE where RECIPE_PRICE = 0 order by RECIPE_LIKE desc) rank where ROWNUM between 1 and 10
+        select ROWNUM, rank.* from (select * from RECIPE where RECIPE_PRICE = 0 and RECIPE_STATE = 1 order by RECIPE_LIKE desc) rank where ROWNUM between 1 and 10
     </select>
 
     <select id="search" parameterType="org.ks.recipe.vo.RecipeSearch" resultMap="recipe">
@@ -136,42 +176,55 @@
         from (
             select ROWNUM as rnum, A.*
             from (
-                select * from RECIPE where 1=1
-                <if test="q != ''">
+                select * from RECIPE where RECIPE_STATE = 1
+                <if test="q != null and q != ''">
                     and (recipe_title like '%'||#{q}||'%' or recipe_contents like '%'||#{q}||'%')
                 </if>
-                <if test="cat1 != ''">
+                <if test="cat1 != null and cat1 != ''">
                     and recipe_cat1 = #{cat1}
                 </if>
-                <if test="cat2 != ''">
+                <if test="cat2 != null and cat2 != ''">
                     and recipe_cat2 = #{cat2}
+                </if>
+                <if test="id != null and id != ''">
+                    and recipe_writer = #{id}
                 </if>
                 <if test="order == 'reco'">
                     order by recipe_like desc
                 </if>
                 <if test="order == 'date'">
                     order by recipe_date desc
-                </if><![CDATA[
+                </if>
+
+        <![CDATA[
             ) A
         where ROWNUM <= (#{page}*16)
         ) B
         where B.rnum >= ((#{page}-1)*16 + 1)
-    ]]></select>
+    ]]>
+    </select>
 
     <select id="total" parameterType="org.ks.recipe.vo.RecipeSearch" resultType="_int">
-        select count(*) from RECIPE where 1=1
-        <if test="q != ''">
+        select count(*) from RECIPE where RECIPE_STATE = 1
+        <if test="q != null and q != ''">
             and (recipe_title like '%'||#{q}||'%' or recipe_contents like '%'||#{q}||'%')
         </if>
-        <if test="cat1 != ''">
+        <if test="cat1 != null and cat1 != ''">
             and recipe_cat1 = #{cat1}
         </if>
-        <if test="cat2 != ''">
+        <if test="cat2 != null and cat2 != ''">
             and recipe_cat2 = #{cat2}
+        </if>
+        <if test="id != null and id != ''">
+            and recipe_writer = #{id}
         </if>
     </select>
 
     <update id="orderReg" parameterType="map">
         update RECIPE set RECIPE_PRICE = #{price} where RECIPE_NO = #{recipeNo}
+    </update>
+
+    <update id="delete" parameterType="recipe">
+        update RECIPE set RECIPE_STATE = #{recipeState} where recipe_no = #{recipeNo}
     </update>
 </mapper>

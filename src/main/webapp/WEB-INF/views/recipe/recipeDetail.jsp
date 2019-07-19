@@ -25,10 +25,10 @@
             <div class="main_img image-container">
                 <img src="${pageContext.request.contextPath}/resources/upload/recipe/${recipe.recipe.recipeMainImg}" alt="main_img"/>
             </div>
-            <c:if test="${not empty recipe.recipe.recipeVideo}">
+            <c:if test='${recipe.recipe.recipeVideo.contains("/")}'>
                 <iframe id="player" type="text/html" width="640" height="360" src='https://www.youtube.com/embed${recipe.recipe.recipeVideo.substring(recipe.recipe.recipeVideo.lastIndexOf("/"))}' frameborder="0"></iframe>
             </c:if>
-            <c:forEach var="step" items="${recipe.recipeStep}">
+            <c:forEach var="step" items="${recipe.recipe.recipeStep}">
                 <div class="recipe_step">
                     <div class="step_text">
                             ${step.step}

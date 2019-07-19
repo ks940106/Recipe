@@ -1,6 +1,7 @@
 package org.ks.recipe.vo;
 
 import java.util.Date;
+import java.util.List;
 
 public class Recipe {
     private int recipeNo;
@@ -14,50 +15,18 @@ public class Recipe {
     private String recipeTime;
     private String recipeLevel;
     private String recipeItem;
-    private String recipeStep;
-    private String recipeStepImg;
+    private List<Step> recipeStep;
+//    private String recipeStepImg;
     private int recipeLike;
     private int recipeHit;
     private int recipePrice;
     private Date recipeDate;
     private int recipeStock;
-    private String recipeWorkImg;
+    private List<String> recipeWorkImg;
     private String recipeVideo;
     private int recipeState;
 
     public Recipe() {
-    }
-
-    public Recipe(int recipeNo, String recipeTitle, String recipeWriter, String recipeContents, String recipeMainImg, String recipeCat1, String recipeCat2, String recipeCount, String recipeTime, String recipeLevel, String recipeItem, String recipeStep, String recipeStepImg, int recipeLike, int recipeHit, int recipePrice, Date recipeDate, int recipeStock, String recipeWorkImg, String recipeVideo, int recipeState) {
-        this.recipeNo = recipeNo;
-        this.recipeTitle = recipeTitle;
-        this.recipeWriter = recipeWriter;
-        this.recipeContents = recipeContents;
-        this.recipeMainImg = recipeMainImg;
-        this.recipeCat1 = recipeCat1;
-        this.recipeCat2 = recipeCat2;
-        this.recipeCount = recipeCount;
-        this.recipeTime = recipeTime;
-        this.recipeLevel = recipeLevel;
-        this.recipeItem = recipeItem;
-        this.recipeStep = recipeStep;
-        this.recipeStepImg = recipeStepImg;
-        this.recipeLike = recipeLike;
-        this.recipeHit = recipeHit;
-        this.recipePrice = recipePrice;
-        this.recipeDate = recipeDate;
-        this.recipeStock = recipeStock;
-        this.recipeWorkImg = recipeWorkImg;
-        this.recipeVideo = recipeVideo;
-        this.recipeState = recipeState;
-    }
-
-    public int getRecipeState() {
-        return recipeState;
-    }
-
-    public void setRecipeState(int recipeState) {
-        this.recipeState = recipeState;
     }
 
     @Override
@@ -74,8 +43,7 @@ public class Recipe {
                 ", recipeTime='" + recipeTime + '\'' +
                 ", recipeLevel='" + recipeLevel + '\'' +
                 ", recipeItem='" + recipeItem + '\'' +
-                ", recipeStep='" + recipeStep + '\'' +
-                ", recipeStepImg='" + recipeStepImg + '\'' +
+                ", recipeStep=" + recipeStep +
                 ", recipeLike=" + recipeLike +
                 ", recipeHit=" + recipeHit +
                 ", recipePrice=" + recipePrice +
@@ -87,20 +55,27 @@ public class Recipe {
                 '}';
     }
 
-    public String getRecipeWorkImg() {
-        return recipeWorkImg;
-    }
-
-    public void setRecipeWorkImg(String recipeWorkImg) {
+    public Recipe(int recipeNo, String recipeTitle, String recipeWriter, String recipeContents, String recipeMainImg, String recipeCat1, String recipeCat2, String recipeCount, String recipeTime, String recipeLevel, String recipeItem, List<Step> recipeStep, int recipeLike, int recipeHit, int recipePrice, Date recipeDate, int recipeStock, List<String> recipeWorkImg, String recipeVideo, int recipeState) {
+        this.recipeNo = recipeNo;
+        this.recipeTitle = recipeTitle;
+        this.recipeWriter = recipeWriter;
+        this.recipeContents = recipeContents;
+        this.recipeMainImg = recipeMainImg;
+        this.recipeCat1 = recipeCat1;
+        this.recipeCat2 = recipeCat2;
+        this.recipeCount = recipeCount;
+        this.recipeTime = recipeTime;
+        this.recipeLevel = recipeLevel;
+        this.recipeItem = recipeItem;
+        this.recipeStep = recipeStep;
+        this.recipeLike = recipeLike;
+        this.recipeHit = recipeHit;
+        this.recipePrice = recipePrice;
+        this.recipeDate = recipeDate;
+        this.recipeStock = recipeStock;
         this.recipeWorkImg = recipeWorkImg;
-    }
-
-    public String getRecipeVideo() {
-        return recipeVideo;
-    }
-
-    public void setRecipeVideo(String recipeVideo) {
         this.recipeVideo = recipeVideo;
+        this.recipeState = recipeState;
     }
 
     public int getRecipeNo() {
@@ -191,20 +166,12 @@ public class Recipe {
         this.recipeItem = recipeItem;
     }
 
-    public String getRecipeStep() {
+    public List<Step> getRecipeStep() {
         return recipeStep;
     }
 
-    public void setRecipeStep(String recipeStep) {
+    public void setRecipeStep(List<Step> recipeStep) {
         this.recipeStep = recipeStep;
-    }
-
-    public String getRecipeStepImg() {
-        return recipeStepImg;
-    }
-
-    public void setRecipeStepImg(String recipeStepImg) {
-        this.recipeStepImg = recipeStepImg;
     }
 
     public int getRecipeLike() {
@@ -247,4 +214,27 @@ public class Recipe {
         this.recipeStock = recipeStock;
     }
 
+    public List<String> getRecipeWorkImg() {
+        return recipeWorkImg;
+    }
+
+    public void setRecipeWorkImg(List<String> recipeWorkImg) {
+        this.recipeWorkImg = recipeWorkImg;
+    }
+
+    public String getRecipeVideo() {
+        return recipeVideo;
+    }
+
+    public void setRecipeVideo(String recipeVideo) {
+        this.recipeVideo = recipeVideo;
+    }
+
+    public int getRecipeState() {
+        return recipeState;
+    }
+
+    public void setRecipeState(int recipeState) {
+        this.recipeState = recipeState;
+    }
 }
