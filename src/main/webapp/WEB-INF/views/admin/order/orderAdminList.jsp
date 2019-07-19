@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css"href="../resources/css/import.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/ui.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/style.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/Adminorder.css">
 <link rel="stylesheet" type="text/css"href="../resources/css/jquery-ui.min.css">
 <script src="../resources/js/jquery-3.1.1.min.js"></script>
 <script src="../resources/js/jquery-ui-1.12.1.js"></script>
@@ -44,11 +45,12 @@
 							<form action="/cancellationAdminOrder.do" method="post">
 							<table class="list_table">
 								<colgroup>
-									<col width="20">
-									<col width="20">
-									<col width="50">
-									<col width="100">
-									<col width="220">
+									<col width="20px"/>
+									<col width="100px"/>
+									<col width="50px"/>
+									<col width="100px"/>
+									<col />
+									<col />
 									
 								</colgroup>
 								<thead>
@@ -57,7 +59,8 @@
 										<th>주문 번호</th>
 										<th>주문자</th>
 										<th>연락처</th>
-										<th>상태</th>
+										<th>수량</th>
+										<th>금액</th>
 									</tr>
 								</thead>
 								<tbody id="payment">
@@ -80,7 +83,8 @@
 									<col width="20">
 									<col width="50">
 									<col width="100">
-									<col width="220">
+									<col />
+									<col />
 								
 								</colgroup>
 								<thead>
@@ -89,7 +93,8 @@
 										<th>주문 번호</th>
 										<th>주문자</th>
 										<th>연락처</th>
-										<th>상태</th>
+										<th>수량</th>
+										<th>금액</th>
 									</tr>
 								</thead>
 								<tbody id="payment1">
@@ -114,7 +119,8 @@
 									<col width="150">
 									<col width="50">
 									<col width="100">
-									<col width="220">
+									<col />
+									<col />
 								
 								</colgroup>
 								<thead>
@@ -122,7 +128,8 @@
 										<th>주문 번호</th>
 										<th>주문자</th>
 										<th>연락처</th>
-										<th>상태</th>
+										<th>수량</th>
+										<th>금액</th>
 									</tr>
 								</thead>
 								<tbody id="payment2">
@@ -140,7 +147,8 @@
 									<col width="150">
 									<col width="50">
 									<col width="100">
-									<col width="220">
+									<col />
+									<col />
 									
 								</colgroup>
 								<thead>
@@ -148,7 +156,8 @@
 										<th>주문 번호</th>
 										<th>주문자</th>
 										<th>연락처</th>
-										<th>상태</th>
+										<th>수량</th>
+										<th>금액</th>
 									</tr>
 								</thead>
 								<tbody id="payment3">
@@ -162,7 +171,7 @@
 		</div>
 	</div>
 	</section>
-	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />
+	<jsp:include page="/WEB-INF/views/common/singsingCampingfooter.jsp" />
 	<script type="text/javascript" src="/resources/js/Adminorder.js"></script>
 </body>
 </html>

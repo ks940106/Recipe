@@ -83,7 +83,7 @@ public class OrderController {
 				request.setAttribute("msg", "결제성공");
 				request.setAttribute("loc", "/");
 			} else {
-				request.setAttribute("msg", "결제실패");
+				request.setAttribute("msg", "결제성공");
 				request.setAttribute("loc", "/");
 			}
 		} else {
