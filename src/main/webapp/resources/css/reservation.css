@@ -40,8 +40,8 @@
 				background-color: #dadbdb;
 				border: 1px solid #dadbdb;}
 #calendarTb td {border: 1px solid #dadbdb;}
-	.possible{background-color: #3ac569;}
-	.impossible{background-color: #dadbdb;}
+	.possible{background-color: #3ac569; cursor: pointer;}
+	.impossible{background-color: #dadbdb; cursor: pointer;}
 	
 #span1{margin-left:5px; font-size: 25px; font-weight: bolder;}
 #reservation{margin-left:5px; border: 1px solid #dadbdb;}

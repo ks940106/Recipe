@@ -16,7 +16,4 @@ public class ParticipantDaoImpl implements ParticipantDao{
 	public void participantInsert(Participant vo) {
 		sqlsession.insert("participant.participantInsert",vo);
 	}
-	
-	
-
 }

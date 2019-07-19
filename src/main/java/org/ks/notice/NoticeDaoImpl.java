@@ -47,4 +47,10 @@ public class NoticeDaoImpl implements NoticeDao{
 		int totalCount = sqlSession.selectOne("notice.totalCount");
 		return totalCount;
 	}
+
+	@Override
+	public int noticeDelete(int idx) {
+		int result = sqlSession.delete("notice.noticeDelete",idx);
+		return result;
+	}
 }

@@ -224,7 +224,7 @@ public class CompetitionController {
 		String view="";
 		if(result>0) {
 			request.setAttribute("msg", "수정성공!");
-			request.setAttribute("loc", "/");
+			request.setAttribute("loc", "/adminPage.do");
 			view ="common/msg";
 		}else {
 			request.setAttribute("msg","수정실패");
@@ -238,15 +238,30 @@ public class CompetitionController {
 		String view="";
 		if(result>0) {
 			request.setAttribute("msg","삭제하시겠습니까?");
-			request.setAttribute("loc","/");
+			request.setAttribute("loc","/adminPage.do");
 			view = "common/msg";
 		}else {
 			request.setAttribute("msg","삭제 실패!");
-			request.setAttribute("loc","/");
+			request.setAttribute("loc","/adminPage.do");
 			view = "common/msg";
 		}
 		return view;
-	}	
+	}
+	@RequestMapping(value="/competitionResultDelete.do")
+	public String competitionResultDelete(@RequestParam int competitionNo, HttpServletRequest request) {
+		int result = competitionServiceimpl.resultDelete(competitionNo);
+		String view="";
+		if(result>0) {
+			request.setAttribute("msg","삭제하시겠습니까?");
+			request.setAttribute("loc","/adminPage.do");
+			view = "common/msg";
+		}else {
+			request.setAttribute("msg","삭제 실패!");
+			request.setAttribute("loc","/adminPage.do");
+			view = "common/msg";
+		}
+		return view;
+	}
 	@RequestMapping(value="/competitionAdminSearch.do")
 	public String competitionSearch(){
 		return "admin/competition/competitionAdmin_search";

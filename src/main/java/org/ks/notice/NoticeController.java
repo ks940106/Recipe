@@ -75,7 +75,7 @@ public class NoticeController {
 		Notice n = new Notice();
 		n.setNoticeTitle(request.getParameter("noticeTitle"));
 		n.setNoticeContent(request.getParameter("noticeContent"));
-		String content = n.getNoticeContent().replaceAll("<", "&lt");
+		String content = n.getNoticeContent().replaceAll("<", "&lt").replaceAll("\n", "<br>");
 		n.setNoticeContent(content);
 		String title = n.getNoticeTitle().replaceAll("<", "&lt");
 		n.setNoticeTitle(title);
@@ -113,5 +113,18 @@ public class NoticeController {
 		mav.addObject("n",n);
 		mav.setViewName("camping/noticeDetail");
 		return mav;
+	}
+	//관리자 페이지에서 공지사항 삭제
+	@RequestMapping(value="/noticeDelete.do")
+	public String noticeDelete(HttpServletRequest request) {
+		int idx = Integer.parseInt(request.getParameter("idx"));
+		int result = noticeServiceImpl.noticeDelete(idx);
+		String view="common/msg";
+		if(result>0) {
+			request.setAttribute("msg", "공지사항 삭제");
+		}else {
+			request.setAttribute("msg", "공지사항 삭제 실패");
+		}request.setAttribute("loc", "/adminNoticeList.do");
+		return view;
 	}
 }

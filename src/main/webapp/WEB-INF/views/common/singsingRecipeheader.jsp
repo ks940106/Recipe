@@ -50,7 +50,7 @@
                     	<li><a href="/loginPage.do" style="color: #1f6054;">로그인</a></li>
                     </c:when>
                     <c:when test="${sessionScope.member.name=='관리자' }">
-                  		<li><a href="/adminPage.do" style="color: #1f6054;">관리자 페이지</a></li>
+                  		<li><a href="/orderRegPage.do" style="color: #1f6054;">관리자 페이지</a></li>
                   		<li><a href="/logout.do" style="color: #1f6054;">로그아웃</a></li>
                     </c:when>
                     <c:when test="${sessionScope.member !=null }">

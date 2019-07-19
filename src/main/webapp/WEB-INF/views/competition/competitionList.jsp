@@ -19,7 +19,7 @@
 	<div class="pom_bg">
         <div class="pom_top">
             <h1>요리대회</h1>
-            <div class="pom_div_bg1"></div>
+            <div class="pom_div_bg"></div>
             <p>자연속에서 즐기는 요리대회</p>
         </div>
     </div>
@@ -93,13 +93,13 @@
 							</td>
 						</tr>
 						<tr>
-							<th><label for="CSContent" class="ess">내용</label></th>
+							<th style="padding-top: 65px;"><label for="CSContent" class="ess">내용</label></th>
 							<td><textarea class="full" name="participantContent" id="pContent" maxlength="500"></textarea></td>
 						</tr>
 						</tbody>
 					</table>
 							</div>
-							<input type="submit" value="대회참가 신청하기" >
+							<input type="submit" value="대회참가 신청하기"  style="border-radius: 10px; background: #1f6054; padding: 10px; color: #fff; border: none; margin-top: 30px; font-weight: bold;">
                             <!-- <div id="cp_btn">
 								<input type="submit" value="대회참가 신청하기">
 				            </div> -->
@@ -155,7 +155,6 @@
 	<script>
 	  function check(){
 		 var con =  $("#pContent").val();
-		 alert(con);
 		 var exp = /^.{20,500}$/;
 		 con = con.replace(/</g,"&lt;");
 		 con = con.replace(/>/g,"&gt;");
@@ -163,7 +162,6 @@
 		 con = con.replace(/\'/g,"&#39;");
 		 con = con.replace(/\n/g,"<br />");
 		 return con;
-		 alert(con);
 		 if(!exp.test(con)){
 			 alert("사연을 20자~500자 사이로 적어주세요");
 			 return false;

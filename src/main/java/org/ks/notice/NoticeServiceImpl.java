@@ -18,7 +18,6 @@ public class NoticeServiceImpl implements NoticeService{
 	public NoticePageData noticeList(int reqPage) {
 		int numPerPage = 10;
 		int totalCount = noticeDaoImpl.totalCount();
-		System.out.println(totalCount);
 		int totalPage=(totalCount%numPerPage==0)?(totalCount/numPerPage):(totalCount/numPerPage)+1;
 		
 		int start=(reqPage-1)*numPerPage+1;
@@ -93,6 +92,11 @@ public class NoticeServiceImpl implements NoticeService{
 	@Override
 	public int noticeUpdate(Notice n) {
 		int result = noticeDaoImpl.noticeUpdate(n);
+		return result;
+	}
+	@Override
+	public int noticeDelete(int idx) {
+		int result = noticeDaoImpl.noticeDelete(idx);
 		return result;
 	}
 }
