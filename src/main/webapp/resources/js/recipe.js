@@ -1,3 +1,4 @@
+var delImg = [];
 var boardReg	=	{
 
 
@@ -132,6 +133,8 @@ function stepNum() {
 }
 
 function delStep(i) {
+    var img = $(this).closest("input[name='origin_step_img']").val();
+    alert(img);
     $("#divStepArea>div:nth-child("+i+")").remove();
     stepNum();
 }
