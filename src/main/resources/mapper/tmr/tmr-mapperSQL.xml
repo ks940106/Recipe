@@ -14,14 +14,11 @@
     recipe_time as recipeTime,
     recipe_level as recipeLevel,
     recipe_item as recipeItem,
-    recipe_step as recipeStep,
-    recipe_stepimg as recipeStepImg,
     recipe_like as recipeLike,
     recipe_hit as recipeHit,
     recipe_price as recipePrice,
     recipe_date as recipeDate,
     recipe_stock as recipeStock,
-    recipe_workimg as recipeWorkImg,
     recipe_video as recipeVideo,
     recipe_state as recipeState
     from recipe where to_char(recipe_date,'MM')= #{month} and to_char(recipe_date,'yy')=#{year} order by recipe_like desc
@@ -39,14 +36,11 @@
     recipe_time as recipeTime,
     recipe_level as recipeLevel,
     recipe_item as recipeItem,
-    recipe_step as recipeStep,
-    recipe_stepimg as recipeStepImg,
     recipe_like as recipeLike,
     recipe_hit as recipeHit,
     recipe_price as recipePrice,
     recipe_date as recipeDate,
     recipe_stock as recipeStock,
-    recipe_workimg as recipeWorkImg,
     recipe_video as recipeVideo,
     recipe_state as recipeState
     from(select rownum as rnum, tmr.* from (select * from recipe where to_char(recipe_date,'MM')=#{month} and to_char(recipe_date,'yy')=#{year} order by recipe_like desc) tmr) where rnum between #{start} and #{end}

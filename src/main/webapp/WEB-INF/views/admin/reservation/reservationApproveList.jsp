@@ -12,9 +12,6 @@
 <link rel="stylesheet" type="text/css"href="../resources/css/jquery-ui.min.css">
 <script src="../resources/js/jquery-3.1.1.min.js"></script>
 <script src="../resources/js/jquery-ui-1.12.1.js"></script>
-<style>
-table{table-layout: fixed;}
-</style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/adminHeader.jsp" />
@@ -216,87 +213,5 @@ table{table-layout: fixed;}
 	</div>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />
-	<script>
-	maxDataCount = [0,"${count1}","${count2}","${count3}","${count4}"]; //각각의 자료 갯수 //28/15/24/33
-	maxPageCount = [0,"${page1}","${page2}","${page3}","${page4}"]; //각각 페이지 개수 //6/3/5/7
-	pageState = [0,1,1,1,1]; //현재 페이지5개뭉터기의 페이지 수
-	maxPageState = [0,1,1,1,1]; //최대 페이지5개뭉터기 페이지 수
-		window.onload=function(){
-			for(var i = 1 ; i<5;i++){
-				if(maxPageCount[i]>5){ //페이지 개수가 5개 이상이면 다음버튼을 활성화
-					$("#next"+i).css("display","inline");
-				}
-			}
-			for(var i = 1; i<5;i++){
-				if(maxPageCount[i]%5==0){ //페이지뭉터기의 페이지 수 결정
-					maxPageState[i]=maxPageCount[i]/5; 
-				}else{
-					maxPageState[i]=Math.floor(maxPageState[i]/5)+1;
-				}
-			}
-			paging(1,1); //첫번째 자료리스트를 첫번째페이지로 선택
-			paging(2,1);
-			paging(3,1);
-			paging(4,1);
-		}
-		function paging(listNum,num){
-			$("#payment"+listNum+" tr:not(:last-child)").css("display","none"); //a태그 들어가는 tr 빼고 다 일단 안보이게
-			$("#payment"+listNum+" a").css("color","black"); //페이지a태그 까맣게
-			for(var i = 5*(num-1)+1; i<5*(num-1)+6; i++){
-				$("#list"+listNum+"tr"+i).css("display","table-row"); //자료들을 페이지에 맞게 보여줌
-			}
-			$("#list"+listNum+"a"+num).css("color","red"); //현재 페이지 색 빨갛게
-		}
-		function next(listNum){ //다음버튼 클릭 시 어떤 자료인지를 알려줌
-			pageState[listNum]=pageState[listNum]+1; //페이지뭉터기의 다음페이지로
-			if(pageState[listNum]>1){ //현재 페이지뭉터기페이지가 1이상 되면 이전버튼활성화 
-				$("#prev"+listNum).css("display","inline");
-			}
-			if(pageState[listNum]==maxPageState[listNum]){ //최대 페이지뭉터기페이지와 현재페이지뭉터기페이지 수가 같으면 다음버튼비활성화
-				$("#next"+listNum).css("display","none");
-			}
-			$(".listpage"+listNum).css("display","none"); //기존 모든 a태그페이지 없애고
-			for(var i = 5*(pageState[listNum]-1)+1; i<5*(pageState[listNum]-1)+6; i++){ //필요한 a태그페이지만 보여줌
-					$("#list"+(listNum)+"a"+i).css("display","inline");
-			}
-			paging(listNum,5*(pageState[listNum]-1)+1); //자동으로 그 다음 첫번째 페이지 선택효과
-		}
-		function prev(listNum){
-			pageState[listNum]=pageState[listNum]-1; //현재페이지뭉터기 페이지를 한단계 낮춤
-			$("#next"+listNum).css("display","inline"); //이전버튼이 존재하여 눌렀다면 다음버튼도 당연히 존재하는 것이므로 활성화
-			if(pageState[listNum]==1){ //현재 페이지뭉터기페이지가 1이면 이전이 없으므로 이전버튼비활성화
-				$("#prev"+listNum).css("display","none");
-			}
-			$(".listpage"+listNum).css("display","none"); //기존 모든 a태그페이지 없애고
-			for(var i = 5*(pageState[listNum])-4; i<5*(pageState[listNum])+1; i++){ //필요한 a태그페이지만 보여줌
-				$("#list"+(listNum)+"a"+i).css("display","inline");
-			}
-			paging(listNum,5*(pageState[listNum])); //자동으로 이전 마지막페이지 선택효과
-		}
-		
-		function reservationUpdate(what){
-			var reservationId = new Array();
-			var count = 0;
-			if(what=="approve" || what=="cancel"){
-				$("input[name=reservationId1]:checked").each(function() {
-					reservationId[count] = $(this).val();
-					count++;
-				});
-			}else{
-				$("input[name=reservationId2]:checked").each(function() {
-					reservationId[count] = $(this).val();
-					count++;
-				});
-			}
-			
-			if(what =="approve"){
-				location.href="/reservationUpdate.do?reservationId="+reservationId+"&reservationState=2";
-			}else{
-				location.href="/reservationUpdate.do?reservationId="+reservationId+"&reservationState=4";
-			}
-			
-			
-		}
-	</script>
 </body>
 </html>

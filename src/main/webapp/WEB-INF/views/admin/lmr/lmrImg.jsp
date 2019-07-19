@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>싱싱레시피 이달의 레시피 혜택 배너 수정</title>
+<title>Fresh 이달의 레시피 혜택 배너 수정</title>
 <link rel="stylesheet" type="text/css" href="../resources/css/import.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/ui.css">
 	<link rel="stylesheet" type="text/css" href="../resources/css/style.css">
