@@ -5,6 +5,7 @@ import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.ks.participant.vo.ParticipantMember;
+import org.ks.talkBoard.vo.MainBoard;
 import org.ks.talkBoard.vo.TalkBoard;
 import org.ks.talkBoard.vo.TalkBoardPageData;
 import org.springframework.stereotype.Service;
@@ -56,8 +57,9 @@ public class TalkBoardBefore {
 				String con2 = con.replace("\n", "<br>");
 				b.getList().get(i).setBoardContents(con2);
 				}
-				
 			}
 		}
 	}
+
+	
 }

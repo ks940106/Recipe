@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+ 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -57,10 +59,18 @@
 				    <c:forEach items="${fbc }" var="t">
 					    <tr>
 					    	<td>${t.commentWriter }</td>
+					    	  <% pageContext.setAttribute("crcn", "\n");%> 
 					    	<c:set var="commentContent" value="${t.commentContents }"/>
 					    	<c:set var="comment" value="${fn:replace(commentContent,'<','&lt') }"/>
+					    	<c:set var="comment2" value="${fn:replace(comment,crcn,'<br>') }"/>
 					    	
-					    	<td>${comment }</td>
+					    	<td>${comment2 }
+					    	<c:if test="${(sessionScope.member.nickname eq t.commentWriter) or (sessionScope.member.id eq 'admin')}">
+							<span>
+							<input type="button" onclick="del('${t.commentNo}','${fb.boardNo }','${sessionScope.member.id }');" class="btn-xs btn-danger" value="삭제">
+							</span>
+						</c:if>
+					    	</td>
 					    </tr>
 				    </c:forEach>
 				    <tr>
@@ -121,6 +131,21 @@
 				}
 			});
 			
+		}
+		
+		function del(commentNo,boardNo,memberId){
+			var no = commentNo;
+			$.ajax({
+				url : "/freeBoardDeleteComment.do",
+				type : "post",
+				data : {no:no},
+				success : function(data){
+					location.href="/selectFreeBoard.do?boardNo="+boardNo+"&memberId="+memberId;
+				},
+				error : function(){
+					console.log("댓글삭제 실패해따");
+				}
+			});
 		}
 		
 	</script>

@@ -82,4 +82,11 @@ public class FreeBoardService {
 	public int commentCount(int no) {
 		return freeBoardDao.commentCount(no);
 	}
+	
+	public int deleteComment(int no) {
+		return freeBoardDao.deleteComment(no);
+	}
+	public int deleteAllComment(int no) {
+		return freeBoardDao.deleteAllComment(no);
+	}
 }

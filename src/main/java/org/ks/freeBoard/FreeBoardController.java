@@ -91,6 +91,7 @@ public class FreeBoardController {
 	
 	@RequestMapping(value="/deleteFreeBoard.do")
 	public String deleteFreeBoard(@RequestParam int boardNo) {
+		int result2 = freeBoardService.deleteAllComment(boardNo);
 		int result = freeBoardService.deleteFreeBoard(boardNo);
 		if(result>0) {
 			System.out.println("삭제 성공");
@@ -143,5 +144,17 @@ public class FreeBoardController {
 		}
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="//freeBoardDeleteComment.do")
+	public String freeBoardDeleteComment(HttpServletRequest request) {
+		int no = Integer.parseInt(request.getParameter("no"));
+		int result = freeBoardService.deleteComment(no);
+		if(result >0 ) {
+			System.out.println("댓글 삭제 성공");
+		}else {
+			System.out.println("댓글 삭제 실패");
+		}
+		return "^^7";
+	}
 	
 }

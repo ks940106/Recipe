@@ -50,4 +50,11 @@ public class FreeBoardDao {
 	public int commentCount(int no) {
 		return sqlSession.selectOne("freebatis.commentCount",no);
 	}
+	public int deleteComment(int no) {
+		return sqlSession.update("freebatis.deleteComment",no);
+	}
+	public int deleteAllComment(int no) {
+		return sqlSession.update("freebatis.deleteAllComment",no);
+	}
+	
 }

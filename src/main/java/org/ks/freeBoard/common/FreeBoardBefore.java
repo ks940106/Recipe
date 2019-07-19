@@ -17,8 +17,6 @@ public class FreeBoardBefore {
 	public void allPointcut() {}
 	@Pointcut("execution(* org.ks.freeBoard.*Service.*main*(..))")
 	public void allPointcut2() {}
-	@Pointcut("execution(* org.ks.freeBoard.*Service.commentInsert(..))")
-	public void allPointcut3() {}
 	
 	@AfterReturning(value="allPointcut()",returning="returnObj")
 	public void beforePw(JoinPoint jp,Object returnObj) throws Exception {
@@ -56,22 +54,7 @@ public class FreeBoardBefore {
 			}
 		}
 	}
-	@AfterReturning(value="allPointcut3()",returning="returnObj")
-	public void beforePw3(JoinPoint jp,Object returnObj) throws Exception {
-		String methodName = jp.getSignature().getName();
-		System.out.println(returnObj);
-		if(returnObj instanceof FreeBoardComment[]) {
-			System.out.println("1");
-			FreeBoardComment b = (FreeBoardComment)returnObj;
-			if(b.getCommentContents() != null) {
-			String con = b.getCommentContents().replaceAll("<", "&lt");
-			System.out.println(con);
-		//	String con = b.replaceAll("<", "&lt");
-			String con2 = con.replace("\n", "<br>");
-			b.setCommentContents(con);
-			}
-		}
-	}
+
 	
 	
 	
