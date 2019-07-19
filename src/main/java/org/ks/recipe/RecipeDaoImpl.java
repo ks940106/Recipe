@@ -120,7 +120,7 @@ public class RecipeDaoImpl implements RecipeDao {
     public int stepUpdate(Recipe recipe) {
         int result = 0;
         for (int i = 0;i<recipe.getRecipeStep().size();i++) {
-            Map<String,Object> map = new HashMap<>();
+            Map<String,Object> map = new HashMap<String, Object>();
             map.put("recipeNo", recipe.getRecipeNo());
             map.put("stepNo",i+1);
             map.put("stepContent",recipe.getRecipeStep().get(i).getStep());
@@ -134,7 +134,7 @@ public class RecipeDaoImpl implements RecipeDao {
     public int workImgUpdate(Recipe recipe) {
         int result = 0;
         for (int i = 0;i<recipe.getRecipeWorkImg().size();i++){
-            Map<String,Object> map = new HashMap<>();
+            Map<String,Object> map = new HashMap<String, Object>();
             map.put("recipeNo", recipe.getRecipeNo());
             map.put("workImgNo",i+1);
             map.put("workImg",recipe.getRecipeWorkImg().get(i));
