@@ -76,7 +76,7 @@ function video_preview() {
         var youtube_video_id="";
         console.log(strarr);
         if(strarr!=null)
-        youtube_video_id = strarr.pop();
+            youtube_video_id = strarr.pop();
         if (youtube_video_id.length == 11) {
             var video_thumbnail = "//img.youtube.com/vi/" + youtube_video_id + "/0.jpg";
             $('#videoPhotoHolder').attr('src', video_thumbnail);
@@ -106,7 +106,7 @@ $(document).ready(function () {
     video_preview();
     // console.log($("#divStepArea").html().trim().length);
     if($("#divStepArea").html().trim().length == 0)
-    addStep();
+        addStep();
     $(".step").hover(function () {
         $(this).find('.step_btn').show();
     },function () {
@@ -133,8 +133,11 @@ function stepNum() {
 }
 
 function delStep(i) {
-    var img = $(this).parent().parent().find("input[name='origin_step_img']").val();
-    alert(img);
+    console.log(i);
+    var img = $('#divStepArea input[name="origin_step_img"]').eq(i-1).val();
+    console.log(img);
+    delImg.push(img);
+    console.log(delImg);
     $("#divStepArea>div:nth-child("+i+")").remove();
     stepNum();
 }
@@ -147,6 +150,10 @@ function doSubmit(option) {
     $('#divStepArea [name="step_text[]"]').each(function () {
         // steps.push($(this).val());
         formData.append('steps',$(this).val());
+    });
+    delImg.forEach(function (value, index, array) {
+        console.log(value);
+       formData.append("delImg",value);
     });
     // var json_arr = JSON.stringify(steps);
 

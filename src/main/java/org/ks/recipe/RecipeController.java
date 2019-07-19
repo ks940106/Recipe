@@ -324,6 +324,7 @@ public class RecipeController {
         String [] newWorkImg = multi.getParameterValues("new_work_img");
         String [] delWorkImg = multi.getParameterValues("del_work_img");
 
+        String [] delImg = multi.getParameterValues("delImg");
 
         // 저장 경로 설정
         String root = multi.getSession().getServletContext().getRealPath("/");
@@ -424,6 +425,17 @@ public class RecipeController {
         System.out.println(recipe);
 
         int result = recipeService.recipeUpdate(recipe);
+
+        if(delImg!=null&&delImg.length>0)
+        for (String f:
+             delImg) {
+            File file = new File(path+f);
+            if(file.exists()){
+                if(file.delete()){
+                    System.out.println(file.toString()+"삭제성공");
+                }
+            }
+        }
 
         return "recipe/recipe";
     }

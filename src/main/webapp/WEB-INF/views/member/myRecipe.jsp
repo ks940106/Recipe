@@ -8,6 +8,8 @@
     <title>싱싱레시피 마이페이지</title>
     <script src="http://code.jquery.com/jquery-3.4.0.js"></script>
     <link href="../resources/css/import.css" rel="stylesheet" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/recipeList.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/recipe.css">
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp" />
