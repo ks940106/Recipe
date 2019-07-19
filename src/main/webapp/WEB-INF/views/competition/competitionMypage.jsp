@@ -29,7 +29,7 @@
 					<li><a href="/cart.do">장바구니</a><span>></span></li>
 					<li><a href="/orderList.do">결제내역</a><span>></span></li>
 					<li><a href="/mypageCompetitionResult.do">대회신청결과</a><span>></span></li>
-					<li><a href="/mypageReservationResultRecipe.do">예약내역</a><span>></span></li>
+					<li><a href="/mypageReservationResultRecipe.do">캠핑 예약 내역</a><span>></span></li>
 				</ul>
 			</div>
 			</nav>

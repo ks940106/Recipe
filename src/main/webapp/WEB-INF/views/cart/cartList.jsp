@@ -35,7 +35,7 @@
 						<li><a href="/orderList.do">결제내역</a><span>></span></li>
 						<li><a href="/mypageCompetitionResult.do">대회신청결과</a><span>></span></li>
 						<li><a href="/myRecipe.do">나의 레시피</a><span>></span></li>
-						<li><a href="/mypageReservationResultRecipe.do">예약내역</a><span>></span></li>
+						<li><a href="/mypageReservationResultRecipe.do">캠핑 예약 내역</a><span>></span></li>
 					</ul>
 				</div>
 			</nav>
@@ -72,8 +72,8 @@
 						</c:if>
 						</tbody>
 					</table>
-					<button type="submit" class="button button1">주문하기</button>
-					<button type="button" class="button button1" onclick="deletecart();">삭제하기</button>
+					<button type="submit" class="button button1" id="order1">주문하기</button>
+					<button type="button" class="button button1" onclick="deletecart(event);">삭제하기</button>
 				</form>
 			</div>
 		</div>

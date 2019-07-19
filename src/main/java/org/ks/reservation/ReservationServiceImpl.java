@@ -29,4 +29,31 @@ public class ReservationServiceImpl implements ReservationService{
 	public void insertReservation(Reservation r) {
 		reservationDaoImpl.insertReservation(r);
 	}
+	@Override
+	public ArrayList<Reservation> selectMypageReservation(String id) {
+		List list = reservationDaoImpl.selectMypageReservation(id);
+		return (ArrayList<Reservation>)list;
+	}
+	@Transactional
+	public void cancelReservation(String reservationId) {
+		reservationDaoImpl.cancelReservation(reservationId);
+		
+	}
+	@Override
+	public ArrayList<Reservation> selectAllReservation() {
+		List list = reservationDaoImpl.selectAllReservation();
+		return (ArrayList<Reservation>)list;
+	}
+	@Override
+	public void reservationUpdate(String[] reservationId, String reservationState) {
+		for(int i = 0; i<reservationId.length;i++) {
+			reservationDaoImpl.reservationUpdate(reservationId[i],reservationState);
+		}
+		
+	}
+	@Override
+	public ArrayList<Reservation> reservationApproveList() {
+		List list = reservationDaoImpl.reservationApproveList();
+		return (ArrayList<Reservation>)list;
+	}
 }

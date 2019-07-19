@@ -25,11 +25,12 @@
 	        </nav>
 	        <form action="/noticeWrite.do">
 			<div class="section_content">
+			<div class="admin_notice_div">
 				<div class="set_field">
 					<h1>공지사항 관리</h1>
 					<div id="cp_div_bg"></div>
 				</div>
-				<table>
+				<table class="adminNotice">
 					<tr>
 						<th>공지사항 제목</th>
 						<td><input type="text" name="noticeTitle"></td>
@@ -41,8 +42,9 @@
 				</table>
 				<button type="submit">등록</button>
 			</div>
-			
+			</div>
 			</form>
+			
 		</div>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />

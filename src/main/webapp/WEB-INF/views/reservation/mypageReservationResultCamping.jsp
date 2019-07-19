@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>싱싱캠핑 캠핑예약내역</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<script src="http://code.jquery.com/jquery-3.4.0.js"></script>
 	<link href="../resources/css/import.css" rel="stylesheet" />
@@ -32,6 +32,7 @@
 					<li><a href="/cartCamping.do">장바구니</a><span>></span></li>
 					<li><a href="/orderListCamping.do">결제내역</a><span>></span></li>
 					<li><a href="/mypageCompetitionResult.do">대회신청결과</a><span>></span></li>
+					<li><a href="/mypageReservationResultCamping.do">예약내역</a><span>></span></li>
 				</ul>
 				</div>
 			</nav>
@@ -41,47 +42,64 @@
                     <jsp:include page="/WEB-INF/views/common/navPom.jsp"/>
                 </div>-->
 			<div class="cp_content">
-				<div id="contentName">결제 내역</div>
+				<div id="contentName">캠핑 예약 내역</div>
 				<div id="contentNamebar"></div>
-				<form action="/cancellationOrder.do" method="post" name="cancellationForm">
-					<table class="table">
+					<table class="table" style="table-layout: fixed;">
 						<thead>
 						<tr>
-							<th></th>
-							<th>주문번호</th>
-							<th>레시피제목</th>
-							<th>가격</th>
-							<th>인분</th>
-							<th>결제 상태</th>
-
+							<th style="width:5%;"></th>
+							<th style="width:10%;">예약번호</th>
+							<th style="width:10%;">카라반 이름</th>
+							<th style="width:10%;">예약자 이름</th>
+							<th style="width:45%;">예약 날짜</th>
+							<th style="width:10%;">결제 가격</th>
+							<th style="width:10%;">결제 상태</th>
 						</tr>
 						</thead>
 						<tbody>
 
-						<c:forEach items="${list }" var="c" varStatus="i">
+						<c:forEach items="${list }" var="r" varStatus="i">
 							<tr>
-								<input type="hidden" name="orderCount" value="${c.orderCount }">
-								<td><input type="checkbox" name="orderNo" value="${c.orderNo }"></td>
-								<td>${c.orderCode }</td>
-								<td>${c.recipeTitle }</td>
-								<td >${c.orderPrice }</td>
-								<td>${c.orderCount }</td>
-								<td >${c.state }</td>
+								<c:choose>
+									<c:when test="${r.reservationState eq 1}"><td><input type="radio" name="reservationId" value="${r.reservationId}"></td></c:when>
+									<c:when test="${r.reservationState eq 2}"><td><input type="radio" name="reservationId" value="${r.reservationId}"></td></c:when>
+									<c:when test="${r.reservationState eq 3}"><td></td></c:when>
+									<c:otherwise><td></td></c:otherwise>
+								</c:choose>
+								<td>${r.reservationId}</td>
+								<td>${r.reservationRequest}</td>
+								<td>${r.reservationName}</td>
+								<td style="overflow: auto;">${r.reservationDate}</td>
+								<td>${r.totalCost}</td>
+								<c:choose>
+									<c:when test="${r.reservationState eq 1}"><td style="color:blue;">예약 승인 대기 중</td></c:when>
+									<c:when test="${r.reservationState eq 2}"><td style="color:blue;">예약 승인</td></c:when>
+									<c:when test="${r.reservationState eq 3}"><td style="color:red;">예약 취소 승인 대기 중</td></c:when>
+									<c:otherwise><td style="color:red;">예약 취소</td></c:otherwise>
+								</c:choose>
 							</tr>
 						</c:forEach>
 						<c:if test="${empty list }">
 							<tr>
-								<td colspan="5"><h1>결제 내역이 없습니다.</h1></td>
+								<td colspan="7"><h1>예약 내역이 없습니다.</h1></td>
 							</tr>
 						</c:if>
 						</tbody>
 					</table>
-					<button type="submit" class="button button1" id="cancellation">결제취소</button>
-				</form>
+					<button type="button" class="button button1" onclick="deleteButton()">예약취소</button>
 			</div>
 		</div>
 </section>
 <!-- header Fin -->
 <jsp:include page="/WEB-INF/views/common/singsingCampingfooter.jsp" />
+<script>
+	function deleteButton(){
+		var bool = confirm("정말 예약을 취소 하시겠습니까?");
+		if(bool){
+			location.href="/cancelReservationCamping.do?reservationId="+$('input[name="reservationId"]:checked').val();
+		}
+		
+	}
+</script>
 </body>
 </html>

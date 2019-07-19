@@ -225,4 +225,3 @@ $("input[name='count']").change(function () {
 function cart(recipeNo) {
     location.href = "/insertcart.do?recipeNo=" + recipeNo + "&count=" + count;
 }
-

@@ -5,7 +5,7 @@
 $("#cancellation").click(function(event) {
 	var num =$("[name='orderNo']:checked").length;
 	if(num<=0){
-		alert("취소할 제품을 체크해주세요.");
+		alert("취소할 제품을 선택해주세요.");
 		event.preventDefault();
 	}else{		
 		var state = $("[name='orderNo']:checked").parent().siblings('td').eq(4).text();
