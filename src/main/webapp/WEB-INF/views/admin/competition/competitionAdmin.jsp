@@ -63,6 +63,7 @@
 						</tr>	
 						</tbody>
 					</table>
+					
 					<div id="cp_admin_btn">
 						<a href="/competitionAdminWrite.do" class="btn small col_main f_w">글쓰기</a>
 					</div>

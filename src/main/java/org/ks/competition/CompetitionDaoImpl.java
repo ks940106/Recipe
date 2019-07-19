@@ -126,13 +126,14 @@ public class CompetitionDaoImpl implements CompetitionDao {
 		return list;
 	}
 
-/*	@Override
-	public List selectPage(int start, int end) {
-		Map<String,Integer> map = new HashMap<String,Integer>();
-		map.put("start", start);
-		map.put("end", end);
-		List list = sqlsession.selectList("competition.selectPage",map);
-		return list;
-	}*/
+	@Override
+	public void competitionCheckN() {
+		sqlsession.update("competition.competitionCheckN");		
+	}
+
+	@Override
+	public int resultDelete(int competitionNo) {
+		return sqlsession.delete("competition.resultDelete",competitionNo);
+	}
 	
 }

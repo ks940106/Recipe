@@ -1261,8 +1261,7 @@ section.login_wrap .login_group .login_box .login_btn{
 	width: 100%;
 }
  .cp_tableWrap{
-	overflow-y: auto;
-    overflow: scroll;
+    overflow-y: scroll;
     height: 500px;
 } 
 

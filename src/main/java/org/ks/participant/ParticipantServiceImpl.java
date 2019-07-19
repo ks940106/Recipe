@@ -18,7 +18,7 @@ public class ParticipantServiceImpl implements ParticipantService{
 	@Override
 	@Transactional
 	public void participantInsert(Participant vo) {
-		participantDaoimpl.participantInsert(vo);		
+		participantDaoimpl.participantInsert(vo);	
 	}
 
 
