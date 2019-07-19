@@ -24,4 +24,24 @@ public class ReservationDaoImpl implements ReservationDao{
 	public void insertReservation(Reservation r) {
 		sqlSession.insert("reservation.insertReservation",r);
 	}
+	@Override
+	public List selectMypageReservation(String id) {
+		return sqlSession.selectList("reservation.selectMypageReservation", id);
+	}
+	@Override
+	public void cancelReservation(String reservationId) {
+		sqlSession.update("reservation.cancelReservation",reservationId);
+		
+	}
+	@Override
+	public List selectAllReservation() {
+		return sqlSession.selectList("reservation.selectAllReservation");
+	}
+	@Override
+	public void reservationUpdate(String reservationId, String reservationState) {
+		Map map = new HashMap<String,String>();
+		map.put("reservationId", reservationId);
+		map.put("reservationState", reservationState);
+		sqlSession.update("reservation.reservationUpdate",map);
+	}
 }
