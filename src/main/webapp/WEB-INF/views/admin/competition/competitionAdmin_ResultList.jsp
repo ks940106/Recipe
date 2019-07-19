@@ -30,19 +30,25 @@
 			<h1>지난 요리 대회 결과 관리</h1>
 			<div id="cp_div_bg"></div>
 		</div>
-		<div class="cp_content" style="margin-left:100px;">
+		<div class="cp_content" style="margin-left:100px; padding-top: 50px;">
 			<!--                <img src="../../../resources/img/logo.png" width="200px;">-->
-			<table id="cp_table">
+			<table class="list_table">
 				<tr>
 					<th>번호</th>
 					<th>제목</th>
 					<th>등록일</th>
+					<th>관리</th>
 				</tr>
 				<c:forEach items="${cpd.list}" var="c">
 					<tr>
 						<td>${c.competitionNo}</td>
 						<td><a href="/competitionResultAdmin.do?competitionNo=${c.competitionNo}">${c.competitionTitle}</a></td>
 						<td>${c.competitionDate}</td>
+						<td>
+							<div>
+							<a href="/competitionResultDelete.do?competitionNo=${c.competitionNo}" class="btn small col_main f_w">삭제</a>
+							</div>
+						</td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -52,6 +58,6 @@
 	</div>
 	</div>
 	</section>
-	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp"/>
+	<jsp:include page="/WEB-INF/views/common/freshfooter.jsp"/>
 </body>
 </html>

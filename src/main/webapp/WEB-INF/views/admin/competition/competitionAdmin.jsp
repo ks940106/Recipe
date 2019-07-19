@@ -63,6 +63,7 @@
 						</tr>	
 						</tbody>
 					</table>
+					
 					<div id="cp_admin_btn">
 						<a href="/competitionAdminWrite.do" class="btn small col_main f_w">글쓰기</a>
 					</div>
@@ -70,6 +71,6 @@
 			</div>
 		</div>
 	</section>
-	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />
+	<jsp:include page="/WEB-INF/views/common/freshfooter.jsp"/>
 </body>
 </html>

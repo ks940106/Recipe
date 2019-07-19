@@ -52,8 +52,8 @@ public class ReservationServiceImpl implements ReservationService{
 		
 	}
 	@Override
-	public ArrayList<Reservation> reservationApproveList() {
-		List list = reservationDaoImpl.reservationApproveList();
-		return (ArrayList<Reservation>)list;
+	public Reservation selectOneReservation(String reservationId) {
+		Reservation r = reservationDaoImpl.selectOneReservation(reservationId);
+		return r;
 	}
 }

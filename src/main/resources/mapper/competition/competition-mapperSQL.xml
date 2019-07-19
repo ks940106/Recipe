@@ -145,4 +145,10 @@
       phone as phone
       from participant join member on participant.id = member.id where competition_no = #{competitionNo} and participant_pass='Y'
    </select>
+   <update id="competitionCheckN">
+   		update competition set competition_check = 'N'
+   </update>
+   <delete id="resultDelete" parameterType="_int">
+   		 delete from competition where competition_no=#{competitionNo}
+   </delete>
 </mapper>

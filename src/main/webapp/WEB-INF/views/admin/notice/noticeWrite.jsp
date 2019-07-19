@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>회원 관리 </title>
+<title>Fresh 공지사항 </title>
 <link rel="stylesheet" type="text/css" href="../resources/css/import.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/ui.css">
 	<link rel="stylesheet" type="text/css" href="../resources/css/style.css">
@@ -23,29 +23,32 @@
 	        <nav class="lnb_wrap">
 	             <jsp:include page="/WEB-INF/views/common/notice_nav.jsp"/>
 	        </nav>
-	        <form action="/noticeWrite.do">
+	        <form action="/noticeWrite.do" method="post" onsubmit="return insert()">
 			<div class="section_content">
+			<div class="admin_notice_div">
 				<div class="set_field">
 					<h1>공지사항 관리</h1>
 					<div id="cp_div_bg"></div>
 				</div>
-				<table>
+				<table class="adminNotice">
 					<tr>
 						<th>공지사항 제목</th>
-						<td><input type="text" name="noticeTitle"></td>
+						<td><input type="text" name="noticeTitle" id="title"></td>
 					</tr>
 					
 					<tr>
 						<th>공지사항 내용</th>
-						<td><textarea rows="20" cols="20" name="noticeContent"></textarea>
+						<td><textarea rows="20" cols="20" name="noticeContent" id="content"></textarea>
 				</table>
 				<button type="submit">등록</button>
 			</div>
-			
+			</div>
 			</form>
+			
 		</div>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />
+	<script type="text/javascript" src="/resources/js/talkBoard/noticeWrite.js"></script>
 	
 </body>
 </html>

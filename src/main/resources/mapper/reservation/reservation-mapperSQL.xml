@@ -18,7 +18,7 @@
 		<foreach item="arr" collection="array" separator="or">
 				reservation_date like '%'||#{arr}||'%'
 		</foreach>
-		) order by caravan_no
+		) and caravan_name not like '%대표%' order by caravan_no
 	</select>
 	<select id="selectOneCaravan" parameterType="_int" resultType="caravan">
 		select 
@@ -77,7 +77,7 @@
 	<update id="reservationUpdate" parameterType="map">
 		update reservation set reservation_state=#{reservationState} where reservation_id=#{reservationId}
 	</update>
-	<select id="reservationApproveList" resultType="reservation">
+	<select id="selectOneReservation" parameterType="string" resultType="reservation">
 		select 
 		reservation_id as reservationId,
 		caravan_no as caravanNo,
@@ -92,6 +92,6 @@
 		reservation_request as reservationRequest,
 		enroll_date as enrollDate,
 		reservation_state as reservationState
-		from reservation where reservation_state=2 order by enroll_date desc
+		from reservation where reservation_id=#{reservationId}
 	</select>
 </mapper>

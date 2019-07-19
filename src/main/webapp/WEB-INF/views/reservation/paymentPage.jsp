@@ -6,26 +6,26 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>싱싱캠핑 예약</title>
+<link href="../resources/css/import.css" rel="stylesheet" />
 <link href="../resources/css/campingImport.css" rel="stylesheet" />
 <link href="../resources/css/reservation.css" rel="stylesheet" />
 <script type="text/javascript" src="/resources/js/reservation.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 <style type="text/css">
 </style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/singsingCampingheader.jsp"/>
+<div class="ab_cover"></div>
 <section>
-	<div class="pom_bg">
-        <div class="pom_top">
-            <h1>예약</h1>
-            <div id="pom_div_bg"></div>
-            <p>카라반 예약하기</p>
-        </div>
-    </div>
     <div class="pom_wrap">
-            <div class="pomNav">
-                <jsp:include page="/WEB-INF/views/tmr/tmrNav.jsp"/>
+      <div class="pomNav">
+                <nav class="nav_wrap">
+				<div class="nav_con">
+					<div class="nav_title">카라반 예약</div>
+				</div>
+			</nav>
             </div>
             <div class="section_content_nav">
                 <div class="cp_content">
@@ -39,7 +39,7 @@
                 		<input type="hidden" name="reservationEmail">
                 		
                 		<input type="hidden" name="caravanName" value="${caravanName }">
-                		<h1>선택 객실 목록</h1>
+                		<h1>선택 객실 정보</h1>
                 		<span style="width: 20%; display: inline-block; font-weight: bolder;">객실명</span>
                 		<span style="width: 20%; display: inline-block; font-weight: bolder;">이용일</span>
                 		<span style="width: 30%; display: inline-block; font-weight: bolder;">이용인원</span>

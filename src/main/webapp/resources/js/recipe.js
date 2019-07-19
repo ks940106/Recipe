@@ -26,6 +26,7 @@ var boardReg	=	{
         str += '<img src="' + URL.createObjectURL(event.target.files[0]) + '" alt="이미지">';
         str += '<a href="#none" class="del_btn" onclick="boardReg.delImg(this)">삭제</a>';
         $(e).closest('div').append(str);
+        $(e).closest('div').find('input[type="hidden"]').eq(1).val(1);
 
 
     },
@@ -36,7 +37,9 @@ var boardReg	=	{
             var num = name.substr(name.length - 1);
             // $('#isDel_' + num).val(1);
         }
-        $(e).closest('div').find('input').val('');
+        $(e).closest('div').find('input[type="file"]').val('');
+
+        $(e).closest('div').find('input[type="hidden"]').eq(2).val(1);
         $(e).closest('div').find('img').remove();
         $(e).remove();
     }

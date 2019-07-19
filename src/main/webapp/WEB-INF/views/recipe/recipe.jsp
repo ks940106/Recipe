@@ -10,6 +10,8 @@
     <link href="/resources/css/import.css" rel="stylesheet" />
     <link href="/resources/css/page.css" rel="stylesheet"/>
     <link href="/resources/css/recipe.css" rel="stylesheet"/>
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp"/>
@@ -24,6 +26,9 @@
                 <div class="img_up_list">
                     <%--이미지 업로드--%>
                     <div class="img_box">
+                        <input type="hidden" name="origin_main_img" value="${recipeDetail.recipe.recipeMainImg}">
+                        <input type="hidden" name="new_main_img" value="0">
+                        <input type="hidden" name="del_main_img" value="0">
                         <input type="file" class="hide" accept="image/*" name="recipeMainImg" id="recipeMainImg" onchange="boardReg.imgSel(this, event)">
                         <a href="javascript:void(0);" onclick="uploadImg(this);" class="upload_btn" style="background: url('${pageContext.request.contextPath}/resources/img/recipe/pic_none4.gif') no-repeat;" ></a>
                         <c:if test="${not empty recipeDetail.recipe.recipeMainImg}">
@@ -145,6 +150,9 @@
                                         <%--이미지 업로드--%>
                                     <div class="img_up_list" style="display: inline-block;vertical-align: middle;  margin: 0;">
                                         <div class="img_box" style="width: 160px;height: 160px;">
+                                            <input type="hidden" name="origin_step_img" value="${step.img}">
+                                            <input type="hidden" name="new_step_img" value="0">
+                                            <input type="hidden" name="del_step_img" value="0">
                                             <input type="file" class="hide" accept="image/*" name="step_photo[]" id="step_photo_${stat.count}" onchange="boardReg.imgSel(this, event)">
                                             <a href="javascript:void(0);" onclick="uploadImg(this);" class="upload_btn" style="background: url('${pageContext.request.contextPath}/resources/img/recipe/pic_none2.gif') no-repeat;" ></a>
                                             <c:if test="${not empty step.img}">
@@ -178,6 +186,9 @@
                         <div class="img_up_list" style="display: inline-block;vertical-align: middle; float: none; margin: 0;">
                             <%--이미지 업로드--%>
                             <div class="img_box" style="width: 140px;height: 140px;">
+                                <input type="hidden" name="origin_work_img" value="${recipeDetail.recipeWorkImg[0]}">
+                                <input type="hidden" name="new_work_img" value="0">
+                                <input type="hidden" name="del_work_img" value="0">
                                 <input type="file" class="hide" accept="image/*" name="work_photo[]" id="work_photo_1" onchange="boardReg.imgSel(this, event)">
                                 <a href="javascript:void(0);" onclick="uploadImg(this);" class="upload_btn" style="background: url('${pageContext.request.contextPath}/resources/img/recipe/pic_none3.gif') no-repeat;" ></a>
                                 <c:if test="${not empty recipeDetail.recipeWorkImg[0]}">
@@ -191,6 +202,9 @@
                         <div class="img_up_list" style="display: inline-block;vertical-align: middle; float: none; margin: 0;">
                             <%--이미지 업로드--%>
                             <div class="img_box" style="width: 140px;height: 140px;">
+                                <input type="hidden" name="origin_work_img" value="${recipeDetail.recipeWorkImg[1]}">
+                                <input type="hidden" name="new_work_img" value="0">
+                                <input type="hidden" name="del_work_img" value="0">
                                 <input type="file" class="hide" accept="image/*" name="work_photo[]" id="work_photo_2" onchange="boardReg.imgSel(this, event)">
                                 <a href="javascript:void(0);" onclick="uploadImg(this);" class="upload_btn" style="background: url('${pageContext.request.contextPath}/resources/img/recipe/pic_none3.gif') no-repeat;" ></a>
                                 <c:if test="${not empty recipeDetail.recipeWorkImg[1]}">
@@ -204,6 +218,9 @@
                         <div class="img_up_list" style="display: inline-block;vertical-align: middle; float: none; margin: 0;">
                             <%--이미지 업로드--%>
                             <div class="img_box" style="width: 140px;height: 140px;">
+                                <input type="hidden" name="origin_work_img" value="${recipeDetail.recipeWorkImg[2]}">
+                                <input type="hidden" name="new_work_img" value="0">
+                                <input type="hidden" name="del_work_img" value="0">
                                 <input type="file" class="hide" accept="image/*" name="work_photo[]" id="work_photo_3" onchange="boardReg.imgSel(this, event)">
                                 <a href="javascript:void(0);" onclick="uploadImg(this);" class="upload_btn" style="background: url('${pageContext.request.contextPath}/resources/img/recipe/pic_none3.gif') no-repeat;" ></a>
                                 <c:if test="${not empty recipeDetail.recipeWorkImg[2]}">
@@ -217,6 +234,9 @@
                         <div class="img_up_list" style="display: inline-block;vertical-align: middle; float: none; margin: 0;">
                             <%--이미지 업로드--%>
                             <div class="img_box" style="width: 140px;height: 140px;">
+                                <input type="hidden" name="origin_work_img" value="${recipeDetail.recipeWorkImg[3]}">
+                                <input type="hidden" name="new_work_img" value="0">
+                                <input type="hidden" name="del_work_img" value="0">
                                 <input type="file" class="hide" accept="image/*" name="work_photo[]" id="work_photo_4" onchange="boardReg.imgSel(this, event)">
                                 <a href="javascript:void(0);" onclick="uploadImg(this);" class="upload_btn" style="background: url('${pageContext.request.contextPath}/resources/img/recipe/pic_none3.gif') no-repeat;" ></a>
                                 <c:if test="${not empty recipeDetail.recipeWorkImg[3]}">
@@ -238,7 +258,7 @@
                         <button type="button" onclick="doSubmit('delete')" class="btn-lg btn-warning">레시피 삭제</button>
                     </c:otherwise>
                 </c:choose>
-<%--                <button type="button" onclick="doSubmit('save_public')" class="btn-lg btn-warning">레시피 삭제</button>--%>
+                <%--                <button type="button" onclick="doSubmit('save_public')" class="btn-lg btn-warning">레시피 삭제</button>--%>
                 <button type="button" onclick="history.back();" class="btn-lg btn-default">취소</button>
             </div>
         </div>
@@ -258,6 +278,9 @@
                 <%--이미지 업로드--%>
                 <div class="img_up_list" style="display: inline-block;vertical-align: middle;  margin: 0;">
                     <div class="img_box" style="width: 160px;height: 160px;">
+                        <input type="hidden" name="origin_step_img" value="">
+                        <input type="hidden" name="new_step_img" value="0">
+                        <input type="hidden" name="del_step_img" value="0">
                         <input type="file" class="hide" accept="image/*" name="step_photo[]" id="step_photo_STEP" onchange="boardReg.imgSel(this, event)">
                         <a href="javascript:void(0);" onclick="uploadImg(this);" class="upload_btn" style="background: url('${pageContext.request.contextPath}/resources/img/recipe/pic_none2.gif') no-repeat;" >
                         </a>

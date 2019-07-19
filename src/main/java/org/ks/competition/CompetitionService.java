@@ -24,5 +24,5 @@ public interface CompetitionService {
 	public int participantResult(String checkResult, int competitionNo);
 	public ParticipantMember competitionMypage(String id);
 	public ArrayList<ParticipantMember> participantResultList(int competitionNo);
-/*	public CompetitionPageData selectPage(int reqPage);*/
+	public int resultDelete(int competitionNo);
 }
