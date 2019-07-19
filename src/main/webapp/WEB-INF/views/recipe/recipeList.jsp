@@ -9,8 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>싱싱레시피 요리대회</title>
     <link href="../resources/css/import.css" rel="stylesheet" />
-
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!--     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/recipe.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/recipeList.css">
 
@@ -23,10 +22,8 @@
 <jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp" />
 <!-- header Fin -->
 <section>
-    <div class="pom_bg">
+    <div class="pom_bg1">
         <div class="pom_top">
-            <h1>레시피</h1>
-            <div id="pom_div_bg"></div>
         </div>
     </div>
     <div class="pom_wrap">

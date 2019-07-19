@@ -14,11 +14,8 @@
 <body>
 	<jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp"/>
 	<section>
-	<div class="pom_bg">
+	<div class="pom_bg2">
         <div class="pom_top">
-            <h1>이달의 레시피</h1>
-            <div id="pom_div_bg"></div>
-            <p>이번달에 가장 많은 추천을 받은 레시피</p>
         </div>
     </div>
     <div class="pom_wrap">
