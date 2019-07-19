@@ -8,7 +8,19 @@
 		var no = $('.preview:last').attr('value');
 		var previewIndex = ++no;
 
+		$(document).on('click', '.uploadInputBox', function() {
+			// <input type=file> 태그 기능 구현
+			console.log("클릭");
+			$(this).change(function() {
+				addPreview($(this)); //preview form 추가하기
+				console.log("프리뷰 추가");
+			});
+		});
+
 	
+		
+		
+ 
 		$(document).on('change','.uploadInputBox',function() {
 							imgN++;
 							$(this).css('display', 'none');
@@ -53,11 +65,12 @@
 			};
 			reader.readAsDataURL(file);
 		}
-
-		//preview 영역에서 삭제 버튼 클릭시 해당 미리보기이미지 영역 삭제
+ });
+		
+	//preview 영역에서 삭제 버튼 클릭시 해당 미리보기이미지 영역 삭제
 		function deletePreview(obj) {
+			console.log(obj);
 			var imgNum = obj.attributes['value'].value;
-			delete files[imgNum];
 			$(".preview[value=" + imgNum + "]").remove();
 			$("#img_" + imgNum + "").remove();
 		}
@@ -78,12 +91,5 @@
 			}
 		}
 
-		$(document).on('click', '.uploadInputBox', function() {
-			// <input type=file> 태그 기능 구현
-			console.log("클릭");
-			$(this).change(function() {
-				addPreview($(this)); //preview form 추가하기
-				console.log("프리뷰 추가");
-			});
-		});
- });
+		
+

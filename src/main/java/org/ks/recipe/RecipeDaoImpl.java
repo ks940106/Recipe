@@ -22,8 +22,29 @@ public class RecipeDaoImpl implements RecipeDao {
 
     @Override
     public int recipeReg(Recipe recipe) {
-        return sqlSession.insert("recipe.recipeReg",recipe);
+        int result;
+
+        result = sqlSession.update("recipe.recipeReg",recipe);
+        return result;
     }
+
+    @Override
+    public int stepReg(Recipe recipe) {
+        int result;
+
+        result = sqlSession.update("recipe.stepReg",recipe);
+        return result;
+    }
+
+    @Override
+    public int workImgReg(Recipe recipe) {
+        int result;
+        result = sqlSession.update("recipe.workImgReg",recipe);
+        return result;
+    }
+
+
+
 
     @Override
     public List<Recipe> recipeList() {
@@ -83,5 +104,10 @@ public class RecipeDaoImpl implements RecipeDao {
     @Override
     public int recipeTotal(RecipeSearch recipeSearch) {
         return sqlSession.selectOne("recipe.total",recipeSearch);
+    }
+
+    @Override
+    public int recipeDel(Recipe recipe) {
+        return sqlSession.update("recipe.delete",recipe);
     }
 }

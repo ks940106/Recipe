@@ -2,6 +2,7 @@ package org.ks.talkBoard;
 
 import java.util.ArrayList;
 
+import org.ks.member.vo.Member;
 import org.ks.talkBoard.vo.BoardLike;
 import org.ks.talkBoard.vo.MainBoard;
 import org.ks.talkBoard.vo.MainPageData;
@@ -32,7 +33,7 @@ public class TalkBoardServiceImpl implements TalkBoardService {
 			pp.setStart((reqPage-1)*numPerPage+1);
 			pp.setEnd(reqPage*numPerPage);
 			pp.setType(type);
-			ArrayList<TalkBoard> list = (ArrayList<TalkBoard>)talkBoardDao.mainBoard(pp);
+			ArrayList<MainBoard> list = (ArrayList<MainBoard>)talkBoardDao.mainBoard(pp);
 			String pageNavi = "";
 			int pageNaviSize = 5;
 			int pageNo = ((reqPage-1)/pageNaviSize)*pageNaviSize+1;
@@ -61,7 +62,7 @@ public class TalkBoardServiceImpl implements TalkBoardService {
 			pp.setStart((reqPage-1)*numPerPage+1);
 			pp.setEnd(reqPage*numPerPage);
 			pp.setType(type);
-			ArrayList<TalkBoard> list = (ArrayList<TalkBoard>)talkBoardDao.boardType(pp);
+			ArrayList<MainBoard> list = (ArrayList<MainBoard>)talkBoardDao.boardType(pp);
 			String pageNavi = "";
 			int pageNaviSize = 5;
 			int pageNo = ((reqPage-1)/pageNaviSize)*pageNaviSize+1;
@@ -156,6 +157,12 @@ public class TalkBoardServiceImpl implements TalkBoardService {
 	@Override
 	public int likeCount(int no) {
 		return talkBoardDao.likeCount(no);
+	}
+
+
+	@Override
+	public Member selectImg(String nickname) {
+		return talkBoardDao.selectImg(nickname);
 	}
 	
 }

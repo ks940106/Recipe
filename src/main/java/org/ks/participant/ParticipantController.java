@@ -20,6 +20,10 @@ public class ParticipantController {
 /*		System.out.println(vo.getCompetitionNo());
 		System.out.println(vo.getId());
 		System.out.println(vo.getParticipantContent());*/
+		String str = vo.getParticipantContent().replaceAll("<", "&lt");
+		System.out.println(vo.getParticipantContent());
+		vo.setParticipantContent(str);
+		System.out.println(str);
 		participantServiceimpl.participantInsert(vo);
 		return "redirect:/competitionList.do?competitionCheck='Y'&id="+vo.getId();
 	}	

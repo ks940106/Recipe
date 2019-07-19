@@ -32,7 +32,10 @@
                         </c:if>
                     </div>
                 </div>
-                <div class="cont_line"><p class="cont_tit4">레시피 제목</p><input type="text" name="cok_title" id="cok_title" value="${recipeDetail.recipe.recipeTitle}" class="" placeholder="예) 소고기 미역국 끓이기" style="width:610px; ">
+                <div class="cont_line">
+                    <p class="cont_tit4">레시피 제목</p>
+                    <input type="hidden" name="recipe_no" value="${recipeDetail.recipe.recipeNo}">
+                    <input type="text" name="cok_title" id="cok_title" value="${recipeDetail.recipe.recipeTitle}" class="" placeholder="예) 소고기 미역국 끓이기" style="width:610px; ">
                 </div>
 
                 <div class="cont_line pad_b_25"><p class="cont_tit4">요리소개</p><textarea name="cok_intro" id="cok_intro" class=" step_cont" placeholder="이 레시피의 탄생배경을 적어주세요. 예) 남편의 생일을 맞아 소고기 미역국을 끓여봤어요. 어머니로부터 배운 미역국 레시피를 남편의 입맛에 맞게 고안했습니다." style="height:100px; width:610px; resize:none;">${recipeDetail.recipe.recipeContents}</textarea></div>
@@ -177,8 +180,8 @@
                             <div class="img_box" style="width: 140px;height: 140px;">
                                 <input type="file" class="hide" accept="image/*" name="work_photo[]" id="work_photo_1" onchange="boardReg.imgSel(this, event)">
                                 <a href="javascript:void(0);" onclick="uploadImg(this);" class="upload_btn" style="background: url('${pageContext.request.contextPath}/resources/img/recipe/pic_none3.gif') no-repeat;" ></a>
-                                <c:if test="${not empty recipeDetail.recipeWorkImg.get(0)}">
-                                    <img src='${pageContext.request.contextPath}/resources/upload/recipe/${recipeDetail.recipeWorkImg.get(0)}' alt="이미지">
+                                <c:if test="${not empty recipeDetail.recipeWorkImg[0]}">
+                                    <img src='${pageContext.request.contextPath}/resources/upload/recipe/${recipeDetail.recipeWorkImg[0]}' alt="이미지">
                                     <a href="javaScript:void(0)" class="del_btn" onclick="boardReg.delImg(this)">삭제</a>
                                 </c:if>
                             </div>
@@ -189,8 +192,11 @@
                             <%--이미지 업로드--%>
                             <div class="img_box" style="width: 140px;height: 140px;">
                                 <input type="file" class="hide" accept="image/*" name="work_photo[]" id="work_photo_2" onchange="boardReg.imgSel(this, event)">
-                                <a href="javascript:void(0);" onclick="uploadImg(this);" class="upload_btn" style="background: url('${pageContext.request.contextPath}/resources/img/recipe/pic_none3.gif') no-repeat;" >
-                                </a>
+                                <a href="javascript:void(0);" onclick="uploadImg(this);" class="upload_btn" style="background: url('${pageContext.request.contextPath}/resources/img/recipe/pic_none3.gif') no-repeat;" ></a>
+                                <c:if test="${not empty recipeDetail.recipeWorkImg[1]}">
+                                    <img src='${pageContext.request.contextPath}/resources/upload/recipe/${recipeDetail.recipeWorkImg[1]}' alt="이미지">
+                                    <a href="javaScript:void(0)" class="del_btn" onclick="boardReg.delImg(this)">삭제</a>
+                                </c:if>
                             </div>
                         </div>
                     </div>
@@ -199,8 +205,11 @@
                             <%--이미지 업로드--%>
                             <div class="img_box" style="width: 140px;height: 140px;">
                                 <input type="file" class="hide" accept="image/*" name="work_photo[]" id="work_photo_3" onchange="boardReg.imgSel(this, event)">
-                                <a href="javascript:void(0);" onclick="uploadImg(this);" class="upload_btn" style="background: url('${pageContext.request.contextPath}/resources/img/recipe/pic_none3.gif') no-repeat;" >
-                                </a>
+                                <a href="javascript:void(0);" onclick="uploadImg(this);" class="upload_btn" style="background: url('${pageContext.request.contextPath}/resources/img/recipe/pic_none3.gif') no-repeat;" ></a>
+                                <c:if test="${not empty recipeDetail.recipeWorkImg[2]}">
+                                    <img src='${pageContext.request.contextPath}/resources/upload/recipe/${recipeDetail.recipeWorkImg[2]}' alt="이미지">
+                                    <a href="javaScript:void(0)" class="del_btn" onclick="boardReg.delImg(this)">삭제</a>
+                                </c:if>
                             </div>
                         </div>
                     </div>
@@ -209,16 +218,27 @@
                             <%--이미지 업로드--%>
                             <div class="img_box" style="width: 140px;height: 140px;">
                                 <input type="file" class="hide" accept="image/*" name="work_photo[]" id="work_photo_4" onchange="boardReg.imgSel(this, event)">
-                                <a href="javascript:void(0);" onclick="uploadImg(this);" class="upload_btn" style="background: url('${pageContext.request.contextPath}/resources/img/recipe/pic_none3.gif') no-repeat;" >
-                                </a>
+                                <a href="javascript:void(0);" onclick="uploadImg(this);" class="upload_btn" style="background: url('${pageContext.request.contextPath}/resources/img/recipe/pic_none3.gif') no-repeat;" ></a>
+                                <c:if test="${not empty recipeDetail.recipeWorkImg[3]}">
+                                    <img src='${pageContext.request.contextPath}/resources/upload/recipe/${recipeDetail.recipeWorkImg[3]}' alt="이미지">
+                                    <a href="javaScript:void(0)" class="del_btn" onclick="boardReg.delImg(this)">삭제</a>
+                                </c:if>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="regi_btm">
-                <button type="button" onclick="doSubmit('save')" class="btn-lg btn-primary">저장</button>
-                <button type="button" onclick="doSubmit('save_public')" class="btn-lg btn-warning">저장 후 공개하기</button>
+                <c:choose>
+                    <c:when test="${empty recipeDetail}">
+                        <button type="button" onclick="doSubmit('save')" class="btn-lg btn-primary">레시피 등록</button>
+                    </c:when>
+                    <c:otherwise>
+                        <button type="button" onclick="doSubmit('update')" class="btn-lg btn-primary">레시피 수정</button>
+                        <button type="button" onclick="doSubmit('delete')" class="btn-lg btn-warning">레시피 삭제</button>
+                    </c:otherwise>
+                </c:choose>
+<%--                <button type="button" onclick="doSubmit('save_public')" class="btn-lg btn-warning">레시피 삭제</button>--%>
                 <button type="button" onclick="history.back();" class="btn-lg btn-default">취소</button>
             </div>
         </div>
@@ -254,6 +274,6 @@
 </section>
 <jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp"/>
 </body>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type="text/javascript" src="/resources/js/recipe.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" type="text/javascript"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/recipe.js"></script>
 </html>

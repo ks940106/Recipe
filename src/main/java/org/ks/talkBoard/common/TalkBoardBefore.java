@@ -4,6 +4,7 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.ks.participant.vo.ParticipantMember;
 import org.ks.talkBoard.vo.TalkBoard;
 import org.ks.talkBoard.vo.TalkBoardPageData;
 import org.springframework.stereotype.Service;
@@ -33,10 +34,13 @@ public class TalkBoardBefore {
 		System.out.println(returnObj);
 		if(returnObj instanceof TalkBoard) {
 			TalkBoard b = (TalkBoard)returnObj;
+			if(b.getBoardContents() != null) {
+				
 			String con = b.getBoardContents().replaceAll("<", "&lt");
 		//	String con = b.replaceAll("<", "&lt");
 			String con2 = con.replace("\n", "<br>");
 			b.setBoardContents(con2);
+			}
 		}
 	}
 	@AfterReturning(value="allPointcut2()",returning="returnObj")
@@ -46,6 +50,7 @@ public class TalkBoardBefore {
 		if(returnObj instanceof TalkBoardPageData) {
 			TalkBoardPageData b = (TalkBoardPageData)returnObj;
 			for(int i=0;i<b.getList().size();i++) {
+				System.out.println(b.getList().get(i).getBoardImg());
 				if(b.getList().get(i).getBoardContents() != null) {
 				System.out.println(b.getList().get(i).getBoardContents());
 				//String con = b.replaceAll("<", "&lt");

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="freebatis">
+
+	<insert id="newBoard" parameterType="fb">
+		insert into free_board values(req_f_board_no.nextval,#{boardType},#{nickname},#{title},#{contents},0)
+	</insert>
+	<select id="mainBoard" parameterType="_int" resultType="fb">
+		select
+		f_board_no as boardNo,
+		f_board_type as boardType,
+		nickname as nickname,
+		f_board_title as title,
+		f_board_contents as contents,
+		f_board_view as viewCount
+		from free_board where f_board_type = #{type}
+	</select>
+	<update id="viewCountUp" parameterType="_int">
+		update free_board set f_board_view = f_board_view+1 where f_board_no = #{no}
+	</update>
+	<select id="selectBoard" parameterType="_int" resultType="fb">
+		select
+		f_board_no as boardNo,
+		f_board_type as boardType,
+		nickname as nickname,
+		f_board_title as title,
+		f_board_contents as contents,
+		f_board_view as viewCount
+		from free_board where f_board_no = #{no}
+	</select>
+	<delete id="deleteFreeBoard" parameterType="_int">
+		delete from free_board where f_board_no = #{boardNo}
+	</delete>
+	<update id="modifyComplete" parameterType="fb">
+		update free_board set f_board_title = #{title},f_board_contents = #{contents} where f_board_no = #{boardNo}
+	</update>
+	<select id="freeBoardCount" parameterType="_int" resultType="_int">
+		select count(*) cnt from free_board where f_board_type = #{type}
+	</select>
+	<select id="mainFreeBoard" parameterType="fpp" resultType="fb">
+		select 
+		f_board_no as boardNo,
+  		f_board_type as boardType,
+  		nickname as nickname,
+  		f_board_title as title,
+  		f_board_contents as contents,
+  		f_board_view as viewCount
+  		from(SELECT ROWNUM AS RNUM, M.*FROM (select * from free_board where f_board_type = #{type} order by f_board_no desc) M) WHERE RNUM BETWEEN #{start} AND #{end}
+	</select>
+	
+</mapper>

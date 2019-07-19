@@ -10,7 +10,18 @@
 			caravan_plus_cost as caravanPlusCost,
 			caravan_cost as caravanCost,
 			caravan_Info as caravanInfo
-		from caravan
+		from caravan where caravan_name not like '%대표%' order by caravan_name
+  	</select>
+  	<select id="selectRepresentationCaravan" resultType="caravan">
+  		select caravan_no as caravanNo,
+			caravan_name as caravanName,
+			caravan_area as caravanArea,
+			caravan_people as caravanPeople,
+			caravan_max_people as caravanMaxPeople,
+			caravan_plus_cost as caravanPlusCost,
+			caravan_cost as caravanCost,
+			caravan_Info as caravanInfo
+		from caravan where caravan_name like '%대표%' order by caravan_name
   	</select>
   	<insert id="insertCaravanList" parameterType="caravan">
   		insert into caravan values(caravan_no_sequence.nextval,#{caravanName},#{caravanArea},#{caravanPeople},#{caravanMaxPeople},#{caravanPlusCost},#{caravanCost},#{caravanInfo},null,null)
@@ -31,5 +42,38 @@
 			caravan_cost as caravanCost,
 			caravan_Info as caravanInfo
 		from caravan where caravan_no =#{caravanNo}
+  	</select>
+  	<select id="updaterepresentationCaravan" parameterType="string" resultType="caravanImg">
+  		select	caravan_no as caravanNo, 
+  			caravan_main_img as caravanMainImg,
+  			caravan_img as caravanImg,
+  			caravan_img1 as caravanImg1
+  			from caravan where caravan_no=#{caravanNo}
+  	</select>
+  	<update id="updateInsertCaravan" parameterType="caravanImg">
+  		update caravan set caravan_main_img=#{caravanMainImg},caravan_img=#{caravanImg},caravan_img1=#{caravanImg1} where caravan_no=#{caravanNo}
+  	</update>
+  	<!-- 사용자  -->
+  	<select id="selectCaravanA" resultType="caravanImg">
+  		select
+  			caravan_main_img as caravanMainImg,
+  			caravan_img as caravanImg,
+  			caravan_img1 as caravanImg1
+  			from caravan where caravan_no=35
+  	</select>
+  
+  	<select id="selectCaravanB" resultType="caravanImg">
+  		select
+  			caravan_main_img as caravanMainImg,
+  			caravan_img as caravanImg,
+  			caravan_img1 as caravanImg1
+  			from caravan where caravan_no=36
+  	</select>
+  	<select id="selectCaravanC" resultType="caravanImg">
+  		select
+  			caravan_main_img as caravanMainImg,
+  			caravan_img as caravanImg,
+  			caravan_img1 as caravanImg1
+  			from caravan where caravan_no=38
   	</select>
 </mapper>

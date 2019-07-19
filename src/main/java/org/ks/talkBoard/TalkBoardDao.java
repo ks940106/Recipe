@@ -2,6 +2,7 @@ package org.ks.talkBoard;
 
 import java.util.List;
 
+import org.ks.member.vo.Member;
 import org.ks.talkBoard.vo.BoardLike;
 import org.ks.talkBoard.vo.PrintPage;
 import org.ks.talkBoard.vo.TalkBoard;
@@ -42,4 +43,6 @@ public interface TalkBoardDao {
 	public int commentCount(int no);
 	
 	public int likeCount(int no);
+	
+	public Member selectImg(String nickname);
 }

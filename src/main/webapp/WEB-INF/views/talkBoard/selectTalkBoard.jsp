@@ -34,7 +34,11 @@
     
 	 <div class="section_content">
 	 	
-	 		<div class="d3">
+	 	<div class="s1">
+					<div class="d2">
+						<img src="/resources/upload/member/${m.memberImg }">
+					</div>
+	 		<div class="c1">
 	 			${tb.nickname }
 	 			<div style="font-size: 35px; float: right; margin-top: 10px;">
 	 			<img src="/resources/img/talk/138533.png"  style="width:30px; height:30px;">    ${likeCount }
@@ -46,15 +50,13 @@
 				<input type="button" onclick="modifyTalkBoard(${tb.boardNo})" class="btn-lg btn-success" value="수정">
 				</c:if>
 	 		</div>
-	 		<div class="d3">
-	 			${tb.boardContents }
-	 		</div>
 	 	
 	 		<c:forTokens items="${tb.boardImg }" delims="/" var="item">
 	 		<div class="d3">
 			<img src="/resources/talkBoard/${item}" width="100%">
 			</div>
 			</c:forTokens>
+			</div>
 			<div class="d4">
 				
 			</div>
