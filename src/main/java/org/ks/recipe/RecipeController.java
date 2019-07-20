@@ -253,6 +253,12 @@ public class RecipeController {
         model.addAttribute("recipeList",recipeList);
         return "admin/recipe/orderReg";
     }
+    @RequestMapping(value = "/orderPage.do")
+    public String orderPage(Model model){
+        List<Recipe> recipeList = recipeService.product();
+        model.addAttribute("recipeList",recipeList);
+        return "admin/recipe/orderModify";
+    }
 
     @RequestMapping(value = "/orderReg.do",produces = "text/plain;charset=UTF-8")
     @ResponseBody

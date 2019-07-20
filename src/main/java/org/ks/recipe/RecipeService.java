@@ -34,4 +34,6 @@ public interface RecipeService {
     int recipeDel(Recipe recipe);
 
     int recipeUpdate(Recipe recipe);
+
+    List<Recipe> product();
 }

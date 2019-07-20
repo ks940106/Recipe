@@ -163,4 +163,9 @@ public class RecipeDaoImpl implements RecipeDao {
         List<String> files = sqlSession.selectList("recipe.getWorkImgImg",map);
         return result;
     }
+
+    @Override
+    public List<Recipe> product() {
+        return null;
+    }
 }

@@ -167,4 +167,9 @@ public class RecipeServiceImpl implements RecipeService {
         }
         return result;
     }
+
+    @Override
+    public List<Recipe> product() {
+        return recipeDaoImpl.product();
+    }
 }
