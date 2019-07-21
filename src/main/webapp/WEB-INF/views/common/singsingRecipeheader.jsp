@@ -33,7 +33,6 @@
                 <ul>
                     <li><a href="/" class="active">홈</a></li>
                     <li><a href="/recipePage.do">레시피</a></li>
-                    <li><a href="#">레시피 팔아요</a>
      				<li><a href="/tmr.do">이달의레시피</a></li>
 
      				<c:choose>

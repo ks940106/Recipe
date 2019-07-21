@@ -145,8 +145,12 @@ function delStep(i) {
 //upload form
 function doSubmit(option) {
     var title = $("#cok_title").val();
+    var mainImg = $("#recipeMainImg").val();
     if(!title.length&&option !== 'delete'){
         alert("레시피 제목은 필수사항 입니다.");
+        return;
+    }else if (!mainImg.length&&option !== 'delete'){
+        alert("요리 대표사진은 필수사항 입니다.");
         return;
     }
     // var step_photo = $("#divStepArea input[name='step_photo[]']");
@@ -235,8 +239,8 @@ function unLike(recipeNo) {
     })
 }
 
-var total;
-var count;
+var total = $("#price").html();
+var count = 1;
 $("input[name='count']").change(function () {
     count = $(this).val();
     total = $("#price").html()*$(this).val();

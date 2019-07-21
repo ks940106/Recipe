@@ -31,18 +31,27 @@ public class RecipeController {
         String cat2 = request.getParameter("cat2");
         String order = request.getParameter("order");
         String page = request.getParameter("page");
+        String isProduct = request.getParameter("is_product");
         RecipeSearch recipeSearch = new RecipeSearch();
         recipeSearch.setQ(q == null ? "" : q);
         recipeSearch.setCat1(cat1 == null ? "" : cat1);
         recipeSearch.setCat2(cat2 == null ? "" : cat2);
         recipeSearch.setOrder(order == null ? "" : order);
         int pageNum;
+        int isPrd;
         try {
             pageNum = Integer.parseInt(page);
         }catch (Exception e){
             pageNum = 1;
         }
+        try {
+            isPrd = Integer.parseInt(isProduct);
+        }catch (Exception e){
+            isPrd = 0;
+        }
         recipeSearch.setPage(pageNum);
+        recipeSearch.setIsProduct(isPrd);
+        System.out.println(recipeSearch);
         List<Category> categoryList = recipeService.categoryList();
         model.addAttribute("categoryList",categoryList);
         PageData<Recipe> recipePageData = recipeService.recipeList(recipeSearch);

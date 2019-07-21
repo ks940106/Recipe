@@ -399,7 +399,8 @@ img {
 .rcp_m_list2 .m_list_tit {
     font-size: 18px;
     color: #333;
-    padding: 5px 0 20px 8px;
+    /*padding: 5px 0 20px 8px;*/
+    padding: 5px 0 20px 16px;
 }
 .rcp_m_list2 .m_list_tit b {
     color: #74b243;
