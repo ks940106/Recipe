@@ -144,6 +144,11 @@ function delStep(i) {
 
 //upload form
 function doSubmit(option) {
+    var title = $("#cok_title").val();
+    if(!title.length&&option !== 'delete'){
+        alert("레시피 제목은 필수사항 입니다.");
+        return;
+    }
     // var step_photo = $("#divStepArea input[name='step_photo[]']");
     var formData = new FormData($("#recipeForm")[0]);
     var steps = [];
@@ -186,12 +191,15 @@ function doSubmit(option) {
             switch (option) {
                 case 'save':
                     alert("레시피가 등록 되었습니다.");
+                    location.href="/recipePage.do";
                     break;
                 case 'update':
                     alert("레시피가 수정 되었습니다.");
+                    location.href="/myRecipe.do";
                     break;
                 case 'delete':
                     alert("레시피가 삭제 되었습니다.");
+                    location.href="/myRecipe.do";
                     break;
             }
 

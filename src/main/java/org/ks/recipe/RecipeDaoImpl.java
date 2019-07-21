@@ -166,6 +166,6 @@ public class RecipeDaoImpl implements RecipeDao {
 
     @Override
     public List<Recipe> product() {
-        return null;
+        return sqlSession.selectList("recipe.getProduct");
     }
 }

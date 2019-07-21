@@ -286,4 +286,8 @@
         select WORK_IMG from WORK_IMG where RECIPE_NO = #{recipeNo} and (WORK_IMG_NO between #{start} and #{end})
     </select>
 
+    <select id="getProduct" resultMap="recipe"><![CDATA[
+        select *
+        from RECIPE where RECIPE_PRICE > 0
+    ]]></select>
 </mapper>
