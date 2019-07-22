@@ -36,12 +36,16 @@
 				text-align: center; 
 				line-height: 100px;}
 #calendarTb th {border: 1px solid #dadbdb;}
-#calendarTb th button{border-radius: 10px;
-				background-color: #dadbdb;
-				border: 1px solid #dadbdb;}
 #calendarTb td {border: 1px solid #dadbdb;}
 	.possible{background-color: #3ac569; cursor: pointer;}
-	.impossible{background-color: #dadbdb; cursor: pointer;}
-	
-#span1{margin-left:5px; font-size: 25px; font-weight: bolder;}
+	.impossible{background-color: #dadbdb;}
+span {
+	border: none;
+}
 #reservation{margin-left:5px; border: 1px solid #dadbdb;}
+.MyButton{
+	background-color: #1f6054;color:white;border-radius: 5px;border-style: none;
+}
+.MyButton:hover{
+	background-color:orange;color:black;
+}

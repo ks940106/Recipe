@@ -10,6 +10,11 @@
     <link href="../resources/css/import.css" rel="stylesheet" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/recipeList.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/recipe.css">
+    <style type="text/css">
+        .col-xs-4{
+            overflow: auto;
+        }
+    </style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp" />
