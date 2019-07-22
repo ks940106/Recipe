@@ -41,14 +41,16 @@
             </div>
             <div class="recipe_title">
                 <h1>${recipe.recipe.recipeTitle}</h1>
-                 <!--     조회수 : ${recipe.recipe.recipeHit}<br>
-                <span class="bg_like">좋아요 : ${recipe.recipe.recipeLike}</span><br>-->
+                     <!-- 조회수 : ${recipe.recipe.recipeHit}<br>-->
+
                 <c:if test="${not empty sessionScope.member && isLiked}">
-                    <a class="bg_like" href="javaScript:unLike(${recipe.recipe.recipeNo})" style="font-size: larger; color: red">♥</a>
+                    <a class="bg_like" href="javaScript:unLike(${recipe.recipe.recipeNo})" style="font-size: larger; color: red">
+                    <img src="../../../resources/img/recipe/like.png" width="40px;"></a>
                 </c:if>
                 <c:if test="${not empty sessionScope.member && !isLiked}">
-                    <a class="bg_like" href="javaScript:like(${recipe.recipe.recipeNo})" style="font-size: larger; color: red">♡</a>
+                    <a class="bg_like" href="javaScript:like(${recipe.recipe.recipeNo})" style="font-size: larger; color: red"><img src="../../../resources/img/recipe/heart.png" width="40px;"></a>
                 </c:if>
+                <span class="bg_like"> ${recipe.recipe.recipeLike}</span>
             </div>
             <div class="item_title">
                  <img src="../../../resources/img/recipe/icon_4.png">
@@ -71,10 +73,10 @@
                     </li>
                 </ul>
             </div>
-            <div class="item_content">
+            <div class="item_content2">
                 ${recipe.category1} ,
                 ${recipe.category2}
-                <div class="item_content">
+                <div class="item_content2">
                     <b>[재료]</b><br>
                     ${recipe.recipe.recipeItem}
                 </div>
@@ -107,7 +109,7 @@
                     <div class="step_text item_content">
                             ${step.step}
                     </div>
-                    <div class="step_img image-container">
+                    <div class="step_img">
                         <c:if test="${not empty step.img}">
                             <img src="${pageContext.request.contextPath}/resources/upload/recipe/${step.img}" alt="step_img"/>
                         </c:if>
@@ -116,8 +118,26 @@
                     </div>
                 </div>
             </c:forEach>
+             <div class="slider-wrap1">
+				          <ul id="slider1">
+				      <c:forEach var="img" items="${recipe.recipe.recipeWorkImg}">
+			                <li class="step_img image-container" style="display: inline-block">
+			                    <img src="${pageContext.request.contextPath}/resources/upload/recipe/${img}" alt=""/>
+			                </li>
+			            </c:forEach>
+				          <div class="btns" id="next1"><img src="../resources/img/right_arrow.png"></div>
+				          <div class="btns" id="previous1"><img src="../resources/img/left_arrow.png"></div>
+				          <div id="counter1"></div>
+				          
+				          <div id="pagination-wrap1">
+				            <ul>
+				            </ul>
+				          </div>
+				          <!--controls-->  				                 
+			</div>
         </div>
     </div>
+ <%--   
     <div class="section_content work_img">
         <div class="bottom">
             <c:forEach var="img" items="${recipe.recipe.recipeWorkImg}">
@@ -126,7 +146,7 @@
                 </div>
             </c:forEach>
         </div>
-    </div>
+    </div> --%>
 </section>
 <jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp"/>
 </body>
