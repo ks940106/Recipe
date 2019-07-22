@@ -26,9 +26,14 @@
 					<div class="nav_con">
 						<div class="nav_title">요리대회</div>
 						<ul class="nav_menu">
-							<li>
-				                <a href="/competitionList.do">진행중인 대회</a><span>></span>
-				            </li>
+						<c:choose>
+     					<c:when test="${empty sessionScope.member }">
+     						<li><a href="/competitionList.do?competitionCheck='Y'&id='null'">진행중인 대회</a></li>
+     					</c:when>
+     					<c:otherwise>
+     						<li><a href="/competitionList.do?competitionCheck='Y'&id=${sessionScope.member.id}">진행중인 대회</a></li>
+     					</c:otherwise>
+     				</c:choose>
 				            <li>
 				                <a href="/competitionResultList.do">지난 대회 보기</a><span>></span>
 				            </li>
@@ -42,10 +47,6 @@
                 </div>-->
 			<div class="cp_content">
 				<div class="cp_content">
-					<!--                <img src="../../../resources/img/logo.png" width="200px;">-->
-					<!--<h1>요리 대회</h1>
-			<p>싱싱레시피의 요리 대회 소식을 확인하실 수 있습니다.</p>-->
-					<!--			<div id="cp_div_bg"></div>-->
 					<div class="cp_notice">
 						<div id="cp_title">${competition.competitionTitle}</div>
 						<div id="cp_div_bg"></div>

@@ -39,23 +39,21 @@
 			</div>
 		<div class="section_content">
 		<div class="d1">
-			 <table class="table table-hover">
+			 <table class="table table-hover" style="text-align: center">
 				    <thead>
 				      <tr>
-				        <th>no</th>
-				        <th>title</th>
-				        <th>nickname</th>
-				        <th>contents</th>
-				        <th>view</th>
+				        <th>번호</th>
+				        <th>제목</th>
+				        <th>작성자</th>
+				        <th>조회수</th>
 				      </tr>
 				    </thead>
 				    <tbody>
 				    <c:forEach items="${fb.list }" var="t">
 				      <tr>
 				        <td>${t.boardNo }</td>
-				        <td onclick="select('${t.boardNo}')">${t.title }[${t.commentCount }]</td>
+				        <td onclick="select('${t.boardNo}')" style="text-align: left;">${t.title }[${t.commentCount }]</td>
 				        <td>${t.nickname }</td>
-				        <td>${t.contents }</td>
 				        <td>${t.viewCount }</td>
 				      </tr>
 				    </c:forEach>

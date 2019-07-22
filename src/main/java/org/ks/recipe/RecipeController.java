@@ -297,6 +297,21 @@ public class RecipeController {
         return "member/myRecipe";
     }
 
+    @RequestMapping(value = "/myRecipeCamping.do")
+    public String myRecipeCamping(HttpSession session, Model model, String page){
+        Member member = (Member) session.getAttribute("member");
+        String id = member.getId();
+        System.out.println(id);
+        RecipeSearch recipeSearch = new RecipeSearch();
+        recipeSearch.setId(id);
+        recipeSearch.setPage(page);
+        System.out.println(recipeSearch.getId());
+        PageData<Recipe> recipePageData = recipeService.MyRecipeList(recipeSearch);
+        model.addAttribute("recipeList", recipePageData.getList());
+        model.addAttribute("pageNav",recipePageData.getPageNav());
+        return "member/myRecipeCamping";
+    }
+
     @RequestMapping(value = "/recipeDel.do", method = RequestMethod.POST)
     public String recipeDel(HttpServletRequest request){
         String recipeNo = request.getParameter("recipe_no");

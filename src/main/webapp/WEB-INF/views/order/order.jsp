@@ -49,7 +49,7 @@
 			</div>
 			</nav>
 		</div>
-	</div>
+	
 		<div class="section_content_nav">
 			<!--<div class="cp_nav">
                     <jsp:include page="/WEB-INF/views/common/navPom.jsp"/>
@@ -88,28 +88,35 @@
 							</tr>
 						</c:if>
 					</tbody>
-				</table>
+				</table><br><br><br>
 				<h2 id="addrName">배송지 설정</h2>
 				<table class="table">
 					<tr>
-						<td><input type="radio" name="addrs" id="addrs" checked class="delivery">기본 배송지</td>
+						<td colspan="2"><input type="radio" name="addrs" id="addrs" checked class="delivery">기본 배송지</td>
 						<td><input type="radio" name="addrs" id="newAddrs" class="delivery">새로운 배송지</td>
 						<td><input type="radio" name="addrs" id="campingAddrs" class="delivery">캠핑장으로</td>
 					</tr>
 					<tr>
+						<td colspan="2">우편 번호</td>
+						<td>기본 주소</td>
+						<td>상제 주소</td>
+					</tr>
+					<tr>
 						
-						<td colspan="3">
+						<td colspan="2">
 						<input type="hidden" onclick="sample6_execDaumPostcode()" id="addrsApi" value="우편번호 찾기">
 						<input type="text" name="zipCode" id="zipCode" value="${sessionScope.member.zipCode }">
+						</td>
+						<td>
 						<input type="text" name="addr1" id="addr1" value="${sessionScope.member.addr1 }">
+						</td>
+						<td>
 						<input type="text" name="addr2" id="addr2" value="${sessionScope.member.addr2 }">
 						</td>
 					</tr>
 				</table>
 				
-				<h3>
-				총결제금액<span id="countSpan"><c:out value="${total }"/></span>원
-			</h3>
+				<h3>총결제금액<span id="countSpan"><c:out value="${total }"/></span>원</h3>
 			<button type="button" class="button button1" onclick="payment('${sessionScope.member.id}','${sessionScope.member.name}','${sessionScope.member.phone}')">결제하기</button>
 			<p id="paymentResult"></p>
 			</div>

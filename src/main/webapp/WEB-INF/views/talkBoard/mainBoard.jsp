@@ -63,8 +63,8 @@
 			<c:forEach items="${pd.list}" var="t">
 
 				<div class="d1">
-					<div class="d2">
-						<img src="/resources/upload/member/${t.memberImg }">
+					<div class="d2" style="margin-top:30px;">
+						<img src="/resources/upload/member/${t.memberImg }" style="width: 160px;">
 					</div>
 					<div class="c1">${t.nickname }
 						<div style="font-size: 35px; float: right; margin-top: 10px;">

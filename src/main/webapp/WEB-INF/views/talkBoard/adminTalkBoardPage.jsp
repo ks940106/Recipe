@@ -52,11 +52,21 @@
 						</tr>
 						</thead>
 						<tbody>
-						<input type="hidden" name="boardType" value="${type }">
-							<c:forEach items="${pd.list }" var="t">
+						<input type="hidden" name="boardType" value="${type }" >
+							<c:forEach items="${pd.list }" var="t" varStatus="status">
 							<tr>
-								<td>${t.boardNo }</td>
-								<td>${t.boardType }</td>
+								<td>${status.count }</td>
+								<c:choose>
+									<c:when test="${t.boardType eq 1 }">
+										<td>일상톡</td>
+									</c:when>
+									<c:when test="${t.boardType eq 3 }">
+										<td>요리톡</td>
+									</c:when>
+									<c:when test="${t.boardType eq 5 }">
+										<td>후기톡</td>
+									</c:when>
+								</c:choose>
 								<td>${t.nickname }</td>
 								<td>${t.boardContents }</td>
 								<td><input type="button" onclick="deleteBoard('${t.boardNo}','${type }')" class="btn-lg btn-danger" value="삭제"></td>

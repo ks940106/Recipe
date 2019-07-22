@@ -186,7 +186,7 @@ public class TalkBoardController {
 		bl.setBoardNo(no);
 		bl.setMemberId(memberId);
 		System.out.println("넘어온 닉네임 : "+nickname);
-		TalkBoard tb = talkBoardService.selectTalkBoard(no);
+		MainBoard tb = talkBoardService.selectTalkBoard(no);
 		Member m = talkBoardService.selectImg(nickname);
 		ArrayList<TalkBoardComment> tbc = talkBoardService.selectTalkBoardComment(no);
 		BoardLike like = talkBoardService.boardLike(bl);
@@ -222,7 +222,7 @@ public class TalkBoardController {
 	public String deleteTalkBoard(HttpServletRequest request,@RequestParam String boardNo) {
 		String savePath = request.getSession().getServletContext().getRealPath("/resources/talkBoard");
 		int no = Integer.parseInt(boardNo);
-		TalkBoard tb = talkBoardService.selectTalkBoard(no);
+		MainBoard tb = talkBoardService.selectTalkBoard(no);
 		System.out.println(tb.getBoardImg());
 		String img = tb.getBoardImg();
 		System.out.println("씨바 이미지"+img);
@@ -247,7 +247,7 @@ public class TalkBoardController {
 	@RequestMapping(value="/modifyTalkBoard.do")
 	public ModelAndView modifyTalkBoard(@RequestParam String boardNo) {
 		int no = Integer.parseInt(boardNo);
-		TalkBoard tb = talkBoardService.modifyTalkBoard(no);
+		MainBoard tb = talkBoardService.modifyTalkBoard(no);
 		ModelAndView mv = new ModelAndView();
 		if(tb.getBoardImg() == null) {
 		mv.addObject("tb",tb);
@@ -458,7 +458,7 @@ public class TalkBoardController {
 		System.out.println("타입 : "+type);
 		int no = Integer.parseInt(request.getParameter("boardNo"));
 		System.out.println("리퀘스트 : "+no);
-		TalkBoard tb = talkBoardService.selectTalkBoard(no);
+		MainBoard tb = talkBoardService.selectTalkBoard(no);
 		System.out.println(tb.getBoardImg());
 		String img = tb.getBoardImg();
 		System.out.println("씨바 이미지"+img);
