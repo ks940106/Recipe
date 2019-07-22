@@ -22,15 +22,7 @@
 	<section>
 	<div class="wrapper">
 		<nav class="lnb_wrap">
-		<div class="lnb_con">
-			<div class="lnb_show">회원관리</div>
-			<ul class="lnb_menu">
-				<li><a href="#none" class="menu_name">회원관리</a>
-					<ul class="lnb_sub_menu">
-						<li><a href="/reservationAdminPage.do">예약 승인,취소</a></li>
-					</ul></li>
-			</ul>
-		</div>
+		<jsp:include page="/WEB-INF/views/common/member_nav.jsp"/>
 		</nav>
 		<div class="section_content">
                 <div class="set_field">
@@ -56,46 +48,17 @@
 										<th>회원 전화번호</th>
 										<td>${m.phone }</td>
 								</tr>
-								<%-- <tr>
-										<th>예약자 생년월일</th>
-										<td>${r.reservationBirth }</td>
+								<tr>
+										<th>회원 주소</th>
+										<td>${m.addr1 } ${m.addr2 }</td>
 								</tr>
 								<tr>
-										<th>예약자 연락처</th>
-										<td>${r.reservationPhone }</td>
+										<th>회원 이미지</th>
+										<td><img id="image_section" style="width: 200px" height="200px" src="../resources/upload/member/${m.memberImg}"/><br></td>
 								</tr>
-								<tr>
-										<th>예약자 이메일</th>
-										<td>${r.reservationEmail }</td>
-								</tr>
-								<tr>
-										<th>예약자 요청사항</th>
-										<td style="overflow: auto;">${r.reservationRequest }</td>
-								</tr>
-								<tr>
-										<th>결제 날짜</th>
-										<td>${r.enrollDate}</td>
-								</tr>
-								<tr>
-										<th>예약 상태</th>
-										<c:choose>
-											<c:when test="${r.reservationState eq 1}">
-												<td>예약 승인 대기 중</td>
-											</c:when>
-											<c:when test="${r.reservationState eq 2}">
-												<td>예약 승인</td>
-											</c:when>
-											<c:when test="${r.reservationState eq 3}">
-												<td>예약 취소 대기 중</td>
-											</c:when>
-											<c:otherwise>
-												<td>예약 취소</td>
-											</c:otherwise>
-										</c:choose>
-										
-								</tr> --%>
+								
 					</table>
-					<button class="button button1" onclick="location.href='/reservationAdminPage.do'">목록으로</button>
+					<button class="button button1" onclick="location.href='/memberList.do'">목록으로</button>
 				</div>
 		</div>
 	</div>
