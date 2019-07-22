@@ -28,7 +28,7 @@
 				<div class="nav_title">커뮤니티</div>
 				<ul class="nav_menu">
 					<li><a href="/noticeList.do">공지사항</a><span>&gt;</span></li>
-					<li><a href="/freeBoard.do">자유게시판</a><span>&gt;</span></li>/a><span>&gt;</span></li>
+					<li><a href="/freeBoard.do">자유게시판</a><span>&gt;</span></li>
 				</ul>
 			</div>
 			</nav>
@@ -38,7 +38,7 @@
 			<div class="board_type">
 				<input type="hidden" name="nickname" value="${sessionScope.member.nickname }">
 				<input type="hidden" name="type" value="${no }">
-				제목 : <input type="text" id="title" name="title" id="title">
+				제목 : <input type="text" id="title" name="title" id="title" style="width: 80%;">
 			</div>
 			<div class="d1">
 				<textarea id="contents" name="contents"></textarea>
