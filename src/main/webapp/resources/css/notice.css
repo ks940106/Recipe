@@ -23,17 +23,13 @@ table.adminNotice td{
 }
 table.adminNotice td input{
 	width: 70%;
+	height:100%;
 }
 table.adminNotice td textarea{
 	width: -webkit-fill-available;
 }
 /*공지사항*/
-section.noticeWrite table{
- text-align:center;
- border-top:2px solid #ddd;
- width: 30%;
- height: 100px;
-}
+
 section.noticeWrite table th{
 	border-bottom: 2px solid #ddd;
 	border-right: 2px solid #ddd;
@@ -44,7 +40,10 @@ section.noticeWrite table td{
 section.noticeWrite textarea {
 	resize: none;
 }
-
+table.noticeWrite td input{
+	width: 70%;
+	height:100%;
+}
 /*공지사항 상세보기*/
 
 section.noticeUpdate table th{

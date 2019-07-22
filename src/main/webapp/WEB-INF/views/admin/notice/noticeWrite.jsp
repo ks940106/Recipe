@@ -31,9 +31,9 @@
 					<div id="cp_div_bg"></div>
 				</div>
 				<table class="adminNotice">
-					<tr>
+					<tr style="height:32px;">
 						<th>공지사항 제목</th>
-						<td><input type="text" name="noticeTitle" id="title"></td>
+						<td><input type="text" name="noticeTitle" id="title" height="100%"></td>
 					</tr>
 					
 					<tr>
