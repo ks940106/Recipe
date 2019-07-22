@@ -36,8 +36,14 @@
 		</div>
 			<h1>공지사항</h1>
 		<div class="section_content">
-		<div class="d1">
+		<div class="allnotice">
 			 <table class="table table-hover">
+			 				<colgroup>
+							<col width="70">
+							<col width="150">
+							<col width="40">
+							
+						</colgroup>
 				    <thead>
 				      <tr>
 				        <th>번호</th>
