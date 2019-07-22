@@ -172,7 +172,6 @@
 .preview{
 	width:160px;
 	height:160px;
-	border: 1px solid red;
 	float: left;
 }
 .preview img {

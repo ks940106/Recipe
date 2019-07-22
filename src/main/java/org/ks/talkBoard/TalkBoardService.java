@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.ks.member.vo.Member;
 import org.ks.talkBoard.vo.BoardLike;
-import org.ks.talkBoard.vo.MainPageData;
+import org.ks.talkBoard.vo.MainBoard;
 import org.ks.talkBoard.vo.TalkBoard;
 import org.ks.talkBoard.vo.TalkBoardComment;
 import org.ks.talkBoard.vo.TalkBoardPageData;
@@ -15,9 +15,9 @@ public interface TalkBoardService {
 
 	public int insertTalkBoard(TalkBoard tb);
 	
-	public TalkBoard selectTalkBoard(int no);
+	public MainBoard selectTalkBoard(int no);
 	
-	public TalkBoard modifyTalkBoard(int no);
+	public MainBoard modifyTalkBoard(int no);
 	
 	public int deleteTalkBoard(int no);
 	

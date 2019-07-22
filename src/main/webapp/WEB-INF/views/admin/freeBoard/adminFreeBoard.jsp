@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,7 +26,7 @@
 	<section>
 		<div class="wrapper">
 	        <nav class="lnb_wrap">
-	             <jsp:include page="/WEB-INF/views/common/talkBoard_nav.jsp"/>
+	              <jsp:include page="/WEB-INF/views/common/notice_nav.jsp"/>
 	        </nav>
 			<div class="section_content">
 				<div class="set_field">
@@ -38,40 +38,30 @@
 						<colgroup>
 							<col width="10%">
 							<col width="10">
-							<col width="10%">
 							<col width="60%">
+							<col width="10%">
 							<col width="10%">
 						</colgroup>
 						<thead>
 						<tr>
 							<th>No</th>
-							<th>Type</th>
 							<th>닉네임</th>
-							<th>내용</th>
+							<th>제목</th>
+							<th>조회수</th>
 							<th>관리</th>
 						</tr>
 						</thead>
 						<tbody>
-						<input type="hidden" name="boardType" value="${type }" >
-							<c:forEach items="${pd.list }" var="t" varStatus="status">
+						<c:forEach items="${fb.list }" var="t" varStatus="status">
 							<tr>
 								<td>${status.count }</td>
-								<c:choose>
-									<c:when test="${t.boardType eq 1 }">
-										<td>일상톡</td>
-									</c:when>
-									<c:when test="${t.boardType eq 3 }">
-										<td>요리톡</td>
-									</c:when>
-									<c:when test="${t.boardType eq 5 }">
-										<td>후기톡</td>
-									</c:when>
-								</c:choose>
 								<td>${t.nickname }</td>
-								<td>${t.boardContents }</td>
-								<td><input type="button" onclick="deleteBoard('${t.boardNo}','${type }')" class="btn-lg btn-danger" value="삭제"></td>
+								
+								<td>${t.title } [${t.commentCount}]</td>
+								<td>${t.viewCount}</td>
+								<td><input type="button" onclick="deleteFreeBoard(${t.boardNo})" class="btn-lg btn-danger" value="삭제"></td>
 							</tr>
-							</c:forEach>
+						</c:forEach>
 						</tbody>
 						<tfoot>
 						
@@ -85,25 +75,24 @@
 
 	</section>
 	<jsp:include page="/WEB-INF/views/common/freshfooter.jsp" />
-	
 	<script>
-	function deleteBoard(boardNo,type){
-		console.log(type);
-		var data = "boardNo="+boardNo+"&boardType="+type;
+	function deleteFreeBoard(no){
 		$.ajax({
-			url : "/adminDeleteTalkBoard.do",
+			url : "/adminFreeBoardDelete.do",
 			type : "post",
-			data : data,
-			success : function(data){
-				alert("게시글 삭제 성공");
-				location.href="/adminTalkBoard.do?boardType="+data;
+			data : {no:no},
+			success : function(){
+				alert("삭제성공");
+				location.href="/adminFreeBoard.do";
 			},
 			error : function(){
-				alert("게시글 삭제 실패");
+				alert("삭제실패");
 			}
 		});
 		
 	}
+	
+	
 	</script>
-</body>
-</html>
+	
+	
