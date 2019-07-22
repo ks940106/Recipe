@@ -112,6 +112,9 @@ public class CompetitionController {
 	}
 	@RequestMapping(value="/competitionList.do")
 	public String competitionView(@RequestParam String competitionCheck, Model model, @RequestParam String id) {
+		if(competitionCheck == null) {
+			return "competition/competitionError";
+		}
 		Competition c = competitionServiceimpl.competitionView(competitionCheck);
 		model.addAttribute("competition",c);
 		if(c == null) {

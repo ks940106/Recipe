@@ -340,13 +340,13 @@
     font-weight: bold;
     margin-bottom: 30px;
 }
-.cp_content span{
+.cp_span{
     padding: 6px;
     color: #000;
     cursor: pointer;
     border: 1px solid #ccc;
 }
-.cp_content span:active {
+.cp_span:active {
 	background-color: #1f6054;
 	color: #fff;
 }
