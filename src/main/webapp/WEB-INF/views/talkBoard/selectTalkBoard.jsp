@@ -36,8 +36,8 @@
 	 <div class="section_content">
 	 	
 	 	<div class="s1">
-					<div class="d2">
-						<img src="/resources/upload/member/${m.memberImg }">
+					<div class="d2" style="margin-top:30px;">
+						<img src="/resources/upload/member/${tb.memberImg }" style="width: 160px;">
 					</div>
 	 		<div class="c1">
 	 			${tb.nickname }

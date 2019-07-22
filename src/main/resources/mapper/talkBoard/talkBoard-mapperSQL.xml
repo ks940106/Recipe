@@ -10,6 +10,7 @@
   	board_contents as boardContents
   	from(SELECT ROWNUM AS RNUM, M.*FROM (select * from board order by board_no desc) M) WHERE RNUM BETWEEN #{start} AND #{end}
   	 -->
+  	 <!-- 
   select a.board_no as boardNo,
   	a.board_type as boardType,
   	a.nickname as nickname,
@@ -17,6 +18,15 @@
   	a.board_contents as boardContents,
     b.member_img as memberImg
   	from (SELECT ROWNUM AS RNUM, M.*FROM (select * from board order by board_no desc) M) a left join member b on (a.nickname=b.nickname) WHERE RNUM BETWEEN #{start} AND #{end}
+  	  -->
+   select board_no as boardNo,
+  	board_type as boardType,
+  	nickname as nickname,
+  	board_img as boardImg,
+  	board_contents as boardContents,
+    member_img as memberImg
+  	from (SELECT ROWNUM AS RNUM, M.*FROM (select * from board left join member using (nickname) order by board_no desc)M) WHERE RNUM BETWEEN #{start} AND #{end}
+  
   </select>
   
   <select id="boardType" parameterType="pp" resultType="main">
@@ -32,13 +42,14 @@
   	insert into board values(req_board_no.nextval,#{boardType},#{nickname},#{boardImg},#{boardContents})
   </insert>
   
-   <select id="selectTalkBoard" parameterType="talk" resultType="talk">
+   <select id="selectTalkBoard" parameterType="main" resultType="main">
   	select board_no as boardNo,
   	board_type as boardType,
   	nickname as nickname,
   	board_img as boardImg,
+  	member_img as memberImg,
   	board_contents as boardContents
-  	from board where board_no = #{boardNo}
+  	from board left join member using (nickname) where board_no = #{boardNo}
   </select>
   <delete id="deleteTalkBoard">
   	delete from board where board_no = #{boardNo}

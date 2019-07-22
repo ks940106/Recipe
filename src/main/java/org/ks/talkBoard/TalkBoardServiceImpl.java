@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import org.ks.member.vo.Member;
 import org.ks.talkBoard.vo.BoardLike;
 import org.ks.talkBoard.vo.MainBoard;
-import org.ks.talkBoard.vo.MainPageData;
 import org.ks.talkBoard.vo.PrintPage;
 import org.ks.talkBoard.vo.TalkBoard;
 import org.ks.talkBoard.vo.TalkBoardComment;
@@ -92,11 +91,11 @@ public class TalkBoardServiceImpl implements TalkBoardService {
 	}
 
 	@Override
-	public TalkBoard selectTalkBoard(int no) {
+	public MainBoard selectTalkBoard(int no) {
 		return talkBoardDao.selectTalkBoard(no);
 	}
 	@Override
-	public TalkBoard modifyTalkBoard(int no) {
+	public MainBoard modifyTalkBoard(int no) {
 		return talkBoardDao.selectTalkBoard(no);
 	}
 
