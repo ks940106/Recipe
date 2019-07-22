@@ -135,5 +135,10 @@ public class CompetitionDaoImpl implements CompetitionDao {
 	public int resultDelete(int competitionNo) {
 		return sqlsession.delete("competition.resultDelete",competitionNo);
 	}
+
+	@Override
+	public List competitionResultViewPage(int competitionNo) {
+		return sqlsession.selectList("competition.competitionResultViewPage", competitionNo);
+	}
 	
 }

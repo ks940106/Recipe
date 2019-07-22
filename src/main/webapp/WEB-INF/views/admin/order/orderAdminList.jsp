@@ -105,7 +105,7 @@
 							<button type="submit" class="button button1">결제취소</button>
 							
 							</form>
-							<div class="paymentCount1"></div>
+							<div class="paymentCount1" style="clear: both;   text-align: center;"></div>
 						</div>
 					</div>
 					<div class="list_field_inner">
