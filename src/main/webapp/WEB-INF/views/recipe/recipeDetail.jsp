@@ -30,7 +30,9 @@
                 <span>${recipe.recipe.recipeHit}</span>
             </div>
             <c:if test='${recipe.recipe.recipeVideo.contains("/")}'>
+                <div class="recipe_video">
                 <iframe id="player" type="text/html" width="640" height="360" src='https://www.youtube.com/embed${recipe.recipe.recipeVideo.substring(recipe.recipe.recipeVideo.lastIndexOf("/"))}' frameborder="0"></iframe>
+                </div>
             </c:if>
             <div class="detail_right">
             <div class="user_info">
