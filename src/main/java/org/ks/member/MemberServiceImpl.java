@@ -84,4 +84,10 @@ public class MemberServiceImpl implements MemberService{
 		return email;
 	}
 
+	@Override
+	public Member memberDetail(String id) {
+		Member m = memberDao.memberDetail(id);
+		return m;
+	}
+
 }

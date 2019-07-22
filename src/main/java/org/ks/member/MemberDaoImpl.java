@@ -78,4 +78,9 @@ public class MemberDaoImpl implements MemberDAO{
 		String email=sqlSession.selectOne("member.email",m);
 		return email;
 	}
+	@Override
+	public Member memberDetail(String id) {
+		Member m = sqlSession.selectOne("member.memberDetail", id);
+		return m;
+	}
 }
