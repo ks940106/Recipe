@@ -30,9 +30,9 @@
                 	<div style="float: left;">
 						<table id="calendarTb">
 							<tr>
-								<th style="border-style: none;"><button type="button" id="prev" style="cursor: pointer;" class="MyButton"><</button></th>
+								<th style="border-style: none;"><button type="button" id="prev" style="cursor: pointer; padding: 0;" class="MyButton"><</button></th>
 								<th style="border-style: none;" colspan="5" id="YearMonth"></th>
-								<th style="border-style: none;"><button type="button" id="next" style="cursor: pointer;" class="MyButton">></button></th>
+								<th style="border-style: none;"><button type="button" id="next" style="cursor: pointer; padding: 0;" class="MyButton">></button></th>
 							</tr>
 							<tr>
 								<th style="color:red;">일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th style="color:blue;">토</th>

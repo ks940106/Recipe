@@ -52,10 +52,10 @@
 				</c:choose>
 				</div>
 				<div>
-					<a href="#"><img src="${vo.recipeMainImg }"></a> 
+					<a href="/recipe/${vo.recipeNo}"><img src="/../resources/upload/recipe/${vo.recipeMainImg }"></a> 
 				</div>
 				<div>
-					<a href="#">${vo.recipeTitle }</a> 
+					<a href="/recipe/${vo.recipeNo}">${vo.recipeTitle }</a> 
 				</div>
 				<div>
 					${vo.recipeWriter } 
