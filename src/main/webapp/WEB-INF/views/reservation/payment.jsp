@@ -53,15 +53,13 @@
 		IMP.request_pay({
 			merchant_uid : uid,
 			name : "싱싱캠핑_예약",				
-			amount : 1000 ,//totalCost
+			amount : totalCost ,
 			buyer_name : reservationName,
 			buyer_tel : reservationPhone
 		},function(rsp){
 			if(rsp.success){
 				alert("결제가 완료되었습니다.");
 				location.href="/failReservation.do?error="+rsp.error_msg;
-				/* $("#impUid").val(rsp.imp_uid);
-				$("#applyNum").val(rsp.apply_num); */
 			}else{
 				alert("결제가 실패하였습니다.");
 				location.href="/insertReservation.do?reservationId="+uid+"&caravanNo="+caravanNo+"&id="+id+"&reservationPeople="+reservationPeople+"&totalCost="+totalCost+"&reservationDate="+reservationDate+"&reservationName="+reservationName+"&reservationBirth="+reservationBirth+"&reservationPhone="+reservationPhone+"&reservationEmail="+reservationEmail+"&reservationRequest="+reservationRequest+"&caravanName="+caravanName;
