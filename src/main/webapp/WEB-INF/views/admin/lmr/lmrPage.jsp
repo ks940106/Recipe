@@ -44,20 +44,20 @@
 							<tr>
 								<td></td>
 								<td>1</td>
-								<td><a href="#">${vo.recipeTitle1}</a></td>
-								<td><a href="#">${vo.recipeWriter1 }</a></td>
+								<td><a href="/recipe/${vo.recipeNo1}">${vo.recipeTitle1}</a></td>
+								<td><a href="/memberDetail.do?id=${vo.recipeWriter1}">${vo.recipeWriter1 }</a></td>
 							</tr>
 							<tr>
 								<td style="border-top-style: hidden;">${vo.recipeDate }</td>
 								<td>2</td>
-								<td><a href="#">${vo.recipeTitle2 }</a></td>
-								<td><a href="#">${vo.recipeWriter2 }</a></td>
+								<td><a href="/recipe/${vo.recipeNo2}">${vo.recipeTitle2 }</a></td>
+								<td><a href="/memberDetail.do?id=${vo.recipeWriter2}">${vo.recipeWriter2 }</a></td>
 							</tr>
 							<tr>
 								<td style="border-top-style: hidden;"></td>
 								<td>3</td>
-								<td><a href="#">${vo.recipeTitle3 }</a></td>
-								<td><a href="#">${vo.recipeWriter3 }</a></td>
+								<td><a href="/recipe/${vo.recipeNo3}">${vo.recipeTitle3 }</a></td>
+								<td><a href="/memberDetail.do?id=${vo.recipeWriter3}">${vo.recipeWriter3 }</a></td>
 							</tr>
 						</c:forEach>
 					</table>
