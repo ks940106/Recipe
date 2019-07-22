@@ -55,6 +55,17 @@
       competition_check as competitionCheck
       from competition where competition_No=#{competitionNo}
    </select>
+   <select id="competitionResultViewPage" parameterType="_int" resultType="competition">
+   	select competition_no as competitionNo,
+      competition_title as competitionTitle,
+      competition_contents as competitionContents,
+      competition_img as competitionImg,
+      competition_video as competitionVideo,
+      competition_result as competitionResult,
+      competition_date as competitionDate,
+      competition_check as competitionCheck
+      from competition where competition_No=#{competitionNo}
+   </select>
    <select id="cpdCount" resultType="competition">
    	select competition_no as competitionNo from competition
    </select>

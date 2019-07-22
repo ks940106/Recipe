@@ -37,7 +37,7 @@
 	 	
 	 	<div class="s1">
 					<div class="d2" style="margin-top:30px;">
-						<img src="/resources/upload/member/${tb.memberImg }" style="width: 160px;">
+						<img src="/resources/upload/member/${tb.memberImg }">
 					</div>
 	 		<div class="c1">
 	 			${tb.nickname }

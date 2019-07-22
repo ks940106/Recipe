@@ -167,4 +167,14 @@ public class CompetitionServiceImpl implements CompetitionService {
 	public int resultDelete(int competitionNo) {
 		return competitionDaoimpl.resultDelete(competitionNo);
 	}
+
+	@Override
+	public Competition competitionResultViewPage(int competitionNo) {
+		List list = competitionDaoimpl.competitionResultView(competitionNo);
+		Competition c = null;
+		if(!list.isEmpty()) {
+			c = (Competition)list.get(0);
+		}
+		return c;
+	}
 }

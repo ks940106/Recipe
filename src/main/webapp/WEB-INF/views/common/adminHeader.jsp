@@ -53,7 +53,7 @@
         </a>
         <a href="/adminNoticeList.do" class="menu_btn">
             <img src="../resources/img/admin/notice_icon.png" class="ico set"  width="50px;">
-            <div class="menu_text">공지사항</div>
+            <div class="menu_text">커뮤니티</div>
         </a>
         <a href="/reservationAdminPage.do" class="menu_btn">
             <img src="../resources/img/admin/notice_icon.png" class="ico set"  width="50px;">
