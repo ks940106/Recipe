@@ -62,11 +62,6 @@
 							</colgroup>
 							<thead>
 							<tr>
-								<th>
-									<label>
-										<input type="checkbox" name="all_chk">
-									</label>
-								</th>
 								<th>No</th>
 								<th>ID</th>
 								<th>이름</th>
@@ -74,16 +69,12 @@
 								<th>성별</th>
 								<th>상태</th>
 								<th>내용</th>
+								<th>우승자</th>
 							</tr>
 							</thead>
 							<tbody>
 							<c:forEach items="${participant}" var="pl">
 							<tr>
-								<td>
-									<label>
-										<input type="checkbox" class="checkPassList" name="passName" value="${pl.participantNo}">
-									</label>
-								</td>
 								<td>${pl.participantNo}</td>
 								<td>${pl.id}</td>
 								<td>${pl.name}</td>
@@ -97,12 +88,15 @@
 								<td>
 									${pl.participantContent}
 								</td>
+								<td>
+									<p class="pRes">${pl.participantResult }</p>
+								</td>
 							</tr>
+							
 							</c:forEach>
 							</tbody>  
 						</table>
-					<div id="cp_btn">
-
+					<div id="cp_btn">							
 						<button onclick="location.href='/competitionAdminResultList.do'">목록으로 가기</button>
 					</div>
 					<!--
@@ -115,5 +109,15 @@
         </div>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/freshfooter.jsp"/>
+	<script>
+	 window.onload = function(){
+		 for(var i = 0;i<$('.pRes').length;i++){
+			 if($(".pRes").eq(i).text() == "우승"){
+					$(".pRes").eq(i).parent().parent().css("background-color","#f69b02");
+					$(".pRes").eq(i).parent().parent().css("color","#fff");
+				}
+		 }	
+	}
+	</script>
 </body>
 </html>
