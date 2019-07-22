@@ -43,9 +43,9 @@
                		<b>카라반 이름</b> : ${c.caravanName } <br><br>
                		<b>카라반 넓이</b> : ${c.caravanArea }평<br><br>
                		<b>이용 인원</b> : 
-               		<button id="down" type="button" class="MyButton">▽</button> 
+               		<button id="down" type="button" class="MyButton" style="padding: 2px;">▽</button> 
                		<span id="people" style="color : #ea1f62;">${c.caravanPeople }</span>명
-               		<button id="up" type="button" class="MyButton">△</button>
+               		<button id="up" type="button" class="MyButton" style="padding: 2px;">△</button>
                		  (기준${c.caravanPeople }명/최대${c.caravanMaxPeople }명)<br><br>
                		
                		<b>1인 당 추가금액</b> : ${c.caravanPlusCost }원 (1박 당)

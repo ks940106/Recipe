@@ -27,6 +27,13 @@
     height: 400px;
     text-align: center;
 }
+.pom_bg4{
+    background: url(../img/talk_bg1.jpg) no-repeat left 70%;
+    background-size: cover;
+    width: 100%;
+    height: 400px;
+    text-align: center;
+}
 .pom_top {
     width: 100%;
     height: 400px;
