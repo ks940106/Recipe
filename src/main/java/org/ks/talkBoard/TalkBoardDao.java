@@ -7,6 +7,7 @@ import org.ks.talkBoard.vo.BoardLike;
 import org.ks.talkBoard.vo.PrintPage;
 import org.ks.talkBoard.vo.TalkBoard;
 import org.ks.talkBoard.vo.TalkBoardComment;
+import org.ks.talkBoard.vo.TalkBoardPageData;
 
 public interface TalkBoardDao {
 
@@ -45,4 +46,8 @@ public interface TalkBoardDao {
 	public int likeCount(int no);
 	
 	public Member selectImg(String nickname);
+	
+	public List adminTalkBoard(PrintPage pp);
+	
+	public int deleteTalkBoardLike(int no);
 }

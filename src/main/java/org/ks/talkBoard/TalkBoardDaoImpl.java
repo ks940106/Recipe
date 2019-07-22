@@ -106,6 +106,16 @@ public class TalkBoardDaoImpl implements TalkBoardDao{
 		return sqlSession.selectOne("mybatis.selectImg",nickname);
 	}
 
+	@Override
+	public List adminTalkBoard(PrintPage pp) {
+		return sqlSession.selectList("mybatis.adminTalkBoard",pp);
+	}
+
+	@Override
+	public int deleteTalkBoardLike(int no) {
+		return sqlSession.update("mybatis.deleteTalkBoardLike",no);
+	}
+
 	
 	
 	

@@ -114,6 +114,9 @@ public class CompetitionController {
 	public String competitionView(@RequestParam String competitionCheck, Model model, @RequestParam String id) {
 		Competition c = competitionServiceimpl.competitionView(competitionCheck);
 		model.addAttribute("competition",c);
+		if(c == null) {
+			return "competition/competitionError";
+		}
 		Participant p = null;
 		if(!id.equals("'null'")) {
 			p = competitionServiceimpl.participantCheck(c.getCompetitionNo(),id);
@@ -145,12 +148,6 @@ public class CompetitionController {
 		/*참가자 전체 리스트*/
 		ArrayList<ParticipantMember> list = competitionServiceimpl.participantView(competitionNo);
 		model.addAttribute("list",list);
-		/*for(int i=0; i<list.size(); i++) {
-			if(!list.isEmpty()) {
-				String str = list.get(i).getParticipantContent().replaceAll("<", "&lt");
-				list.get(i).setParticipantContent(str);
-			}
-		}*/
 		
 		/*합격자 리스트 */
 		ArrayList<ParticipantMember> passList = competitionServiceimpl.participantPassList(competitionNo);

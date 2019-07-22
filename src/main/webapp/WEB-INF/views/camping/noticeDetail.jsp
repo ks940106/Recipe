@@ -29,16 +29,20 @@
 				<div class="nav_title">커뮤니티</div>
 				<ul class="nav_menu">
 					<li><a href="/noticeList.do">공지사항</a><span>&gt;</span></li>
-					<li><a href="/cart.do">자유게시판</a><span>&gt;</span></li>
-					<li><a href="/orderList.do">Q&A</a><span>&gt;</span></li>
+					<li><a href="/freeBoard.do">자유게시판</a><span>&gt;</span></li>
 				</ul>
 			</div>
 			</nav>
 		</div>
 			<h1>공지사항</h1>
 		<div class="section_content">
-		<div class="d1">
+		<div class="allnotice">
 			 <table class="table table-hover">
+			 			<colgroup>
+			 				<col width="70">
+							<col width="150">
+							<col width="40">
+						</colgroup>
 				    <thead>
 				      <tr>
 				        <th>번호</th>
@@ -59,7 +63,9 @@
 				  
 				    </tbody>
 				  </table>
-				  ${n.noticeContent }
+				  <table>
+				  <td style="height: 500px;" colspan="2"> ${n.noticeContent }</td>
+				 </table>
 			</div>
 		</div>
 	</div>

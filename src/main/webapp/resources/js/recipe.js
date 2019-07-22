@@ -76,7 +76,7 @@ function video_preview() {
         var youtube_video_id="";
         console.log(strarr);
         if(strarr!=null)
-        youtube_video_id = strarr.pop();
+            youtube_video_id = strarr.pop();
         if (youtube_video_id.length == 11) {
             var video_thumbnail = "//img.youtube.com/vi/" + youtube_video_id + "/0.jpg";
             $('#videoPhotoHolder').attr('src', video_thumbnail);
@@ -106,7 +106,7 @@ $(document).ready(function () {
     video_preview();
     // console.log($("#divStepArea").html().trim().length);
     if($("#divStepArea").html().trim().length == 0)
-    addStep();
+        addStep();
     $(".step").hover(function () {
         $(this).find('.step_btn').show();
     },function () {
@@ -133,20 +133,36 @@ function stepNum() {
 }
 
 function delStep(i) {
-    var img = $(this).parent().parent().find("input[name='origin_step_img']").val();
-    alert(img);
+    console.log(i);
+    var img = $('#divStepArea input[name="origin_step_img"]').eq(i-1).val();
+    console.log(img);
+    delImg.push(img);
+    console.log(delImg);
     $("#divStepArea>div:nth-child("+i+")").remove();
     stepNum();
 }
 
 //upload form
 function doSubmit(option) {
+    var title = $("#cok_title").val();
+    var mainImg = $("#recipeMainImg").val();
+    if(!title.length&&option !== 'delete'){
+        alert("레시피 제목은 필수사항 입니다.");
+        return;
+    }else if (!mainImg.length&&option !== 'delete'){
+        alert("요리 대표사진은 필수사항 입니다.");
+        return;
+    }
     // var step_photo = $("#divStepArea input[name='step_photo[]']");
     var formData = new FormData($("#recipeForm")[0]);
     var steps = [];
     $('#divStepArea [name="step_text[]"]').each(function () {
         // steps.push($(this).val());
         formData.append('steps',$(this).val());
+    });
+    delImg.forEach(function (value, index, array) {
+        console.log(value);
+       formData.append("delImg",value);
     });
     // var json_arr = JSON.stringify(steps);
 
@@ -179,12 +195,15 @@ function doSubmit(option) {
             switch (option) {
                 case 'save':
                     alert("레시피가 등록 되었습니다.");
+                    location.href="/recipePage.do";
                     break;
                 case 'update':
                     alert("레시피가 수정 되었습니다.");
+                    location.href="/myRecipe.do";
                     break;
                 case 'delete':
                     alert("레시피가 삭제 되었습니다.");
+                    location.href="/myRecipe.do";
                     break;
             }
 
@@ -220,8 +239,8 @@ function unLike(recipeNo) {
     })
 }
 
-var total;
-var count;
+var total = $("#price").html();
+var count = 1;
 $("input[name='count']").change(function () {
     count = $(this).val();
     total = $("#price").html()*$(this).val();
