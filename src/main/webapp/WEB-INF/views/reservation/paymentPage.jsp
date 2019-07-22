@@ -41,7 +41,7 @@
                 		<input type="hidden" name="caravanName" value="${caravanName }">
                 		<h1>선택 객실 정보</h1>
                 		<hr>
-                		<span style="width: 20%; display: inline-block; font-weight: bolder; text-align: center;">객실명</span>
+                		<span style="width: 20%; display: inline-block; font-weight: bolder;">객실명</span>
                 		<span style="width: 20%; display: inline-block; font-weight: bolder;">이용일</span>
                 		<span style="width: 30%; display: inline-block; font-weight: bolder;">이용인원</span>
                 		<span style="width: 20%; display: inline-block; font-weight: bolder;">총 결제 금액</span>
