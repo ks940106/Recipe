@@ -36,7 +36,7 @@ public class CompetitionServiceImpl implements CompetitionService {
 		int i = 1;
 		while(!(i++>pageNaviSize || pageNo>totalPage)) {
 			if(reqPage == pageNo) {
-				pageNavi += "<span class'pageSelected'>"+pageNo+"</span>";
+				pageNavi += "<span class='cp_span' >"+pageNo+"</span>";
 			}else {
 				pageNavi += "<a class='pageNo' href='/competitionAdminResult.do?reqPage="+pageNo+"'>"+pageNo+"</a>";
 			}

@@ -35,18 +35,29 @@
                 	<input type="hidden" name="caravanName" value="${c.caravanName }">
                 	<input type="hidden" name="caravanPeople" value="${c.caravanPeople }">
                 	<input type="hidden" name="caravanMaxPeople" value="${c.caravanMaxPeople }">
-               		<h1>예약 인원을 선택하여 주십시오</h1>
-               		카라반 이름 : ${c.caravanName } 
-               		 ${c.caravanArea }평 기준${c.caravanPeople }명/최대${c.caravanMaxPeople }명<br>
-               		<button id="down" type="button" class="btn btn-primary btn-sm">▽</button> 
-               		<span id="people">${c.caravanPeople }</span>명
-               		<button id="up" type="button" class="btn btn-primary btn-sm">△</button>
-               		, 1인 당 추가금액 : ${c.caravanPlusCost }원 (1박 당)
-            		<br>
-            		<span id="date"></span> <span id="price" name="totalCost"></span>원
-            		<br>
-            		<button type="button" class="btn btn-primary" onclick="location.href='/calendar.do'">이전으로</button>
-            		<input type="submit" class="btn btn-success" value="예약 상세 정보 입력">
+               		<h1>예약 인원을 선택하여 주십시오</h1><hr>
+               		<div style="width: 50%; float: left;">
+               			<img src="../resources/img/${c.caravanMainImg}" width="100%;">
+               		</div>
+               		<div style="width: 50%; float: left;">
+               		<b>카라반 이름</b> : ${c.caravanName } <br><br>
+               		<b>카라반 넓이</b> : ${c.caravanArea }평<br><br>
+               		<b>이용 인원</b> : 
+               		<button id="down" type="button" class="MyButton">▽</button> 
+               		<span id="people" style="color : #ea1f62;">${c.caravanPeople }</span>명
+               		<button id="up" type="button" class="MyButton">△</button>
+               		  (기준${c.caravanPeople }명/최대${c.caravanMaxPeople }명)<br><br>
+               		
+               		<b>1인 당 추가금액</b> : ${c.caravanPlusCost }원 (1박 당)
+            		<br><br>
+            		<b>이용 기간</b> : <span id="date"></span> 
+            		<br><br><hr><br>
+            		<b>총 결제금액</b> : <span id="price" name="totalCost" style="color : #ea1f62;"></span>원
+            		<br><br>
+            		<button type="button" onclick="location.href='/calendar.do'" class="MyButton">이전으로</button>
+            		<input type="submit" value="예약 상세 정보 입력" class="MyButton">
+               		</div>
+               		
                		</form>
                 </div>
             </div>
