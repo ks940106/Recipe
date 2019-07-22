@@ -36,7 +36,7 @@
             </c:if>
             <div class="detail_right">
             <div class="user_info">
-                <div class="user_profile"><img src="" alt="user_profile"></div>
+                <div class="user_profile"><img src="${pageContext.request.contextPath}/resources/upload/member/${recipe.member.memberImg}" alt="user_profile"></div>
                    <h3>${recipe.member.nickname}</h3>
                     <span>${recipe.member.id}</span>
 

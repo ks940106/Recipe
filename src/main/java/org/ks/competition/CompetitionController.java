@@ -112,6 +112,9 @@ public class CompetitionController {
 	}
 	@RequestMapping(value="/competitionList.do")
 	public String competitionView(@RequestParam String competitionCheck, Model model, @RequestParam String id) {
+		if(competitionCheck == null) {
+			return "competition/competitionError";
+		}
 		Competition c = competitionServiceimpl.competitionView(competitionCheck);
 		model.addAttribute("competition",c);
 		if(c == null) {
@@ -162,6 +165,12 @@ public class CompetitionController {
 		ArrayList<ParticipantMember> resultList = competitionServiceimpl.participantResultList(competitionNo); 
 		model.addAttribute("participant",resultList);
 		return "admin/competition/competitionAdmin_ResultView";
+	}
+	@RequestMapping(value="/competitionResultView.do")
+	public String competitionResultView(@RequestParam int competitionNo, Model model) {
+		Competition c = competitionServiceimpl.competitionResultViewPage(competitionNo);
+		model.addAttribute("competition",c);
+		return "competition/competitionResultView";
 	}
 	@RequestMapping(value="/adminPage.do")
 	public String adminPage() {
