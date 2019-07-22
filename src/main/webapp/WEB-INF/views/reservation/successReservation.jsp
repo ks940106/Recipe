@@ -27,13 +27,13 @@
             <div class="section_content_nav">
                 <div class="cp_content">
             			<div id="successDiv">
-                		<h1>예약 성공</h1>
-                		결제 ID : <span>${r.reservationId }</span><br>
-                		예약 카라반 이름 : <span id="caravanName">${caravanName }</span><br>
-                		예약자 이름 : <span id="name">${r.reservationName }</span><br>
-                		예약 날짜 : <span id="reservationDate">${r.reservationDate }</span><br>
-                		결제 금액 : <span id="price">${r.totalCost }</span><br>
-                		<button type="button" onclick="location.href='/views/singsingCampingIndex.jsp'">메인으로</button>
+                		<h1>예약 성공</h1><hr>
+                		<b>결제 ID</b> : <span>${r.reservationId }</span><br>
+                		<b>예약 카라반 이름</b> : <span id="caravanName">${caravanName }</span><br>
+                		<b>예약자 이름</b> : <span id="name">${r.reservationName }</span><br>
+                		<b>예약 날짜</b> : <span id="reservationDate">${r.reservationDate }</span><br>
+                		<b>결제 금액</b> : <span id="price">${r.totalCost }</span><br><hr><br><br>
+                		<button type="button" class="MyButton" onclick="location.href='/views/singsingCampingIndex.jsp'">메인으로</button>
             			</div>
                 </div>
                 </div>

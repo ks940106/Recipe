@@ -42,17 +42,17 @@
                 		<h1>선택 객실 정보</h1>
                 		<hr>
                 		<span style="width: 20%; display: inline-block; font-weight: bolder;">객실명</span>
-                		<span style="width: 20%; display: inline-block; font-weight: bolder;">이용일</span>
-                		<span style="width: 30%; display: inline-block; font-weight: bolder;">이용인원</span>
+                		<span style="width: 24%; display: inline-block; font-weight: bolder;">이용일</span>
+                		<span style="width: 34%; display: inline-block; font-weight: bolder;">이용인원</span>
                 		<span style="width: 20%; display: inline-block; font-weight: bolder;">총 결제 금액</span>
                 		<hr>
-                		<div id="caravanName" style="width: 20%; display: inline-block; float:left; text-align: center;">${caravanName }</div> 
-                		<div style="width: 20%; display: inline-block; float:left; color:#ea1f62;">
+                		<div id="caravanName" style="width: 20%; display: inline-block; float:left; margin-left: 10px;">${caravanName }</div> 
+                		<div style="width: 24%; display: inline-block; float:left; color:#ea1f62;">
                 		<c:forEach items="${r.reservationDateArr}" var="date">
                 			${date }<br>
                 		</c:forEach>
                 		</div>
-                		<div style="width: 30%; display: inline-block; float:left;">${r.reservationPeople }명 (기준 : ${caravanPeople }명/ 최대 : ${caravanMaxPeople }명)</div> 
+                		<div style="width: 34%; display: inline-block; float:left;">${r.reservationPeople }명 (기준 : ${caravanPeople }명/ 최대 : ${caravanMaxPeople }명)</div> 
                 		<div style="width: 20%; display: inline-block; float:left;"><span style="color:#ea1f62; font-size:20px; font-weight: bolder;">${r.totalCost }</span>원</div>  
 						
                 		<div id="accept" style="width:48%;float: left; clear: both;">
@@ -113,15 +113,15 @@
                 		<h2>예약정보입력</h2>
                 		<hr>
                 		예약자명 * 
-                		<input class="form-control" style="width:80%;"name="reservationName">
+                		<input class="form-control" style="width:80%;margin-left: 10%;" name="reservationName">
                 		<span style="color:#ea1f62">예약자 실명을 입력하세요. 예약확인시 혼동이 될 수 있습니다.</span>
                 		<br><br>
                 		생년월일 * 
-                		<input class="form-control" style="width:80%;"name="reservationBirth" numberOnly>
+                		<input class="form-control" style="width:80%;margin-left: 10%;" name="reservationBirth" numberOnly>
                 		<span style="color:#ea1f62">예) 800722</span>
 						<br><br>
                 		연락처 * <br>
-                		<select id="phone1" class="form-control" style="display:inline;width:24%;">
+                		<select id="phone1" class="form-control" style="display:inline;width:24%;margin-left: 2%;">
                 			<option selected>010</option>
                 			<option>011</option>
                 			<option>016</option>
@@ -156,8 +156,8 @@
                 		</select><br><br>
                 		요청사항 <br>
                 		<textarea class="form-control" style="display:inline;width:80%;" name="reservationRequest"></textarea><br><br>
-                		<button class="btn btn-primary" type="button" onclick="location.href='/peopleSelect.do?caravanNo=${r.caravanNo}&reservationDateString=${r.reservationDate}'">이전으로</button>
-                		<input class="btn btn-success" type="submit" value="결제하러가기">
+                		<button class="MyButton" type="button" onclick="location.href='/peopleSelect.do?caravanNo=${r.caravanNo}&reservationDateString=${r.reservationDate}'">이전으로</button>
+                		<input class="MyButton" type="submit" value="결제하러가기">
                 		</div>
                		</form>
                 </div>

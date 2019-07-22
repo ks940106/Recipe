@@ -27,9 +27,10 @@
             <div class="section_content_nav">
                 <div class="cp_content">
             			<div id="failDiv">
-            			<h1>예약 실패</h1>
-            			<span>사유 : ${error}</span>
-            			<button type="button" onclick="location.href='/views/singsingCampingIndex.jsp'">메인으로</button>
+            			<h1>예약 실패</h1><hr>
+            			<span><b>사유</b> : ${error}</span>
+            			<br><hr><br>
+            			<button type="button" class="MyButton" onclick="location.href='/views/singsingCampingIndex.jsp'">메인으로</button>
             			</div>
                 </div>
             </div>

@@ -44,7 +44,7 @@ span {
 }
 #reservation{margin-left:5px; border: 1px solid #dadbdb;}
 .MyButton{
-	background-color: #1f6054;color:white;border-radius: 5px;border-style: none;
+	background-color: #1f6054;color:white;border-radius: 5px;border-style: none;padding: 15px;
 }
 .MyButton:hover{
 	background-color:orange;color:black;
