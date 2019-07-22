@@ -6,7 +6,7 @@
 		<div class="lnb_show">커뮤니티 관리</div>
 		<ul class="lnb_menu">
 			<li>
-				<a href="#none" class="menu_name">공지사항 관리</a>
+				<a href="adminNoticeList.do" class="menu_name">공지사항 관리</a>
 				<a href="/adminFreeBoard.do" class="menu_name">자유게시판 관리</a>
 			</li>
 		</ul>
