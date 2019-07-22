@@ -50,7 +50,7 @@
                 <c:if test="${not empty sessionScope.member && !isLiked}">
                     <a class="bg_like" href="javaScript:like(${recipe.recipe.recipeNo})" style="font-size: larger; color: red"><img src="../../../resources/img/recipe/heart.png" width="40px;"></a>
                 </c:if>
-                <span class="bg_like"> ${recipe.recipe.recipeLike}</span>
+                <span class="bg_like"> 좋아요 ${recipe.recipe.recipeLike}</span>
             </div>
             <div class="item_title">
                  <img src="../../../resources/img/recipe/icon_4.png">
