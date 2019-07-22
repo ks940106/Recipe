@@ -6,9 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script src="http://code.jquery.com/jquery-3.4.0.js"></script>
 <link href="../resources/css/import.css" rel="stylesheet" />
 <link href="../resources/css/talkBoard.css" rel="stylesheet" />
@@ -19,12 +17,7 @@
 
 	<jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp" />
 	<section>
-	<div class="pom_bg">
-		<div class="pom_top">
-			<h1>토크</h1>
-			<div id="pom_div_bg"></div>
-			<p>나만의 특별한 하루를 공유해요</p>
-		</div>
+	<div class="pom_bg4">
 	</div>
 	<div class="pom_wrap">
 		<div class="pomNav">
@@ -49,7 +42,7 @@
 					
 				</div>
 				<div class="board_right">
-				<a href="#:;" class="btn btn-success" onclick="insert();">등록</a>				
+				<a href="#:;" class="board_btn" onclick="insert();">등록</a>				
 				</div>
 				<div id="go_register_dv" class="list-group talk_smn"
 					style="display:none; width: 250px; position: absolute;  background-color: white; border-top: 1px solid rgb(230, 231, 232); border-bottom: 1px solid rgb(230, 231, 232); z-index: 10;">
@@ -66,10 +59,11 @@
 					<div class="d2" style="margin-top:30px;">
 						<img src="/resources/upload/member/${t.memberImg }">
 					</div>
-					<div class="c1">${t.nickname }
-						<div style="font-size: 35px; float: right; margin-top: 10px;">
-	 			<img src="/resources/img/talk/138533.png"  style="width:30px; height:30px;">    ${t.likeCount }
-	 			<img src="/resources/img/talk/66932.png"  style="width:30px; height:30px;">    ${t.commentCount } 
+					<div class="board_content_right">
+					<div class="c1"> <p style="float:left;">${t.nickname }</p>
+						<div style="font-size: 35px; float: right;">
+	 			<img src="/resources/img/talk/138533.png"  style="width:25px; height:25px;">    ${t.likeCount }
+	 			<img src="/resources/img/talk/66932.png"  style="width:25px; height:25px;">    ${t.commentCount } 
 	 			</div>
 					</div>
 					<div class="c2" onclick="select('${t.boardNo}','${sessionScope.member.id }','${t.nickname }')">
@@ -86,6 +80,7 @@
 							 </div>
 							</c:if>
 						</c:forTokens>
+					</div>
 					</div>
 				</div>
 			</c:forEach>
