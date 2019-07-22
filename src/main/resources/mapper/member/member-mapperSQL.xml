@@ -56,4 +56,16 @@
 	<select id="email" parameterType="member" resultType="String">
 		select substr(id,instr(id,'@')+1) from member where name=#{name} and phone =#{phone}
 	</select>
+	<select id="memberDetail" parameterType="String" resultType="member">
+		select id as id,
+		pw as pw,
+		name as name,
+		nickname as nickname,
+		gender as gender,
+		addr1 as addr1,
+		addr2 as addr2,
+		phone as phone,
+		Member_img as MemberImg,
+		zip_code as zipCode from member where id=#{id}
+	</select>
 </mapper>
