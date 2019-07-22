@@ -59,9 +59,9 @@ div.category, div.search_filter{
     clear: both;
     content: "";
 }
-div{
-    overflow: inherit;
-}
+/*div{*/
+/*    overflow: inherit;*/
+/*}*/
 .pageNo{
     display: inline-block;
     color:black;
