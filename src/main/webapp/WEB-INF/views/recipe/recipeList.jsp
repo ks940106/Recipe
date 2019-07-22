@@ -91,7 +91,6 @@
 
                     <div class="m_list_tit">
                         <div class="category">
-                            ${recipeSearch.isProduct}
                             <select name="is_product">
                                 <c:choose>
                                     <c:when test="${recipeSearch.isProduct eq 0}">
