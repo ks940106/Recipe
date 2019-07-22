@@ -3,6 +3,8 @@ package org.ks.member;
 import java.util.ArrayList;
 
 import org.ks.member.vo.Member;
+import org.ks.member.vo.MemberPageData;
+import org.ks.notice.vo.NoticePageData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -55,9 +57,35 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public ArrayList<Member> memberList() {
-		ArrayList<Member> list = memberDao.memberList();
-		return list;
+	public MemberPageData memberList(int reqPage) {
+		int numPerPage = 20;
+		int totalCount = memberDao.totalCount();
+		int totalPage=(totalCount%numPerPage==0)?(totalCount/numPerPage):(totalCount/numPerPage)+1;
+		
+		int start=(reqPage-1)*numPerPage+1;
+		int end=reqPage*numPerPage;
+		ArrayList<Member> list = memberDao.memberList(start,end);
+		
+		String pageNavi = "";
+		int pageNaviSize = 5;
+		int pageNo = ((reqPage-1)/pageNaviSize)*pageNaviSize+1;
+		if(pageNo != 1) {
+			pageNavi += "<a class='pageBtn' href='/memberList.do?reqPage="+(pageNo-1)+"'>이전</a>";
+		}
+		int i = 1;
+		while(!(i++>pageNaviSize || pageNo>totalPage)) {
+			if(reqPage == pageNo) {
+				pageNavi += "<span class='pageSelected'>"+pageNo+"</span>";
+			}else {
+				pageNavi += "<a class='pageNo' href='/memberList.do?reqPage="+pageNo+"'>"+pageNo+"</a>";
+			}
+			pageNo++;
+		}
+		if(pageNo <= totalPage) {
+			pageNavi += "<a class='pageBtn' href='/memberList.do?reqPage="+pageNo+"'>다음</a>";
+		}
+		MemberPageData mp = new MemberPageData(list,pageNavi);
+		return mp;
 	}
 
 	@Override

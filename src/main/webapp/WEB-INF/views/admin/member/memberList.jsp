@@ -55,7 +55,7 @@
 						</thead>
 						<tbody>
 						
-						 <c:forEach items="${list }" var="m">
+						 <c:forEach items="${list.member }" var="m">
 						 
 						<tr>
 							<td><a href="/memberDetail.do?id=${m.id }">${m.id}</a></td>
@@ -70,7 +70,7 @@
 						</c:forEach> 
 						</tbody>
 					</table>
-					
+					${list.pageNavi }
 				</div>
 			</div>
 		</div>
