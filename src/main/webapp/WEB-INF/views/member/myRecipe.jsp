@@ -14,6 +14,12 @@
         .col-xs-4{
             overflow: auto;
         }
+        .thumbnail {
+            border-radius: 0;
+            padding: 0;
+            height: 400px;
+            width: 277px;
+        }
     </style>
 </head>
 <body>
