@@ -6,8 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+<title>토크</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script src="http://code.jquery.com/jquery-3.4.0.js"></script>
@@ -19,12 +18,7 @@
 	<jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp"/>
 	
 	 <section>
-	 <div class="pom_bg">
-        <div class="pom_top">
-            <h1>이달의 레시피</h1>
-            <div id="pom_div_bg"></div>
-            <p>이번달에 가장 많은 추천을 받은 레시피</p>
-        </div>
+	 <div class="pom_bg4">
     </div>
     <div class="pom_wrap">
 		<div class="pomNav">
@@ -39,17 +33,16 @@
 					<div class="d2" style="margin-top:30px;">
 						<img src="/resources/upload/member/${tb.memberImg }">
 					</div>
+				<c:if test="${(sessionScope.member.nickname eq tb.nickname) or (sessionScope.member.nickname eq '관리자')}">
+					<input type="button" onclick="deleteBoard(${tb.boardNo})" class="talk_btn_right" value="삭제">
+					<input type="button" onclick="modifyTalkBoard(${tb.boardNo})" class="talk_btn_left" value="수정">
+				</c:if>
 	 		<div class="c1">
 	 			${tb.nickname }
 	 			<div style="font-size: 35px; float: right; margin-top: 10px;">
 	 			<img src="/resources/img/talk/138533.png"  style="width:30px; height:30px;">    ${likeCount }
 	 			<img src="/resources/img/talk/66932.png"  style="width:30px; height:30px;">    ${commentCount } 
 	 			</div>
-	 			
-	 			<c:if test="${(sessionScope.member.nickname eq tb.nickname) or (sessionScope.member.nickname eq '관리자')}">
-				<input type="button" onclick="deleteBoard(${tb.boardNo})" class="btn-lg btn-danger" value="삭제">
-				<input type="button" onclick="modifyTalkBoard(${tb.boardNo})" class="btn-lg btn-success" value="수정">
-				</c:if>
 	 		</div>
 	 		<div class="c2">
 	 			${tb.boardContents }
