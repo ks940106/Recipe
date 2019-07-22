@@ -23,7 +23,7 @@
     <div class="section_content detail_content">
         <div class="detail">
             <div class="main_img image-container" style="position:relative; margin-bottom:0;">
-                <img src="${pageContext.request.contextPath}/resources/upload/recipe/${recipe.recipe.recipeMainImg}" onerror="this.src='/resources/img/recipe/pic_none4.gif'" alt="main_img"/>
+                <img src="${pageContext.request.contextPath}/resources/upload/recipe/${recipe.recipe.recipeMainImg}" onerror="this.src='/resources/img/recipe/pic_none4.gif'" alt="main_img" width="800px;"  height="600px;" />
             </div>
             <div class="main_icon">
                 <img src="../../../resources/img/recipe/icon_01.png" width="45px;">
