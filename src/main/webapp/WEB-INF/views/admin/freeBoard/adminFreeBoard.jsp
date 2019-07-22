@@ -30,7 +30,7 @@
 	        </nav>
 			<div class="section_content">
 				<div class="set_field">
-					<h1>토크 게시판 관리</h1>
+					<h1>자유 게시판 관리</h1>
 					<div id="cp_div_bg"></div>
 				</div>
 				<div class="list_field">
@@ -68,7 +68,7 @@
 						</tfoot>
 					</table>
 				</div>
-				<div id="pageNavi" class="paging">${pd.pageNavi }</div>
+				<div id="pageNavi" class="paging">${fb.pageNavi }</div>
 			
 			</div>
 		</div>

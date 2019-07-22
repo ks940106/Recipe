@@ -20,6 +20,13 @@
 	box-sizing: border-box;
 	float: left;
 }
+.d2 img{
+	width : 140px;
+	height : 140px;
+	border-radius: 50%;
+	overflow: hidden;
+	
+	}
 
 .c1 {
 	border-bottom : 1px solid #1f6054;
@@ -42,6 +49,7 @@
 	padding-right: 15px;
 	margin-bottom: 10px;
 	overflow: hidden;
+	cursor: pointer;
 }
 
 .c3 {
@@ -55,6 +63,7 @@
 	max-height: 500px;
 	overflow: hidden;
 	text-align: center;
+	cursor: pointer;
 }
 	.img_bg{
 		width: 100%;

@@ -38,7 +38,7 @@
 			<div class="section_content">
 				<div class="board_type">
 					<div class="board_left">
-						<span><p>전체글을 볼수 있어요</p></span>
+						<span><p>새 글을 등록할수 있어요</p></span>
 					</div>
 				</div>
 				<div class="d1">
