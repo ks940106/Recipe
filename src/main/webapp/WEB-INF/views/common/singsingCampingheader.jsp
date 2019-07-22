@@ -43,13 +43,13 @@
                     
        				 <c:choose>
                     <c:when test="${sessionScope.member==null }">
-                    	<li><a href="/loginPageCamping.do" style="color: #1f6054;">예약</a></li>
+                    	<li><a href="/loginPageCamping.do">예약</a></li>
                     </c:when>
                     <c:when test="${sessionScope.member.name=='관리자' }">
-                  		<li><a href="/reservationAdminPage.do" style="color: #1f6054;">예약</a></li>
+                  		<li><a href="/reservationAdminPage.do">예약</a></li>
                     </c:when>
                     <c:when test="${sessionScope.member !=null }">
-                    	<li><a href="/calendar.do" style="color: #1f6054;">예약</a></li>
+                    	<li><a href="/calendar.do">예약</a></li>
                     </c:when>
                     </c:choose>
                     <li><a href="/freeBoard.do">커뮤니티</a></li>

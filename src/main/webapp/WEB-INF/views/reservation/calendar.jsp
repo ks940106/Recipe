@@ -50,8 +50,9 @@
 						</c:forEach>
 						</table>
 					</div>
-					<p style="font-weight: bolder;font-size: 15pt;">예약 가능 카라반 번호</p>
-					<div id="reservation" style="float: left; width:400px; height:500px;"></div>
+					<p style="font-weight: bolder;font-size: 15pt; text-align: left;">&nbsp;&nbsp;예약 가능 카라반</p><br>
+					<p style="font-weight: bolder;font-size: 10pt;text-align: left;">&nbsp;&nbsp;&nbsp; * 예약을 원하는 카라반을 클릭해주세요.</p><br>
+					<div id="reservation" style="float: left; width:400px; height:650px;"></div>
                 </div>
             </div>
     </div>
@@ -295,7 +296,7 @@
 								reservationDate[index+i] = $("#hidden"+plusId).val();
 								$("#"+plusId).css("background-color","orange");
 							}
-							alert(reservationDate);
+							
 							selectReservation();
 							clickState = 0;//클릭상태 0 으로만듬
 						}else if(oneClickSelected == 0){
@@ -342,7 +343,6 @@
 								}
 								reservationDate[index+i] = startYear+"/"+startMonth+"/"+change; 
 							}
-							alert(reservationDate);
 							selectReservation();
 							clickState = 0;
 						}
@@ -385,7 +385,7 @@
 							$("#reservation").html("");
 						for(var index in jsonList){
 							//$("#reservation").append("<a href='/insertReservation.do?caravanNo="+jsonList[index].caravanNo+"&reservationDateString="+reservationDateString+"'>"+jsonList[index].caravanNo +"</a><br>");
-							$("#reservation").append("<a style='color:black;' href='/peopleSelect.do?caravanNo="+jsonList[index].caravanNo+"&reservationDateString="+reservationDateString+"'>"+jsonList[index].caravanName+", 기준/최대인원 : "+jsonList[index].caravanPeople+"/"+jsonList[index].caravanMaxPeople+", 가격(1박) : "+jsonList[index].caravanCost+"원</a><br><br>");
+							$("#reservation").append("<br><a style='color:black;' href='/peopleSelect.do?caravanNo="+jsonList[index].caravanNo+"&reservationDateString="+reservationDateString+"'>"+jsonList[index].caravanName+", 기준/최대인원 : "+jsonList[index].caravanPeople+"/"+jsonList[index].caravanMaxPeople+", 가격(1박) : "+jsonList[index].caravanCost+"원</a><br><br><hr>");
 						}
 					},
 				error: function(){
