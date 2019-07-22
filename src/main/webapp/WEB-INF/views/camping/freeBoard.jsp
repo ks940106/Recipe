@@ -52,7 +52,7 @@
 				    <c:forEach items="${fb.list }" var="t">
 				      <tr>
 				        <td>${t.boardNo }</td>
-				        <td onclick="select('${t.boardNo}')" style="text-align: left;">${t.title }[${t.commentCount }]</td>
+				        <td onclick="select('${t.boardNo}')" style="text-align: left;cursor: pointer; ">${t.title }[${t.commentCount }]</td>
 				        <td>${t.nickname }</td>
 				        <td>${t.viewCount }</td>
 				      </tr>

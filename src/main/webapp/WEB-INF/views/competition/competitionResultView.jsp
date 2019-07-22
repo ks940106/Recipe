@@ -56,31 +56,36 @@
 					</div>
 				</nav>
             </div>
-            <div class="section_content1">
-             <!--                <img src="../../../resources/img/logo.png" width="200px;">-->
-			<h1 style="font-size:22px; font-weight: bold; text-align: center;">지난 요리 대회 결과</h1>
-			<p style="text-align: center; margin-top: 10px;">싱싱레시피의 요리 대회의 결과를 확인 할 수 있습니다.</p>
-			<div id="cp_div_bg" style="margin-top:30px;"></div>
-			<div class="cp_content" style="margin-left:100px; padding-top: 50px;">
-			<!--                <img src="../../../resources/img/logo.png" width="200px;">-->
-			<table class="list_table">
-				<tr>
-					<th>번호</th>
-					<th>제목</th>
-					<th>등록일</th>
-				</tr>
-				<c:forEach items="${cpd.list}" var="c">
-					<tr>
-						<td>${c.competitionNo}</td>
-						<td><a href="/competitionResultView.do?competitionNo=${c.competitionNo}">${c.competitionTitle }</a></td>
-						<td>${c.competitionDate}</td>
-					</tr>
-				</c:forEach>
-			</table>
-			<br><br>
-			${cpd.pageNavi}
-		</div>
-		</div>
+           <div class="cp_content">
+				<div class="cp_content">
+					<!--                <img src="../../../resources/img/logo.png" width="200px;">-->
+					<!--<h1>요리 대회</h1>
+			<p>싱싱레시피의 요리 대회 소식을 확인하실 수 있습니다.</p>-->
+					<!--			<div id="cp_div_bg"></div>-->
+					<div class="cp_notice">
+						<div id="cp_title">${competition.competitionTitle}</div>
+						<div id="cp_div_bg"></div>
+						<div id="cp_date">${competition.competitionDate}</div>
+						<div class="cp_contentsView">
+							<div id="cp_contentsImg">
+								<c:if test="${not empty competition.competitionImg  }">
+									<img
+										src="../../../resources/upload/competition/${competition.competitionImg}"
+										width="800px;">
+								</c:if>
+							</div>
+							<div id="cp_contents">${competition.competitionContents}</div>
+						</div>
+					</div>
+					<div id="cp_btn">							
+						<button onclick="location.href='/competitionAdminResultList.do'">목록으로 가기</button>
+					</div>
+					<!--
+			 <button onclick="location.href='/competitionUpdate.do?competitionNo=${competition.competitionNo}'">수정하기</button>   
+          <button  onclick="location.href='/competitionDelete.do?competitionNo=${competition.competitionNo}'" >삭제하기</button>
+-->
+				</div>
+			</div>
         </div>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp" />

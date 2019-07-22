@@ -166,6 +166,12 @@ public class CompetitionController {
 		model.addAttribute("participant",resultList);
 		return "admin/competition/competitionAdmin_ResultView";
 	}
+	@RequestMapping(value="/competitionResultView.do")
+	public String competitionResultView(@RequestParam int competitionNo, Model model) {
+		Competition c = competitionServiceimpl.competitionResultViewPage(competitionNo);
+		model.addAttribute("competition",c);
+		return "competition/competitionResultView";
+	}
 	@RequestMapping(value="/adminPage.do")
 	public String adminPage() {
 		return "admin/adminPage";

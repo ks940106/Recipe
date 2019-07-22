@@ -24,3 +24,13 @@
 	cursor :pointer;
 	
 } 
+.pageSelected{
+	padding: 6px;
+    color: #000;
+    cursor: pointer;
+    border: 1px solid #ccc;
+}
+.pageSelected:active {
+	background-color: #1f6054;
+	color: #fff;
+}
