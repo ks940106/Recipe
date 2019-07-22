@@ -40,12 +40,13 @@
                 		
                 		<input type="hidden" name="caravanName" value="${caravanName }">
                 		<h1>선택 객실 정보</h1>
-                		<span style="width: 20%; display: inline-block; font-weight: bolder;">객실명</span>
+                		<hr>
+                		<span style="width: 20%; display: inline-block; font-weight: bolder; text-align: center;">객실명</span>
                 		<span style="width: 20%; display: inline-block; font-weight: bolder;">이용일</span>
                 		<span style="width: 30%; display: inline-block; font-weight: bolder;">이용인원</span>
                 		<span style="width: 20%; display: inline-block; font-weight: bolder;">총 결제 금액</span>
-                		
-                		<div id="caravanName" style="width: 20%; display: inline-block; float:left;">${caravanName }</div> 
+                		<hr>
+                		<div id="caravanName" style="width: 20%; display: inline-block; float:left; text-align: center;">${caravanName }</div> 
                 		<div style="width: 20%; display: inline-block; float:left; color:#ea1f62;">
                 		<c:forEach items="${r.reservationDateArr}" var="date">
                 			${date }<br>
@@ -53,7 +54,7 @@
                 		</div>
                 		<div style="width: 30%; display: inline-block; float:left;">${r.reservationPeople }명 (기준 : ${caravanPeople }명/ 최대 : ${caravanMaxPeople }명)</div> 
                 		<div style="width: 20%; display: inline-block; float:left;"><span style="color:#ea1f62; font-size:20px; font-weight: bolder;">${r.totalCost }</span>원</div>  
-						<BR>
+						
                 		<div id="accept" style="width:48%;float: left; clear: both;">
                 		<br>
                 		<h2>약관동의</h2>
