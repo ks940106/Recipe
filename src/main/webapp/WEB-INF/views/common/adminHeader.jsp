@@ -44,7 +44,7 @@
             <div class="menu_text">토크 게시판</div>
         </a>
         <a href="/seletecaravan.do" class="menu_btn">
-            <img src="../resources/img/admin/member_icon.png" class="ico set"  width="50px;">
+            <img src="../resources/img/admin/caravan.png" class="ico set"  width="50px;">
             <div class="menu_text">카라반</div>
         </a>
         <a href="/memberList.do" class="menu_btn">
@@ -52,11 +52,11 @@
             <div class="menu_text">회원 관리</div>
         </a>
         <a href="/adminNoticeList.do" class="menu_btn">
-            <img src="../resources/img/admin/notice_icon.png" class="ico set"  width="50px;">
+            <img src="../resources/img/admin/group.png" class="ico set"  width="50px;">
             <div class="menu_text">커뮤니티</div>
         </a>
         <a href="/reservationAdminPage.do" class="menu_btn">
-            <img src="../resources/img/admin/notice_icon.png" class="ico set"  width="50px;">
+            <img src="../resources/img/admin/calendar.png" class="ico set"  width="50px;">
             <div class="menu_text">예약관리</div>
         </a>
     </div>
