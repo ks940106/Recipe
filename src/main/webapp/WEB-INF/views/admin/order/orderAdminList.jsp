@@ -27,7 +27,6 @@
 				<li><a href="#none" class="menu_name">판매 관리</a>
 					<ul class="lnb_sub_menu">
 						<li><a href="/competitionAdminResultList.do">결제 리스트</a></li>
-						<li><a href="/competitionAdminList.do?competitionCheck='Y'">매출 현황</a></li>
 					</ul></li>
 			</ul>
 		</div>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.ks.member.vo.Member;
 import org.ks.talkBoard.vo.BoardLike;
+import org.ks.talkBoard.vo.MainBoard;
 import org.ks.talkBoard.vo.PrintPage;
 import org.ks.talkBoard.vo.TalkBoard;
 import org.ks.talkBoard.vo.TalkBoardComment;
@@ -32,7 +33,7 @@ public class TalkBoardDaoImpl implements TalkBoardDao{
 	}
 
 	@Override
-	public TalkBoard selectTalkBoard(int no) {
+	public MainBoard selectTalkBoard(int no) {
 		return sqlSession.selectOne("mybatis.selectTalkBoard",no);
 	}
 

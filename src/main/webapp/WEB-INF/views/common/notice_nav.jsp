@@ -7,6 +7,7 @@
 		<ul class="lnb_menu">
 			<li>
 				<a href="#none" class="menu_name">공지사항 관리</a>
+				<a href="/adminFreeBoard.do" class="menu_name">자유게시판 관리</a>
 				<ul class="lnb_sub_menu">
 					
 				</ul>

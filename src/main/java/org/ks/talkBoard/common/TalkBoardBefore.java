@@ -35,8 +35,8 @@ public class TalkBoardBefore {
 	public void beforePw(JoinPoint jp,Object returnObj) throws Exception {
 		String methodName = jp.getSignature().getName();
 		System.out.println(returnObj);
-		if(returnObj instanceof TalkBoard) {
-			TalkBoard b = (TalkBoard)returnObj;
+		if(returnObj instanceof MainBoard) {
+			MainBoard b = (MainBoard)returnObj;
 			if(b.getBoardContents() != null) {
 				
 			String con = b.getBoardContents().replaceAll("<", "&lt");

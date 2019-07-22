@@ -156,5 +156,41 @@ public class FreeBoardController {
 		}
 		return "^^7";
 	}
+	@RequestMapping(value="/adminFreeBoard.do")
+	public ModelAndView adminFreeBoard(HttpServletRequest request) {
+		int type = 1;
+		int reqPage;
+		try {
+			reqPage = Integer.parseInt(request.getParameter("reqPage"));
+		}catch(NumberFormatException e) {
+			reqPage = 1;
+		}
+		FreeBoardPageData fb = freeBoardService.mainBoard(type,reqPage);
+		for(int i=0;i<fb.getList().size();i++) {
+			int no = fb.getList().get(i).getBoardNo();
+			int count = freeBoardService.commentCount(no);
+			fb.getList().get(i).setCommentCount(count);
+			
+		}
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("fb",fb);
+		mv.setViewName("/admin/freeBoard/adminFreeBoard");
+		return mv;
+	}
+	@ResponseBody
+	@RequestMapping(value="/adminFreeBoardDelete.do")
+	public String adminFreeBoardDelete(HttpServletRequest request) {
+		int boardNo = Integer.parseInt(request.getParameter("no"));
+		int result2 = freeBoardService.deleteAllComment(boardNo);
+		int result = freeBoardService.deleteFreeBoard(boardNo);
+		if(result>0) {
+			System.out.println("삭제 성공");
+		}else {
+			System.out.println("삭제 실패");
+		}
+		return "삭째!!";
+	}
+	
 	
 }
