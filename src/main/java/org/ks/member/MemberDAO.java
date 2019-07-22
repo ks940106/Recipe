@@ -17,4 +17,5 @@ public interface MemberDAO {
 	public int pwUpdate(Member m);
 	public String findId(Member m);
 	public String email(Member m);
+	public Member memberDetail(String id);
 }
