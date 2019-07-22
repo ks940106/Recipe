@@ -18,9 +18,6 @@
 	<section>
 	<div class="pom_bg">
         <div class="pom_top">
-            <h1>요리대회</h1>
-            <div class="pom_div_bg"></div>
-            <p>자연속에서 즐기는 요리대회</p>
         </div>
     </div>
         <div class="pom_wrap">
