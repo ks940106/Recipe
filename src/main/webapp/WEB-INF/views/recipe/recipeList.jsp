@@ -7,7 +7,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>싱싱레시피 요리대회</title>
+    <title>싱싱레시피 레시피 검색</title>
     <link href="../resources/css/import.css" rel="stylesheet" />
 <!--     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/recipe.css">
@@ -41,6 +41,7 @@
                             <input type="hidden" name="cat1" value="${recipeSearch.cat1}">
                             <input type="hidden" name="cat2" value="${recipeSearch.cat2}">
                             <input type="hidden" name="order" value="${recipeSearch.order}">
+                            <input type="hidden" name="is_product" value="${recipeSearch.isProduct}">
                             <button onclick="$('#frmTopRecipeSearch').submit();">검색</button>
                         </form>
                     </div>
@@ -86,7 +87,25 @@
                 <div class="rcp_m_list2">
 
                     <div class="m_list_tit">
-                        <%--                        총 <b>120,788</b>개의 맛있는 레시피가 있습니다.--%>
+                        <div class="category">
+                            ${recipeSearch.isProduct}
+                            <select name="is_product">
+                                <c:choose>
+                                    <c:when test="${recipeSearch.isProduct eq 0}">
+                                        <option value="0" selected>전체</option>
+                                        <option value="1">상품 만</option>
+                                    </c:when>
+                                    <c:when test="${not empty recipeSearch.isProduct and recipeSearch.isProduct eq 1}">
+                                        <option value="0">전체</option>
+                                        <option value="1" selected>상품 만</option>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <option value="0" selected>전체</option>
+                                        <option value="1">상품 만</option>
+                                    </c:otherwise>
+                                </c:choose>
+                            </select>
+                        </div>
                         <ul class="nav nav-tabs2 pull-right" style="position:relative;">
                             <li role="presentation"><a href="javascript:void(0);"
                                                        onclick="goSearchRecipe('order','accuracy')">정확순</a>
@@ -144,6 +163,12 @@
         var name = $(this).attr('name');
         var value = $(this).val();
         $('input[name="'+name+'"]').val(value);
+    });
+    $("select[name='is_product']").change(function () {
+        var name = $(this).attr('name');
+        var value = $(this).val();
+        $('input[name="'+name+'"]').val(value);
+        $('#frmTopRecipeSearch').submit();
     });
     function goSearchRecipe(n,v) {
         $('input[name="'+n+'"]').val(v);

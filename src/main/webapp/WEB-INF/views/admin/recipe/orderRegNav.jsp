@@ -9,7 +9,7 @@
                 <a href="#none" class="menu_name">레시피 가격 등록</a>
                 <ul class="lnb_sub_menu">
                     <li><a href="${pageContext.request.contextPath}/orderRegPage.do">레시피 상품화</a></li>
-                    <li><a href="#none">상품 가격 관리</a></li>
+                    <li><a href="${pageContext.request.contextPath}/orderPage.do">상품 가격 관리</a></li>
                 </ul>
             </li>
         </ul>

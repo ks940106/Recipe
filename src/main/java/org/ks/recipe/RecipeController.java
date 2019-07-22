@@ -31,18 +31,27 @@ public class RecipeController {
         String cat2 = request.getParameter("cat2");
         String order = request.getParameter("order");
         String page = request.getParameter("page");
+        String isProduct = request.getParameter("is_product");
         RecipeSearch recipeSearch = new RecipeSearch();
         recipeSearch.setQ(q == null ? "" : q);
         recipeSearch.setCat1(cat1 == null ? "" : cat1);
         recipeSearch.setCat2(cat2 == null ? "" : cat2);
         recipeSearch.setOrder(order == null ? "" : order);
         int pageNum;
+        int isPrd;
         try {
             pageNum = Integer.parseInt(page);
         }catch (Exception e){
             pageNum = 1;
         }
+        try {
+            isPrd = Integer.parseInt(isProduct);
+        }catch (Exception e){
+            isPrd = 0;
+        }
         recipeSearch.setPage(pageNum);
+        recipeSearch.setIsProduct(isPrd);
+        System.out.println(recipeSearch);
         List<Category> categoryList = recipeService.categoryList();
         model.addAttribute("categoryList",categoryList);
         PageData<Recipe> recipePageData = recipeService.recipeList(recipeSearch);
@@ -253,6 +262,12 @@ public class RecipeController {
         model.addAttribute("recipeList",recipeList);
         return "admin/recipe/orderReg";
     }
+    @RequestMapping(value = "/orderPage.do")
+    public String orderPage(Model model){
+        List<Recipe> recipeList = recipeService.product();
+        model.addAttribute("recipeList",recipeList);
+        return "admin/recipe/orderModify";
+    }
 
     @RequestMapping(value = "/orderReg.do",produces = "text/plain;charset=UTF-8")
     @ResponseBody
@@ -324,6 +339,7 @@ public class RecipeController {
         String [] newWorkImg = multi.getParameterValues("new_work_img");
         String [] delWorkImg = multi.getParameterValues("del_work_img");
 
+        String [] delImg = multi.getParameterValues("delImg");
 
         // 저장 경로 설정
         String root = multi.getSession().getServletContext().getRealPath("/");
@@ -424,6 +440,17 @@ public class RecipeController {
         System.out.println(recipe);
 
         int result = recipeService.recipeUpdate(recipe);
+
+        if(delImg!=null&&delImg.length>0)
+        for (String f:
+             delImg) {
+            File file = new File(path+f);
+            if(file.exists()){
+                if(file.delete()){
+                    System.out.println(file.toString()+"삭제성공");
+                }
+            }
+        }
 
         return "recipe/recipe";
     }

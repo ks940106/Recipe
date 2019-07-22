@@ -189,6 +189,9 @@
                 <if test="id != null and id != ''">
                     and recipe_writer = #{id}
                 </if>
+                <if test="isProduct == 1">
+                    and recipe_price > 0
+                </if>
                 <if test="order == 'reco'">
                     order by recipe_like desc
                 </if>
@@ -217,6 +220,9 @@
         </if>
         <if test="id != null and id != ''">
             and recipe_writer = #{id}
+        </if>
+        <if test="isProduct == 1">
+            and recipe_price > 0
         </if>
     </select>
 
@@ -286,4 +292,8 @@
         select WORK_IMG from WORK_IMG where RECIPE_NO = #{recipeNo} and (WORK_IMG_NO between #{start} and #{end})
     </select>
 
+    <select id="getProduct" resultMap="recipe"><![CDATA[
+        select *
+        from RECIPE where RECIPE_PRICE > 0
+    ]]></select>
 </mapper>

@@ -64,3 +64,15 @@ section.noticeView .table-hover a{
 section.noticeView .d1 a{
 color: #343a40;
 }
+
+.allnotice{
+	border-top : 2px solid #1f6054;
+	width: 1000px;
+	height: 600px;
+	margin-left: 120px;
+	margin-right: 120px;
+	margin-bottom: 20px;
+	position: relative;
+	padding-bottom: 30px;
+	
+}

@@ -101,7 +101,7 @@ public class RecipeServiceImpl implements RecipeService {
         int pageNo = ((reqPage-1)/pageNaviSize)*pageNaviSize+1;
         //이전 버튼 생성
         if(pageNo !=1) {
-            pageNavi += "<a class='pageNo' href='/recipePage.do?q="+recipeSearch.getQ()+"&cat1="+recipeSearch.getCat1()+"&cat2="+recipeSearch.getCat2()+"&order="+recipeSearch.getOrder()+"&page="+(pageNo-1)+"'><</a>";
+            pageNavi += "<a class='pageNo' href='/recipePage.do?q="+recipeSearch.getQ()+"&cat1="+recipeSearch.getCat1()+"&cat2="+recipeSearch.getCat2()+"&order="+recipeSearch.getOrder()+"&page="+(pageNo-1)+"&is_product="+recipeSearch.getIsProduct()+"'><</a>";
         }
         //페이지 번호 버튼 생성 ( 1 2 3 4 5 )
         int i = 1;
@@ -109,13 +109,13 @@ public class RecipeServiceImpl implements RecipeService {
             if(reqPage == pageNo) {
                 pageNavi += "<span class='pageSelected'>"+pageNo+"</span>"; //4페이지 상태에서 4페이지를 누를수가 없도록 하기 위해서 a태그 없애줌
             }else {
-                pageNavi += "<a class='pageNo' href='/recipePage.do?q="+recipeSearch.getQ()+"&cat1="+recipeSearch.getCat1()+"&cat2="+recipeSearch.getCat2()+"&order="+recipeSearch.getOrder()+"&page="+(pageNo)+"'>"+pageNo+"</a>";
+                pageNavi += "<a class='pageNo' href='/recipePage.do?q="+recipeSearch.getQ()+"&cat1="+recipeSearch.getCat1()+"&cat2="+recipeSearch.getCat2()+"&order="+recipeSearch.getOrder()+"&page="+(pageNo)+"&is_product="+recipeSearch.getIsProduct()+"'>"+pageNo+"</a>";
             }
             pageNo++;
         }
         //다음 버튼 생성
         if(pageNo <= totalPage) {
-            pageNavi += "<a class='pageNo' href='/recipePage.do?q="+recipeSearch.getQ()+"&cat1="+recipeSearch.getCat1()+"&cat2="+recipeSearch.getCat2()+"&order="+recipeSearch.getOrder()+"&page="+(pageNo)+"'>></a>";
+            pageNavi += "<a class='pageNo' href='/recipePage.do?q="+recipeSearch.getQ()+"&cat1="+recipeSearch.getCat1()+"&cat2="+recipeSearch.getCat2()+"&order="+recipeSearch.getOrder()+"&page="+(pageNo)+"&is_product="+recipeSearch.getIsProduct()+"'>></a>";
         }
         return new PageData<Recipe>(recipeList,pageNavi);
     }
@@ -166,5 +166,10 @@ public class RecipeServiceImpl implements RecipeService {
             result += recipeDaoImpl.workImgUpdate(recipe);
         }
         return result;
+    }
+
+    @Override
+    public List<Recipe> product() {
+        return recipeDaoImpl.product();
     }
 }

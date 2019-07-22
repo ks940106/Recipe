@@ -38,37 +38,37 @@
         </nav>
         <div class="section_content">
             <div class="set_field">
-                <h1>레시피 상품화 관리</h1>
+                <h1>상품 가격 관리</h1>
                 <div id="cp_div_bg"></div>
             </div>
             <div class="cp_content" style="margin-left:100px;">
                 <table id="cp_table_tmr"> <!-- tmr.css -->
                     <colgroup>
-                        <col width="5%">
                         <col width="35%">
                         <col width="20%">
+                        <col width="5%">
                         <col width="10%">
                         <col width="10%">
                         <col width="20%">
                     </colgroup>
                     <tr>
-                        <th>순위</th>
                         <th>제목</th>
                         <th>작성자</th>
                         <th>좋아요</th>
+                        <th>가격</th>
                         <th>상세보기</th>
-                        <th>가격등록</th>
+                        <th>가격수정</th>
                     </tr>
                     <c:forEach var="recipe" items="${recipeList}" varStatus="status">
                         <tr>
-                            <td>${status.count}</td>
                             <td>${recipe.recipeTitle}</td>
                             <td>${recipe.recipeWriter}</td>
                             <td>${recipe.recipeLike}</td>
+                            <td>${recipe.recipePrice}</td>
                             <td><a href="/recipe/${recipe.recipeNo}" target="_blank" class="btn small col_main f_w">새 창으로</a></td>
                             <td>
                                 <input style="width: 50%" type="text" name="price">
-                                <a href="javaScript:void(0)" onclick="orderReg(this,${recipe.recipeNo})"  class="btn small col_main f_w">등록</a>
+                                <a href="javaScript:void(0)" onclick="orderReg(this,${recipe.recipeNo})"  class="btn small col_main f_w">수정</a>
                             </td>
                         </tr>
                     </c:forEach>

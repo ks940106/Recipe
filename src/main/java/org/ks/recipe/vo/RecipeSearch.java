@@ -8,6 +8,28 @@ public class RecipeSearch {
     private int page;
     private String id;
 
+    public int getIsProduct() {
+        return isProduct;
+    }
+
+    public void setIsProduct(int isProduct) {
+        this.isProduct = isProduct;
+    }
+
+    private int isProduct;
+
+    @Override
+    public String toString() {
+        return "RecipeSearch{" +
+                "q='" + q + '\'' +
+                ", cat1='" + cat1 + '\'' +
+                ", cat2='" + cat2 + '\'' +
+                ", order='" + order + '\'' +
+                ", page=" + page +
+                ", id='" + id + '\'' +
+                ", isProduct='" + isProduct + '\'' +
+                '}';
+    }
 
     public RecipeSearch() {
         this.q = "";
@@ -16,6 +38,7 @@ public class RecipeSearch {
         this.order = "";
         this.id = "";
         this.page = 1;
+        this.isProduct = 0;
     }
 
     public String getQ() {
@@ -73,4 +96,5 @@ public class RecipeSearch {
             this.page = 1;
         }
     }
+
 }

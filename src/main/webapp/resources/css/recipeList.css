@@ -8,7 +8,7 @@
     width: fit-content;
     margin: 5px;
 }
-.search select{
+.category select{
     width: 200px;
     padding: .8em .5em;
     border: 1px solid #999;

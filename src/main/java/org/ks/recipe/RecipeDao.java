@@ -42,4 +42,6 @@ public interface RecipeDao {
     int stepUpdate(Recipe recipe);
 
     int workImgUpdate(Recipe recipe);
+
+    List<Recipe> product();
 }
