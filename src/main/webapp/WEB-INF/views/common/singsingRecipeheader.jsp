@@ -63,21 +63,6 @@
                 </ul>
                 
             </nav>
-            <!-- <ul>
-                <li>
-                    <h2>We Are Awesome Creative Agency</h2>
-                    <p>
-                        This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.
-                    </p>
-                    <a href="#" class="btn_more">LEARN MORE</a>
-                </li>
-            </ul>
-            <ol>
-                <li><a href="#" class="active">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-            </ol> -->
         </div>
     </header>
 </body>
