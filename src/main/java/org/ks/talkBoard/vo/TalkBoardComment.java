@@ -7,12 +7,13 @@ public class TalkBoardComment {
 	private String commentWriter;
 	private String commentContents;
 	private int commentRef;
+	private String memberImg;
 	public TalkBoardComment() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public TalkBoardComment(int commentNo, int boardNo, int commentLevel, String commentWriter, String commentContents,
-			int commentRef) {
+			int commentRef, String memberImg) {
 		super();
 		this.commentNo = commentNo;
 		this.boardNo = boardNo;
@@ -20,6 +21,7 @@ public class TalkBoardComment {
 		this.commentWriter = commentWriter;
 		this.commentContents = commentContents;
 		this.commentRef = commentRef;
+		this.memberImg = memberImg;
 	}
 	public int getCommentNo() {
 		return commentNo;
@@ -57,6 +59,12 @@ public class TalkBoardComment {
 	public void setCommentRef(int commentRef) {
 		this.commentRef = commentRef;
 	}
+	public String getMemberImg() {
+		return memberImg;
+	}
+	public void setMemberImg(String memberImg) {
+		this.memberImg = memberImg;
+	}
 	
-
+	
 }

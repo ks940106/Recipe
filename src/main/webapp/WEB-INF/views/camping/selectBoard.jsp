@@ -14,7 +14,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script src="http://code.jquery.com/jquery-3.4.0.js"></script>
 <link href="../resources/css/import.css" rel="stylesheet" />
-<link href="../resources/css/campingReset.css" rel="stylesheet" />
 <link href="../resources/css/global.css" rel="stylesheet" />
 <link href="../resources/css/page.css" rel="stylesheet"/>
 <link href="../resources/css/common.css" rel="stylesheet" />
@@ -38,7 +37,7 @@
 			</nav>
 		</div>
 		<div class="section_content">
-			<div class="d1">
+			<div class="f_d1">
 			 <table class="table table-hover">
 				    <thead>
 				      <tr>
@@ -83,6 +82,9 @@
 				    </tr>
 				    </tfoot>
 				  </table>
+				  <c:if test="${(sessionScope.member.nickname eq t.commentWriter) or (sessionScope.member.nickname eq '관리자')}">
+			<input type="button" onclick="deleteFreeBoard(${fb.boardNo})" class="btn-lg btn-danger" value="삭제">
+			<input type="button" onclick="modifyFreeBoard(${fb.boardNo})" class="btn-lg btn-success" value="수정">
 			</div>
 			<!-- 
 			<div class="board_type">
@@ -95,10 +97,8 @@
 				${fb.contents }
 			</div>
 			 -->
-			<c:if test="${(sessionScope.member.nickname eq t.commentWriter) or (sessionScope.member.nickname eq '관리자')}">
+			
 		</div>
-			<input type="button" onclick="deleteFreeBoard(${fb.boardNo})" class="btn-lg btn-danger" value="삭제">
-			<input type="button" onclick="modifyFreeBoard(${fb.boardNo})" class="btn-lg btn-success" value="수정">
 		</div>
 			</c:if>
 		

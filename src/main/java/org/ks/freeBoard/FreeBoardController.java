@@ -165,7 +165,7 @@ public class FreeBoardController {
 		}catch(NumberFormatException e) {
 			reqPage = 1;
 		}
-		FreeBoardPageData fb = freeBoardService.mainBoard(type,reqPage);
+		FreeBoardPageData fb = freeBoardService.adminMainBoard(type,reqPage);
 		for(int i=0;i<fb.getList().size();i++) {
 			int no = fb.getList().get(i).getBoardNo();
 			int count = freeBoardService.commentCount(no);

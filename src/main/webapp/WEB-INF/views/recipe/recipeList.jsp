@@ -111,10 +111,10 @@
                         </div>
                         <ul class="nav nav-tabs2 pull-right" style="position:relative;">
                             <li role="presentation"><a href="javascript:void(0);"
+                                                       onclick="goSearchRecipe('order','date')">최신순</a></li>
+                            <li role="presentation"><a href="javascript:void(0);"
                                                        onclick="goSearchRecipe('order','accuracy')">정확순</a>
                             </li>
-                            <li role="presentation"><a href="javascript:void(0);"
-                                                       onclick="goSearchRecipe('order','date')">최신순</a></li>
                             <li role="presentation"><a href="javascript:void(0);"
                                                        onclick="goSearchRecipe('order','reco')">추천순</a></li>
                         </ul>
@@ -149,10 +149,10 @@
         var list = $("ul.nav>li");
         switch (order) {
             case 'accuracy':
-                list.eq(0).addClass('active');
+                list.eq(1).addClass('active');
                 break;
             case 'date':
-                list.eq(1).addClass('active');
+                list.eq(0).addClass('active');
                 break;
             case 'reco':
                 list.eq(2).addClass('active');
