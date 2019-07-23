@@ -89,7 +89,7 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     public PageData<Recipe> recipeList(RecipeSearch recipeSearch) {
         //페이지 당 게시물 수
-        int numPerPage = 16;
+        int numPerPage = 12;
         int total = recipeDaoImpl.recipeTotal(recipeSearch);
         List<Recipe> recipeList = recipeDaoImpl.recipeList(recipeSearch);
         //총 페이지 수 구하기
@@ -122,7 +122,7 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     public PageData<Recipe> MyRecipeList(RecipeSearch recipeSearch) {
         //페이지 당 게시물 수
-        int numPerPage = 16;
+        int numPerPage = 12;
         int total = recipeDaoImpl.recipeTotal(recipeSearch);
         List<Recipe> recipeList = recipeDaoImpl.recipeList(recipeSearch);
         //총 페이지 수 구하기

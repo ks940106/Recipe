@@ -29,7 +29,7 @@
 					<h1>공지사항 관리</h1>
 					<div id="cp_div_bg"></div>
 				</div>
-				
+				<a href="/noticeWritePage.do" class="btn small col_main f_w noticebtn">공지사항 작성</a>
 				<div class="list_field">
 					<table class="list_table">
 						<colgroup>
@@ -69,9 +69,11 @@
 						</c:forEach> 
 						</tbody>
 					</table>
-				${list.pageNavi }
+					<div id="pageNavi" class="paging_notice">
+					${list.pageNavi }
+					</div>
 				</div>
-				<a href="/noticeWritePage.do" class="btn small col_main f_w">게시글 작성</a>
+				
 			</div>
 		</div>
 	</section>
