@@ -103,7 +103,7 @@ public class FreeBoardController {
 	@RequestMapping(value="modifyFreeBoard.do")
 	public ModelAndView modifyFreeBoard(@RequestParam int boardNo) {
 		ModelAndView mv = new ModelAndView();
-		FreeBoard fb = freeBoardService.selectBoard(boardNo);
+		FreeBoard fb = freeBoardService.modifyBoard(boardNo);
 		mv.addObject("fb",fb);
 		mv.setViewName("camping/modifyFreeBoard");
 		return mv;
@@ -165,7 +165,7 @@ public class FreeBoardController {
 		}catch(NumberFormatException e) {
 			reqPage = 1;
 		}
-		FreeBoardPageData fb = freeBoardService.mainBoard(type,reqPage);
+		FreeBoardPageData fb = freeBoardService.adminMainBoard(type,reqPage);
 		for(int i=0;i<fb.getList().size();i++) {
 			int no = fb.getList().get(i).getBoardNo();
 			int count = freeBoardService.commentCount(no);

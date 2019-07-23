@@ -51,13 +51,13 @@
 								<td style="border-top-style: hidden;">${vo.recipeDate }</td>
 								<td>2</td>
 								<td><a href="/recipe/${vo.recipeNo2}">${vo.recipeTitle2 }</a></td>
-								<td><a href="/memberDetail.do?id=${vo.recipeWriter2}">${vo.recipeWriter2 }</a></td>
+								<td><a href="/memberDetailLMR.do?id=${vo.recipeWriter2}">${vo.recipeWriter2 }</a></td>
 							</tr>
 							<tr>
 								<td style="border-top-style: hidden;"></td>
 								<td>3</td>
 								<td><a href="/recipe/${vo.recipeNo3}">${vo.recipeTitle3 }</a></td>
-								<td><a href="/memberDetail.do?id=${vo.recipeWriter3}">${vo.recipeWriter3 }</a></td>
+								<td><a href="/memberDetailLMR.do?id=${vo.recipeWriter3}">${vo.recipeWriter3 }</a></td>
 							</tr>
 						</c:forEach>
 					</table>
