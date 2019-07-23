@@ -191,6 +191,7 @@ public class MemberController {
 			e1.printStackTrace();
 		}
 		String filePath=null;
+		
 		if(!fileUpload.isEmpty()) {
 			String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/member");
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -214,6 +215,8 @@ public class MemberController {
 				e.printStackTrace();
 			}
 			
+		}if(fileUpload.isEmpty()) {
+			filePath="default_IMG.jpg";
 		}
 		Member m = new Member(id, pw, name, nickname, gender, addr1, addr2, phone,filePath,zipCode);
 		int result = memberService.insertMember(m);
