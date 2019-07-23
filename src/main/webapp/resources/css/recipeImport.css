@@ -1,0 +1,19 @@
+@charset "UTF-8";
+@import url('reset.css');
+@import url('global.css');
+@import url('page.css');
+@import url('ui.css');
+@import url('recipeDetail.css');
+
+
+
+
+/* @import url('ui.css'); */
+/* @import url('jquey-ui.min.css'); */
+/* @import url('style.css'); */
+
+
+
+/*font SET*/
+
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900|Roboto:300,400,900');

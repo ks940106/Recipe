@@ -54,6 +54,7 @@
 }
 
 .pageNo{
+		display:inline-block;
 		color:black;
 		border: 1px solid lightgray;
 		width:30px;
@@ -70,6 +71,7 @@
 		line-height:30px;
 		margin:5px;}
 .pageBtn{
+		display:inline-block;
 		color:black;
 		border: 1px solid lightgray;
 		width:30px;

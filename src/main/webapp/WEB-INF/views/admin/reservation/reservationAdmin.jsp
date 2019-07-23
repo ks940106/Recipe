@@ -12,8 +12,10 @@
 <link rel="stylesheet" type="text/css"href="../resources/css/jquery-ui.min.css">
 <script src="../resources/js/jquery-3.1.1.min.js"></script>
 <script src="../resources/js/jquery-ui-1.12.1.js"></script>
+<link href="../resources/css/reservation.css" rel="stylesheet" />
 <style>
 table{table-layout: fixed;}
+
 </style>
 </head>
 <body>
@@ -63,7 +65,7 @@ table{table-layout: fixed;}
 									</tr>	
 									</c:forEach>
 									<tr>
-										<td colspan="5">
+										<td colspan="5" style="cursor: default;">
 										<a id="prev1" href="javascript:prev(1)" style="display:none;"><</a>
 											<c:forEach var="i" begin="1" end="${page1 }">
 												<c:choose>
@@ -105,7 +107,7 @@ table{table-layout: fixed;}
 									</tr>	
 									</c:forEach>
 									<tr>
-										<td colspan="4">
+										<td colspan="4" style="cursor: default;">
 										<a id="prev2" href="javascript:prev(2)" style="display:none;"><</a>
 											<c:forEach var="i" begin="1" end="${page2 }">
 												<c:choose>
@@ -150,7 +152,7 @@ table{table-layout: fixed;}
 									</tr>	
 									</c:forEach>
 									<tr>
-										<td colspan="5">
+										<td colspan="5" style="cursor: default;">
 										<a id="prev3" href="javascript:prev(3)" style="display:none;"><</a>
 											<c:forEach var="i" begin="1" end="${page3 }">
 												<c:choose>
@@ -192,7 +194,7 @@ table{table-layout: fixed;}
 									</tr>	
 									</c:forEach>
 									<tr>
-										<td colspan="4">
+										<td colspan="4" style="cursor: default;">
 										<a id="prev4" href="javascript:prev(4)" style="display:none;"><</a>
 											<c:forEach var="i" begin="1" end="${page4 }">
 												<c:choose>
@@ -225,14 +227,14 @@ table{table-layout: fixed;}
 		window.onload=function(){
 			for(var i = 1 ; i<5;i++){
 				if(maxPageCount[i]>5){ //페이지 개수가 5개 이상이면 다음버튼을 활성화
-					$("#next"+i).css("display","inline");
+					$("#next"+i).css("display","inline-block");
 				}
 			}
 			for(var i = 1; i<5;i++){
 				if(maxPageCount[i]%5==0){ //페이지뭉터기의 페이지 수 결정
 					maxPageState[i]=maxPageCount[i]/5; 
 				}else{
-					maxPageState[i]=Math.floor(maxPageState[i]/5)+1;
+					maxPageState[i]=Math.floor(maxPageCount[i]/5)+1;
 				}
 			}
 			paging(1,1); //첫번째 자료리스트를 첫번째페이지로 선택
@@ -243,34 +245,36 @@ table{table-layout: fixed;}
 		function paging(listNum,num){
 			$("#payment"+listNum+" tr:not(:last-child)").css("display","none"); //a태그 들어가는 tr 빼고 다 일단 안보이게
 			$("#payment"+listNum+" a").css("color","black"); //페이지a태그 까맣게
+			$("#payment"+listNum+" a").css("background-color","white"); //페이지a태그 까맣게
 			for(var i = 5*(num-1)+1; i<5*(num-1)+6; i++){
 				$("#list"+listNum+"tr"+i).css("display","table-row"); //자료들을 페이지에 맞게 보여줌
 			}
-			$("#list"+listNum+"a"+num).css("color","red"); //현재 페이지 색 빨갛게
+			$("#list"+listNum+"a"+num).css("color","white"); //현재 눌린페이지 css
+			$("#list"+listNum+"a"+num).css("background-color","#1f6054"); //현재 눌린페이지 css
 		}
 		function next(listNum){ //다음버튼 클릭 시 어떤 자료인지를 알려줌
 			pageState[listNum]=pageState[listNum]+1; //페이지뭉터기의 다음페이지로
 			if(pageState[listNum]>1){ //현재 페이지뭉터기페이지가 1이상 되면 이전버튼활성화 
-				$("#prev"+listNum).css("display","inline");
+				$("#prev"+listNum).css("display","inline-block");
 			}
 			if(pageState[listNum]==maxPageState[listNum]){ //최대 페이지뭉터기페이지와 현재페이지뭉터기페이지 수가 같으면 다음버튼비활성화
 				$("#next"+listNum).css("display","none");
 			}
 			$(".listpage"+listNum).css("display","none"); //기존 모든 a태그페이지 없애고
 			for(var i = 5*(pageState[listNum]-1)+1; i<5*(pageState[listNum]-1)+6; i++){ //필요한 a태그페이지만 보여줌
-					$("#list"+(listNum)+"a"+i).css("display","inline");
+					$("#list"+(listNum)+"a"+i).css("display","inline-block");
 			}
 			paging(listNum,5*(pageState[listNum]-1)+1); //자동으로 그 다음 첫번째 페이지 선택효과
 		}
 		function prev(listNum){
 			pageState[listNum]=pageState[listNum]-1; //현재페이지뭉터기 페이지를 한단계 낮춤
-			$("#next"+listNum).css("display","inline"); //이전버튼이 존재하여 눌렀다면 다음버튼도 당연히 존재하는 것이므로 활성화
+			$("#next"+listNum).css("display","inline-block"); //이전버튼이 존재하여 눌렀다면 다음버튼도 당연히 존재하는 것이므로 활성화
 			if(pageState[listNum]==1){ //현재 페이지뭉터기페이지가 1이면 이전이 없으므로 이전버튼비활성화
 				$("#prev"+listNum).css("display","none");
 			}
 			$(".listpage"+listNum).css("display","none"); //기존 모든 a태그페이지 없애고
 			for(var i = 5*(pageState[listNum])-4; i<5*(pageState[listNum])+1; i++){ //필요한 a태그페이지만 보여줌
-				$("#list"+(listNum)+"a"+i).css("display","inline");
+				$("#list"+(listNum)+"a"+i).css("display","inline-block");
 			}
 			paging(listNum,5*(pageState[listNum])); //자동으로 이전 마지막페이지 선택효과
 		}
