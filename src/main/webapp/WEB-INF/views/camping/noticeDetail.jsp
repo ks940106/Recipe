@@ -54,7 +54,7 @@
 				    </thead>
 				    <tbody>
 				   
-				      <tr>
+				      <tr class="notice_bottom">
 				        <td>${n.idx }</td>
 				        <td><a>${n.noticeTitle }</a></td>
 				        <td>${n.noticeDate }</td>
@@ -63,11 +63,16 @@
 				  
 				    </tbody>
 				  </table>
-				  <table>
+				  <div class="noticeContent">
 				  <td style="height: 500px;" colspan="2"> ${n.noticeContent }</td>
-				 </table>
+				 </div>
+				 <div class="btn_div">
+				 <button class="button button1" onclick="location.href='/noticeList.do'">목록으로</button>
+				</div>
 			</div>
+			
 		</div>
+		
 	</div>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/singsingCampingfooter.jsp"></jsp:include>

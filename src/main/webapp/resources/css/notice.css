@@ -75,3 +75,27 @@ color: #343a40;
 	padding-bottom: 30px;
 	
 }
+
+.allnotice .noticeContent{
+	padding: 30px 20px;
+	border-bottom: 2px solid #ddd;
+}
+.allnotice .notice_bottom{
+	border-bottom: 2px solid #1f6054;
+}
+
+.allnotice .button1{
+	
+    background-color: white;
+    color: black;
+    border: 2px solid #1f6054;	
+}
+.allnotice .btn_div{
+   margin: 30px auto 0 auto;
+   width: 50%;
+   text-align: center;
+}
+.allnotice a:visited {
+    color: #000; 
+    
+}

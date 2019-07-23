@@ -54,8 +54,11 @@ public class MemberDaoImpl implements MemberDAO{
 		return result;
 	}
 	@Override
-	public ArrayList<Member> memberList() {
-		List<Member> list = sqlSession.selectList("member.memberList");
+	public ArrayList<Member> memberList(int start,int end) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("start", start);
+		map.put("end", end);
+		List<Member> list = sqlSession.selectList("member.memberList",map);
 		return (ArrayList<Member>) list;
 	}
 	@Override
@@ -82,5 +85,10 @@ public class MemberDaoImpl implements MemberDAO{
 	public Member memberDetail(String id) {
 		Member m = sqlSession.selectOne("member.memberDetail", id);
 		return m;
+	}
+	@Override
+	public int totalCount() {
+		int totalCount = sqlSession.selectOne("member.totalCount");
+		return totalCount;
 	}
 }
