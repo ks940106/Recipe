@@ -13,6 +13,7 @@
 <link href="../resources/css/common.css" rel="stylesheet" />
 <link href="../resources/css/talkBoard.css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="../resources/css/style.css">
+<script src="../resources/js/freeBoard/freeBoard.js"/>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/singsingCampingheader.jsp"></jsp:include>
@@ -65,20 +66,7 @@
 	</div>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/freshfooter.jsp"></jsp:include>
-	
-	<script>
-		function insert(nickname){
-			if(nickname != null){
-			location.href="/insertFreeBoard.do?boardType=1";
-			}else{
-				alert("로그인해 주세요");
-			}
-		}
-		
-		function select(boardNo){
-			location.href="/selectFreeBoard.do?boardNo="+boardNo;
-		}
-	</script>
+
 	
 	
 </body>

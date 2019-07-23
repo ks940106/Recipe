@@ -9,15 +9,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script src="http://code.jquery.com/jquery-3.4.0.js"></script>
 <link href="../resources/css/import.css" rel="stylesheet" />
 <link href="../resources/css/global.css" rel="stylesheet" />
 <link href="../resources/css/page.css" rel="stylesheet"/>
 <link href="../resources/css/common.css" rel="stylesheet" />
 <link href="../resources/css/talkBoard.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="../resources/css/style.css">
+<script src="../resources/js/freeBoard/selectFreeBoard.js"/>
+
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/singsingCampingheader.jsp"></jsp:include>
@@ -38,18 +38,23 @@
 		</div>
 		<div class="section_content">
 			<div class="f_d1">
-			 <table class="table table-hover">
+			 <table class="free_table" style="width: 100%;">
+				 <colgroup>
+			 				<col width="10%">
+							<col width="80%">
+							<col width="10%">
+						</colgroup>
 				    <thead>
 				      <tr>
-				        <th colspan="2">${fb.title }</th>
+				        <th colspan="3" style="text-align: center;">${fb.title }</th>
 				      </tr>
 				    </thead>
 				    <tbody>
 				    <tr>
-				     <th colspan="2">${fb.nickname }</th>
+				     <td colspan="3" style="text-align: left; font-size: 20px; font-weight: bolder;">${fb.nickname }</td>
 				    </tr>
 				      <tr>
-				        <td style="height: 500px;" colspan="2">${fb.contents }</td>
+				        <td style="height: 500px;" colspan="3">${fb.contents }</td>
 				      </tr>
 				       
 				    </tbody>
@@ -63,28 +68,33 @@
 					    	<c:set var="comment2" value="${fn:replace(comment,crcn,'<br>') }"/>
 					    	
 					    	<td>${comment2 }
-					    	<c:if test="${(sessionScope.member.nickname eq t.commentWriter) or (sessionScope.member.id eq 'admin')}">
+					    	</td>
+					    	<td>
+					    	<c:if test="${(sessionScope.member.nickname eq t.commentWriter) or (sessionScope.member.nickname eq '관리자')}">
 							<span>
-							<input type="button" onclick="del('${t.commentNo}','${fb.boardNo }','${sessionScope.member.id }');" class="btn-xs btn-danger" value="삭제">
+							<input type="button" onclick="del('${t.commentNo}','${fb.boardNo }','${sessionScope.member.id }');" class="freeCommentDel_btn" value="삭제">
 							</span>
 						</c:if>
 					    	</td>
 					    </tr>
 				    </c:forEach>
 				    <tr>
-				    	<td style="padding: 0;" colspan="2">
+				    	<td style="padding: 0;" colspan="3">
 				    	<input type="hidden" id="level" name="level" value="0">
 				    	<textarea name="comment-contents" id="comment_tx" class="form-control" placeholder="" style="height:100px; width:89%; resize:none;"></textarea>
                     <span class="input-group-btn">
-                    <button class="btn btn-default" onclick="freeComment('${sessionScope.member.nickname}','${fb.boardNo }');" id="commentInsert_btn">등록</button>
+                    <button class="btn btn-default" onclick="freeComment('${sessionScope.member.nickname}','${fb.boardNo }');" id="commentInsert_btn" style="cursor: pointer;">등록</button>
                     </span>
 				    	</td>
 				    </tr>
 				    </tfoot>
 				  </table>
-				  <c:if test="${(sessionScope.member.nickname eq t.commentWriter) or (sessionScope.member.nickname eq '관리자')}">
+				  <c:if test="${(sessionScope.member.nickname eq fb.nickname) or (sessionScope.member.nickname eq '관리자')}">
 			<input type="button" onclick="deleteFreeBoard(${fb.boardNo})" class="talk_btn_right"" value="삭제">
+			</c:if>
+				<c:if test="${(sessionScope.member.nickname eq fb.nickname) }">
 			<input type="button" onclick="modifyFreeBoard(${fb.boardNo})" class="talk_btn_left" value="수정">
+				</c:if>
 			</div>
 			<!-- 
 			<div class="board_type">
@@ -100,62 +110,10 @@
 			
 		</div>
 		</div>
-			</c:if>
 		
 	</section>
 	<jsp:include page="/WEB-INF/views/common/freshfooter.jsp"></jsp:include>
-	<script>
-		function deleteFreeBoard(no){
-			location.href="/deleteFreeBoard.do?boardNo="+no;
-		}
-		function modifyFreeBoard(no){
-			location.href="/modifyFreeBoard.do?boardNo="+no;
-		}
-		function freeComment(nickname,no){
-			console.log("닉네임 : "+nickname);
-			if(nickname == ""){
-				alert("로그인해 주세요");
-			}else{
-			var level = $('#level').val();
-			var contents = $('#comment_tx').val();
-			console.log(nickname);
-			console.log(no);
-			console.log(level);
-			console.log(contents);
-			var data = "nickname="+nickname+"&boardNo="+no+"&level="+level+"&contents="+contents;
-			$.ajax({
-				url : "/freeBoardCommentInset.do",
-				type : "post",
-				data : data,
-				success : function(data){
-					alert("댓글등록 성공");
-					location.href="/selectFreeBoard.do?boardNo="+no;
-				},
-				error : function(){
-					alert("댓글등록 실패");
-				}
-			});
-			}
-			
-		}
-		
-		function del(commentNo,boardNo,memberId){
-			var no = commentNo;
-			$.ajax({
-				url : "/freeBoardDeleteComment.do",
-				type : "post",
-				data : {no:no},
-				success : function(data){
-					alert("댓글 등록에 성공했습니다.");
-					location.href="/selectFreeBoard.do?boardNo="+boardNo+"&memberId="+memberId;
-				},
-				error : function(){
-					alert("댓글 삭제에 실패했습니다.");
-				}
-			});
-		}
-		
-	</script>
+
 
 </body>
 </html>

@@ -35,6 +35,8 @@
 					</div>
 				<c:if test="${(sessionScope.member.nickname eq tb.nickname) or (sessionScope.member.nickname eq '관리자')}">
 					<input type="button" onclick="deleteBoard(${tb.boardNo})" class="talk_btn_right" value="삭제">
+				</c:if>
+				<c:if test="${sessionScope.member.nickname eq tb.nickname }">
 					<input type="button" onclick="modifyTalkBoard(${tb.boardNo})" class="talk_btn_left" value="수정">
 				</c:if>
 			<div class="talk_content1">
@@ -47,12 +49,12 @@
 	 		</div>
 	 		<div class="c2">
 	 			${tb.boardContents }
+			</div>
 	 		<c:forTokens items="${tb.boardImg }" delims="/" var="item">
 	 		<div class="d3">
 			<img src="/resources/talkBoard/${item}" width="100%">
 			</div>
 			</c:forTokens>
-			</div>
 	 		</div>
 	 		</div>
 			<div class="d4">

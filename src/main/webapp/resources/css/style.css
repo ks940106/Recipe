@@ -672,7 +672,7 @@ header .menu_btn i.marketing:last-child {
     text-align: center;
     padding: 14px 0;
     line-height: 16px;
-    font-weight: 500;
+    font-weight: bolder;
 }
 .list_table2 th:nth-child(2){
 	width:250px;
