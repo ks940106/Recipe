@@ -27,6 +27,8 @@
             </div>
             <div class="section_content_nav">
                 <div class="cp_content">
+                <h1>원하시는 입실 날짜와 퇴실 날짜를 클릭해주세요.</h1>
+                <br><br><hr><br><br>
                 	<div style="float: left;">
 						<table id="calendarTb">
 							<tr>
@@ -393,7 +395,6 @@
 				}
 			});
 		}
-		
 	</script>
 </body>
 </html>
