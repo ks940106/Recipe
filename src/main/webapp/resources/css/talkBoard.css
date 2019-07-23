@@ -362,6 +362,12 @@
 	color: #fff;
 	margin-top: 10px;
 }
-
+.modify_btn{
+    border: none;
+    background: #1f6054;
+    border-radius: 8px;
+    padding: 8px 10px 8px 10px;
+    color: #fff;
+}
 
 		
