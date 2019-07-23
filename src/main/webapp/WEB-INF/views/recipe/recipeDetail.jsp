@@ -12,10 +12,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>싱싱레시피</title>
-    <link href="${pageContext.request.contextPath}/resources/css/ui.css" rel="stylesheet"/>
-    <link href="${pageContext.request.contextPath}/resources/css/import.css" rel="stylesheet"/>
-    <link href="${pageContext.request.contextPath}/resources/css/page.css" rel="stylesheet"/>
-    <link href="${pageContext.request.contextPath}/resources/css/recipeDetail.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/resources/css/recipeImport.css" rel="stylesheet"/>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp"/>
@@ -36,7 +33,7 @@
             </c:if>
             <div class="detail_right">
             <div class="user_info">
-                <div class="user_profile"><img src="${pageContext.request.contextPath}/resources/upload/member/${recipe.member.memberImg}" alt="user_profile"></div>
+                <div class="user_profile"><img src="${pageContext.request.contextPath}/resources/upload/member/${recipe.member.memberImg}" alt="user_profile" width="180px;" height="180px;"></div>
                    <h3>${recipe.member.nickname}</h3>
                     <span>${recipe.member.id}</span>
 
@@ -120,15 +117,15 @@
                     </div>
                 </div>
             </c:forEach>
-             <div class="slider-wrap">
+             <div class="slider-wrap001">
 				          <ul id="slider001">
 				      <c:forEach var="img" items="${recipe.recipe.recipeWorkImg}">
 			                <li class="step_img image-container" style="display: inline-block">
 			                    <img src="${pageContext.request.contextPath}/resources/upload/recipe/${img}" alt=""/>
 			                </li>
 			            </c:forEach>
-				          <div class="btns" id="next001"><img src="../resources/img/right_arrow.png"></div>
-				          <div class="btns" id="previous001"><img src="../resources/img/left_arrow.png"></div>
+				          <!-- <div class="btns" id="recipe_next"><img src="../resources/img/right_arrow.png"></div>
+				          <div class="btns" id="recipe_previous"><img src="../resources/img/left_arrow.png"></div> -->
 				          <div id="counter001"></div>
 				          
 				          <div id="pagination-wrap001">
