@@ -11,7 +11,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script src="http://code.jquery.com/jquery-3.4.0.js"></script>
 <link href="../resources/css/import.css" rel="stylesheet" />
-<link href="../resources/css/campingReset.css" rel="stylesheet" />
 <link href="../resources/css/global.css" rel="stylesheet" />
 <link href="../resources/css/page.css" rel="stylesheet"/>
 <link href="../resources/css/common.css" rel="stylesheet" />

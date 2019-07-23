@@ -327,21 +327,48 @@
 	background-color: #1f6054;
 }
 
+/* 페이징 */
+
 .paging{width:100%; text-align:center; margin:30px 0;}
-.paging a, .paging span{display: inline-block;
-    vertical-align: middle;
-    /* width: 30px; */
-    padding: 10px;
-    /* height: 30px; */
-    border: 1px solid #ddd;
-    text-align: center;
-    font-size: 25px;
-    /* line-height: 50px; */
-    color: #fff;
-    letter-spacing: -0.25px;
-    background: #1f6054; }
-.paging a.paging-arrow{line-height:50px;}
-.paging i{vertical-align:middle; color:inherit}
+.pageNo{
+    display: inline-block;
+    color:black;
+    border: 1px solid lightgray;
+    width:30px;
+    height:30px;
+    line-height:30px;
+    margin:5px;
+}
+.page_nav{
+    margin: 30px 0;
+}
+.pageSelected{
+    color:white;
+    background-color:#1f6054;
+    border: 1px solid lightgray;
+    display:inline-block;
+    width:30px;
+    height:30px;
+    line-height:30px;
+    margin:5px;}
+.pageBtn{
+    color:black;
+    border: 1px solid lightgray;
+    width:30px;
+    height:30px;
+    line-height:30px;
+    margin:5px;}
+.pageNo:hover{
+    border-color: #1f6054;
+}
+.pageBtn:hover{
+    border-color: #1f6054;
+}
+
+
+
+
+
 .talk_btn_right{
 	float: right;
 	border:none;
@@ -370,4 +397,18 @@
     color: #fff;
 }
 
+.f_d1{
+	border-top : 2px solid #1f6054;
+	width: 1000px;
+	height: 100%;
+	margin-left: 120px;
+	margin-right: 120px;
+	margin-bottom: 20px;
+	position: relative;
+	padding-bottom: 30px;
+	padding-right: 30px;
+	padding-left: 30px;
+    overflow: hidden;
+	
+}
 		
