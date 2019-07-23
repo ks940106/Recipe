@@ -97,14 +97,11 @@ function EmailCheck(){
 			success : function(data) {
 				console.log(data.trim())
 					if (data.trim() == "Y") {//이메일 중복 없음
-						$("#idMsg").html("사용가능한 이메일 입니다");
+						$("#idMsg").html("사용가능한 이메일 입니다.이메일 인증을 해주세요");
 						$("#idMsg").css("display", "block");
 						$("#emailcertification").prop("disabled",false);
 						insert[1]=true;
-						if(insert[0]){
-							$("#idMsg").html("이메일 인증 완료");
-							$("#idMsg").css("display","block");
-						}
+						
 						
 					}else{
 						$("#idMsg").html("중복된 이메일입니다");

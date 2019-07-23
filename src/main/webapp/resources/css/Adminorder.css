@@ -21,16 +21,31 @@
 }
 */
 .pageNo{
-	cursor :pointer;
-	
-} 
+		color:black;
+		border: 1px solid lightgray;
+		width:30px;
+		height:30px;
+		line-height:30px;
+		margin:5px;} 
 .pageSelected{
-	padding: 6px;
-    color: #000;
-    cursor: pointer;
-    border: 1px solid #ccc;
+		color:white;
+		background-color:#1f6054;
+		border: 1px solid lightgray;
+		display:inline-block;
+		width:30px;
+		height:30px;
+		line-height:30px;
+		margin:5px;}
+.pageBtn{
+		color:black;
+		border: 1px solid lightgray;
+		width:30px;
+		height:30px;
+		line-height:30px;
+		margin:5px;}
+.pageNo:hover{
+	border-color: #1f6054;
 }
-.pageSelected:active {
-	background-color: #1f6054;
-	color: #fff;
+.pageBtn:hover{
+	border-color: #1f6054;
 }
