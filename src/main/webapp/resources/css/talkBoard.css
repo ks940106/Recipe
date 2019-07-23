@@ -87,6 +87,15 @@
     color: #fff;
     font-size: 16px;
 }
+.camping_board{
+    width: 1060px;
+    height: 50px;
+    margin-left: 120px;
+    margin-right: 120px;
+    margin-bottom: 5px;
+    position: relative;
+    font-size: 20px;
+}
 .board_left{
 	width : 50%;
 	box-sizing: border-box;
@@ -370,6 +379,13 @@
     border-radius: 8px;
     padding: 8px 10px 8px 10px;
     color: #fff;
+}
+.camping_notice_btn{
+	border: none;
+    background: #1f6054;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 8px;
 }
 
 		
