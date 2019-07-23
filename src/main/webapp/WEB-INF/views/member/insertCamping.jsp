@@ -66,7 +66,7 @@
 				<input type="text" class="form-control" disabled=""> 
 				<span id="genderMsg" style="display: none;"></span>
 			</div>
-			<img id="image_section" src="#" />
+			<img id="image_section" src="../resources/upload/member/default_IMG.jpg" />
 			<input type="file" id="fileUpload" name="fileUpload" accept=".jpg,.jpeg,.png">
 			<input type="hidden" name="frm[pro_tg_gender]" id="pro_tg_gender">
 			<input type="submit" class="btn btn-primary btn-block btn-lg" onclick="return doSubmit()" value="회원가입">

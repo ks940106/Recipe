@@ -35,17 +35,17 @@
 		</div>
 		<div class="section_content">
 			<form action="newFreeBoard.do" method="post">
-			<div class="board_type">
+			<div class="camping_board">
 				<input type="hidden" name="nickname" value="${sessionScope.member.nickname }">
 				<input type="hidden" name="type" value="${fb.boardNo }">
-				제목 : <input type="text" id="title" name="title" id="title" value="${fb.title }">
+				제목 : <input type="text" id="title" name="title" id="title" style="width: 86%;  background: #eee;  border: none;" value="${fb.title }">
 			</div>
 			<div class="d1">
 				<textarea id="contents" name="contents">${fb.contents}</textarea>
 			</div>
 			<div class="write_btn">
-                <button type="button" id="submit_btn" class="btn-lg btn-primary">등록</button>
-                <button type="button" class="btn-lg btn-default" data-dismiss="modal" onclick="location.href='/mainBoard.do'">취소</button>
+				<button type="button" id="submit_btn" class="camping_notice_btn">등록</button>
+                <button type="button" class="camping_notice_btn" data-dismiss="modal" onclick="location.href='/mainBoard.do'">취소</button>
            	</div>
            	</form>
 		</div>

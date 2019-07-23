@@ -20,6 +20,14 @@
     border-radius: 10px;
     color: #1f6054;    
 }
+.freeboard_btn{
+	background: #1f6054;
+    padding: 10px 25px;
+    border-radius: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
 .d2 {
 	width: 15%;
     height: 100%;
@@ -362,24 +370,34 @@
     width:30px;
     height:30px;
     line-height:30px;
-    margin:5px;}
+    margin:5px;
+    }
 .pageBtn{
     color:black;
     border: 1px solid lightgray;
     width:30px;
     height:30px;
     line-height:30px;
-    margin:5px;}
+    margin:5px;
+    }
 .pageNo:hover{
     border-color: #1f6054;
 }
 .pageBtn:hover{
     border-color: #1f6054;
 }
-
-
-
-
+.admin_btn{
+	border:none;
+	background: #1f6054;
+	padding: 8px 15px;
+	color: #fff;
+	border-radius: 10px;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+.admin_btn:hover{
+		cursor: pointer;
+}
 
 .talk_btn_right{
 	float: right;
@@ -391,6 +409,13 @@
 	margin-left: 10px;
 	margin-top: 10px;
 }
+.talk_btn_right:hover{
+		cursor: pointer;
+	}
+.talk_btn_left:hover{
+		cursor: pointer;
+	}
+
 .talk_btn_left{
 	float: right;
 	border:none;
@@ -429,4 +454,10 @@
     overflow: hidden;
 	
 }
-		
+
+.submit_btn:hover{
+	cursor: pointer;
+}
+.modify_btn:hover{
+	cursor: pointer;
+}		

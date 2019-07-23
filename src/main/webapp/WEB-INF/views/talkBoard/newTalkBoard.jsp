@@ -7,9 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="http://code.jquery.com/jquery-3.4.0.js"></script>
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link href="../resources/css/import.css" rel="stylesheet" />
 <link href="../resources/css/talkBoard.css" rel="stylesheet" />
 <script type="text/javascript"
@@ -52,10 +49,11 @@
 						</div>
 					</div>
 				</div>
-				<div class="write_btn">
-                <button type="submit" id="submit_btn" class="btn-lg btn-primary">등록</button>
-                <button type="button" class="btn-lg btn-default" data-dismiss="modal" onclick="location.href='/mainBoard.do'">취소</button>
-           		</div>
+           		<div class="write_btn">
+					<button type="submit" id="submit_btn" class="modify_btn">등록</button>
+					<button type="button" class="modify_btn"
+						data-dismiss="modal" onclick="location.href='/mainBoard.do'">취소</button>
+				</div>
 			</div>
 		</form>
 	</div>
