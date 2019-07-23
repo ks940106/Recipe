@@ -11,10 +11,10 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/singsingCampingheader.jsp" />
 <section class="findId">
-	<h1>아이디 변경</h1>
+	<h1>아이디 찾기</h1>
 	<form method="post" action="/findIdCamping.do">
 	<div class="find">
-	<p>아이디 찾기</p>
+	
 	<p>아이디 찾기를 위해 이름과 전화번호를 입력해주세요</p>
 		<table>
 			<tr>
@@ -26,7 +26,7 @@
 				<td><input type="text" name="phone" placeholder="010-0000-0000"></td>
 		</table>
 	</div>
-	<button type="submit">아이디 찾기</button>
+	<button type="submit" class="button button1">아이디 찾기</button>
 	</form>
 </section>
 <jsp:include page="/WEB-INF/views/common/singsingCampingfooter.jsp" />

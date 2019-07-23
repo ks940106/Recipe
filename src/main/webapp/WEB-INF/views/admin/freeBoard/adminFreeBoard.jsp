@@ -6,9 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>요리 대회 관리자 </title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script src="http://code.jquery.com/jquery-3.4.0.js"></script>
 <link rel="stylesheet" type="text/css" href="../resources/css/import.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/ui.css">
@@ -20,6 +17,7 @@
 	<script src="../resources/js/search.js"></script>
 	<script src="../resources/js/include.js"></script>
 	<link href="../resources/css/talkBoard.css" rel="stylesheet" />
+	
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/adminHeader.jsp" /> 
@@ -59,7 +57,9 @@
 								
 								<td>${t.title } [${t.commentCount}]</td>
 								<td>${t.viewCount}</td>
-								<td><input type="button" onclick="deleteFreeBoard(${t.boardNo})" class="btn-lg btn-danger" value="삭제"></td>
+								<td>
+								<input type="button" style="margin: auto;" onclick="deleteFreeBoard(${t.boardNo})" class="admin_btn"value="삭제">
+								</td>
 							</tr>
 						</c:forEach>
 						</tbody>

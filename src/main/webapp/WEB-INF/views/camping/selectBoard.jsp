@@ -83,8 +83,8 @@
 				    </tfoot>
 				  </table>
 				  <c:if test="${(sessionScope.member.nickname eq t.commentWriter) or (sessionScope.member.nickname eq '관리자')}">
-			<input type="button" onclick="deleteFreeBoard(${fb.boardNo})" class="btn-lg btn-danger" value="삭제">
-			<input type="button" onclick="modifyFreeBoard(${fb.boardNo})" class="btn-lg btn-success" value="수정">
+			<input type="button" onclick="deleteFreeBoard(${fb.boardNo})" class="talk_btn_right"" value="삭제">
+			<input type="button" onclick="modifyFreeBoard(${fb.boardNo})" class="talk_btn_left" value="수정">
 			</div>
 			<!-- 
 			<div class="board_type">
