@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Fresh 캠핑예약관리</title>
+<title>Fresh 회원관리</title>
 <link rel="stylesheet" type="text/css"href="../resources/css/import.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/ui.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/style.css">

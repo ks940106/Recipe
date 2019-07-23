@@ -45,7 +45,7 @@
 				<a href="#:;" class="board_btn" onclick="insert();">등록</a>				
 				</div>
 				<div id="go_register_dv" class="list-group talk_smn"
-					style="display:none; width: 250px; position: absolute;  background-color: white; border-top: 1px solid rgb(230, 231, 232); border-bottom: 1px solid rgb(230, 231, 232); z-index: 10;">
+					style="display:none; width: 280px; text-align:center; top:50px; border:2px solid #000; position: absolute;  background-color: white; z-index: 10;">
 					<a href="/newTalkBoard.do?boardType=1" class="list-group-item">일상톡</a> 
 					<a href="/newTalkBoard.do?boardType=3" class="list-group-item">요리톡</a> 
 					<a href="/newTalkBoard.do?boardType=5" class="list-group-item">후기톡</a>

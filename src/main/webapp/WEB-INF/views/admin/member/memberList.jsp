@@ -70,7 +70,9 @@
 						</c:forEach> 
 						</tbody>
 					</table>
+					<div id="pageNavi" class="paging_member">
 					${list.pageNavi }
+				</div>
 				</div>
 			</div>
 		</div>

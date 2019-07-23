@@ -36,7 +36,7 @@ public class RecipeController {
         recipeSearch.setQ(q == null ? "" : q);
         recipeSearch.setCat1(cat1 == null ? "" : cat1);
         recipeSearch.setCat2(cat2 == null ? "" : cat2);
-        recipeSearch.setOrder(order == null ? "" : order);
+        recipeSearch.setOrder(order == null ? "date" : order);
         int pageNum;
         int isPrd;
         try {
@@ -290,6 +290,7 @@ public class RecipeController {
         RecipeSearch recipeSearch = new RecipeSearch();
         recipeSearch.setId(id);
         recipeSearch.setPage(page);
+        recipeSearch.setOrder("date");
         System.out.println(recipeSearch.getId());
         PageData<Recipe> recipePageData = recipeService.MyRecipeList(recipeSearch);
         model.addAttribute("recipeList", recipePageData.getList());
@@ -305,6 +306,7 @@ public class RecipeController {
         RecipeSearch recipeSearch = new RecipeSearch();
         recipeSearch.setId(id);
         recipeSearch.setPage(page);
+        recipeSearch.setOrder("date");
         System.out.println(recipeSearch.getId());
         PageData<Recipe> recipePageData = recipeService.MyRecipeList(recipeSearch);
         model.addAttribute("recipeList", recipePageData.getList());

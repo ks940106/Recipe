@@ -32,7 +32,9 @@
                 		<b>예약 카라반 이름</b> : <span id="caravanName">${caravanName }</span><br>
                 		<b>예약자 이름</b> : <span id="name">${r.reservationName }</span><br>
                 		<b>예약 날짜</b> : <span id="reservationDate">${r.reservationDate }</span><br>
-                		<b>결제 금액</b> : <span id="price">${r.totalCost }</span><br><hr><br><br>
+                		<b>결제 금액</b> : <span id="price">${r.totalCost }</span><br><hr><br>
+                		예약 내역은 마이페이지 '캠핑 예약 내역'에서 확인할 수 있습니다.
+                		<br><br><br>
                 		<button type="button" class="MyButton" onclick="location.href='/views/singsingCampingIndex.jsp'">메인으로</button>
             			</div>
                 </div>

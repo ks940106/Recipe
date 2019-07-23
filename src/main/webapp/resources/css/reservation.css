@@ -29,6 +29,117 @@
 	border-color: #1f6054;
 }
 
+
+.listpage1{
+	border: 1px solid lightgray;
+	width:30px;
+	height: 30px;
+	line-height: 30px;
+}
+.listpage1:hover{
+	border-color: #1f6054;
+}
+.listpage2{
+	border: 1px solid lightgray;
+	width:30px;
+	height: 30px;
+	line-height: 30px;
+}
+.listpage2:hover{
+	border-color: #1f6054;
+}
+.listpage3{
+	border: 1px solid lightgray;
+	width:30px;
+	height: 30px;
+	line-height: 30px;
+}
+.listpage3:hover{
+	border-color: #1f6054;
+}
+.listpage4{
+	border: 1px solid lightgray;
+	width:30px;
+	height: 30px;
+	line-height: 30px;
+}
+.listpage4:hover{
+	border-color: #1f6054;
+}
+#prev1{
+	border: 1px solid lightgray;
+	width:30px;
+	height: 30px;
+	line-height: 30px;
+}
+#prev1:hover{
+	border-color: #1f6054;
+}
+#next1{
+	border: 1px solid lightgray;
+	width:30px;
+	height: 30px;
+	line-height: 30px;
+}
+#next1:hover{
+	border-color: #1f6054;
+}
+#prev2{
+	border: 1px solid lightgray;
+	width:30px;
+	height: 30px;
+	line-height: 30px;
+}
+#prev2:hover{
+	border-color: #1f6054;
+}
+#next2{
+	border: 1px solid lightgray;
+	width:30px;
+	height: 30px;
+	line-height: 30px;
+}
+#next2:hover{
+	border-color: #1f6054;
+}
+#prev3{
+	border: 1px solid lightgray;
+	width:30px;
+	height: 30px;
+	line-height: 30px;
+}
+#prev3:hover{
+	border-color: #1f6054;
+}
+#next3{
+	border: 1px solid lightgray;
+	width:30px;
+	height: 30px;
+	line-height: 30px;
+}
+#next3:hover{
+	border-color: #1f6054;
+}
+#prev4{
+	border: 1px solid lightgray;
+	width:30px;
+	height: 30px;
+	line-height: 30px;
+}
+#prev4:hover{
+	border-color: #1f6054;
+}
+#next4{
+	border: 1px solid lightgray;
+	width:30px;
+	height: 30px;
+	line-height: 30px;
+}
+#next4:hover{
+	border-color: #1f6054;
+}
+
+
 #calendarTb * { font-weight:bolder;
 				font-size:19px;
 				width:100px;
@@ -49,3 +160,6 @@ span {
 .MyButton:hover{
 	background-color:orange;color:black;
 }
+
+
+
