@@ -59,12 +59,12 @@
 		},function(rsp){
 			if(rsp.success){
 				alert("결제가 완료되었습니다.");
-				//location.href="/insertReservation.do?reservationId="+uid+"&caravanNo="+caravanNo+"&id="+id+"&reservationPeople="+reservationPeople+"&totalCost="+totalCost+"&reservationDate="+reservationDate+"&reservationName="+reservationName+"&reservationBirth="+reservationBirth+"&reservationPhone="+reservationPhone+"&reservationEmail="+reservationEmail+"&reservationRequest="+reservationRequest+"&caravanName="+caravanName;
-				location.href="/failReservation.do?error="+rsp.error_msg;
-			}else{
-				alert("결제가 실패하였습니다.");
 				location.href="/insertReservation.do?reservationId="+uid+"&caravanNo="+caravanNo+"&id="+id+"&reservationPeople="+reservationPeople+"&totalCost="+totalCost+"&reservationDate="+reservationDate+"&reservationName="+reservationName+"&reservationBirth="+reservationBirth+"&reservationPhone="+reservationPhone+"&reservationEmail="+reservationEmail+"&reservationRequest="+reservationRequest+"&caravanName="+caravanName;
 				//location.href="/failReservation.do?error="+rsp.error_msg;
+			}else{
+				alert("결제가 실패하였습니다.");
+				//location.href="/insertReservation.do?reservationId="+uid+"&caravanNo="+caravanNo+"&id="+id+"&reservationPeople="+reservationPeople+"&totalCost="+totalCost+"&reservationDate="+reservationDate+"&reservationName="+reservationName+"&reservationBirth="+reservationBirth+"&reservationPhone="+reservationPhone+"&reservationEmail="+reservationEmail+"&reservationRequest="+reservationRequest+"&caravanName="+caravanName;
+				location.href="/failReservation.do?error="+rsp.error_msg;
 			}
 		});
 	}

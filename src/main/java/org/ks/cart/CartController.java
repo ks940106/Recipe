@@ -80,7 +80,7 @@ public class CartController {
 		if(result>0) {
 			request.setAttribute("confirm", "장바구니 추가 완료. 장바구니로 가시겠습니까?");
 			request.setAttribute("confirmLoc","/cart.do");
-			request.setAttribute("loc", "/");
+			request.setAttribute("loc", "/recipe/"+request.getParameter("recipeNo"));
 			return "common/msg";
 		}else {
 			request.setAttribute("msg", "장바구니 추가 실패");
