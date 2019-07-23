@@ -41,7 +41,7 @@ section.login .panel-body {
 }
 section.login .container_etc .form-control {
     display: block;
-    width: 100%;
+    width: 95%;
     padding: 6px 12px;
     font-size: 14px;
     line-height: 1.42857143;
@@ -80,7 +80,7 @@ section.login .btn-group-lg>.btn, .btn-lg {
 }
 section.login .btn-primary.login {
     color: #fff;
-    background-color: #74b243;
+    background-color: #1f6054;
     border: 1px solid #497725;
 }
 section.login .btn-block {
@@ -278,7 +278,7 @@ section.join .btn-group-lg>.btn, .btn-lg {
 
 section.join .btn-primary {
     color: #fff;
-    background-color: #74b243;
+    background-color: #1f6054;
     border: 1px solid #497725;
 }
 
@@ -410,7 +410,7 @@ section.memberinsert .btn-block {
 }
 section.memberinsert .btn-primary {
     color: #fff;
-    background-color: #74b243;
+    background-color: #1f6054;
     border: 1px solid #497725;
 }
 section.memberinsert .btn-success {
@@ -494,6 +494,9 @@ section.memberinsert img{
 	text-align: center;
 }
 .myPage button{
+	background-color: #1f6054;
+	border: 1px solid #497725;
+	color:white;
 	margin-top: 20px;
 	width: 80px;
 	height: 40px;
@@ -649,4 +652,23 @@ section.findPw .button {
     width: 100%;
     text-align: center;
     margin: 30px 0;
+}
+
+.myPageUpdate .btn {
+	text-align:center;
+    border-radius: 10px;
+    background: #1f6054;
+    padding: 10px;
+    color: #fff;
+    border: none;
+    margin-top: 30px;
+   font-weight: bold;
+   margin-right: 50px;
+}
+.myPageUpdate .btn.a{
+	font-weight: 100;
+}
+.myPageUpdate .btn_div{
+	margin: auto;
+    width: 35%;
 }
