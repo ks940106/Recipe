@@ -23,17 +23,13 @@ table.adminNotice td{
 }
 table.adminNotice td input{
 	width: 70%;
+	height:100%;
 }
 table.adminNotice td textarea{
 	width: -webkit-fill-available;
 }
 /*공지사항*/
-section.noticeWrite table{
- text-align:center;
- border-top:2px solid #ddd;
- width: 30%;
- height: 100px;
-}
+
 section.noticeWrite table th{
 	border-bottom: 2px solid #ddd;
 	border-right: 2px solid #ddd;
@@ -44,7 +40,10 @@ section.noticeWrite table td{
 section.noticeWrite textarea {
 	resize: none;
 }
-
+table.noticeWrite td input{
+	width: 70%;
+	height:100%;
+}
 /*공지사항 상세보기*/
 
 section.noticeUpdate table th{
@@ -75,4 +74,28 @@ color: #343a40;
 	position: relative;
 	padding-bottom: 30px;
 	
+}
+
+.allnotice .noticeContent{
+	padding: 30px 20px;
+	border-bottom: 2px solid #ddd;
+}
+.allnotice .notice_bottom{
+	border-bottom: 2px solid #1f6054;
+}
+
+.allnotice .button1{
+	
+    background-color: white;
+    color: black;
+    border: 2px solid #1f6054;	
+}
+.allnotice .btn_div{
+   margin: 30px auto 0 auto;
+   width: 50%;
+   text-align: center;
+}
+.allnotice a:visited {
+    color: #000; 
+    
 }

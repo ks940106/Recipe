@@ -3,6 +3,7 @@ package org.ks.member;
 import java.util.ArrayList;
 
 import org.ks.member.vo.Member;
+import org.ks.member.vo.MemberPageData;
 
 public interface MemberService {
 	public Member login(Member m);
@@ -12,7 +13,7 @@ public interface MemberService {
 	public Member pwCheck(String id,String pw);
 	public int updateMember(Member m);
 	public int deleteMember(String id);
-	public ArrayList<Member>memberList();
+	public MemberPageData memberList(int reqPage);
 	public Member idAndNameCheck(Member m);
 	public int pwUpdate(Member m);
 	public String findId(Member m);

@@ -32,7 +32,7 @@
 					<div id="cp_div_bg"></div>
 				</div>
 				<table class="adminNotice">
-					<tr>
+					<tr style="height:32px" >
 						<th>공지사항 제목</th>
 						<td><input type="text" name="noticeTitle" id="title" value="${n.noticeTitle }"></td>
 						<th>공지사항 작성일</th>
@@ -43,7 +43,8 @@
 					
 					<tr>
 						<th>공지사항 내용</th>
-						<td colspan="3"><textarea rows="20" cols="20" id="content" name="noticeContent">${n.noticeContent }</textarea>
+						<td colspan="3"><textarea rows="20" cols="20" id="content" name="noticeContent">${n.noticeContent }</textarea></td>
+					</tr>
 				</table>
 			<button type="submit">수정</button>
 					</form>

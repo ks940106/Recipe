@@ -201,9 +201,9 @@
 
         <![CDATA[
             ) A
-        where ROWNUM <= (#{page}*16)
+        where ROWNUM <= (#{page}*12)
         ) B
-        where B.rnum >= ((#{page}-1)*16 + 1)
+        where B.rnum >= ((#{page}-1)*12 + 1)
     ]]>
     </select>
 
