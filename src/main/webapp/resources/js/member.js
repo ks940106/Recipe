@@ -74,10 +74,7 @@ $("#emailcertification").click(function(){
 	var pop=window.open("emailcertification.jsp","emailcertification","width=400,height=300");
 	pop.location.href=url+"?email="+email;
 	console.log(emailcertification);
-	 if(insert[0]){
-			$("#emailMsg").css("display","block");
-			$("#emailMsg").html("이메일 인증 완료");
-		}
+	
 })
 //아이디 확인 insert[1]
 function EmailCheck(){
@@ -100,10 +97,12 @@ function EmailCheck(){
 			success : function(data) {
 				console.log(data.trim())
 					if (data.trim() == "Y") {//이메일 중복 없음
-						$("#idMsg").html("사용가능한 이메일 입니다");
+						$("#idMsg").html("사용가능한 이메일 입니다.이메일 인증을 해주세요");
 						$("#idMsg").css("display", "block");
 						$("#emailcertification").prop("disabled",false);
 						insert[1]=true;
+						
+						
 					}else{
 						$("#idMsg").html("중복된 이메일입니다");
 						$("#idMsg").css("display", "block");
@@ -155,7 +154,20 @@ function EmailCheck(){
 			return;
 		}
 	}
-	//닉네임 중복체크 insert[4]
+	
+	//이름 체크 insert[4]
+	function nameck(){
+		var name=$("#name").val();
+		var nameck=/[a-z,A-Z,가-힣]{1,50}/
+		if(!nameck.test(name)){
+			insert[4]=true;
+		}
+		if(nameck.test(name)){
+			insert[4]=false;
+		}
+	}
+	
+	//닉네임 중복체크 insert[5]
 	function chkNick(){
 		var nickname =$("#nickname").val();
 		var nicknameCheck="";
@@ -174,7 +186,7 @@ function EmailCheck(){
 					if(data.trim()=="Y"){//중복 없음
 						$("#nickMsg").html("사용가능한 닉네임 입니다");
 						$("#nickMsg").css("display","block");
-						insert[4]=true;
+						insert[5]=true;
 					}else{
 						$("#nickMsg").html("사용불가능한 닉네임 입니다");
 						$("#nickMsg").css("display","block");
@@ -187,33 +199,8 @@ function EmailCheck(){
 			})
 		}
 	}
-	//핸드폰 정규식 insert[5]
-	function phoneck(){
-		var phone = $("#phone").val();
-		var phonech=/^[0-9]{3}-[0-9]{3,4}-[0-9]{4}$/;
-		console.log(phone);
-		if(phonech.test(phone)){
-			$("#phoneMsg").css("display","none");
-			insert[5]=true;
-		}
-		if(!phonech.test(phone)){
-			$("#phoneMsg").html("핸드폰 형식을 맞춰주세요");
-			$("#phoneMsg").css("display","block");
-			insert[5]=false;
-		}
-	}
-	//이름 체크 insert[6]
-	function nameck(){
-		var name=$("#name").val();
-		var nameck=/[a-z,A-Z,가-힣]{1,50}/
-		if(!nameck.test(name)){
-			insert[6]=true;
-		}
-		if(nameck.test(name)){
-			insert[6]=false;
-		}
-	}
-	//주소 빈값 체크 insert[7]
+	
+	//주소 빈값 체크 insert[6]
 	function addrck(){
 		var addr1=$("#addr1").val();
 		var addr2=$("#addr2").val();
@@ -221,13 +208,31 @@ function EmailCheck(){
 		console.log(addr2);
 		if(zipCode.length!=0){
 			if(addr1.length!=0){
-				if(addr1.length!=0){
-					insert[7]=true;
+				if(addr2.length!=0){
+					insert[6]=true;
 				}
 			}
 		}
 		
 	}
+	
+	//핸드폰 정규식 insert[7]
+	function phoneck(){
+		var phone = $("#phone").val();
+		var phonech=/^[0-9]{3}-[0-9]{3,4}-[0-9]{4}$/;
+		console.log(phone);
+		if(phonech.test(phone)){
+			$("#phoneMsg").css("display","none");
+			insert[7]=true;
+		}
+		if(!phonech.test(phone)){
+			$("#phoneMsg").html("핸드폰 형식을 맞춰주세요");
+			$("#phoneMsg").css("display","block");
+			insert[7]=false;
+		}
+	}
+	
+	
 	function genderck(){
 		var gender = $('input[name="gender"]:checked').val();
 		if(gender.length!=0){
@@ -262,26 +267,29 @@ function EmailCheck(){
                 return false;
 			}
 			if(!insert[4]){
-				chkNick();
-                event.isDefaultPrevented;
-                return false;
-			}
-			if(!insert[5]){
-				alert("핸드폰 번호를 입력 해주세요");
-                event.isDefaultPrevented;
-                return false;
-			}
-			if(!insert[6]){
+				alert("이름을 입력 해주세요");
 				nameck();
                 event.isDefaultPrevented;
                 return false;
 			}
-			if(!insert[7]){
+			if(!insert[5]){
+				alert("닉네임을 입력해주세요");
+				chkNick();
+                event.isDefaultPrevented;
+                return false;
+			}
+			if(!insert[6]){
 				alert("주소를 입력 해주세요");
                 event.isDefaultPrevented;
                 return false;
 			}
+			if(!insert[7]){
+				alert("핸드폰 번호를 입력 해주세요");
+                event.isDefaultPrevented;
+                return false;
+			}
 			if(!insert[8]){
+				alert("성별을 체크 해주세요");
 				genderck();
                 event.isDefaultPrevented;
                 return false;

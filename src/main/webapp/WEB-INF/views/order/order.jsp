@@ -108,10 +108,10 @@
 						<input type="text" name="zipCode" id="zipCode" value="${sessionScope.member.zipCode }">
 						</td>
 						<td>
-						<input type="text" name="addr1" id="addr1" value="${sessionScope.member.addr1 }">
+						<input type="text" name="addr1" id="addr1" value="${sessionScope.member.addr1 }" style="width:300px;">
 						</td>
 						<td>
-						<input type="text" name="addr2" id="addr2" value="${sessionScope.member.addr2 }">
+						<input type="text" name="addr2" id="addr2" value="${sessionScope.member.addr2 }"style="width:300px;">
 						</td>
 					</tr>
 				</table>

@@ -12,7 +12,27 @@
 /* @import url('jquey-ui.min.css'); */
 /* @import url('style.css'); */
 
+.bottom{
+    margin-bottom: 60px;
+}
 
+.btn-primary {
+    color: #fff;
+    background-color: #74b243;
+    border: 1px solid #497725;
+}
+
+.regi_btm .btn-lg {
+    padding: 12px 50px;
+}
+.btn-group-lg>.btn, .btn-lg {
+    padding: 10px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.3333333;
+    border-radius: 3px;
+    margin: 0 4px;
+}
 
 /*font SET*/
 

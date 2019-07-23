@@ -19,7 +19,7 @@
    <header>
         <div>
             <h1>
-                <a href="#">
+                <a href="/views/singSingRecipe.jsp">
                     <img src="../resources/img/logo.png" />
                 </a>
             </h1>
