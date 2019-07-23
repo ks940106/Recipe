@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>싱싱레시피</title>
     <link href="${pageContext.request.contextPath}/resources/css/recipeImport.css" rel="stylesheet"/>
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp"/>
@@ -123,28 +124,30 @@
                     </div>
                 </div>
             </c:forEach>
+<c:if test="${recipe.recipe.recipeWorkImg.size() > 0}">
+    <div class="slider-wrap001">
+        <ul id="slider001">
+            <c:forEach var="img" items="${recipe.recipe.recipeWorkImg}">
+            <c:if test="${not empty img}">
+            <li class="step_img image-container" style="display: inline-block">
+                <img src="${pageContext.request.contextPath}/resources/upload/recipe/${img}" alt=""/>
+            </li>
+            </c:if>
+            </c:forEach>
+            <!-- <div class="btns" id="recipe_next"><img src="../resources/img/right_arrow.png"></div>
+            <div class="btns" id="recipe_previous"><img src="../resources/img/left_arrow.png"></div> -->
+            <div id="counter001"></div>
 
-            <div class="slider-wrap001">
-                <ul id="slider001">
-                    <c:forEach var="img" items="${recipe.recipe.recipeWorkImg}">
-                    <c:if test="${not empty img}">
-                    <li class="step_img image-container" style="display: inline-block">
-                        <img src="${pageContext.request.contextPath}/resources/upload/recipe/${img}" alt=""/>
-                    </li>
-                    </c:if>
-                    </c:forEach>
-                    <!-- <div class="btns" id="recipe_next"><img src="../resources/img/right_arrow.png"></div>
-                    <div class="btns" id="recipe_previous"><img src="../resources/img/left_arrow.png"></div> -->
-                    <div id="counter001"></div>
-
-                    <div id="pagination-wrap001">
-                        <ul>
-                        </ul>
-                    </div>
-                    <!--controls-->
+            <div id="pagination-wrap001">
+                <ul>
+                </ul>
             </div>
-
-
+            <!--controls-->
+    </div>
+</c:if>
+            <div class="bottom">
+                <button type="button" class="btn-lg btn-primary" onclick="location.href='/recipePage.do'">목록으로</button>
+            </div>
         </div>
     </div>
     <%--

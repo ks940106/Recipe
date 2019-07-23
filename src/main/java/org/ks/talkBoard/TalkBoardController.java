@@ -171,10 +171,10 @@ public class TalkBoardController {
 		int result = talkBoardService.insertTalkBoard(tb);
 		if(result>0) {
 			System.out.println("글등록 성공");
-			return "talkBoard/mainBoard";
+			return "redirect:mainBoard.do?boardType=0";
 		}else {
 			System.out.println("등록실패");
-			return "/";
+			return "redirect:mainBoard.do?boardType=0";
 		}
 	}
 	@RequestMapping(value="selectTalkBoard.do")
@@ -241,7 +241,7 @@ public class TalkBoardController {
 		if(result ==0) {
 			return "/";
 		}else {
-			return "talkBoard/mainBoard";
+			return "redirect:mainBoard.do?boardType=0";
 			}
 	}
 	@RequestMapping(value="/modifyTalkBoard.do")
@@ -269,8 +269,10 @@ public class TalkBoardController {
 					//jsp에서 넘어온 배열을 img배열에 저장
 		String saveImg = "";
 		File f = null;
+		System.out.println("one 이미지"+request.getParameter("oneImg"));
 		if(request.getParameter("oneImg")==null) {
 			for(int i=0; i<fImg.length;i++) {
+				System.out.println("여기 나오면 안됨");
 				f = new File(savePath+"\\"+fImg[i]);
 				f.delete();
 			}
@@ -284,14 +286,18 @@ public class TalkBoardController {
 					saveImg += img[j]+"/";
 			}
 			
-			System.out.println(saveImg);
+			System.out.println("세이브 이미지 : "+saveImg);
+			
 		// DB저장된 풀이미지 네임과 비교했을때 비교값과 같은 String을 ""처리하고  m에 저장
 		for(int i =0; i<img.length;i++) {
-			m = m.replace(img[i]+"/", "");
+			System.out.println(img[i]);
+			m = m.replace(img[i], "");
 		}
 		String[] deleteImg = m.split("/");
 		
 		for(int i=0;i<deleteImg.length;i++) {
+			System.out.println("여기 나오면 안됨2");
+			System.out.println("삭제확인 : "+deleteImg[i]);
 			f = new File(savePath+"\\"+deleteImg[i]);
 			f.delete();
 			}
@@ -356,10 +362,10 @@ public class TalkBoardController {
     		int result = talkBoardService.updateTalkBoard(tb);
     		if(result>0) {
     			System.out.println("글등록 성공");
-    			return "talkBoard/mainBoard";
+    			return "redirect:mainBoard.do?boardType=0";
     		}else {
     			System.out.println("등록실패");
-    			return "talkBoard/mainBoard";
+    			return "redirect:mainBoard.do?boardType=0";
     		}
 	}
 	@ResponseBody
@@ -372,11 +378,11 @@ public class TalkBoardController {
 		tbc.setCommentLevel(Integer.parseInt(request.getParameter("commentLevel")));
 		int result = talkBoardService.insertTalkBoardComment(tbc);
 		if(result>0) {
-			System.out.println("댓글입력성공");
+			return "댓글 등록 성공";
 		}else {
-			System.out.println("댓글 입력 실패");
+			return "댓글 등록 실패";
 		}
-		return "18";
+		
 		
 	}
 	@ResponseBody
@@ -386,11 +392,11 @@ public class TalkBoardController {
 		System.out.println(no);
 		int result = talkBoardService.deleteComment(no);
 		if(result >0 ) {
-			System.out.println("댓글 삭제 성공");
+			return "댓글 삭제 성공";
 		}else {
-			System.out.println("댓글 삭제 실패");
+			return "댓글 삭제 실패";
 		}
-		return "^^7";
+		
 	}
 	
 	@ResponseBody
@@ -475,11 +481,55 @@ public class TalkBoardController {
 		int result = talkBoardService.deleteTalkBoard(no);
 		System.out.println("삭제 0실패 1성공 : "+result);
 		if(result ==0) {
-			return "0";
+			return "1";
 		}else {
 			return "0";
 			}
 	}
+	
+	@RequestMapping(value="/adminBoardView.do")
+	public ModelAndView adminBoardView(HttpServletRequest request) {
+		int no = Integer.parseInt(request.getParameter("boardNo"));
+		String memberId = request.getParameter("memberId");
+		String nickname = request.getParameter("nickname");
+		BoardLike bl = new BoardLike();
+		System.out.println("넘어온 세션 아이디 : "+memberId);
+		System.out.println("넘어온 보드넘버 : "+no);
+		bl.setBoardNo(no);
+		bl.setMemberId(memberId);
+		System.out.println("넘어온 닉네임 : "+nickname);
+		MainBoard tb = talkBoardService.selectTalkBoard(no);
+		Member m = talkBoardService.selectImg(nickname);
+		ArrayList<TalkBoardComment> tbc = talkBoardService.selectTalkBoardComment(no);
+		BoardLike like = talkBoardService.boardLike(bl);
+		int commentCount = talkBoardService.commentCount(no);
+		int likeCount = talkBoardService.likeCount(no);
+		System.out.println("라이크 카운트"+likeCount);
+		ModelAndView mv = new ModelAndView();
+		if(like == null) {
+			mv.addObject("m",m);
+			mv.addObject("commentCount",commentCount);
+			mv.addObject("likeCount",likeCount);
+			mv.addObject("like",like);
+			mv.addObject("tb",tb);
+			mv.addObject("tbc",tbc);
+			mv.setViewName("talkBoard/adminTalkBoardView");
+			return mv;
+		}else {
+		System.out.println(tb.getBoardContents());
+		System.out.println(tbc.isEmpty());
+		System.out.println("라이크 체크 : "+like.getLikeCheck());
+		mv.addObject("m",m);
+		mv.addObject("commentCount",commentCount);
+		mv.addObject("likeCount",likeCount);
+		mv.addObject("like",like);
+		mv.addObject("tb",tb);
+		mv.addObject("tbc",tbc);
+		mv.setViewName("talkBoard/adminTalkBoardView");
+		}
+		return mv;
+	}
+	
 	
 	
 }

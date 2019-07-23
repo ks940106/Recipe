@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>요리 대회 관리자 </title>
+<title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-3.4.0.js"></script>
 <link rel="stylesheet" type="text/css" href="../resources/css/import.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/ui.css">
@@ -18,7 +18,6 @@
 	<script src="../resources/js/include.js"></script>
 	<link href="../resources/css/talkBoard.css" rel="stylesheet" />
 	<script src="../resources/js/freeBoard/adminFreeBoard.js"/>
-	
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/adminHeader.jsp" /> 
@@ -32,53 +31,38 @@
 					<h1>자유 게시판 관리</h1>
 					<div id="cp_div_bg"></div>
 				</div>
-				<div class="list_field">
-					<table class="list_table2">
-						<colgroup>
-							<col width="10%">
-							<col width="10">
-							<col width="60%">
-							<col width="10%">
+				<div class="f_d1">
+			 <table class="free_table" style="width: 100%;">
+				 <colgroup>
+			 				<col width="10%">
+							<col width="80%">
 							<col width="10%">
 						</colgroup>
-						<thead>
-						<tr>
-							<th>No</th>
-							<th>닉네임</th>
-							<th>제목</th>
-							<th>조회수</th>
-							<th>관리</th>
-						</tr>
-						</thead>
-						<tbody>
-						<c:forEach items="${fb.list }" var="t" varStatus="status">
-							<tr>
-								<td>${status.count }</td>
-								<td>${t.nickname }</td>
-								
-								<td onclick="select('${t.boardNo}')" style="cursor: pointer;">${t.title } [${t.commentCount}]</td>
-								<td>${t.viewCount}</td>
-								<td>
-								<input type="button" style="margin: auto;" onclick="deleteFreeBoard(${t.boardNo})" class="admin_btn"value="삭제">
-								</td>
-							</tr>
-						</c:forEach>
-						</tbody>
-						<tfoot>
-						
-						</tfoot>
-					</table>
-				</div>
-				<div id="pageNavi" class="paging">${fb.pageNavi }</div>
-			
+				    <thead>
+				      <tr>
+				        <th colspan="3" style="text-align: center;">${fb.title }</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				    <tr>
+				     <td colspan="3" style="text-align: left; font-size: 20px; font-weight: bolder;">${fb.nickname }</td>
+				    </tr>
+				      <tr>
+				        <td style="height: 500px;" colspan="3">${fb.contents }</td>
+				      </tr>
+				    </tbody>
+				    </table>
+				     <c:if test="${(sessionScope.member.nickname eq fb.nickname) or (sessionScope.member.nickname eq '관리자')}">
+			<input type="button" onclick="deleteFreeBoard(${fb.boardNo})" class="talk_btn_right"" value="삭제">
+			</c:if>
+				    </div>
 			</div>
 		</div>
 
 	</section>
 	<jsp:include page="/WEB-INF/views/common/freshfooter.jsp" />
-	
+
+
+
 </body>
 </html>
-
-	
-	
