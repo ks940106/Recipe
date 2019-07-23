@@ -45,7 +45,7 @@
 								<td></td>
 								<td>1</td>
 								<td><a href="/recipe/${vo.recipeNo1}">${vo.recipeTitle1}</a></td>
-								<td><a href="/memberDetail.do?id=${vo.recipeWriter1}">${vo.recipeWriter1 }</a></td>
+								<td><a href="/memberDetailLMR.do?id=${vo.recipeWriter1}">${vo.recipeWriter1 }</a></td>
 							</tr>
 							<tr>
 								<td style="border-top-style: hidden;">${vo.recipeDate }</td>
