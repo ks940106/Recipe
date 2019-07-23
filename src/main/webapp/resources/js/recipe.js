@@ -146,10 +146,10 @@ function delStep(i) {
 function doSubmit(option) {
     var title = $("#cok_title").val();
     var mainImg = $("#recipeMainImg").val();
-    if(!title.length&&option !== 'delete'){
+    if(option === 'save'&&!title.length){
         alert("레시피 제목은 필수사항 입니다.");
         return;
-    }else if (!mainImg.length&&option !== 'delete'){
+    }else if (option === 'save'&&!mainImg.length){
         alert("요리 대표사진은 필수사항 입니다.");
         return;
     }
