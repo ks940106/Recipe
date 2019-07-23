@@ -64,11 +64,11 @@
 					type : "post",
 					data : data,
 					success : function(data){
-						alert(data);
+						alert("수정에 성공했습니다");
 						location.href="/freeBoard.do";
 					},
 					error : function(){
-						alert("실패다");
+						alert("수정에 실패했습니다");
 					}
 				});
 			});

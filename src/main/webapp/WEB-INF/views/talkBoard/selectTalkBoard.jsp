@@ -90,7 +90,7 @@
                     	<button type="button" class="talk_like_btn" ><img src="http://recipe1.ezmember.co.kr/img/btn_feel.gif" id="like_btn1" value="뿌부" onclick="like('${sessionScope.member.nickname}','${sessionScope.member.id}','${tb.boardNo }')"></button>
                 	</c:if>
                 	<c:if test="${like.likeCheck eq 1 }">
-                    	<button type="button"><img src="/resources/img/talk/btn_feel.gif" id="like_btn3" value="뿌부" onclick="likeDel('${sessionScope.member.nickname}','${sessionScope.member.id}','${tb.boardNo }')"></button>
+                    	<button type="button" class="talk_like_btn" ><img src="/resources/img/talk/btn_feel.gif" id="like_btn3" value="뿌부" onclick="likeDel('${sessionScope.member.nickname}','${sessionScope.member.id}','${tb.boardNo }')"></button>
                 	</c:if>
                 </div>
                 

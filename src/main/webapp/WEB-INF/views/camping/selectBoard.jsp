@@ -128,11 +128,11 @@
 				type : "post",
 				data : data,
 				success : function(data){
-					alert(data);
+					alert("댓글등록 성공");
 					location.href="/selectFreeBoard.do?boardNo="+no;
 				},
 				error : function(){
-					alert("댓글실패");
+					alert("댓글등록 실패");
 				}
 			});
 			}
@@ -146,10 +146,11 @@
 				type : "post",
 				data : {no:no},
 				success : function(data){
+					alert("댓글 등록에 성공했습니다.");
 					location.href="/selectFreeBoard.do?boardNo="+boardNo+"&memberId="+memberId;
 				},
 				error : function(){
-					console.log("댓글삭제 실패해따");
+					alert("댓글 삭제에 실패했습니다.");
 				}
 			});
 		}
