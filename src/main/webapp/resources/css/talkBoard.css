@@ -294,4 +294,24 @@
     background: #1f6054; }
 .paging a.paging-arrow{line-height:50px;}
 .paging i{vertical-align:middle; color:inherit}
+.talk_btn_right{
+	float: right;
+	border:none;
+	background: #1f6054;
+	padding: 8px 15px;
+	color: #fff;
+	border-radius: 10px;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+.talk_btn_left{
+	float: right;
+	float: right;
+	border:none;
+	background: #1f6054;
+	padding: 8px 15px;
+	border-radius: 10px;
+	color: #fff;
+	margin-top: 10px;
+}
 		

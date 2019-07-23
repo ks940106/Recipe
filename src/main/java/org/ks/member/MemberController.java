@@ -26,6 +26,7 @@ import javax.servlet.http.HttpSession;
 
 import org.ks.member.commons.SHA256Util;
 import org.ks.member.vo.Member;
+import org.ks.member.vo.MemberPageData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.codec.multipart.SynchronossPartHttpMessageReader;
@@ -608,13 +609,19 @@ public class MemberController {
 	
 	//관리자 페이지 시작
 	@RequestMapping(value="/memberList.do")
-	public ModelAndView memberList() {
-		ArrayList<Member> list = memberService.memberList();
+	public ModelAndView memberList(HttpServletRequest request) {
+		int reqPage;
+		try {
+			reqPage=Integer.parseInt(request.getParameter("reqPage"));
+		}catch (Exception e) {
+			reqPage=1;
+		}
+		MemberPageData list = memberService.memberList(reqPage);
 		ModelAndView mav = new ModelAndView();
-		if(!list.isEmpty()) {
+		
 			mav.addObject("list",list);
 			mav.setViewName("admin/member/memberList");
-		}
+		
 		return mav;
 	}
 	//관리자 페이지에서 탈퇴시키기

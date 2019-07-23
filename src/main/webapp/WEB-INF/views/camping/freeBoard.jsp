@@ -35,7 +35,7 @@
 			</nav>
 		</div>
 			<div class="board_right">
-				<a href="#:;" class="btn btn-success" onclick="insert(${sessionScope.member.nickname});">등록</a>				
+				<a href="#:;" class="btn btn-success" onclick="insert('${sessionScope.member.nickname}');">등록</a>				
 			</div>
 		<div class="section_content">
 		<div class="d1">
@@ -61,8 +61,8 @@
 				    </tbody>
 				  </table>
 			</div>
-		</div>
 			<div id="pageNavi" class="paging">${fb.pageNavi }</div>
+		</div>
 			</div>
 	</div>
 	</section>
