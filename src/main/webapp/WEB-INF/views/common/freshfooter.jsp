@@ -22,15 +22,13 @@
                         	서울 영등포구 선유동2로 57 이레빌딩 19층 20층
                     </span>
                     <span>
-                        <a href="tel:010-1234-5678">010-1234-5678</a>
+                        <a>010-1234-5678</a>
                     </span>
                 </address>
             </div>
             <div>
             	<h2>ABOUT</h2>
-                <a href="#">HELP</a>
-                <a href="#">NOTICE</a>
-                <a href="#">LOGIN</a>
+                <a href="#">LOGOUT</a>
                 <p>Copyright © 2019 - Fresh</p>
             </div>
         </div>
