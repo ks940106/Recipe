@@ -26,15 +26,11 @@
                 <img src="../../../resources/img/recipe/icon_01.png" width="45px;">
                 <span>${recipe.recipe.recipeHit}</span>
             </div>
-            <c:if test='${recipe.recipe.recipeVideo.contains("/")}'>
-                <div class="recipe_video">
-                    <iframe id="player" type="text/html" width="640" height="360" src='https://www.youtube.com/embed${recipe.recipe.recipeVideo.substring(recipe.recipe.recipeVideo.lastIndexOf("/"))}' frameborder="0"></iframe>
-                </div>
-            </c:if>
+
             <div class="detail_right">
 
-            <div class="user_info">
-                <div class="user_profile"><img src="${pageContext.request.contextPath}/resources/upload/member/${recipe.member.memberImg}" alt="user_profile" width="180px;" height="180px;"></div>
+                <div class="user_info">
+                    <div class="user_profile"><img src="${pageContext.request.contextPath}/resources/upload/member/${recipe.member.memberImg}" alt="user_profile" width="180px;" height="180px;"></div>
 
                     <h3>${recipe.member.nickname}</h3>
 
@@ -46,15 +42,19 @@
                     <!-- 조회수 : ${recipe.recipe.recipeHit}<br>-->
 
                     <c:if test="${not empty sessionScope.member && isLiked}">
-                        <a class="bg_like" href="javaScript:unLike(${recipe.recipe.recipeNo})" style="font-size: larger; color: red">
-                            <img src="../../../resources/img/recipe/like.png" width="40px;"></a>
+                        <div class="bg_like">
+                            <a class="bg_like" href="javaScript:unLike(${recipe.recipe.recipeNo})" style="font-size: larger; color: red">
+                                <img src="../../../resources/img/recipe/like.png" width="40px;"></a>
+                        </div>
                     </c:if>
                     <c:if test="${not empty sessionScope.member && !isLiked}">
-                        <a class="bg_like" href="javaScript:like(${recipe.recipe.recipeNo})" style="font-size: larger; color: red"><img src="../../../resources/img/recipe/heart.png" width="40px;"></a>
+                        <div class="bg_like">
+                            <a  href="javaScript:like(${recipe.recipe.recipeNo})" style="font-size: larger; color: red"><img src="../../../resources/img/recipe/heart.png" width="40px;"></a>
+                        </div>
                     </c:if>
                     <span class="bg_like"> 좋아요 ${recipe.recipe.recipeLike}</span>
                 </div>
-                <div class="item_title">
+                <div class="item_title" style="white-space: pre-line">
                     <img src="../../../resources/img/recipe/icon_4.png">
                     ${recipe.recipe.recipeContents}
                     <img src="../../../resources/img/recipe/icon_5.png">
@@ -75,14 +75,17 @@
                         </li>
                     </ul>
                 </div>
-                <div class="item_content2">
-                    ${recipe.category1} ,
-                    ${recipe.category2}
-                    <div class="item_content2">
-                        <b>[재료]</b><br>
-                        ${recipe.recipe.recipeItem}
+                <%--                    ${recipe.category1} ,--%>
+                <%--                    ${recipe.category2}--%>
+                <%--                    <div class="item_content2">--%>
+
+                <%--                    </div>--%>
+                <div class="item_content2" style="text-align: left;white-space: pre-line">${recipe.recipe.recipeItem}</div>
+                <c:if test='${recipe.recipe.recipeVideo.contains("/")}'>
+                    <div class="recipe_video">
+                        <iframe id="player" type="text/html" width="640" height="360" src='https://www.youtube.com/embed${recipe.recipe.recipeVideo.substring(recipe.recipe.recipeVideo.lastIndexOf("/"))}' frameborder="0"></iframe>
                     </div>
-                </div>
+                </c:if>
                 <c:if test="${recipe.recipe.recipePrice ne 0}">
                     <div class="recipe_order">
                         <table class="type04">
@@ -121,23 +124,25 @@
                 </div>
             </c:forEach>
 
-             <div class="slider-wrap001">
-				          <ul id="slider001">
-				      <c:forEach var="img" items="${recipe.recipe.recipeWorkImg}">
-			                <li class="step_img image-container" style="display: inline-block">
-			                    <img src="${pageContext.request.contextPath}/resources/upload/recipe/${img}" alt=""/>
-			                </li>
-			            </c:forEach>
-				          <!-- <div class="btns" id="recipe_next"><img src="../resources/img/right_arrow.png"></div>
-				          <div class="btns" id="recipe_previous"><img src="../resources/img/left_arrow.png"></div> -->
-				          <div id="counter001"></div>
-				          
-				          <div id="pagination-wrap001">
-				            <ul>
-				            </ul>
-				          </div>
-				          <!--controls-->  				                 
-			</div>
+            <div class="slider-wrap001">
+                <ul id="slider001">
+                    <c:forEach var="img" items="${recipe.recipe.recipeWorkImg}">
+                    <c:if test="${not empty img}">
+                    <li class="step_img image-container" style="display: inline-block">
+                        <img src="${pageContext.request.contextPath}/resources/upload/recipe/${img}" alt=""/>
+                    </li>
+                    </c:if>
+                    </c:forEach>
+                    <!-- <div class="btns" id="recipe_next"><img src="../resources/img/right_arrow.png"></div>
+                    <div class="btns" id="recipe_previous"><img src="../resources/img/left_arrow.png"></div> -->
+                    <div id="counter001"></div>
+
+                    <div id="pagination-wrap001">
+                        <ul>
+                        </ul>
+                    </div>
+                    <!--controls-->
+            </div>
 
 
         </div>
