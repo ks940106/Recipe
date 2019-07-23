@@ -42,11 +42,11 @@ function payment(id,name,phone) {
 						var info3 = '카드 승인 번호 :' + rsp.apply_num;
 						$("#paymentResult").html(msg+"<br>"+info1+"<br>"+info2+"<br>"+info3);
 						
+						location.href="/successOrder.do?recipe="+noarray+"&id="+id+"&orderCode="+date+"&zipCode="+zipCode+
+						"&addr1="+addr1+"&addr2="+addr2+"&phone="+phone+"&recipeCount="+noarray1+"&recipePrice="+noarray2;
 					}else{
 						$('#paymentResult').html('에러내용 :' +rsp.error_msg+date);
 						
-						location.href="/successOrder.do?recipe="+noarray+"&id="+id+"&orderCode="+date+"&zipCode="+zipCode+
-						"&addr1="+addr1+"&addr2="+addr2+"&phone="+phone+"&recipeCount="+noarray1+"&recipePrice="+noarray2;
 						
 						
 		
@@ -113,9 +113,9 @@ $(".delivery").on('click',function(){
 		$("#addrsApi").attr("type","button");
 	}else if ($(this).attr("id")=="campingAddrs"){
 		$("#addrsApi").attr("type","hidden");
-		$("#zipCode").attr("value","12447");
-		$("#addr1").attr("value","경기 가평군 상면 임초밤안골로 313");
-		$("#addr2").attr("value","싱싱 캠핑장");
+		$("#zipCode").attr("value","12447").attr("readonly",true);
+		$("#addr1").attr("value","경기 가평군 상면 임초밤안골로 313").attr("readonly",true);
+		$("#addr2").attr("value","싱싱 캠핑장").attr("readonly",true);
 	}
 
 		
