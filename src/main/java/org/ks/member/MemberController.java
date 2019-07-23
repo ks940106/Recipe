@@ -651,6 +651,16 @@ public class MemberController {
 		mav.setViewName("admin/member/memberDetail");
 		return mav;
 	}
+	//관리자 페이지에서 회원 상세보기(이달의레시피목록으로)
+	@RequestMapping(value="/memberDetailLMR.do")
+	public ModelAndView memberDetailTMR(HttpServletRequest request) {
+		String id = request.getParameter("id");
+		Member m = memberService.memberDetail(id);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("m",m);
+		mav.setViewName("admin/lmr/memberDetailLMR");
+		return mav;
+	}
 	//비밀번호 변경
 	@RequestMapping(value="/findPassword.do")
 	public String findPassword(HttpServletRequest request) {

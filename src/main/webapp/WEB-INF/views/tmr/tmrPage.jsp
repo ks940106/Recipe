@@ -9,7 +9,7 @@
 
 <link href="../resources/css/tmrimport.css" rel="stylesheet" />
 <link href="../resources/css/tmr.css" rel="stylesheet" />
-<script type="text/javascript" src="../resources/js/tmr.js" /> 
+<script type="text/javascript" src="../resources/js/tmr.js" />
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp"/>
