@@ -3,6 +3,7 @@
 <mapper namespace="talkbatis">
   
    <select id="selectTalkBoardComment" parameterType="talkComment" resultType="talkComment">
+  	<!-- 
   	select comment_no as commentNo,
   	board_no as boardNO,
   	comment_level as commentLevel,
@@ -10,6 +11,16 @@
   	comment_contents as commentContents,
   	comment_ref as commentRef
   	from (SELECT ROWNUM AS RNUM, M.*FROM (select * from board_comment order by comment_no asc) M) WHERE board_no = #{boardNo}
+  	 -->
+  	select comment_no as commentNo,
+  	board_no as boardNO,
+  	comment_level as commentLevel,
+  	comment_writer as commentWriter,
+  	comment_contents as commentContents,
+  	comment_ref as commentRef,
+    member_img as memberImg
+  	from (SELECT ROWNUM AS RNUM, M.*FROM (select * from board_comment a left join member b on(a.comment_writer = b.nickname) order by comment_no asc) M) WHERE board_no = #{boardNo}
+ 
   </select>
   
   <insert id="insertTalkBoardComment" parameterType="talkComment">

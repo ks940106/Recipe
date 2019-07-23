@@ -12,10 +12,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>싱싱레시피</title>
-    <link href="${pageContext.request.contextPath}/resources/css/ui.css" rel="stylesheet"/>
-    <link href="${pageContext.request.contextPath}/resources/css/import.css" rel="stylesheet"/>
-    <link href="${pageContext.request.contextPath}/resources/css/page.css" rel="stylesheet"/>
-    <link href="${pageContext.request.contextPath}/resources/css/recipeDetail.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/resources/css/recipeImport.css" rel="stylesheet"/>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/singsingRecipeheader.jsp"/>
@@ -31,78 +28,81 @@
             </div>
             <c:if test='${recipe.recipe.recipeVideo.contains("/")}'>
                 <div class="recipe_video">
-                <iframe id="player" type="text/html" width="640" height="360" src='https://www.youtube.com/embed${recipe.recipe.recipeVideo.substring(recipe.recipe.recipeVideo.lastIndexOf("/"))}' frameborder="0"></iframe>
+                    <iframe id="player" type="text/html" width="640" height="360" src='https://www.youtube.com/embed${recipe.recipe.recipeVideo.substring(recipe.recipe.recipeVideo.lastIndexOf("/"))}' frameborder="0"></iframe>
                 </div>
             </c:if>
             <div class="detail_right">
+
             <div class="user_info">
-                <div class="user_profile"><img src="${pageContext.request.contextPath}/resources/upload/member/${recipe.member.memberImg}" alt="user_profile"></div>
-                   <h3>${recipe.member.nickname}</h3>
+                <div class="user_profile"><img src="${pageContext.request.contextPath}/resources/upload/member/${recipe.member.memberImg}" alt="user_profile" width="180px;" height="180px;"></div>
+
+                    <h3>${recipe.member.nickname}</h3>
+
                     <span>${recipe.member.id}</span>
 
-            </div>
-            <div class="recipe_title">
-                <h1>${recipe.recipe.recipeTitle}</h1>
-                     <!-- 조회수 : ${recipe.recipe.recipeHit}<br>-->
+                </div>
+                <div class="recipe_title">
+                    <h1>${recipe.recipe.recipeTitle}</h1>
+                    <!-- 조회수 : ${recipe.recipe.recipeHit}<br>-->
 
-                <c:if test="${not empty sessionScope.member && isLiked}">
-                    <a class="bg_like" href="javaScript:unLike(${recipe.recipe.recipeNo})" style="font-size: larger; color: red">
-                    <img src="../../../resources/img/recipe/like.png" width="40px;"></a>
-                </c:if>
-                <c:if test="${not empty sessionScope.member && !isLiked}">
-                    <a class="bg_like" href="javaScript:like(${recipe.recipe.recipeNo})" style="font-size: larger; color: red"><img src="../../../resources/img/recipe/heart.png" width="40px;"></a>
-                </c:if>
-                <span class="bg_like"> 좋아요 ${recipe.recipe.recipeLike}</span>
-            </div>
-            <div class="item_title">
-                 <img src="../../../resources/img/recipe/icon_4.png">
-                ${recipe.recipe.recipeContents}
-                <img src="../../../resources/img/recipe/icon_5.png">
-            </div>
-            <div class="item_content1">
-                <ul>
-                    <li>
-                        <img src="../../../resources/img/recipe/icon_02.png">
-                        <span>${recipe.count}</span>
-                    </li>
-                    <li>
-                        <img src="../../../resources/img/recipe/icon_03.png">
-                        <span>${recipe.time}</span>
-                    </li>
-                    <li>
-                        <img src="../../../resources/img/recipe/icon_8.png">
-                        <span>${recipe.level}</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="item_content2">
-                ${recipe.category1} ,
-                ${recipe.category2}
+                    <c:if test="${not empty sessionScope.member && isLiked}">
+                        <a class="bg_like" href="javaScript:unLike(${recipe.recipe.recipeNo})" style="font-size: larger; color: red">
+                            <img src="../../../resources/img/recipe/like.png" width="40px;"></a>
+                    </c:if>
+                    <c:if test="${not empty sessionScope.member && !isLiked}">
+                        <a class="bg_like" href="javaScript:like(${recipe.recipe.recipeNo})" style="font-size: larger; color: red"><img src="../../../resources/img/recipe/heart.png" width="40px;"></a>
+                    </c:if>
+                    <span class="bg_like"> 좋아요 ${recipe.recipe.recipeLike}</span>
+                </div>
+                <div class="item_title">
+                    <img src="../../../resources/img/recipe/icon_4.png">
+                    ${recipe.recipe.recipeContents}
+                    <img src="../../../resources/img/recipe/icon_5.png">
+                </div>
+                <div class="item_content1">
+                    <ul>
+                        <li>
+                            <img src="../../../resources/img/recipe/icon_02.png">
+                            <span>${recipe.count}</span>
+                        </li>
+                        <li>
+                            <img src="../../../resources/img/recipe/icon_03.png">
+                            <span>${recipe.time}</span>
+                        </li>
+                        <li>
+                            <img src="../../../resources/img/recipe/icon_8.png">
+                            <span>${recipe.level}</span>
+                        </li>
+                    </ul>
+                </div>
                 <div class="item_content2">
-                    <b>[재료]</b><br>
-                    ${recipe.recipe.recipeItem}
+                    ${recipe.category1} ,
+                    ${recipe.category2}
+                    <div class="item_content2">
+                        <b>[재료]</b><br>
+                        ${recipe.recipe.recipeItem}
+                    </div>
                 </div>
+                <c:if test="${recipe.recipe.recipePrice ne 0}">
+                    <div class="recipe_order">
+                        <table class="type04">
+                            <tr>
+                                <th>가격</th>
+                                <td id="price">${recipe.recipe.recipePrice}</td>
+                            </tr>
+                            <tr>
+                                <th>갯수</th>
+                                <td><input type="number" name="count" min="1" value="1"></td>
+                            </tr>
+                            <tr>
+                                <th>총 가격</th>
+                                <td><span id="total_price">${recipe.recipe.recipePrice}</span></td>
+                            </tr>
+                        </table>
+                        <a class="btn normal col_main f_w"  style="font-size:14px; border-radius:10px; margin-top:15px; width:135px;" href="javaScript:void(0)" onclick="cart(${recipe.recipe.recipeNo})">장바구니에 넣기</a>
+                    </div>
+                </c:if>
             </div>
-            <c:if test="${recipe.recipe.recipePrice ne 0}">
-                <div class="recipe_order">
-                    <table class="type04">
-                        <tr>
-                            <th>가격</th>
-                            <td id="price">${recipe.recipe.recipePrice}</td>
-                        </tr>
-                        <tr>
-                            <th>갯수</th>
-                            <td><input type="number" name="count" min="1" value="1"></td>
-                        </tr>
-                        <tr>
-                            <th>총 가격</th>
-                            <td><span id="total_price">${recipe.recipe.recipePrice}</span></td>
-                        </tr>
-                    </table>
-                    <a class="btn normal col_main f_w"  style="font-size:14px; border-radius:10px; margin-top:15px; width:135px;" href="javaScript:void(0)" onclick="cart(${recipe.recipe.recipeNo})">장바구니에 넣기</a>
-                </div>
-            </c:if>
-        </div>
             <c:forEach var="step" items="${recipe.recipe.recipeStep}" varStatus="status">
                 <div class="recipe_step">
                     <div class="step_count">
@@ -120,35 +120,38 @@
                     </div>
                 </div>
             </c:forEach>
-             <div class="slider-wrap1">
-				          <ul id="slider1">
+
+             <div class="slider-wrap001">
+				          <ul id="slider001">
 				      <c:forEach var="img" items="${recipe.recipe.recipeWorkImg}">
 			                <li class="step_img image-container" style="display: inline-block">
 			                    <img src="${pageContext.request.contextPath}/resources/upload/recipe/${img}" alt=""/>
 			                </li>
 			            </c:forEach>
-				          <div class="btns" id="next1"><img src="../resources/img/right_arrow.png"></div>
-				          <div class="btns" id="previous1"><img src="../resources/img/left_arrow.png"></div>
-				          <div id="counter1"></div>
+				          <!-- <div class="btns" id="recipe_next"><img src="../resources/img/right_arrow.png"></div>
+				          <div class="btns" id="recipe_previous"><img src="../resources/img/left_arrow.png"></div> -->
+				          <div id="counter001"></div>
 				          
-				          <div id="pagination-wrap1">
+				          <div id="pagination-wrap001">
 				            <ul>
 				            </ul>
 				          </div>
 				          <!--controls-->  				                 
 			</div>
+
+
         </div>
     </div>
- <%--   
-    <div class="section_content work_img">
-        <div class="bottom">
-            <c:forEach var="img" items="${recipe.recipe.recipeWorkImg}">
-                <div class="step_img image-container" style="display: inline-block">
-                    <img src="${pageContext.request.contextPath}/resources/upload/recipe/${img}" alt=""/>
-                </div>
-            </c:forEach>
-        </div>
-    </div> --%>
+    <%--
+       <div class="section_content work_img">
+           <div class="bottom">
+               <c:forEach var="img" items="${recipe.recipe.recipeWorkImg}">
+                   <div class="step_img image-container" style="display: inline-block">
+                       <img src="${pageContext.request.contextPath}/resources/upload/recipe/${img}" alt=""/>
+                   </div>
+               </c:forEach>
+           </div>
+       </div> --%>
 </section>
 <jsp:include page="/WEB-INF/views/common/singsingRecipefooter.jsp"/>
 </body>

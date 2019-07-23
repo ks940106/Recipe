@@ -191,6 +191,7 @@ public class MemberController {
 			e1.printStackTrace();
 		}
 		String filePath=null;
+		
 		if(!fileUpload.isEmpty()) {
 			String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/member");
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -214,6 +215,8 @@ public class MemberController {
 				e.printStackTrace();
 			}
 			
+		}if(fileUpload.isEmpty()) {
+			filePath="default_IMG.jpg";
 		}
 		Member m = new Member(id, pw, name, nickname, gender, addr1, addr2, phone,filePath,zipCode);
 		int result = memberService.insertMember(m);
@@ -275,6 +278,8 @@ public class MemberController {
 				e.printStackTrace();
 			}
 			
+		}if(fileUpload.isEmpty()) {
+			filePath="default_IMG.jpg";
 		}
 		Member m = new Member(id, pw, name, nickname, gender, addr1, addr2, phone,filePath,zipCode);
 		int result = memberService.insertMember(m);
@@ -415,12 +420,13 @@ public class MemberController {
 			mav.setViewName("member/myPageUpdate");
 		}else {
 			mav.addObject("msg", "비밀번호를 다시 확인해주세요");
+			mav.addObject("loc","mypage.do");
 			mav.setViewName("common/msg");
 			
 		}return mav;
 	}
 	//마이페이지 캠핑에서 비밀번호 체크
-		@RequestMapping(value="//myPagePwCheckCamping.do")
+		@RequestMapping(value="/myPagePwCheckCamping.do")
 		public ModelAndView myPagePwCheckCamping(HttpServletRequest request){
 			String pwCheck=request.getParameter("pwcheck");
 			String pw = null;
@@ -440,6 +446,7 @@ public class MemberController {
 				System.out.println(mav.getModel());
 			}else {
 				mav.addObject("msg", "비밀번호를 다시 확인해주세요");
+				mav.addObject("loc","mypageCamping.do");
 				mav.setViewName("common/msg");
 				
 			}return mav;
@@ -646,6 +653,16 @@ public class MemberController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("m",m);
 		mav.setViewName("admin/member/memberDetail");
+		return mav;
+	}
+	//관리자 페이지에서 회원 상세보기(이달의레시피목록으로)
+	@RequestMapping(value="/memberDetailLMR.do")
+	public ModelAndView memberDetailTMR(HttpServletRequest request) {
+		String id = request.getParameter("id");
+		Member m = memberService.memberDetail(id);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("m",m);
+		mav.setViewName("admin/lmr/memberDetailLMR");
 		return mav;
 	}
 	//비밀번호 변경

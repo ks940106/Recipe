@@ -37,19 +37,19 @@ public class TalkBoardServiceImpl implements TalkBoardService {
 			int pageNaviSize = 5;
 			int pageNo = ((reqPage-1)/pageNaviSize)*pageNaviSize+1;
 			if(pageNo != 1) {
-				pageNavi += "<a class='paging-arrow prev-arrow' href='/mainBoard.do?reqPage="+(pageNo-1)+"&boardType="+type+"'><img src=\"/resources/img/talk/left_arrow.png\" style=\"width:50px;height:50px;\"></a>";
+				pageNavi += "<a class='pageBtn' href='/mainBoard.do?reqPage="+(pageNo-1)+"&boardType="+type+"'><img src=\"/resources/img/talk/left_arrow.png\" style=\"width:50px;height:50px;\"></a>";
 			}
 			int i = 1;
 			while(!(i++>pageNaviSize || pageNo>totalPage)) {
 				if(reqPage == pageNo) {
-					pageNavi += "<span class='cur'>"+pageNo+"</span>";
+					pageNavi += "<span class='pageSelected'>"+pageNo+"</span>";
 				}else {
-					pageNavi += "<a class='selectPage' href='/mainBoard.do?reqPage="+pageNo+"&boardType="+type+"'>"+pageNo+"</a>";
+					pageNavi += "<a class='pageNo' href='/mainBoard.do?reqPage="+pageNo+"&boardType="+type+"'>"+pageNo+"</a>";
 				}
 				pageNo++;
 			}
 			if(pageNo <= totalPage) {
-				pageNavi += "<a class='paging-arrow next-arrow' href='/mainBoard.do?reqPage="+pageNo+"&boardType="+type+"'><img src=\"/resources/img/talk/right_arrow.png\" style=\"width:50px;height:50px;\"></a>";
+				pageNavi += "<a class='pageBtn' href='/mainBoard.do?reqPage="+pageNo+"&boardType="+type+"'><img src=\"/resources/img/talk/right_arrow.png\" style=\"width:50px;height:50px;\"></a>";
 			}
 			TalkBoardPageData pd = new TalkBoardPageData(list,pageNavi,type);
 			return pd;
@@ -66,19 +66,19 @@ public class TalkBoardServiceImpl implements TalkBoardService {
 			int pageNaviSize = 5;
 			int pageNo = ((reqPage-1)/pageNaviSize)*pageNaviSize+1;
 			if(pageNo != 1) {
-				pageNavi += "<a class='paging-arrow prev-arrow' href='/mainBoard.do?reqPage="+(pageNo-1)+"&boardType="+type+"'><img src=\"/resources/img/talk/left_arrow.png\" style=\"width:50px;height:50px;\"></a>";
+				pageNavi += "<a class='pageBtn' href='/mainBoard.do?reqPage="+(pageNo-1)+"&boardType="+type+"'><img src=\"/resources/img/talk/left_arrow.png\" style=\"width:50px;height:50px;\"></a>";
 			}
 			int i = 1;
 			while(!(i++>pageNaviSize || pageNo>totalPage)) {
 				if(reqPage == pageNo) {
-					pageNavi += "<span class='cur'>"+pageNo+"</span>";
+					pageNavi += "<span class='pageSelected'>"+pageNo+"</span>";
 				}else {
-					pageNavi += "<a class='selectPage' href='/mainBoard.do?reqPage="+pageNo+"&boardType="+type+"'>"+pageNo+"</a>";
+					pageNavi += "<a class='pageNo' href='/mainBoard.do?reqPage="+pageNo+"&boardType="+type+"'>"+pageNo+"</a>";
 				}
 				pageNo++;
 			}
 			if(pageNo <= totalPage) {
-				pageNavi += "<a class='paging-arrow next-arrow' href='/mainBoard.do?reqPage="+pageNo+"&boardType="+type+"'><img src=\"/resources/img/talk/right_arrow.png\" style=\"width:50px;height:50px;\"></a>";
+				pageNavi += "<a class='pageBtn' href='/mainBoard.do?reqPage="+pageNo+"&boardType="+type+"'><img src=\"/resources/img/talk/right_arrow.png\" style=\"width:50px;height:50px;\"></a>";
 			}
 			TalkBoardPageData pd = new TalkBoardPageData(list,pageNavi,type);
 			return pd;
@@ -183,19 +183,19 @@ public class TalkBoardServiceImpl implements TalkBoardService {
 			int pageNaviSize = 5;
 			int pageNo = ((reqPage-1)/pageNaviSize)*pageNaviSize+1;
 			if(pageNo != 1) {
-				pageNavi += "<a class='paging-arrow prev-arrow' href='/adminTalkBoard.do?reqPage="+(pageNo-1)+"&boardType="+type+"'><img src=\"/resources/img/talk/left_arrow.png\" style=\"width:50px;height:50px;\"></a>";
+				pageNavi += "<a class='pageBtn' href='/adminTalkBoard.do?reqPage="+(pageNo-1)+"&boardType="+type+"'><img src=\"/resources/img/talk/left_arrow.png\" style=\"width:50px;height:50px;\"></a>";
 			}
 			int i = 1;
 			while(!(i++>pageNaviSize || pageNo>totalPage)) {
 				if(reqPage == pageNo) {
-					pageNavi += "<span class='cur'>"+pageNo+"</span>";
+					pageNavi += "<span class='pageSelected'>"+pageNo+"</span>";
 				}else {
-					pageNavi += "<a class='selectPage' href='/adminTalkBoard.do?reqPage="+pageNo+"&boardType="+type+"'>"+pageNo+"</a>";
+					pageNavi += "<a class='pageNo' href='/adminTalkBoard.do?reqPage="+pageNo+"&boardType="+type+"'>"+pageNo+"</a>";
 				}
 				pageNo++;
 			}
 			if(pageNo <= totalPage) {
-				pageNavi += "<a class='paging-arrow next-arrow' href='/adminTalkBoard.do?reqPage="+pageNo+"&boardType="+type+"'><img src=\"/resources/img/talk/right_arrow.png\" style=\"width:50px;height:50px;\"></a>";
+				pageNavi += "<a class='pageBtn' href='/adminTalkBoard.do?reqPage="+pageNo+"&boardType="+type+"'><img src=\"/resources/img/talk/right_arrow.png\" style=\"width:50px;height:50px;\"></a>";
 			}
 			TalkBoardPageData pd = new TalkBoardPageData(list,pageNavi,type);
 			return pd;
@@ -212,19 +212,19 @@ public class TalkBoardServiceImpl implements TalkBoardService {
 			int pageNaviSize = 5;
 			int pageNo = ((reqPage-1)/pageNaviSize)*pageNaviSize+1;
 			if(pageNo != 1) {
-				pageNavi += "<a class='paging-arrow prev-arrow' href='/adminTalkBoard.do?reqPage="+(pageNo-1)+"&boardType="+type+"'><img src=\"/resources/img/talk/left_arrow.png\" style=\"width:50px;height:50px;\"></a>";
+				pageNavi += "<a class='pageBtn' href='/adminTalkBoard.do?reqPage="+(pageNo-1)+"&boardType="+type+"'><img src=\"/resources/img/talk/left_arrow.png\" style=\"width:50px;height:50px;\"></a>";
 			}
 			int i = 1;
 			while(!(i++>pageNaviSize || pageNo>totalPage)) {
 				if(reqPage == pageNo) {
-					pageNavi += "<span class='cur'>"+pageNo+"</span>";
+					pageNavi += "<span class='pageSelected'>"+pageNo+"</span>";
 				}else {
-					pageNavi += "<a class='selectPage' href='/adminTalkBoard.do?reqPage="+pageNo+"&boardType="+type+"'>"+pageNo+"</a>";
+					pageNavi += "<a class='pageNo' href='/adminTalkBoard.do?reqPage="+pageNo+"&boardType="+type+"'>"+pageNo+"</a>";
 				}
 				pageNo++;
 			}
 			if(pageNo <= totalPage) {
-				pageNavi += "<a class='paging-arrow next-arrow' href='/adminTalkBoard.do?reqPage="+pageNo+"&boardType="+type+"'><img src=\"/resources/img/talk/right_arrow.png\" style=\"width:50px;height:50px;\"></a>";
+				pageNavi += "<a class='pageBtn' href='/adminTalkBoard.do?reqPage="+pageNo+"&boardType="+type+"'><img src=\"/resources/img/talk/right_arrow.png\" style=\"width:50px;height:50px;\"></a>";
 			}
 			TalkBoardPageData pd = new TalkBoardPageData(list,pageNavi,type);
 			return pd;

@@ -66,7 +66,7 @@
 				<c:forEach items="${tbc}" var="t">
 					<div class="comment-div">
 						<div class="comment_img">
-							<img src="/resources/img/talk/138533.png">
+							<img src="/resources/upload/member/${t.memberImg }">
 						</div>
 						<div class="comment_p">
 							<p>${t.commentWriter }</p>
