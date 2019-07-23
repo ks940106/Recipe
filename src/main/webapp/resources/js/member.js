@@ -101,10 +101,7 @@ function EmailCheck(){
 						$("#idMsg").css("display", "block");
 						$("#emailcertification").prop("disabled",false);
 						insert[1]=true;
-						if(insert[0]){
-							$("#idMsg").html("이메일 인증 완료");
-							$("#idMsg").css("display","block");
-						}
+						
 						
 					}else{
 						$("#idMsg").html("중복된 이메일입니다");
