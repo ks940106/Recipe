@@ -35,7 +35,7 @@
 	}
 
 .c1 {
-    width: 100%;
+    width: 850px;
     height: 10%;
     box-sizing: border-box;
     float: left;
@@ -203,6 +203,12 @@
 }
 
 /*	selectTalkBoard	*/
+.talk_content1{
+    width: 850px;
+    height: 100%;
+    float: right;
+    margin-bottom: 100px;
+}
 		.s1 {
 			border-top : 2px solid #1f6054;
 			width: 1000px;
@@ -218,10 +224,9 @@
 
 
 		.d3{
-			width: 80%;
+			width: 100%;
 			height: 100%;
 			box-sizing: border-box;
-			float: right;
 			padding-right: 15px;
 			margin-bottom: 10px;
 			overflow: hidden;
@@ -229,16 +234,20 @@
 			
 		}
 		.d3 img{
-			width : 80%;
+			width : 100%;
 			height: auto;
+            margin-top: 20px;
 			
 		}
 		.d4{
-			border-top : 1px solid #1f6054;
 			width : 90%;
-			height : 100px;
 			float: right;
 		}
+.d4 h2{
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
 		.d5{
 			border-top : 1px solid #1f6054;
 			width : 90%;
@@ -253,6 +262,10 @@
 			box-sizing: border-box;
 			float: left;
 		}
+.talk_like_btn{
+    border: none;
+    background: none;
+}
 		.comment-box{
 			width : 90%;
 			padding-top : 15px;
@@ -263,16 +276,51 @@
 		#comment_tx{
 			float: left;
 		}
-		.comment-div{
-			width:80%;
-			height:100%;
-			border-bottom : 1px solid #1f6054;
-			margin: 0 auto;
-		}
+.comment-div{
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid #e6e7e8;
+    margin: 0 auto;
+    padding: 20px 20px 20px 0px;
+    overflow: hidden;
+}
 #commentInsert_btn{
-	width: 100px;
-	height: 100px;
-	border: 1px solid #1f6054;
+    width: 94px;
+    height: 106px;
+    background: #1f6054;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+}
+.comment_img{
+    float: left;
+    margin-right: 10px;
+}
+.comment_p{
+    width: 1055px;
+    float: right;
+}
+.comment_p p:first-child{
+    font-size: 17px;
+    font-weight: bold;
+    color: #1f6054;
+    margin-bottom: 10px;
+}
+.comment_p p:last-child{
+    font-size: 14px;
+}
+.comment_btn{
+    float: right;
+    border: none;
+    background: #1f6054;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+.comment_img img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
 }
 .btn-lg btn-primary{
 	border : 1px solid #1f6054;
@@ -314,4 +362,12 @@
 	color: #fff;
 	margin-top: 10px;
 }
+.modify_btn{
+    border: none;
+    background: #1f6054;
+    border-radius: 8px;
+    padding: 8px 10px 8px 10px;
+    color: #fff;
+}
+
 		
