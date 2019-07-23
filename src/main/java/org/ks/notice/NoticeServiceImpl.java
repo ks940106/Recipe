@@ -28,7 +28,7 @@ public class NoticeServiceImpl implements NoticeService{
 		int pageNaviSize = 5;
 		int pageNo = ((reqPage-1)/pageNaviSize)*pageNaviSize+1;
 		if(pageNo != 1) {
-			pageNavi += "<a class='pageBtn' href='/adminNoticeList.do?reqPage="+(pageNo-1)+"'>이전</a>";
+			pageNavi += "<a class='pageBtn' href='/adminNoticeList.do?reqPage="+(pageNo-1)+"'><</a>";
 		}
 		int i = 1;
 		while(!(i++>pageNaviSize || pageNo>totalPage)) {
@@ -40,7 +40,7 @@ public class NoticeServiceImpl implements NoticeService{
 			pageNo++;
 		}
 		if(pageNo <= totalPage) {
-			pageNavi += "<a class='pageBtn' href='/adminNoticeList.do?reqPage="+pageNo+"'>다음</a>";
+			pageNavi += "<a class='pageBtn' href='/adminNoticeList.do?reqPage="+pageNo+"'>></a>";
 		}
 		NoticePageData np = new NoticePageData(list,pageNavi);
 		return np;
@@ -59,7 +59,7 @@ public class NoticeServiceImpl implements NoticeService{
 		int pageNaviSize = 5;
 		int pageNo = ((reqPage-1)/pageNaviSize)*pageNaviSize+1;
 		if(pageNo != 1) {
-			pageNavi += "<a class='pageBtn' href='/noticeList.do?reqPage="+(pageNo-1)+"'>이전</a>";
+			pageNavi += "<a class='pageBtn' href='/noticeList.do?reqPage="+(pageNo-1)+"'><</a>";
 		}
 		int i = 1;
 		while(!(i++>pageNaviSize || pageNo>totalPage)) {
@@ -71,7 +71,7 @@ public class NoticeServiceImpl implements NoticeService{
 			pageNo++;
 		}
 		if(pageNo <= totalPage) {
-			pageNavi += "<a class='pageBtn' href='/noticeList.do?reqPage="+pageNo+"'>다음</a>";
+			pageNavi += "<a class='pageBtn' href='/noticeList.do?reqPage="+pageNo+"'>></a>";
 		}
 		NoticePageData np = new NoticePageData(list,pageNavi);
 		return np;

@@ -112,12 +112,15 @@
 	right:0;
 }
 #go_register_dv a{
-	border-bottom : 1px solid #1f6054;
 	float: left;
-	width: 100%;
-	font-size: 20px;
-	color : #1f6054;
-	line-height: 20px;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    line-height: 33px;
+}
+#go_register_dv a:hover{
+    color: #1f6054;
 }
 .board_content_right{
     width: 850px;
@@ -353,7 +356,6 @@
 	margin-top: 10px;
 }
 .talk_btn_left{
-	float: right;
 	float: right;
 	border:none;
 	background: #1f6054;

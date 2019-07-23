@@ -583,3 +583,27 @@ section.findPw{
  border: 1px solid #ddd;
  height: 200px;
  }
+ 
+ .pageSelected {
+    color: white;
+    background-color: #1f6054;
+    border: 1px solid lightgray;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    margin: 5px;
+}
+.pageNo {
+    color: black;
+    border: 1px solid lightgray;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    margin: 5px;
+}
+.paging_member {
+    width: 100%;
+    text-align: center;
+    margin: 30px 0;
+}
