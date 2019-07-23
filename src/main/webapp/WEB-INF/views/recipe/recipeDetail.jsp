@@ -120,18 +120,18 @@
                     </div>
                 </div>
             </c:forEach>
-             <div class="slider-wrap1">
-				          <ul id="slider1">
+             <div class="slider-wrap">
+				          <ul id="slider001">
 				      <c:forEach var="img" items="${recipe.recipe.recipeWorkImg}">
 			                <li class="step_img image-container" style="display: inline-block">
 			                    <img src="${pageContext.request.contextPath}/resources/upload/recipe/${img}" alt=""/>
 			                </li>
 			            </c:forEach>
-				          <div class="btns" id="next1"><img src="../resources/img/right_arrow.png"></div>
-				          <div class="btns" id="previous1"><img src="../resources/img/left_arrow.png"></div>
-				          <div id="counter1"></div>
+				          <div class="btns" id="next001"><img src="../resources/img/right_arrow.png"></div>
+				          <div class="btns" id="previous001"><img src="../resources/img/left_arrow.png"></div>
+				          <div id="counter001"></div>
 				          
-				          <div id="pagination-wrap1">
+				          <div id="pagination-wrap001">
 				            <ul>
 				            </ul>
 				          </div>
