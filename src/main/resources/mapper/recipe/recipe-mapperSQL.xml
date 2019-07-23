@@ -120,7 +120,7 @@
                RECIPE_TIME,
                RECIPE_LEVEL,
                RECIPE_ITEM,
-               (select count(*) from RECIPE_LIKE where RECIPE.RECIPE_NO=RECIPE_LIKE.RECIPE_NO)as RECIPE_LIKE,
+               RECIPE_LIKE,
                RECIPE_HIT,
                RECIPE_PRICE,
                RECIPE_DATE,
