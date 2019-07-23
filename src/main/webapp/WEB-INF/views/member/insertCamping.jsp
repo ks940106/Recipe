@@ -51,7 +51,7 @@
 				<input type="text" name="addr2" class="form-control" id="addr2" onblur="addrck()" placeholder="상세주소">
 			</div>
 			<div id="phone_div" class="form-group has-feedback">
-				<input type="text" name="phone" class="form-control" id="phone" onblur="phoneck()" placeholder="핸드폰 번호 ex)010-0000-0000">
+				<input type="text" name="phone" class="form-control" id="phone" onblur="phoneck()" placeholder="핸드폰 번호 ex)010-0000-0000"maxlength="13" >
 				<span id="phoneMsg" style="display: none;"></span>
 			</div>
 			<div class="form-group has-feedback">

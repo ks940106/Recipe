@@ -80,7 +80,7 @@
 					 <input type="hidden" name="beforeImg" value="${member.memberImg}">
 					<input type="file" id="fileUpload" name="fileUpload" accept=".jpg,.jpeg,.png">
 				</div>
-				<button type="submit">수정 </button>
+				<button type="submit" class="">수정 </button>
 				<a href="/myPageDelete.do?id=${member.id}" class="btn">탈퇴하기</a>
 			</form>
 			</div>
