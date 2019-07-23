@@ -70,7 +70,7 @@ public class MemberServiceImpl implements MemberService{
 		int pageNaviSize = 5;
 		int pageNo = ((reqPage-1)/pageNaviSize)*pageNaviSize+1;
 		if(pageNo != 1) {
-			pageNavi += "<a class='pageBtn' href='/memberList.do?reqPage="+(pageNo-1)+"'>이전</a>";
+			pageNavi += "<a class='pageBtn' href='/memberList.do?reqPage="+(pageNo-1)+"'><</a>";
 		}
 		int i = 1;
 		while(!(i++>pageNaviSize || pageNo>totalPage)) {
@@ -82,7 +82,7 @@ public class MemberServiceImpl implements MemberService{
 			pageNo++;
 		}
 		if(pageNo <= totalPage) {
-			pageNavi += "<a class='pageBtn' href='/memberList.do?reqPage="+pageNo+"'>다음</a>";
+			pageNavi += "<a class='pageBtn' href='/memberList.do?reqPage="+pageNo+"'>></a>";
 		}
 		MemberPageData mp = new MemberPageData(list,pageNavi);
 		return mp;
