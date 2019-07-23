@@ -518,7 +518,7 @@ public class MemberController {
 		
 		String view ="common/msg";
 		if(result>0) {
-			request.setAttribute("msg","회원 정보 수정 성공");
+			request.setAttribute("msg","회원 정보가 수정되었습니다");
 			request.setAttribute("loc", "/mypage.do");
 		}else {
 			request.setAttribute("msg","정보 수정 실패");
@@ -591,7 +591,7 @@ public class MemberController {
 			
 			String view ="common/msg";
 			if(result>0) {
-				request.setAttribute("msg","회원 정보 수정 성공");
+				request.setAttribute("msg","회원 정보가 수정되었습니다");
 				request.setAttribute("loc", "/mypageCamping.do");
 			}else {
 				request.setAttribute("msg","정보 수정 실패");
