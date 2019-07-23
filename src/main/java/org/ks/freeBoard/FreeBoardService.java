@@ -120,4 +120,8 @@ public class FreeBoardService {
 			FreeBoardPageData pd = new FreeBoardPageData(list,pageNavi);
 			return pd;
 	}
+	
+	public FreeBoard modifyBoard(int no) {
+		return freeBoardDao.selectBoard(no);
+	}	
 }

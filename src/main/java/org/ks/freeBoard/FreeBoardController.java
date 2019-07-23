@@ -103,7 +103,7 @@ public class FreeBoardController {
 	@RequestMapping(value="modifyFreeBoard.do")
 	public ModelAndView modifyFreeBoard(@RequestParam int boardNo) {
 		ModelAndView mv = new ModelAndView();
-		FreeBoard fb = freeBoardService.selectBoard(boardNo);
+		FreeBoard fb = freeBoardService.modifyBoard(boardNo);
 		mv.addObject("fb",fb);
 		mv.setViewName("camping/modifyFreeBoard");
 		return mv;
