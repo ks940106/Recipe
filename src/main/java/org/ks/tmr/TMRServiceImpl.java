@@ -41,7 +41,7 @@ public class TMRServiceImpl implements TMRService{
 		int pageNo = ((reqPage-1)/pageNaviSize)*pageNaviSize+1;
 		//이전 버튼 생성
 		if(pageNo !=1) {
-			pageNavi += "<a class='pageBtn' href='/tmr.do?reqPage="+(pageNo-1)+"'>이전</a>";
+			pageNavi += "<a class='pageBtn' href='/tmr.do?reqPage="+(pageNo-1)+"'><</a>";
 		}
 		//페이지 번호 버튼 생성 ( 1 2 3 4 5 )
 		int i = 1;
@@ -55,7 +55,7 @@ public class TMRServiceImpl implements TMRService{
 		}
 		//다음 버튼 생성
 		if(pageNo <= totalPage) {
-			pageNavi +="<a class='pageBtn' href='/tmr.do?reqPage="+pageNo+"'>다음</a>";
+			pageNavi +="<a class='pageBtn' href='/tmr.do?reqPage="+pageNo+"'>></a>";
 		}
 		TMRPageData tpd = null;
 		tpd = new TMRPageData(list,pageNavi,start);

@@ -26,7 +26,7 @@
 				<td><input type="text" name="name"></td>
 		</table>
 	</div>
-	<button type="submit">임시 비밀번호 발급 받기</button>
+	<button type="submit" class="button button1">임시 비밀번호 발급 받기</button>
 	</form>
 </section>
 <jsp:include page="/WEB-INF/views/common/singsingCampingfooter.jsp" />

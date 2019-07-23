@@ -42,12 +42,12 @@ function payment(id,name,phone) {
 						var info3 = '카드 승인 번호 :' + rsp.apply_num;
 						$("#paymentResult").html(msg+"<br>"+info1+"<br>"+info2+"<br>"+info3);
 						
+					}else{
+						$('#paymentResult').html('에러내용 :' +rsp.error_msg+date);
 						
 						location.href="/successOrder.do?recipe="+noarray+"&id="+id+"&orderCode="+date+"&zipCode="+zipCode+
 						"&addr1="+addr1+"&addr2="+addr2+"&phone="+phone+"&recipeCount="+noarray1+"&recipePrice="+noarray2;
 						
-					}else{
-						$('#paymentResult').html('에러내용 :' +rsp.error_msg+date);
 						
 		
 					}

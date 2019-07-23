@@ -509,6 +509,7 @@ section.memberinsert img{
  section.findId{
   text-align: center;
  }
+ 
  section.findId table{
  margin: 0px auto 0px auto;
  border-top: 2px solid #666;
@@ -517,10 +518,10 @@ section.memberinsert img{
  }
  section.findId h1{
  font-size: 40px;
- margin-bottom: 8px;
+ margin: 40px 0px 40px 0px;
  }
  section.findId p{
- margin-bottom: 12px;
+ margin:12px 0px 12px 0px;
  }
  section.findId input{
  height: 24px;
@@ -541,9 +542,30 @@ section.memberinsert img{
  margin-bottom: 40px;
  }
  section.findId .find{
- border: 1px solid #ddd;
+ 
  height: 200px;
  }
+ section.findId .button1 {
+    
+    background-color: white;
+    color: black;
+    border: 2px solid #1f6054;
+}
+section.findId .button1:hover {
+    background-color: #1f6054;
+    color: white;
+}
+section.findId .button {
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    display: inline-block;
+    width: 120px;
+    height: 40px;
+    margin: 4px 2px 40px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
  /*비밀번호찾기*/
 section.findPw{
   text-align: center;
@@ -556,7 +578,7 @@ section.findPw{
  }
  section.findPw h1{
  font-size: 40px;
- margin-bottom: 8px;
+ margin:40px 0px 40px 0px;
  }
  section.findPw p{
  margin-bottom: 12px;
@@ -576,13 +598,34 @@ section.findPw{
  border-bottom: 1px solid #ddd;
  }
  section.findPw button{
- margin-top: 20px;
- margin-bottom: 40px;
+ margin: 20px 0px 40px 0px;
+ 
  }
  section.findPw .find{
- border: 1px solid #ddd;
+
  height: 200px;
  }
+  section.findPw .button1 {
+    
+    background-color: white;
+    color: black;
+    border: 2px solid #1f6054;
+}
+section.findPw .button1:hover {
+    background-color: #1f6054;
+    color: white;
+}
+section.findPw .button {
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    display: inline-block;
+    width: 200px;
+    height: 40px;
+    margin: 4px 2px 40px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
  
  .pageSelected {
     color: white;

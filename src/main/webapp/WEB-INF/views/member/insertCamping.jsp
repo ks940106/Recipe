@@ -51,7 +51,7 @@
 				<input type="text" name="addr2" class="form-control" id="addr2" onblur="addrck()" placeholder="상세주소">
 			</div>
 			<div id="phone_div" class="form-group has-feedback">
-				<input type="text" name="phone" class="form-control" id="phone" onblur="phoneck()" placeholder="핸드폰 번호 ex)010-0000-0000">
+				<input type="text" name="phone" class="form-control" id="phone" onblur="phoneck()" placeholder="핸드폰 번호 ex)010-0000-0000"maxlength="13" >
 				<span id="phoneMsg" style="display: none;"></span>
 			</div>
 			<div class="form-group has-feedback">
@@ -66,7 +66,7 @@
 				<input type="text" class="form-control" disabled=""> 
 				<span id="genderMsg" style="display: none;"></span>
 			</div>
-			<img id="image_section" src="#" />
+			<img id="image_section" src="../resources/upload/member/default_IMG.jpg" />
 			<input type="file" id="fileUpload" name="fileUpload" accept=".jpg,.jpeg,.png">
 			<input type="hidden" name="frm[pro_tg_gender]" id="pro_tg_gender">
 			<input type="submit" class="btn btn-primary btn-block btn-lg" onclick="return doSubmit()" value="회원가입">
