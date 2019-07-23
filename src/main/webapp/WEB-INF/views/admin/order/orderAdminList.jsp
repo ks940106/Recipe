@@ -68,7 +68,7 @@
 							</table>
 							<button type="submit" class="button button1" class="cancellation">취소확정</button>
 							</form>
-							<div class="paymentCount">
+							<div class="paymentCount" style="clear: both;   text-align: center;">
 								
 							</div>
 						</div>
@@ -135,7 +135,7 @@
 									
 								</tbody>
 							</table>
-							<div class="paymentCount2"></div>
+							<div class="paymentCount2" style="clear: both;   text-align: center;"></div>
 						</div>
 						<div class="list_field_con">
 							<p class="cancellationList">결제취소완료</p>
@@ -163,7 +163,7 @@
 									
 								</tbody>
 							</table>
-							<div class="paymentCount3"></div>
+							<div class="paymentCount3" style="clear: both;   text-align: center;"></div>
 						</div>
 					</div>
 				</div>
