@@ -46,6 +46,8 @@ public class NoticeController {
 	public ModelAndView noticeUpdatePage(HttpServletRequest request) {
 		int idx = Integer.parseInt(request.getParameter("idx"));
 		Notice n = noticeServiceImpl.noticeDetail(idx);
+		n.setNoticeContent(n.getNoticeContent().replaceAll("<br>","\n"));
+		System.out.println(n.getNoticeContent());
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("n",n);
 		mav.setViewName("admin/notice/noticeDetail");
@@ -56,7 +58,7 @@ public class NoticeController {
 	public String noticeUpdate(HttpServletRequest request) {
 		int idx = Integer.parseInt(request.getParameter("idx"));
 		String noticeTitle = request.getParameter("noticeTitle").replaceAll("<", "&lt");
-		String noticeContent = request.getParameter("noticeContent").replaceAll("<", "&lt");
+		String noticeContent = request.getParameter("noticeContent").replaceAll("<", "&lt").replaceAll("\n", "<br>");
 		Notice n = new Notice(idx, noticeTitle, noticeContent, null);
 		int result = noticeServiceImpl.noticeUpdate(n);
 		String view="common/msg";
