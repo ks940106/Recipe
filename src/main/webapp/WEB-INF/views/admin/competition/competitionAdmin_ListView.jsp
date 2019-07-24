@@ -105,9 +105,12 @@
 								<td>
 									${vo.gender}
 								</td>
-								<td>
+								<c:if test="${vo.participantPass == 'N' }">
+									<td>신청 대기중</td>								
+								</c:if>
+								<%-- <td>
 									${vo.participantPass}
-								</td>
+								</td> --%>
 								<td class="viewQna">								
 									${vo.participantContent}
 								</td>
@@ -174,9 +177,9 @@
 								<td>
 									${pl.gender}
 								</td>
-								<td>
-									${pl.participantPass}
-								</td>
+								<c:if test="${pl.participantPass == 'Y' }">
+									<td>신청 완료</td>								
+								</c:if>
 								<td>
 									${pl.participantContent}
 								</td>
