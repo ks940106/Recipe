@@ -34,6 +34,11 @@
 		caravan_img as caravanImg
 		from caravan where caravan_no=#{caravanNo}
 	</select>
+	<select id="selectCaravanImg" parameterType="string" resultType="caravan">
+		select 
+			caravan_main_img as caravanMainImg
+			from caravan where caravan_name = #{caravanName}
+	</select>
 	<insert id="insertReservation" parameterType="reservation">
 		insert into reservation values(#{reservationId},#{caravanNo},#{id},#{reservationPeople},#{totalCost},#{reservationDate},#{reservationName},#{reservationBirth},#{reservationPhone},#{reservationEmail},#{reservationRequest},sysdate,1)
 	</insert>

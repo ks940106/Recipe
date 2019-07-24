@@ -41,7 +41,7 @@ public class TMRContoller {
 		return "tmr/tmrPage";
 	}
 	
-	@Scheduled(cron="0 0 0 1 * *")
+	@Scheduled(cron="00 00 00 1 * *")
 	public void lmrInsert() {
 		String year = new SimpleDateFormat("yy").format(new Date(System.currentTimeMillis()));
 		String month = new SimpleDateFormat("MM").format(new Date(System.currentTimeMillis()));

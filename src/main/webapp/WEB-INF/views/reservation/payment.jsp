@@ -54,8 +54,9 @@
 			merchant_uid : uid,
 			name : "싱싱캠핑_예약",				
 			amount : totalCost ,
+			buyer_email : reservationEmail,
 			buyer_name : reservationName,
-			buyer_tel : reservationPhone
+			buyer_tel : reservationPhone,
 		},function(rsp){
 			if(rsp.success){
 				alert("결제가 완료되었습니다.");
