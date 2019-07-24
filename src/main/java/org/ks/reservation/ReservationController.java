@@ -49,6 +49,18 @@ public class ReservationController {
 		Caravan c = reservationServiceImple.selectOneCaravan(caravanNo);
 		model.addAttribute("reservationDateString", reservationDateString);
 		model.addAttribute("c", c);
+		String cName = c.getCaravanName().substring(3, 4);
+		if(cName.equals("A")) {
+			cName = "카라반A대표";
+		}else if(cName.equals("B")) {
+			cName = "카라반B대표";
+		}else {
+			cName = "카라반C대표";
+		}
+		System.out.println(cName);
+		String img = reservationServiceImple.selectCaravanImg(cName);
+		model.addAttribute("img", img);
+		System.out.println(img);
 		return "reservation/peopleSelect";
 	}
 	@RequestMapping(value="/paymentPage.do")

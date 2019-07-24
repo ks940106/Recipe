@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.ks.caravan.vo.Caravan;
 import org.ks.reservation.vo.Reservation;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,10 @@ public class ReservationDaoImpl implements ReservationDao{
 	}
 	public List selectOneCaravan(int caravanNo) {
 		return sqlSession.selectList("reservation.selectOneCaravan",caravanNo);
+	}
+	@Override
+	public Caravan selectCaravanImg(String caravanName) {
+		return sqlSession.selectOne("reservation.selectCaravanImg", caravanName);
 	}
 	public void insertReservation(Reservation r) {
 		sqlSession.insert("reservation.insertReservation",r);
@@ -49,4 +54,5 @@ public class ReservationDaoImpl implements ReservationDao{
 		Reservation r = sqlSession.selectOne("reservation.selectOneReservation",reservationId);
 		return r;
 	}
+
 }
