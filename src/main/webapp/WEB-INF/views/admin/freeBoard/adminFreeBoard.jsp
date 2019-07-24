@@ -17,6 +17,7 @@
 	<script src="../resources/js/search.js"></script>
 	<script src="../resources/js/include.js"></script>
 	<link href="../resources/css/talkBoard.css" rel="stylesheet" />
+	<script src="../resources/js/freeBoard/adminFreeBoard.js"/>
 	
 </head>
 <body>
@@ -55,7 +56,7 @@
 								<td>${status.count }</td>
 								<td>${t.nickname }</td>
 								
-								<td>${t.title } [${t.commentCount}]</td>
+								<td onclick="select('${t.boardNo}')" style="cursor: pointer;">${t.title } [${t.commentCount}]</td>
 								<td>${t.viewCount}</td>
 								<td>
 								<input type="button" style="margin: auto;" onclick="deleteFreeBoard(${t.boardNo})" class="admin_btn"value="삭제">
@@ -75,24 +76,9 @@
 
 	</section>
 	<jsp:include page="/WEB-INF/views/common/freshfooter.jsp" />
-	<script>
-	function deleteFreeBoard(no){
-		$.ajax({
-			url : "/adminFreeBoardDelete.do",
-			type : "post",
-			data : {no:no},
-			success : function(){
-				alert("삭제성공");
-				location.href="/adminFreeBoard.do";
-			},
-			error : function(){
-				alert("삭제실패");
-			}
-		});
-		
-	}
 	
-	
-	</script>
+</body>
+</html>
+
 	
 	

@@ -103,6 +103,10 @@
     margin-bottom: 5px;
     position: relative;
     font-size: 20px;
+    text-align: center;
+}
+.camping_board input{
+    font-size: 20px;
 }
 .board_left{
 	width : 50%;
@@ -386,6 +390,16 @@
 .pageBtn:hover{
     border-color: #1f6054;
 }
+.freeCommentDel_btn{
+	border:none;
+	background: #1f6054;
+	color: #fff;
+	float: right;
+}
+.freeCommentDel_btn:hover{
+		cursor: pointer;
+}
+
 .admin_btn{
 	border:none;
 	background: #1f6054;
@@ -438,6 +452,7 @@
     color: #fff;
     padding: 5px 10px;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .f_d1{
@@ -454,10 +469,34 @@
     overflow: hidden;
 	
 }
-
 .submit_btn:hover{
 	cursor: pointer;
 }
 .modify_btn:hover{
 	cursor: pointer;
 }		
+
+.free_table{
+	width: 100%;
+    border-top: 3px solid #445451;
+}
+.free_table tr {
+    border-bottom: 1px solid #ccc;
+}
+
+.free_table th {
+    background-color: #f0eef1;
+    font-size: 20px;
+    text-align: center;
+    padding: 14px 0;
+    line-height: 16px;
+    font-weight: bolder
+}
+	.free_table td {
+    padding: 15px 5px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 25px;
+}
+
+

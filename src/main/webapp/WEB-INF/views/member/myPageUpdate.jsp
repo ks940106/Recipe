@@ -68,6 +68,7 @@
 								<th>핸드폰 번호</th>
 								<td><input type="text" name="phone" value=${member.phone } placeholder="010-0000-0000"></td>
 							</tr>
+							
 						</tbody>
 					</table>
 					<div class="Shipping" style="margin-top:40px;">
@@ -84,8 +85,10 @@
 						<input type="file" id="fileUpload" name="fileUpload" accept=".jpg,.jpeg,.png">
 					</div>
 				</div>
-				<button type="submit">수정 </button>
-				<a href="/myPageDelete.do?id=${member.id}" class="btn">탈퇴하기</a>
+				<div class="btn_div">
+				<button type="submit" class="btn">수정 </button>
+				<a href="/myPageDelete.do?id=${member.id}" class="btn a">탈퇴하기</a>
+				</div>
 			</form>
 			</div>
 		</div>

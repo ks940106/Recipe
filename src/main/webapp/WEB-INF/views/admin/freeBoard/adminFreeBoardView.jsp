@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Fresh 공지사항 </title>
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-3.4.0.js"></script>
 <link rel="stylesheet" type="text/css" href="../resources/css/import.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/ui.css">
 	<link rel="stylesheet" type="text/css" href="../resources/css/style.css">
@@ -15,42 +16,53 @@
 	<script src="../resources/js/ui.js"></script>
 	<script src="../resources/js/search.js"></script>
 	<script src="../resources/js/include.js"></script>
+	<link href="../resources/css/talkBoard.css" rel="stylesheet" />
+	<script src="../resources/js/freeBoard/adminFreeBoard.js"/>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/adminHeader.jsp" /> 
-	<section class="noticeWrite">
+	<section>
 		<div class="wrapper">
 	        <nav class="lnb_wrap">
-	             <jsp:include page="/WEB-INF/views/common/notice_nav.jsp"/>
+	              <jsp:include page="/WEB-INF/views/common/notice_nav.jsp"/>
 	        </nav>
-	        <form action="/noticeWrite.do" method="post" onsubmit="return insert()">
 			<div class="section_content">
-			<div class="admin_notice_div">
 				<div class="set_field">
-					<h1>공지사항 관리</h1>
+					<h1>자유 게시판 관리</h1>
 					<div id="cp_div_bg"></div>
 				</div>
-				<table class="adminNotice">
-					<tr style="height:32px;">
-						<th>공지사항 제목</th>
-						<td><input type="text" name="noticeTitle" id="title" ></td>
-					</tr>
-					
-					<tr>
-						<th>공지사항 내용</th>
-						<td><textarea rows="20" cols="20" name="noticeContent" id="content"></textarea>
-				</table>
-				<div class="btn_div">
-				<button type="submit" class="btn">등록</button>
-				</div>
+				<div class="f_d1">
+			 <table class="free_table" style="width: 100%;">
+				 <colgroup>
+			 				<col width="10%">
+							<col width="80%">
+							<col width="10%">
+						</colgroup>
+				    <thead>
+				      <tr>
+				        <th colspan="3" style="text-align: center;">${fb.title }</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				    <tr>
+				     <td colspan="3" style="text-align: left; font-size: 20px; font-weight: bolder;">${fb.nickname }</td>
+				    </tr>
+				      <tr>
+				        <td style="height: 500px;" colspan="3">${fb.contents }</td>
+				      </tr>
+				    </tbody>
+				    </table>
+				     <c:if test="${(sessionScope.member.nickname eq fb.nickname) or (sessionScope.member.nickname eq '관리자')}">
+			<input type="button" onclick="deleteFreeBoard(${fb.boardNo})" class="talk_btn_right"" value="삭제">
+			</c:if>
+				    </div>
 			</div>
-			</div>
-			</form>
-			
 		</div>
+
 	</section>
 	<jsp:include page="/WEB-INF/views/common/freshfooter.jsp" />
-	<script type="text/javascript" src="/resources/js/talkBoard/noticeWrite.js"></script>
-	
+
+
+
 </body>
 </html>
