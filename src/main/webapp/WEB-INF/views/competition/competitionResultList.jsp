@@ -43,10 +43,10 @@
 						<ul class="nav_menu">
 							<c:choose>
      					<c:when test="${empty sessionScope.member }">
-     						<li><a href="/competitionList.do?competitionCheck='Y'&id='null'">진행중인대회</a></li>
+     						<li><a href="/competitionList.do?competitionCheck='Y'&id='null'">진행중인대회</a><span>></span></li>
      					</c:when>
      					<c:otherwise>
-     						<li><a href="/competitionList.do?competitionCheck='Y'&id=${sessionScope.member.id}">진행중인대회</a></li>
+     						<li><a href="/competitionList.do?competitionCheck='Y'&id=${sessionScope.member.id}">진행중인대회</a><span>></span></li>
      					</c:otherwise>
      				</c:choose>
 				            <li>
