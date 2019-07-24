@@ -188,15 +188,22 @@ public class OrderController {
 	@RequestMapping(value="/cancellationAdminOrder.do") 
 	public ModelAndView cancellationAdminOrder(HttpServletRequest request) {
 		String[] orderNo = request.getParameterValues("orderNo");
-		String[] orderCode = request.getParameterValues("orderCode");
-		String[] orderPrice = request.getParameterValues("orderPrice");
-		System.out.println(orderCode[0]); 
-		System.out.println(orderCode[1]); 
-		System.out.println(orderPrice[0]); 
-		System.out.println(orderPrice[1]); 
+		//String[] orderCode = request.getParameterValues("orderCode");
+		//String[] orderPrice = request.getParameterValues("orderPrice");
 		
-		testGetToken();
+		//testGetToken();
 		ModelAndView mav = new ModelAndView();
+		int result = orderServiceImpl.cancellationAdminOrder(orderNo);
+		if(result>0) {
+			mav.addObject("msg","결제를 취소했습니다.");
+			mav.addObject("loc","/orderAdminList.do");
+			mav.setViewName("common/msg");
+		}else {
+			mav.addObject("msg","결제취소를 실패 했습니다.");
+			mav.addObject("loc","/orderAdminList.do");
+			mav.setViewName("common/msg");
+		}
+		/*
 		for(int i=0;i<orderNo.length;i++) {
 		
 			String test_already_cancelled_merchant_uid = orderCode[i];
@@ -237,6 +244,7 @@ public class OrderController {
 				e.printStackTrace();
 			}	
 		}
+		 * */
 		return mav;
 	}
 	@RequestMapping(value="/successAdminOrder.do")

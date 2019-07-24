@@ -40,7 +40,9 @@
 						<th>공지사항 내용</th>
 						<td><textarea rows="20" cols="20" name="noticeContent" id="content"></textarea>
 				</table>
-				<button type="submit">등록</button>
+				<div class="btn_div">
+				<button type="submit" class="btn">등록</button>
+				</div>
 			</div>
 			</div>
 			</form>

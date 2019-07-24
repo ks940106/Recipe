@@ -24,7 +24,7 @@
 		from caravan where caravan_name like '%대표%' order by caravan_name
   	</select>
   	<insert id="insertCaravanList" parameterType="caravan">
-  		insert into caravan values(caravan_no_sequence.nextval,#{caravanName},#{caravanArea},#{caravanPeople},#{caravanMaxPeople},#{caravanPlusCost},#{caravanCost},#{caravanInfo},null,null)
+  		insert into caravan values(caravan_no_sequence.nextval,#{caravanName},#{caravanArea},#{caravanPeople},#{caravanMaxPeople},#{caravanPlusCost},#{caravanCost},#{caravanInfo},null,null,null)
   	</insert>
   	<delete id="deleteCaravanList">
   		delete from caravan where caravan_no in
