@@ -544,16 +544,22 @@ public class MemberController {
 			m.setMemberImg(request.getParameter("beforeImg")); 
 			System.out.println(request.getParameter("beforeImg"));
 			m.setZipCode(request.getParameter("zipCode"));
+			String bool = request.getParameter("bool");
 			//파일 업로드
 			
 			String pw = null;
-			try {
-				pw = new SHA256Util().encData(pw1);
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			if(bool.equals("true")) {
+				
+				try {
+					pw = new SHA256Util().encData(pw1);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				m.setPw(pw);
+			}else {
+				m.setPw(pw1);
 			}
-			m.setPw(pw);
 			
 			if(!fileUpload.isEmpty()) {
 				

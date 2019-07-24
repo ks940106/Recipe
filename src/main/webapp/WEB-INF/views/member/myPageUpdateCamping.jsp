@@ -50,6 +50,8 @@
 							<tr>
 								<th>새 비밀번호</th>
 								<td><input type="password" id="new_pw"name="new_pw"></td>
+								<input type="hidden" name="bool">
+								<input type="hidden" name="orgin_pw" value="${member.pw }">
 							</tr>
 							<tr>
 								<th>새 비밀번호 확인</th>
@@ -65,7 +67,7 @@
 							</tr>
 							<tr>
 								<th>핸드폰 번호</th>
-								<td><input type="text" name="phone" value=${member.phone } placeholder="010-0000-0000"></td>
+								<td><input type="text" name="phone" id="phone" value=${member.phone } placeholder="010-0000-0000"></td>
 							</tr>
 						</tbody>
 					</table>
