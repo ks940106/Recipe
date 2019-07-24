@@ -105,7 +105,8 @@
                 </div>
 			</div>
 			<div style="clear: both; text-align: center; margin-bottom: 10px;">
-				<button class="selectBoard_btn" onclick="talklist('${tb.boardType}')">목록으로</button>
+				<input type="hidden" id="selectType" value="${boardType }">
+				<button class="selectBoard_btn" onclick="talklist()">목록으로</button>
 			</div>
 	 	</div>
 	 	

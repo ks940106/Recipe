@@ -5,7 +5,8 @@
 		function deleteBoard(boardNo){
 			location.href="/deleteTalkBoard.do?boardNo="+boardNo;
 		}
-		function talklist(boardType){
+		function talklist(){
+			var boardType = $("#selectType").val();
 			location.href="/mainBoard.do?boardType="+boardType;
 		}
 		function modifyTalkBoard(boardNo){

@@ -3,8 +3,9 @@
  */
 
 function select(no,id,nickname){
-	console.log(nickname);
-			location.href="/selectTalkBoard.do?boardNo="+no+"&memberId="+id+"&nickname="+nickname;
+	var type = $("#selectType").val();
+	console.log(type);
+			location.href="/selectTalkBoard.do?boardNo="+no+"&memberId="+id+"&nickname="+nickname+"&boardType="+type;
 		}
 
 function insert(){
