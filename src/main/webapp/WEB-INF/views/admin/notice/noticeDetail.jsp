@@ -46,7 +46,9 @@
 						<td colspan="3"><textarea rows="20" cols="20" id="content" name="noticeContent">${n.noticeContent }</textarea></td>
 					</tr>
 				</table>
-			<button type="submit">수정</button>
+				<div class="btn_div">
+			<button type="submit" class="btn">수정</button>
+			</div>
 					</form>
 				</div>
 			</div>

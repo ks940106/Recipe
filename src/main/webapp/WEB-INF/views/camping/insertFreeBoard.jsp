@@ -5,9 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script src="http://code.jquery.com/jquery-3.4.0.js"></script>
 <link href="../resources/css/import.css" rel="stylesheet" />
 <link href="../resources/css/campingReset.css" rel="stylesheet" />
@@ -15,6 +12,7 @@
 <link href="../resources/css/page.css" rel="stylesheet"/>
 <link href="../resources/css/common.css" rel="stylesheet" />
 <link href="../resources/css/talkBoard.css" rel="stylesheet" />
+<script src="../resources/js/freeBoard/insertFreeBoard.js"/>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/singsingCampingheader.jsp"></jsp:include>
@@ -36,44 +34,22 @@
 		<div class="section_content">
 			<form action="newFreeBoard.do" method="post">
 			<div class="camping_board">
-				<input type="hidden" name="nickname" value="${sessionScope.member.nickname }">
-				<input type="hidden" name="type" value="${no }">
-				제목 : <input type="text" id="title" name="title" id="title" style="width: 86%;  background: #eee;  border: none;">
+				<input type="hidden" id="nickname" name="nickname" value="${sessionScope.member.nickname }">
+				<input type="hidden" id="type" name="type" value="${no }">
+				<input type="text" id="title" name="title" id="title" style="width: 86%;  background: #eee;  border: none; height: 30px;">
 			</div>
 			<div class="d1">
 				<textarea id="contents" name="contents"></textarea>
 			</div>
 			<div class="write_btn">
                 <button type="button" id="submit_btn" class="camping_notice_btn">등록</button>
-                <button type="button" class="camping_notice_btn" data-dismiss="modal" onclick="location.href='/mainBoard.do'">취소</button>
+                <button type="button" class="camping_notice_btn" data-dismiss="modal" onclick="location.href='/freeBoard.do'">취소</button>
            	</div>
            	</form>
 		</div>
 	</div>
 	</section>
 	<jsp:include page="/WEB-INF/views/common/freshfooter.jsp"></jsp:include>
-	<script>
-		$(document).ready(function(){
-			$('#submit_btn').click(function(){
-				var nickname = '${sessionScope.member.nickname}';
-				var type = '${no}';
-				var title = $('#title').val();
-				var contents = $('#contents').val();
-				var data = "nickname="+nickname+"&boardType="+type+"&title="+title+"&contents="+contents;
-				$.ajax({
-					url:"/newFreeBoard.do",
-					type : "post",
-					data : data,
-					success : function(data){
-						alert(data);
-						location.href="/freeBoard.do";
-					},
-					error : function(){
-						alert("실패다");
-					}
-				});
-			});
-		});
-	</script>
+
 </body>
 </html>

@@ -98,7 +98,7 @@ public class FreeBoardController {
 		}else {
 			System.out.println("삭제 실패");
 		}
-		return "camping/freeBoard";
+		return "redirect:freeBoard.do";
 	}
 	@RequestMapping(value="modifyFreeBoard.do")
 	public ModelAndView modifyFreeBoard(@RequestParam int boardNo) {
@@ -192,5 +192,17 @@ public class FreeBoardController {
 		return "삭째!!";
 	}
 	
-	
+	@RequestMapping(value="/adminFreeBoardView.do")
+	public ModelAndView adminFreeBoardView(@RequestParam int boardNo) {
+		int no = boardNo;
+		System.out.println(no);
+		int result = freeBoardService.viewCountUp(no);
+		FreeBoard fb = freeBoardService.selectBoard(no);
+		ArrayList<FreeBoardComment> fbc = freeBoardService.selectBoardComment(no);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("fbc",fbc);
+		mv.addObject("fb",fb);
+		mv.setViewName("/admin/freeBoard/adminFreeBoardView");
+		return mv;
+	}
 }

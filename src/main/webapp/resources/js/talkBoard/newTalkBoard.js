@@ -70,8 +70,8 @@
             var fileNameExtension = fileName.toLowerCase().substring(
                     fileNameExtensionIndex, fileName.length);
             if (!((fileNameExtension === 'jpg')
-                    || (fileNameExtension === 'gif') || (fileNameExtension === 'png') || (fileNameExtension === 'jfif'))) {
-                alert('jpg, gif, png, jfif 확장자만 업로드 가능합니다.');
+                    || (fileNameExtension === 'gif') || (fileNameExtension === 'jpeg') || (fileNameExtension === 'png') || (fileNameExtension === 'jfif'))) {
+                alert('jpg, jpeg, gif, png, jfif 확장자만 업로드 가능합니다.');
                 return true;
             } else {
                 return false;

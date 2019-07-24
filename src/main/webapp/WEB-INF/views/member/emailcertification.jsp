@@ -72,19 +72,23 @@
          return false;
       }
       if(form==authNum){
-         opener.$("#eTxt").text("인증완료");
-         opener.$("#eTxt").css("color","blue");
+    	 opener.$("#idMsg").css("display", "block");
+         opener.$("#idMsg").text("인증이 완료되었습니다");
+         opener.$("#idMsg").css("color","blue");
          opener.insert[0]=true;
+         opener.$("#emailcertification").prop("disabled",true);
          self.close();
       }
    }
    $("#layerPopup button").click(function(){
        $("#layerPopup").hide();
        if($("#checkMsg").html() == "인증 시간이 초과 되었습니다."){
-          opener.$("#eTxt").text("인증실패");
-          opener.$("#eTxt").css("color","red");
+    	   opener.$("#idMsg").css("display", "block");
+          opener.$("#idMsg").text("인증실패");
+          opener.$("#idMsg").css("color","red");
           opener.emailcertification=true;
           self.close();
+      
        }
    });
 </script>

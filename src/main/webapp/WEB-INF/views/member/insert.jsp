@@ -22,7 +22,7 @@
 					<input type="button" id="emailcertification" onclick="emailcertification()" name="emailcertification" class="emailBtn" value="이메일 인증">
 					<span id="idMsg" style="display: none;"></span>
 					
-					<span id="emailMsg" style="display: none;"></span>
+					
 			</div>
 			<div id="pwFrms" class="form-group has-feedback">
 				<input type="password" name="pw" class="form-control" id="pw" onblur="chkPasswd1()"

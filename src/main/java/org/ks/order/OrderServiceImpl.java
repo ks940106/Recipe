@@ -84,7 +84,7 @@ public class OrderServiceImpl implements OrderService {
 		int pageNaviSize = 5;
 		int pageNo =((reqPage-1)/pageNaviSize)*pageNaviSize+1;
 		if(pageNo!=1) {
-			pageNavi +="<a  onclick='seletecancelAdminList("+(pageNo-1)+")'>이전</a>";
+			pageNavi +="<a  onclick='seletecancelAdminList("+(pageNo-1)+")'><</a>";
 		}
 		int j =1;
 		while(!(j++>pageNaviSize|| pageNo>totalPage)) {
@@ -97,7 +97,7 @@ public class OrderServiceImpl implements OrderService {
 		}
 		//다음 버튼 생성
 				if(pageNo <= totalPage) {
-					pageNavi +="<a class='pageBtn' onclick='seletecancelAdminList("+(pageNo)+")'>다음</a>";
+					pageNavi +="<a class='pageBtn' onclick='seletecancelAdminList("+(pageNo)+")'>></a>";
 				}
 		ArrayList<Order>list=(ArrayList<Order>)(orderDaoImpl.seletecancelAdminList(start,end));
 		OrderPageData opd = new OrderPageData(list,pageNavi);
@@ -118,7 +118,7 @@ public class OrderServiceImpl implements OrderService {
 		int pageNaviSize = 5;
 		int pageNo =((reqPage-1)/pageNaviSize)*pageNaviSize+1;
 		if(pageNo!=1) {
-			pageNavi +="<a  onclick='seletecancelsuccessAdminList("+(pageNo-1)+")'>이전</a>";
+			pageNavi +="<a  onclick='seletecancelsuccessAdminList("+(pageNo-1)+")'><</a>";
 		}
 		int j =1;
 		while(!(j++>pageNaviSize|| pageNo>totalPage)) {
@@ -131,7 +131,7 @@ public class OrderServiceImpl implements OrderService {
 		}
 		//다음 버튼 생성
 				if(pageNo <= totalPage) {
-					pageNavi +="<a class='pageBtn' onclick='seletecancelsuccessAdminList("+(pageNo)+")'>다음</a>";
+					pageNavi +="<a class='pageBtn' onclick='seletecancelsuccessAdminList("+(pageNo)+")'>></a>";
 				}
 		ArrayList<Order>list=(ArrayList<Order>)(orderDaoImpl.seletecancelsuccessAdminList(start,end));
 		
@@ -153,7 +153,7 @@ public class OrderServiceImpl implements OrderService {
 		int pageNaviSize = 5;
 		int pageNo =((reqPage-1)/pageNaviSize)*pageNaviSize+1;
 		if(pageNo!=1) {
-			pageNavi +="<a  onclick='seletepaymentAdminList("+(pageNo-1)+")'>이전</a>";
+			pageNavi +="<a  onclick='seletepaymentAdminList("+(pageNo-1)+")'><</a>";
 		}
 		int j =1;
 		while(!(j++>pageNaviSize|| pageNo>totalPage)) {
@@ -166,7 +166,7 @@ public class OrderServiceImpl implements OrderService {
 		}
 		//다음 버튼 생성
 				if(pageNo <= totalPage) {
-					pageNavi +="<a class='pageBtn' onclick='seletepaymentAdminList("+(pageNo)+")'>다음</a>";
+					pageNavi +="<a class='pageBtn' onclick='seletepaymentAdminList("+(pageNo)+")'>></a>";
 				}
 		ArrayList<Order>list=(ArrayList<Order>)(orderDaoImpl.seletepaymentAdminList(start,end));
 		
@@ -188,7 +188,7 @@ public class OrderServiceImpl implements OrderService {
 		int pageNaviSize = 5;
 		int pageNo =((reqPage-1)/pageNaviSize)*pageNaviSize+1;
 		if(pageNo!=1) {
-			pageNavi +="<a class='pageBtn'  onclick='seletepaymentSuccessAdminList("+(pageNo-1)+")'>이전</a>";
+			pageNavi +="<a class='pageBtn'  onclick='seletepaymentSuccessAdminList("+(pageNo-1)+")'><</a>";
 		}
 		int j =1;
 		while(!(j++>pageNaviSize|| pageNo>totalPage)) {
@@ -201,7 +201,7 @@ public class OrderServiceImpl implements OrderService {
 		}
 		//다음 버튼 생성
 				if(pageNo <= totalPage) {
-					pageNavi +="<a class='pageBtn' onclick='seletepaymentSuccessAdminList("+(pageNo)+")'>다음</a>";
+					pageNavi +="<a class='pageBtn' onclick='seletepaymentSuccessAdminList("+(pageNo)+")'>></a>";
 				}
 		ArrayList<Order>list=(ArrayList<Order>)(orderDaoImpl.seletepaymentSuccessAdminList(start,end));
 		
