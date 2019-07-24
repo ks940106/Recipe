@@ -46,10 +46,6 @@ function payment(id,name,phone) {
 						"&addr1="+addr1+"&addr2="+addr2+"&phone="+phone+"&recipeCount="+noarray1+"&recipePrice="+noarray2;
 					}else{
 						$('#paymentResult').html('에러내용 :' +rsp.error_msg+date);
-						
-						
-						
-		
 					}
 				});
 			};

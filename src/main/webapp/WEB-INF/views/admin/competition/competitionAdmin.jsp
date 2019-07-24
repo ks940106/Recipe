@@ -55,12 +55,15 @@
 							<td><a href="/competitionAdmin_List.do?competitionNo=${competition.competitionNo }">${competition.competitionTitle}</a></td>
 							<td>${competition.competitionDate }</td>
 							<td>
+						
 								<div>
 									<a href="/competitionUpdateWrite.do?competitionNo=${competition.competitionNo}" class="btn small col_main f_w">수정</a>
 									<a href="/competitionDelete.do?competitionNo=${competition.competitionNo}" class="btn small col_main f_w">삭제</a>
 								</div>
+						
 							</td>
 						</tr>	
+						
 						</tbody>
 					</table>
 					
