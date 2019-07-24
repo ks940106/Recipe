@@ -499,4 +499,12 @@
     line-height: 25px;
 }
 
+.selectBoard_btn{
+	border: none;
+    background: #1f6054;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: bold;
+}
 
