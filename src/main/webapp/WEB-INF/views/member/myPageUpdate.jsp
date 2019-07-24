@@ -50,7 +50,10 @@
 							</tr>
 							<tr>
 								<th>새 비밀번호</th>
-								<td><input type="password" id="new_pw"name="new_pw"></td>
+								<td><input type="password" id="new_pw" name="new_pw"></td>
+								<input type="hidden" name="bool">
+								<input type="hidden" name="orgin_pw" value="${member.pw }">
+								
 							</tr>
 							<tr>
 								<th>새 비밀번호 확인</th>
@@ -66,11 +69,12 @@
 							</tr>
 							<tr>
 								<th>핸드폰 번호</th>
-								<td><input type="text" name="phone" value=${member.phone } placeholder="010-0000-0000"></td>
+								<td><input type="text" id="phone" name="phone" value=${member.phone } placeholder="010-0000-0000"></td>
 							</tr>
 							
 						</tbody>
 					</table>
+					
 					<div class="Shipping" style="margin-top:40px;">
 					<h1>배송지 변경</h1>
 						<input type="text" class="input" name="zipCode" id="zipCode" placeholder="우편번호" value="${member.zipCode }">
