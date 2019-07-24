@@ -96,6 +96,9 @@
 			<input type="button" onclick="modifyFreeBoard(${fb.boardNo})" class="talk_btn_left" value="수정">
 				</c:if>
 			</div>
+			<div style="clear: both; text-align: center; margin-bottom: 10px;">
+				<button class="selectBoard_btn" onclick="freelist()">목록으로</button>
+			</div>
 			<!-- 
 			<div class="board_type">
 				<input type="hidden" name="nickname" value="${sessionScope.member.nickname }">
