@@ -8,6 +8,9 @@
 		function modifyFreeBoard(no){
 			location.href="/modifyFreeBoard.do?boardNo="+no;
 		}
+		function freelist(){
+			location.href="/freeBoard.do";
+		}
 		function freeComment(nickname,no){
 			console.log("닉네임 : "+nickname);
 			if(nickname == ""){
