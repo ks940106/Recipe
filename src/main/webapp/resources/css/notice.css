@@ -17,7 +17,7 @@ table.adminNotice{
  margin: 0px auto 0px auto;
 }
 table.adminNotice th{
-	width: 20%;
+	width: 15%;
 }
 table.adminNotice td{
 	width: 50%;
@@ -86,10 +86,14 @@ color: #343a40;
 }
 
 .allnotice .button1{
-	
-    background-color: white;
-    color: black;
-    border: 2px solid #1f6054;	
+	text-align: center;
+    border-radius: 10px;
+    background: #1f6054;
+    padding: 10px;
+    color: #fff;
+    border: none;
+    margin-top: 30px;
+    
 }
 .allnotice .btn_div{
    margin: 30px auto 0 auto;

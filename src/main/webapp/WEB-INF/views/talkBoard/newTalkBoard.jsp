@@ -24,8 +24,7 @@
 		</div>
 	</div>
 	<div class="pom_wrap">
-		<form action="insertTalkBoard.do" method="post"
-			enctype="multipart/form-data">
+		<form action="insertTalkBoard.do" method="post" enctype="multipart/form-data" onsubmit="return check()">
 			<input type="hidden" name="nickname"
 				value="${sessionScope.member.nickname }"> <input
 				type="hidden" name="boardType" value="${boardType}">
