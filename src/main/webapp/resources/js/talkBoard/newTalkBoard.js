@@ -87,4 +87,11 @@
             });
         });
         
+        function check(){
+        	var contents = $("#contents").val();
+        	if(contents == ""){
+        		alert("내용을 입력해 주세요");
+        		return false;
+        	}
+        }
         

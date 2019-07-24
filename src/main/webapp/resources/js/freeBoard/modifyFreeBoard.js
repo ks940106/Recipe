@@ -3,6 +3,13 @@
  */
 	$(document).ready(function(){
 			$('#submit_btn').click(function(){
+				var title = $("#title").val();
+				var contents = $("#contents").val();
+				if(title == ""){
+					alert("제목을 적어주세요");
+				}else if(contents == ""){
+					alert("내용을 적어주세요");
+				}else{
 				var no = $('#type').val();
 				var title = $('#title').val();
 				var contents = $('#contents').val();
@@ -19,5 +26,6 @@
 						alert("수정에 실패했습니다");
 					}
 				});
+				}
 			});
 		});

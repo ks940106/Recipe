@@ -5,6 +5,9 @@
 		function deleteBoard(boardNo){
 			location.href="/deleteTalkBoard.do?boardNo="+boardNo;
 		}
+		function talklist(boardType){
+			location.href="/mainBoard.do?boardType="+boardType;
+		}
 		function modifyTalkBoard(boardNo){
 			location.href="/modifyTalkBoard.do?boardNo="+boardNo;
 		}

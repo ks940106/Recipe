@@ -26,7 +26,7 @@
 					<img src="../resources/img/camping/travel_img1.jpg" width="500px;" height="300px;">
 					</div>
 					<div id="travel_text1">
-						<h3>아침고요수목원</h3>
+						<h3 style="font-size: 22px;  font-weight: bold;  margin-bottom: 10px;">아침고요수목원</h3>
 						<p>
 							경기도 가평군 상면에 위치한 낙원을 꿈꾸는 정원!<br>아침고요수목원은 
 							보유식물만 총 1760종에 <br> 침엽수정원, 능수정원, 분재정원, 허브정원, 락가든,
@@ -40,7 +40,7 @@
 				</div>
 				<div class="travel_content">
 					<div id="travel_text2">
-						<h3>쁘띠프랑스</h3>
+						<h3 style="font-size: 22px;  font-weight: bold;  margin-bottom: 10px;">쁘띠프랑스</h3>
 						<p>
 							한국 안의 작은 프랑스 문화 마을 쁘띠프랑스는 <br>자라나는 아이들의 꿈을 키우는 공간이자 <br>함께 하는 어른들에겐
 							동심을 떠올리게 하는 동화같은 공간입니다.<br> 길가에는 유럽 골동품이 늘어선 벼룩시장이, 귓가에는 수백년전에 만들어진
@@ -57,7 +57,7 @@
 					<img src="../resources/img/camping/travel_img3.jpg" width="500px;" height="300px;">
 					</div>
 					<div id="travel_text3">
-						<h3>남이섬</h3>
+						<h3 style="font-size: 22px;  font-weight: bold;  margin-bottom: 10px;">남이섬</h3>
 						<p>
 							국가 개념을 표방하는 특수 관광지로, 독자적인 외교와 문화 정책을 펼치고 있습니다.<br>
 							전 세계 관광객들에게 아름다운 동화와 노래를 선물하는,	<br>				
@@ -74,7 +74,7 @@
 				</div>
 					<div class="travel_content">
 					<div id="travel_text4">
-						<h3>자라섬</h3>
+						<h3 style="font-size: 22px;  font-weight: bold;  margin-bottom: 10px;">자라섬</h3>
 						<p>
 							자라섬은 북한강에 떠 있는 하나의 섬으로 약 20만여 만평의 크기이며,<br>섬 가장자리로는 큰 돌과 잔자갈로 이루어져 있고<br>
 							중앙 부위에는 큰 미루나무들과 버들가지 등 자연 수목원이 있으며,<br> 강가 수변도로와 해바라기 광장, 들꽃 광장, 코스모스 등 
@@ -90,7 +90,7 @@
 					<img src="../resources/img/camping/travel_img5.jpg" width="500px;" height="300px;">
 					</div>
 					<div id="travel_text5">
-						<h3>강촌 레일바이크</h3>
+						<h3 style="font-size: 22px;  font-weight: bold;  margin-bottom: 10px;">강촌 레일바이크</h3>
 						<p>
 							강가역, 강촌역, 김유정역에서 이용 가능한 레일바이크는 <br>브레이크 작동법 등 간단한 사용 방법과
 							주의사항을 들은 후 2인승부터 차례대로 출발합니다.<br>
@@ -104,7 +104,7 @@
 				</div>
 					<div class="travel_contentlast">
 					<div id="travel_text6">
-						<h3>청평호반 수상레저</h3>
+						<h3 style="font-size: 22px;  font-weight: bold;  margin-bottom: 10px;">청평호반 수상레저</h3>
 						<p>
 							1일 드라이브코스로 제격인 청평호반은 청평패리선착장에서 유람선을 타고<br> 북한강으로 거슬러 올라가는
 							뱃길에서 운치를 더해줍니다.<br>
