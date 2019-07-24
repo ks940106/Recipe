@@ -79,7 +79,7 @@
 							<p>${comment2 }</p>
 							<c:if test="${(sessionScope.member.nickname eq t.commentWriter) or (sessionScope.member.nickname eq '관리자')}">
 								<span>
-								<input class="comment_btn" type="button" onclick="del('${sessionScope.member.nickname}','${t.commentNo}','${tb.boardNo }','${sessionScope.member.id }');"  value="삭제">
+								<input style="cursor: pointer;" class="comment_btn" type="button" onclick="del('${sessionScope.member.nickname}','${t.commentNo}','${tb.boardNo }','${sessionScope.member.id }');"  value="삭제">
 								</span>
 							</c:if>
 						</div>
@@ -89,10 +89,10 @@
 				
                 <div class="btn-like">
                 	<c:if test="${like eq null }">
-                    	<button type="button" class="talk_like_btn" ><img src="http://recipe1.ezmember.co.kr/img/btn_feel.gif" id="like_btn1" value="뿌부" onclick="like('${sessionScope.member.nickname}','${sessionScope.member.id}','${tb.boardNo }')"></button>
+                    	<button type="button" class="talk_like_btn" ><img src="http://recipe1.ezmember.co.kr/img/btn_feel.gif" id="like_btn1" value="뿌부" onclick="like('${sessionScope.member.nickname}','${sessionScope.member.id}','${tb.boardNo }')" style="cursor: pointer;"></button>
                 	</c:if>
                 	<c:if test="${like.likeCheck eq 1 }">
-                    	<button type="button" class="talk_like_btn" ><img src="/resources/img/talk/btn_feel.gif" id="like_btn3" value="뿌부" onclick="likeDel('${sessionScope.member.nickname}','${sessionScope.member.id}','${tb.boardNo }')"></button>
+                    	<button type="button" class="talk_like_btn" ><img src="/resources/img/talk/btn_feel.gif" id="like_btn3" value="뿌부" onclick="likeDel('${sessionScope.member.nickname}','${sessionScope.member.id}','${tb.boardNo }')" style="cursor: pointer;"></button>
                 	</c:if>
                 </div>
                 
