@@ -43,8 +43,8 @@
                             	<th class="ess">대회 진행 여부</th>
                        		  </div>
 							<td id="cp_table_td" style="font-size: 16px;">
-								<input type="checkbox" value="Y" name="competitionCheck" checked="checked">진행중
-								<input type="checkbox" value="N" name="competitionCheck">진행완료
+								<input type="radio" value="Y" name="competitionCheck" checked="checked">진행중
+								<input type="radio" value="N" name="competitionCheck">진행완료
 							</td>
 						</tr>
 						<tr>
