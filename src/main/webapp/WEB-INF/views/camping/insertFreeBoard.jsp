@@ -32,7 +32,7 @@
 			</nav>
 		</div>
 		<div class="section_content">
-			<form action="newFreeBoard.do" method="post">
+			<form action="newFreeBoard.do" method="post" onsubmit="return check()">
 			<div class="camping_board">
 				<input type="hidden" id="nickname" name="nickname" value="${sessionScope.member.nickname }">
 				<input type="hidden" id="type" name="type" value="${no }">

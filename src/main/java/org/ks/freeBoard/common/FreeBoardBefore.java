@@ -24,6 +24,7 @@ public class FreeBoardBefore {
 		System.out.println(returnObj);
 		if(returnObj instanceof FreeBoard) {
 			FreeBoard b = (FreeBoard)returnObj;
+			if(b.getTitle() != null) {
 			if(b.getContents() != null) {
 			String str = b.getTitle().replaceAll("<", "&lt");
 			String con = b.getContents().replaceAll("<", "&lt");
@@ -31,6 +32,7 @@ public class FreeBoardBefore {
 			String con2 = con.replace("\n", "<br>");
 			b.setTitle(str);
 			b.setContents(con2);
+			}
 			}
 		}
 	}
@@ -41,6 +43,7 @@ public class FreeBoardBefore {
 		if(returnObj instanceof FreeBoardPageData) {
 			FreeBoardPageData b = (FreeBoardPageData)returnObj;
 			for(int i=0;i<b.getList().size();i++) {
+				if(b.getList().get(i).getTitle() != null) {
 				if(b.getList().get(i).getContents() != null) {
 				System.out.println(b.getList().get(i).getContents());
 				//String con = b.replaceAll("<", "&lt");
@@ -50,7 +53,7 @@ public class FreeBoardBefore {
 				b.getList().get(i).setTitle(str);
 				b.getList().get(i).setContents(con2);
 				}
-				
+				}
 			}
 		}
 	}
