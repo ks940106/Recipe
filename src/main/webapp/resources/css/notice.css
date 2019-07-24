@@ -17,7 +17,7 @@ table.adminNotice{
  margin: 0px auto 0px auto;
 }
 table.adminNotice th{
-	width: 15%;
+	width: 17%;
 }
 table.adminNotice td{
 	width: 50%;
@@ -142,6 +142,7 @@ color: #343a40;
     color: #555555;
     border-top: 1px solid #e9e9e9;
     padding-left: 35px;
+    vertical-align: middle;
 }
 
 .noticeUpdate tr td {
@@ -157,6 +158,7 @@ color: #343a40;
 }
 
 .noticeWrite tr th {
+	vertical-align: middle;
     background: #fbfbfb;
     text-align: left;
     font-weight: bold;

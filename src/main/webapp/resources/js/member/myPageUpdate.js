@@ -44,13 +44,42 @@ function reg()   {
 	         var memberPw=$("#new_pw").val();
 	         var memberPwRe=/^[A-Za-z0-9!@#$%^&*()_+=.,/]{6,12}$/;
 	         var memberPwcheck=$("#pwck").val();
-	         
-	         if(!memberPwRe.test(memberPw)){
-	        	 alert("패스워드는 영어,숫자,특수문자 포함 6~12글자 입니다");
-	        	 return false;
-	         }
-	         if(memberPw != memberPwcheck){
-	      		alert("비밀번호와 비밀번호 확인이 다릅니다");
-	      		return false;
-	      	}
+	         var addr1=$("#addr1").val();
+	     	var addr2=$("#addr2").val();
+	     	var zipCode=$("#zipCode").val();
+	     	var phone = $("#phone").val();
+    		var phonech=/^[0-9]{3}-[0-9]{3,4}-[0-9]{4}$/;
+    		 console.log(addr2.length)
+    		 if($("#new_pw").val()=="" && $("#pwck").val()==""){
+    			$("#new_pw").val($("[name=orgin_pw]").val());
+    			$("[name=bool]").val("false"); //안바꿨단소리
+    		 }else{
+    			 $("[name=bool").val("true");
+    			 if(!memberPwRe.test(memberPw)){
+    	        	 alert("패스워드는 영어,숫자,특수문자 포함 6~12글자 입니다");
+    	        	 return false;
+    	         }
+    	         if(memberPw != memberPwcheck){
+    	      		alert("비밀번호와 비밀번호 확인이 다릅니다");
+    	      		return false;
+    	      	} 
+    		 }
+	         if(!phonech.test(phone)){
+		    		alert("핸드폰번호를 입력해주세요");
+		    		return false;
+		    }
+	        
+	     	if(zipCode==''){
+	     		alert("주소를 입력해주세요");
+	     		return false;
+	     		}
+	    	if(addr1==''){
+	    		alert("주소를 입력해주세요");
+ 				return false;
+	     	}
+	    	if(addr2==''){
+	    		alert("주소를 입력해주세요");
+ 				return false;
+	    	}
+	     	
 };
