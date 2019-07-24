@@ -37,7 +37,7 @@
                 	<input type="hidden" name="caravanMaxPeople" value="${c.caravanMaxPeople }">
                		<h1>예약 인원을 선택하여 주십시오</h1><br><hr><br><br>
                		<div style="width: 50%; float: left;">
-               			<img src="../resources/img/${c.caravanMainImg}" width="100%;">
+               			<img src="../resources/img/${img}" width="100%;">
                		</div>
                		<div style="width: 50%; float: left;">
                		<b>카라반 이름</b> : ${c.caravanName } <br><br>

@@ -64,7 +64,7 @@
 			</div>
 			<div class="textBox">								
 				<div class="text on">
-					<p class="title"><span>캠핑장A</span>특별한 추억을 쌓을 수 있는 공간</p>
+					<p class="title"><span>카라반A</span>특별한 추억을 쌓을 수 있는 공간</p>
 					<div class="info">
 						<p><span>평수</span>13평</p>
 						<p><span>기준인원</span>성인2인</p>

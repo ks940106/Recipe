@@ -25,6 +25,7 @@ public class ReservationServiceImpl implements ReservationService{
 		Caravan c = ((ArrayList<Caravan>)list).get(0);
 		return c;
 	}
+	
 	@Transactional
 	public void insertReservation(Reservation r) {
 		reservationDaoImpl.insertReservation(r);
@@ -55,5 +56,10 @@ public class ReservationServiceImpl implements ReservationService{
 	public Reservation selectOneReservation(String reservationId) {
 		Reservation r = reservationDaoImpl.selectOneReservation(reservationId);
 		return r;
+	}
+	@Override
+	public String selectCaravanImg(String caravanName) {
+		Caravan c = reservationDaoImpl.selectCaravanImg(caravanName);
+		return c.getCaravanMainImg();
 	}
 }
