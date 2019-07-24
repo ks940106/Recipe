@@ -67,6 +67,7 @@ public class TalkBoardController {
 		}
 		MainPageData pd = new MainPageData(list, mpd.getPageNavi(), mpd.getType());
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("type",type);
 		mv.addObject("pd",pd);
 		mv.setViewName("talkBoard/mainBoard");
 		return mv;
@@ -178,11 +179,12 @@ public class TalkBoardController {
 		}
 	}
 	@RequestMapping(value="selectTalkBoard.do")
-	public ModelAndView selectTalkBoard(@RequestParam String boardNo,@RequestParam String memberId,@RequestParam String nickname) {
+	public ModelAndView selectTalkBoard(@RequestParam String boardNo,@RequestParam String memberId,@RequestParam String nickname,@RequestParam String boardType) {
 		int no = Integer.parseInt(boardNo);
 		BoardLike bl = new BoardLike();
 		System.out.println("넘어온 세션 아이디 : "+memberId);
 		System.out.println("넘어온 보드넘버 : "+no);
+		System.out.println("넘어온 타입 : "+boardType);
 		bl.setBoardNo(no);
 		bl.setMemberId(memberId);
 		System.out.println("넘어온 닉네임 : "+nickname);
@@ -195,6 +197,7 @@ public class TalkBoardController {
 		System.out.println("라이크 카운트"+likeCount);
 		ModelAndView mv = new ModelAndView();
 		if(like == null) {
+			mv.addObject("boardType",boardType);
 			mv.addObject("m",m);
 			mv.addObject("commentCount",commentCount);
 			mv.addObject("likeCount",likeCount);
@@ -207,6 +210,7 @@ public class TalkBoardController {
 		System.out.println(tb.getBoardContents());
 		System.out.println(tbc.isEmpty());
 		System.out.println("라이크 체크 : "+like.getLikeCheck());
+		mv.addObject("boardType",boardType);
 		mv.addObject("m",m);
 		mv.addObject("commentCount",commentCount);
 		mv.addObject("likeCount",likeCount);

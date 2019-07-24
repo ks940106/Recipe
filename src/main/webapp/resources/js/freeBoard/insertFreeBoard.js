@@ -4,6 +4,13 @@
 
 $(document).ready(function(){
 			$('#submit_btn').click(function(){
+				var title = $("#title").val();
+				var contents = $("#contents").val();
+				if(title == ""){
+					alert("제목을 적어주세요");
+				}else if(contents == ""){
+					alert("내용을 적어주세요");
+				}else{
 				var nickname = $('#nickname').val();
 				var type = $('#type').val();
 				var title = $('#title').val();
@@ -21,5 +28,13 @@ $(document).ready(function(){
 						alert("새들 등록에 실패했습니다");
 					}
 				});
+			}
 			});
 		});
+
+function check(){
+	var title = $("#title").val();
+	var contents = $("#contents").val();
+	console.log(title);
+	console.log(contents);
+}

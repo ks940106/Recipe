@@ -62,7 +62,6 @@
     padding-right: 15px;
     margin-bottom: 10px;
     overflow: hidden;
-    cursor: pointer;
     font-size: 20px;
 }
 
@@ -75,7 +74,6 @@
     max-height: 500px;
     overflow: hidden;
     text-align: center;
-    cursor: pointer;
 }
 	.img_bg{
 		width: 100%;
@@ -499,4 +497,16 @@
     line-height: 25px;
 }
 
+.selectBoard_btn{
+	border: none;
+    background: #1f6054;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+#commentInsert_btn{
+	cursor: pointer;
+}
 

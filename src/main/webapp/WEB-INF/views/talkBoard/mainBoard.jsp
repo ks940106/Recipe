@@ -27,6 +27,7 @@
 		<div class="section_content">
 			<div class="board_type">
 				<div class="board_left">
+					<input type="hidden" id="selectType" value="${pd.type }">
 					<c:if test="${pd.type eq '0' }">
 					<span><p>전체글을 볼수 있어요</p></span>
 					</c:if>
@@ -66,9 +67,9 @@
 	 			<img src="/resources/img/talk/66932.png"  style="width:25px; height:25px;">    ${t.commentCount } 
 	 			</div>
 					</div>
-					<div class="c2" style="height:170px; max-height: 170px;" onclick="select('${t.boardNo}','${sessionScope.member.id }','${t.nickname }')">
+					<div class="c2" style="height:170px; max-height: 170px; cursor: pointer;" onclick="select('${t.boardNo}','${sessionScope.member.id }','${t.nickname }')">
 						${t.boardContents }</div>
-					<div class="c3" onclick="select('${t.boardNo}','${sessionScope.member.id }','${t.nickname }')">
+					<div class="c3" style="cursor: pointer;"onclick="select('${t.boardNo}','${sessionScope.member.id }','${t.nickname }');">
 						<c:forTokens items="${t.boardImg }" delims="/" var="item" varStatus="g">
 							<c:if test="${g.count==1 }">
 							<!-- 
