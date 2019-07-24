@@ -43,10 +43,10 @@
 						<ul class="nav_menu">
 							<c:choose>
      					<c:when test="${empty sessionScope.member }">
-     						<li><a href="/competitionList.do?competitionCheck='Y'&id='null'">진행중인대회</a></li>
+     						<li><a href="/competitionList.do?competitionCheck='Y'&id='null'">진행중인대회</a><span>></span></li>
      					</c:when>
      					<c:otherwise>
-     						<li><a href="/competitionList.do?competitionCheck='Y'&id=${sessionScope.member.id}">진행중인대회</a></li>
+     						<li><a href="/competitionList.do?competitionCheck='Y'&id=${sessionScope.member.id}">진행중인대회</a><span>></span></li>
      					</c:otherwise>
      				</c:choose>
 				            <li>
@@ -78,7 +78,7 @@
 						</div>
 					</div>
 					<div id="cp_btn">							
-						<button onclick="location.href='/competitionAdminResultList.do'">목록으로 가기</button>
+						<button onclick="location.href='/competitionResultList.do'">목록으로 가기</button>
 					</div>
 					<!--
 			 <button onclick="location.href='/competitionUpdate.do?competitionNo=${competition.competitionNo}'">수정하기</button>   
