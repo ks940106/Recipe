@@ -30,12 +30,22 @@
   </select>
   
   <select id="boardType" parameterType="pp" resultType="main">
+  <!-- 
   	select board_no as boardNo,
   	board_type as boardType,
   	nickname as nickname,
   	board_img as boardImg,
   	board_contents as boardContents
   	from(SELECT ROWNUM AS RNUM, M.*FROM (select * from board where board_type = #{type} order by board_no desc) M) WHERE RNUM BETWEEN #{start} AND #{end}
+   -->
+    select board_no as boardNo,
+  	board_type as boardType,
+  	nickname as nickname,
+  	board_img as boardImg,
+  	board_contents as boardContents,
+    member_img as memberImg
+  	from (SELECT ROWNUM AS RNUM, M.*FROM (select * from board left join member using (nickname) where board_type = #{type} order by board_no desc)M) WHERE RNUM BETWEEN #{start} AND #{end}
+    
   </select>
   
   <insert id="insertTalkBoard" parameterType="talk">
